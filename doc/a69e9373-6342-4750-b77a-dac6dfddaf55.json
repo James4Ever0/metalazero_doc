@@ -1,0 +1,10 @@
+{
+    "summary": "This script runs tuneloadroot.sh and loadram.sh, creates a root directory, uses unionfs to bind mount ramdisk read-write and / read-only under root directory, sets appropriate permissions, and auto detects changes.",
+    "details": [
+        {
+            "comment": "This script runs tuneloadroot.sh and loadram.sh, creates a root directory, uses unionfs to bind mount ramdisk read-write and / read-only under root directory, sets appropriate permissions, and auto detects changes.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_kali_amd64/virtualService/tools/sandserv/tloadroot_x64.sh\":0-8",
+            "content": "#!/bin/bash\nbash -c ./tunloadroot.sh\nbash -c ./loadram.sh\nmkdir root\n# there's autodetect.\n# better use bindfs as standard.\ns0=$(id -u)\nsudo bin/x86_64/unionfs -o allow_root,cow,uid=$s0,gid=$s0 ramdisk/=RW:/=RO root/\nsudo chmod 777 root"
+        }
+    ]
+}

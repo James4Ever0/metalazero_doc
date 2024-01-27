@@ -1,0 +1,10 @@
+{
+    "summary": "This code checks if a file named \"tasks.json\" exists. If it does, the script proceeds to import tasks from this file; otherwise, it notifies that no such file exists and exits with an error status.",
+    "details": [
+        {
+            "comment": "This code checks if a file named \"tasks.json\" exists. If it does, the script proceeds to import tasks from this file; otherwise, it notifies that no such file exists and exits with an error status.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/schedules/import_tasks.sh\":0-6",
+            "content": "# only if there is tasks.json can we import anything\nif [[ -f tasks.json ]]; then\n\ttask import < tasks.json\nelse\n\techo there is no tasks.json\n\texit 1\nfi"
+        }
+    ]
+}

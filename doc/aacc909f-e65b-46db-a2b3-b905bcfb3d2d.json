@@ -1,0 +1,10 @@
+{
+    "summary": "This code provides suggestions for similar tools and technologies for inspection, static analysis, metaprogramming, editor recovery, and mentions making an alias for nvim and installing webtelnet via npm.",
+    "details": [
+        {
+            "comment": "This code provides suggestions for similar tools and technologies for inspection, static analysis, metaprogramming, editor recovery, and mentions making an alias for nvim and installing webtelnet via npm.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_kali_amd64/cognitionService/virtual/README\":0-10",
+            "content": "similar tool for inspection:\nlanguage server\nstatic analysis (jedi for python)\nreflection (metaprogramming)\neditor recovery:\n#.*(#) for emacs, .*swp for vim\nshall make alias for nvim\nnpm i -g webtelnet"
+        }
+    ]
+}

@@ -1,0 +1,10 @@
+{
+    "summary": "This command sets the NODE_PATH environment variable to /usr/local/lib/node_modules and executes the codium_debug.js file using Node.js, likely for debugging or running a specific script.",
+    "details": [
+        {
+            "comment": "This command sets the NODE_PATH environment variable to /usr/local/lib/node_modules and executes the codium_debug.js file using Node.js, likely for debugging or running a specific script.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_kali_amd64/cognitionService/virtual/codium_debug.sh\":0-0",
+            "content": "env NODE_PATH=/usr/local/lib/node_modules node codium_debug.js"
+        }
+    ]
+}

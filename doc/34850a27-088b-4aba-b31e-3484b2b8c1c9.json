@@ -1,0 +1,10 @@
+{
+    "summary": "This script checks the argument count, creates a directory for multiroot, sets up unionfs to bind mount the root filesystem, and ensures permissions are set correctly.",
+    "details": [
+        {
+            "comment": "This script checks the argument count, creates a directory for multiroot, sets up unionfs to bind mount the root filesystem, and ensures permissions are set correctly.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_kali_amd64/virtualService/tools/sandserv/multiroot.sh\":0-15",
+            "content": "#!/bin/bash\nc0=$(echo $1 |wc -c )\n#echo $c0\nif [ $c0 -le 1 ]\nthen\n        echo \"no argument.\"\n        exit 1\nelse\n        :\nfi\nbash -c \"./multiunloadroot.sh $1\"\nsudo mkdir -p multiserv/$1/root\n# there's autodetect.\n#better use bindfs as standard.\nsudo bin/unionfs -o allow_root,cow,uid=0,gid=0 multiserv/$1/ramdisk/=RW:/=RO multiserv/$1/root/\nsudo chmod 777 multiserv/$1/root"
+        }
+    ]
+}

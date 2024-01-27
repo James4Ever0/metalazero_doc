@@ -1,0 +1,10 @@
+{
+    "summary": "This code generates a list of random actions to be executed in a text editor environment. It uses the `random` library to filter out unnecessary actions and keeps track of executed and pending actions. The \"executing\" and \"pending\" lists display which actions are currently being performed and those waiting for execution, respectively.",
+    "details": [
+        {
+            "comment": "This code generates a list of random actions to be executed in a text editor environment. It uses the `random` library to filter out unnecessary actions and keeps track of executed and pending actions. The \"executing\" and \"pending\" lists display which actions are currently being performed and those waiting for execution, respectively.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/tools/deep-text-editor/neural_network/generate_code.py\":0-16",
+            "content": "import random\n# filter out those needless to execute.\nrng=lambda:random.randint(2,5)\ntargets=[\"type\",\"move\",\"select\",\"click\"]\nrtg=lambda:random.choice(targets)\nimport time\ntgs=[]\nwhile True:\n    tgs.append((rng(),rtg()))\n    tgs=[(x[0]-1,x[1]) for x in tgs]\n    tgs=list(sorted(tgs))\n    tm=[x for x in tgs if x[0] == 0]\n    tl=[x for x in tgs if x not in tm]\n    print(\"executing:\",tm)\n    print(\"pending:\",tl)\n    time.sleep(1)\n    tgs=tl"
+        }
+    ]
+}

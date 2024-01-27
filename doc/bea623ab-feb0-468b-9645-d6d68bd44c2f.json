@@ -1,0 +1,10 @@
+{
+    "summary": "This code imports the subprocess module and defines a function called \"where\" that takes a target as input. It runs the \"which\" command on the given target, filters out empty strings, and returns the non-empty results as a list. This function can be used to find the location of executable files in the system path.",
+    "details": [
+        {
+            "comment": "This code imports the subprocess module and defines a function called \"where\" that takes a target as input. It runs the \"which\" command on the given target, filters out empty strings, and returns the non-empty results as a list. This function can be used to find the location of executable files in the system path.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_android_aarch64/tools/where.py\":0-9",
+            "content": "# import subprocess\nfrom subprocess import Popen, PIPE\ndef where(target):\n    p = Popen([\"which\",target],stderr=PIPE,stdout=PIPE)\n    p = p.communicate()[0].decode(\"utf-8\") # bytes.\n    p0 = p.split(\"\\n\")\n    p0 = [x.replace(\"\\n\", \"\").replace(\"\\r\",\"\") for x in p0]\n    p0 = list(filter(lambda x:len(x)>0,p0))\n    return p0"
+        }
+    ]
+}

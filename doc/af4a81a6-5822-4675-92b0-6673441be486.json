@@ -1,0 +1,10 @@
+{
+    "summary": "This code imports the 'solargraph' library, initializes a new instance of Solargraph::ApiMap, retrieves all methods associated with the 'String' class, and then prints those method names.",
+    "details": [
+        {
+            "comment": "This code imports the 'solargraph' library, initializes a new instance of Solargraph::ApiMap, retrieves all methods associated with the 'String' class, and then prints those method names.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_kali_amd64/cognitionService/virtual/ruby_api_list.rb\":0-4",
+            "content": "require 'solargraph'\napi_map = Solargraph::ApiMap.new\npins = api_map.get_methods('String')\nprint(pins)"
+        }
+    ]
+}

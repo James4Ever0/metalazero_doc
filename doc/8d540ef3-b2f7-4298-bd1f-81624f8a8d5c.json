@@ -1,0 +1,10 @@
+{
+    "summary": "Discussing concurrent design and self-hosted DNS, considering using a low-privilege user or even root, encountered issues on x64, tried executing \"/bin/bash\", killed by SIGSYS, exploring whether to do without judger's help.",
+    "details": [
+        {
+            "comment": "Discussing concurrent design and self-hosted DNS, considering using a low-privilege user or even root, encountered issues on x64, tried executing \"/bin/bash\", killed by SIGSYS, exploring whether to do without judger's help.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_kali_amd64/virtualService/tools/sandserv/README\":0-11",
+            "content": "concurrent design.\nSelf-hosting DNS. Or something else.\nprepare a low-priviliege user, or just use default one or even root?\non x64 it was hell.\n[pid  8411] execve(\"/bin/bash\", [\"/bin/bash\"], 0x7ffc4fd079d0 /* 0 vars */) = ?\n[pid  8411] +++ killed by SIGSYS +++\t\ncan we do this without the help of judger? for example, do our own work."
+        }
+    ]
+}

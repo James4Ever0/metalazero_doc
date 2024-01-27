@@ -1,0 +1,10 @@
+{
+    "summary": "The code imports os and argparse modules, sets default address as \"127.0.0.1\", defines a command lambda function, parses command line arguments using parser.parse_args(), then runs the nmap scan with the specified address via os.system().",
+    "details": [
+        {
+            "comment": "The code imports os and argparse modules, sets default address as \"127.0.0.1\", defines a command lambda function, parses command line arguments using parser.parse_args(), then runs the nmap scan with the specified address via os.system().",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_chromeos_aarch64/cognitionService/hacking_service.py\":0-7",
+            "content": "import os\n# just use plain nmap scanning.\nimport argparse\nparser = argparse.ArgumentParser()\nparser.add_argument(\"-d\",\"--address\",type=str,default=\"127.0.0.1\",help=\"address to check\")\ncmd = lambda ip: \"nmap {}\".format(ip)\nargs = parser.parse_args()\nos.system(cmd(args.address))"
+        }
+    ]
+}

@@ -1,0 +1,10 @@
+{
+    "summary": "This code defines a class, BytesMemPipe, which uses threading events and io.BytesIO to create a memory pipe for writing and reading bytes data. The write function appends the input bytes to the BytesIO object, flushes it, waits for read operation completion, and resets the BytesIO object. The read function waits for write operation completion, retrieves the stored bytes from BytesIO, and returns them. The flush function does nothing and the read_flush and write_flush functions set/clear the corresponding lock events.",
+    "details": [
+        {
+            "comment": "This code defines a class, BytesMemPipe, which uses threading events and io.BytesIO to create a memory pipe for writing and reading bytes data. The write function appends the input bytes to the BytesIO object, flushes it, waits for read operation completion, and resets the BytesIO object. The read function waits for write operation completion, retrieves the stored bytes from BytesIO, and returns them. The flush function does nothing and the read_flush and write_flush functions set/clear the corresponding lock events.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/tools/bytes_blocking.py\":0-30",
+            "content": "import io\nimport threading\n# shall we use os.pipe instead?\nclass BytesMemPipe:\n    def __init__(self):\n        self.BytesIO = io.BytesIO()\n        self.write_lock = threading.Event()\n        self.read_lock = threading.Event()\n        self.write_lock.clear()\n        self.read_lock.clear()\n    def write(self, _bytes):\n        self.BytesIO.write(_bytes)\n        self.read_flush()\n        self.write_lock.wait()\n        self.BytesIO = io.BytesIO()\n        return len(_bytes)\n    def read(self):\n        self.write_flush()\n        self.read_lock.wait()\n        target = self.BytesIO.getvalue()\n        return target\n    def flush(self):\n        return\n    def read_flush(self):\n        self.read_lock.set()\n        self.read_lock.clear()\n    def write_flush(self):\n        self.write_lock.set()\n        self.write_lock.clear()"
+        }
+    ]
+}

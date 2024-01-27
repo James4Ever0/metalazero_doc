@@ -1,0 +1,15 @@
+{
+    "summary": "This code generates arithmetic problems, checks answers, and catches exceptions using try-except.",
+    "details": [
+        {
+            "comment": "This code generates arithmetic problems, takes user input for answers, and checks if the answer is correct. It uses random operations (addition, subtraction, multiplication, division) to create problems and evaluates the results using eval() function in Python. The issues encountered are caught by a try-except block, which also prints any tracebacks when an error occurs.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/tools/deep-text-editor/neural_network/make_arithmatic.py\":0-31",
+            "content": "# the format must change, or shall we?\n# how do we evaluate shits according to mixed content? GAN?\n# usually mixed content can be read as matrix, but that is not always the case.\n# so we would assume something else.\nimport numpy as np\n# linear - processing - matrix[slide] - processing - evaluate\nimport random\n# if these things cannot be plugged right in then what?\n# you need duplication, and the duplication always change.\ntaskgen=lambda:random.randint(1,100)\ncalcgen=lambda:(taskgen(), taskgen())\ndef problem():\n    a,b=calcgen()\n    # to predict the shit out of your imagination.\n    s=random.choice([\"-\",\"+\",\"*\",\"/\"])\n    t=\"{} {} {}\".format(a,s,b)\n    v=eval(t)\n    return t,v\nimport traceback\nwhile True:\n    try:\n        t,v=problem()\n        print(\"problem:\",t)\n        ans=input(\"answer:\\n\")\n        if abs(float(ans) - v)<0.01:\n            print(\"correct.\")\n        else:\n            print(\"incorrect!\")\n            print(\"answer is:\",v)\n            print(\"your answer is:\",ans)\n    except:\n        traceback.print_exc()"
+        },
+        {
+            "comment": "This code snippet will print the message \"exception printed above.\" when an exception occurs.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/tools/deep-text-editor/neural_network/make_arithmatic.py\":32-32",
+            "content": "        print(\"exception printed above.\")"
+        }
+    ]
+}

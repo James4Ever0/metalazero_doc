@@ -1,0 +1,10 @@
+{
+    "summary": "This script uses sed to format the 'background.js' file by replacing curly braces with a newline and semicolons with a newline, enhancing code readability and consistency.",
+    "details": [
+        {
+            "comment": "This script uses sed to format the 'background.js' file by replacing curly braces with a newline and semicolons with a newline, enhancing code readability and consistency.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/browser_plugin/lazero_crx_17_kiwi_ip_change/format_code.sh\":0-3",
+            "content": "#!/bin/bash\n#sed \"s/{/{\\n/g\" background.js\n#sed \"s/\\;/\\;\\n/g\" background.js\nsed -i -f format.sed background.js"
+        }
+    ]
+}

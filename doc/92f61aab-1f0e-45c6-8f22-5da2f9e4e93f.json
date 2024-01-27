@@ -1,0 +1,10 @@
+{
+    "summary": "This code imports the pyperclip module, defines functions for copying and pasting text using pyperclip's methods, uses argparse to accept a command-line argument for action (copy or paste), reads input from stdin, performs the selected action (copy or paste), and outputs the pasted result if requested.",
+    "details": [
+        {
+            "comment": "This code imports the pyperclip module, defines functions for copying and pasting text using pyperclip's methods, uses argparse to accept a command-line argument for action (copy or paste), reads input from stdin, performs the selected action (copy or paste), and outputs the pasted result if requested.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/remote_control/tools/clipboard/pyperclip_clipboard.py\":0-24",
+            "content": "import pyperclip\nimport argparse\nimport sys\n# macos pbcopy pbpaste\n# linux xclip xsel\n# kw: copy paste\ndef copy(content):\n    pyperclip.copy(content)\ndef paste():\n    return pyperclip.paste()\ndef read():\n    return sys.stdin.read()\nparser = argparse.ArgumentParser()\nparser.add_argument(\"action\",type=str,choices=[\"copy\",\"paste\"],required=True)\nargs = parser.parse_args()\naction = args.action\nif action == \"copy\":\n    content = read()\n    copy(content)\nelse:\n    print(paste(),end=\"\")"
+        }
+    ]
+}

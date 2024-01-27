@@ -1,0 +1,10 @@
+{
+    "summary": "The code imports necessary modules, sets up a function to handle notifications and requests, then sends a request for 'ping' and notifies the result as 'pong'. It handles errors during requests.",
+    "details": [
+        {
+            "comment": "The code imports necessary modules, sets up a function to handle notifications and requests, then sends a request for 'ping' and notifies the result as 'pong'. It handles errors during requests.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_kali_amd64/cognitionService/virtual/stdio_jsonrpc.js\":0-23",
+            "content": "const {setup, sendNotification, sendRequest, RPCError} = require('stdio-jsonrpc')\nfunction print(m){console.log(m);}\nsetup({\n  onNotification(method, params) {\n\t  print(method);\n\t  print(params);\n    // handle a notification\n  },\n  onRequest(method, params, callback) {\n    // handle a request\n\t  print(method);\n\t  print(params);\n//    callback(new RPCError.MethodNotFound())\ncallback(console.log(\"NOTHING TO EXECUTE.\"))\n  }\n})\nsendRequest('ping').then(pong => {\n  sendNotification('pong', { msg: pong })\n})\n.catch(err => {\n\tprint(err);\n  // something bad happened\n})"
+        }
+    ]
+}

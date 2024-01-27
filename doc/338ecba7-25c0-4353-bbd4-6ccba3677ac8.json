@@ -1,0 +1,15 @@
+{
+    "summary": "This code defines classes `queue`, `stack`, and `Meta` to handle new input, with methods for adding/removing elements, retrieving contents, and performing operations based on sizes. The class has two methods: `duplicate` adds an element to the core list and `return self.core` gets the current state of the core list.",
+    "details": [
+        {
+            "comment": "The code defines three classes: `queue`, `stack`, and `Meta`. These classes handle new input by either discarding previous content or overwriting it, and provide methods to add/remove elements, retrieve current contents, and perform operations based on their sizes.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_kali_amd64/tools/stackMe.py\":0-55",
+            "content": "# three method to deal with new input.\n# throw away any of original content, or just bounce off.\nclass queue:\n# i'm gonna die.\n\tdef __init__(self,a):\n\t\tself.size=a\n\t\tself.core=[]\n\tdef queue(self,a):\n\t\tif len(self.core)<self.size:\n\t\t\tself.core.append(a)\n\t\telse:\n\t\t\tself.core.pop(0)\n\t\t\tself.core.append(a)\n\tdef dequeue(self):\n\t\tif len(self.core)!=0:\n\t\t\treturn self.core.pop(0)\n\t\telse:\n\t\t\treturn\n\tdef dump(self):\n\t\treturn self.core\nclass stack:\n\tdef __init__(self,a):\n\t\tself.size=a\n\t\tself.core=[]\n\tdef push(self,a):\n\t\tif len(self.core)<self.size:\n\t\t\tself.core.append(a)\n\t\telse:\n\t\t\tself.core.pop(0)\n\t\t\tself.core.append(a)\n\tdef pop(self):\n\t\tif len(self.core)!=0:\n\t\t\treturn self.core.pop(-1)\n\t\telse:\n\t\t\treturn\n\tdef dump(self):\n\t\treturn self.core\nclass Meta:\n# i'm gonna die.\n\tdef __init__(self,a):\n\t\tself.size=a\n\t\tself.core=[]\n\tdef add(self,a):\n\t\tif len(self.core)<self.size:\n\t\t\tself.core.append(a)\n\t\telse:\n\t\t\tself.core.pop(0)\n\t\t\tself.core.append(a)\n\tdef minus(self,a):\n\t\tif len(self.core)!=0:\n\t\t\treturn self.core.pop(-int(a))\n\t\telse:\n\t\t\treturn\n\tdef dump(self):"
+        },
+        {
+            "comment": "This code defines a class with two methods. The first method, `duplicate`, takes an argument `a` and adds the value at index `self.core[-int(a)]` to the core list. The second method, `return self.core`, returns the current state of the core list.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_kali_amd64/tools/stackMe.py\":56-58",
+            "content": "\t\treturn self.core\n\tdef duplicate(self,a):\n\t\tself.add(self.core[-int(a)])"
+        }
+    ]
+}

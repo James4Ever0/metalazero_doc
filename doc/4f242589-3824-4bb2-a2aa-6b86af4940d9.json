@@ -1,0 +1,15 @@
+{
+    "summary": "The code generates random logic expressions, allows for value swaps and list insertions, and can output a final logic statement. Optimization options are not clear.",
+    "details": [
+        {
+            "comment": "The code generates a random logic expression with specified length, complexity, and brackets. It uses keyword functions and variables in the form \"k0\" to k(length-1) and includes \"and\", \"or\", \"not\" operators, along with brackets to create complex expressions. The purpose seems to be creating a diverse range of logic expressions for testing or analysis purposes.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_kali_amd64/mainService/logic_fuzzer.py\":0-35",
+            "content": "# this is to create custom function via shits.\n# basic binary shits.\n# who can tell?\nimport random\n# we want some basic logic expressions. not just shits.\n# we want our fucking program.\ndef generate_expression(length,complexity=5,brackets=3,join=True):\n    kw =[\"and\", \"or\",\"not\"]\n    assert length > 1 and type(length) == int\n    output = []\n    kw0 = [\"k{}\".format(x) for x in range(length)]\n    br = [\"(\",\")\"]\n    output.append(random.choice(kw0))\n    for x in range(complexity-1):\n        a,b = random.choice(kw0), random.choice(kw)\n        if b == \"not\":\n            output.append(br[0])\n        output.append(b)\n        output.append(a)        \n        if b == \"not\":\n            output.append(br[1])\n#    random.shuffle(kw0)\n#    i=0\n    # we want brackets.\n    # but how to add these shits?\n#    for x in kw0:\n#        output.insert(0+i,x)\n    for x in range(brackets):\n        inds = []\n        for a,b in enumerate(output):\n            if b not in kw:\n                inds.append(a)\n        t0 = random.sample(inds,2)\n        a,b = t0"
+        },
+        {
+            "comment": "This code compares two values, swaps them if necessary, and inserts two elements into a list with specific indices. It then joins the list (optionally) into a string and finally prints a target logic statement. The optimization function and changing the logic remain unclear.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_kali_amd64/mainService/logic_fuzzer.py\":36-47",
+            "content": "        if a>b:\n            a,b = b,a\n        adjustment = 4\n        output.insert(a,br[0])\n        output.insert(b+adjustment,br[1])\n    return \" \".join(output) if join else output\nif __name__ == \"__main__\":\n    length = 5\n    output = generate_expression(length)\n    # how do we find the optimization function?\n    # how do we change the fucking logic?\n    print(\"target logic:\",output)"
+        }
+    ]
+}

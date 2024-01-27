@@ -1,0 +1,10 @@
+{
+    "summary": "This code generates a random line from \"base.py\" and prompts the user to insert the line at a specified location, ensuring correct input for both line number and content. It checks if the answer is correct or not and allows the user to continue or exit. If an exception occurs, it prints the exception and continues without aborting.",
+    "details": [
+        {
+            "comment": "This code generates a random line from \"base.py\" and prompts the user to insert the line at a specified location, ensuring correct input for both line number and content. It checks if the answer is correct or not and allows the user to continue or exit. If an exception occurs, it prints the exception and continues without aborting.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/tools/deep-text-editor/neural_network/make_missing.py\":0-30",
+            "content": "truth=open(\"base.py\",\"r\").read().split(\"\\n\")\ntruth=list(filter(lambda x: len(x)> 2, truth))\nimport random\nimport traceback\nimport copy\nwhile True:\n    try:\n        r=random.randint(0,len(truth)-1)\n        r1=truth[r]\n        r2=copy.deepcopy(truth)\n        r2.pop(r)\n        r2 = [\"{}: {}\".format(i,x) for i,x in enumerate(r2)]\n        print(\"question:\")\n        print(\"\\n\".join(r2))\n        ans0=input(\"insert at:\\n\")\n        ans1=input(\"content:\\n\")\n        if int(ans0) == r and ans1 == r1:\n            print(\"correct!\")\n        else:\n            print(\"incorrect!\")\n            print(\"the correct answer is:\", r,r1)\n            print(\"your answer is:\", ans0,ans1)\n        #print(\"correct form:\",r)\n        print(\"continue?\")\n        input()\n    except:\n        #import os\n        traceback.print_exc()\n        print(\"exception printed above!\")\n        #os.abort()\n        pass"
+        }
+    ]
+}

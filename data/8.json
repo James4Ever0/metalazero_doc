@@ -1,0 +1,534 @@
+{
+    "800": {
+        "file_id": 173,
+        "content": "/native/lazero_kali_amd64/cognitionService/virtual/vscode_ipc.sh",
+        "type": "filepath"
+    },
+    "801": {
+        "file_id": 173,
+        "content": "The code is running a Node.js script (vscode_ipc.js) using the environment variable NODE_PATH set to /usr/local/lib/node_modules and executing it in the current context. This may be part of a larger process involving VS Code's inter-process communication system, potentially running on an AMD64 architecture and within the Kali Linux operating system.",
+        "type": "summary"
+    },
+    "802": {
+        "file_id": 173,
+        "content": "env NODE_PATH=/usr/local/lib/node_modules node vscode_ipc.js",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/cognitionService/virtual/vscode_ipc.sh:1-1"
+    },
+    "803": {
+        "file_id": 173,
+        "content": "The code is running a Node.js script (vscode_ipc.js) using the environment variable NODE_PATH set to /usr/local/lib/node_modules and executing it in the current context. This may be part of a larger process involving VS Code's inter-process communication system, potentially running on an AMD64 architecture and within the Kali Linux operating system.",
+        "type": "comment"
+    },
+    "804": {
+        "file_id": 174,
+        "content": "/native/lazero_kali_amd64/cognitionService/virtual/vscode_ipc2.js",
+        "type": "filepath"
+    },
+    "805": {
+        "file_id": 174,
+        "content": "This code establishes VSCode IDE connection with a language server, sets up communication channels, defines request types and initializes text documents, all using child processes.",
+        "type": "summary"
+    },
+    "806": {
+        "file_id": 174,
+        "content": "const node_1 = require(\"vscode-languageserver-protocol/node\")\nconst process = require(\"./processes\") \nconst cp = require(\"child_process\")\nfunction dir(a) {console.dir(a)}\nfunction log(a) {console.log(a)}\nfunction inspect(a) {return Object.getOwnPropertyNames(a)}\n// something else?\n//var serverProcess = cp.spawn(\"node\",[\"vscode_lsp.js\"])\nvar serverProcess = cp.spawn(\"bash-language-server\",[\"start\"])\n//var serverProcess = cp.spawn(\"bash\")// this shit does not properly respond to us.\nconst { StringDecoder } = require('string_decoder');\nconst decoder = new StringDecoder('utf8');\nfunction dc(a){return decoder.write(a)}\n//(type, ...args) <- way to hide these things.\nserverProcess.stderr.on(\"data\",d=>{log(\"STDERR\\n\"+dc(d))})\nserverProcess.stdout.on(\"data\",d=>{log(\"STDOUT\\n\"+dc(d))})\n// this is buffer, decode it first.\n// does this really matter? can we write into the stdin?\n// no don't you think about this.\nvar client = {reader:new node_1.StreamMessageReader(serverProcess.stdout)\n,writer:new node_1.StreamMessageWriter(serverProcess.stdin)}",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/cognitionService/virtual/vscode_ipc2.js:1-24"
+    },
+    "807": {
+        "file_id": 174,
+        "content": "This code sets up a connection between the VSCode IDE and a language server using child processes. It spawns a bash-language-server process and handles its stdout, stderr output while communicating with it through MessageReader and MessageWriter from vscode-languageserver-protocol/node library.",
+        "type": "comment"
+    },
+    "808": {
+        "file_id": 174,
+        "content": "let conn = node_1.createMessageConnection(client.reader,client.writer)\nlet note = new node_1.RequestType('testNotification');\n//let note = new node_1.NotificationType('testNotification');\nconn.listen()\n//setInterval(()=>{conn.sendRequest(\"Hello World\")},1000)\n//setInterval(()=>{conn.sendRequest(note,\"Hello World\")},1000)\nlog(\"made it?\")\n//dir(node_1.createMessageConnection)\nuri = \"file:///Users/dirkb/sample/test.ts\"\ntd = \"textDocument/didOpen\"\ndir(conn)\n// method, params?\nconst proto = require(\"vscode-languageserver-protocol\");\n//log(proto.ShutdownRequest.type)\n//let meta = code2ProtocolConverter.asCompletionParams(document, position, context)\nfunction asTextDocumentIdentifier(textDocument) { return { uri: _uriConverter(textDocument.uri) };}\nfunction asWorkerPosition(position) { return { line: position.line, character: position.character };}\nfunction asCompletionTriggerKind(triggerKind) { switch (triggerKind) {\n\tcase 0: return proto.CompletionTriggerKind.TriggerCharacter;  \n\tcase 1:return proto.CompletionTriggerKind.TriggerForIncompleteCompletions;",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/cognitionService/virtual/vscode_ipc2.js:26-50"
+    },
+    "809": {
+        "file_id": 174,
+        "content": "The code sets up a connection for communication between two components and defines a request type named 'testNotification'. It listens for events, but the specific event is not defined yet. It also includes commented lines to send a request with the message \"Hello World\" every second and another comment suggesting to require a protocol for handling shutdown requests. The code then logs a message stating \"made it?\" and defines functions to convert text document identifiers, worker positions, and completion trigger kinds into their respective protocol types.",
+        "type": "comment"
+    },
+    "810": {
+        "file_id": 174,
+        "content": "\tdefault:return proto.CompletionTriggerKind.Invoked; } }\nlet position={line:0,character:0}\nlet fileuri=\"file:///sdcard/lazero/flutter/html/baidu_html-1598791515.html\";\n//asTextDocumentIdentifier(textDocument)\n//do not have the document yet. get it parsed.\nlet meta={\n\ttextDocument: {uri:fileuri},\n\tposition: asWorkerPosition(position),\n\tcontext:{\n\t\ttriggerKind: asCompletionTriggerKind(),\n\t\ttriggerCharacter: \" \"}\n}\nlet token=undefined\n//uri2TextDocument\n// this is shutdown.\n// wtf is the token?\n// use client/browser in place of node?\n//conn.sendRequest(proto.CompletionRequest.type, meta,token).then(()=>{log(\"SUCCESS\")}).catch(()=>{log(\"FAILED\")})\ndir(proto)\nlog(proto.InitializeRequest.type)\n//{\"jsonrpc\":\"2.0\",\"id\":0,\"error\":{\"code\":-32603,\"message\":\"Request initialize failed with message: Cannot read property 'workspace' of undefined\"}}\n// bash-language-server/node_modules/vscode-jsonrpc/lib/common/connection.js -> ~400\n//let init={workspace:\"file:///sdcard/lazero/flutter/html/\"}\nlet init={rootPath:\"file:///\",capabilities:[]}",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/cognitionService/virtual/vscode_ipc2.js:51-75"
+    },
+    "811": {
+        "file_id": 174,
+        "content": "This code is initializing a text document and sending a completion request to a language server. It handles different triggers, sets the file URI, position, and context for the request. The code also handles potential errors and uses JSON-RPC protocol for communication.",
+        "type": "comment"
+    },
+    "812": {
+        "file_id": 174,
+        "content": "//let init={}\n//let init={workspace:\"file:///sdcard/lazero/flutter/html/\",capabilities:[]}\ndir(proto)\nconn.sendRequest(proto.InitializeRequest.type, init).then(()=>{log(\"SUCCESS\");\nlet WSR=proto.WorkspaceSymbolRequest.type\nlog(WSR)\n\t//progress.attachWorkDone\nconn.sendRequest(WSR,{workDoneToken:undefined}).then(()=>{log(\"SUCCESS\")}).catch(()=>{log(\"FAILED\")})\n}).catch(()=>{log(\"FAILED\")})\n//conn.sendRequest(proto.CompletionRequest.type, meta,token).then(()=>{log(\"COMP SUCCESS\")}).catch(()=>{log(\"FAILED\")});\n//conn.sendRequest(proto.ShutdownRequest.type, undefined).then(()=>{log(\"SUCCESS\")}).catch(()=>{log(\"FAILED\")})\n//conn.sendRequest({method:itd,params:[uri]}).then(()=>{}).catch(()=>{})\n// there must be errors.\n// can i send some shits?",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/cognitionService/virtual/vscode_ipc2.js:76-92"
+    },
+    "813": {
+        "file_id": 174,
+        "content": "This code is responsible for initializing a connection and sending various requests to the server. It starts by initializing an object with the workspace directory and capabilities, then sends an InitializeRequest. If successful, it proceeds to send a WorkspaceSymbolRequest with an optional workDoneToken. Finally, it logs the status of each request - either \"SUCCESS\" or \"FAILED\".",
+        "type": "comment"
+    },
+    "814": {
+        "file_id": 175,
+        "content": "/native/lazero_kali_amd64/cognitionService/virtual/vscode_ipc3.js",
+        "type": "filepath"
+    },
+    "815": {
+        "file_id": 175,
+        "content": "This code sets up communication with a language server, defines request types and conversion, demonstrates sending \"Hello World\" request, handles case 1 trigger, and uses connection.js library for request handling in LSP initialization.",
+        "type": "summary"
+    },
+    "816": {
+        "file_id": 175,
+        "content": "const node_1 = require(\"vscode-languageserver-protocol/node\")\nconst process = require(\"./processes\") \nconst cp = require(\"child_process\")\nfunction dir(a) {console.dir(a)}\nfunction log(a) {console.log(a)}\nfunction inspect(a) {return Object.getOwnPropertyNames(a)}\n// something else?\n//var serverProcess = cp.spawn(\"node\",[\"vscode_lsp.js\"])\nvar serverProcess = cp.spawn(\"bash-language-server\",[\"start\"])\n//var serverProcess = cp.spawn(\"python3\",[\"recv.py\"])\n//var serverProcess = cp.spawn(\"bash\")// this shit does not properly respond to us.\nconst { StringDecoder } = require('string_decoder');\nconst decoder = new StringDecoder('utf8');\nfunction dc(a){return decoder.write(a)}\n//(type, ...args) <- way to hide these things.\nserverProcess.stderr.on(\"data\",d=>{log(\"STDERR\\n\"+dc(d))})\nserverProcess.stdout.on(\"data\",d=>{log(\"STDOUT\\n\"+dc(d))})\n// this is buffer, decode it first.\n// does this really matter? can we write into the stdin?\n// no don't you think about this.\nvar client = {reader:new node_1.StreamMessageReader(serverProcess.stdout)",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/cognitionService/virtual/vscode_ipc3.js:1-24"
+    },
+    "817": {
+        "file_id": 175,
+        "content": "This code snippet is setting up a communication channel with a language server, likely for Visual Studio Code. It uses the `cp.spawn()` function to start a new process for the language server and captures its stdout and stderr using event listeners. It also includes a decoder to handle UTF-8 encoding/decoding in the data received from the language server.",
+        "type": "comment"
+    },
+    "818": {
+        "file_id": 175,
+        "content": ",writer:new node_1.StreamMessageWriter(serverProcess.stdin)}\nlet conn = node_1.createMessageConnection(client.reader,client.writer)\nlet note = new node_1.RequestType('testNotification');\n//let note = new node_1.NotificationType('testNotification');\nconn.listen()\n//setInterval(()=>{conn.sendRequest(\"Hello World\")},1000)\n//setInterval(()=>{conn.sendRequest(note,\"Hello World\")},1000)\nlog(\"made it?\")\n//dir(node_1.createMessageConnection)\nuri = \"file:///Users/dirkb/sample/test.ts\"\ntd = \"textDocument/didOpen\"\ndir(conn)\n// method, params?\nconst proto = require(\"vscode-languageserver-protocol\");\n//log(proto.ShutdownRequest.type)\n//let meta = code2ProtocolConverter.asCompletionParams(document, position, context)\nfunction asTextDocumentIdentifier(textDocument) { return { uri: _uriConverter(textDocument.uri) };}\nfunction asWorkerPosition(position) { return { line: position.line, character: position.character };}\nfunction asCompletionTriggerKind(triggerKind) { switch (triggerKind) {\n\tcase 0: return proto.CompletionTriggerKind.TriggerCharacter;  ",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/cognitionService/virtual/vscode_ipc3.js:25-50"
+    },
+    "819": {
+        "file_id": 175,
+        "content": "This code sets up a message connection and creates a request type for sending notifications. It also defines functions for converting text document identifiers, worker positions, and completion trigger kinds to the VS Code language server protocol format. The code imports the \"vscode-languageserver-protocol\" module and demonstrates how to send a \"Hello World\" request every second but is currently commented out.",
+        "type": "comment"
+    },
+    "820": {
+        "file_id": 175,
+        "content": "\tcase 1:return proto.CompletionTriggerKind.TriggerForIncompleteCompletions;\n\tdefault:return proto.CompletionTriggerKind.Invoked; } }\nlet position={line:0,character:0}\nlet fileuri=\"file:///data/data/com.termux/files/home/metalazero/native/lazero_kali_amd64/cognitionService/virtual/vscode_ipc.sh\";\n//asTextDocumentIdentifier(textDocument)\n//do not have the document yet. get it parsed.\nlet meta={\n\ttextDocument: {uri:fileuri},\n\tposition: asWorkerPosition(position),\n\tcontext:{\n\t\ttriggerKind: asCompletionTriggerKind(),\n\t\ttriggerCharacter: \" \"}\n}\nlet token=undefined\n//uri2TextDocument\n// this is shutdown.\n// wtf is the token?\n// use client/browser in place of node?\n//conn.sendRequest(proto.CompletionRequest.type, meta,token).then(()=>{log(\"SUCCESS\")}).catch(()=>{log(\"FAILED\")})\ndir(proto)\nlog(proto.InitializeRequest.type)\n//{\"jsonrpc\":\"2.0\",\"id\":0,\"error\":{\"code\":-32603,\"message\":\"Request initialize failed with message: Cannot read property 'workspace' of undefined\"}}\n// bash-language-server/node_modules/vscode-jsonrpc/lib/common/connection.js -> ~400",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/cognitionService/virtual/vscode_ipc3.js:51-74"
+    },
+    "821": {
+        "file_id": 175,
+        "content": "This code is handling a case for trigger kind 1 and returning CompletionTriggerKind.TriggerForIncompleteCompletions. It then defines position, fileuri, and meta variables, and sends a request with the defined metadata to a server using the connection.js library. However, an error occurred stating \"Cannot read property 'workspace' of undefined\".",
+        "type": "comment"
+    },
+    "822": {
+        "file_id": 175,
+        "content": "//let init={workspace:\"file:///sdcard/lazero/flutter/html/\"}\nlet init={rootPath:\"/data/data/com.termux/files/home/metalazero/native/lazero_kali_amd64/cognitionService/virtual\",capabilities:[]}\n//let init={}\n//let init={workspace:\"file:///sdcard/lazero/flutter/html/\",capabilities:[]}\nconn.sendRequest(proto.InitializeRequest.type, init).then(()=>{log(\"SUCCESS\");\nconn.sendRequest(proto.CompletionRequest.type, meta,token).then(()=>{log(\"COMP SUCCESS\")}).catch(()=>{log(\"FAILED\")});\n}).catch(()=>{log(\"FAILED\")})\n//dir(proto)\n//let WSR=proto.WorkspaceSymbolRequest.type\n//log(WSR)\n//conn.sendRequest(WSR,undefined).then(()=>{log(\"SUCCESS\")}).catch(()=>{log(\"FAILED\")})\n//conn.sendRequest(proto.ShutdownRequest.type, undefined).then(()=>{log(\"SUCCESS\")}).catch(()=>{log(\"FAILED\")})\n//conn.sendRequest({method:itd,params:[uri]}).then(()=>{}).catch(()=>{})\n// there must be errors.\n// can i send some shits?",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/cognitionService/virtual/vscode_ipc3.js:75-92"
+    },
+    "823": {
+        "file_id": 175,
+        "content": "This code initializes the connection, sends initialization and completion requests to the LSP server, handles success or failure, and demonstrates some unused request types and potential error handling.",
+        "type": "comment"
+    },
+    "824": {
+        "file_id": 176,
+        "content": "/native/lazero_kali_amd64/cognitionService/virtual/vscode_lsp.js",
+        "type": "filepath"
+    },
+    "825": {
+        "file_id": 176,
+        "content": "The code sets up a connection for the language server using VSCode's LSP and handles initialization by registering it with the connection and returning capabilities. It listens for incoming requests on the connection, logging \"initialized program\" when done.",
+        "type": "summary"
+    },
+    "826": {
+        "file_id": 176,
+        "content": "const LSP = require(\"vscode-languageserver\");\nconst connection = LSP.createConnection(new LSP.StreamMessageReader(process.stdin), new LSP.StreamMessageWriter(process.stdout));\n//console.dir(connection)\nconnection.onInitialize((params) => __awaiter(this, void 0, void 0, function* () {console.log(\"initialized program\")\n        connection.console.log(`Initialized server v. 9999 for ${params.rootUri}`);\n        const server = yield server_1.default.initialize(connection, params);\n        server.register(connection);\n        return {\n            capabilities: server.capabilities(),\n        };\n    }));\nconnection.listen();\nconsole.log(\"not blocking?\")\n// this is coming right from the process.\n//sure thing. so we need to handle the initialization.",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/cognitionService/virtual/vscode_lsp.js:1-16"
+    },
+    "827": {
+        "file_id": 176,
+        "content": "The code sets up a connection for the language server using VSCode's LSP and handles initialization by registering it with the connection and returning capabilities. It listens for incoming requests on the connection, logging \"initialized program\" when done.",
+        "type": "comment"
+    },
+    "828": {
+        "file_id": 177,
+        "content": "/native/lazero_kali_amd64/cognitionService/virtual/websocket_client_app.py",
+        "type": "filepath"
+    },
+    "829": {
+        "file_id": 177,
+        "content": "The code imports the websocket module and defines an on_message function. It then creates a WebSocketApp instance, connecting to localhost:9998, and runs it indefinitely, printing received messages.",
+        "type": "summary"
+    },
+    "830": {
+        "file_id": 177,
+        "content": "import websocket\ndef on_message(wsapp, text):\n    print(text)\n# still a client?\nwsapp=websocket.WebSocketApp(\"ws://localhost:9998\",on_message=on_message)\nwsapp.run_forever()\n#print(\"shit?\")",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/cognitionService/virtual/websocket_client_app.py:1-8"
+    },
+    "831": {
+        "file_id": 177,
+        "content": "The code imports the websocket module and defines an on_message function. It then creates a WebSocketApp instance, connecting to localhost:9998, and runs it indefinitely, printing received messages.",
+        "type": "comment"
+    },
+    "832": {
+        "file_id": 178,
+        "content": "/native/lazero_kali_amd64/cognitionService/virtual/websocket_test_server.py",
+        "type": "filepath"
+    },
+    "833": {
+        "file_id": 178,
+        "content": "The code sets up a WebSocket server on localhost:9998, receives any data sent from the client, and sends \"thanks for whatever shit you have sent to me.\" three times as response. The server runs forever until manually stopped.",
+        "type": "summary"
+    },
+    "834": {
+        "file_id": 178,
+        "content": "#!/usr/bin/env python3\nimport asyncio\nimport websockets\nasync def server(websocket, path):\n    # Get received data from websocket\n#    data = await websocket.recv()\n    await websocket.send(\"thanks for whatever shit you have sent to me.\")\n    await websocket.send(\"thanks for whatever shit you have sent to me.\")\n    await websocket.send(\"thanks for whatever shit you have sent to me.\")\n    # Send response back to client to acknowledge receiving message\n#    await websocket.send(\"Thanks for your message: \" + data)\n# Create websocket server\nstart_server = websockets.serve(server, \"localhost\", 9998)\n# Start and run websocket server forever\nasyncio.get_event_loop().run_until_complete(start_server)\nasyncio.get_event_loop().run_forever()",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/cognitionService/virtual/websocket_test_server.py:1-20"
+    },
+    "835": {
+        "file_id": 178,
+        "content": "The code sets up a WebSocket server on localhost:9998, receives any data sent from the client, and sends \"thanks for whatever shit you have sent to me.\" three times as response. The server runs forever until manually stopped.",
+        "type": "comment"
+    },
+    "836": {
+        "file_id": 179,
+        "content": "/native/lazero_kali_amd64/cognitionService/virtual/with_message_hook.el",
+        "type": "filepath"
+    },
+    "837": {
+        "file_id": 179,
+        "content": "The code sets up a timer for `sm-poll-message-changes`, adds it to the `post-command-hook`, and defines variables for marker positions and tick values. It checks changes in the buffer, calculates deltas, updates markers, and prints the delta.",
+        "type": "summary"
+    },
+    "838": {
+        "file_id": 179,
+        "content": "(run-with-timer 3 3 #'sm-poll-message-changes)\n(add-hook 'post-command-hook #'sm-poll-message-changes)\n(defvar sm--pmc-marker nil)\n(defvar sm--pmc-marker-pos nil)\n(defvar sm--pmc-tick nil)\n(setq content_notice \"buffer has changed\")\n(with-current-buffer (get-buffer \"*Messages*\")\n  (setq sm--pmc-marker (point-max-marker))\n  (setq sm--pmc-marker-pos (point-max))\n  (setq sm--pmc-tick (buffer-chars-modified-tick)))\n(defun sm-poll-message-changes ()\n  (with-current-buffer (marker-buffer sm--pmc-marker)\n    (unless (eq sm--pmc-tick (buffer-chars-modified-tick))\n      ;; A change happened.\n      (let ((deleted-chars-at-bob\n             (- sm--pmc-marker-pos sm--pmc-marker))\n            (inserted-chars-at-eob\n             (- (point-max) sm--pmc-marker)))\n\t(setq previous-marker sm--pmc-marker-pos)\n        (setq sm--pmc-marker-pos (point-max))\n        (setq sm--pmc-tick (buffer-chars-modified-tick))\n        (move-marker sm--pmc-marker (point-max))\n\t(print (format \"delta: %s\" (buffer-substring previous-marker (point-max))))",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/cognitionService/virtual/with_message_hook.el:1-26"
+    },
+    "839": {
+        "file_id": 179,
+        "content": "This code sets up a timer to run `sm-poll-message-changes` every 3 seconds, and adds it to the `post-command-hook`. It also defines variables for marker positions and tick values. The function checks if there are any changes in the buffer since the last poll and calculates the delta of deleted and inserted characters. It then updates the markers and prints the delta.",
+        "type": "comment"
+    },
+    "840": {
+        "file_id": 179,
+        "content": "\t;(print (format \"delta: %d-%d\" previous-marker (point-max)))\n\t; do shit here.\n\t))))",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/cognitionService/virtual/with_message_hook.el:27-29"
+    },
+    "841": {
+        "file_id": 179,
+        "content": "This code snippet is checking the difference between previous-marker and (point-max), which represents the maximum possible point value in a text editor. It then prints this difference using format function with the message \"delta: %d-%d\".",
+        "type": "comment"
+    },
+    "842": {
+        "file_id": 180,
+        "content": "/native/lazero_kali_amd64/debug_init.sh",
+        "type": "filepath"
+    },
+    "843": {
+        "file_id": 180,
+        "content": "Kills running processes before launching new ones, ensures the virtual service is launched and blocking.",
+        "type": "summary"
+    },
+    "844": {
+        "file_id": 180,
+        "content": "#!/bin/bash\n# the shit must be running on the background.\n# this is to kill those running processes.\nps aux | cat | grep node | grep chrome_receive | awk '{print $2}' | xargs kill -s SIGKILL\ncd eventService && node chrome_receive.js &\ncd replService && node chrome_console.js &\n# are you sure that you will not upload those sensitive data?\n# launch the virtualService.\nps aux | cat | grep python3 | grep ptyproc.py | awk '{print $2}' | xargs kill -s SIGKILL\ncd virtualService/shellService && python3 ptyproc.py -p 8778\ncd ../../ # make sure it is launching and blocking?",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/debug_init.sh:1-12"
+    },
+    "845": {
+        "file_id": 180,
+        "content": "Kills running processes before launching new ones, ensures the virtual service is launched and blocking.",
+        "type": "comment"
+    },
+    "846": {
+        "file_id": 181,
+        "content": "/native/lazero_kali_amd64/emacs_require",
+        "type": "filepath"
+    },
+    "847": {
+        "file_id": 181,
+        "content": "This code is likely part of a configuration file for an Emacs text editor setup. It appears to be importing or requiring specific packages such as \"melpa,\" \"elpa.request,\" \"company-mode,\" \"eglot,\" and \"company-lsp.\" These packages are likely used to enhance the functionality of the Emacs text editor, providing features like autocompletion and language server protocol support.",
+        "type": "summary"
+    },
+    "848": {
+        "file_id": 181,
+        "content": "# melpa, elpa.\nrequest\ncompany-mode\neglot\ncompany-lsp",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/emacs_require:1-5"
+    },
+    "849": {
+        "file_id": 181,
+        "content": "This code is likely part of a configuration file for an Emacs text editor setup. It appears to be importing or requiring specific packages such as \"melpa,\" \"elpa.request,\" \"company-mode,\" \"eglot,\" and \"company-lsp.\" These packages are likely used to enhance the functionality of the Emacs text editor, providing features like autocompletion and language server protocol support.",
+        "type": "comment"
+    },
+    "850": {
+        "file_id": 182,
+        "content": "/native/lazero_kali_amd64/eventService/chrome_receive.js",
+        "type": "filepath"
+    },
+    "851": {
+        "file_id": 182,
+        "content": "This code creates an HTTP server handling GET and POST requests, writing data to files based on URL. It also sets up a server for POST requests, logging success/error messages and listening on port 5000.",
+        "type": "summary"
+    },
+    "852": {
+        "file_id": 182,
+        "content": "var http = require('http');\nconst fs = require(\"fs\");\nconst chrome_html = \"/chrome_html\";\nconst chrome_monitor = \"/chrome_monitor\";\nvar monotonic_html=0;\nvar monotonic_monitor=0;\n//logger=require('html-differ/lib/logger')\n//this is too slow.\n//you can use some other abstract syntax. such as monotonic+timestamp.\nconst writeFileRecursive = function(path, buffer, callback){\n    let lastPath = path.substring(0, path.lastIndexOf(\"/\"));\n    fs.mkdir(lastPath, {recursive: true}, (err) => {\n        if (err) return callback(err);\n        fs.writeFile(path, buffer, function(err){\n            if (err) return callback(err);\n            return callback(null);\n        });\n    });\n}\nvar prev=null;\n    var server = http.createServer ( function(request,response){\n    response.writeHead(200,{\"Content-Type\":\"text/plain\"});\n    if(request.method == \"GET\")\n        {\n            response.end(\"received GET request.\")\n        }\n    else if(request.method == \"POST\")\n        {//console.log(request.data);\n\t\tvar body=[]\n\t\trequest.on('data', function(data) {",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/eventService/chrome_receive.js:1-31"
+    },
+    "853": {
+        "file_id": 182,
+        "content": "Creates an HTTP server to handle GET and POST requests, writes received data to files using a recursive file creation function.",
+        "type": "comment"
+    },
+    "854": {
+        "file_id": 182,
+        "content": "      body.push(data)\n      //console.log('Partial body: ' , data)\n    })\n    request.on('end', function() {\n\t    var concatBody=Buffer.concat(body)\n\t    if (request.url == chrome_html){\n\t\t    monotonic_html+=1;\n\t    var next=concatBody.toString('utf-8')\n\t    writeFileRecursive(\"./chrome_html/\"+Date.now()+\"-\"+monotonic_html+\".html\",next,error => {if (error) return console.log(\"error to write file.\\n\"+error.message); console.log(\"saved successfully\");});}\n\t    else if (request.url == chrome_monitor){\nmonotonic_monitor+=1;\n\t    var next=concatBody.toString('utf-8')\n\t    writeFileRecursive(\"./chrome_monitor/\"+Date.now()+\"-\"+monotonic_monitor+\".json\",next,error => {if (error) return console.log(\"error to write file.\\n\"+error.message); console.log(\"saved successfully\");});}\n\t    // why are you doing it?\n\t    // we are going to save the file, in case that you are dumb.\n      console.log('Body From '+request.url+'\\nLength:',concatBody.length)\n      response.writeHead(200, {'Content-Type': 'text/html'})\n\t    // this is not.",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/eventService/chrome_receive.js:32-49"
+    },
+    "855": {
+        "file_id": 182,
+        "content": "The code reads the request data and concatenates it into a buffer. If the request URL is for \"chrome_html\", it increments the monotonic count, converts the data to UTF-8 string, writes it to a file with a timestamped name, and logs a success message or an error message if failed. Similarly, if the request URL is for \"chrome_monitor\", it increments the monotonic count, saves the concatenated data as a JSON file, and logs the success/error message accordingly. The code also sends a 200 response with the content type of 'text/html'.",
+        "type": "comment"
+    },
+    "856": {
+        "file_id": 182,
+        "content": "      response.end('post received')\n    })\n        }\n    else\n        {\n            response.end(\"Undefined request .\");\n        }\n});\n//arbitrary path.\nserver.listen(5000);\nconsole.log(\"Server running on port 5000\");\n// the socket port might need some change. do not use the same port?",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/eventService/chrome_receive.js:50-61"
+    },
+    "857": {
+        "file_id": 182,
+        "content": "This code sets up a server to handle POST requests, returning \"post received\" if the request is defined and \"Undefined request .\" otherwise. The server listens on port 5000 and logs a message upon successful startup. The socket port might need modification to avoid conflicts with other ports in use.",
+        "type": "comment"
+    },
+    "858": {
+        "file_id": 183,
+        "content": "/native/lazero_kali_amd64/eventService/emacs_receive.js",
+        "type": "filepath"
+    },
+    "859": {
+        "file_id": 183,
+        "content": "This code sets up a server to handle HTTP requests, writes request data to files recursively, handles a specific URL and logs information. It listens on specified port and confirms when running.",
+        "type": "summary"
+    },
+    "860": {
+        "file_id": 183,
+        "content": "var http = require('http');\nconst fs = require(\"fs\");\nconst chrome_html = \"/post\";\n//const chrome_monitor = \"/message\";\nvar monotonic_html=0;\nconst port=8786;\n//var monotonic_monitor=0;\n//logger=require('html-differ/lib/logger')\n//this is too slow.\n//you can use some other abstract syntax. such as monotonic+timestamp.\nconst writeFileRecursive = function(path, buffer, callback){\n    let lastPath = path.substring(0, path.lastIndexOf(\"/\"));\n    fs.mkdir(lastPath, {recursive: true}, (err) => {\n        if (err) return callback(err);\n        fs.writeFile(path, buffer, function(err){\n            if (err) return callback(err);\n            return callback(null);\n        });\n    });\n}\nvar prev=null;\n    var server = http.createServer ( function(request,response){\n    response.writeHead(200,{\"Content-Type\":\"text/plain\"});\n    if(request.method == \"GET\")\n        {\n            response.end(\"received GET request.\")\n        }\n    else if(request.method == \"POST\")\n        {//console.log(request.data);\n\t\tvar body=[]\n\t\trequest.on('data', function(data) {",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/eventService/emacs_receive.js:1-32"
+    },
+    "861": {
+        "file_id": 183,
+        "content": "Server setup with HTTP module, requiring filesystem and fs.js for writing to files, constant variables for file paths, server creation using http.createServer() method, handling GET and POST requests, and using writeFileRecursive function for creating directories and writing to files recursively.",
+        "type": "comment"
+    },
+    "862": {
+        "file_id": 183,
+        "content": "      body.push(data)\n      //console.log('Partial body: ' , data)\n    })\n    request.on('end', function() {\n\t    var concatBody=Buffer.concat(body)\n\t    if (request.url == chrome_html){\n\tmonotonic_html+=1;\n\t    var next=concatBody.toString('utf-8')\n\t    writeFileRecursive(\"./emacs_post/\"+Date.now()+\"-\"+monotonic_html+\".log\",next,error => {if (error) return console.log(\"error to write file.\\n\"+error.message); console.log(\"saved successfully\");});}\n\t        // why are you doing it?\n\t    // we are going to save the file, in case that you are dumb.\n      console.log('Body From '+request.url+'\\nLength:',concatBody.length)\n      response.writeHead(200, {'Content-Type': 'text/html'})\n\t    // this is not.\n      response.end('post received')\n    })\n        }\n    else\n        {\n            response.end(\"Undefined request .\");\n        }\n});\n//arbitrary path.\nserver.listen(port);\nconsole.log(\"Server running on port \"+port);\n// the socket port might need some change. do not use the same port?",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/eventService/emacs_receive.js:33-58"
+    },
+    "863": {
+        "file_id": 183,
+        "content": "This code handles incoming HTTP requests, concatenates the request body, and writes it to a file. If the requested URL matches \"chrome_html\", it increments a counter, adds the body content to the file with the current date and counter number, and logs the body length. The server then responds with either 'post received' or 'Undefined request'. Finally, the server listens on a specified port and logs that the server is running.",
+        "type": "comment"
+    },
+    "864": {
+        "file_id": 184,
+        "content": "/native/lazero_kali_amd64/eventService/keylog_server.py",
+        "type": "filepath"
+    },
+    "865": {
+        "file_id": 184,
+        "content": "Code imports keylogger functions and creates a queue of size 20. It starts a thread targeting the log_to_queue function from keylogger with the created queue as an argument, running it in daemon mode. The code then enters an infinite loop where it prints the content of the queue every 2 seconds.",
+        "type": "summary"
+    },
+    "866": {
+        "file_id": 184,
+        "content": "from keylogger import log_to_queue as L\nfrom keylogger import *\nq = Q(20)\nimport threading as TH\nTH.Thread(target=L,args=(q,),daemon=True).start()\nwhile True:\n    T.sleep(2)\n    print(q.dump())",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/eventService/keylog_server.py:1-12"
+    },
+    "867": {
+        "file_id": 184,
+        "content": "Code imports keylogger functions and creates a queue of size 20. It starts a thread targeting the log_to_queue function from keylogger with the created queue as an argument, running it in daemon mode. The code then enters an infinite loop where it prints the content of the queue every 2 seconds.",
+        "type": "comment"
+    },
+    "868": {
+        "file_id": 185,
+        "content": "/native/lazero_kali_amd64/eventService/keylogger.py",
+        "type": "filepath"
+    },
+    "869": {
+        "file_id": 185,
+        "content": "This code is a keylogger implementation using the pynput library. It logs keystrokes and timestamps, storing them in a queue for further processing. The `log_to_queue()` function sets up a listener to continuously capture keyboard events and store them in the specified queue. The `on_press()` function is responsible for handling each key press event and adding it to the queue along with a timestamp.",
+        "type": "summary"
+    },
+    "870": {
+        "file_id": 185,
+        "content": "from pynput.keyboard import Key, Listener\n#        socket.send(\"client message to server1\")\nimport time as T\n# so doing self-looping?\nfrom sys import path as SP\nSP.append(\"../tools\")\nfrom stackMe import queue as Q\ndef GT():\n    return T.time()\ndef on_press(key,queue=None,keycode_only=True):\n    typecode = str(type(key))\n    key_str = str(key)\n#    print(dir(key))\n    print(\"LOGGING:\",key_str,typecode)\n    if keycode_only:\n        if \"KeyCode\" in typecode:\n#            print(\"passed 1\")\n            if len(key.char) == 1:\n#                print(\"passed 2\")\n                queue.queue((key.char,GT()))\n    else:\n        queue.queue((key_str,GT()))\n    #print(str(key),typecode)\ndef log_to_queue(queue,keycode_only=True):\n    assert type(queue) == type(Q(0))\n    on_press2 = lambda key: on_press(key,queue=queue,keycode_only=keycode_only)\n    with Listener(on_press=on_press2) as listener:\n        try:\n            listener.join()\n        except:\n            pass",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/eventService/keylogger.py:1-35"
+    },
+    "871": {
+        "file_id": 185,
+        "content": "This code is a keylogger implementation using the pynput library. It logs keystrokes and timestamps, storing them in a queue for further processing. The `log_to_queue()` function sets up a listener to continuously capture keyboard events and store them in the specified queue. The `on_press()` function is responsible for handling each key press event and adding it to the queue along with a timestamp.",
+        "type": "comment"
+    },
+    "872": {
+        "file_id": 186,
+        "content": "/native/lazero_kali_amd64/mainService/README",
+        "type": "filepath"
+    },
+    "873": {
+        "file_id": 186,
+        "content": "The code explores the formation of a cognition core, learning targets, and optimizing performance through Docker or similar solutions to prevent damage. It creates a virtual environment to avoid human issues.",
+        "type": "summary"
+    },
+    "874": {
+        "file_id": 186,
+        "content": "the main service is about exploration, forming the cognition core and memorize/learn the targets. optimize the performance, controlling overall tasks.\nif you cannot prove the shit, just remember it. that's called flattering.\nmaybe that's why we shall invent this machine that invents itself.\nwe want this shit to run something freely on its own, and do not damage my structure.\nbetter use docker or something similar. we do not want shit to happen.\nyou can create your own jail. it is similar. but i doubt about that.\nthe idea is that we are going to do all this virtually. i hate all kinds of human shits.",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/mainService/README:1-13"
+    },
+    "875": {
+        "file_id": 186,
+        "content": "The code explores the formation of a cognition core, learning targets, and optimizing performance through Docker or similar solutions to prevent damage. It creates a virtual environment to avoid human issues.",
+        "type": "comment"
+    },
+    "876": {
+        "file_id": 187,
+        "content": "/native/lazero_kali_amd64/mainService/docker_monkey.py",
+        "type": "filepath"
+    },
+    "877": {
+        "file_id": 187,
+        "content": "This code uses pexpect and threading libraries to automate execution of simple commands within a Docker container. It continuously selects random commands from a list, executes them, and prints the results with some delay. The read_me function runs in a separate thread to read output line by line.",
+        "type": "summary"
+    },
+    "878": {
+        "file_id": 187,
+        "content": "# without monkey typers we cannot really say that we are making any progress with this shitty computer.\n# we are not familar with this shit though!\nimport pexpect\nimport threading\nimport random\nimport time\n# maybe you need winpexpect.\n# we shall start shits from simple rules.\n# anything unpredictable that could also last forever.\np = pexpect.spawn(\"podman run --rm --read-only -i alpine\")\ndef read_me():\n    while True:\n        content = p.readline()\n        print(\"content:\\n\",content)\n#print(dir(p))\nthreading.Thread(target=read_me,daemon=True).start()\ndelay=0.2\nwhile True:\n    payloads = [\"whoami\",\"pwd\",\"ls\"]\n    time.sleep(delay)\n    target = random.choice(payloads)\n    print(\"sending command:\",target)\n    p.sendline(target)",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/mainService/docker_monkey.py:1-24"
+    },
+    "879": {
+        "file_id": 187,
+        "content": "This code uses pexpect and threading libraries to automate execution of simple commands within a Docker container. It continuously selects random commands from a list, executes them, and prints the results with some delay. The read_me function runs in a separate thread to read output line by line.",
+        "type": "comment"
+    },
+    "880": {
+        "file_id": 188,
+        "content": "/native/lazero_kali_amd64/mainService/docker_vt100_base.py",
+        "type": "filepath"
+    },
+    "881": {
+        "file_id": 188,
+        "content": "This code sets up a server on Windows, uses threading and pyte for terminal interface, defines an Alpine container with podman, monitors processes, handles errors, and includes a Tornado web application for displaying window size, restarting, and input.",
+        "type": "summary"
+    },
+    "882": {
+        "file_id": 188,
+        "content": "from __future__ import unicode_literals\nimport ptyprocess\n# this module is exclusive for windows. to port to linux there should be extra steps.\n# i mean, android.\n# hey! do not run this shit outside of sandbox, unless you want to get me killed.\nimport threading\nimport pyte\n# can you format things into colorful output?\n# or just raw terminal string which can be transformed into html.\nimport traceback\nimport tornado.ioloop\nimport tornado.web\nimport requests\nimport base64\nimport signal\n# no watchdog for this?\nLF_CRLF=b\"\\n\"\nmaxbark = 2\nmaxbark_granual = 5\nmaxterm = 3\nmaxterm_granual = 5\nbark = 0\nterm = 0\nimport argparse\nparser = argparse.ArgumentParser()\nparser.add_argument(\"-p\",\"--port\",type=int,default=8788,help=\"port number\")\nargs = parser.parse_args()\nport=args.port\nassert port>0 and port <65535\nprint(\"server running on port %d\" %port)\n# you can turn off the barking dog sometimes.\n# we can use a big dog every since then.\ndef kill(pipe):\n    try:\n        pipe.terminate()\n# here.\n        pipe.kill(signal.SIGKILL)\n    except:",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/mainService/docker_vt100_base.py:1-38"
+    },
+    "883": {
+        "file_id": 188,
+        "content": "The code appears to be a part of a server implementation for a Python application. It sets up the server and its parameters, handles signals for process termination, and uses threading and a terminal interface (pyte). The code is specific to Windows, and it also mentions a watchdog but does not seem to have implemented it. It accepts command line arguments such as the port number to run on.",
+        "type": "comment"
+    },
+    "884": {
+        "file_id": 188,
+        "content": "        print(\"_____process kill error_____\")\n        traceback.print_exc()\n# signal.signal(signal.SIGINT, signal_handler)\ndisplay = \"\"\nlag = 0.05\nexecutable =\"podman run --rm -i --read-only alpine\" # this is wrong. could get your computer in danger.\n# unless you want to take the risk. everything worth the try?\ncols, rows = 80, 25\nimport time\nwatch_rate = 0.5\nscreen = pyte.Screen(cols,rows)\nstream = pyte.ByteStream(screen)\nprocess =  ptyprocess.PtyProcess.spawn(executable.split(\" \"),dimensions=(rows,cols))\ndef read_to_term():\n    global display, stream, screen\n    # read a global list?\n    # you can start another server. not quite like terminal. like execution shell.\n    noerr=True\n    while noerr:\n        try:\n            reading=process.read()\n# will block.\n    # will raise error if not good.\n            stream.feed(reading)\n            display = \"\\n\".join(screen.display)\n        except:\n            noerr = False\n            break\nt0=threading.Thread(target=read_to_term,args=())\nt0.setDaemon(True)\nt0.start()\ndef barkdog():",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/mainService/docker_vt100_base.py:39-70"
+    },
+    "885": {
+        "file_id": 188,
+        "content": "Code snippet defines a terminal emulator using `pyte` and `ptyprocess` libraries. It spawns an Alpine container with `podman`, captures input/output, and updates the display in a separate thread. However, running a container without read-only flag can be dangerous.",
+        "type": "comment"
+    },
+    "886": {
+        "file_id": 188,
+        "content": "    global bark, maxbark_granual\n    while True:\n        bark = 0\n        time.sleep(maxbark_granual)\ntb=threading.Thread(target=barkdog,args=())\ntb.setDaemon(True)\ntb.start()\ndef termdog():\n    global term, maxterm_granual\n    while True:\n        term = 0\n        time.sleep(maxterm_granual)\ntx=threading.Thread(target=termdog,args=())\ntx.setDaemon(True)\ntx.start()\ndef watchdog():\n    global process, watch_rate, port, bark, maxbark\n    alive=True\n    while alive:\n        alive = process.isalive()\n#        print(\"alive?\",alive)\n        time.sleep(watch_rate)\n#    print(\"bark\")\n    bark+=1\n    if bark > maxbark:\n        print(\"max bark exceed.\",bark)\n# what the heck?\n        pass\n    else:\n#        print(\"did get to here\")\n# if server is down this will cause dead shit.\n        requests.get(\"http://localhost:{}/restart\".format(port),stream=False,verify=False,timeout=1)\n# does that work?\n    # if not, call the handler. use requests.\nt1=threading.Thread(target=watchdog,args=())\nt1.setDaemon(True)\nt1.start()\nclass RHandler(tornado.web.RequestHandler):",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/mainService/docker_vt100_base.py:71-109"
+    },
+    "887": {
+        "file_id": 188,
+        "content": "This code creates two threading processes (barkdog and termdog) to periodically check the status of a running process and restart it if needed. The watchdog function monitors the process, increasing a bark counter if it's alive or sending a restart request to the server if the bark limit is reached. A separate thread (t1) runs the watchdog function in the background, and a Tornado web RequestHandler class (RHandler) is defined.",
+        "type": "comment"
+    },
+    "888": {
+        "file_id": 188,
+        "content": "    def get(self):\n        global process, screen, stream, t0, t1, executable, display, term, maxterm\n        # print(type(process))\n        # print(dir(process))\n        term += 1\n        if term > maxterm:\n            self.write(\"exceeding max termination quota!\\n\")\n        else:\n            kill(process)\n# did it stuck here?\n# nope.\n            for x in [process, screen, stream, t0, t1]:\n                # print(\"deleting\")\n                del x\n            display = \"\"\n            screen = pyte.Screen(cols,rows)\n            stream = pyte.ByteStream(screen)\n            process =  ptyprocess.PtyProcess.spawn([executable],dimensions=(rows,cols))\n            t0=threading.Thread(target=read_to_term,args=())\n            t0.setDaemon(True)\n            t0.start()\n            t1=threading.Thread(target=watchdog,args=())\n            t1.setDaemon(True)\n            t1.start()\n            self.write(\"terminal restart!\\n\")\nclass IHandler(tornado.web.RequestHandler):\n    def get(self):\n        global display, process, lag\n        # print(\"type request received.\")",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/mainService/docker_vt100_base.py:110-138"
+    },
+    "889": {
+        "file_id": 188,
+        "content": "This code manages a virtual terminal in a Docker container. It resets the terminal when the maximum termination quota is exceeded. The function `get` restarts the terminal, deletes previous process, screen, stream, and thread instances, creates new ones, and starts two threads for reading from the terminal and monitoring. The `IHandler` class handles GET requests.",
+        "type": "comment"
+    },
+    "890": {
+        "file_id": 188,
+        "content": "        argument = self.get_argument(\"type\",None)\n        argumentx = self.get_argument(\"b64type\",None)\n        # that is for argument!\n        autoreturn = self.get_argument(\"autoreturn\",None) == \"true\"\n        # print(\"actual argument\",[argument],type(argument))\n        # string.\n        if not process.isalive():\n            self.write(\"process is dead.\\n\")\n        elif argument is not None:\n            # unicode.\n            # may encounter error.\n            if autoreturn:\n                process.write(argument.encode(\"utf8\")+b'\\r')\n            else:\n                process.write(argument.encode(\"utf8\"))\n            time.sleep(lag)\n            self.write(display)\n        elif argumentx is not None:\n            # check if correctly formed.\n# check if not dead.\n            try:\n                arx = base64.b64decode(argumentx)\n                # the result is not right.\n                # cannot decode here.\n                if autoreturn:\n                    process.write(arx+b'\\r')\n                else:\n                    process.write(arx)",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/mainService/docker_vt100_base.py:139-166"
+    },
+    "891": {
+        "file_id": 188,
+        "content": "This code receives arguments for a process, checks if it's alive, and sends data to the process based on the argument type. It handles both regular strings and base64 encoded strings, and has an option for automatic newline characters. The code includes error handling for incorrectly formed arguments and process termination checks.",
+        "type": "comment"
+    },
+    "892": {
+        "file_id": 188,
+        "content": "                    # this is not unicode string.\n                time.sleep(lag)\n                self.write(display)\n            except:\n                self.write(\"incorrect format\\n\")\n                # pass\n                # D:\\Programs\\Python\\Python36\\lib\\site-packages\\winpty\\winpty_wrapper.py\n        else:\n            self.write(\"empty input\\n\")\n            # pass\nclass MainHandler(tornado.web.RequestHandler):\n    def get(self):\n        global display\n        self.write(display)\n    def make_app():\n        return tornado.web.Application([(r\"/display\",MainHandler),(r\"/restart\",RHandler),(r\"/input\",IHandler)])\n# get a window watcher. if want to lock the winsize better use that.\n# why the fuck that the code needs to be compiled? could we just examine the code and prepare for tested binaries?\napp = MainHandler.make_app()\napp.listen(port)\n# here's the shit.\ntornado.ioloop.IOLoop.current().start()\n# register handler.\nexit()",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/mainService/docker_vt100_base.py:167-191"
+    },
+    "893": {
+        "file_id": 188,
+        "content": "This code defines a Tornado web application with three handlers. The `MainHandler` displays the current window size, while `RHandler` restarts the application and `IHandler` handles input. It uses `tornado.web.Application` to create the app and listens on a specific port. Finally, it starts the IOLoop and exits.",
+        "type": "comment"
+    },
+    "894": {
+        "file_id": 189,
+        "content": "/native/lazero_kali_amd64/mainService/evaluator/prepare.py",
+        "type": "filepath"
+    },
+    "895": {
+        "file_id": 189,
+        "content": "This code reads a JSON file named \"programs.json\", extracts its content, and then creates files named \"{k}_{v}_evaluator.py\" for each entry in the JSON file using the 'touch' command. It seems to be preparing to execute different evaluators based on the data in the JSON file.",
+        "type": "summary"
+    },
+    "896": {
+        "file_id": 189,
+        "content": "import json\nimport os\ncontent = json.loads(open(\"programs.json\",\"r\").read())\nfor k in content.keys():\n    for v in content[k]:\n        name = \"{}_{}_evaluator.py\".format(k,v)\n        os.system(\"touch {}\".format(name))",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/mainService/evaluator/prepare.py:1-7"
+    },
+    "897": {
+        "file_id": 189,
+        "content": "This code reads a JSON file named \"programs.json\", extracts its content, and then creates files named \"{k}_{v}_evaluator.py\" for each entry in the JSON file using the 'touch' command. It seems to be preparing to execute different evaluators based on the data in the JSON file.",
+        "type": "comment"
+    },
+    "898": {
+        "file_id": 190,
+        "content": "/native/lazero_kali_amd64/mainService/filter_common_pattern.py",
+        "type": "filepath"
+    },
+    "899": {
+        "file_id": 190,
+        "content": "The code reads input line by line, identifies and removes common patterns from the lines, stores them in a dictionary, and prints the original and filtered lines along with the dictionary. It uses uuid for identifier, random to determine dictionary length and pattern positions, and multidict may be introduced later.",
+        "type": "summary"
+    }
+}

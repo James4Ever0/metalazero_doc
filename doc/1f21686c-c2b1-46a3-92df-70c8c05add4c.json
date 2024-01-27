@@ -1,0 +1,10 @@
+{
+    "summary": "This code is using PyAutoGUI library and randomly selecting functions to execute, providing basic data for algorithm training. It fuzz-tests around the code by choosing random commands from available functions in PyAutoGUI. The purpose is to gather data for advanced algorithms but currently operates in a relatively simple manner.",
+    "details": [
+        {
+            "comment": "This code is using PyAutoGUI library and randomly selecting functions to execute, providing basic data for algorithm training. It fuzz-tests around the code by choosing random commands from available functions in PyAutoGUI. The purpose is to gather data for advanced algorithms but currently operates in a relatively simple manner.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_kali_amd64/mainService/monkey_controller.py\":0-14",
+            "content": "# this is the pyautogui version of the monkey, providing our basic data for training.\n# advanced algos will be possible only if we have the data.\n# we go dumb first.\nimport pyautogui\nimport random\n# but first we must fuzz around the code.\ntargets=dir(pyautogui)\nwhile True:\n    t = random.choice(targets)\n    cmd = \"pyautogui.{}\".format(t)\n    print(\"executing command:\",cmd)\n    r = eval(cmd)\n    print(\"result:\",r)\n    # let me know more about the controller.\n    # we do not know the shit yet."
+        }
+    ]
+}

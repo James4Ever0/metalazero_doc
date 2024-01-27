@@ -1,0 +1,10 @@
+{
+    "summary": "Function \"target_form\" takes action and target as inputs, returns a tuple containing both values. Function \"reverse_target\" reverses the order of action and target in a tuple before returning it. The code seems to be performing some sort of data manipulation on tuples for an observer.",
+    "details": [
+        {
+            "comment": "Function \"target_form\" takes action and target as inputs, returns a tuple containing both values. Function \"reverse_target\" reverses the order of action and target in a tuple before returning it. The code seems to be performing some sort of data manipulation on tuples for an observer.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_kali_amd64/mainService/target_basic.py\":0-7",
+            "content": "# that is to train the relationship among all these shits, for the observer.\ndef target_form(action,target):\n    return (action,target)\ndef reverse_target(action,target):\n    return (target,action)\n# irrational but effective?"
+        }
+    ]
+}

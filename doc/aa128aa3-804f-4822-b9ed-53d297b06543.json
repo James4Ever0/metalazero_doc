@@ -1,0 +1,10 @@
+{
+    "summary": "Code includes 'ws' and 'collections', likely used for web sockets communication and data management in a project.",
+    "details": [
+        {
+            "comment": "Code includes 'ws' and 'collections', likely used for web sockets communication and data management in a project.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_win10_amd64/nodejs_require\":0-1",
+            "content": "ws\ncollections"
+        }
+    ]
+}

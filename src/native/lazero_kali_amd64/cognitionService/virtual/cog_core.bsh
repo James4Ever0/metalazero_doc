@@ -1,0 +1,15 @@
+a="abcdef";
+System.out.println(a.contains("abc"));
+System.out.println(a.contains("123"));
+
+/*
+public void print(Object O){
+System.out.println(O);
+}
+*/
+
+// THIS ONE IS MUCH BETTER THAN ORIGINAL.
+print(String.class.getDeclaredMethods());
+//print(String.class.getDeclaredMethods());
+
+javap(this);

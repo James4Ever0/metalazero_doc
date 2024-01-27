@@ -1,0 +1,10 @@
+{
+    "summary": "This script takes all files in the current directory (ls), filters only PDF files (grep), removes .pdf extension (sed), and then uses mutool to convert each PDF file to HTML with -o \"abc.html\" as output filename.",
+    "details": [
+        {
+            "comment": "This script takes all files in the current directory (ls), filters only PDF files (grep), removes .pdf extension (sed), and then uses mutool to convert each PDF file to HTML with -o \"abc.html\" as output filename.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/tools/deep-text-editor/neural_network/qcl/convert.sh\":0-0",
+            "content": "ls -1 | grep -Eo \"^.*.pdf\\$\" | sed \"s/.pdf//g\" | xargs -iabc mutool convert -o \"abc.html\" \"abc.pdf\""
+        }
+    ]
+}

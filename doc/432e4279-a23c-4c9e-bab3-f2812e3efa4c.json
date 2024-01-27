@@ -1,0 +1,10 @@
+{
+    "summary": "This code adds Melpa and GNU packages to the Emacs configuration file by modifying the package-archives variable.",
+    "details": [
+        {
+            "comment": "This code adds Melpa and GNU packages to the Emacs configuration file by modifying the package-archives variable.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_kali_amd64/cognitionService/virtual/add_melpa.sh\":0-0",
+            "content": "echo  \"(setq package-archives '((\\\"gnu\\\" . \\\"https://elpa.emacs-china.org/gnu/\\\")\\n(\\\"melpa\\\" . \\\"https://elpa.emacs-china.org/melpa/\\\")))\" >> ~/.emacs.d/init.el"
+        }
+    ]
+}

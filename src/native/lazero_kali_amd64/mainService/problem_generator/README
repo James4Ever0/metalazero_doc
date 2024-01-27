@@ -1,0 +1,11 @@
+problems are vital for training. they are equivalent to targets.
+
+you need to know that not all human can solve some problems that they want to solve, and not all human will share these problems for you.
+
+in order to create your own problem sets, you have to forget about all other trivial standards and start from scratch. machine language? fine. random chars? also fine. don't care about its form or anything.
+
+you can start from human tests and summarize the form of the problem.
+
+also you need to implement it in code.
+
+it all starts with damage and impossibilities.

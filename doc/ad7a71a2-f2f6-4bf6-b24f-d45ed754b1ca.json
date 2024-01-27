@@ -1,0 +1,10 @@
+{
+    "summary": "This script checks the number of arguments provided, and if it's less than or equal to 1, it displays \"no argument\" and exits with status 1. Otherwise, it unmounts and removes the specified ramdisk directory in multiserv.",
+    "details": [
+        {
+            "comment": "This script checks the number of arguments provided, and if it's less than or equal to 1, it displays \"no argument\" and exits with status 1. Otherwise, it unmounts and removes the specified ramdisk directory in multiserv.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_kali_amd64/virtualService/tools/sandserv/multiunloadram.sh\":0-11",
+            "content": "#!/bin/bash\nc0=$(echo $1 |wc -c )\n#echo $c0\nif [ $c0 -le 1 ]\nthen\n        echo \"no argument.\"\n        exit 1\nelse\n        :\nfi\nsudo umount -f multiserv/$1/ramdisk\nsudo rm -rf multiserv/$1/ramdisk"
+        }
+    ]
+}

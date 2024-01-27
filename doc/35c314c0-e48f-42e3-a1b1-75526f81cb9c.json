@@ -1,0 +1,10 @@
+{
+    "summary": "Unmounts and removes the 'ramdisk' directory, potentially freeing up memory resources.",
+    "details": [
+        {
+            "comment": "Unmounts and removes the 'ramdisk' directory, potentially freeing up memory resources.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_kali_amd64/virtualService/tools/sandserv/unloadram.sh\":0-2",
+            "content": "#!/bin/bash\nsudo umount -f ramdisk\nsudo rm -rf ramdisk"
+        }
+    ]
+}

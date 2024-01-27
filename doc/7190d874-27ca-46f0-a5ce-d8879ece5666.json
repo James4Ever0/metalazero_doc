@@ -1,0 +1,10 @@
+{
+    "summary": "This code runs a task called \"export\" and then executes a Python script named demo_load.py using python3 interpreter. The purpose of this script might be to load some data or run a specific task related to the \"demo\".",
+    "details": [
+        {
+            "comment": "This code runs a task called \"export\" and then executes a Python script named demo_load.py using python3 interpreter. The purpose of this script might be to load some data or run a specific task related to the \"demo\".",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/schedules/demo_load.sh\":0-0",
+            "content": "task export | python3 demo_load.py"
+        }
+    ]
+}

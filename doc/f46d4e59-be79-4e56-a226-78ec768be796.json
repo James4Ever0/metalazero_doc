@@ -1,0 +1,10 @@
+{
+    "summary": "This code is a listener for messages sent through the Chrome runtime. When it receives a message with \"something_completed\" as the msg key, it logs the subject and content data to the console and potentially plans to interact with tabs but has not yet completed.",
+    "details": [
+        {
+            "comment": "This code is a listener for messages sent through the Chrome runtime. When it receives a message with \"something_completed\" as the msg key, it logs the subject and content data to the console and potentially plans to interact with tabs but has not yet completed.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/browser_plugin/lazero_crx_17_kiwi_ip_change/popup.js\":0-11",
+            "content": "chrome.runtime.onMessage.addListener(\n    function(request, sender, sendResponse) {\n        if (request.msg === \"something_completed\") {\n            //  To do something\n            // document.write\n            // not even conplete.\n            // use the chrome.tabs -> firefox.tab?\n            console.log(request.data.subject)\n            console.log(request.data.content)\n        }\n    }\n);"
+        }
+    ]
+}

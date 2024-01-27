@@ -1,0 +1,10 @@
+{
+    "summary": "The code imports the \"fmt\" and \"strings\" packages, as well as the reflect package. It then demonstrates using the Contains function from the strings package to check if a substring exists in a given string. Additionally, it uses the reflect package to access type information.",
+    "details": [
+        {
+            "comment": "The code imports the \"fmt\" and \"strings\" packages, as well as the reflect package. It then demonstrates using the Contains function from the strings package to check if a substring exists in a given string. Additionally, it uses the reflect package to access type information.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_kali_amd64/cognitionService/virtual/cog_core.go\":0-19",
+            "content": "package main\nimport . \"fmt\"\nimport . \"strings\"\nimport R \"reflect\"\nfunc main(){\n\tPrintln(Contains(\"animalsfood\", \"foo\"))\n\t// 'bar' does not present in 'birdsfood'\n\tPrintln(Contains(\"birdsfood\", \"bar\"))\n\tPrintln(Contains(\"animalsfood\", \"\"))\n\tPrintln(Contains(\"\", \"\"))\n\tPrintln(R.TypeOf(R.TypeOf))\n\tPrintln(R.TypeOf(R.TypeOf).Kind())\n\t//Println(R.TypeOf(R.TypeOf).Kind().Field())\n\t// go doc reflect\n}"
+        }
+    ]
+}

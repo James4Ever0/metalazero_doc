@@ -1,0 +1,10 @@
+{
+    "summary": "This script launches the Emacs editor with the 'echo_server.el' configuration file, used for a virtual echo server.",
+    "details": [
+        {
+            "comment": "This script launches the Emacs editor with the 'echo_server.el' configuration file, used for a virtual echo server.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_kali_amd64/cognitionService/virtual/echo_server.sh\":0-1",
+            "content": "#!/bin/bash\nemacs -l echo_server.el"
+        }
+    ]
+}

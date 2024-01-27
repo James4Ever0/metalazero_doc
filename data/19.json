@@ -1,0 +1,529 @@
+{
+    "1900": {
+        "file_id": 375,
+        "content": "/tools/deep-text-editor/neural_network/make_arithmatic.py",
+        "type": "filepath"
+    },
+    "1901": {
+        "file_id": 375,
+        "content": "This code generates arithmetic problems, checks answers, and catches exceptions using try-except.",
+        "type": "summary"
+    },
+    "1902": {
+        "file_id": 375,
+        "content": "# the format must change, or shall we?\n# how do we evaluate shits according to mixed content? GAN?\n# usually mixed content can be read as matrix, but that is not always the case.\n# so we would assume something else.\nimport numpy as np\n# linear - processing - matrix[slide] - processing - evaluate\nimport random\n# if these things cannot be plugged right in then what?\n# you need duplication, and the duplication always change.\ntaskgen=lambda:random.randint(1,100)\ncalcgen=lambda:(taskgen(), taskgen())\ndef problem():\n    a,b=calcgen()\n    # to predict the shit out of your imagination.\n    s=random.choice([\"-\",\"+\",\"*\",\"/\"])\n    t=\"{} {} {}\".format(a,s,b)\n    v=eval(t)\n    return t,v\nimport traceback\nwhile True:\n    try:\n        t,v=problem()\n        print(\"problem:\",t)\n        ans=input(\"answer:\\n\")\n        if abs(float(ans) - v)<0.01:\n            print(\"correct.\")\n        else:\n            print(\"incorrect!\")\n            print(\"answer is:\",v)\n            print(\"your answer is:\",ans)\n    except:\n        traceback.print_exc()",
+        "type": "code",
+        "location": "/tools/deep-text-editor/neural_network/make_arithmatic.py:1-32"
+    },
+    "1903": {
+        "file_id": 375,
+        "content": "This code generates arithmetic problems, takes user input for answers, and checks if the answer is correct. It uses random operations (addition, subtraction, multiplication, division) to create problems and evaluates the results using eval() function in Python. The issues encountered are caught by a try-except block, which also prints any tracebacks when an error occurs.",
+        "type": "comment"
+    },
+    "1904": {
+        "file_id": 375,
+        "content": "        print(\"exception printed above.\")",
+        "type": "code",
+        "location": "/tools/deep-text-editor/neural_network/make_arithmatic.py:33-33"
+    },
+    "1905": {
+        "file_id": 375,
+        "content": "This code snippet will print the message \"exception printed above.\" when an exception occurs.",
+        "type": "comment"
+    },
+    "1906": {
+        "file_id": 376,
+        "content": "/tools/deep-text-editor/neural_network/make_backward_slider.py",
+        "type": "filepath"
+    },
+    "1907": {
+        "file_id": 376,
+        "content": "This code takes a file, \"base.py\", reads it and splits into lines. It filters out any line with less than 3 characters. It then randomly selects a line from the filtered list and splits the line into first 5 characters (fst) and remaining 4 characters (nxt). Then, it asks for input character by character until it matches nxt and shows the correct answer if input is incorrect. Finally, it prints the original line from \"base.py\" as the correct form.",
+        "type": "summary"
+    },
+    "1908": {
+        "file_id": 376,
+        "content": "truth=open(\"base.py\",\"r\").read().split(\"\\n\")\ntruth=list(filter(lambda x: len(x)> 2, truth))\nimport random\nimport traceback\nwindow=5\nimport tty\nimport sys\ntty.setcbreak(sys.stdin)\nwhile True:\n    try:\n        r=random.choice(truth)\n        fst=r[-5:]\n        nxt=r[:-5]\n        nxt=[nxt[-x-1] for x in range(len(nxt))]\n        nxt=\"\".join(nxt)\n        r1=fst\n        for r0 in nxt:\n            print(\"question:\",r1)\n            print(\"answer:\")\n            ans=sys.stdin.read(1)\n            if ans == r0:\n                print(\"correct!\")\n            else:\n                print(\"incorrect!\")\n                print(\"the correct answer is:\", r0)\n                print(\"your answer is:\", ans)\n            r1=r0+r1\n        print(\"correct form:\",r)\n        print(\"continue?\")\n        input()\n    except:\n        traceback.print_exc()\n        print(\"exception printed above!\")\n        pass",
+        "type": "code",
+        "location": "/tools/deep-text-editor/neural_network/make_backward_slider.py:1-34"
+    },
+    "1909": {
+        "file_id": 376,
+        "content": "This code takes a file, \"base.py\", reads it and splits into lines. It filters out any line with less than 3 characters. It then randomly selects a line from the filtered list and splits the line into first 5 characters (fst) and remaining 4 characters (nxt). Then, it asks for input character by character until it matches nxt and shows the correct answer if input is incorrect. Finally, it prints the original line from \"base.py\" as the correct form.",
+        "type": "comment"
+    },
+    "1910": {
+        "file_id": 377,
+        "content": "/tools/deep-text-editor/neural_network/make_correction.py",
+        "type": "filepath"
+    },
+    "1911": {
+        "file_id": 377,
+        "content": "This code reads a file named \"base.py\", filters out blank lines, and then randomly selects lines to be edited using the monkey_editing library's monkey function. It presents the modified line in context, prompts for an answer, checks if it matches the original line, and repeats until the user chooses not to continue. Exceptions are caught and printed for debugging purposes.",
+        "type": "summary"
+    },
+    "1912": {
+        "file_id": 377,
+        "content": "truth=open(\"base.py\",\"r\").read().split(\"\\n\")\ntruth=list(filter(lambda x: len(x)> 2, truth))\nimport random\nimport traceback\nfrom monkey_editing import monkey\ndef random_edit(original):\n    return monkey(original)\nwhile True:\n    try:\n        r=random.choice(truth)\n        r0=r.split()\n        r0=random.choice(r0)\n        r1=random_edit(r0)\n        print(\"question:\",r.replace(r0,r1))\n        ans=input(\"answer:\\n\")\n        if ans == r0:\n            print(\"correct!\")\n        else:\n            print(\"incorrect!\")\n            print(\"the correct answer is:\", r0)\n            print(\"your answer is:\", ans)\n        print(\"correct form:\", r)\n        print(\"continue?\")\n        input()\n    except:\n        traceback.print_exc()\n        print(\"exception printed above!\")\n        pass",
+        "type": "code",
+        "location": "/tools/deep-text-editor/neural_network/make_correction.py:1-30"
+    },
+    "1913": {
+        "file_id": 377,
+        "content": "This code reads a file named \"base.py\", filters out blank lines, and then randomly selects lines to be edited using the monkey_editing library's monkey function. It presents the modified line in context, prompts for an answer, checks if it matches the original line, and repeats until the user chooses not to continue. Exceptions are caught and printed for debugging purposes.",
+        "type": "comment"
+    },
+    "1914": {
+        "file_id": 378,
+        "content": "/tools/deep-text-editor/neural_network/make_execute_order.py",
+        "type": "filepath"
+    },
+    "1915": {
+        "file_id": 378,
+        "content": "This code reads a file named \"base.py\", filters its lines, and creates a list of indices representing the lines in the file. It then randomly shuffles this list to create a sequence of questions by picking each line from the original order and asking if the user's answer matches the index of the selected line. The code continues until an exception occurs or the user chooses not to continue. If an exception happens, it prints the traceback.",
+        "type": "summary"
+    },
+    "1916": {
+        "file_id": 378,
+        "content": "truth=open(\"base.py\",\"r\").read().split(\"\\n\")\ntruth=list(filter(lambda x: len(x)> 2, truth))\nimport random\nimport copy\nimport traceback\nbase=[x for x in range(len(truth))]\nb1=copy.deepcopy(base)\nwhile True:\n    try:\n        for i in range(len(truth)):\n            r0=False\n            while r0 is not True or (ans is not r0):\n                random.shuffle(base)\n                target=random.choice(base)\n                print(\"{} question:\".format(i),truth[target])\n                ans=input(\"answer:\\n\")\n                ans= ans == \"yes\"\n                r0= target == i\n                if ans == r0 :\n                    print(\"correct!\")\n                else:\n                    print(\"incorrect!\")\n                    print(\"the correct answer is:\", r0)\n                    print(\"your answer is:\", ans)\n        print(\"continue?\")\n        input()\n        #print(\"correct form:\",\"\\n\".join(truth))\n    except:\n        traceback.print_exc()\n        print(\"exception printed above!\")\n        pass",
+        "type": "code",
+        "location": "/tools/deep-text-editor/neural_network/make_execute_order.py:1-32"
+    },
+    "1917": {
+        "file_id": 378,
+        "content": "This code reads a file named \"base.py\", filters its lines, and creates a list of indices representing the lines in the file. It then randomly shuffles this list to create a sequence of questions by picking each line from the original order and asking if the user's answer matches the index of the selected line. The code continues until an exception occurs or the user chooses not to continue. If an exception happens, it prints the traceback.",
+        "type": "comment"
+    },
+    "1918": {
+        "file_id": 379,
+        "content": "/tools/deep-text-editor/neural_network/make_gradual_slider.py",
+        "type": "filepath"
+    },
+    "1919": {
+        "file_id": 379,
+        "content": "This code reads a file, filters lines, and randomly chooses one. It then prompts the user to answer parts of the line sequentially, checking correctness. If an exception occurs, it prints the traceback and continues.",
+        "type": "summary"
+    },
+    "1920": {
+        "file_id": 379,
+        "content": "truth=open(\"base.py\",\"r\").read().split(\"\\n\")\ntruth=list(filter(lambda x: len(x)> 2, truth))\nimport random\nimport traceback\nwindow=5\nimport tty\nimport sys\ntty.setcbreak(sys.stdin)\nwhile True:\n    try:\n        r=random.choice(truth)\n        fst=r[:5]\n        nxt=r[5:]\n        r1=fst\n        for r0 in nxt:\n            print(\"question:\",r1)\n            print(\"answer:\")\n            ans=sys.stdin.read(1)\n            if ans == r0:\n                print(\"correct!\")\n            else:\n                print(\"incorrect!\")\n                print(\"the correct answer is:\", r0)\n                print(\"your answer is:\", ans)\n            r1+=r0\n        print(\"correct form:\",r)\n        print(\"continue?\")\n        input()\n    except:\n        traceback.print_exc()\n        print(\"exception printed above!\")\n        pass",
+        "type": "code",
+        "location": "/tools/deep-text-editor/neural_network/make_gradual_slider.py:1-32"
+    },
+    "1921": {
+        "file_id": 379,
+        "content": "This code reads a file, filters lines, and randomly chooses one. It then prompts the user to answer parts of the line sequentially, checking correctness. If an exception occurs, it prints the traceback and continues.",
+        "type": "comment"
+    },
+    "1922": {
+        "file_id": 380,
+        "content": "/tools/deep-text-editor/neural_network/make_hint_quiz.py",
+        "type": "filepath"
+    },
+    "1923": {
+        "file_id": 380,
+        "content": "This code generates a random line from \"base.py\", replaces a word with \"__\" to form a question, and presents 3 hints to guess the replaced word. It continues until correct answer is given or an exception occurs.",
+        "type": "summary"
+    },
+    "1924": {
+        "file_id": 380,
+        "content": "truth=open(\"base.py\",\"r\").read().split(\"\\n\")\ntruth=list(filter(lambda x: len(x)> 2, truth))\nclass mylist(list):\n    def __sub__(self, other):\n        return [x for x in self if x not in other]\ntruth=mylist(truth)\nimport random\nimport traceback\nwhile True:\n    try:\n        r=random.choice(truth)\n        r0=r.split()\n        r0=random.choice(r0)\n        r1=r.replace(r0,\"___\")\n        print(\"question:\",r1)\n        hints=truth - mylist([r])\n        random.shuffle(hints)\n        hints=hints[:3]\n        for x in range(3):\n            ans=input(\"answer:\\n\")\n            if ans == r0:\n                print(\"correct!\")\n                break\n            else:\n                print(\"incorrect!\")\n                print(\"the correct answer is:\", r0)\n                print(\"your answer is:\", ans)\n                print(\"hint:\",hints.pop())\n        print(\"correct form:\",r)\n        print(\"continue?\")\n        input()\n    except:\n        traceback.print_exc()\n        print(\"exception printed above!\")\n        pass",
+        "type": "code",
+        "location": "/tools/deep-text-editor/neural_network/make_hint_quiz.py:1-36"
+    },
+    "1925": {
+        "file_id": 380,
+        "content": "This code generates a random line from \"base.py\", replaces a word with \"__\" to form a question, and presents 3 hints to guess the replaced word. It continues until correct answer is given or an exception occurs.",
+        "type": "comment"
+    },
+    "1926": {
+        "file_id": 381,
+        "content": "/tools/deep-text-editor/neural_network/make_imagine_quiz.py",
+        "type": "filepath"
+    },
+    "1927": {
+        "file_id": 381,
+        "content": "This code reads a file, filters lines over 2 characters, and randomly selects one line. It then shuffles the words in the line, replaces one word with \"___\", asks for user input to guess the missing word, checks if correct, prints feedback, displays the original line, and asks if user wants to continue. Exceptions are handled and printed.",
+        "type": "summary"
+    },
+    "1928": {
+        "file_id": 381,
+        "content": "truth=open(\"base.py\",\"r\").read().split(\"\\n\")\ntruth=list(filter(lambda x: len(x)> 2, truth))\nimport random\nimport traceback\nwhile True:\n    try:\n        r=random.choice(truth)\n        r0=r.split()\n        random.shuffle(r0)\n        r=\" \".join(r0)\n        r0=random.choice(r0)\n        r1=r.replace(r0,\"___\")\n        print(\"question:\",r1)\n        ans=input(\"answer:\\n\")\n        if ans == r0:\n            print(\"correct!\")\n        else:\n            print(\"incorrect!\")\n            print(\"the correct answer is:\", r0)\n            print(\"your answer is:\", ans)\n        print(\"correct form:\",r)\n        print(\"continue?\")\n        input()\n    except:\n        traceback.print_exc()\n        print(\"exception printed above!\")\n        pass",
+        "type": "code",
+        "location": "/tools/deep-text-editor/neural_network/make_imagine_quiz.py:1-27"
+    },
+    "1929": {
+        "file_id": 381,
+        "content": "This code reads a file, filters lines over 2 characters, and randomly selects one line. It then shuffles the words in the line, replaces one word with \"___\", asks for user input to guess the missing word, checks if correct, prints feedback, displays the original line, and asks if user wants to continue. Exceptions are handled and printed.",
+        "type": "comment"
+    },
+    "1930": {
+        "file_id": 382,
+        "content": "/tools/deep-text-editor/neural_network/make_incorrect.py",
+        "type": "filepath"
+    },
+    "1931": {
+        "file_id": 382,
+        "content": "The code reads a Python file (\"base.py\"), filters empty lines, and then randomly selects a line from the remaining ones. It replaces a random word in that line with \"__\", creating a distorted version of the original line. The user is prompted to provide an answer, which is compared against the correct one. If incorrect, it displays the correct answer. This process continues until an exception occurs or the user stops the program.",
+        "type": "summary"
+    },
+    "1932": {
+        "file_id": 382,
+        "content": "truth=open(\"base.py\",\"r\").read().split(\"\\n\")\ntruth=list(filter(lambda x: len(x)> 2, truth))\nimport random\nimport traceback\nwhile True:\n    try:\n        r=random.choice(truth)\n        r0=r.split()\n        r2=random.choice(r0)\n        r0=random.choice(r0)\n        r1=r.replace(r0,\"___\")\n        print(\"question:\",r1)\n        ans=input(\"answer:\\n\")\n        if ans == r2:\n            print(\"correct!\")\n        else:\n            print(\"incorrect!\")\n            print(\"the correct answer is:\", r2)\n            print(\"your answer is:\", ans)\n        print(\"correct form:\",r)\n        print(\"continue?\")\n        input()\n    except:\n        traceback.print_exc()\n        print(\"exception printed above!\")\n        pass",
+        "type": "code",
+        "location": "/tools/deep-text-editor/neural_network/make_incorrect.py:1-26"
+    },
+    "1933": {
+        "file_id": 382,
+        "content": "The code reads a Python file (\"base.py\"), filters empty lines, and then randomly selects a line from the remaining ones. It replaces a random word in that line with \"__\", creating a distorted version of the original line. The user is prompted to provide an answer, which is compared against the correct one. If incorrect, it displays the correct answer. This process continues until an exception occurs or the user stops the program.",
+        "type": "comment"
+    },
+    "1934": {
+        "file_id": 383,
+        "content": "/tools/deep-text-editor/neural_network/make_missing.py",
+        "type": "filepath"
+    },
+    "1935": {
+        "file_id": 383,
+        "content": "This code generates a random line from \"base.py\" and prompts the user to insert the line at a specified location, ensuring correct input for both line number and content. It checks if the answer is correct or not and allows the user to continue or exit. If an exception occurs, it prints the exception and continues without aborting.",
+        "type": "summary"
+    },
+    "1936": {
+        "file_id": 383,
+        "content": "truth=open(\"base.py\",\"r\").read().split(\"\\n\")\ntruth=list(filter(lambda x: len(x)> 2, truth))\nimport random\nimport traceback\nimport copy\nwhile True:\n    try:\n        r=random.randint(0,len(truth)-1)\n        r1=truth[r]\n        r2=copy.deepcopy(truth)\n        r2.pop(r)\n        r2 = [\"{}: {}\".format(i,x) for i,x in enumerate(r2)]\n        print(\"question:\")\n        print(\"\\n\".join(r2))\n        ans0=input(\"insert at:\\n\")\n        ans1=input(\"content:\\n\")\n        if int(ans0) == r and ans1 == r1:\n            print(\"correct!\")\n        else:\n            print(\"incorrect!\")\n            print(\"the correct answer is:\", r,r1)\n            print(\"your answer is:\", ans0,ans1)\n        #print(\"correct form:\",r)\n        print(\"continue?\")\n        input()\n    except:\n        #import os\n        traceback.print_exc()\n        print(\"exception printed above!\")\n        #os.abort()\n        pass",
+        "type": "code",
+        "location": "/tools/deep-text-editor/neural_network/make_missing.py:1-31"
+    },
+    "1937": {
+        "file_id": 383,
+        "content": "This code generates a random line from \"base.py\" and prompts the user to insert the line at a specified location, ensuring correct input for both line number and content. It checks if the answer is correct or not and allows the user to continue or exit. If an exception occurs, it prints the exception and continues without aborting.",
+        "type": "comment"
+    },
+    "1938": {
+        "file_id": 384,
+        "content": "/tools/deep-text-editor/neural_network/make_mixed_content.py",
+        "type": "filepath"
+    },
+    "1939": {
+        "file_id": 384,
+        "content": "This code generator creates a list of random numbers and allows user input to store the buffer as a new stack element, using a neural network for efficiency.",
+        "type": "summary"
+    },
+    "1940": {
+        "file_id": 384,
+        "content": "# the format must change, or shall we?\n# how do we evaluate shits according to mixed content? GAN?\n# usually mixed content can be read as matrix, but that is not always the case.\n# so we would assume something else.\n# linear - processing - matrix[slide] - processing - evaluate\nimport random\n# if these things cannot be plugged right in then what?\n# you need duplication, and the duplication always change.\ntaskgen=lambda:random.randint(1,100)\ndef problem():\n    myarr=[taskgen() for _ in range(taskgen())]\n    return myarr, len(myarr)\n    # to predict the shit out of your imagination.\n    # i mean neural network is just a lucrative way of describing the efficiency of collaboration.\nimport traceback\nimport copy\nwhile True:\n    try:\n        t,v=problem()\n        stack=[]\n        buff=[]\n        for x in t:\n            buff.append(x)\n            print(\"stack:\",stack)\n            print(\"buff:\",buff)\n            ans=input(\"cut?:\\n\")\n            if ans == \"yes\":\n                stack.append(copy.deepcopy(buff))\n                buff=[]",
+        "type": "code",
+        "location": "/tools/deep-text-editor/neural_network/make_mixed_content.py:1-29"
+    },
+    "1941": {
+        "file_id": 384,
+        "content": "The code is a generator that creates a list of random numbers and prints the stack and buffer, allowing user input to decide whether to store the buffer as a new stack element. It uses a neural network for efficiency and collaboration in evaluating mixed content.",
+        "type": "comment"
+    },
+    "1942": {
+        "file_id": 384,
+        "content": "            else:\n                pass\n        stack.append(copy.deepcopy(buff))\n        print(\"final stack:\",stack)\n    except:\n        traceback.print_exc()\n        print(\"exception printed above.\")",
+        "type": "code",
+        "location": "/tools/deep-text-editor/neural_network/make_mixed_content.py:30-36"
+    },
+    "1943": {
+        "file_id": 384,
+        "content": "This code block appears to be part of a larger function. It checks if the 'buff' variable is not empty, and if so, it appends a deep copy of 'buff' to the stack. If an exception occurs during execution, it prints the traceback and a message indicating the exception was printed above.",
+        "type": "comment"
+    },
+    "1944": {
+        "file_id": 385,
+        "content": "/tools/deep-text-editor/neural_network/make_model.py",
+        "type": "filepath"
+    },
+    "1945": {
+        "file_id": 385,
+        "content": "The code creates a function called \"formula\" and applies it to a range of values from 0 to 1000. The formula calculates the value based on the input x, and the result is printed with asterisks. The program pauses for 0.1 seconds after each print statement.",
+        "type": "summary"
+    },
+    "1946": {
+        "file_id": 385,
+        "content": "formula=lambda x: x/(1+2**x)\nimport time\nfor x in range(0,1000):\n    v=x/50\n    if x%50==0:\n        v=formula(v)\n        print(round(v*50)*\"*\")\n        time.sleep(0.1)",
+        "type": "code",
+        "location": "/tools/deep-text-editor/neural_network/make_model.py:1-8"
+    },
+    "1947": {
+        "file_id": 385,
+        "content": "The code creates a function called \"formula\" and applies it to a range of values from 0 to 1000. The formula calculates the value based on the input x, and the result is printed with asterisks. The program pauses for 0.1 seconds after each print statement.",
+        "type": "comment"
+    },
+    "1948": {
+        "file_id": 386,
+        "content": "/tools/deep-text-editor/neural_network/make_multiselect.py",
+        "type": "filepath"
+    },
+    "1949": {
+        "file_id": 386,
+        "content": "This code generates a multiple-choice question from a given text file and asks the user for the answer. It randomly selects words as options, excluding one word that is replaced with \"___\". The correct answer is then printed, and the process continues until the user decides to stop.",
+        "type": "summary"
+    },
+    "1950": {
+        "file_id": 386,
+        "content": "truth=open(\"base.py\",\"r\").read().split(\"\\n\")\ntruth=list(filter(lambda x: len(x)> 2, truth))\ntokens=[x.split() for x in truth]\ntokens=[x for y in tokens for x in y]\ntokens=list(set(tokens))\nimport random\nimport traceback\nwhile True:\n    try:\n        r=random.choice(truth)\n        r0=r.split()\n        r0=random.choice(r0)\n        r1=r.replace(r0,\"___\")\n        print(\"question:\",r1)\n        dnd=[x for x in tokens if x != r0]\n        dnd=random.sample(dnd,3)\n        choices=dnd+[r0]\n        random.shuffle(choices)\n        print(\"choices:\")\n        print(\"\\n\".join(choices))\n        ans=input(\"answer:\\n\")\n        ans=int(ans)\n        ans=choices[ans]\n        if ans == r0:\n            print(\"correct!\")\n        else:\n            print(\"incorrect!\")\n            print(\"the correct answer is:\", r0)\n            print(\"your answer is:\", ans)\n        print(\"correct form:\",r)\n        print(\"continue?\")\n        input()\n    except:\n        traceback.print_exc()\n        print(\"exception printed above!\")\n        pass",
+        "type": "code",
+        "location": "/tools/deep-text-editor/neural_network/make_multiselect.py:1-36"
+    },
+    "1951": {
+        "file_id": 386,
+        "content": "This code generates a multiple-choice question from a given text file and asks the user for the answer. It randomly selects words as options, excluding one word that is replaced with \"___\". The correct answer is then printed, and the process continues until the user decides to stop.",
+        "type": "comment"
+    },
+    "1952": {
+        "file_id": 387,
+        "content": "/tools/deep-text-editor/neural_network/make_piece_sort.py",
+        "type": "filepath"
+    },
+    "1953": {
+        "file_id": 387,
+        "content": "The code randomly selects a line from \"base.py\", shuffles words, and checks user's rearrangement. It provides feedback with correct rate and correct answer. The code also ensures input format matches and confirms user before continuing, printing traceback in case of exception.",
+        "type": "summary"
+    },
+    "1954": {
+        "file_id": 387,
+        "content": "truth=open(\"base.py\",\"r\").read().split(\"\\n\")\ntruth=list(filter(lambda x: len(x)> 2, truth))\nimport random\nimport copy\nimport traceback\nwhile True:\n    try:\n        t1=random.choice(truth)\n        t0=t1.split()\n        base=[x for x in range(len(t0))]\n        b1=copy.deepcopy(base)\n        random.shuffle(base)\n        base0=[t0[x] for x in base]\n        r1=[\"{}: {}\".format(i,x) for i,x in enumerate(base0)]\n        print(\"question:\")\n        print(\"\\n\".join(r1))\n        ans=input(\"answer:\\n\")\n        ans = [int(x) for x in ans.split(\" \")][:len(t0)]\n        ans = [base0[x] for x in ans]\n        b0=[None]*len(b1)\n        for z in b1:\n            x,y = base[z],b1[z]\n            b0[x] = y\n        #r0 = \" \".join([str(x) for x in b0])\n        if ans == t0:\n            print(\"correct!\")\n        else:\n            print(\"incorrect!\")\n            cr=sum([int(ans[x] == t0[x]) for x in range(len(t0))])/len(t0)\n            print(\"correct rate:\", cr)\n            print(\"the correct answer is:\", t0)\n            print(\"your answer is:\", ans)",
+        "type": "code",
+        "location": "/tools/deep-text-editor/neural_network/make_piece_sort.py:1-33"
+    },
+    "1955": {
+        "file_id": 387,
+        "content": "The code randomly selects a line from \"base.py\", shuffles the words, and asks the user to rearrange them correctly. It checks if the user's answer is correct and provides feedback with a correct rate and the correct answer.",
+        "type": "comment"
+    },
+    "1956": {
+        "file_id": 387,
+        "content": "        print(\"correct form:\", t1)\n        print(\"continue?\")\n        input()\n        #print(\"correct form:\",\"\\n\".join(truth))\n    except:\n        traceback.print_exc()\n        print(\"exception printed above!\")\n        pass",
+        "type": "code",
+        "location": "/tools/deep-text-editor/neural_network/make_piece_sort.py:34-41"
+    },
+    "1957": {
+        "file_id": 387,
+        "content": "The code is checking if the input form matches the correct format and asks for user confirmation before continuing. If an exception occurs, it prints the traceback and a message.",
+        "type": "comment"
+    },
+    "1958": {
+        "file_id": 388,
+        "content": "/tools/deep-text-editor/neural_network/make_quiz.py",
+        "type": "filepath"
+    },
+    "1959": {
+        "file_id": 388,
+        "content": "Code reads \"base.py\" file, filters lines with more than 2 characters, randomly selects a line as question, replaces one word in the question with \"___\", asks user for answer, checks if the answer is correct and prints accordingly, and then asks if the user wants to continue.",
+        "type": "summary"
+    },
+    "1960": {
+        "file_id": 388,
+        "content": "truth=open(\"base.py\",\"r\").read().split(\"\\n\")\ntruth=list(filter(lambda x: len(x)> 2, truth))\nimport random\nimport traceback\nwhile True:\n    try:\n        r=random.choice(truth)\n        r0=r.split()\n        r0=random.choice(r0)\n        r1=r.replace(r0,\"___\")\n        print(\"question:\",r1)\n        ans=input(\"answer:\\n\")\n        if ans == r0:\n            print(\"correct!\")\n        else:\n            print(\"incorrect!\")\n            print(\"the correct answer is:\", r0)\n            print(\"your answer is:\", ans)\n        print(\"correct form:\",r)\n        print(\"continue?\")\n        input()\n    except:\n        traceback.print_exc()\n        print(\"exception printed above!\")\n        pass",
+        "type": "code",
+        "location": "/tools/deep-text-editor/neural_network/make_quiz.py:1-25"
+    },
+    "1961": {
+        "file_id": 388,
+        "content": "Code reads \"base.py\" file, filters lines with more than 2 characters, randomly selects a line as question, replaces one word in the question with \"___\", asks user for answer, checks if the answer is correct and prints accordingly, and then asks if the user wants to continue.",
+        "type": "comment"
+    },
+    "1962": {
+        "file_id": 389,
+        "content": "/tools/deep-text-editor/neural_network/make_rev_str_quiz.py",
+        "type": "filepath"
+    },
+    "1963": {
+        "file_id": 389,
+        "content": "The code generates and executes random commands from a file, checks answers, supports error handling through monkey patching and exception printing, but lacks hint feature implementation.",
+        "type": "summary"
+    },
+    "1964": {
+        "file_id": 389,
+        "content": "truth=open(\"base.py\",\"r\").read().split(\"\\n\")\ntruth=list(filter(lambda x: len(x)> 2, truth))\nimport random\nimport traceback\nimport copy\nfrom monkey_editing import monkey \n# we can show hints, which identify the hints may only relates to the effect of hinting, and resembles the real world scenario.\ndef exc_exec(program):\n    try:\n        return str(eval(program))\n    except:\n        return traceback.format_exc()\n        #return \"Exception.\"\nwhile True:\n    try:\n        r=random.choice(truth)\n        r0=dir(r)\n        r0=random.choice(r0)\n        r1=\"r.{}()\".format(r0)\n        r0=exc_exec(r1)\n        print(\"command:\",monkey(r1))\n        cmd=copy.deepcopy(r1)\n        r1=r0.split()\n        r1=random.choice(r1)\n        print(\"result:\",r0)\n        ans=input(\"answer:\\n\")\n        if ans == cmd:\n            print(\"correct!\")\n        else:\n            print(\"incorrect!\")\n            print(\"the correct answer is:\", cmd)\n            print(\"your answer is:\", ans)\n        #print(\"correct form:\",r)\n        print(\"continue?\")\n        input()",
+        "type": "code",
+        "location": "/tools/deep-text-editor/neural_network/make_rev_str_quiz.py:1-35"
+    },
+    "1965": {
+        "file_id": 389,
+        "content": "This code generates random commands from a file and executes them, checking if the user's answer matches the expected result. The monkey patching function allows for potential error handling and hinting feature is mentioned but not implemented.",
+        "type": "comment"
+    },
+    "1966": {
+        "file_id": 389,
+        "content": "    except:\n        traceback.print_exc()\n        print(\"exception printed above!\")\n        pass",
+        "type": "code",
+        "location": "/tools/deep-text-editor/neural_network/make_rev_str_quiz.py:36-39"
+    },
+    "1967": {
+        "file_id": 389,
+        "content": "The code is handling exceptions by printing the traceback and a message, then continuing execution.",
+        "type": "comment"
+    },
+    "1968": {
+        "file_id": 390,
+        "content": "/tools/deep-text-editor/neural_network/make_search_slider.py",
+        "type": "filepath"
+    },
+    "1969": {
+        "file_id": 390,
+        "content": "The code reads \"base.py\", filters content, creates a list of unique words for searching, and handles user input for search prompts. It checks user's input against stored value r0, provides feedback, updates r1, and asks for confirmation to continue while handling exceptions.",
+        "type": "summary"
+    },
+    "1970": {
+        "file_id": 390,
+        "content": "truth0=open(\"base.py\",\"r\").read().split(\"\\n\")\ntruth0=list(filter(lambda x: len(x)> 2, truth0))\nimport copy\ntruth=copy.deepcopy(truth0)\ntruth=[x.split() for x in truth]\ntruth=list(set([x for y in truth for x in y]))\ndef findall(content,target,span=5):\n    cnt=copy.deepcopy(content)\n    cur=0\n    r=[]\n    while cur != -1:\n        cur=cnt.find(target)\n        if cur != -1:\n            x,y=cur-span,cur+len(target)+span\n            if x<0:\n                x=0\n            result=cnt[x:y]\n            r.append(result)\n            cnt=cnt[y:]\n    return r\nimport random\nimport traceback\nwindow=5\nimport tty\nimport sys\ntty.setcbreak(sys.stdin)\nwhile True:\n    rtoken=random.choice(truth)\n    rtarget=[findall(x,rtoken) for x in truth0]\n    rtarget=[x for y in rtarget for x in y]\n    random.shuffle(rtarget)\n    for r in rtarget:\n        print(\"searching token:\", rtoken)\n        fst=r[:5]\n        nxt=r[5:]\n        r1=fst\n        try:\n            for r0 in nxt:\n                print(\"question:\",r1)\n                print(\"answer:\")\n                ans=sys.stdin.read(1)",
+        "type": "code",
+        "location": "/tools/deep-text-editor/neural_network/make_search_slider.py:1-41"
+    },
+    "1971": {
+        "file_id": 390,
+        "content": "The code reads a file called \"base.py\", filters out lines with less than 3 characters, creates a list of unique words from the filtered content, and then randomly selects a token for searching in each line of the original content. It also handles user input to answer search prompts.",
+        "type": "comment"
+    },
+    "1972": {
+        "file_id": 390,
+        "content": "                if ans == r0:\n                    print(\"correct!\")\n                else:\n                    print(\"incorrect!\")\n                    print(\"the correct answer is:\", r0)\n                    print(\"your answer is:\", ans)\n                r1+=r0\n            print(\"correct form:\",r)\n            print(\"continue?\")\n            input()\n        except:\n            traceback.print_exc()\n            print(\"exception printed above!\")\n            pass",
+        "type": "code",
+        "location": "/tools/deep-text-editor/neural_network/make_search_slider.py:42-55"
+    },
+    "1973": {
+        "file_id": 390,
+        "content": "This code checks if the user's input matches the stored value, r0. If correct, it prints \"correct!\". If incorrect, it provides feedback on the correct and incorrect answers. It updates r1 with r0 and displays a progress message. It then asks for confirmation to continue and catches any exceptions, printing them before continuing.",
+        "type": "comment"
+    },
+    "1974": {
+        "file_id": 391,
+        "content": "/tools/deep-text-editor/neural_network/make_seen.py",
+        "type": "filepath"
+    },
+    "1975": {
+        "file_id": 391,
+        "content": "The code implements a recursive memory function that generates a random list of numbers and asks the user if they have seen it before. It keeps track of previously seen lists within a specified memory limit.",
+        "type": "summary"
+    },
+    "1976": {
+        "file_id": 391,
+        "content": "import random\nimport copy\nmem=10\nwindow=3\nmemory=[]\n# we want to know how deep it goes like.\n# this shall be recursive memory.\n# we develop this from scratch.\nrng=lambda: random.randint(1,5)\nbase=[rng() for _ in range(window)]\nwhile True:\n    print(\"world:\", base)\n    ans=input(\"seen?\\n\")\n    r0=base in memory\n    ans= ans==\"yes\"\n    if ans == r0:\n        print(\"correct!\")\n    else:\n        print(\"incorrect!\")\n        print(\"seen:\",r0)\n    memory.insert(0,copy.deepcopy(base))\n    if len(memory)>mem:\n        memory.pop()\n    base.insert(0,rng())\n    base.pop()",
+        "type": "code",
+        "location": "/tools/deep-text-editor/neural_network/make_seen.py:1-26"
+    },
+    "1977": {
+        "file_id": 391,
+        "content": "The code implements a recursive memory function that generates a random list of numbers and asks the user if they have seen it before. It keeps track of previously seen lists within a specified memory limit.",
+        "type": "comment"
+    },
+    "1978": {
+        "file_id": 392,
+        "content": "/tools/deep-text-editor/neural_network/make_sort.py",
+        "type": "filepath"
+    },
+    "1979": {
+        "file_id": 392,
+        "content": "This code reads a file, shuffles the lines and asks user to reorder them. If correct, it prints \"correct!\" and if not, it shows the correct answer and user's answer. It keeps asking until user chooses not to continue. The code also handles exceptions using try-except block.",
+        "type": "summary"
+    },
+    "1980": {
+        "file_id": 392,
+        "content": "truth=open(\"base.py\",\"r\").read().split(\"\\n\")\ntruth=list(filter(lambda x: len(x)> 2, truth))\nimport random\nimport copy\nimport traceback\nbase=[x for x in range(len(truth))]\nb1=copy.deepcopy(base)\nwhile True:\n    try:\n        random.shuffle(base)\n        r1=[\"{}: {}\".format(i,truth[x]) for i,x in enumerate(base)]\n        print(\"question:\")\n        print(\"\\n\".join(r1))\n        ans=input(\"answer:\\n\")\n        b0=[None]*len(b1)\n        for z in b1:\n            x,y = base[z],b1[z]\n            b0[x] = y\n        r0 = \" \".join([str(x) for x in b0])\n        if ans == r0:\n            print(\"correct!\")\n        else:\n            print(\"incorrect!\")\n            print(\"the correct answer is:\", r0)\n            print(\"your answer is:\", ans)\n        print(\"continue?\")\n        input()\n        #print(\"correct form:\",\"\\n\".join(truth))\n    except:\n        traceback.print_exc()\n        print(\"exception printed above!\")\n        pass",
+        "type": "code",
+        "location": "/tools/deep-text-editor/neural_network/make_sort.py:1-33"
+    },
+    "1981": {
+        "file_id": 392,
+        "content": "This code reads a file, shuffles the lines and asks user to reorder them. If correct, it prints \"correct!\" and if not, it shows the correct answer and user's answer. It keeps asking until user chooses not to continue. The code also handles exceptions using try-except block.",
+        "type": "comment"
+    },
+    "1982": {
+        "file_id": 393,
+        "content": "/tools/deep-text-editor/neural_network/make_str_functional.py",
+        "type": "filepath"
+    },
+    "1983": {
+        "file_id": 393,
+        "content": "The code generates a random line of code from \"base.py\", executes it, and asks the user for the correct answer. It continues until an exception occurs or the user decides to stop.",
+        "type": "summary"
+    },
+    "1984": {
+        "file_id": 393,
+        "content": "truth=open(\"base.py\",\"r\").read().split(\"\\n\")\ntruth=list(filter(lambda x: len(x)> 2, truth))\nimport random\nimport traceback\ndef exc_exec(program):\n    try:\n        return str(eval(program))\n    except:\n        return traceback.format_exc()\n        #return \"Exception.\"\nwhile True:\n    try:\n        r=random.choice(truth)\n        r0=dir(r)\n        r0=random.choice(r0)\n        r1=\"r.{}()\".format(r0)\n        print(\"question:\",r1)\n        r0=exc_exec(r1)\n        ans=input(\"answer:\\n\")\n        if ans == r0:\n            print(\"correct!\")\n        else:\n            print(\"incorrect!\")\n            print(\"the correct answer is:\", r0)\n            print(\"your answer is:\", ans)\n        #print(\"correct form:\",r)\n        print(\"continue?\")\n        input()\n    except:\n        traceback.print_exc()\n        print(\"exception printed above!\")\n        pass",
+        "type": "code",
+        "location": "/tools/deep-text-editor/neural_network/make_str_functional.py:1-32"
+    },
+    "1985": {
+        "file_id": 393,
+        "content": "The code generates a random line of code from \"base.py\", executes it, and asks the user for the correct answer. It continues until an exception occurs or the user decides to stop.",
+        "type": "comment"
+    },
+    "1986": {
+        "file_id": 394,
+        "content": "/tools/deep-text-editor/neural_network/make_str_quiz.py",
+        "type": "filepath"
+    },
+    "1987": {
+        "file_id": 394,
+        "content": "The code randomly selects a line from \"base.py\", chooses a function from that line, executes it, and prompts the user to guess the result. If correct, it says so; otherwise, it shows the correct answer. It continuously asks if the user wants to continue until an exception occurs or the program is stopped manually.",
+        "type": "summary"
+    },
+    "1988": {
+        "file_id": 394,
+        "content": "truth=open(\"base.py\",\"r\").read().split(\"\\n\")\ntruth=list(filter(lambda x: len(x)> 2, truth))\nimport random\nimport traceback\ndef exc_exec(program):\n    try:\n        return str(eval(program))\n    except:\n        return traceback.format_exc()\n        #return \"Exception.\"\nwhile True:\n    try:\n        r=random.choice(truth)\n        r0=dir(r)\n        r0=random.choice(r0)\n        r1=\"r.{}()\".format(r0)\n        r0=exc_exec(r1)\n        print(\"command:\",r1)\n        r1=r0.split()\n        r1=random.choice(r1)\n        r0=r0.replace(r1,\"___\")\n        print(\"result:\",r0)\n        ans=input(\"answer:\\n\")\n        if ans == r1:\n            print(\"correct!\")\n        else:\n            print(\"incorrect!\")\n            print(\"the correct answer is:\", r1)\n            print(\"your answer is:\", ans)\n        #print(\"correct form:\",r)\n        print(\"continue?\")\n        input()\n    except:\n        traceback.print_exc()\n        print(\"exception printed above!\")\n        pass",
+        "type": "code",
+        "location": "/tools/deep-text-editor/neural_network/make_str_quiz.py:1-36"
+    },
+    "1989": {
+        "file_id": 394,
+        "content": "The code randomly selects a line from \"base.py\", chooses a function from that line, executes it, and prompts the user to guess the result. If correct, it says so; otherwise, it shows the correct answer. It continuously asks if the user wants to continue until an exception occurs or the program is stopped manually.",
+        "type": "comment"
+    },
+    "1990": {
+        "file_id": 395,
+        "content": "/tools/deep-text-editor/neural_network/make_sync.py",
+        "type": "filepath"
+    },
+    "1991": {
+        "file_id": 395,
+        "content": "This code continuously prints \"clock ticking.\" and decrements the variable 'p' by 1 every second. When 'p' reaches zero, it prints \"SURPRISE!\" and assigns a new random value to 'p'. The function rng() generates a random number between 2 and 5.",
+        "type": "summary"
+    },
+    "1992": {
+        "file_id": 395,
+        "content": "# this is real time clock prediction.\nimport time\nimport random\nrng=lambda:random.randint(2,5)\np=rng()\nwhile True:\n    print(\"clock ticking.\")\n    p-=1\n    if p<=0:\n        print(\"SURPRISE!\")\n        p=rng()\n    time.sleep(1)",
+        "type": "code",
+        "location": "/tools/deep-text-editor/neural_network/make_sync.py:1-13"
+    },
+    "1993": {
+        "file_id": 395,
+        "content": "This code continuously prints \"clock ticking.\" and decrements the variable 'p' by 1 every second. When 'p' reaches zero, it prints \"SURPRISE!\" and assigns a new random value to 'p'. The function rng() generates a random number between 2 and 5.",
+        "type": "comment"
+    },
+    "1994": {
+        "file_id": 396,
+        "content": "/tools/deep-text-editor/neural_network/monkey_editing.py",
+        "type": "filepath"
+    },
+    "1995": {
+        "file_id": 396,
+        "content": "The code defines a function `monkey` that generates random strings using `gen_str()` and performs editing operations like insert, replace, copy, paste, backspace, delete, forward, and backward on an editor object. It executes these operations randomly for 15 iterations before returning the modified content of the editor.",
+        "type": "summary"
+    },
+    "1996": {
+        "file_id": 396,
+        "content": "from editor import editor\nimport random\nimport time\ndef gen_str():\n    return \"\".join([chr(random.randint(0,200)) for x in range(random.randint(1,2))])\ndef monkey(content):\n    e=editor(content=content)\n    insert=lambda: e.insert(gen_str())\n    replace=lambda: e.replace(gen_str())\n    copy=lambda: e.copy(gen_str())\n    paste=lambda: e.paste()\n    forward=lambda: e.forward(random.randint(1,2))\n    backward=lambda: e.backward(random.randint(1,2))\n    delete=lambda: e.delete(random.randint(1,2))\n    backspace=lambda: e.backspace(random.randint(1,2))\n    ops=[insert,replace,copy,paste,backspace,delete,forward,backward]\n    for _ in range(15):\n        random.choice(ops)()\n    return e.content",
+        "type": "code",
+        "location": "/tools/deep-text-editor/neural_network/monkey_editing.py:1-20"
+    },
+    "1997": {
+        "file_id": 396,
+        "content": "The code defines a function `monkey` that generates random strings using `gen_str()` and performs editing operations like insert, replace, copy, paste, backspace, delete, forward, and backward on an editor object. It executes these operations randomly for 15 iterations before returning the modified content of the editor.",
+        "type": "comment"
+    },
+    "1998": {
+        "file_id": 397,
+        "content": "/tools/deep-text-editor/neural_network/qcl/convert.sh",
+        "type": "filepath"
+    },
+    "1999": {
+        "file_id": 397,
+        "content": "This script takes all files in the current directory (ls), filters only PDF files (grep), removes .pdf extension (sed), and then uses mutool to convert each PDF file to HTML with -o \"abc.html\" as output filename.",
+        "type": "summary"
+    }
+}

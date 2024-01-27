@@ -1,0 +1,10 @@
+{
+    "summary": "Code exports a task in an unspecified format to tasks.json file without checking the format first.",
+    "details": [
+        {
+            "comment": "Code exports a task in an unspecified format to tasks.json file without checking the format first.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/schedules/export_tasks.sh\":0-2",
+            "content": "task export > tasks.json\n# are you sure that this is the best shot?\n# you don't check the format first?"
+        }
+    ]
+}

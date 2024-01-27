@@ -1,0 +1,20 @@
+{
+    "summary": "The code imports eglot.el, sets up company mode and Helm package, installs async-await, configures modes for features like completion and mode hooks, and calls `eglot-server-programs` function.",
+    "details": [
+        {
+            "comment": "This code attempts to import eglot.el, set up company mode, and possibly install Helm package. It also tries to run various functions, find files, and execute commands but seems to encounter issues with non-executing scripts.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_kali_amd64/cognitionService/virtual/company2.el\":0-30",
+            "content": ";try to import the eglot.el\n; or find the way to import? or spy the import stack.\n;(use-package eglot)\n;(require 'package)\n;(package-initialize)\n(global-company-mode)\n;(add-hook 'find-file-hook 'global-company-mode)\n;(add-hook 'after-init-hook 'global-company-mode)\n;(add-hook 'find-file-hook 'company-mode)\n;(add-hook 'after-init-hook 'company-mode)\n;(add-hook 'find-file-hook 'company-complete-common)\n;(autoload 'company-mode)\n;(eglot-completion-at-point)\n;(eglot-ensure)\n(setq company-idle-delay 0)\n;(find-file \"company2.sh\");wtf is going on?\n(insert \"a\")\n;(company-mode)\n;(company-complete-common)\n;(require 'lsp-mode)\n;(lsp)\n;(print \"init done?\")\n;(apply #'eglot--connect (eglot--guess-contact));no def here.\n;(describe-function #'lsp-mode)\n;(print-buffer)\n;(describe-function #'eglot)\n;(eglot 'sh-mode (project-current) 'eglot-lsp-server 'eglot-server-programs nil)\n;(find-file \"lsp.sh\"); not executing.\n;(run-with-timer 2 2 #'eglot-completion-at-point)\n;(run-with-idle-timer eglot-completion-at-point)\n;(package-install 'helm)"
+        },
+        {
+            "comment": "This code is setting up the necessary packages and configurations for a mode-aware language server called eglot. It installs the async-await package, adds load paths, activates the eglot package, ensures it's loaded, and configures various modes to use eglot features like completion and mode hooks.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_kali_amd64/cognitionService/virtual/company2.el\":31-69",
+            "content": ";(ielm) in buffer, not stdout.\n;(defun find-symbols-having-properties (properties)\n;  (let (ret)\n;    (mapatoms (lambda (s)\n;                (when (cl-loop for prop in properties\n;                               thereis (get s prop))\n;                    (push s ret))))\n;    ret))\n;(find-symbols-having-properties)\n;(autoload 'use-package)\n;(use-package \"eglot\")\n;(package-activate 'eglot)\n;(require 'eglot)\n;(eglot-ensure)\n;(find-file \"vscode_ipc.sh\")\n;(package-install 'async-await)\n;(add-to-list 'load-path \".\")\n;(print load-path)\n;(require 'package)\n;(require 'eglot)\n;(load \"eglot\")\n;(eglot-ensure)\n;(sleep-for 20)\n;(eglot-completion-at-point)\n;(eglot t t t)\n;(print (eglot--all-major-modes))\n;(managed-major-mode project class contact &optional interactive)\n;(setq project-root \".\")\n;(eglot \".\" t t t)\n;(eglot t t)\n;(eglot t t t t t)\n;(eglot t t t)\n;(add-hook 'sh-mode-hook 'eglot-ensure)\n;(sh-mode)\n;(sleep for a while...)\n;(eglot-completion-at-point)\n;(add-hook 'text-mode 'eglot-ensure)\n;(add-hook 'sh-mode-hook 'eglot-ensure)\n;(add-hook 'foo-mode-hook 'eglot-ensure)"
+        },
+        {
+            "comment": "This code snippet is calling the function `eglot-server-programs` and printing its result, which likely contains a list of server programs related to Eglot.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_kali_amd64/cognitionService/virtual/company2.el\":70-70",
+            "content": ";(print eglot-server-programs)"
+        }
+    ]
+}

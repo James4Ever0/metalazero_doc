@@ -1,0 +1,10 @@
+{
+    "summary": "The code continuously reads lines from standard input and prints them, creating an infinite loop. It uses the buffer readline method from sys.stdin to read data, which allows for efficient reading of binary data or large amounts of text.",
+    "details": [
+        {
+            "comment": "The code continuously reads lines from standard input and prints them, creating an infinite loop. It uses the buffer readline method from sys.stdin to read data, which allows for efficient reading of binary data or large amounts of text.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_kali_amd64/cognitionService/virtual/recv.py\":0-5",
+            "content": "import sys\nwhile True:\n    ln = sys.stdin.buffer.readline()\n    print([ln])\n#print(dir(sys.stdin.buffer))"
+        }
+    ]
+}

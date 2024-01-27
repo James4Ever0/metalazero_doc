@@ -1,0 +1,10 @@
+{
+    "summary": "This code retrieves the process ID and command line for a specified process using WMI in PowerShell.",
+    "details": [
+        {
+            "comment": "This code retrieves the process ID and command line for a specified process using WMI in PowerShell.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_win10_amd64/find_process.ps1\":0-1",
+            "content": "$process = $args[0]\nGet-WmiObject Win32_Process -Filter \"name = '$process'\" | Format-Table -Property ProcessId, CommandLine"
+        }
+    ]
+}

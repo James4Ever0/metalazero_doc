@@ -1,0 +1,10 @@
+{
+    "summary": "This script is a Bash shell script for generating completions. It utilizes the \"compgen\" command with arguments -abcdefgjksuv to generate completions for specified arguments or options.",
+    "details": [
+        {
+            "comment": "This script is a Bash shell script for generating completions. It utilizes the \"compgen\" command with arguments -abcdefgjksuv to generate completions for specified arguments or options.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_kali_amd64/cognitionService/virtual/gen_comp.sh\":0-1",
+            "content": "#!/bin/bash\ncompgen -abcdefgjksuv $@"
+        }
+    ]
+}

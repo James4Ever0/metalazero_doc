@@ -1,0 +1,10 @@
+{
+    "summary": "This code starts Emacs, a popular text editor, with the \"-q\" option to prevent loading default initialization files and \"-l async.el\" option to load the \"async.el\" Emacs Lisp script for asynchronous operations. The \"--script\" command tells Emacs to run the specified Elisp script (async.el) instead of waiting for user input. This is used for automating certain tasks in Emacs.",
+    "details": [
+        {
+            "comment": "This code starts Emacs, a popular text editor, with the \"-q\" option to prevent loading default initialization files and \"-l async.el\" option to load the \"async.el\" Emacs Lisp script for asynchronous operations. The \"--script\" command tells Emacs to run the specified Elisp script (async.el) instead of waiting for user input. This is used for automating certain tasks in Emacs.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_kali_amd64/cognitionService/virtual/async.sh\":0-1",
+            "content": "emacs -q -l async.el\n#emacs --script async.el"
+        }
+    ]
+}

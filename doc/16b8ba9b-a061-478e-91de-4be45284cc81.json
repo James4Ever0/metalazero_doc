@@ -1,0 +1,10 @@
+{
+    "summary": "This code imports the os module, prints \"enter normal shell\", executes a bash shell using os.system(), and finally prints \"exit normal shell\". It provides access to a normal shell within the script's execution context.",
+    "details": [
+        {
+            "comment": "This code imports the os module, prints \"enter normal shell\", executes a bash shell using os.system(), and finally prints \"exit normal shell\". It provides access to a normal shell within the script's execution context.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_kali_amd64/virtualService/tools/sandserv/normal_shell.py\":0-3",
+            "content": "import os\nprint(\"enter normal shell\")\nos.system(\"bash\")\nprint(\"exit normal shell\")"
+        }
+    ]
+}

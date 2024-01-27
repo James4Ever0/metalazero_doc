@@ -1,0 +1,10 @@
+{
+    "summary": "This code checks if a device with the given UUID exists in the local name resolution table. If not, it adds the device to the table. The table is stored in a JSON file named \".local_name_resolution.json\".",
+    "details": [
+        {
+            "comment": "This code checks if a device with the given UUID exists in the local name resolution table. If not, it adds the device to the table. The table is stored in a JSON file named \".local_name_resolution.json\".",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/remote_control/discovery/update_local_name_resolution_table.py\":0-27",
+            "content": "import json\nimport os\ncodename = \".local_name_resolution.json\"\n# if in return true.\ndef checkin(uuid,ip,data):\n    r = uuid in data.keys()\n    if not r:\n        return r\n    else:\n        r = (data[uuid] == ip)\n        return not r\ndef get_table():\n    if os.path.exists(codename):\n        return json.loads(open(codename,\"r\").read())\n    else:\n        with open(codename,\"w+\") as f:\n            f.write(json.dumps({}))\n        return get_table()\ndef set_table(uuid,ip):\n    table = get_table()\n    result = checkin(uuid,ip,table)\n    if not result:\n        table.update({uuid:{\"ip\":ip}})\n        with open(codename,\"w+\") as f:\n            f.write(json.dumps(table))\n    return result"
+        }
+    ]
+}

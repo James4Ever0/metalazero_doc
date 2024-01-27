@@ -1,0 +1,10 @@
+{
+    "summary": "Imports Foundation framework and logs \"Hello, World!\" in an autorelease pool on the main function.",
+    "details": [
+        {
+            "comment": "Imports Foundation framework and logs \"Hello, World!\" in an autorelease pool on the main function.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_kali_amd64/cognitionService/virtual/cog_core.m\":0-8",
+            "content": "#import <Foundation/Foundation.h>\n//#import <stdio.h>\nint main (int argc, const char * argv[])\n{\n        NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];\n        NSLog(@\"Hello, World!\");\n        [pool drain];\n        return 0;\n}"
+        }
+    ]
+}

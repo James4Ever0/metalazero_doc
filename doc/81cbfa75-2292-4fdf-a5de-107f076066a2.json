@@ -1,0 +1,10 @@
+{
+    "summary": "Imports necessary modules, sets system path, initializes a TwistedProcess instance with the command \"su\", then writes input text \"123\" 5 times after a delay, and prints the read output.",
+    "details": [
+        {
+            "comment": "Imports necessary modules, sets system path, initializes a TwistedProcess instance with the command \"su\", then writes input text \"123\" 5 times after a delay, and prints the read output.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_android_aarch64/inputService/twisted_type_test.py\":0-14",
+            "content": "import sys\nsys.path.append(\"../tools\")\nfrom twisted_template import TwistedProcess as TP\ncmd=\"su\"\nimport time\nwait=lambda:time.sleep(1)\ntp=TP([cmd])\nfor _ in range(5):\n    tp.write(b'input text \"123\"\\n')\n    wait()\n    print(tp.read(blocking=False))"
+        }
+    ]
+}

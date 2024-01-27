@@ -1,0 +1,10 @@
+{
+    "summary": "This script executes unloadram.sh, creates a ramdisk directory, sets its permissions to 777, and mounts a tmpfs filesystem named \"myramdisk\" with 10MiB size into the ramdisk directory.",
+    "details": [
+        {
+            "comment": "This script executes unloadram.sh, creates a ramdisk directory, sets its permissions to 777, and mounts a tmpfs filesystem named \"myramdisk\" with 10MiB size into the ramdisk directory.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_kali_amd64/virtualService/tools/sandserv/loadram.sh\":0-4",
+            "content": "#!/bin/bash\n./unloadram.sh\nsudo mkdir ramdisk\nsudo chmod 777 ramdisk\nsudo mount -t tmpfs -o size=10m myramdisk ramdisk"
+        }
+    ]
+}

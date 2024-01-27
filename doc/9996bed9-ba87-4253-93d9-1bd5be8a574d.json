@@ -1,0 +1,10 @@
+{
+    "summary": "This script performs the following actions:\n1. Lists all files in the \"multiserv\" directory using \"sudo ls -1 multiserv\".\n2. Passes each file name to the \"multiterm.sh\" script for terminating any running processes associated with it.\n3. Runs the \"unloadmulti.sh\" script to unload any loaded modules.\n4. Finally, deletes the entire \"multiserv\" directory using \"sudo rm -rf multiserv\".",
+    "details": [
+        {
+            "comment": "This script performs the following actions:\n1. Lists all files in the \"multiserv\" directory using \"sudo ls -1 multiserv\".\n2. Passes each file name to the \"multiterm.sh\" script for terminating any running processes associated with it.\n3. Runs the \"unloadmulti.sh\" script to unload any loaded modules.\n4. Finally, deletes the entire \"multiserv\" directory using \"sudo rm -rf multiserv\".",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_kali_amd64/virtualService/tools/sandserv/multipurge.sh\":0-5",
+            "content": "#!/bin/bash\n#sudo ls -1 multiserv | xargs -I % bash -c \"./multikill.sh %\"\nsudo ls -1 multiserv | xargs -I % bash -c \"./multiterm.sh %\"\n./unloadmulti.sh\nsudo rm -rf multiserv\n# you need to unload the thing."
+        }
+    ]
+}

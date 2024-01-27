@@ -1,0 +1,7 @@
+search for systemd alternative. not just for linux, macos, windows.
+launchd: macos
+crontab: linux, macos
+
+windows has its own utility to do the startup.
+
+what about searching for "starting program from startup on X system"?

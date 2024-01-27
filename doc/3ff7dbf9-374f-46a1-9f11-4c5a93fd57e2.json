@@ -1,0 +1,10 @@
+{
+    "summary": "The code is retrieving the X authorization file path for a specific process, setting environment variables for display and XAUTHORITY, and then performing a mousemove action using xdotool. The actions can only be done without vncserver.",
+    "details": [
+        {
+            "comment": "The code is retrieving the X authorization file path for a specific process, setting environment variables for display and XAUTHORITY, and then performing a mousemove action using xdotool. The actions can only be done without vncserver.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_kali_amd64/mainService/xdo_torch_monkey.sh\":0-2",
+            "content": "target=$(ps wwwaux | grep auth | grep xvfb | grep -Eo \"/tmp.\\$\")\nexport XAUTHORITY=$target && export DISPLAY=:99 && xdotool mousemove 500 500\n# this can only be done without vncserver."
+        }
+    ]
+}

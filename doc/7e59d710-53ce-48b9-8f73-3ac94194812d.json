@@ -1,0 +1,10 @@
+{
+    "summary": "This script launches Emacs with the provided telnet_client.el script for interacting with a telnet server.",
+    "details": [
+        {
+            "comment": "This script launches Emacs with the provided telnet_client.el script for interacting with a telnet server.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_kali_amd64/cognitionService/virtual/telnet_client.sh\":0-1",
+            "content": "#!/bin/bash\nemacs --script telnet_client.el"
+        }
+    ]
+}

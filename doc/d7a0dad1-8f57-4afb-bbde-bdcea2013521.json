@@ -1,0 +1,10 @@
+{
+    "summary": "This code takes a file, \"base.py\", reads it and splits into lines. It filters out any line with less than 3 characters. It then randomly selects a line from the filtered list and splits the line into first 5 characters (fst) and remaining 4 characters (nxt). Then, it asks for input character by character until it matches nxt and shows the correct answer if input is incorrect. Finally, it prints the original line from \"base.py\" as the correct form.",
+    "details": [
+        {
+            "comment": "This code takes a file, \"base.py\", reads it and splits into lines. It filters out any line with less than 3 characters. It then randomly selects a line from the filtered list and splits the line into first 5 characters (fst) and remaining 4 characters (nxt). Then, it asks for input character by character until it matches nxt and shows the correct answer if input is incorrect. Finally, it prints the original line from \"base.py\" as the correct form.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/tools/deep-text-editor/neural_network/make_backward_slider.py\":0-33",
+            "content": "truth=open(\"base.py\",\"r\").read().split(\"\\n\")\ntruth=list(filter(lambda x: len(x)> 2, truth))\nimport random\nimport traceback\nwindow=5\nimport tty\nimport sys\ntty.setcbreak(sys.stdin)\nwhile True:\n    try:\n        r=random.choice(truth)\n        fst=r[-5:]\n        nxt=r[:-5]\n        nxt=[nxt[-x-1] for x in range(len(nxt))]\n        nxt=\"\".join(nxt)\n        r1=fst\n        for r0 in nxt:\n            print(\"question:\",r1)\n            print(\"answer:\")\n            ans=sys.stdin.read(1)\n            if ans == r0:\n                print(\"correct!\")\n            else:\n                print(\"incorrect!\")\n                print(\"the correct answer is:\", r0)\n                print(\"your answer is:\", ans)\n            r1=r0+r1\n        print(\"correct form:\",r)\n        print(\"continue?\")\n        input()\n    except:\n        traceback.print_exc()\n        print(\"exception printed above!\")\n        pass"
+        }
+    ]
+}

@@ -1,0 +1,9 @@
+this is the base server for windows/macos/linux, due to the limitation of chromeos/android/ios.
+
+will serve the screen, mouse and keyboard via given port.
+
+can be visited directly from the web browser, or use cli clients to do extra fun.
+
+use setInterval(()=>{},t) instead of setTimeout?
+
+how to perform recursive tasks? does this really matters? really have any difference at all?

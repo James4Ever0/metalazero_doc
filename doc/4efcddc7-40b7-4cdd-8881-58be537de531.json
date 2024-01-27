@@ -1,0 +1,10 @@
+{
+    "summary": "Creates a new directory for diary entries, generates a timestamped file name, creates the file within the directory, and opens it in Vim editor.",
+    "details": [
+        {
+            "comment": "Creates a new directory for diary entries, generates a timestamped file name, creates the file within the directory, and opens it in Vim editor.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/schedules/write_diary.sh\":0-5",
+            "content": "mkdir diary\ntarget_diary=$(python3 -c \"import datetime; print(datetime.datetime.now().date().isoformat()+'.txt')\")\necho target: $target_diary\nsleep 0.5\ncd diary\nvim $target_diary"
+        }
+    ]
+}

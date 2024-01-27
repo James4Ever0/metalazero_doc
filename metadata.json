@@ -1,0 +1,2085 @@
+{
+    "url": {
+        "full": "https://gitee.com/x00e0d991e368/metalazero",
+        "partial": "/x00e0d991e368/metalazero"
+    },
+    "file_mapping": {
+        "0": {
+            "filepath": "/README.md",
+            "entry_id": 0,
+            "language_id": "markdown"
+        },
+        "1": {
+            "filepath": "/browser_plugin/lazero_crx_17_kiwi_ip_change/README.md",
+            "entry_id": 18,
+            "language_id": "markdown"
+        },
+        "2": {
+            "filepath": "/browser_plugin/lazero_crx_17_kiwi_ip_change/background.js",
+            "entry_id": 22,
+            "language_id": "javascript"
+        },
+        "3": {
+            "filepath": "/browser_plugin/lazero_crx_17_kiwi_ip_change/change_ip.sh",
+            "entry_id": 50,
+            "language_id": "shell"
+        },
+        "4": {
+            "filepath": "/browser_plugin/lazero_crx_17_kiwi_ip_change/content.js",
+            "entry_id": 54,
+            "language_id": "javascript"
+        },
+        "5": {
+            "filepath": "/browser_plugin/lazero_crx_17_kiwi_ip_change/dispatch.sh",
+            "entry_id": 66,
+            "language_id": "shell"
+        },
+        "6": {
+            "filepath": "/browser_plugin/lazero_crx_17_kiwi_ip_change/format.sed",
+            "entry_id": 70,
+            "language_id": "text"
+        },
+        "7": {
+            "filepath": "/browser_plugin/lazero_crx_17_kiwi_ip_change/format_code.sh",
+            "entry_id": 74,
+            "language_id": "shell"
+        },
+        "8": {
+            "filepath": "/browser_plugin/lazero_crx_17_kiwi_ip_change/local_dispatch.sh",
+            "entry_id": 78,
+            "language_id": "shell"
+        },
+        "9": {
+            "filepath": "/browser_plugin/lazero_crx_17_kiwi_ip_change/popup.js",
+            "entry_id": 82,
+            "language_id": "javascript"
+        },
+        "10": {
+            "filepath": "/browser_plugin/lazero_crx_17_kiwi_ip_change/reformat.sed",
+            "entry_id": 86,
+            "language_id": "text"
+        },
+        "11": {
+            "filepath": "/browser_plugin/lazero_crx_17_kiwi_ip_change/reformat.sh",
+            "entry_id": 90,
+            "language_id": "shell"
+        },
+        "12": {
+            "filepath": "/daemonize_startup/README",
+            "entry_id": 94,
+            "language_id": "plain-text"
+        },
+        "13": {
+            "filepath": "/daemonize_startup/linux_systemd/discovery_service.service",
+            "entry_id": 98,
+            "language_id": "text"
+        },
+        "14": {
+            "filepath": "/daemonize_startup/linux_systemd/frp_service.service",
+            "entry_id": 102,
+            "language_id": "text"
+        },
+        "15": {
+            "filepath": "/daemonize_startup/linux_systemd/jupyter_service.service",
+            "entry_id": 106,
+            "language_id": "text"
+        },
+        "16": {
+            "filepath": "/daemonize_startup/linux_systemd/novnc_service.service",
+            "entry_id": 110,
+            "language_id": "text"
+        },
+        "17": {
+            "filepath": "/daemonize_startup/linux_systemd/render_install_service.py",
+            "entry_id": 114,
+            "language_id": "python"
+        },
+        "18": {
+            "filepath": "/daemonize_startup/linux_systemd/routine.j2",
+            "entry_id": 120,
+            "language_id": "jinja"
+        },
+        "19": {
+            "filepath": "/daemonize_startup/linux_systemd/script.sh",
+            "entry_id": 124,
+            "language_id": "shell"
+        },
+        "20": {
+            "filepath": "/daemonize_startup/linux_systemd/template.j2",
+            "entry_id": 128,
+            "language_id": "jinja"
+        },
+        "21": {
+            "filepath": "/daemonize_startup/linux_systemd/wifimouse_service.service",
+            "entry_id": 132,
+            "language_id": "text"
+        },
+        "22": {
+            "filepath": "/daemonize_startup/linux_systemd/x11vnc_service.service",
+            "entry_id": 136,
+            "language_id": "text"
+        },
+        "23": {
+            "filepath": "/native/lazero_android_aarch64/inputService/autojs_type_test.js",
+            "entry_id": 140,
+            "language_id": "javascript"
+        },
+        "24": {
+            "filepath": "/native/lazero_android_aarch64/inputService/twisted_type_test.py",
+            "entry_id": 144,
+            "language_id": "python"
+        },
+        "25": {
+            "filepath": "/native/lazero_android_aarch64/inputService/type_test.py",
+            "entry_id": 148,
+            "language_id": "python"
+        },
+        "26": {
+            "filepath": "/native/lazero_android_aarch64/inputService/type_test.sh",
+            "entry_id": 152,
+            "language_id": "shell"
+        },
+        "27": {
+            "filepath": "/native/lazero_android_aarch64/mkdirs.sh",
+            "entry_id": 156,
+            "language_id": "shell"
+        },
+        "28": {
+            "filepath": "/native/lazero_android_aarch64/tools/twisted_template.py",
+            "entry_id": 160,
+            "language_id": "python"
+        },
+        "29": {
+            "filepath": "/native/lazero_android_aarch64/tools/where.py",
+            "entry_id": 172,
+            "language_id": "python"
+        },
+        "30": {
+            "filepath": "/native/lazero_chromeos_aarch64/cognitionService/check_attribute.py",
+            "entry_id": 176,
+            "language_id": "python"
+        },
+        "31": {
+            "filepath": "/native/lazero_chromeos_aarch64/cognitionService/get_commands.sh",
+            "entry_id": 180,
+            "language_id": "shell"
+        },
+        "32": {
+            "filepath": "/native/lazero_chromeos_aarch64/cognitionService/get_targets.sh",
+            "entry_id": 184,
+            "language_id": "shell"
+        },
+        "33": {
+            "filepath": "/native/lazero_chromeos_aarch64/cognitionService/hacking_service.py",
+            "entry_id": 188,
+            "language_id": "python"
+        },
+        "34": {
+            "filepath": "/native/lazero_chromeos_aarch64/cognitionService/mysql_randomly.py",
+            "entry_id": 192,
+            "language_id": "python"
+        },
+        "35": {
+            "filepath": "/native/lazero_chromeos_aarch64/cognitionService/ssh_randomly.py",
+            "entry_id": 196,
+            "language_id": "python"
+        },
+        "36": {
+            "filepath": "/native/lazero_chromeos_aarch64/cognitionService/test_commands.py",
+            "entry_id": 200,
+            "language_id": "python"
+        },
+        "37": {
+            "filepath": "/native/lazero_chromeos_aarch64/eventService/placeholder.sh",
+            "entry_id": 204,
+            "language_id": "shell"
+        },
+        "38": {
+            "filepath": "/native/lazero_chromeos_aarch64/inputService/autojs_type_test.js",
+            "entry_id": 208,
+            "language_id": "javascript"
+        },
+        "39": {
+            "filepath": "/native/lazero_chromeos_aarch64/inputService/placeholder.sh",
+            "entry_id": 212,
+            "language_id": "shell"
+        },
+        "40": {
+            "filepath": "/native/lazero_chromeos_aarch64/inputService/twisted_type_test.py",
+            "entry_id": 216,
+            "language_id": "python"
+        },
+        "41": {
+            "filepath": "/native/lazero_chromeos_aarch64/inputService/type_test.py",
+            "entry_id": 220,
+            "language_id": "python"
+        },
+        "42": {
+            "filepath": "/native/lazero_chromeos_aarch64/inputService/type_test.sh",
+            "entry_id": 224,
+            "language_id": "shell"
+        },
+        "43": {
+            "filepath": "/native/lazero_chromeos_aarch64/mkdirs.sh",
+            "entry_id": 228,
+            "language_id": "shell"
+        },
+        "44": {
+            "filepath": "/native/lazero_chromeos_aarch64/shareService/README",
+            "entry_id": 232,
+            "language_id": "plain-text"
+        },
+        "45": {
+            "filepath": "/native/lazero_chromeos_aarch64/tools/twisted_template.py",
+            "entry_id": 236,
+            "language_id": "python"
+        },
+        "46": {
+            "filepath": "/native/lazero_chromeos_aarch64/tools/where.py",
+            "entry_id": 248,
+            "language_id": "python"
+        },
+        "47": {
+            "filepath": "/native/lazero_kali_amd64/cognitionService/change_gcc.sh",
+            "entry_id": 252,
+            "language_id": "shell"
+        },
+        "48": {
+            "filepath": "/native/lazero_kali_amd64/cognitionService/chatbot_study.py",
+            "entry_id": 256,
+            "language_id": "python"
+        },
+        "49": {
+            "filepath": "/native/lazero_kali_amd64/cognitionService/deltaWrapper.py",
+            "entry_id": 262,
+            "language_id": "python"
+        },
+        "50": {
+            "filepath": "/native/lazero_kali_amd64/cognitionService/init.sh",
+            "entry_id": 266,
+            "language_id": "shell"
+        },
+        "51": {
+            "filepath": "/native/lazero_kali_amd64/cognitionService/interaction_0.py",
+            "entry_id": 270,
+            "language_id": "python"
+        },
+        "52": {
+            "filepath": "/native/lazero_kali_amd64/cognitionService/interaction_1.py",
+            "entry_id": 274,
+            "language_id": "python"
+        },
+        "53": {
+            "filepath": "/native/lazero_kali_amd64/cognitionService/interaction_2.py",
+            "entry_id": 278,
+            "language_id": "python"
+        },
+        "54": {
+            "filepath": "/native/lazero_kali_amd64/cognitionService/interaction_3.py",
+            "entry_id": 282,
+            "language_id": "python"
+        },
+        "55": {
+            "filepath": "/native/lazero_kali_amd64/cognitionService/prepare_gcc_alternatives.sh",
+            "entry_id": 286,
+            "language_id": "shell"
+        },
+        "56": {
+            "filepath": "/native/lazero_kali_amd64/cognitionService/recover_gcc.sh",
+            "entry_id": 290,
+            "language_id": "shell"
+        },
+        "57": {
+            "filepath": "/native/lazero_kali_amd64/cognitionService/requirements.txt",
+            "entry_id": 294,
+            "language_id": "plain-text"
+        },
+        "58": {
+            "filepath": "/native/lazero_kali_amd64/cognitionService/shellConnect.py",
+            "entry_id": 298,
+            "language_id": "python"
+        },
+        "59": {
+            "filepath": "/native/lazero_kali_amd64/cognitionService/virtual/README",
+            "entry_id": 302,
+            "language_id": "plain-text"
+        },
+        "60": {
+            "filepath": "/native/lazero_kali_amd64/cognitionService/virtual/add_global_js_module.sh",
+            "entry_id": 306,
+            "language_id": "shell"
+        },
+        "61": {
+            "filepath": "/native/lazero_kali_amd64/cognitionService/virtual/add_melpa.sh",
+            "entry_id": 310,
+            "language_id": "shell"
+        },
+        "62": {
+            "filepath": "/native/lazero_kali_amd64/cognitionService/virtual/adv.el",
+            "entry_id": 314,
+            "language_id": "text"
+        },
+        "63": {
+            "filepath": "/native/lazero_kali_amd64/cognitionService/virtual/adv.sh",
+            "entry_id": 322,
+            "language_id": "shell"
+        },
+        "64": {
+            "filepath": "/native/lazero_kali_amd64/cognitionService/virtual/adv2.el",
+            "entry_id": 326,
+            "language_id": "text"
+        },
+        "65": {
+            "filepath": "/native/lazero_kali_amd64/cognitionService/virtual/async.el",
+            "entry_id": 334,
+            "language_id": "text"
+        },
+        "66": {
+            "filepath": "/native/lazero_kali_amd64/cognitionService/virtual/async.sh",
+            "entry_id": 338,
+            "language_id": "shell"
+        },
+        "67": {
+            "filepath": "/native/lazero_kali_amd64/cognitionService/virtual/batch_mode.sh",
+            "entry_id": 342,
+            "language_id": "shell"
+        },
+        "68": {
+            "filepath": "/native/lazero_kali_amd64/cognitionService/virtual/clean.sh",
+            "entry_id": 346,
+            "language_id": "shell"
+        },
+        "69": {
+            "filepath": "/native/lazero_kali_amd64/cognitionService/virtual/client.el",
+            "entry_id": 350,
+            "language_id": "text"
+        },
+        "70": {
+            "filepath": "/native/lazero_kali_amd64/cognitionService/virtual/client.sh",
+            "entry_id": 354,
+            "language_id": "shell"
+        },
+        "71": {
+            "filepath": "/native/lazero_kali_amd64/cognitionService/virtual/client_lambda.sh",
+            "entry_id": 358,
+            "language_id": "shell"
+        },
+        "72": {
+            "filepath": "/native/lazero_kali_amd64/cognitionService/virtual/client_let.sh",
+            "entry_id": 362,
+            "language_id": "shell"
+        },
+        "73": {
+            "filepath": "/native/lazero_kali_amd64/cognitionService/virtual/client_list.sh",
+            "entry_id": 366,
+            "language_id": "shell"
+        },
+        "74": {
+            "filepath": "/native/lazero_kali_amd64/cognitionService/virtual/client_multiline.sh",
+            "entry_id": 370,
+            "language_id": "shell"
+        },
+        "75": {
+            "filepath": "/native/lazero_kali_amd64/cognitionService/virtual/client_print.el",
+            "entry_id": 374,
+            "language_id": "text"
+        },
+        "76": {
+            "filepath": "/native/lazero_kali_amd64/cognitionService/virtual/client_print.sh",
+            "entry_id": 378,
+            "language_id": "shell"
+        },
+        "77": {
+            "filepath": "/native/lazero_kali_amd64/cognitionService/virtual/client_progn.sh",
+            "entry_id": 382,
+            "language_id": "shell"
+        },
+        "78": {
+            "filepath": "/native/lazero_kali_amd64/cognitionService/virtual/client_with_current_buffer.sh",
+            "entry_id": 386,
+            "language_id": "shell"
+        },
+        "79": {
+            "filepath": "/native/lazero_kali_amd64/cognitionService/virtual/codium_debug.js",
+            "entry_id": 390,
+            "language_id": "javascript"
+        },
+        "80": {
+            "filepath": "/native/lazero_kali_amd64/cognitionService/virtual/codium_debug.sh",
+            "entry_id": 396,
+            "language_id": "shell"
+        },
+        "81": {
+            "filepath": "/native/lazero_kali_amd64/cognitionService/virtual/cog_core.bsh",
+            "entry_id": 400,
+            "language_id": "text"
+        },
+        "82": {
+            "filepath": "/native/lazero_kali_amd64/cognitionService/virtual/cog_core.c",
+            "entry_id": 404,
+            "language_id": "c"
+        },
+        "83": {
+            "filepath": "/native/lazero_kali_amd64/cognitionService/virtual/cog_core.el",
+            "entry_id": 408,
+            "language_id": "text"
+        },
+        "84": {
+            "filepath": "/native/lazero_kali_amd64/cognitionService/virtual/cog_core.erl",
+            "entry_id": 412,
+            "language_id": "text"
+        },
+        "85": {
+            "filepath": "/native/lazero_kali_amd64/cognitionService/virtual/cog_core.go",
+            "entry_id": 416,
+            "language_id": "go"
+        },
+        "86": {
+            "filepath": "/native/lazero_kali_amd64/cognitionService/virtual/cog_core.hs",
+            "entry_id": 420,
+            "language_id": "haskell"
+        },
+        "87": {
+            "filepath": "/native/lazero_kali_amd64/cognitionService/virtual/cog_core.java",
+            "entry_id": 424,
+            "language_id": "java"
+        },
+        "88": {
+            "filepath": "/native/lazero_kali_amd64/cognitionService/virtual/cog_core.js",
+            "entry_id": 428,
+            "language_id": "javascript"
+        },
+        "89": {
+            "filepath": "/native/lazero_kali_amd64/cognitionService/virtual/cog_core.lisp",
+            "entry_id": 432,
+            "language_id": "text"
+        },
+        "90": {
+            "filepath": "/native/lazero_kali_amd64/cognitionService/virtual/cog_core.lua",
+            "entry_id": 436,
+            "language_id": "lua"
+        },
+        "91": {
+            "filepath": "/native/lazero_kali_amd64/cognitionService/virtual/cog_core.m",
+            "entry_id": 440,
+            "language_id": "objective-c"
+        },
+        "92": {
+            "filepath": "/native/lazero_kali_amd64/cognitionService/virtual/cog_core.php",
+            "entry_id": 444,
+            "language_id": "php"
+        },
+        "93": {
+            "filepath": "/native/lazero_kali_amd64/cognitionService/virtual/cog_core.pl",
+            "entry_id": 448,
+            "language_id": "perl"
+        },
+        "94": {
+            "filepath": "/native/lazero_kali_amd64/cognitionService/virtual/cog_core.pro",
+            "entry_id": 452,
+            "language_id": "text"
+        },
+        "95": {
+            "filepath": "/native/lazero_kali_amd64/cognitionService/virtual/cog_core.py",
+            "entry_id": 456,
+            "language_id": "python"
+        },
+        "96": {
+            "filepath": "/native/lazero_kali_amd64/cognitionService/virtual/cog_core.rb",
+            "entry_id": 460,
+            "language_id": "ruby"
+        },
+        "97": {
+            "filepath": "/native/lazero_kali_amd64/cognitionService/virtual/cog_core.rs",
+            "entry_id": 464,
+            "language_id": "rust"
+        },
+        "98": {
+            "filepath": "/native/lazero_kali_amd64/cognitionService/virtual/cog_core.sh",
+            "entry_id": 468,
+            "language_id": "shell"
+        },
+        "99": {
+            "filepath": "/native/lazero_kali_amd64/cognitionService/virtual/cog_core.swift",
+            "entry_id": 472,
+            "language_id": "swift"
+        },
+        "100": {
+            "filepath": "/native/lazero_kali_amd64/cognitionService/virtual/cog_core.tcl",
+            "entry_id": 476,
+            "language_id": "text"
+        },
+        "101": {
+            "filepath": "/native/lazero_kali_amd64/cognitionService/virtual/company2.el",
+            "entry_id": 480,
+            "language_id": "text"
+        },
+        "102": {
+            "filepath": "/native/lazero_kali_amd64/cognitionService/virtual/company2.sh",
+            "entry_id": 488,
+            "language_id": "shell"
+        },
+        "103": {
+            "filepath": "/native/lazero_kali_amd64/cognitionService/virtual/compile.sh",
+            "entry_id": 492,
+            "language_id": "shell"
+        },
+        "104": {
+            "filepath": "/native/lazero_kali_amd64/cognitionService/virtual/connect_websocketd_ielm.py",
+            "entry_id": 496,
+            "language_id": "python"
+        },
+        "105": {
+            "filepath": "/native/lazero_kali_amd64/cognitionService/virtual/deltaWrapper.py",
+            "entry_id": 500,
+            "language_id": "python"
+        },
+        "106": {
+            "filepath": "/native/lazero_kali_amd64/cognitionService/virtual/echo_server.el",
+            "entry_id": 504,
+            "language_id": "text"
+        },
+        "107": {
+            "filepath": "/native/lazero_kali_amd64/cognitionService/virtual/echo_server.sh",
+            "entry_id": 512,
+            "language_id": "shell"
+        },
+        "108": {
+            "filepath": "/native/lazero_kali_amd64/cognitionService/virtual/ecl_run.sh",
+            "entry_id": 516,
+            "language_id": "shell"
+        },
+        "109": {
+            "filepath": "/native/lazero_kali_amd64/cognitionService/virtual/edit.sh",
+            "entry_id": 520,
+            "language_id": "shell"
+        },
+        "110": {
+            "filepath": "/native/lazero_kali_amd64/cognitionService/virtual/edit.vim",
+            "entry_id": 524,
+            "language_id": "vim"
+        },
+        "111": {
+            "filepath": "/native/lazero_kali_amd64/cognitionService/virtual/eserv.py",
+            "entry_id": 528,
+            "language_id": "python"
+        },
+        "112": {
+            "filepath": "/native/lazero_kali_amd64/cognitionService/virtual/eval_server.el",
+            "entry_id": 532,
+            "language_id": "text"
+        },
+        "113": {
+            "filepath": "/native/lazero_kali_amd64/cognitionService/virtual/eval_single_line.sh",
+            "entry_id": 540,
+            "language_id": "shell"
+        },
+        "114": {
+            "filepath": "/native/lazero_kali_amd64/cognitionService/virtual/fuzz.py",
+            "entry_id": 544,
+            "language_id": "python"
+        },
+        "115": {
+            "filepath": "/native/lazero_kali_amd64/cognitionService/virtual/gen_comp.sh",
+            "entry_id": 548,
+            "language_id": "shell"
+        },
+        "116": {
+            "filepath": "/native/lazero_kali_amd64/cognitionService/virtual/get_complete.el",
+            "entry_id": 552,
+            "language_id": "text"
+        },
+        "117": {
+            "filepath": "/native/lazero_kali_amd64/cognitionService/virtual/hello",
+            "entry_id": 556,
+            "language_id": "text"
+        },
+        "118": {
+            "filepath": "/native/lazero_kali_amd64/cognitionService/virtual/ielm_server.sh",
+            "entry_id": 560,
+            "language_id": "shell"
+        },
+        "119": {
+            "filepath": "/native/lazero_kali_amd64/cognitionService/virtual/init_emacs.el",
+            "entry_id": 564,
+            "language_id": "text"
+        },
+        "120": {
+            "filepath": "/native/lazero_kali_amd64/cognitionService/virtual/interaction_0.py",
+            "entry_id": 568,
+            "language_id": "python"
+        },
+        "121": {
+            "filepath": "/native/lazero_kali_amd64/cognitionService/virtual/interaction_1.py",
+            "entry_id": 572,
+            "language_id": "python"
+        },
+        "122": {
+            "filepath": "/native/lazero_kali_amd64/cognitionService/virtual/json_rpc.sh",
+            "entry_id": 576,
+            "language_id": "shell"
+        },
+        "123": {
+            "filepath": "/native/lazero_kali_amd64/cognitionService/virtual/launch_c_lsp.sh",
+            "entry_id": 580,
+            "language_id": "shell"
+        },
+        "124": {
+            "filepath": "/native/lazero_kali_amd64/cognitionService/virtual/launch_codium_debugger.sh",
+            "entry_id": 584,
+            "language_id": "shell"
+        },
+        "125": {
+            "filepath": "/native/lazero_kali_amd64/cognitionService/virtual/launch_websocketd_ielm.sh",
+            "entry_id": 588,
+            "language_id": "shell"
+        },
+        "126": {
+            "filepath": "/native/lazero_kali_amd64/cognitionService/virtual/lsp.el",
+            "entry_id": 592,
+            "language_id": "text"
+        },
+        "127": {
+            "filepath": "/native/lazero_kali_amd64/cognitionService/virtual/lsp.sh",
+            "entry_id": 600,
+            "language_id": "shell"
+        },
+        "128": {
+            "filepath": "/native/lazero_kali_amd64/cognitionService/virtual/make.sh",
+            "entry_id": 604,
+            "language_id": "shell"
+        },
+        "129": {
+            "filepath": "/native/lazero_kali_amd64/cognitionService/virtual/nedit.sh",
+            "entry_id": 608,
+            "language_id": "shell"
+        },
+        "130": {
+            "filepath": "/native/lazero_kali_amd64/cognitionService/virtual/nedit.vim",
+            "entry_id": 612,
+            "language_id": "vim"
+        },
+        "131": {
+            "filepath": "/native/lazero_kali_amd64/cognitionService/virtual/node_curl_telnet.js",
+            "entry_id": 616,
+            "language_id": "javascript"
+        },
+        "132": {
+            "filepath": "/native/lazero_kali_amd64/cognitionService/virtual/node_curl_telnet.sh",
+            "entry_id": 620,
+            "language_id": "shell"
+        },
+        "133": {
+            "filepath": "/native/lazero_kali_amd64/cognitionService/virtual/node_curl_telnet.template",
+            "entry_id": 624,
+            "language_id": "text"
+        },
+        "134": {
+            "filepath": "/native/lazero_kali_amd64/cognitionService/virtual/node_curl_template.sh",
+            "entry_id": 628,
+            "language_id": "shell"
+        },
+        "135": {
+            "filepath": "/native/lazero_kali_amd64/cognitionService/virtual/node_curl_template2.sh",
+            "entry_id": 632,
+            "language_id": "shell"
+        },
+        "136": {
+            "filepath": "/native/lazero_kali_amd64/cognitionService/virtual/nserv.py",
+            "entry_id": 636,
+            "language_id": "python"
+        },
+        "137": {
+            "filepath": "/native/lazero_kali_amd64/cognitionService/virtual/nserv.sh",
+            "entry_id": 640,
+            "language_id": "shell"
+        },
+        "138": {
+            "filepath": "/native/lazero_kali_amd64/cognitionService/virtual/objc_compile.sh",
+            "entry_id": 644,
+            "language_id": "shell"
+        },
+        "139": {
+            "filepath": "/native/lazero_kali_amd64/cognitionService/virtual/post_data.el",
+            "entry_id": 648,
+            "language_id": "text"
+        },
+        "140": {
+            "filepath": "/native/lazero_kali_amd64/cognitionService/virtual/post_data.sh",
+            "entry_id": 652,
+            "language_id": "shell"
+        },
+        "141": {
+            "filepath": "/native/lazero_kali_amd64/cognitionService/virtual/processes.js",
+            "entry_id": 656,
+            "language_id": "javascript"
+        },
+        "142": {
+            "filepath": "/native/lazero_kali_amd64/cognitionService/virtual/pure_fuzz.py",
+            "entry_id": 662,
+            "language_id": "python"
+        },
+        "143": {
+            "filepath": "/native/lazero_kali_amd64/cognitionService/virtual/python_complete.py",
+            "entry_id": 666,
+            "language_id": "python"
+        },
+        "144": {
+            "filepath": "/native/lazero_kali_amd64/cognitionService/virtual/python_lsp.sh",
+            "entry_id": 670,
+            "language_id": "shell"
+        },
+        "145": {
+            "filepath": "/native/lazero_kali_amd64/cognitionService/virtual/python_rpc_lsp.py",
+            "entry_id": 674,
+            "language_id": "python"
+        },
+        "146": {
+            "filepath": "/native/lazero_kali_amd64/cognitionService/virtual/recv.py",
+            "entry_id": 678,
+            "language_id": "python"
+        },
+        "147": {
+            "filepath": "/native/lazero_kali_amd64/cognitionService/virtual/reflection.el",
+            "entry_id": 682,
+            "language_id": "text"
+        },
+        "148": {
+            "filepath": "/native/lazero_kali_amd64/cognitionService/virtual/reflection.sh",
+            "entry_id": 686,
+            "language_id": "shell"
+        },
+        "149": {
+            "filepath": "/native/lazero_kali_amd64/cognitionService/virtual/ruby_api_list.rb",
+            "entry_id": 690,
+            "language_id": "ruby"
+        },
+        "150": {
+            "filepath": "/native/lazero_kali_amd64/cognitionService/virtual/run.sh",
+            "entry_id": 694,
+            "language_id": "shell"
+        },
+        "151": {
+            "filepath": "/native/lazero_kali_amd64/cognitionService/virtual/server.el",
+            "entry_id": 698,
+            "language_id": "text"
+        },
+        "152": {
+            "filepath": "/native/lazero_kali_amd64/cognitionService/virtual/server.sh",
+            "entry_id": 702,
+            "language_id": "shell"
+        },
+        "153": {
+            "filepath": "/native/lazero_kali_amd64/cognitionService/virtual/shellConnect.py",
+            "entry_id": 706,
+            "language_id": "python"
+        },
+        "154": {
+            "filepath": "/native/lazero_kali_amd64/cognitionService/virtual/stdio_jsonrpc.js",
+            "entry_id": 710,
+            "language_id": "javascript"
+        },
+        "155": {
+            "filepath": "/native/lazero_kali_amd64/cognitionService/virtual/stdio_jsonrpc.sh",
+            "entry_id": 714,
+            "language_id": "shell"
+        },
+        "156": {
+            "filepath": "/native/lazero_kali_amd64/cognitionService/virtual/tee_rcsh.rc",
+            "entry_id": 718,
+            "language_id": "text"
+        },
+        "157": {
+            "filepath": "/native/lazero_kali_amd64/cognitionService/virtual/telnet_client.el",
+            "entry_id": 722,
+            "language_id": "text"
+        },
+        "158": {
+            "filepath": "/native/lazero_kali_amd64/cognitionService/virtual/telnet_client.sh",
+            "entry_id": 726,
+            "language_id": "shell"
+        },
+        "159": {
+            "filepath": "/native/lazero_kali_amd64/cognitionService/virtual/telnetlib_connect.py",
+            "entry_id": 730,
+            "language_id": "python"
+        },
+        "160": {
+            "filepath": "/native/lazero_kali_amd64/cognitionService/virtual/test.sh",
+            "entry_id": 734,
+            "language_id": "shell"
+        },
+        "161": {
+            "filepath": "/native/lazero_kali_amd64/cognitionService/virtual/transmit_bashls.py",
+            "entry_id": 738,
+            "language_id": "python"
+        },
+        "162": {
+            "filepath": "/native/lazero_kali_amd64/cognitionService/virtual/transmit_bashls.sh",
+            "entry_id": 742,
+            "language_id": "shell"
+        },
+        "163": {
+            "filepath": "/native/lazero_kali_amd64/cognitionService/virtual/transmit_js_ipc.js",
+            "entry_id": 746,
+            "language_id": "javascript"
+        },
+        "164": {
+            "filepath": "/native/lazero_kali_amd64/cognitionService/virtual/transmit_js_ipc.py",
+            "entry_id": 756,
+            "language_id": "python"
+        },
+        "165": {
+            "filepath": "/native/lazero_kali_amd64/cognitionService/virtual/transmit_js_tee.js",
+            "entry_id": 760,
+            "language_id": "javascript"
+        },
+        "166": {
+            "filepath": "/native/lazero_kali_amd64/cognitionService/virtual/transmit_pyls.py",
+            "entry_id": 770,
+            "language_id": "python"
+        },
+        "167": {
+            "filepath": "/native/lazero_kali_amd64/cognitionService/virtual/transmit_pyls.sh",
+            "entry_id": 774,
+            "language_id": "shell"
+        },
+        "168": {
+            "filepath": "/native/lazero_kali_amd64/cognitionService/virtual/transmit_pyls_legacy.py",
+            "entry_id": 778,
+            "language_id": "python"
+        },
+        "169": {
+            "filepath": "/native/lazero_kali_amd64/cognitionService/virtual/vscode_baremetal.py",
+            "entry_id": 782,
+            "language_id": "python"
+        },
+        "170": {
+            "filepath": "/native/lazero_kali_amd64/cognitionService/virtual/vscode_client_lsp.js",
+            "entry_id": 786,
+            "language_id": "javascript"
+        },
+        "171": {
+            "filepath": "/native/lazero_kali_amd64/cognitionService/virtual/vscode_client_lsp.sh",
+            "entry_id": 790,
+            "language_id": "shell"
+        },
+        "172": {
+            "filepath": "/native/lazero_kali_amd64/cognitionService/virtual/vscode_ipc.js",
+            "entry_id": 794,
+            "language_id": "javascript"
+        },
+        "173": {
+            "filepath": "/native/lazero_kali_amd64/cognitionService/virtual/vscode_ipc.sh",
+            "entry_id": 800,
+            "language_id": "shell"
+        },
+        "174": {
+            "filepath": "/native/lazero_kali_amd64/cognitionService/virtual/vscode_ipc2.js",
+            "entry_id": 804,
+            "language_id": "javascript"
+        },
+        "175": {
+            "filepath": "/native/lazero_kali_amd64/cognitionService/virtual/vscode_ipc3.js",
+            "entry_id": 814,
+            "language_id": "javascript"
+        },
+        "176": {
+            "filepath": "/native/lazero_kali_amd64/cognitionService/virtual/vscode_lsp.js",
+            "entry_id": 824,
+            "language_id": "javascript"
+        },
+        "177": {
+            "filepath": "/native/lazero_kali_amd64/cognitionService/virtual/websocket_client_app.py",
+            "entry_id": 828,
+            "language_id": "python"
+        },
+        "178": {
+            "filepath": "/native/lazero_kali_amd64/cognitionService/virtual/websocket_test_server.py",
+            "entry_id": 832,
+            "language_id": "python"
+        },
+        "179": {
+            "filepath": "/native/lazero_kali_amd64/cognitionService/virtual/with_message_hook.el",
+            "entry_id": 836,
+            "language_id": "text"
+        },
+        "180": {
+            "filepath": "/native/lazero_kali_amd64/debug_init.sh",
+            "entry_id": 842,
+            "language_id": "shell"
+        },
+        "181": {
+            "filepath": "/native/lazero_kali_amd64/emacs_require",
+            "entry_id": 846,
+            "language_id": "text"
+        },
+        "182": {
+            "filepath": "/native/lazero_kali_amd64/eventService/chrome_receive.js",
+            "entry_id": 850,
+            "language_id": "javascript"
+        },
+        "183": {
+            "filepath": "/native/lazero_kali_amd64/eventService/emacs_receive.js",
+            "entry_id": 858,
+            "language_id": "javascript"
+        },
+        "184": {
+            "filepath": "/native/lazero_kali_amd64/eventService/keylog_server.py",
+            "entry_id": 864,
+            "language_id": "python"
+        },
+        "185": {
+            "filepath": "/native/lazero_kali_amd64/eventService/keylogger.py",
+            "entry_id": 868,
+            "language_id": "python"
+        },
+        "186": {
+            "filepath": "/native/lazero_kali_amd64/mainService/README",
+            "entry_id": 872,
+            "language_id": "plain-text"
+        },
+        "187": {
+            "filepath": "/native/lazero_kali_amd64/mainService/docker_monkey.py",
+            "entry_id": 876,
+            "language_id": "python"
+        },
+        "188": {
+            "filepath": "/native/lazero_kali_amd64/mainService/docker_vt100_base.py",
+            "entry_id": 880,
+            "language_id": "python"
+        },
+        "189": {
+            "filepath": "/native/lazero_kali_amd64/mainService/evaluator/prepare.py",
+            "entry_id": 894,
+            "language_id": "python"
+        },
+        "190": {
+            "filepath": "/native/lazero_kali_amd64/mainService/filter_common_pattern.py",
+            "entry_id": 898,
+            "language_id": "python"
+        },
+        "191": {
+            "filepath": "/native/lazero_kali_amd64/mainService/filter_python_bullshits.sh",
+            "entry_id": 902,
+            "language_id": "shell"
+        },
+        "192": {
+            "filepath": "/native/lazero_kali_amd64/mainService/generator/program_generator.sh",
+            "entry_id": 906,
+            "language_id": "shell"
+        },
+        "193": {
+            "filepath": "/native/lazero_kali_amd64/mainService/generator/python_program_generator.py",
+            "entry_id": 910,
+            "language_id": "python"
+        },
+        "194": {
+            "filepath": "/native/lazero_kali_amd64/mainService/generator/regex_generator.py",
+            "entry_id": 918,
+            "language_id": "python"
+        },
+        "195": {
+            "filepath": "/native/lazero_kali_amd64/mainService/launch_monkey.sh",
+            "entry_id": 922,
+            "language_id": "shell"
+        },
+        "196": {
+            "filepath": "/native/lazero_kali_amd64/mainService/launch_monkey_basic.sh",
+            "entry_id": 926,
+            "language_id": "shell"
+        },
+        "197": {
+            "filepath": "/native/lazero_kali_amd64/mainService/logic_fuzzer.py",
+            "entry_id": 930,
+            "language_id": "python"
+        },
+        "198": {
+            "filepath": "/native/lazero_kali_amd64/mainService/monkey_basic.py",
+            "entry_id": 936,
+            "language_id": "python"
+        },
+        "199": {
+            "filepath": "/native/lazero_kali_amd64/mainService/monkey_controller.py",
+            "entry_id": 942,
+            "language_id": "python"
+        },
+        "200": {
+            "filepath": "/native/lazero_kali_amd64/mainService/problem_generator/README",
+            "entry_id": 946,
+            "language_id": "plain-text"
+        },
+        "201": {
+            "filepath": "/native/lazero_kali_amd64/mainService/program_database/README",
+            "entry_id": 950,
+            "language_id": "plain-text"
+        },
+        "202": {
+            "filepath": "/native/lazero_kali_amd64/mainService/program_database/launch.sh",
+            "entry_id": 954,
+            "language_id": "shell"
+        },
+        "203": {
+            "filepath": "/native/lazero_kali_amd64/mainService/program_database/python_database.py",
+            "entry_id": 958,
+            "language_id": "python"
+        },
+        "204": {
+            "filepath": "/native/lazero_kali_amd64/mainService/program_database/python_monkey.py",
+            "entry_id": 964,
+            "language_id": "python"
+        },
+        "205": {
+            "filepath": "/native/lazero_kali_amd64/mainService/program_database/python_monkey_database.py",
+            "entry_id": 968,
+            "language_id": "python"
+        },
+        "206": {
+            "filepath": "/native/lazero_kali_amd64/mainService/program_database/requirements.txt",
+            "entry_id": 976,
+            "language_id": "plain-text"
+        },
+        "207": {
+            "filepath": "/native/lazero_kali_amd64/mainService/target_basic.py",
+            "entry_id": 980,
+            "language_id": "python"
+        },
+        "208": {
+            "filepath": "/native/lazero_kali_amd64/mainService/tee_shell.sh",
+            "entry_id": 984,
+            "language_id": "shell"
+        },
+        "209": {
+            "filepath": "/native/lazero_kali_amd64/mainService/torch_monkey.sh",
+            "entry_id": 988,
+            "language_id": "shell"
+        },
+        "210": {
+            "filepath": "/native/lazero_kali_amd64/mainService/uniq_filter.py",
+            "entry_id": 992,
+            "language_id": "python"
+        },
+        "211": {
+            "filepath": "/native/lazero_kali_amd64/mainService/uniq_monkey_launcher.sh",
+            "entry_id": 996,
+            "language_id": "shell"
+        },
+        "212": {
+            "filepath": "/native/lazero_kali_amd64/mainService/unsupervised_neural_network/README",
+            "entry_id": 1000,
+            "language_id": "plain-text"
+        },
+        "213": {
+            "filepath": "/native/lazero_kali_amd64/mainService/vnc_bruteforcer.py",
+            "entry_id": 1004,
+            "language_id": "python"
+        },
+        "214": {
+            "filepath": "/native/lazero_kali_amd64/mainService/vnc_monkey.py",
+            "entry_id": 1010,
+            "language_id": "python"
+        },
+        "215": {
+            "filepath": "/native/lazero_kali_amd64/mainService/xdo_torch_monkey.sh",
+            "entry_id": 1016,
+            "language_id": "shell"
+        },
+        "216": {
+            "filepath": "/native/lazero_kali_amd64/mkdirs.sh",
+            "entry_id": 1020,
+            "language_id": "shell"
+        },
+        "217": {
+            "filepath": "/native/lazero_kali_amd64/nodejs_require",
+            "entry_id": 1024,
+            "language_id": "text"
+        },
+        "218": {
+            "filepath": "/native/lazero_kali_amd64/replService/chrome_console.js",
+            "entry_id": 1028,
+            "language_id": "javascript"
+        },
+        "219": {
+            "filepath": "/native/lazero_kali_amd64/replService/chrome_console_logger.js",
+            "entry_id": 1036,
+            "language_id": "javascript"
+        },
+        "220": {
+            "filepath": "/native/lazero_kali_amd64/rmtest.sh",
+            "entry_id": 1044,
+            "language_id": "shell"
+        },
+        "221": {
+            "filepath": "/native/lazero_kali_amd64/shellService/ptyproc.py",
+            "entry_id": 1048,
+            "language_id": "python"
+        },
+        "222": {
+            "filepath": "/native/lazero_kali_amd64/shellService/pyte_template.py",
+            "entry_id": 1062,
+            "language_id": "python"
+        },
+        "223": {
+            "filepath": "/native/lazero_kali_amd64/shellService/webXFS.py",
+            "entry_id": 1066,
+            "language_id": "python"
+        },
+        "224": {
+            "filepath": "/native/lazero_kali_amd64/tools/exec_all.py",
+            "entry_id": 1072,
+            "language_id": "python"
+        },
+        "225": {
+            "filepath": "/native/lazero_kali_amd64/tools/python_namespace.py",
+            "entry_id": 1076,
+            "language_id": "python"
+        },
+        "226": {
+            "filepath": "/native/lazero_kali_amd64/tools/stackMe.py",
+            "entry_id": 1080,
+            "language_id": "python"
+        },
+        "227": {
+            "filepath": "/native/lazero_kali_amd64/tools/uuid_fname.py",
+            "entry_id": 1086,
+            "language_id": "python"
+        },
+        "228": {
+            "filepath": "/native/lazero_kali_amd64/virtualService/shellService/ptyproc.py",
+            "entry_id": 1090,
+            "language_id": "python"
+        },
+        "229": {
+            "filepath": "/native/lazero_kali_amd64/virtualService/tools/sandserv/52-basic-load.py",
+            "entry_id": 1106,
+            "language_id": "python"
+        },
+        "230": {
+            "filepath": "/native/lazero_kali_amd64/virtualService/tools/sandserv/52_immortal.py",
+            "entry_id": 1112,
+            "language_id": "python"
+        },
+        "231": {
+            "filepath": "/native/lazero_kali_amd64/virtualService/tools/sandserv/README",
+            "entry_id": 1118,
+            "language_id": "plain-text"
+        },
+        "232": {
+            "filepath": "/native/lazero_kali_amd64/virtualService/tools/sandserv/argtest.sh",
+            "entry_id": 1122,
+            "language_id": "shell"
+        },
+        "233": {
+            "filepath": "/native/lazero_kali_amd64/virtualService/tools/sandserv/chroot.sh",
+            "entry_id": 1126,
+            "language_id": "shell"
+        },
+        "234": {
+            "filepath": "/native/lazero_kali_amd64/virtualService/tools/sandserv/command_x64.sh",
+            "entry_id": 1130,
+            "language_id": "shell"
+        },
+        "235": {
+            "filepath": "/native/lazero_kali_amd64/virtualService/tools/sandserv/efilter.py",
+            "entry_id": 1134,
+            "language_id": "python"
+        },
+        "236": {
+            "filepath": "/native/lazero_kali_amd64/virtualService/tools/sandserv/gkill.sh",
+            "entry_id": 1138,
+            "language_id": "shell"
+        },
+        "237": {
+            "filepath": "/native/lazero_kali_amd64/virtualService/tools/sandserv/incage.sh",
+            "entry_id": 1142,
+            "language_id": "shell"
+        },
+        "238": {
+            "filepath": "/native/lazero_kali_amd64/virtualService/tools/sandserv/loadmulti.sh",
+            "entry_id": 1146,
+            "language_id": "shell"
+        },
+        "239": {
+            "filepath": "/native/lazero_kali_amd64/virtualService/tools/sandserv/loadram.sh",
+            "entry_id": 1150,
+            "language_id": "shell"
+        },
+        "240": {
+            "filepath": "/native/lazero_kali_amd64/virtualService/tools/sandserv/mclean.sh",
+            "entry_id": 1154,
+            "language_id": "shell"
+        },
+        "241": {
+            "filepath": "/native/lazero_kali_amd64/virtualService/tools/sandserv/multichroot.sh",
+            "entry_id": 1158,
+            "language_id": "shell"
+        },
+        "242": {
+            "filepath": "/native/lazero_kali_amd64/virtualService/tools/sandserv/multiclean.sh",
+            "entry_id": 1162,
+            "language_id": "shell"
+        },
+        "243": {
+            "filepath": "/native/lazero_kali_amd64/virtualService/tools/sandserv/multikill.sh",
+            "entry_id": 1166,
+            "language_id": "shell"
+        },
+        "244": {
+            "filepath": "/native/lazero_kali_amd64/virtualService/tools/sandserv/multipty.py",
+            "entry_id": 1170,
+            "language_id": "python"
+        },
+        "245": {
+            "filepath": "/native/lazero_kali_amd64/virtualService/tools/sandserv/multipurge.sh",
+            "entry_id": 1186,
+            "language_id": "shell"
+        },
+        "246": {
+            "filepath": "/native/lazero_kali_amd64/virtualService/tools/sandserv/multiram.sh",
+            "entry_id": 1190,
+            "language_id": "shell"
+        },
+        "247": {
+            "filepath": "/native/lazero_kali_amd64/virtualService/tools/sandserv/multireload.sh",
+            "entry_id": 1194,
+            "language_id": "shell"
+        },
+        "248": {
+            "filepath": "/native/lazero_kali_amd64/virtualService/tools/sandserv/multiroot.sh",
+            "entry_id": 1200,
+            "language_id": "shell"
+        },
+        "249": {
+            "filepath": "/native/lazero_kali_amd64/virtualService/tools/sandserv/multiterm.sh",
+            "entry_id": 1204,
+            "language_id": "shell"
+        },
+        "250": {
+            "filepath": "/native/lazero_kali_amd64/virtualService/tools/sandserv/multiunloadram.sh",
+            "entry_id": 1208,
+            "language_id": "shell"
+        },
+        "251": {
+            "filepath": "/native/lazero_kali_amd64/virtualService/tools/sandserv/multiunloadroot.sh",
+            "entry_id": 1212,
+            "language_id": "shell"
+        },
+        "252": {
+            "filepath": "/native/lazero_kali_amd64/virtualService/tools/sandserv/nchroot.sh",
+            "entry_id": 1216,
+            "language_id": "shell"
+        },
+        "253": {
+            "filepath": "/native/lazero_kali_amd64/virtualService/tools/sandserv/normal_shell.py",
+            "entry_id": 1220,
+            "language_id": "python"
+        },
+        "254": {
+            "filepath": "/native/lazero_kali_amd64/virtualService/tools/sandserv/nsjail_reloadscript_x64.sh",
+            "entry_id": 1224,
+            "language_id": "shell"
+        },
+        "255": {
+            "filepath": "/native/lazero_kali_amd64/virtualService/tools/sandserv/pivot.sh",
+            "entry_id": 1230,
+            "language_id": "shell"
+        },
+        "256": {
+            "filepath": "/native/lazero_kali_amd64/virtualService/tools/sandserv/ptyproc.py",
+            "entry_id": 1234,
+            "language_id": "python"
+        },
+        "257": {
+            "filepath": "/native/lazero_kali_amd64/virtualService/tools/sandserv/ptyproc_x64.py",
+            "entry_id": 1248,
+            "language_id": "python"
+        },
+        "258": {
+            "filepath": "/native/lazero_kali_amd64/virtualService/tools/sandserv/reloadscript.sh",
+            "entry_id": 1262,
+            "language_id": "shell"
+        },
+        "259": {
+            "filepath": "/native/lazero_kali_amd64/virtualService/tools/sandserv/reloadscript_x64.sh",
+            "entry_id": 1268,
+            "language_id": "shell"
+        },
+        "260": {
+            "filepath": "/native/lazero_kali_amd64/virtualService/tools/sandserv/runas.sh",
+            "entry_id": 1274,
+            "language_id": "shell"
+        },
+        "261": {
+            "filepath": "/native/lazero_kali_amd64/virtualService/tools/sandserv/tclean.sh",
+            "entry_id": 1278,
+            "language_id": "shell"
+        },
+        "262": {
+            "filepath": "/native/lazero_kali_amd64/virtualService/tools/sandserv/terminate.sh",
+            "entry_id": 1282,
+            "language_id": "shell"
+        },
+        "263": {
+            "filepath": "/native/lazero_kali_amd64/virtualService/tools/sandserv/tloadroot.sh",
+            "entry_id": 1286,
+            "language_id": "shell"
+        },
+        "264": {
+            "filepath": "/native/lazero_kali_amd64/virtualService/tools/sandserv/tloadroot_x64.sh",
+            "entry_id": 1290,
+            "language_id": "shell"
+        },
+        "265": {
+            "filepath": "/native/lazero_kali_amd64/virtualService/tools/sandserv/treloadroot.sh",
+            "entry_id": 1294,
+            "language_id": "shell"
+        },
+        "266": {
+            "filepath": "/native/lazero_kali_amd64/virtualService/tools/sandserv/treloadroot_x64.sh",
+            "entry_id": 1298,
+            "language_id": "shell"
+        },
+        "267": {
+            "filepath": "/native/lazero_kali_amd64/virtualService/tools/sandserv/tsimple_jail.sh",
+            "entry_id": 1302,
+            "language_id": "shell"
+        },
+        "268": {
+            "filepath": "/native/lazero_kali_amd64/virtualService/tools/sandserv/tsimple_jail_x64.sh",
+            "entry_id": 1306,
+            "language_id": "shell"
+        },
+        "269": {
+            "filepath": "/native/lazero_kali_amd64/virtualService/tools/sandserv/tunloadroot.sh",
+            "entry_id": 1310,
+            "language_id": "shell"
+        },
+        "270": {
+            "filepath": "/native/lazero_kali_amd64/virtualService/tools/sandserv/unloadmulti.sh",
+            "entry_id": 1314,
+            "language_id": "shell"
+        },
+        "271": {
+            "filepath": "/native/lazero_kali_amd64/virtualService/tools/sandserv/unloadram.sh",
+            "entry_id": 1318,
+            "language_id": "shell"
+        },
+        "272": {
+            "filepath": "/native/lazero_kali_amd64/virtualService/tools/sandserv/util.py",
+            "entry_id": 1322,
+            "language_id": "python"
+        },
+        "273": {
+            "filepath": "/native/lazero_win10_amd64/cognitionService/deltaWrapper.py",
+            "entry_id": 1330,
+            "language_id": "python"
+        },
+        "274": {
+            "filepath": "/native/lazero_win10_amd64/cognitionService/interaction_0.py",
+            "entry_id": 1334,
+            "language_id": "python"
+        },
+        "275": {
+            "filepath": "/native/lazero_win10_amd64/cognitionService/interaction_1.py",
+            "entry_id": 1338,
+            "language_id": "python"
+        },
+        "276": {
+            "filepath": "/native/lazero_win10_amd64/cognitionService/interaction_2.py",
+            "entry_id": 1342,
+            "language_id": "python"
+        },
+        "277": {
+            "filepath": "/native/lazero_win10_amd64/cognitionService/interaction_3.py",
+            "entry_id": 1346,
+            "language_id": "python"
+        },
+        "278": {
+            "filepath": "/native/lazero_win10_amd64/cognitionService/shellConnect.py",
+            "entry_id": 1350,
+            "language_id": "python"
+        },
+        "279": {
+            "filepath": "/native/lazero_win10_amd64/cognitionService/virtual/bash_test.js",
+            "entry_id": 1354,
+            "language_id": "javascript"
+        },
+        "280": {
+            "filepath": "/native/lazero_win10_amd64/cognitionService/virtual/get_error.js",
+            "entry_id": 1368,
+            "language_id": "javascript"
+        },
+        "281": {
+            "filepath": "/native/lazero_win10_amd64/cognitionService/virtual/processes.js",
+            "entry_id": 1372,
+            "language_id": "javascript"
+        },
+        "282": {
+            "filepath": "/native/lazero_win10_amd64/cognitionService/virtual/pyls_test.js",
+            "entry_id": 1378,
+            "language_id": "javascript"
+        },
+        "283": {
+            "filepath": "/native/lazero_win10_amd64/cognitionService/virtual/spy_process.py",
+            "entry_id": 1394,
+            "language_id": "python"
+        },
+        "284": {
+            "filepath": "/native/lazero_win10_amd64/debug_init.cmd",
+            "entry_id": 1398,
+            "language_id": "text"
+        },
+        "285": {
+            "filepath": "/native/lazero_win10_amd64/debug_init.sh",
+            "entry_id": 1402,
+            "language_id": "shell"
+        },
+        "286": {
+            "filepath": "/native/lazero_win10_amd64/eventService/chrome_receive.js",
+            "entry_id": 1406,
+            "language_id": "javascript"
+        },
+        "287": {
+            "filepath": "/native/lazero_win10_amd64/find_process.ps1",
+            "entry_id": 1414,
+            "language_id": "powershell"
+        },
+        "288": {
+            "filepath": "/native/lazero_win10_amd64/inputService/pyautogui_server.py",
+            "entry_id": 1418,
+            "language_id": "python"
+        },
+        "289": {
+            "filepath": "/native/lazero_win10_amd64/mainService/README",
+            "entry_id": 1422,
+            "language_id": "plain-text"
+        },
+        "290": {
+            "filepath": "/native/lazero_win10_amd64/mainService/docker_monkey.py",
+            "entry_id": 1426,
+            "language_id": "python"
+        },
+        "291": {
+            "filepath": "/native/lazero_win10_amd64/mainService/docker_vt100_base.py",
+            "entry_id": 1430,
+            "language_id": "python"
+        },
+        "292": {
+            "filepath": "/native/lazero_win10_amd64/mainService/launch_monkey.sh",
+            "entry_id": 1446,
+            "language_id": "shell"
+        },
+        "293": {
+            "filepath": "/native/lazero_win10_amd64/mainService/launch_monkey_basic.sh",
+            "entry_id": 1450,
+            "language_id": "shell"
+        },
+        "294": {
+            "filepath": "/native/lazero_win10_amd64/mainService/logic_fuzzer.py",
+            "entry_id": 1454,
+            "language_id": "python"
+        },
+        "295": {
+            "filepath": "/native/lazero_win10_amd64/mainService/monkey_basic.py",
+            "entry_id": 1460,
+            "language_id": "python"
+        },
+        "296": {
+            "filepath": "/native/lazero_win10_amd64/mainService/monkey_controller.py",
+            "entry_id": 1464,
+            "language_id": "python"
+        },
+        "297": {
+            "filepath": "/native/lazero_win10_amd64/mainService/regex_generator.py",
+            "entry_id": 1468,
+            "language_id": "python"
+        },
+        "298": {
+            "filepath": "/native/lazero_win10_amd64/mainService/uniq_filter.py",
+            "entry_id": 1472,
+            "language_id": "python"
+        },
+        "299": {
+            "filepath": "/native/lazero_win10_amd64/mainService/uniq_monkey_launcher.sh",
+            "entry_id": 1476,
+            "language_id": "shell"
+        },
+        "300": {
+            "filepath": "/native/lazero_win10_amd64/mkdirs.sh",
+            "entry_id": 1480,
+            "language_id": "shell"
+        },
+        "301": {
+            "filepath": "/native/lazero_win10_amd64/nodejs_require",
+            "entry_id": 1484,
+            "language_id": "text"
+        },
+        "302": {
+            "filepath": "/native/lazero_win10_amd64/replService/chrome_console.js",
+            "entry_id": 1488,
+            "language_id": "javascript"
+        },
+        "303": {
+            "filepath": "/native/lazero_win10_amd64/replService/chrome_console_logger.js",
+            "entry_id": 1496,
+            "language_id": "javascript"
+        },
+        "304": {
+            "filepath": "/native/lazero_win10_amd64/requirements.txt",
+            "entry_id": 1504,
+            "language_id": "plain-text"
+        },
+        "305": {
+            "filepath": "/native/lazero_win10_amd64/rmtest.sh",
+            "entry_id": 1508,
+            "language_id": "shell"
+        },
+        "306": {
+            "filepath": "/native/lazero_win10_amd64/shellService/ptyproc.py",
+            "entry_id": 1512,
+            "language_id": "python"
+        },
+        "307": {
+            "filepath": "/native/lazero_win10_amd64/shellService/pyte_template.py",
+            "entry_id": 1528,
+            "language_id": "python"
+        },
+        "308": {
+            "filepath": "/native/lazero_win10_amd64/shellService/twisted_proc.py",
+            "entry_id": 1532,
+            "language_id": "python"
+        },
+        "309": {
+            "filepath": "/native/lazero_win10_amd64/shellService/twisted_template.py",
+            "entry_id": 1546,
+            "language_id": "python"
+        },
+        "310": {
+            "filepath": "/native/lazero_win10_amd64/shellService/webXFS.py",
+            "entry_id": 1558,
+            "language_id": "python"
+        },
+        "311": {
+            "filepath": "/native/lazero_win10_amd64/shellService/winpty_template.py",
+            "entry_id": 1564,
+            "language_id": "python"
+        },
+        "312": {
+            "filepath": "/native/lazero_win10_amd64/tools/where.py",
+            "entry_id": 1570,
+            "language_id": "python"
+        },
+        "313": {
+            "filepath": "/remote_control/README",
+            "entry_id": 1574,
+            "language_id": "plain-text"
+        },
+        "314": {
+            "filepath": "/remote_control/client/README",
+            "entry_id": 1578,
+            "language_id": "plain-text"
+        },
+        "315": {
+            "filepath": "/remote_control/discovery/README",
+            "entry_id": 1582,
+            "language_id": "plain-text"
+        },
+        "316": {
+            "filepath": "/remote_control/discovery/broadcast_client.py",
+            "entry_id": 1586,
+            "language_id": "python"
+        },
+        "317": {
+            "filepath": "/remote_control/discovery/broadcast_client.sh",
+            "entry_id": 1590,
+            "language_id": "shell"
+        },
+        "318": {
+            "filepath": "/remote_control/discovery/broadcast_server.py",
+            "entry_id": 1594,
+            "language_id": "python"
+        },
+        "319": {
+            "filepath": "/remote_control/discovery/checkmate.sh",
+            "entry_id": 1602,
+            "language_id": "shell"
+        },
+        "320": {
+            "filepath": "/remote_control/discovery/generate_uuid.py",
+            "entry_id": 1606,
+            "language_id": "python"
+        },
+        "321": {
+            "filepath": "/remote_control/discovery/get_fastest_ip.py",
+            "entry_id": 1610,
+            "language_id": "python"
+        },
+        "322": {
+            "filepath": "/remote_control/discovery/template.j2",
+            "entry_id": 1614,
+            "language_id": "jinja"
+        },
+        "323": {
+            "filepath": "/remote_control/discovery/test_server.py",
+            "entry_id": 1618,
+            "language_id": "python"
+        },
+        "324": {
+            "filepath": "/remote_control/discovery/update_local_name_resolution_table.py",
+            "entry_id": 1622,
+            "language_id": "python"
+        },
+        "325": {
+            "filepath": "/remote_control/discovery/uuid_client.py",
+            "entry_id": 1626,
+            "language_id": "python"
+        },
+        "326": {
+            "filepath": "/remote_control/discovery/uuid_server.py",
+            "entry_id": 1630,
+            "language_id": "python"
+        },
+        "327": {
+            "filepath": "/remote_control/discovery/uuid_server.sh",
+            "entry_id": 1634,
+            "language_id": "shell"
+        },
+        "328": {
+            "filepath": "/remote_control/server/README",
+            "entry_id": 1638,
+            "language_id": "plain-text"
+        },
+        "329": {
+            "filepath": "/remote_control/server/deprecated_index.js",
+            "entry_id": 1642,
+            "language_id": "javascript"
+        },
+        "330": {
+            "filepath": "/remote_control/server/deprecated_lazero_remote_control.py",
+            "entry_id": 1662,
+            "language_id": "python"
+        },
+        "331": {
+            "filepath": "/remote_control/server/lazero_keyboard.py",
+            "entry_id": 1672,
+            "language_id": "python"
+        },
+        "332": {
+            "filepath": "/remote_control/server/lazero_mouse.py",
+            "entry_id": 1678,
+            "language_id": "python"
+        },
+        "333": {
+            "filepath": "/remote_control/server/lazero_remote_control.py",
+            "entry_id": 1684,
+            "language_id": "python"
+        },
+        "334": {
+            "filepath": "/remote_control/server/test_events.js",
+            "entry_id": 1692,
+            "language_id": "javascript"
+        },
+        "335": {
+            "filepath": "/remote_control/server/test_events.py",
+            "entry_id": 1716,
+            "language_id": "python"
+        },
+        "336": {
+            "filepath": "/remote_control/server/test_events.sh",
+            "entry_id": 1720,
+            "language_id": "shell"
+        },
+        "337": {
+            "filepath": "/remote_control/server/test_post.js",
+            "entry_id": 1724,
+            "language_id": "javascript"
+        },
+        "338": {
+            "filepath": "/remote_control/server/translate.py",
+            "entry_id": 1728,
+            "language_id": "python"
+        },
+        "339": {
+            "filepath": "/remote_control/tools/clipboard/linux/demo_clipboard.sh",
+            "entry_id": 1734,
+            "language_id": "shell"
+        },
+        "340": {
+            "filepath": "/remote_control/tools/clipboard/macos/demo_clipboard.sh",
+            "entry_id": 1738,
+            "language_id": "shell"
+        },
+        "341": {
+            "filepath": "/remote_control/tools/clipboard/pyperclip_clipboard.py",
+            "entry_id": 1742,
+            "language_id": "python"
+        },
+        "342": {
+            "filepath": "/remote_control/tools/clipboard/windows/README",
+            "entry_id": 1746,
+            "language_id": "plain-text"
+        },
+        "343": {
+            "filepath": "/remote_control/tools/clipboard/windows/demo_clipboard.ps1",
+            "entry_id": 1750,
+            "language_id": "powershell"
+        },
+        "344": {
+            "filepath": "/remote_control/tools/jupyter_userscript_autosave.js",
+            "entry_id": 1754,
+            "language_id": "javascript"
+        },
+        "345": {
+            "filepath": "/schedules/README",
+            "entry_id": 1758,
+            "language_id": "plain-text"
+        },
+        "346": {
+            "filepath": "/schedules/add_test.sh",
+            "entry_id": 1762,
+            "language_id": "shell"
+        },
+        "347": {
+            "filepath": "/schedules/concat.py",
+            "entry_id": 1766,
+            "language_id": "python"
+        },
+        "348": {
+            "filepath": "/schedules/demo_load.py",
+            "entry_id": 1770,
+            "language_id": "python"
+        },
+        "349": {
+            "filepath": "/schedules/demo_load.sh",
+            "entry_id": 1774,
+            "language_id": "shell"
+        },
+        "350": {
+            "filepath": "/schedules/export_offline_tasks.sh",
+            "entry_id": 1778,
+            "language_id": "shell"
+        },
+        "351": {
+            "filepath": "/schedules/export_tasks.sh",
+            "entry_id": 1782,
+            "language_id": "shell"
+        },
+        "352": {
+            "filepath": "/schedules/get_time.py",
+            "entry_id": 1786,
+            "language_id": "python"
+        },
+        "353": {
+            "filepath": "/schedules/import_tasks.sh",
+            "entry_id": 1792,
+            "language_id": "shell"
+        },
+        "354": {
+            "filepath": "/schedules/init.sh",
+            "entry_id": 1796,
+            "language_id": "shell"
+        },
+        "355": {
+            "filepath": "/schedules/merge_file.py",
+            "entry_id": 1800,
+            "language_id": "python"
+        },
+        "356": {
+            "filepath": "/schedules/merge_tasks.sh",
+            "entry_id": 1804,
+            "language_id": "shell"
+        },
+        "357": {
+            "filepath": "/schedules/purge_test.sh",
+            "entry_id": 1808,
+            "language_id": "shell"
+        },
+        "358": {
+            "filepath": "/schedules/speak_tasks.sh",
+            "entry_id": 1812,
+            "language_id": "shell"
+        },
+        "359": {
+            "filepath": "/schedules/speak_word.sh",
+            "entry_id": 1816,
+            "language_id": "shell"
+        },
+        "360": {
+            "filepath": "/schedules/sync.sh",
+            "entry_id": 1820,
+            "language_id": "shell"
+        },
+        "361": {
+            "filepath": "/schedules/write_diary.sh",
+            "entry_id": 1824,
+            "language_id": "shell"
+        },
+        "362": {
+            "filepath": "/tools/README",
+            "entry_id": 1828,
+            "language_id": "plain-text"
+        },
+        "363": {
+            "filepath": "/tools/blocking_io_string.py",
+            "entry_id": 1832,
+            "language_id": "python"
+        },
+        "364": {
+            "filepath": "/tools/bytes_blocking.py",
+            "entry_id": 1836,
+            "language_id": "python"
+        },
+        "365": {
+            "filepath": "/tools/chrome_logger.sh",
+            "entry_id": 1840,
+            "language_id": "shell"
+        },
+        "366": {
+            "filepath": "/tools/deep-text-editor/README",
+            "entry_id": 1844,
+            "language_id": "plain-text"
+        },
+        "367": {
+            "filepath": "/tools/deep-text-editor/editor.py",
+            "entry_id": 1848,
+            "language_id": "python"
+        },
+        "368": {
+            "filepath": "/tools/deep-text-editor/monkey_editing.py",
+            "entry_id": 1860,
+            "language_id": "python"
+        },
+        "369": {
+            "filepath": "/tools/deep-text-editor/neural_network/README",
+            "entry_id": 1864,
+            "language_id": "plain-text"
+        },
+        "370": {
+            "filepath": "/tools/deep-text-editor/neural_network/base.py",
+            "entry_id": 1868,
+            "language_id": "python"
+        },
+        "371": {
+            "filepath": "/tools/deep-text-editor/neural_network/editor.py",
+            "entry_id": 1872,
+            "language_id": "python"
+        },
+        "372": {
+            "filepath": "/tools/deep-text-editor/neural_network/generate_code.py",
+            "entry_id": 1884,
+            "language_id": "python"
+        },
+        "373": {
+            "filepath": "/tools/deep-text-editor/neural_network/generate_stimuli.py",
+            "entry_id": 1888,
+            "language_id": "python"
+        },
+        "374": {
+            "filepath": "/tools/deep-text-editor/neural_network/kdnugget.py",
+            "entry_id": 1892,
+            "language_id": "python"
+        },
+        "375": {
+            "filepath": "/tools/deep-text-editor/neural_network/make_arithmatic.py",
+            "entry_id": 1900,
+            "language_id": "python"
+        },
+        "376": {
+            "filepath": "/tools/deep-text-editor/neural_network/make_backward_slider.py",
+            "entry_id": 1906,
+            "language_id": "python"
+        },
+        "377": {
+            "filepath": "/tools/deep-text-editor/neural_network/make_correction.py",
+            "entry_id": 1910,
+            "language_id": "python"
+        },
+        "378": {
+            "filepath": "/tools/deep-text-editor/neural_network/make_execute_order.py",
+            "entry_id": 1914,
+            "language_id": "python"
+        },
+        "379": {
+            "filepath": "/tools/deep-text-editor/neural_network/make_gradual_slider.py",
+            "entry_id": 1918,
+            "language_id": "python"
+        },
+        "380": {
+            "filepath": "/tools/deep-text-editor/neural_network/make_hint_quiz.py",
+            "entry_id": 1922,
+            "language_id": "python"
+        },
+        "381": {
+            "filepath": "/tools/deep-text-editor/neural_network/make_imagine_quiz.py",
+            "entry_id": 1926,
+            "language_id": "python"
+        },
+        "382": {
+            "filepath": "/tools/deep-text-editor/neural_network/make_incorrect.py",
+            "entry_id": 1930,
+            "language_id": "python"
+        },
+        "383": {
+            "filepath": "/tools/deep-text-editor/neural_network/make_missing.py",
+            "entry_id": 1934,
+            "language_id": "python"
+        },
+        "384": {
+            "filepath": "/tools/deep-text-editor/neural_network/make_mixed_content.py",
+            "entry_id": 1938,
+            "language_id": "python"
+        },
+        "385": {
+            "filepath": "/tools/deep-text-editor/neural_network/make_model.py",
+            "entry_id": 1944,
+            "language_id": "python"
+        },
+        "386": {
+            "filepath": "/tools/deep-text-editor/neural_network/make_multiselect.py",
+            "entry_id": 1948,
+            "language_id": "python"
+        },
+        "387": {
+            "filepath": "/tools/deep-text-editor/neural_network/make_piece_sort.py",
+            "entry_id": 1952,
+            "language_id": "python"
+        },
+        "388": {
+            "filepath": "/tools/deep-text-editor/neural_network/make_quiz.py",
+            "entry_id": 1958,
+            "language_id": "python"
+        },
+        "389": {
+            "filepath": "/tools/deep-text-editor/neural_network/make_rev_str_quiz.py",
+            "entry_id": 1962,
+            "language_id": "python"
+        },
+        "390": {
+            "filepath": "/tools/deep-text-editor/neural_network/make_search_slider.py",
+            "entry_id": 1968,
+            "language_id": "python"
+        },
+        "391": {
+            "filepath": "/tools/deep-text-editor/neural_network/make_seen.py",
+            "entry_id": 1974,
+            "language_id": "python"
+        },
+        "392": {
+            "filepath": "/tools/deep-text-editor/neural_network/make_sort.py",
+            "entry_id": 1978,
+            "language_id": "python"
+        },
+        "393": {
+            "filepath": "/tools/deep-text-editor/neural_network/make_str_functional.py",
+            "entry_id": 1982,
+            "language_id": "python"
+        },
+        "394": {
+            "filepath": "/tools/deep-text-editor/neural_network/make_str_quiz.py",
+            "entry_id": 1986,
+            "language_id": "python"
+        },
+        "395": {
+            "filepath": "/tools/deep-text-editor/neural_network/make_sync.py",
+            "entry_id": 1990,
+            "language_id": "python"
+        },
+        "396": {
+            "filepath": "/tools/deep-text-editor/neural_network/monkey_editing.py",
+            "entry_id": 1994,
+            "language_id": "python"
+        },
+        "397": {
+            "filepath": "/tools/deep-text-editor/neural_network/qcl/convert.sh",
+            "entry_id": 1998,
+            "language_id": "shell"
+        },
+        "398": {
+            "filepath": "/tools/deep-text-editor/test.py",
+            "entry_id": 2002,
+            "language_id": "python"
+        },
+        "399": {
+            "filepath": "/tools/demo_run.py",
+            "entry_id": 2008,
+            "language_id": "python"
+        },
+        "400": {
+            "filepath": "/tools/expect_script_sleep.sh",
+            "entry_id": 2014,
+            "language_id": "shell"
+        },
+        "401": {
+            "filepath": "/tools/generic_io_linux_hid/README",
+            "entry_id": 2018,
+            "language_id": "plain-text"
+        },
+        "402": {
+            "filepath": "/tools/generic_io_linux_hid/init.sh",
+            "entry_id": 2022,
+            "language_id": "shell"
+        },
+        "403": {
+            "filepath": "/tools/get_help.sh",
+            "entry_id": 2026,
+            "language_id": "shell"
+        },
+        "404": {
+            "filepath": "/tools/get_ip.py",
+            "entry_id": 2030,
+            "language_id": "python"
+        },
+        "405": {
+            "filepath": "/tools/get_logged.sh",
+            "entry_id": 2034,
+            "language_id": "shell"
+        },
+        "406": {
+            "filepath": "/tools/init.sh",
+            "entry_id": 2038,
+            "language_id": "shell"
+        },
+        "407": {
+            "filepath": "/tools/io2.py",
+            "entry_id": 2042,
+            "language_id": "python"
+        },
+        "408": {
+            "filepath": "/tools/io_test.py",
+            "entry_id": 2046,
+            "language_id": "python"
+        },
+        "409": {
+            "filepath": "/tools/lazero",
+            "entry_id": 2050,
+            "language_id": "text"
+        },
+        "410": {
+            "filepath": "/tools/node_init.sh",
+            "entry_id": 2054,
+            "language_id": "shell"
+        },
+        "411": {
+            "filepath": "/tools/pexpect.sh",
+            "entry_id": 2058,
+            "language_id": "shell"
+        },
+        "412": {
+            "filepath": "/tools/rdir",
+            "entry_id": 2062,
+            "language_id": "text"
+        },
+        "413": {
+            "filepath": "/tools/requirements.txt",
+            "entry_id": 2068,
+            "language_id": "plain-text"
+        },
+        "414": {
+            "filepath": "/tools/sample_script.py",
+            "entry_id": 2072,
+            "language_id": "python"
+        }
+    },
+    "project_name": "metalazero",
+    "split_count": 21
+}

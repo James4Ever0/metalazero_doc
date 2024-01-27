@@ -1,0 +1,10 @@
+{
+    "summary": "The code imports the websocket module and defines an on_message function. It then creates a WebSocketApp instance, connecting to localhost:9998, and runs it indefinitely, printing received messages.",
+    "details": [
+        {
+            "comment": "The code imports the websocket module and defines an on_message function. It then creates a WebSocketApp instance, connecting to localhost:9998, and runs it indefinitely, printing received messages.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_kali_amd64/cognitionService/virtual/websocket_client_app.py\":0-7",
+            "content": "import websocket\ndef on_message(wsapp, text):\n    print(text)\n# still a client?\nwsapp=websocket.WebSocketApp(\"ws://localhost:9998\",on_message=on_message)\nwsapp.run_forever()\n#print(\"shit?\")"
+        }
+    ]
+}

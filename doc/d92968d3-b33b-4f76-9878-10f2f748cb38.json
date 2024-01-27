@@ -1,0 +1,10 @@
+{
+    "summary": "This code copies the \"novnc_service.service\" file to the systemd directory, reloads the daemon, stops and starts the \"novnc_service\", and enables it for automatic startup on Linux systemd-based systems.",
+    "details": [
+        {
+            "comment": "This code copies the \"novnc_service.service\" file to the systemd directory, reloads the daemon, stops and starts the \"novnc_service\", and enables it for automatic startup on Linux systemd-based systems.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/daemonize_startup/linux_systemd/script.sh\":0-5",
+            "content": "# ought to be rendered as bash scripts.\nsudo cp novnc_service.service /etc/systemd/system/novnc_service.service\nsudo systemctl daemon-reload\nsudo systemctl kill novnc_service\nsudo systemctl start novnc_service\nsudo systemctl enable novnc_service "
+        }
+    ]
+}

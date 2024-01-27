@@ -1,0 +1,10 @@
+{
+    "summary": "This code imports the pyautogui module as PAG, which provides a way to control mouse and keyboard inputs for automation purposes.",
+    "details": [
+        {
+            "comment": "This code imports the pyautogui module as PAG, which provides a way to control mouse and keyboard inputs for automation purposes.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_win10_amd64/inputService/pyautogui_server.py\":0-2",
+            "content": "# providing write service?\n# everything's like game.\nimport pyautogui as PAG"
+        }
+    ]
+}

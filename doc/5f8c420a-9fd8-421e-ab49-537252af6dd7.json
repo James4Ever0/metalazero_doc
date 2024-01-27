@@ -1,0 +1,10 @@
+{
+    "summary": "This repository serves as a demo for Dan Shultz's tutorial on creating a basic Chrome extension. It contains fixed typo corrections and is ready to be sent to a remote server, with backup method preservation.",
+    "details": [
+        {
+            "comment": "This repository serves as a demo for Dan Shultz's tutorial on creating a basic Chrome extension. It contains fixed typo corrections and is ready to be sent to a remote server, with backup method preservation.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/browser_plugin/lazero_crx_17_kiwi_ip_change/README.md\":0-8",
+            "content": "# Derived Project\nThis repo is the demo for Dan Shultz's tutorial [\"Creating A Basic Chrome Extension\"](https://www.thepolyglotdeveloper.com/2018/09/creating-basic-chrome-extension/). I fixed some typos in his code.\nAbout to send to some remote server. see how the fuck will you do it.\nStart Copy Data -> Successful sent -> Close session\nBackup method? Not overwritten."
+        }
+    ]
+}

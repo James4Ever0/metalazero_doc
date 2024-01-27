@@ -1,0 +1,15 @@
+{
+    "summary": "This code establishes a communication channel between VSCode and a bash language server, using child processes, streams, and specific modules. It logs information about the stream objects involved in the process, while sending and logging a \"hello world?\" message.",
+    "details": [
+        {
+            "comment": "The code sets up a communication channel between VSCode and a bash language server. It uses child processes, streams for reader and writer communication, and requires certain modules like vscode-languageserver-protocol/node and child_process. The code also logs information about the stream objects involved in the communication.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_kali_amd64/cognitionService/virtual/vscode_ipc.js\":0-26",
+            "content": "const node_1 = require(\"vscode-languageserver-protocol/node\")\nconst process = require(\"./processes\") \nconst cp = require(\"child_process\")\nfunction dir(a) {console.dir(a)}\nfunction log(a) {console.log(a)}\n// something else?\nvar serverProcess = cp.spawn(\"bash-language-server\",[\"start\"])\n// does this really matter? can we write into the stdin?\n// no don't you think about this.\nvar client = {reader:new node_1.StreamMessageReader(serverProcess.stdout)\n,writer:new node_1.StreamMessageWriter(serverProcess.stdin)}\n// shall be resolved.\n//dir(client.reader)\nfunction inspect(a) {return Object.getOwnPropertyNames(a)}\nlog(client.reader.readable.stream)\nlog(inspect(client.reader.readable.stream.__proto__))\nlog(inspect(client.reader.readable.stream.__proto__.__proto__))\nlog(inspect(client.reader.readable.stream))\nlog(client.reader.buffer)\n// great, now what to write?\nlog(client.reader.readable.stream._read(1))\nlog(\"_____________________WRITER_____________________\")\ndir(client.writer)\ndir(client.writer.writable.__proto__)\ndir(client.writer.writable.__proto__.__proto__)"
+        },
+        {
+            "comment": "Sending \"hello world?\" message to the writer, logging reader buffer every second.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_kali_amd64/cognitionService/virtual/vscode_ipc.js\":27-38",
+            "content": "log(client.writer.write)\nlog(client.reader.read) //got nothing.\nlog(client.reader.write) //got nothing.\nvar m = {method:\"echo\",params:[\"hello world?\"]}; // this semicolon.\n(async () =>{\nlet ml = JSON.stringify(m);\nawait client.writer.write(ml);\nlog(client.reader);\nsetInterval(()=>{log(client.reader.buffer);},1000);\n})();\n// semicolons. always?"
+        }
+    ]
+}

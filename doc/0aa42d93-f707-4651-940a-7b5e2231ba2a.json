@@ -1,0 +1,10 @@
+{
+    "summary": "Executes the script in bash, appends its standard output (stdout) to inputs.log and standard error (stderr) to outputs.log simultaneously.",
+    "details": [
+        {
+            "comment": "Executes the script in bash, appends its standard output (stdout) to inputs.log and standard error (stderr) to outputs.log simultaneously.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_kali_amd64/mainService/tee_shell.sh\":0-1",
+            "content": "#tee -a inputs.log | bash | tee -a outputs.log\ntee -a inputs.log | bash 2>&1 | tee -a outputs.log"
+        }
+    ]
+}

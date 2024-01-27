@@ -1,0 +1,535 @@
+{
+    "1000": {
+        "file_id": 212,
+        "content": "/native/lazero_kali_amd64/mainService/unsupervised_neural_network/README",
+        "type": "filepath"
+    },
+    "1001": {
+        "file_id": 212,
+        "content": "This code creates a neural network with meta-targets, setting initial targets randomly but ensuring high-level targets are not random.",
+        "type": "summary"
+    },
+    "1002": {
+        "file_id": 212,
+        "content": "this is to create the neural network with meta-targets. so initial targets are random but high-level targets are not.",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/mainService/unsupervised_neural_network/README:1-1"
+    },
+    "1003": {
+        "file_id": 212,
+        "content": "This code creates a neural network with meta-targets, setting initial targets randomly but ensuring high-level targets are not random.",
+        "type": "comment"
+    },
+    "1004": {
+        "file_id": 213,
+        "content": "/native/lazero_kali_amd64/mainService/vnc_bruteforcer.py",
+        "type": "filepath"
+    },
+    "1005": {
+        "file_id": 213,
+        "content": "This VNC bruteforcer script takes password and address as arguments, connects to the VNC server using vncdotool, simulates user input by randomly moving mouse and typing keys, parses command-line arguments with argparse, and runs functions indefinitely from the \"fs\" list of keyType functions.",
+        "type": "summary"
+    },
+    "1006": {
+        "file_id": 213,
+        "content": "#import os\nimport argparse\nparser = argparse.ArgumentParser()\nparser.add_argument(\"-p\",\"--passwd\",type=str,required=True)\nparser.add_argument(\"-a\",\"--address\",\"--add_argumentress\",type=str,required=True)\nargs = parser.parse_args()\npasswd = args.passwd\n#passwd = passwd.encode()\naddress = args.address\nfrom vncdotool import api\nclient = api.connect(address.replace(\":\",\"::\"),password=passwd)\n#tmp = lambda x: \"vncdotool -s {} -p {} {}\".format(address,passwd,x)\nimport random\nimport time\n# that's called software testing? do you want to test me baby~\ndef mouseMove(delay=0.01):\n    x,y = random.randint(0,1024),random.randint(0,768)\n    client.mouseMove(x,y)\n    print(\"moving to click at:\",(x,y))\n    time.sleep(delay/2)\n    client.mousePress(1)\n    time.sleep(delay/2)\ndef keyType(delay=0.2):\n    t = \"abcdefghijklmnopqrstuvwxyz\"\n    t+= t.upper()\n    t+= \"0123456789\"\n    t = [x for x in t]\n    t = random.choice(t)\n    print(\"pressing key:\",t)\n    client.keyPress(t)\n    time.sleep(delay)\nif __name__ == \"__main__\":\n    fs = [mouseMove]",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/mainService/vnc_bruteforcer.py:1-37"
+    },
+    "1007": {
+        "file_id": 213,
+        "content": "The code is a VNC bruteforcer that takes a password and address as arguments, connects to the VNC server using vncdotool, randomly moves the mouse and types random keys to simulate user input for potential password guessing. It uses the argparse module to parse command-line arguments and includes functions for moving the mouse (mouseMove) and typing keys (keyType). The code runs as a standalone script if executed directly.",
+        "type": "comment"
+    },
+    "1008": {
+        "file_id": 213,
+        "content": "#    fs = [keyType]\n    while True:\n        f = random.choice(fs)\n        f()",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/mainService/vnc_bruteforcer.py:38-41"
+    },
+    "1009": {
+        "file_id": 213,
+        "content": "This code randomly selects and executes a function from the list \"fs\" containing keyType functions, continuously repeating this process indefinitely.",
+        "type": "comment"
+    },
+    "1010": {
+        "file_id": 214,
+        "content": "/native/lazero_kali_amd64/mainService/vnc_monkey.py",
+        "type": "filepath"
+    },
+    "1011": {
+        "file_id": 214,
+        "content": "The code imports modules, takes password and address from command line, connects to VNC server, defines functions for random mouse and keyboard actions, and executes them in a loop. It also generates a random function to execute repeatedly.",
+        "type": "summary"
+    },
+    "1012": {
+        "file_id": 214,
+        "content": "#import os\nimport argparse\nparser = argparse.ArgumentParser()\nparser.add_argument(\"-p\",\"--passwd\",type=str,required=True)\nparser.add_argument(\"-a\",\"--address\",\"--add_argumentress\",type=str,required=True)\nargs = parser.parse_args()\npasswd = args.passwd\n#passwd = passwd.encode()\naddress = args.address\nfrom vncdotool import api\nclient = api.connect(address.replace(\":\",\"::\"),password=passwd)\n#tmp = lambda x: \"vncdotool -s {} -p {} {}\".format(address,passwd,x)\nimport random\nimport time\n# that's called software testing? do you want to test me baby~\ndef mouseMove(delay=0.2):\n    x,y = random.randint(0,1024),random.randint(0,768)\n    client.mouseMove(x,y)\n    print(\"moving to click at:\",(x,y))\n    time.sleep(delay/2)\n    client.mousePress(1)\n    time.sleep(delay/2)\ndef keyType(delay=0.2):\n    t = \"abcdefghijklmnopqrstuvwxyz\"\n    t+= t.upper()\n    t+= \"0123456789\"\n    t = [x for x in t]\n    t = random.choice(t)\n    print(\"pressing key:\",t)\n    client.keyPress(t)\n    time.sleep(delay)\nif __name__ == \"__main__\":\n    fs = [keyType, mouseMove]",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/mainService/vnc_monkey.py:1-37"
+    },
+    "1013": {
+        "file_id": 214,
+        "content": "The code imports necessary modules, takes command line arguments for password and address, connects to a VNC server using the provided details, defines two functions to simulate random mouse movement and keyboard input, and finally executes these actions in a main loop.",
+        "type": "comment"
+    },
+    "1014": {
+        "file_id": 214,
+        "content": "#    fs = [keyType]\n    while True:\n        f = random.choice(fs)\n        f()",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/mainService/vnc_monkey.py:38-41"
+    },
+    "1015": {
+        "file_id": 214,
+        "content": "Generates a random function from a list of available functions and executes it repeatedly.",
+        "type": "comment"
+    },
+    "1016": {
+        "file_id": 215,
+        "content": "/native/lazero_kali_amd64/mainService/xdo_torch_monkey.sh",
+        "type": "filepath"
+    },
+    "1017": {
+        "file_id": 215,
+        "content": "The code is retrieving the X authorization file path for a specific process, setting environment variables for display and XAUTHORITY, and then performing a mousemove action using xdotool. The actions can only be done without vncserver.",
+        "type": "summary"
+    },
+    "1018": {
+        "file_id": 215,
+        "content": "target=$(ps wwwaux | grep auth | grep xvfb | grep -Eo \"/tmp.\\$\")\nexport XAUTHORITY=$target && export DISPLAY=:99 && xdotool mousemove 500 500\n# this can only be done without vncserver.",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/mainService/xdo_torch_monkey.sh:1-3"
+    },
+    "1019": {
+        "file_id": 215,
+        "content": "The code is retrieving the X authorization file path for a specific process, setting environment variables for display and XAUTHORITY, and then performing a mousemove action using xdotool. The actions can only be done without vncserver.",
+        "type": "comment"
+    },
+    "1020": {
+        "file_id": 216,
+        "content": "/native/lazero_kali_amd64/mkdirs.sh",
+        "type": "filepath"
+    },
+    "1021": {
+        "file_id": 216,
+        "content": "Creates directories for various services and components within the project.",
+        "type": "summary"
+    },
+    "1022": {
+        "file_id": 216,
+        "content": "#!/usr/bin/fish\nmkdir {browserService, eventService, virtualService, shellService, inputService, cognitionService, configClass, tools, replService, mainService, backupService, floatwindow, shareService, init}\ncd virtualService\nmkdir {shellService, inputService, eventService, tools, replService}",
+        "type": "code",
+        "location": "/native/lazero_android_aarch64/mkdirs.sh:1-4"
+    },
+    "1023": {
+        "file_id": 216,
+        "content": "Creates directories for various services and components within the project.",
+        "type": "comment"
+    },
+    "1024": {
+        "file_id": 217,
+        "content": "/native/lazero_kali_amd64/nodejs_require",
+        "type": "filepath"
+    },
+    "1025": {
+        "file_id": 217,
+        "content": "These code snippets represent the dependencies for a programming project, where \"ws\" and \"collections\" are likely used for handling web sockets and managing data structures respectively. The remaining packages (\"vscode-languageclient\", \"vscode-languageserver\", \"vscode-languageserver-protocol\", and \"vscode-languageserver-textdocument\") seem to be related to the Visual Studio Code language server, which is responsible for providing intellisense, linting, and other programming language features in VSCode.",
+        "type": "summary"
+    },
+    "1026": {
+        "file_id": 217,
+        "content": "ws\ncollections\nvscode-languageclient\nvscode-languageserver\nvscode-languageserver-protocol\nvscode-languageserver-textdocument",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/nodejs_require:1-6"
+    },
+    "1027": {
+        "file_id": 217,
+        "content": "These code snippets represent the dependencies for a programming project, where \"ws\" and \"collections\" are likely used for handling web sockets and managing data structures respectively. The remaining packages (\"vscode-languageclient\", \"vscode-languageserver\", \"vscode-languageserver-protocol\", and \"vscode-languageserver-textdocument\") seem to be related to the Visual Studio Code language server, which is responsible for providing intellisense, linting, and other programming language features in VSCode.",
+        "type": "comment"
+    },
+    "1028": {
+        "file_id": 218,
+        "content": "/native/lazero_kali_amd64/replService/chrome_console.js",
+        "type": "filepath"
+    },
+    "1029": {
+        "file_id": 218,
+        "content": "The code creates a Node.js server with WebSocket, manages sessions, and uses readline for input, logging connection details upon successful connection.",
+        "type": "summary"
+    },
+    "1030": {
+        "file_id": 218,
+        "content": "// Print info about Node.JS version\nconsole.log(new Date() + ' | Using Node ' + process.version + ' version to run server');\n// Setting up server.\nconst http = require('http');\nconst server = http.createServer();\nconst port = 4999;\n// Needed for parsing URLs.\nconst url = require('url');\n// Setting WebSockets\nconst WebSocket = require('ws');\nconst wss = new WebSocket.Server({ noServer: true, clientTracking: true });\n// make this shit accessible via cmdline.\n// Needed to generate player ids\n//const uuidv4 = require('uuid/v4');\nvar Set = require(\"collections/set\");\nvar mySet = new Set();\nvar readline = require('readline');\nvar state=true;\nvar index=0;\nvar rl = readline.createInterface(process.stdin, process.stdout);\nrl.setPrompt('select> ');\nrl.prompt();\nrl.on('line', function(line) {\n\ttry{\n\t\tif (state){\nindex=parseInt(line);\nvar inx=mySet.toArray().length\nif (index<inx){\n//var ws =myArr.toArray()[index];\n\t\trl.setPrompt(index+'> ');\n\t\tstate=false;\n\t\trl.prompt();}else{console.log(\"total \"+inx+\" sessions\");}}else{\n\t\t\tvar ws =mySet.toArray()[index];",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/replService/chrome_console.js:2-39"
+    },
+    "1031": {
+        "file_id": 218,
+        "content": "The code sets up a server using Node.js, creates a WebSocket server instance, and uses readline for command-line input. It also manages a set of sessions and prompts the user to select an index from the set of active sessions.",
+        "type": "comment"
+    },
+    "1032": {
+        "file_id": 218,
+        "content": "\t\t\tws.send(line);\nstate=true;\n\t\t\trl.setPrompt('select> ');\n    rl.prompt();\n\t\t}}catch(err){console.log(err);state=true;\n\t\t\trl.setPrompt('select> ');\n\t\t\trl.prompt();\n\t\t}\n}).on('close',function(){\n    process.exit(0);\n});\n// Websocket connection handler.\nwss.on('connection', function connection(ws, request) {\n  console.log(new Date() + ' | A new client is connected.');\n  // Assign player Id to connected client.\n  // Registering player with the session.\nmySet.add(ws);\n\tvar id = mySet.toArray().length;\n\tconsole.log(\"new session joined. now \"+id+\" sessions\");\n  // Sending confirm message to the connected client.\n//  ws.send('print(\"hello world\")');\n  // Handle all messages from users.\n  ws.on('message', function(msgStr) {\n    console.log('Message Received: '+msgStr);\n    // Send back the same message.\n    // ws.send(msgStr);\n  });\n  // What to do when client disconnect?\n  ws.on('close', function(connection) {\n\t  mySet.delete(ws);\n\t  var id = mySet.toArray().length;  \n\t  console.log(\"one session closed. now \"+id+\" sessions\");",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/replService/chrome_console.js:40-75"
+    },
+    "1033": {
+        "file_id": 218,
+        "content": "The code establishes a WebSocket server and manages client connections. It sends messages, tracks the number of sessions, and handles client disconnections.",
+        "type": "comment"
+    },
+    "1034": {
+        "file_id": 218,
+        "content": "    console.log(new Date() + ' | Closing connection for a client.');\n// remove element.\n    // One of the clients has disconnected.\n  });\n});\n// HTTP Server ==> WebSocket upgrade handling:\nserver.on('upgrade', function upgrade(request, socket, head) {\n    console.log(new Date() + ' | Upgrading http connection to wss: url = '+request.url);\n    // Parsing url from the request.\n    var parsedUrl = url.parse(request.url, true, true);\n    const pathname = parsedUrl.pathname\n    console.log(new Date() + ' | Pathname = '+pathname);\n    // If path is valid connect to the websocket.\n    if (pathname === '/chrome_console') {\n      wss.handleUpgrade(request, socket, head, function done(ws) {\nconsole.log(\"add 1 upgraded.\");\n        wss.emit('connection', ws, request);\n      });\n    } else {\n\t    // no fucking destroy!\n      socket.destroy();\n    }\n});\n// On establishing port listener.\nserver.listen(port, function() {\n    console.log(new Date() + ' | Server is listening on port ' + port);\n    // Server is running.\n});",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/replService/chrome_console.js:76-110"
+    },
+    "1035": {
+        "file_id": 218,
+        "content": "Code sets up a WebSocket server, handles client connections and disconnections, and listens on a specified port. Upon successful connection, it logs the date and time along with relevant information about the connection, such as pathname or disconnecting clients.",
+        "type": "comment"
+    },
+    "1036": {
+        "file_id": 219,
+        "content": "/native/lazero_kali_amd64/replService/chrome_console_logger.js",
+        "type": "filepath"
+    },
+    "1037": {
+        "file_id": 219,
+        "content": "The code creates a Node.js server with WebSocket, manages sessions, and uses readline for input, logging connection details upon successful connection.",
+        "type": "summary"
+    },
+    "1038": {
+        "file_id": 219,
+        "content": "// Print info about Node.JS version\nconsole.log(new Date() + ' | Using Node ' + process.version + ' version to run server');\n// Setting up server.\nconst http = require('http');\nconst server = http.createServer();\nconst port = 4999;\n// Needed for parsing URLs.\nconst url = require('url');\n// Setting WebSockets\nconst WebSocket = require('ws');\nconst wss = new WebSocket.Server({ noServer: true, clientTracking: true });\n// make this shit accessible via cmdline.\n// Needed to generate player ids\n//const uuidv4 = require('uuid/v4');\nvar Set = require(\"collections/set\");\nvar mySet = new Set();\nvar readline = require('readline');\nvar state=true;\nvar index=0;\nvar rl = readline.createInterface(process.stdin, process.stdout);\nrl.setPrompt('select> ');\nrl.prompt();\nrl.on('line', function(line) {\n\ttry{\n\t\tif (state){\nindex=parseInt(line);\nvar inx=mySet.toArray().length\nif (index<inx){\n//var ws =myArr.toArray()[index];\n\t\trl.setPrompt(index+'> ');\n\t\tstate=false;\n\t\trl.prompt();}else{console.log(\"total \"+inx+\" sessions\");}}else{\n\t\t\tvar ws =mySet.toArray()[index];",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/replService/chrome_console.js:2-39"
+    },
+    "1039": {
+        "file_id": 219,
+        "content": "The code sets up a server using Node.js, creates a WebSocket server instance, and uses readline for command-line input. It also manages a set of sessions and prompts the user to select an index from the set of active sessions.",
+        "type": "comment"
+    },
+    "1040": {
+        "file_id": 219,
+        "content": "\t\t\tws.send(line);\nstate=true;\n\t\t\trl.setPrompt('select> ');\n    rl.prompt();\n\t\t}}catch(err){console.log(err);state=true;\n\t\t\trl.setPrompt('select> ');\n\t\t\trl.prompt();\n\t\t}\n}).on('close',function(){\n    process.exit(0);\n});\n// Websocket connection handler.\nwss.on('connection', function connection(ws, request) {\n  console.log(new Date() + ' | A new client is connected.');\n  // Assign player Id to connected client.\n  // Registering player with the session.\nmySet.add(ws);\n\tvar id = mySet.toArray().length;\n\tconsole.log(\"new session joined. now \"+id+\" sessions\");\n  // Sending confirm message to the connected client.\n//  ws.send('print(\"hello world\")');\n  // Handle all messages from users.\n  ws.on('message', function(msgStr) {\n    console.log('Message Received: '+msgStr);\n    // Send back the same message.\n    // ws.send(msgStr);\n  });\n  // What to do when client disconnect?\n  ws.on('close', function(connection) {\n\t  mySet.delete(ws);\n\t  var id = mySet.toArray().length;  \n\t  console.log(\"one session closed. now \"+id+\" sessions\");",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/replService/chrome_console.js:40-75"
+    },
+    "1041": {
+        "file_id": 219,
+        "content": "The code establishes a WebSocket server and manages client connections. It sends messages, tracks the number of sessions, and handles client disconnections.",
+        "type": "comment"
+    },
+    "1042": {
+        "file_id": 219,
+        "content": "    console.log(new Date() + ' | Closing connection for a client.');\n// remove element.\n    // One of the clients has disconnected.\n  });\n});\n// HTTP Server ==> WebSocket upgrade handling:\nserver.on('upgrade', function upgrade(request, socket, head) {\n    console.log(new Date() + ' | Upgrading http connection to wss: url = '+request.url);\n    // Parsing url from the request.\n    var parsedUrl = url.parse(request.url, true, true);\n    const pathname = parsedUrl.pathname\n    console.log(new Date() + ' | Pathname = '+pathname);\n    // If path is valid connect to the websocket.\n    if (pathname === '/chrome_console') {\n      wss.handleUpgrade(request, socket, head, function done(ws) {\nconsole.log(\"add 1 upgraded.\");\n        wss.emit('connection', ws, request);\n      });\n    } else {\n\t    // no fucking destroy!\n      socket.destroy();\n    }\n});\n// On establishing port listener.\nserver.listen(port, function() {\n    console.log(new Date() + ' | Server is listening on port ' + port);\n    // Server is running.\n});",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/replService/chrome_console.js:76-110"
+    },
+    "1043": {
+        "file_id": 219,
+        "content": "Code sets up a WebSocket server, handles client connections and disconnections, and listens on a specified port. Upon successful connection, it logs the date and time along with relevant information about the connection, such as pathname or disconnecting clients.",
+        "type": "comment"
+    },
+    "1044": {
+        "file_id": 220,
+        "content": "/native/lazero_kali_amd64/rmtest.sh",
+        "type": "filepath"
+    },
+    "1045": {
+        "file_id": 220,
+        "content": "This script deletes the directories \"chrome_html\" and \"chrome_monitor\" using recursive force removal (rm -rf) in Bash.",
+        "type": "summary"
+    },
+    "1046": {
+        "file_id": 220,
+        "content": "#!/bin/bash\nrm -rf chrome_html\nrm -rf chrome_monitor",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/rmtest.sh:1-3"
+    },
+    "1047": {
+        "file_id": 220,
+        "content": "This script deletes the directories \"chrome_html\" and \"chrome_monitor\" using recursive force removal (rm -rf) in Bash.",
+        "type": "comment"
+    },
+    "1048": {
+        "file_id": 221,
+        "content": "/native/lazero_kali_amd64/shellService/ptyproc.py",
+        "type": "filepath"
+    },
+    "1049": {
+        "file_id": 221,
+        "content": "This Python module establishes a server with numerous libraries, handles executables in a terminal-like interface, and features process management functions. It utilizes threading, request library, Tornado web framework's RequestHandler class, and manages threads for monitoring and handling requests. The code verifies if a process is operational, processes arguments, and generates a web application with handlers via Tornado, catering to displaying data, receiving input, and restarting processes as necessary.",
+        "type": "summary"
+    },
+    "1050": {
+        "file_id": 221,
+        "content": "from __future__ import unicode_literals\nimport ptyprocess\n# this module is exclusive for windows. to port to linux there should be extra steps.\n# i mean, android.\n# hey! do not run this shit outside of sandbox, unless you want to get me killed.\nimport threading\nimport pyte\n# can you format things into colorful output?\n# or just raw terminal string which can be transformed into html.\nimport traceback\nimport tornado.ioloop\nimport tornado.web\nimport requests\nimport base64\nimport signal\n# no watchdog for this?\nLF_CRLF=b\"\\n\"\nmaxbark = 2\nmaxbark_granual = 5\nmaxterm = 3\nmaxterm_granual = 5\nbark = 0\nterm = 0\nimport argparse\nparser = argparse.ArgumentParser()\nparser.add_argument(\"-p\",\"--port\",type=int,default=8788,help=\"port number\")\nargs = parser.parse_args()\nport=args.port\nassert port>0 and port <65535\nprint(\"server running on port %d\" %port)\n# you can turn off the barking dog sometimes.\n# we can use a big dog every since then.\ndef kill(pipe):\n    try:\n        pipe.terminate()\n# here.\n        pipe.kill(signal.SIGKILL)\n    except:",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/shellService/ptyproc.py:1-38"
+    },
+    "1051": {
+        "file_id": 221,
+        "content": "This code is a Python module for a server that runs on a specific port. It uses ptyprocess, threading, pyte, traceback, tornado, requests, and base64 libraries. The code sets default values for barking (LF_CRLF), maxbark, maxbark_granual, maxterm, and maxterm_granual variables. It also includes an argparse module to handle command line arguments and provides a function to kill processes using SIGKILL signal. The server can be run outside of sandbox but may pose risks.",
+        "type": "comment"
+    },
+    "1052": {
+        "file_id": 221,
+        "content": "        print(\"_____process kill error_____\")\n        traceback.print_exc()\n# signal.signal(signal.SIGINT, signal_handler)\ndisplay = \"\"\nlag = 0.05\nexecutable ='bash' # this is wrong. could get your computer in danger.\n# unless you want to take the risk. everything worth the try?\ncols, rows = 80, 25\nimport time\nwatch_rate = 0.5\nscreen = pyte.Screen(cols,rows)\nstream = pyte.ByteStream(screen)\nprocess =  ptyprocess.PtyProcess.spawn([executable],dimensions=(rows,cols))\ndef read_to_term():\n    global display, stream, screen\n    # read a global list?\n    # you can start another server. not quite like terminal. like execution shell.\n    noerr=True\n    while noerr:\n        try:\n            reading=process.read()\n# will block.\n    # will raise error if not good.\n            stream.feed(reading)\n            display = \"\\n\".join(screen.display)\n        except:\n            noerr = False\n            break\nt0=threading.Thread(target=read_to_term,args=())\nt0.setDaemon(True)\nt0.start()\ndef barkdog():\n    global bark, maxbark_granual\n    while True:",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/shellService/ptyproc.py:39-72"
+    },
+    "1053": {
+        "file_id": 221,
+        "content": "This code sets up a Python terminal-like interface using the ptyprocess library. It spawns a process with the specified executable (defaulting to 'bash') and defines two functions: read_to_term() for continuously reading from the process and updating the display, and barkdog() for running an infinite loop that does something with variables bark and maxbark_granual. The code also creates a thread to execute read_to_term().",
+        "type": "comment"
+    },
+    "1054": {
+        "file_id": 221,
+        "content": "        bark = 0\n        time.sleep(maxbark_granual)\ntb=threading.Thread(target=barkdog,args=())\ntb.setDaemon(True)\ntb.start()\ndef termdog():\n    global term, maxterm_granual\n    while True:\n        term = 0\n        time.sleep(maxterm_granual)\ntx=threading.Thread(target=termdog,args=())\ntx.setDaemon(True)\ntx.start()\ndef watchdog():\n    global process, watch_rate, port, bark, maxbark\n    alive=True\n    while alive:\n        alive = process.isalive()\n#        print(\"alive?\",alive)\n        time.sleep(watch_rate)\n#    print(\"bark\")\n    bark+=1\n    if bark > maxbark:\n        print(\"max bark exceed.\",bark)\n# what the heck?\n        pass\n    else:\n#        print(\"did get to here\")\n# if server is down this will cause dead shit.\n        requests.get(\"http://localhost:{}/restart\".format(port),stream=False,verify=False,timeout=1)\n# does that work?\n    # if not, call the handler. use requests.\nt1=threading.Thread(target=watchdog,args=())\nt1.setDaemon(True)\nt1.start()\nclass RHandler(tornado.web.RequestHandler):\n    def get(self):\n        global process, screen, stream, t0, t1, executable, display, term, maxterm",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/shellService/ptyproc.py:73-111"
+    },
+    "1055": {
+        "file_id": 221,
+        "content": "This code appears to be creating and managing multiple threads for monitoring a process, handling requests from a server, and performing actions such as barking a dog sound or restarting the server when necessary. It uses Python's threading module for concurrency and the requests library to send HTTP GET requests. The code also utilizes Tornado web framework's RequestHandler class for handling web requests.",
+        "type": "comment"
+    },
+    "1056": {
+        "file_id": 221,
+        "content": "        # print(type(process))\n        # print(dir(process))\n        term += 1\n        if term > maxterm:\n            self.write(\"exceeding max termination quota!\\n\")\n        else:\n            kill(process)\n# did it stuck here?\n# nope.\n            for x in [process, screen, stream, t0, t1]:\n                # print(\"deleting\")\n                del x\n            display = \"\"\n            screen = pyte.Screen(cols,rows)\n            stream = pyte.ByteStream(screen)\n            process =  ptyprocess.PtyProcess.spawn([executable],dimensions=(rows,cols))\n            t0=threading.Thread(target=read_to_term,args=())\n            t0.setDaemon(True)\n            t0.start()\n            t1=threading.Thread(target=watchdog,args=())\n            t1.setDaemon(True)\n            t1.start()\n            self.write(\"terminal restart!\\n\")\nclass IHandler(tornado.web.RequestHandler):\n    def get(self):\n        global display, process, lag\n        # print(\"type request received.\")\n        argument = self.get_argument(\"type\",None)\n        argumentx = self.get_argument(\"b64type\",None)",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/shellService/ptyproc.py:112-140"
+    },
+    "1057": {
+        "file_id": 221,
+        "content": "The code is part of a Python script that handles terminal services. It manages the termination and restart of a terminal process, with threading and class implementation. The script also includes a request handling function for HTTP requests.",
+        "type": "comment"
+    },
+    "1058": {
+        "file_id": 221,
+        "content": "        # that is for argument!\n        autoreturn = self.get_argument(\"autoreturn\",None) == \"true\"\n        # print(\"actual argument\",[argument],type(argument))\n        # string.\n        if not process.isalive():\n            self.write(\"process is dead.\\n\")\n        elif argument is not None:\n            # unicode.\n            # may encounter error.\n            if autoreturn:\n                process.write(argument.encode(\"utf8\")+b'\\r')\n            else:\n                process.write(argument.encode(\"utf8\"))\n            time.sleep(lag)\n            self.write(display)\n        elif argumentx is not None:\n            # check if correctly formed.\n# check if not dead.\n            try:\n                arx = base64.b64decode(argumentx)\n                # the result is not right.\n                # cannot decode here.\n                if autoreturn:\n                    process.write(arx+b'\\r')\n                else:\n                    process.write(arx)\n                    # this is not unicode string.\n                time.sleep(lag)",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/shellService/ptyproc.py:141-168"
+    },
+    "1059": {
+        "file_id": 221,
+        "content": "This code is checking if a process is alive and receiving arguments. It decodes the arguments from either a string or base64 encoded data, and writes them to the process with an optional line break. If the process is dead, it informs the user. The code also handles potential encoding errors and has a time delay for writing to the process.",
+        "type": "comment"
+    },
+    "1060": {
+        "file_id": 221,
+        "content": "                self.write(display)\n            except:\n                self.write(\"incorrect format\\n\")\n                # pass\n                # D:\\Programs\\Python\\Python36\\lib\\site-packages\\winpty\\winpty_wrapper.py\n        else:\n            self.write(\"empty input\\n\")\n            # pass\nclass MainHandler(tornado.web.RequestHandler):\n    def get(self):\n        global display\n        self.write(display)\n    def make_app():\n        return tornado.web.Application([(r\"/display\",MainHandler),(r\"/restart\",RHandler),(r\"/input\",IHandler)])\n# get a window watcher. if want to lock the winsize better use that.\n# why the fuck that the code needs to be compiled? could we just examine the code and prepare for tested binaries?\napp = MainHandler.make_app()\napp.listen(port)\n# here's the shit.\ntornado.ioloop.IOLoop.current().start()\n# register handler.\nexit()",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/shellService/ptyproc.py:169-191"
+    },
+    "1061": {
+        "file_id": 221,
+        "content": "This code defines a web application using the Tornado framework. It has handlers for displaying data on \"/display\", accepting input on \"/input\", and restarting on \"/restart\". The application listens on a specific port, starts an IOLoop to handle network connections, and includes an optional window watcher for handling window resizing events.",
+        "type": "comment"
+    },
+    "1062": {
+        "file_id": 222,
+        "content": "/native/lazero_kali_amd64/shellService/pyte_template.py",
+        "type": "filepath"
+    },
+    "1063": {
+        "file_id": 222,
+        "content": "The code imports the pyte module, defines a class called terminal with an init method that initializes a screen and stream object using provided width and height parameters. It also includes methods feed and display for feeding data to the stream and returning the screen's display respectively.",
+        "type": "summary"
+    },
+    "1064": {
+        "file_id": 222,
+        "content": "import pyte\nclass terminal:\n    def __init__(self,width=80,height=25):\n        self.screen = pyte.Screen(width,height)\n        self.stream = pyte.Stream(screen)\n    def feed(self):\n        self.stream.feed(bin_str)\n    def display(self):\n        return self.screen.display",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/shellService/pyte_template.py:1-10"
+    },
+    "1065": {
+        "file_id": 222,
+        "content": "The code imports the pyte module, defines a class called terminal with an init method that initializes a screen and stream object using provided width and height parameters. It also includes methods feed and display for feeding data to the stream and returning the screen's display respectively.",
+        "type": "comment"
+    },
+    "1066": {
+        "file_id": 223,
+        "content": "/native/lazero_kali_amd64/shellService/webXFS.py",
+        "type": "filepath"
+    },
+    "1067": {
+        "file_id": 223,
+        "content": "This Twisted protocol implementation connects, waits for output, and prints it. It uses a MyPP class for events in separate threads and executes commands specified at the end of script. The code launches process, writes commands, sleeps between commands, eventually exits after termination.",
+        "type": "summary"
+    },
+    "1068": {
+        "file_id": 223,
+        "content": "from twisted.internet import protocol, reactor\nimport time\n# import sys\n# import multiprocessing\nimport threading\n# password is a must here. not kidding.\nclass MyPP(protocol.ProcessProtocol):\n    def connectionMade(self):\n        reactor.callLater(1.0, self.foo)\n    def foo(self):\n        self.transport.write('\\033[B'.encode())\n    def write(self, a):\n        self.transport.write(a)\n    def processExited(self, reason):\n        print(\"processExited, status %s\" % (reason.value.exitCode,))\n    def outReceived(self, data):\n        print(data)\n    def errReceived(self, data):\n        print(\"errReceived!\", data)\nif __name__ == \"__main__\":\n    # multiprocessing.freeze_support()\n    # while mainthread is alive... -> do the thing.\n    pp = MyPP()\n    # command = ['screen', '-x']\n#    command = ['bash']\n    command=['./launcher_x86_64_linux.sh']\n    # does this work in WINDOWS?\n    def theFunc(a):\n        a.run()\n    reactor.spawnProcess(pp, command[0], command, {'TERM': 'xterm'}, usePTY=False)\n    # print(\"{MIDDLE}\")\n    p =threading.Thread(target=theFunc,args=(reactor,))",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/shellService/webXFS.py:1-39"
+    },
+    "1069": {
+        "file_id": 223,
+        "content": "The code is a Twisted protocol implementation that connects to a process, waits for output, and prints it. The main thread runs the Twisted reactor, while a separate thread handles the reactor execution. It uses a MyPP class as a ProcessProtocol to handle connectionMade, write, processExited, outReceived, and errReceived events. The command to be executed can be specified at the end of the script.",
+        "type": "comment"
+    },
+    "1070": {
+        "file_id": 223,
+        "content": "    p.setDaemon(True) # the whole shit.\n    # print(\"{AHEAD}\")\n    # start after the set.\n    # somehow.\n    # all dead here. not even better than JS.\n    p.start() # not RUN!\n    # what the heck?\n    # with TIMESTAMP.\n    # print(\"{OF}\")\n    ik = 5\n    pp.write(b\"parrot\\n\")\n    time.sleep(1)\n    # not working here.\n    while ik > 0:\n        pp.write(b\"ls\\n\")\n        print(\"[HELLO WORLD]\")\n        time.sleep(1)\n        ik-=1\n    pp.write(b\"exit\\n\")\n    time.sleep(1)\n    # this will provide the debug info.\n    pp.write(b\"ls\\n\")\n    time.sleep(1)\n    # this will not work.\n    # p.kill()\n    # print(dir(p))\n    # quit()\n    print(\"__EOL__\")\n    # sys.exit()\n    exit()\n    # it works.\n    # how to terminate? pid?\n    # p.terminate()\n    # must be thread?\n# do we need a separate process?\n# this is running fine.\n# but how to communicate?\n# somehow worked.",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/shellService/webXFS.py:40-77"
+    },
+    "1071": {
+        "file_id": 223,
+        "content": "Code is launching a process and performing commands. It sets the process daemon, starts it, writes commands to another file descriptor, sleeps for 1 second between commands, decrements a counter, writes exit command after counter reaches zero, sleeps again before writing another command, possibly attempts to terminate the process but fails, finally exits itself.",
+        "type": "comment"
+    },
+    "1072": {
+        "file_id": 224,
+        "content": "/native/lazero_kali_amd64/tools/exec_all.py",
+        "type": "filepath"
+    },
+    "1073": {
+        "file_id": 224,
+        "content": "The code is parsing arguments, ensuring the specified directory is absolute and valid. It then generates a shell script to change all files in the given directory into executables, creates a temporary directory, writes the shell script, makes it executable, and runs it.",
+        "type": "summary"
+    },
+    "1074": {
+        "file_id": 224,
+        "content": "import argparse\nparser = argparse.ArgumentParser()\nparser.add_argument(\"-d\",\"--dir\",type=str,required=True,help=\"absolute directory to change all files under it into executables.\")\nargs = parser.parse_args()\nimport os.path as P\nimport os\n_dir = args.dir\nassert P.isabs(_dir)\nassert P.isdir(_dir)\n# execute the shell script?\nimport tempfile\ncmd = [\"#!/bin/bash\",\"cd {}\".format(_dir),\"find | xargs -iabc chmod +x abc\"]\ncmd = \"\\n\".join(cmd)\nfrom uuid_fname import ufname\nwith tempfile.TemporaryDirectory() as tmpdir:\n    assert P.isabs(tmpdir)\n    fname = ufname(\"sh\")\n    script_path = P.join(tmpdir,fname)\n    with open(script_path,\"w+\",encoding=\"utf-8\") as f:\n        f.write(cmd)\n    os.system(\"chmod +x {}\".format(script_path))\n    os.system(script_path)",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/tools/exec_all.py:1-29"
+    },
+    "1075": {
+        "file_id": 224,
+        "content": "The code is parsing arguments, ensuring the specified directory is absolute and valid. It then generates a shell script to change all files in the given directory into executables, creates a temporary directory, writes the shell script, makes it executable, and runs it.",
+        "type": "comment"
+    },
+    "1076": {
+        "file_id": 225,
+        "content": "/native/lazero_kali_amd64/tools/python_namespace.py",
+        "type": "filepath"
+    },
+    "1077": {
+        "file_id": 225,
+        "content": "Code creates a class \"myclass\", instantiates an object 'a' from the class, assigns values to instance variables 'b' and 'c', then prints the class attributes using dir() function. Output will be the list of class attributes (including 'b' and 'c') followed by the assigned values.",
+        "type": "summary"
+    },
+    "1078": {
+        "file_id": 225,
+        "content": "class myclass(object):\n    pass\na = myclass()\na.b=\"a\"\na.c=\"b\"\nprint(dir(a),a.b,a.c)",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/tools/python_namespace.py:1-7"
+    },
+    "1079": {
+        "file_id": 225,
+        "content": "Code creates a class \"myclass\", instantiates an object 'a' from the class, assigns values to instance variables 'b' and 'c', then prints the class attributes using dir() function. Output will be the list of class attributes (including 'b' and 'c') followed by the assigned values.",
+        "type": "comment"
+    },
+    "1080": {
+        "file_id": 226,
+        "content": "/native/lazero_kali_amd64/tools/stackMe.py",
+        "type": "filepath"
+    },
+    "1081": {
+        "file_id": 226,
+        "content": "This code defines classes `queue`, `stack`, and `Meta` to handle new input, with methods for adding/removing elements, retrieving contents, and performing operations based on sizes. The class has two methods: `duplicate` adds an element to the core list and `return self.core` gets the current state of the core list.",
+        "type": "summary"
+    },
+    "1082": {
+        "file_id": 226,
+        "content": "# three method to deal with new input.\n# throw away any of original content, or just bounce off.\nclass queue:\n# i'm gonna die.\n\tdef __init__(self,a):\n\t\tself.size=a\n\t\tself.core=[]\n\tdef queue(self,a):\n\t\tif len(self.core)<self.size:\n\t\t\tself.core.append(a)\n\t\telse:\n\t\t\tself.core.pop(0)\n\t\t\tself.core.append(a)\n\tdef dequeue(self):\n\t\tif len(self.core)!=0:\n\t\t\treturn self.core.pop(0)\n\t\telse:\n\t\t\treturn\n\tdef dump(self):\n\t\treturn self.core\nclass stack:\n\tdef __init__(self,a):\n\t\tself.size=a\n\t\tself.core=[]\n\tdef push(self,a):\n\t\tif len(self.core)<self.size:\n\t\t\tself.core.append(a)\n\t\telse:\n\t\t\tself.core.pop(0)\n\t\t\tself.core.append(a)\n\tdef pop(self):\n\t\tif len(self.core)!=0:\n\t\t\treturn self.core.pop(-1)\n\t\telse:\n\t\t\treturn\n\tdef dump(self):\n\t\treturn self.core\nclass Meta:\n# i'm gonna die.\n\tdef __init__(self,a):\n\t\tself.size=a\n\t\tself.core=[]\n\tdef add(self,a):\n\t\tif len(self.core)<self.size:\n\t\t\tself.core.append(a)\n\t\telse:\n\t\t\tself.core.pop(0)\n\t\t\tself.core.append(a)\n\tdef minus(self,a):\n\t\tif len(self.core)!=0:\n\t\t\treturn self.core.pop(-int(a))\n\t\telse:\n\t\t\treturn\n\tdef dump(self):",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/tools/stackMe.py:1-56"
+    },
+    "1083": {
+        "file_id": 226,
+        "content": "The code defines three classes: `queue`, `stack`, and `Meta`. These classes handle new input by either discarding previous content or overwriting it, and provide methods to add/remove elements, retrieve current contents, and perform operations based on their sizes.",
+        "type": "comment"
+    },
+    "1084": {
+        "file_id": 226,
+        "content": "\t\treturn self.core\n\tdef duplicate(self,a):\n\t\tself.add(self.core[-int(a)])",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/tools/stackMe.py:57-59"
+    },
+    "1085": {
+        "file_id": 226,
+        "content": "This code defines a class with two methods. The first method, `duplicate`, takes an argument `a` and adds the value at index `self.core[-int(a)]` to the core list. The second method, `return self.core`, returns the current state of the core list.",
+        "type": "comment"
+    },
+    "1086": {
+        "file_id": 227,
+        "content": "/native/lazero_kali_amd64/tools/uuid_fname.py",
+        "type": "filepath"
+    },
+    "1087": {
+        "file_id": 227,
+        "content": "The code imports the UUID module and defines a function named 'ufname' that takes an extension as its argument. It checks if there are any dots in the file extension, generates a random UUID prefix, and returns the prefix prepended to or suffixed with the extension.",
+        "type": "summary"
+    },
+    "1088": {
+        "file_id": 227,
+        "content": "import uuid\ndef ufname(ext):\n    assert len(ext.replace(\".\",\"\"))>0\n    prefix = str(uuid.uuid4())\n    if ext.startswith(\".\"):\n        return prefix+ext\n    else:\n        return \".\".join([prefix,ext])",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/tools/uuid_fname.py:1-9"
+    },
+    "1089": {
+        "file_id": 227,
+        "content": "The code imports the UUID module and defines a function named 'ufname' that takes an extension as its argument. It checks if there are any dots in the file extension, generates a random UUID prefix, and returns the prefix prepended to or suffixed with the extension.",
+        "type": "comment"
+    },
+    "1090": {
+        "file_id": 228,
+        "content": "/native/lazero_kali_amd64/virtualService/shellService/ptyproc.py",
+        "type": "filepath"
+    },
+    "1091": {
+        "file_id": 228,
+        "content": "This code creates a Windows module, handling process spawning and termination with threading, tornado web handler, and ptyprocess. It manages requests, error handling, HTTP GET, base64 encoding/decoding, and sets up Tornado application for network connections.",
+        "type": "summary"
+    },
+    "1092": {
+        "file_id": 228,
+        "content": "#VIRTUAL SERVICE NO NEED TO WORRY ABOUT YOUR BALLS?\nfrom __future__ import unicode_literals\nimport ptyprocess\n# this module is exclusive for windows. to port to linux there should be extra steps.\n# i mean, android.\n# hey! do not run this shit outside of sandbox, unless you want to get me killed.\nimport threading\nimport pyte\n# can you format things into colorful output?\n# or just raw terminal string which can be transformed into html.\nimport traceback\nimport tornado.ioloop\nimport tornado.web\nimport requests\nimport base64\nimport signal\n# no watchdog for this?\nLF_CRLF=b\"\\n\"\nmaxbark = 2\nmaxbark_granual = 5\nmaxterm = 3\nmaxterm_granual = 5\nbark = 0\nterm = 0\nimport argparse\nparser = argparse.ArgumentParser()\nparser.add_argument(\"-p\",\"--port\",type=int,default=8788,help=\"port number\")\nargs = parser.parse_args()\nport=args.port\nassert port>0 and port <65535\nprint(\"server running on port %d\" %port)\n# you can turn off the barking dog sometimes.\n# we can use a big dog every since then.\ndef kill(pipe):\n    try:\n        pipe.terminate()",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/virtualService/shellService/ptyproc.py:1-36"
+    },
+    "1093": {
+        "file_id": 228,
+        "content": "Module exclusive for Windows, avoid running outside of sandbox. Imports necessary libraries and sets default port number from command line arguments. It has a kill function to terminate processes.",
+        "type": "comment"
+    },
+    "1094": {
+        "file_id": 228,
+        "content": "# here.\n        pipe.kill(signal.SIGKILL)\n    except:\n        print(\"_____process kill error_____\")\n        traceback.print_exc()\n# signal.signal(signal.SIGINT, signal_handler)\ndisplay = \"\"\nlag = 0.05\nimport os.path as P\nrun_abs_dir = P.abspath(\"../tools/sandserv\")\nexecutable ='nsjail_reloadscript_x64.sh' # this is wrong. could get your computer in danger.\n# change root directory.\n# unless you want to take the risk. everything worth the try?\nimport os\nenv_dict = os.environ.copy()\nenv_dict[\"PWD\"] = run_abs_dir\ncols, rows = 80, 25\nimport time\nwatch_rate = 0.5\nscreen = pyte.Screen(cols,rows)\nstream = pyte.ByteStream(screen)\ngenProc = lambda: ptyprocess.PtyProcess.spawn([\"bash\",executable],env=env_dict,cwd=run_abs_dir,dimensions=(rows,cols))\nprocess = genProc()\ndef read_to_term():\n    global display, stream, screen\n    # read a global list?\n    # you can start another server. not quite like terminal. like execution shell.\n    noerr=True\n    while noerr:\n        try:\n            reading=process.read()\n# will block.\n    # will raise error if not good.",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/virtualService/shellService/ptyproc.py:37-70"
+    },
+    "1095": {
+        "file_id": 228,
+        "content": "This code is creating a process to run a shell script in a new terminal environment. It sets up the environment variables, adjusts screen dimensions, and reads input from the process to display on the terminal. If an error occurs during process kill or reading, it will print an error message along with the traceback.",
+        "type": "comment"
+    },
+    "1096": {
+        "file_id": 228,
+        "content": "            stream.feed(reading)\n            display = \"\\n\".join(screen.display)\n        except:\n            noerr = False\n            break\nt0=threading.Thread(target=read_to_term,args=())\nt0.setDaemon(True)\nt0.start()\ndef barkdog():\n    global bark, maxbark_granual\n    while True:\n        bark = 0\n        time.sleep(maxbark_granual)\ntb=threading.Thread(target=barkdog,args=())\ntb.setDaemon(True)\ntb.start()\ndef termdog():\n    global term, maxterm_granual\n    while True:\n        term = 0\n        time.sleep(maxterm_granual)\ntx=threading.Thread(target=termdog,args=())\ntx.setDaemon(True)\ntx.start()\ndef watchdog():\n    global process, watch_rate, port, bark, maxbark\n    alive=True\n    while alive:\n        alive = process.isalive()\n#        print(\"alive?\",alive)\n        time.sleep(watch_rate)\n#    print(\"bark\")\n    bark+=1\n    if bark > maxbark:\n        print(\"max bark exceed.\",bark)\n# what the heck?\n        pass\n    else:\n#        print(\"did get to here\")\n# if server is down this will cause dead shit.\n        requests.get(\"http://localhost:{}/restart\".format(port),stream=False,verify=False,timeout=1)",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/virtualService/shellService/ptyproc.py:71-111"
+    },
+    "1097": {
+        "file_id": 228,
+        "content": "This code creates three threads: one for feeding input to a terminal, one to periodically set a variable, and another to monitor the process. If the process dies, it sends a request to restart it. The code also has error handling and variable definitions.",
+        "type": "comment"
+    },
+    "1098": {
+        "file_id": 228,
+        "content": "# does that work?\n    # if not, call the handler. use requests.\nt1=threading.Thread(target=watchdog,args=())\nt1.setDaemon(True)\nt1.start()\nclass RHandler(tornado.web.RequestHandler):\n    def get(self):\n        global process, screen, stream, t0, t1, executable, display, term, maxterm, genProc\n        # print(type(process))\n        # print(dir(process))\n        term += 1\n        if term > maxterm:\n            self.write(\"exceeding max termination quota!\\n\")\n        else:\n            kill(process)\n# did it stuck here?\n# nope.\n            for x in [process, screen, stream, t0, t1]:\n                # print(\"deleting\")\n                del x\n            display = \"\"\n            screen = pyte.Screen(cols,rows)\n            stream = pyte.ByteStream(screen)\n#            process =  ptyprocess.PtyProcess.spawn([executable],dimensions=(rows,cols))\n            process = genProc()\n            t0=threading.Thread(target=read_to_term,args=())\n            t0.setDaemon(True)\n            t0.start()\n            t1=threading.Thread(target=watchdog,args=())",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/virtualService/shellService/ptyproc.py:112-141"
+    },
+    "1099": {
+        "file_id": 228,
+        "content": "This code handles termination of a process and respawns it within a specified maximum limit. It utilizes threading, tornado web handler, and ptyprocess for spawning processes in a terminal-like environment. The watchdog thread monitors the process while read_to_term thread reads input from the user's end and feeds it to the process.",
+        "type": "comment"
+    }
+}

@@ -1,0 +1,10 @@
+{
+    "summary": "Code initializes a BytesIO object and defines two functions to interact with it. The read_target function continuously reads bytes from the target buffer, while check_target prints details about the buffer and value stored in it. The script then demonstrates various operations like writing data, reading, seeking, truncating, and getting the current value of the buffer.",
+    "details": [
+        {
+            "comment": "Code initializes a BytesIO object and defines two functions to interact with it. The read_target function continuously reads bytes from the target buffer, while check_target prints details about the buffer and value stored in it. The script then demonstrates various operations like writing data, reading, seeking, truncating, and getting the current value of the buffer.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/tools/io2.py\":0-34",
+            "content": "import io\nimport threading\nimport time\ntarget = io.BytesIO()\ndef read_target():\n    while True:\n        bytes_ = target.read()\n        print(\"bytes:\", bytes_)\ndef check_target():\n    print(\"buffer:\",target.getbuffer())\n    print(\"value:\",target.getvalue())\nprint(dir(target))\n# this is first.\ntarget.write(b\"abc\")\nvalues = target.read1()\nprint(values)\n# nothing could be read.\nprint(target.tell())\n# this is the cursor, we can reset it of course.\ntarget.seek(0)\nprint(target.read())\ntarget.write(b\"hello\")\nprint(target.tell())\ntarget.seek(0)\nprint(target.read())\nbuffer0 = target.getbuffer()\nbuffer0 = b\"\"\n# so this fucking works or not?\n# do we really read the shit after all?\nprint(target.read())\nprint(target.getvalue())\ntarget.truncate()\nprint(target.getvalue())"
+        }
+    ]
+}

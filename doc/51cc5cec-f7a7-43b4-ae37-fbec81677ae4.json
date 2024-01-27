@@ -1,0 +1,10 @@
+{
+    "summary": "This code initializes package, sets lexical-binding and kill-emacs variables, defines a function for waiting asynchronously, defines an async function example2 that prints values after specified time delays, runs the example2 function, and finally sets up a timer to print \"hello\" every 2 seconds.",
+    "details": [
+        {
+            "comment": "This code initializes package, sets lexical-binding and kill-emacs variables, defines a function for waiting asynchronously, defines an async function example2 that prints values after specified time delays, runs the example2 function, and finally sets up a timer to print \"hello\" every 2 seconds.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_kali_amd64/cognitionService/virtual/async.el\":0-28",
+            "content": "(require 'package)\n(package-initialize)\n;(require 'async-await)\n(setq lexical-binding t)\n(setq kill-emacs t)\n(defun wait-async (n)\n  (promise-new (lambda (resolve _reject)\n                 (run-at-time n\n                              nil\n                              (lambda ()\n                                (funcall resolve n))))))\n(async-defun example2 ()\n  (print (await (wait-async 0.5)))\n  (message \"---\")\n  (print (await (wait-async 1.0)))\n  (message \"---\")\n  (print (await (wait-async 1.5)))\n  (message \"---\")\n  (message \"await done\"))\n(example2)\n;(await (example2))\n;(print 'preinit)\n;(message \"what is going on?\")\n(run-with-timer 2 2 #'print \"hello\")\n;(print 'hello)(print 'hello)"
+        }
+    ]
+}

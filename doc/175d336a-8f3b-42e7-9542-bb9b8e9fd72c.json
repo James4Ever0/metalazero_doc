@@ -1,0 +1,10 @@
+{
+    "summary": "The code executes 'sample_script.py' using Python 3 and redirects its output to both the console (teletype) and a log file ('sample_script.log') simultaneously, allowing for real-time monitoring and permanent storage of results.",
+    "details": [
+        {
+            "comment": "The code executes 'sample_script.py' using Python 3 and redirects its output to both the console (teletype) and a log file ('sample_script.log') simultaneously, allowing for real-time monitoring and permanent storage of results.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/tools/get_logged.sh\":0-0",
+            "content": "python3 sample_script.py | tee sample_script.log"
+        }
+    ]
+}

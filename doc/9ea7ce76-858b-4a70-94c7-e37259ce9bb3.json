@@ -1,0 +1,10 @@
+{
+    "summary": "This code is setting up Emacs to execute a script named \"lsp.el\". It does this by using the \"--file\" option, loading the \"lsp.el\" file with \"-l\", and attempting to run it as a script with the \"--script\" option.",
+    "details": [
+        {
+            "comment": "This code is setting up Emacs to execute a script named \"lsp.el\". It does this by using the \"--file\" option, loading the \"lsp.el\" file with \"-l\", and attempting to run it as a script with the \"--script\" option.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_kali_amd64/cognitionService/virtual/lsp.sh\":0-2",
+            "content": "emacs --file lsp.sh -l lsp.el\n#emacs -l lsp.el\n#emacs --script lsp.el"
+        }
+    ]
+}

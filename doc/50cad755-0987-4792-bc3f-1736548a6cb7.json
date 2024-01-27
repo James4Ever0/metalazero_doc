@@ -1,0 +1,10 @@
+{
+    "summary": "Kills running processes before launching new ones, ensures the virtual service is launched and blocking.",
+    "details": [
+        {
+            "comment": "Kills running processes before launching new ones, ensures the virtual service is launched and blocking.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_kali_amd64/debug_init.sh\":0-11",
+            "content": "#!/bin/bash\n# the shit must be running on the background.\n# this is to kill those running processes.\nps aux | cat | grep node | grep chrome_receive | awk '{print $2}' | xargs kill -s SIGKILL\ncd eventService && node chrome_receive.js &\ncd replService && node chrome_console.js &\n# are you sure that you will not upload those sensitive data?\n# launch the virtualService.\nps aux | cat | grep python3 | grep ptyproc.py | awk '{print $2}' | xargs kill -s SIGKILL\ncd virtualService/shellService && python3 ptyproc.py -p 8778\ncd ../../ # make sure it is launching and blocking?"
+        }
+    ]
+}

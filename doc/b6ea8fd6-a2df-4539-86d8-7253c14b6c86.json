@@ -1,0 +1,10 @@
+{
+    "summary": "This code reads input lines, splits them by \"/\", removes specific elements using a filter function, and then joins the remaining elements with \"/\". It takes an optional argument from command line and outputs the processed lines.",
+    "details": [
+        {
+            "comment": "This code reads input lines, splits them by \"/\", removes specific elements using a filter function, and then joins the remaining elements with \"/\". It takes an optional argument from command line and outputs the processed lines.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_kali_amd64/virtualService/tools/sandserv/efilter.py\":0-10",
+            "content": "import sys\ndef f(a,b):\n    return filter(lambda x:x!=b,a)\ne=sys.argv[1:]\na=\"\"\nif len(e)==0:\n    pass\nelse:\n    a=e[0]\nfor x in sys.stdin:\n    print(\"/\".join([a]+list(f(f(x.split(\"/\"),\"\"),\"/\"))[:-1]))"
+        }
+    ]
+}

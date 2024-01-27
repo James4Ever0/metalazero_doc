@@ -1,0 +1,10 @@
+{
+    "summary": "The code sets up a WebSocket server on localhost:9998, receives any data sent from the client, and sends \"thanks for whatever shit you have sent to me.\" three times as response. The server runs forever until manually stopped.",
+    "details": [
+        {
+            "comment": "The code sets up a WebSocket server on localhost:9998, receives any data sent from the client, and sends \"thanks for whatever shit you have sent to me.\" three times as response. The server runs forever until manually stopped.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_kali_amd64/cognitionService/virtual/websocket_test_server.py\":0-19",
+            "content": "#!/usr/bin/env python3\nimport asyncio\nimport websockets\nasync def server(websocket, path):\n    # Get received data from websocket\n#    data = await websocket.recv()\n    await websocket.send(\"thanks for whatever shit you have sent to me.\")\n    await websocket.send(\"thanks for whatever shit you have sent to me.\")\n    await websocket.send(\"thanks for whatever shit you have sent to me.\")\n    # Send response back to client to acknowledge receiving message\n#    await websocket.send(\"Thanks for your message: \" + data)\n# Create websocket server\nstart_server = websockets.serve(server, \"localhost\", 9998)\n# Start and run websocket server forever\nasyncio.get_event_loop().run_until_complete(start_server)\nasyncio.get_event_loop().run_forever()"
+        }
+    ]
+}

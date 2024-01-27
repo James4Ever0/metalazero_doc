@@ -1,0 +1,10 @@
+{
+    "summary": "The code executes the Python script \"demo_run.py\" using Python 3 interpreter.",
+    "details": [
+        {
+            "comment": "The code executes the Python script \"demo_run.py\" using Python 3 interpreter.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/tools/pexpect.sh\":0-0",
+            "content": "python3 demo_run.py"
+        }
+    ]
+}

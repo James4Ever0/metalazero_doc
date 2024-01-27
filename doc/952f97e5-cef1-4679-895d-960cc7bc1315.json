@@ -1,0 +1,10 @@
+{
+    "summary": "This code launches Emacs, an extensible text editor, with different flags and parameters to execute a script named \"server.el\". The first two lines use emacsclient with the server socket communication method for faster access, while the last line launches a new window (non-windowed mode) and loads the same script.",
+    "details": [
+        {
+            "comment": "This code launches Emacs, an extensible text editor, with different flags and parameters to execute a script named \"server.el\". The first two lines use emacsclient with the server socket communication method for faster access, while the last line launches a new window (non-windowed mode) and loads the same script.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_kali_amd64/cognitionService/virtual/server.sh\":0-3",
+            "content": "#emacsclient -s ~/.emacs.d/server/server\n#emacs --script server.el\nemacs -l server.el\n#emacs -nw -l server.el"
+        }
+    ]
+}

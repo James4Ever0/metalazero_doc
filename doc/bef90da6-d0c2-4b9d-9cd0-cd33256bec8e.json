@@ -1,0 +1,10 @@
+{
+    "summary": "Imports argparse module, extracts attribute names containing \"parse\" from the dir of ArgumentParser class.",
+    "details": [
+        {
+            "comment": "Imports argparse module, extracts attribute names containing \"parse\" from the dir of ArgumentParser class.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_chromeos_aarch64/cognitionService/check_attribute.py\":0-2",
+            "content": "import argparse\nnames = dir(argparse.ArgumentParser())\nprint([x for x in names if \"parse\" in x])"
+        }
+    ]
+}

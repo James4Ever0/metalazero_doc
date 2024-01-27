@@ -1,0 +1,10 @@
+{
+    "summary": "The code is continuously reading lines from the standard input, printing the current time and the received line. It does not specify any prediction or relationship analysis with the text being typed. The code appears to be waiting for a specific command or input but doesn't provide information on how to predict the next move or show the relationship between the current text being typed.",
+    "details": [
+        {
+            "comment": "The code is continuously reading lines from the standard input, printing the current time and the received line. It does not specify any prediction or relationship analysis with the text being typed. The code appears to be waiting for a specific command or input but doesn't provide information on how to predict the next move or show the relationship between the current text being typed.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_kali_amd64/cognitionService/deltaWrapper.py\":0-9",
+            "content": "import sys\nimport time as T\n# be it monad or anything. just show me how?\nwhile True:\n    line = sys.stdin.readline()\n    print(\"line received!\\n\",T.time(),line)\n    # how do you predict the next move? i don't care how the fuck you're gonna do the next. show me how.\n    # next, get me the words that i am currently typing. show the relationship somehow."
+        }
+    ]
+}

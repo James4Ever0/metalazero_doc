@@ -1,0 +1,10 @@
+{
+    "summary": "This code opens Emacs with a script \"reflection.el\" located in the current directory, likely for editing or running specific Lisp functions or operations within Emacs.",
+    "details": [
+        {
+            "comment": "This code opens Emacs with a script \"reflection.el\" located in the current directory, likely for editing or running specific Lisp functions or operations within Emacs.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_kali_amd64/cognitionService/virtual/reflection.sh\":0-0",
+            "content": "emacs --script reflection.el"
+        }
+    ]
+}

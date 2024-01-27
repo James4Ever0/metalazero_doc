@@ -1,0 +1,9 @@
+cli clients can only be used for headless operations, may not send proper chording keys!
+
+shall you emulate the classic vim modes? or trying to decode the chording keycodes? (better not)
+
+let's define all uppercase keys as functional/modifier keys, and all lowercase keys are somehow normal keys.
+
+shall be used to take screenshots, record videos.
+
+also you shall design a machine accessible api, avaliable for scripting.

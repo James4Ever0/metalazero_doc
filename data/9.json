@@ -1,0 +1,531 @@
+{
+    "900": {
+        "file_id": 190,
+        "content": "# we need to check for common patterns.\n# what contains the most information, the pure information?\nimport random\nimport copy\nimport sys\nimport uuid\nmy_id = str(uuid.uuid4())\ndictionary = []\ndlength = lambda: random.randint(3,6)\nwhile True:\n    i = sys.stdin.readline()\n    # hierachical shits?\n    i0 = copy.copy(i)\n    orig = len(i)\n    for x in dictionary:\n        i0 = i0.replace(x,\"\")\n    if len(i0) == orig:\n        # or always like that?\n        # collect some shits.\n        try:\n            dictlength = dlength()\n            a = random.randint(0,orig-dictlength)\n            b = a+dictlength\n            dictionary.append(i[a:b])\n        except:\n            pass\n    print(i)\n    print(\"{}_original:\".format(my_id),i,file=sys.stderr)\n    print(\"{}_filtered:\".format(my_id),i0,file=sys.stderr)\n    print(\"{}_dictionary:\".format(my_id),dictionary,file=sys.stderr)\n    # you shall introduce multidict.",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/mainService/filter_common_pattern.py:1-31"
+    },
+    "901": {
+        "file_id": 190,
+        "content": "The code reads input line by line, identifies and removes common patterns from the lines, stores them in a dictionary, and prints the original and filtered lines along with the dictionary. It uses uuid for identifier, random to determine dictionary length and pattern positions, and multidict may be introduced later.",
+        "type": "comment"
+    },
+    "902": {
+        "file_id": 191,
+        "content": "/native/lazero_kali_amd64/mainService/filter_python_bullshits.sh",
+        "type": "filepath"
+    },
+    "903": {
+        "file_id": 191,
+        "content": "This code executes a Python program multiple times, piping the output through several instances of the 'filter_common_pattern.py' script to potentially remove common patterns or filters before processing further.",
+        "type": "summary"
+    },
+    "904": {
+        "file_id": 191,
+        "content": "python3 generator/python_program_generator.py 2>&1 | python3 filter_common_pattern.py | python3 filter_common_pattern.py | python3 filter_common_pattern.py | python3 filter_common_pattern.py | python3 filter_common_pattern.py | python3 filter_common_pattern.py | python3 filter_common_pattern.py | python3 filter_common_pattern.py | python3 filter_common_pattern.py | python3 filter_common_pattern.py | python3 filter_common_pattern.py",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/mainService/filter_python_bullshits.sh:1-1"
+    },
+    "905": {
+        "file_id": 191,
+        "content": "This code executes a Python program multiple times, piping the output through several instances of the 'filter_common_pattern.py' script to potentially remove common patterns or filters before processing further.",
+        "type": "comment"
+    },
+    "906": {
+        "file_id": 192,
+        "content": "/native/lazero_kali_amd64/mainService/generator/program_generator.sh",
+        "type": "filepath"
+    },
+    "907": {
+        "file_id": 192,
+        "content": "This code reads the 'programs.log' file, uses xargs to iterate over each line, and creates a new file named 'abc_program_generator.py' for every line read.",
+        "type": "summary"
+    },
+    "908": {
+        "file_id": 192,
+        "content": "cat programs.log | xargs -iabc touch abc_program_generator.py",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/mainService/generator/program_generator.sh:1-1"
+    },
+    "909": {
+        "file_id": 192,
+        "content": "This code reads the 'programs.log' file, uses xargs to iterate over each line, and creates a new file named 'abc_program_generator.py' for every line read.",
+        "type": "comment"
+    },
+    "910": {
+        "file_id": 193,
+        "content": "/native/lazero_kali_amd64/mainService/generator/python_program_generator.py",
+        "type": "filepath"
+    },
+    "911": {
+        "file_id": 193,
+        "content": "This Python code utilizes inspection, OS, and random modules for error handling and safe evaluation. Main functionalities are base_error_handling, recursive_fault_handling, and safe_exec, iterating through a list of targets using eval_single to ensure safe execution.",
+        "type": "summary"
+    },
+    "912": {
+        "file_id": 193,
+        "content": "import inspect\nimport os\ndef doc(target):\n    return inspect.getdoc(target)\nd = doc(os)\n# filter the form of the shit.\ninfo = d.split()\nimport random\nimport traceback\ndef recursive_fault_handling(err):\n    try:\n        info_err = err.split()\n        targets = random.sample(err,5)\n        t = \".\".join(targets)\n        print(\"remedy command:\",t)\n        e = eval(t)\n        print(\"remedy result:\",e)\n    except:\n        err = traceback.format_exc()\n        recursive_fault_handling(err)\ndef base_error_handling():\n    try:\n        targets = random.sample(info,5)\n        t = \".\".join(targets)\n        print(\"executing program:\",t)\n        e = eval(t)\n        print(\"eval result:\",e)\n    except:\n        print(\"eval error\")\n        # infinite err handling?\n        # HOW DO YOU MAKE IT RIGHT?\n        err = traceback.format_exc()\n        recursive_fault_handling(err)\ndef safe_exec(func):\n    try:\n        func()\n    except:\n        pass\ndef my_eval(command):\n    try:\n        print(\"executing command:\",command)\n        e = eval(command)\n        print(\"eval result:\",e)",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/mainService/generator/python_program_generator.py:1-49"
+    },
+    "913": {
+        "file_id": 193,
+        "content": "The code is a Python script that contains functions for error handling and execution. It uses the `inspect` module to get documentation, `os` module to split documentation, and `random` module for sampling random targets. The main functionalities are `base_error_handling`, `recursive_fault_handling`, and `safe_exec`. `base_error_handling` handles errors by executing a randomly selected set of 5 commands from the information. If an error occurs, it calls `recursive_fault_handling` to handle more complex errors. The `safe_exec` function attempts to execute a function without catching any exceptions. Lastly, there is a custom `my_eval` function for executing and printing evaluation results.",
+        "type": "comment"
+    },
+    "914": {
+        "file_id": 193,
+        "content": "    except:\n        err = traceback.format_exc()\n        recursive_fault_handling(err)\ndef safe_eval(command):\n    safe_exec(my_eval(command))\ndef get_targets(x,target=str):\n    t= []\n    for y in x:\n        if type(y) == target:\n            t.append(y)\n        else:\n            t0 = get_targets(y)\n            t+=t0\n    return t\ndef mix_targets(x,y):\n    t = []\n    for x0 in get_targets(x):\n        for y0 in get_targets(y):\n            t.append(x0+y0)\n            t.append(y0+x0)\n    return t\ndef eval_single(target):\n    try:\n        print(\"executing target:\",target)\n        r = eval(target)\n        print(\"result:\",r)\n    except:\n        err = traceback.format_exc()\n        print(\"error:\",err)\nif __name__ == \"__main__\":\n    safe_exec(base_error_handling)\n    program_base = [\"inspect.{}\".format(x) for x in dir(inspect)]\n    flatten = lambda x: [y for z in x for y in z]\n    targets = [\"()\",*dir(inspect),\".\",flatten([dir(eval(x)) for x in program_base])]\n#    pb2 = [[x+y for x in program_base] for y in targets]\n    pb2 = mix_targets(program_base, targets)",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/mainService/generator/python_program_generator.py:50-88"
+    },
+    "915": {
+        "file_id": 193,
+        "content": "This code contains functions for safe evaluation and handling errors in Python. It includes functionality to mix and evaluate targets, using a combination of inspect module's methods and variables from the eval function. The code also handles exceptions with error handling functions and recursive error formatting.",
+        "type": "comment"
+    },
+    "916": {
+        "file_id": 193,
+        "content": "    for target in pb2:\n#        safe_eval(target)\n        eval_single(target)",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/mainService/generator/python_program_generator.py:89-91"
+    },
+    "917": {
+        "file_id": 193,
+        "content": "The code iterates through a list of Python bytecode targets (pb2), and instead of using 'safe_eval' which may raise errors, it utilizes 'eval_single' to execute each target safely.",
+        "type": "comment"
+    },
+    "918": {
+        "file_id": 194,
+        "content": "/native/lazero_kali_amd64/mainService/generator/regex_generator.py",
+        "type": "filepath"
+    },
+    "919": {
+        "file_id": 194,
+        "content": "The code generates random strings of length 7 using a given generator function and checks if they match any valid regular expression. It does this by compiling the generated string into a regex pattern and returning True or False based on its validity. The main loop runs this process 200 times to test various expressions.",
+        "type": "summary"
+    },
+    "920": {
+        "file_id": 194,
+        "content": "# usually regular expression just contains everything, so we use every shit to develop the regular expression.\nimport random\nimport re\ndef test_regular(expression):\n    try:\n        re.compile(expression)\n        return True\n    except:\n        return False\ndef generate_expression(length=7,generator=lambda: chr(random.randint(0,200))):\n    target=\"\"\n    for _ in range(length):\n        target += generator()\n    return target\nif __name__ == \"__main__\":\n    # undecidable, we never know what the heck will be going on.\n    # cause you don't see it happens.\n    for _ in range(200):\n        g = generate_expression()\n        print(\"expression:\",g,\"isValid:\",test_regular(g))\n# can we build some shit out of our discovery?",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/mainService/generator/regex_generator.py:1-24"
+    },
+    "921": {
+        "file_id": 194,
+        "content": "The code generates random strings of length 7 using a given generator function and checks if they match any valid regular expression. It does this by compiling the generated string into a regex pattern and returning True or False based on its validity. The main loop runs this process 200 times to test various expressions.",
+        "type": "comment"
+    },
+    "922": {
+        "file_id": 195,
+        "content": "/native/lazero_kali_amd64/mainService/launch_monkey.sh",
+        "type": "filepath"
+    },
+    "923": {
+        "file_id": 195,
+        "content": "This command is running a Python script named monkey_controller.py within the X virtual framebuffer (Xvfb) environment, which is useful for running GUI tests on headless systems.",
+        "type": "summary"
+    },
+    "924": {
+        "file_id": 195,
+        "content": "xvfb-run python3 monkey_controller.py",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/mainService/launch_monkey.sh:1-1"
+    },
+    "925": {
+        "file_id": 195,
+        "content": "This command is running a Python script named monkey_controller.py within the X virtual framebuffer (Xvfb) environment, which is useful for running GUI tests on headless systems.",
+        "type": "comment"
+    },
+    "926": {
+        "file_id": 196,
+        "content": "/native/lazero_kali_amd64/mainService/launch_monkey_basic.sh",
+        "type": "filepath"
+    },
+    "927": {
+        "file_id": 196,
+        "content": "The code is running a Python script named monkey\\_basic.py inside an X Virtual Frame Buffer (Xvfb) environment, ensuring the GUI testing functionality runs smoothly.",
+        "type": "summary"
+    },
+    "928": {
+        "file_id": 196,
+        "content": "xvfb-run python3 monkey_basic.py",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/mainService/launch_monkey_basic.sh:1-1"
+    },
+    "929": {
+        "file_id": 196,
+        "content": "The code is running a Python script named monkey\\_basic.py inside an X Virtual Frame Buffer (Xvfb) environment, ensuring the GUI testing functionality runs smoothly.",
+        "type": "comment"
+    },
+    "930": {
+        "file_id": 197,
+        "content": "/native/lazero_kali_amd64/mainService/logic_fuzzer.py",
+        "type": "filepath"
+    },
+    "931": {
+        "file_id": 197,
+        "content": "The code generates random logic expressions, allows for value swaps and list insertions, and can output a final logic statement. Optimization options are not clear.",
+        "type": "summary"
+    },
+    "932": {
+        "file_id": 197,
+        "content": "# this is to create custom function via shits.\n# basic binary shits.\n# who can tell?\nimport random\n# we want some basic logic expressions. not just shits.\n# we want our fucking program.\ndef generate_expression(length,complexity=5,brackets=3,join=True):\n    kw =[\"and\", \"or\",\"not\"]\n    assert length > 1 and type(length) == int\n    output = []\n    kw0 = [\"k{}\".format(x) for x in range(length)]\n    br = [\"(\",\")\"]\n    output.append(random.choice(kw0))\n    for x in range(complexity-1):\n        a,b = random.choice(kw0), random.choice(kw)\n        if b == \"not\":\n            output.append(br[0])\n        output.append(b)\n        output.append(a)        \n        if b == \"not\":\n            output.append(br[1])\n#    random.shuffle(kw0)\n#    i=0\n    # we want brackets.\n    # but how to add these shits?\n#    for x in kw0:\n#        output.insert(0+i,x)\n    for x in range(brackets):\n        inds = []\n        for a,b in enumerate(output):\n            if b not in kw:\n                inds.append(a)\n        t0 = random.sample(inds,2)\n        a,b = t0",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/mainService/logic_fuzzer.py:1-36"
+    },
+    "933": {
+        "file_id": 197,
+        "content": "The code generates a random logic expression with specified length, complexity, and brackets. It uses keyword functions and variables in the form \"k0\" to k(length-1) and includes \"and\", \"or\", \"not\" operators, along with brackets to create complex expressions. The purpose seems to be creating a diverse range of logic expressions for testing or analysis purposes.",
+        "type": "comment"
+    },
+    "934": {
+        "file_id": 197,
+        "content": "        if a>b:\n            a,b = b,a\n        adjustment = 4\n        output.insert(a,br[0])\n        output.insert(b+adjustment,br[1])\n    return \" \".join(output) if join else output\nif __name__ == \"__main__\":\n    length = 5\n    output = generate_expression(length)\n    # how do we find the optimization function?\n    # how do we change the fucking logic?\n    print(\"target logic:\",output)",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/mainService/logic_fuzzer.py:37-48"
+    },
+    "935": {
+        "file_id": 197,
+        "content": "This code compares two values, swaps them if necessary, and inserts two elements into a list with specific indices. It then joins the list (optionally) into a string and finally prints a target logic statement. The optimization function and changing the logic remain unclear.",
+        "type": "comment"
+    },
+    "936": {
+        "file_id": 198,
+        "content": "/native/lazero_kali_amd64/mainService/monkey_basic.py",
+        "type": "filepath"
+    },
+    "937": {
+        "file_id": 198,
+        "content": "The code imports libraries, defines mouse and keyboard functions, randomly chooses a function to execute, and enters an infinite loop if run directly.",
+        "type": "summary"
+    },
+    "938": {
+        "file_id": 198,
+        "content": "import pyautogui\nimport random\nimport time\ndef getMouse():\n    x,y = pyautogui.size()\n    x0, y0 = random.randint(0,x), random.randint(0,y)\n    print(\"new location:\",x0,y0)\n    return x0, y0\ndef mouseMove(delay=0.2):\n    x0,y0 = getMouse()\n    pyautogui.moveTo(x0,y0,duration=delay)\ndef mouseClick(delay=0.2):\n    pyautogui.mouseDown()\n    time.sleep(delay)\n    pyautogui.mouseUp()\ndef mouseDrag(delay=0.2):\n    x0, y0 = getMouse()\n    pyautogui.dragTo(x0,y0,duration=delay)\ndef keyToggle(delay=0.2):\n    keys = pyautogui.KEYBOARD_KEYS\n    k = random.choice(keys)\n    print(\"pressing key:\",k)\n    pyautogui.keyDown(k)\n    time.sleep(delay)\n    pyautogui.keyUp(k)\ndef hotkey(delay=0.2,keys_range=(2,5)):\n    keys = pyautogui.KEYBOARD_KEYS\n    k = []\n    random.sample(keys,random.randint(*keys_range))\n    print(\"pressing hotkeys:\",*k)\n    pyautogui.hotkey(*k,interval=delay/len(k))\ndef execute():\n    functions = [mouseDrag, mouseMove, mouseClick, keyToggle, hotkey]\n    f = random.choice(functions)\n    print(\"executing function:\",f.__name__)",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/mainService/monkey_basic.py:1-42"
+    },
+    "939": {
+        "file_id": 198,
+        "content": "This code imports the necessary libraries and defines several functions for interacting with the mouse and keyboard. The functions include moving, clicking, dragging, toggling keys, and executing hotkeys. The program randomly chooses a function to execute and prints its name.",
+        "type": "comment"
+    },
+    "940": {
+        "file_id": 198,
+        "content": "    f()\nif __name__ == \"__main__\":\n    while True:\n        execute()",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/mainService/monkey_basic.py:43-47"
+    },
+    "941": {
+        "file_id": 198,
+        "content": "This code defines a function f() and checks if the script is being run directly. If it is, it enters an infinite loop that repeatedly calls the execute() function.",
+        "type": "comment"
+    },
+    "942": {
+        "file_id": 199,
+        "content": "/native/lazero_kali_amd64/mainService/monkey_controller.py",
+        "type": "filepath"
+    },
+    "943": {
+        "file_id": 199,
+        "content": "This code is using PyAutoGUI library and randomly selecting functions to execute, providing basic data for algorithm training. It fuzz-tests around the code by choosing random commands from available functions in PyAutoGUI. The purpose is to gather data for advanced algorithms but currently operates in a relatively simple manner.",
+        "type": "summary"
+    },
+    "944": {
+        "file_id": 199,
+        "content": "# this is the pyautogui version of the monkey, providing our basic data for training.\n# advanced algos will be possible only if we have the data.\n# we go dumb first.\nimport pyautogui\nimport random\n# but first we must fuzz around the code.\ntargets=dir(pyautogui)\nwhile True:\n    t = random.choice(targets)\n    cmd = \"pyautogui.{}\".format(t)\n    print(\"executing command:\",cmd)\n    r = eval(cmd)\n    print(\"result:\",r)\n    # let me know more about the controller.\n    # we do not know the shit yet.",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/mainService/monkey_controller.py:1-15"
+    },
+    "945": {
+        "file_id": 199,
+        "content": "This code is using PyAutoGUI library and randomly selecting functions to execute, providing basic data for algorithm training. It fuzz-tests around the code by choosing random commands from available functions in PyAutoGUI. The purpose is to gather data for advanced algorithms but currently operates in a relatively simple manner.",
+        "type": "comment"
+    },
+    "946": {
+        "file_id": 200,
+        "content": "/native/lazero_kali_amd64/mainService/problem_generator/README",
+        "type": "filepath"
+    },
+    "947": {
+        "file_id": 200,
+        "content": "This code emphasizes the importance of creating unique problem sets for training, suggesting to start from scratch without relying on existing standards. It encourages utilizing various formats such as machine language or random characters, and reminds that it all starts with addressing damage and impossibilities.",
+        "type": "summary"
+    },
+    "948": {
+        "file_id": 200,
+        "content": "problems are vital for training. they are equivalent to targets.\nyou need to know that not all human can solve some problems that they want to solve, and not all human will share these problems for you.\nin order to create your own problem sets, you have to forget about all other trivial standards and start from scratch. machine language? fine. random chars? also fine. don't care about its form or anything.\nyou can start from human tests and summarize the form of the problem.\nalso you need to implement it in code.\nit all starts with damage and impossibilities.",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/mainService/problem_generator/README:1-11"
+    },
+    "949": {
+        "file_id": 200,
+        "content": "This code emphasizes the importance of creating unique problem sets for training, suggesting to start from scratch without relying on existing standards. It encourages utilizing various formats such as machine language or random characters, and reminds that it all starts with addressing damage and impossibilities.",
+        "type": "comment"
+    },
+    "950": {
+        "file_id": 201,
+        "content": "/native/lazero_kali_amd64/mainService/program_database/README",
+        "type": "filepath"
+    },
+    "951": {
+        "file_id": 201,
+        "content": "This code snippet appears to be a README file for a simple program database, suggesting that it serves as a foundation for creating programs without starting from scratch. It also recommends checking the com",
+        "type": "summary"
+    },
+    "952": {
+        "file_id": 201,
+        "content": "THIS IS SIMPLE PROGRAM DATABASE, SO WE DO NOT HAVE TO WRITE FROM SCRATCH.\nOR YOU COULD TRY TO CREATE SOME PROGRAM FROM THIS SHIT.\nJUST LIKE THE DNA.\nyou should check the comma_ai codebase.\nand create some tasks for yourself. you might not like that but it is the only fucking way to learn, especially you cannot run it yourself and wait for several seconds. it is just not how we learn shits.\nlearning can be fast and slow. just think.",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/mainService/program_database/README:1-11"
+    },
+    "953": {
+        "file_id": 201,
+        "content": "This code snippet appears to be a README file for a simple program database, suggesting that it serves as a foundation for creating programs without starting from scratch. It also recommends checking the com",
+        "type": "comment"
+    },
+    "954": {
+        "file_id": 202,
+        "content": "/native/lazero_kali_amd64/mainService/program_database/launch.sh",
+        "type": "filepath"
+    },
+    "955": {
+        "file_id": 202,
+        "content": "This code runs the Python script \"python_monkey_database.py\" using Python 3 interpreter, likely for database operations or program execution within the 'launch.sh' shell script.",
+        "type": "summary"
+    },
+    "956": {
+        "file_id": 202,
+        "content": "python3 python_monkey_database.py",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/mainService/program_database/launch.sh:1-1"
+    },
+    "957": {
+        "file_id": 202,
+        "content": "This code runs the Python script \"python_monkey_database.py\" using Python 3 interpreter, likely for database operations or program execution within the 'launch.sh' shell script.",
+        "type": "comment"
+    },
+    "958": {
+        "file_id": 203,
+        "content": "/native/lazero_kali_amd64/mainService/program_database/python_database.py",
+        "type": "filepath"
+    },
+    "959": {
+        "file_id": 203,
+        "content": "Creates SQLite database, executes queries to create and insert data into tables, handles exceptions for error management. Checks validity of user input program using eval().",
+        "type": "summary"
+    },
+    "960": {
+        "file_id": 203,
+        "content": "#import apsw\nimport sqlite3\n#import pysqlite3\n# we need to verify its correctness.\n# like coq in python?\nc = sqlite3.connect(\"python.db\")\n#c = apsw.Connection(\"python.db\")\n#print(dir(sqlite))\n#print(dir(c))\n#help(c)\n#cursor = c.cursor()\n#help(cursor)\nimport traceback\ndef try_execute(statement,data=None):\n    try:\n        if data == None:\n            c.execute(statement)\n        else:\n            assert type(data) == tuple\n            c.execute(statement, data)\n        c.commit()\n        return True\n    except:\n        traceback.print_exc()\n    return False\nstatement = \"create table source_code ( Id int primary key, Program varchar(255) unique, Comment varchar(255))\"\ntry_execute(statement)\nstatement = \"insert into source_code (Id, Program, Comment) values (1, \\\"import numpy\\\",\\\"import statement\\\")\"\ntry_execute(statement)\nstatement = \"insert into source_code (Id, Program, Comment) values (2, ?, ?)\"\ndata = ('lambda x: x.replace(\"abc\",\"\")','replace statement')\ntry_execute(statement, data)\nstatement = \"select distinct Id, Program, Comment from source_code order by -Id \"",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/mainService/program_database/python_database.py:1-35"
+    },
+    "961": {
+        "file_id": 203,
+        "content": "Creates a SQLite database and executes queries to create and insert data into tables, using exception handling for error management.",
+        "type": "comment"
+    },
+    "962": {
+        "file_id": 203,
+        "content": "cursor = c.execute(statement)\n# how do you escape anything?\nind=0\nfor a in cursor:\n    ind,_,_ = a\n    break\nind+=1\nprint(\"will start recording if is valid statement.\")\nprint(\"i will categorize these functions.\")\nwhile True:\n    program = input(\"please give the code:\\n\")\n    comment = input(\"code comment:\\n\")\n    statement = \"insert into source_code (Id, Program, Comment) values (?, ?, ?)\"\n    try:\n        eval(program)\n        print(\"eval succeed.\")\n        data = (ind, program, comment)\n        result = try_execute(statement, data)\n        if result:\n            ind+=1\n            print(\"insert succeed.\")\n        else:\n            print(\"failed to insert program.\")\n    except:\n        print(\"invalid program.\")",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/mainService/program_database/python_database.py:36-60"
+    },
+    "963": {
+        "file_id": 203,
+        "content": "This code takes user input for a program and its comment, checks if the program is valid by attempting to evaluate it using eval(), and then inserts the program and comment into a database if the program is valid.",
+        "type": "comment"
+    },
+    "964": {
+        "file_id": 204,
+        "content": "/native/lazero_kali_amd64/mainService/program_database/python_monkey.py",
+        "type": "filepath"
+    },
+    "965": {
+        "file_id": 204,
+        "content": "This code generates a random program by randomly selecting operators and variables to form a sequence of expressions. The generated program is then printed along with the comment \"monkey program\". It waits for 0.5 seconds before generating the next random program.",
+        "type": "summary"
+    },
+    "966": {
+        "file_id": 204,
+        "content": "a = \"lambda {} : {}\"\ncomment = \"monkey program\"\nimport random\noperator = [x for x in \"+-*/%\"]\nletters = [x for x in \"xyzabcdef\"]\nimport time\nrest = lambda: time.sleep(0.5)\nwhile True:\n    tl = random.randint(2,5)\n    ts = random.randint(3,6)\n    # internal is equally important than external.\n    tl0 = [random.choice(operator) for _ in range(tl+ts-1)]\n    tl1 = random.sample(letters,tl)\n    tl3 = [str(random.random()) for _ in range(ts)]\n    tl2 = tl3+tl1\n    random.shuffle(tl2)\n    seq = [tl2[x]+tl0[x] for x in range(tl+ts-1)]\n    seq += [tl2[-1]]\n    seq = \"\".join(seq)\n    head = \",\".join(tl1)\n    target = a.format(head, seq)\n    rest()\n    print(target,end=\"\\r\\n\")\n    rest()\n    print(comment,end=\"\\r\\n\")",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/mainService/program_database/python_monkey.py:1-26"
+    },
+    "967": {
+        "file_id": 204,
+        "content": "This code generates a random program by randomly selecting operators and variables to form a sequence of expressions. The generated program is then printed along with the comment \"monkey program\". It waits for 0.5 seconds before generating the next random program.",
+        "type": "comment"
+    },
+    "968": {
+        "file_id": 205,
+        "content": "/native/lazero_kali_amd64/mainService/program_database/python_monkey_database.py",
+        "type": "filepath"
+    },
+    "969": {
+        "file_id": 205,
+        "content": "The code imports SQLite, creates a table and inserts data. It generates random Python expressions within specified length range and stores them with comments in the database. It attempts to insert statements and handles exceptions as invalid programs.",
+        "type": "summary"
+    },
+    "970": {
+        "file_id": 205,
+        "content": "#import apsw\nimport sqlite3\n#import pysqlite3\n# we need to verify its correctness.\n# like coq in python?\nc = sqlite3.connect(\"python_monkey.db\")\n#c = apsw.Connection(\"python.db\")\n#print(dir(sqlite))\n#print(dir(c))\n#help(c)\n#cursor = c.cursor()\n#help(cursor)\nimport traceback\ndef try_execute(statement,data=None):\n    try:\n        if data == None:\n            c.execute(statement)\n        else:\n            assert type(data) == tuple\n            c.execute(statement, data)\n        c.commit()\n        return True\n    except:\n        traceback.print_exc()\n    return False\nstatement = \"create table source_code ( Id int primary key, Program varchar(255) unique, Comment varchar(255))\"\ntry_execute(statement)\nstatement = \"insert into source_code (Id, Program, Comment) values (1, \\\"import numpy\\\",\\\"import statement\\\")\"\ntry_execute(statement)\nstatement = \"insert into source_code (Id, Program, Comment) values (2, ?, ?)\"\ndata = ('lambda x: x.replace(\"abc\",\"\")','replace statement')\ntry_execute(statement, data)\nstatement = \"select distinct Id, Program, Comment from source_code order by -Id \"",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/mainService/program_database/python_monkey_database.py:1-35"
+    },
+    "971": {
+        "file_id": 205,
+        "content": "Imports SQLite library and creates a connection to the database.\nDefines a try_execute function for executing SQL statements, handles exceptions, and prints traceback if any.\nCreates a table \"source_code\" with columns Id, Program, and Comment.\nInserts initial data into source_code table.\nInserts lambda function and comment using placeholders in the statement.\nQueries distinct ID, program, and comment from source_code table, sorted by descending ID.",
+        "type": "comment"
+    },
+    "972": {
+        "file_id": 205,
+        "content": "cursor = c.execute(statement)\n# how do you escape anything?\nind=0\nfor a in cursor:\n    ind,_,_ = a\n    break\nind+=1\na = \"lambda {} : {}\"\nimport random\noperator = [x for x in \"+-*/%\"]\nletters = [x for x in \"xyzabcdef\"]\nimport time\nrest = lambda: time.sleep(0.5)\ndef monkey():\n    comment = \"monkey program\"\n    tl = random.randint(2,5)\n    ts = random.randint(3,6)\n    # internal is equally important than external.\n    tl0 = [random.choice(operator) for _ in range(tl+ts-1)]\n    tl1 = random.sample(letters,tl)\n    tl3 = [str(random.random()) for _ in range(ts)]\n    tl2 = tl3+tl1\n    random.shuffle(tl2)\n    seq = [tl2[x]+tl0[x] for x in range(tl+ts-1)]\n    seq += [tl2[-1]]\n    seq = \"\".join(seq)\n    head = \",\".join(tl1)\n    target = a.format(head, seq)\n    rest()\n    return target, comment\nprint(\"will start recording if is valid statement.\")\nprint(\"i will categorize these functions.\")\nwhile True:\n    program, comment = monkey()\n    statement = \"insert into source_code (Id, Program, Comment) values (?, ?, ?)\"\n    try:\n        eval(program)",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/mainService/program_database/python_monkey_database.py:36-74"
+    },
+    "973": {
+        "file_id": 205,
+        "content": "Code generates random Python expressions and assigns them to a variable, then inserts them into the database. The generated expression consists of random operators, random letters, and random floats, with a specified length range. The function returns the randomly generated program along with a comment.",
+        "type": "comment"
+    },
+    "974": {
+        "file_id": 205,
+        "content": "        print(\"eval succeed.\")\n        data = (ind, program, comment)\n        result = try_execute(statement, data)\n        if result:\n            ind+=1\n            print(\"insert succeed.\")\n        else:\n            print(\"failed to insert program.\")\n    except:\n        print(\"invalid program.\")",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/mainService/program_database/python_monkey_database.py:75-84"
+    },
+    "975": {
+        "file_id": 205,
+        "content": "The code attempts to execute a statement with provided data. If successful, it increments the index and prints \"insert succeed.\" Otherwise, it displays \"failed to insert program\" and handles any exceptions as an invalid program.",
+        "type": "comment"
+    },
+    "976": {
+        "file_id": 206,
+        "content": "/native/lazero_kali_amd64/mainService/program_database/requirements.txt",
+        "type": "filepath"
+    },
+    "977": {
+        "file_id": 206,
+        "content": "This code is specifying the required packages for a Python project. \"apsw\" and \"pysqlite3\" are mentioned, indicating that these are necessary dependencies. The \"#pysqlite # this is for py2\" comment suggests that another version of the \"pysqlite\" package might be needed for Python 2 compatibility.",
+        "type": "summary"
+    },
+    "978": {
+        "file_id": 206,
+        "content": "apsw\npysqlite3\n#pysqlite # this is for py2",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/mainService/program_database/requirements.txt:1-3"
+    },
+    "979": {
+        "file_id": 206,
+        "content": "This code is specifying the required packages for a Python project. \"apsw\" and \"pysqlite3\" are mentioned, indicating that these are necessary dependencies. The \"#pysqlite # this is for py2\" comment suggests that another version of the \"pysqlite\" package might be needed for Python 2 compatibility.",
+        "type": "comment"
+    },
+    "980": {
+        "file_id": 207,
+        "content": "/native/lazero_kali_amd64/mainService/target_basic.py",
+        "type": "filepath"
+    },
+    "981": {
+        "file_id": 207,
+        "content": "Function \"target_form\" takes action and target as inputs, returns a tuple containing both values. Function \"reverse_target\" reverses the order of action and target in a tuple before returning it. The code seems to be performing some sort of data manipulation on tuples for an observer.",
+        "type": "summary"
+    },
+    "982": {
+        "file_id": 207,
+        "content": "# that is to train the relationship among all these shits, for the observer.\ndef target_form(action,target):\n    return (action,target)\ndef reverse_target(action,target):\n    return (target,action)\n# irrational but effective?",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/mainService/target_basic.py:1-8"
+    },
+    "983": {
+        "file_id": 207,
+        "content": "Function \"target_form\" takes action and target as inputs, returns a tuple containing both values. Function \"reverse_target\" reverses the order of action and target in a tuple before returning it. The code seems to be performing some sort of data manipulation on tuples for an observer.",
+        "type": "comment"
+    },
+    "984": {
+        "file_id": 208,
+        "content": "/native/lazero_kali_amd64/mainService/tee_shell.sh",
+        "type": "filepath"
+    },
+    "985": {
+        "file_id": 208,
+        "content": "Executes the script in bash, appends its standard output (stdout) to inputs.log and standard error (stderr) to outputs.log simultaneously.",
+        "type": "summary"
+    },
+    "986": {
+        "file_id": 208,
+        "content": "#tee -a inputs.log | bash | tee -a outputs.log\ntee -a inputs.log | bash 2>&1 | tee -a outputs.log",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/mainService/tee_shell.sh:1-2"
+    },
+    "987": {
+        "file_id": 208,
+        "content": "Executes the script in bash, appends its standard output (stdout) to inputs.log and standard error (stderr) to outputs.log simultaneously.",
+        "type": "comment"
+    },
+    "988": {
+        "file_id": 209,
+        "content": "/native/lazero_kali_amd64/mainService/torch_monkey.sh",
+        "type": "filepath"
+    },
+    "989": {
+        "file_id": 209,
+        "content": "This script continuously launches a VNC monkey and bruteforcer, both connecting to localhost:5800 with the stored password. The first command times out for 100 seconds before launching the VNC monkey, followed by launching the bruteforcer that times out for 20 seconds. The script uses vncdotool commands to control mouse and keyboard actions within the VNC session.",
+        "type": "summary"
+    },
+    "990": {
+        "file_id": 209,
+        "content": "#DISPLAY=:99 xhost +\n#DISPLAY=:99 python3 monkey_basic.py\naddress=localhost:5800\npasswd=$(cat .secret)\n#passwd=randompassword\nstime0=100\nstime1=20\nwhile true\ndo\n\techo launching monkey.\n\ttimeout $stime0 python3 vnc_monkey.py -p $passwd -a $address\n\techo launching bruteforcer.\n\ttimeout $stime1 python3 vnc_bruteforcer.py -p $passwd -a $address\ndone\n#vncdotool -p $passwd -s 127.0.0.1::5800 mouseup 1 \n#vncdotool -p $passwd -s 127.0.0.1::5800 -vvvv keydown A\n# we launch the shit within the shit.\n#vncdotool -p $passwd -s 127.0.0.1::5800 mousemove 500 500  \n#vncdotool -p $passwd -s 127.0.0.1::5800 mousedown 1 ",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/mainService/torch_monkey.sh:1-19"
+    },
+    "991": {
+        "file_id": 209,
+        "content": "This script continuously launches a VNC monkey and bruteforcer, both connecting to localhost:5800 with the stored password. The first command times out for 100 seconds before launching the VNC monkey, followed by launching the bruteforcer that times out for 20 seconds. The script uses vncdotool commands to control mouse and keyboard actions within the VNC session.",
+        "type": "comment"
+    },
+    "992": {
+        "file_id": 210,
+        "content": "/native/lazero_kali_amd64/mainService/uniq_filter.py",
+        "type": "filepath"
+    },
+    "993": {
+        "file_id": 210,
+        "content": "Code reads user inputs and stores unique targets in a list. Continuously looks for new inputs to add to the list, printing new unique targets found.",
+        "type": "summary"
+    },
+    "994": {
+        "file_id": 210,
+        "content": "#import sys\ntargets=[]\n# this is program database.\nwhile True:\n#    line=sys.stdin.readline()\n    line = input()\n    if line not in targets:\n        targets.append(line)\n        print(\"found uniq target:\\n\",line)",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/mainService/uniq_filter.py:1-9"
+    },
+    "995": {
+        "file_id": 210,
+        "content": "Code reads user inputs and stores unique targets in a list. Continuously looks for new inputs to add to the list, printing new unique targets found.",
+        "type": "comment"
+    },
+    "996": {
+        "file_id": 211,
+        "content": "/native/lazero_kali_amd64/mainService/uniq_monkey_launcher.sh",
+        "type": "filepath"
+    },
+    "997": {
+        "file_id": 211,
+        "content": "This code executes the \"launch_monkey.sh\" script using Bash, then pipes the output to Python3's \"uniq_filter.py\" script for filtering unique results.",
+        "type": "summary"
+    },
+    "998": {
+        "file_id": 211,
+        "content": "bash launch_monkey.sh | python3 uniq_filter.py",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/mainService/uniq_monkey_launcher.sh:1-1"
+    },
+    "999": {
+        "file_id": 211,
+        "content": "This code executes the \"launch_monkey.sh\" script using Bash, then pipes the output to Python3's \"uniq_filter.py\" script for filtering unique results.",
+        "type": "comment"
+    }
+}

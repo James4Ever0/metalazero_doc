@@ -1,0 +1,10 @@
+{
+    "summary": "This code is a Bash script that prints \"hello\" to the terminal and saves the output to a log file named stdout.log without any redirection for error messages or standard input.",
+    "details": [
+        {
+            "comment": "This code is a Bash script that prints \"hello\" to the terminal and saves the output to a log file named stdout.log without any redirection for error messages or standard input.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_kali_amd64/cognitionService/virtual/test.sh\":0-4",
+            "content": "#!/bin/bash\n# you are not echoing them.\necho hello > hello\ncat hello >(tee -a stdout.log)\n#cat hello 1>(tee -a stdout.log) 2>(tee -a stderr.log)"
+        }
+    ]
+}

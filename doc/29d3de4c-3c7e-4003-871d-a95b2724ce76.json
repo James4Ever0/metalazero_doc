@@ -1,0 +1,10 @@
+{
+    "summary": "This code establishes a WebSocket connection with the server running at \"ws://localhost:9999\", sends a message to print \"Hello, Server\" on the server side, sets a timeout of 2 seconds for receiving messages, and continuously prints received messages until either a timeout or an exception occurs.",
+    "details": [
+        {
+            "comment": "This code establishes a WebSocket connection with the server running at \"ws://localhost:9999\", sends a message to print \"Hello, Server\" on the server side, sets a timeout of 2 seconds for receiving messages, and continuously prints received messages until either a timeout or an exception occurs.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_kali_amd64/cognitionService/virtual/connect_websocketd_ielm.py\":0-12",
+            "content": "import websocket\nws = websocket.WebSocket()\nws.connect(\"ws://localhost:9999\")\nws.send(\"(print \\\"Hello, Server\\\")\")\n#print(ws.timeout) #none. block forever.\nws.settimeout(2)\ntry:\n    while True:\n        print(ws.recv())\nexcept:\n    print(\"timed out\")\n    ws.close()"
+        }
+    ]
+}

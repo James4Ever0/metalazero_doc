@@ -1,0 +1,10 @@
+{
+    "summary": "The code checks the exit status of \"pull.sh\" script and if it is 0, it creates a \".latest\" file indicating a successful pull, else it removes the \".latest\" file. The safe operation (e.g., merging files) can be performed after creating or removing the \".latest\" file accordingly.",
+    "details": [
+        {
+            "comment": "The code checks the exit status of \"pull.sh\" script and if it is 0, it creates a \".latest\" file indicating a successful pull, else it removes the \".latest\" file. The safe operation (e.g., merging files) can be performed after creating or removing the \".latest\" file accordingly.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/schedules/sync.sh\":0-7",
+            "content": "bash pull.sh\nif [ $! -eq 0 ]; then\n\t# now you can safely do your shit.\n\ttouch .latest\n\tpython3 merge_file.py\nelse\n\trm .latest\nfi"
+        }
+    ]
+}

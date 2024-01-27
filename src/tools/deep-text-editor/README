@@ -1,0 +1,5 @@
+to represent the human editing behavior.
+
+i guess we need some value caster. one neural network connect to another, admit there's something that it cannot solve, even if it has the potential.
+
+also it needs to simulate everything a little bit, to be adapted.

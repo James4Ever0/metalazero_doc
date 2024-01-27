@@ -1,0 +1,10 @@
+{
+    "summary": "Code snippet demonstrates string manipulation and method printing for class exploration. It checks if the string \"a\" contains substrings, prints declared methods of a String object using a custom print function, and uses javap to inspect class details.",
+    "details": [
+        {
+            "comment": "Code snippet demonstrates string manipulation and method printing for class exploration. It checks if the string \"a\" contains substrings, prints declared methods of a String object using a custom print function, and uses javap to inspect class details.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_kali_amd64/cognitionService/virtual/cog_core.bsh\":0-14",
+            "content": "a=\"abcdef\";\nSystem.out.println(a.contains(\"abc\"));\nSystem.out.println(a.contains(\"123\"));\n/*\npublic void print(Object O){\nSystem.out.println(O);\n}\n*/\n// THIS ONE IS MUCH BETTER THAN ORIGINAL.\nprint(String.class.getDeclaredMethods());\n//print(String.class.getDeclaredMethods());\njavap(this);"
+        }
+    ]
+}

@@ -1,0 +1,10 @@
+{
+    "summary": "This Python script imports the requests library, defines a display function that fetches data from localhost port 8788, an inputs function to send data and receive responses from localhost port 8788 with optional autoreturn feature, and a restart function to reset the process.",
+    "details": [
+        {
+            "comment": "This Python script imports the requests library, defines a display function that fetches data from localhost port 8788, an inputs function to send data and receive responses from localhost port 8788 with optional autoreturn feature, and a restart function to reset the process.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_kali_amd64/cognitionService/shellConnect.py\":0-20",
+            "content": "import requests as R\nPORT=8788\ndef display():\n    req = R.get(\"http://localhost:{}/display\".format(PORT))\n    return req.text\nfrom base64 import b64encode as Be\ndef inputs(text,autoreturn=True):\n    assert type(text) == str\n    ar = \"true\" if autoreturn else \"false\"\n    btext = Be(text.encode(\"utf-8\")).decode(\"utf-8\")\n    req = R.get(\"http://localhost:{}/input?autoreturn={}&b64type={}\".format(PORT,ar,btext))\n    # this is still the screen.\n    return req.text\ndef restart():\n    req = R.get(\"http://localhost:{}/restart\".format(PORT))\n    return req.text"
+        }
+    ]
+}

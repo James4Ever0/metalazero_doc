@@ -1,0 +1,10 @@
+{
+    "summary": "This code is a script for macOS that copies the string \"hello world\" to the clipboard, displays \"indicator\", and then prints out whatever text is currently in the clipboard. It's used for demonstrating the functionality of the clipboard tool.",
+    "details": [
+        {
+            "comment": "This code is a script for macOS that copies the string \"hello world\" to the clipboard, displays \"indicator\", and then prints out whatever text is currently in the clipboard. It's used for demonstrating the functionality of the clipboard tool.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/remote_control/tools/clipboard/macos/demo_clipboard.sh\":0-2",
+            "content": "echo hello world | pbcopy\necho indicator\npbpaste"
+        }
+    ]
+}

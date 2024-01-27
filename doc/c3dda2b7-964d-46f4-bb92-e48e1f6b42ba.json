@@ -1,0 +1,10 @@
+{
+    "summary": "This code switches to the superuser mode (su) and inputs the text \"123\" using MagiskSU, a popular Android superuser management tool.",
+    "details": [
+        {
+            "comment": "This code switches to the superuser mode (su) and inputs the text \"123\" using MagiskSU, a popular Android superuser management tool.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_android_aarch64/inputService/type_test.sh\":0-1",
+            "content": "su -c 'input text \"123\"'\n# this is MagiskSU."
+        }
+    ]
+}

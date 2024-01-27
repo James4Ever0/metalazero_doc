@@ -1,0 +1,10 @@
+{
+    "summary": "The code defines a string \"hello world\" and finds its first occurrence of \"world\". Then it prints the standard index (std) and extended length (enl). Afterwards, it iterates over the metatable of the string and prints each key-value pair. Finally, it defines a function dump() to recursively print all keys in a table, sorted alphabetically, starting with the global table _G.",
+    "details": [
+        {
+            "comment": "The code defines a string \"hello world\" and finds its first occurrence of \"world\". Then it prints the standard index (std) and extended length (enl). Afterwards, it iterates over the metatable of the string and prints each key-value pair. Finally, it defines a function dump() to recursively print all keys in a table, sorted alphabetically, starting with the global table _G.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_kali_amd64/cognitionService/virtual/cog_core.lua\":0-27",
+            "content": "str=\"hello world\"\nstd,enl=str:find(\"world\")\nprint(std,enl)\nfor key,val in pairs(getmetatable(str)) do\n\tprint(key,val)\nend\nlocal seen={}\nfunction dump(t,i)\nseen[t]=true\nlocal s={}\nlocal n=0\nfor k in pairs(t) do\n    n=n+1 s[n]=k\nend\ntable.sort(s)\nfor k,v in ipairs(s) do\n    print(i,v)\n    v=t[v]\n    if type(v)==\"table\" and not seen[v] then\n\tdump(v,i..\"\\t\")\n    end\nend\nend\ndump(_G,\"\")"
+        }
+    ]
+}

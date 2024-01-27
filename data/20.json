@@ -1,0 +1,403 @@
+{
+    "2000": {
+        "file_id": 397,
+        "content": "ls -1 | grep -Eo \"^.*.pdf\\$\" | sed \"s/.pdf//g\" | xargs -iabc mutool convert -o \"abc.html\" \"abc.pdf\"",
+        "type": "code",
+        "location": "/tools/deep-text-editor/neural_network/qcl/convert.sh:1-1"
+    },
+    "2001": {
+        "file_id": 397,
+        "content": "This script takes all files in the current directory (ls), filters only PDF files (grep), removes .pdf extension (sed), and then uses mutool to convert each PDF file to HTML with -o \"abc.html\" as output filename.",
+        "type": "comment"
+    },
+    "2002": {
+        "file_id": 398,
+        "content": "/tools/deep-text-editor/test.py",
+        "type": "filepath"
+    },
+    "2003": {
+        "file_id": 398,
+        "content": "This Python code tests a text editor's functionalities, discusses applying reversible logic for AI recovery and suggests logging operations for easier testing.",
+        "type": "summary"
+    },
+    "2004": {
+        "file_id": 398,
+        "content": "# we will check how you are doing the job.\nfrom editor import editor\nimport copy\ncnt=\"abcdef\"*20\ncnt0=copy.copy(cnt)\ne=editor(cnt)\nassert e.view() == \"abcdefabcdefabcdefabcdefabcdef\"\ne.insert(\"ghi\")\nprint(\"current state:\",e.content,e.position)\ne.replace(\"def\")\nprint(\"current state:\",e.content,e.position)\nexternal=\"https://www.baidu.com\"\ne.copy(external)\nprint(\"current state:\",e.content,e.position)\ne.paste()\nprint(\"current state:\",e.content,e.position)\ne.undo()\nprint(\"current state:\",e.content,e.position)\ne.undo()\nprint(\"current state:\",e.content,e.position)\ne.delete(500)\nprint(\"current state:\",e.content,e.position)\ninit, ops= \"abcdef\"*20, e.dump_operation()\nprint(\"init_config:\")\nprint(init,ops)\ne0=editor(content=init,operation=ops)\nprint(\"result:\",e0.view())\nprint(e0.position)\n# isn't that emacs? why you keep reinventing the wheel?\n# i guess i just can't help thinking about it. i need to know all i should know.\nprint(e0.operation)\n# shall we apply some reversible logic here?\n# to change the representation, to mutate the thing and let the AI to recover.",
+        "type": "code",
+        "location": "/tools/deep-text-editor/test.py:1-35"
+    },
+    "2005": {
+        "file_id": 398,
+        "content": "This Python code imports a text editor class and tests its various functionalities such as insertion, replacement, copying, pasting, undoing, deletion, and restoring initial configuration. It also asks if we should apply reversible logic to change the representation and let AI recover from mutations.",
+        "type": "comment"
+    },
+    "2006": {
+        "file_id": 398,
+        "content": "# you shall make the nars into a test, also pytorch, keras, tensorflow, everything. cause it is so hard to master these shits.\n# you can log all your operations.",
+        "type": "code",
+        "location": "/tools/deep-text-editor/test.py:36-37"
+    },
+    "2007": {
+        "file_id": 398,
+        "content": "The code snippet seems to be a comment expressing the difficulty in mastering various frameworks (PyTorch, Keras, TensorFlow) and suggests logging all operations for easier testing and understanding.",
+        "type": "comment"
+    },
+    "2008": {
+        "file_id": 399,
+        "content": "/tools/demo_run.py",
+        "type": "filepath"
+    },
+    "2009": {
+        "file_id": 399,
+        "content": "This code uses pexpect to spawn a process, redirect output, continuously read logfile, interact with child, and close windows after exporting data.",
+        "type": "summary"
+    },
+    "2010": {
+        "file_id": 399,
+        "content": "import pexpect\nimport time\nimport threading\nfrom bytes_blocking import BytesMemPipe\nlogfile = BytesMemPipe()\nchild = pexpect.spawn(\"python3 sample_script.py\", logfile=logfile)\n#child = pexpect.spawn(\"python3 sample_script.py\", logfile=logfile, use_poll=True )\ndef read_logfile():\n    while True:\n        print(\"logfile:\",logfile.read())\nthreading.Thread(target=read_logfile,daemon=True).start()\n# this is not transparent. \n# child.write_to_stdout=True\n# this is a function.\n# we shall have the lock here.\ntime.sleep(2)\nprint(dir(child))\nprint(type(child))\n# you don't expect you get shit.\ntarget = child.expect(\"lucky\")\nprint(target)\ntime.sleep(2)\n# stuck forever?\n#child.sendline(\"123\")\n#child.sendeof()\nchild.write(\"123\\r\\n\")\n#child.flush()\n# this is to clear the buffer?\n#child.write(\"\")\n#child.flush()\n#child.interact()\n# the return is not right.\n#child.expect(pexpect.EOF)\ntarget = child.read()\nprint(\"read from target:\", target)\n# when you do this you shall not be doing other shits.\n#child.read_nonblocking()\n#child.expect(\"does not exist\")",
+        "type": "code",
+        "location": "/tools/demo_run.py:1-44"
+    },
+    "2011": {
+        "file_id": 399,
+        "content": "This code utilizes pexpect library to spawn a process (sample_script.py) and redirects its output to a BytesMemPipe instance called logfile. A read_logfile function is created to continuously print the contents of logfile. After creating a new thread to read the logfile, it sleeps for 2 seconds, inspects child's properties, expects the string \"lucky\", writes \"123\" followed by a carriage return and linefeed, and finally reads from the target, printing its content.",
+        "type": "comment"
+    },
+    "2012": {
+        "file_id": 399,
+        "content": "print(child.isalive())\nprint(child.isatty())\nchild.wait()\ntime.sleep(1)\n# this is hackish enough? or not?\n# i've got to say today's mission is about exporting all the data to my fucking directory, and then close all windows.",
+        "type": "code",
+        "location": "/tools/demo_run.py:45-50"
+    },
+    "2013": {
+        "file_id": 399,
+        "content": "Checking if the child process is alive and connected to a terminal, waiting for it to finish, and sleeping for a second (potentially hackish solution). Goal: export data to specified directory and close all windows.",
+        "type": "comment"
+    },
+    "2014": {
+        "file_id": 400,
+        "content": "/tools/expect_script_sleep.sh",
+        "type": "filepath"
+    },
+    "2015": {
+        "file_id": 400,
+        "content": "This code is running an \"expect\" script named \"demo.expect\". It utilizes the expect utility to automate interactions with other programs, typically shells, networking devices, or GUIs, by sending commands and reading their responses.",
+        "type": "summary"
+    },
+    "2016": {
+        "file_id": 400,
+        "content": "expect -f demo.expect",
+        "type": "code",
+        "location": "/tools/expect_script_sleep.sh:1-1"
+    },
+    "2017": {
+        "file_id": 400,
+        "content": "This code is running an \"expect\" script named \"demo.expect\". It utilizes the expect utility to automate interactions with other programs, typically shells, networking devices, or GUIs, by sending commands and reading their responses.",
+        "type": "comment"
+    },
+    "2018": {
+        "file_id": 401,
+        "content": "/tools/generic_io_linux_hid/README",
+        "type": "filepath"
+    },
+    "2019": {
+        "file_id": 401,
+        "content": "The code seems to question the necessity of reading a libinput record, which may contain information like tty/pid/network-port/timestamp. It suggests that this data is not useful unless there's a way to replay the entire scenario.",
+        "type": "summary"
+    },
+    "2020": {
+        "file_id": 401,
+        "content": "the libinput record is more readable but do we have to read this?\ni mean this is not useful at all till you can somehow replay this whole scenario.\ntty/pid/network-port/timestamp all these concepts.",
+        "type": "code",
+        "location": "/tools/generic_io_linux_hid/README:1-5"
+    },
+    "2021": {
+        "file_id": 401,
+        "content": "The code seems to question the necessity of reading a libinput record, which may contain information like tty/pid/network-port/timestamp. It suggests that this data is not useful unless there's a way to replay the entire scenario.",
+        "type": "comment"
+    },
+    "2022": {
+        "file_id": 402,
+        "content": "/tools/generic_io_linux_hid/init.sh",
+        "type": "filepath"
+    },
+    "2023": {
+        "file_id": 402,
+        "content": "This script installs necessary tools for generic IO Linux HID. It requires evtest, libinput-tools, and ydotool, while excluding unreliable options like ydotoold. Wtype and consolation are not mentioned as required for this specific codebase.",
+        "type": "summary"
+    },
+    "2024": {
+        "file_id": 402,
+        "content": "apt install -y evtest \napt install -y libinput-tools\n#apt install -y wtype\napt install -y ydotool # very hard to compile. or is it? \n#apt install -y ydotoold # not reliable.\n# what is consolation\n# i guess this only works when i am watching this computer.",
+        "type": "code",
+        "location": "/tools/generic_io_linux_hid/init.sh:1-7"
+    },
+    "2025": {
+        "file_id": 402,
+        "content": "This script installs necessary tools for generic IO Linux HID. It requires evtest, libinput-tools, and ydotool, while excluding unreliable options like ydotoold. Wtype and consolation are not mentioned as required for this specific codebase.",
+        "type": "comment"
+    },
+    "2026": {
+        "file_id": 403,
+        "content": "/tools/get_help.sh",
+        "type": "filepath"
+    },
+    "2027": {
+        "file_id": 403,
+        "content": "This code is using pydoc3 to document the 'pexpect.pty_spawn.spawn' function or module, providing information about its usage and syntax.",
+        "type": "summary"
+    },
+    "2028": {
+        "file_id": 403,
+        "content": "pydoc3 pexpect.pty_spawn.spawn",
+        "type": "code",
+        "location": "/tools/get_help.sh:1-1"
+    },
+    "2029": {
+        "file_id": 403,
+        "content": "This code is using pydoc3 to document the 'pexpect.pty_spawn.spawn' function or module, providing information about its usage and syntax.",
+        "type": "comment"
+    },
+    "2030": {
+        "file_id": 404,
+        "content": "/tools/get_ip.py",
+        "type": "filepath"
+    },
+    "2031": {
+        "file_id": 404,
+        "content": "This code uses Tornado web framework to create a server that listens on port 8888 and returns \"Hello, world\" when requested. It also prints the requesting IP address. The \"ifconfig\" command is executed in the terminal to display network interface information.",
+        "type": "summary"
+    },
+    "2032": {
+        "file_id": 404,
+        "content": "import tornado.ioloop\nimport tornado.web\nimport os\nos.system(\"ifconfig\")\nclass MainHandler(tornado.web.RequestHandler):\n    def get(self):\n#        print(dir(self.request))\n        ip = self.request.remote_ip\n        print(\"request from:\",ip)\n        self.write(\"Hello, world\")\n    def make_app():\n        return tornado.web.Application([ (r\"/\", MainHandler), ])  # URL Mapping\nif __name__ == \"__main__\":\n    app = MainHandler.make_app()\n    app.listen(8888)    # Port Number\n    tornado.ioloop.IOLoop.current().start()",
+        "type": "code",
+        "location": "/tools/get_ip.py:1-20"
+    },
+    "2033": {
+        "file_id": 404,
+        "content": "This code uses Tornado web framework to create a server that listens on port 8888 and returns \"Hello, world\" when requested. It also prints the requesting IP address. The \"ifconfig\" command is executed in the terminal to display network interface information.",
+        "type": "comment"
+    },
+    "2034": {
+        "file_id": 405,
+        "content": "/tools/get_logged.sh",
+        "type": "filepath"
+    },
+    "2035": {
+        "file_id": 405,
+        "content": "The code executes 'sample_script.py' using Python 3 and redirects its output to both the console (teletype) and a log file ('sample_script.log') simultaneously, allowing for real-time monitoring and permanent storage of results.",
+        "type": "summary"
+    },
+    "2036": {
+        "file_id": 405,
+        "content": "python3 sample_script.py | tee sample_script.log",
+        "type": "code",
+        "location": "/tools/get_logged.sh:1-1"
+    },
+    "2037": {
+        "file_id": 405,
+        "content": "The code executes 'sample_script.py' using Python 3 and redirects its output to both the console (teletype) and a log file ('sample_script.log') simultaneously, allowing for real-time monitoring and permanent storage of results.",
+        "type": "comment"
+    },
+    "2038": {
+        "file_id": 406,
+        "content": "/tools/init.sh",
+        "type": "filepath"
+    },
+    "2039": {
+        "file_id": 406,
+        "content": "Code installs the 'expect' package using apt with the -y flag for non-interactive installation.",
+        "type": "summary"
+    },
+    "2040": {
+        "file_id": 406,
+        "content": "apt install -y expect",
+        "type": "code",
+        "location": "/tools/init.sh:1-1"
+    },
+    "2041": {
+        "file_id": 406,
+        "content": "Code installs the 'expect' package using apt with the -y flag for non-interactive installation.",
+        "type": "comment"
+    },
+    "2042": {
+        "file_id": 407,
+        "content": "/tools/io2.py",
+        "type": "filepath"
+    },
+    "2043": {
+        "file_id": 407,
+        "content": "Code initializes a BytesIO object and defines two functions to interact with it. The read_target function continuously reads bytes from the target buffer, while check_target prints details about the buffer and value stored in it. The script then demonstrates various operations like writing data, reading, seeking, truncating, and getting the current value of the buffer.",
+        "type": "summary"
+    },
+    "2044": {
+        "file_id": 407,
+        "content": "import io\nimport threading\nimport time\ntarget = io.BytesIO()\ndef read_target():\n    while True:\n        bytes_ = target.read()\n        print(\"bytes:\", bytes_)\ndef check_target():\n    print(\"buffer:\",target.getbuffer())\n    print(\"value:\",target.getvalue())\nprint(dir(target))\n# this is first.\ntarget.write(b\"abc\")\nvalues = target.read1()\nprint(values)\n# nothing could be read.\nprint(target.tell())\n# this is the cursor, we can reset it of course.\ntarget.seek(0)\nprint(target.read())\ntarget.write(b\"hello\")\nprint(target.tell())\ntarget.seek(0)\nprint(target.read())\nbuffer0 = target.getbuffer()\nbuffer0 = b\"\"\n# so this fucking works or not?\n# do we really read the shit after all?\nprint(target.read())\nprint(target.getvalue())\ntarget.truncate()\nprint(target.getvalue())",
+        "type": "code",
+        "location": "/tools/io2.py:1-35"
+    },
+    "2045": {
+        "file_id": 407,
+        "content": "Code initializes a BytesIO object and defines two functions to interact with it. The read_target function continuously reads bytes from the target buffer, while check_target prints details about the buffer and value stored in it. The script then demonstrates various operations like writing data, reading, seeking, truncating, and getting the current value of the buffer.",
+        "type": "comment"
+    },
+    "2046": {
+        "file_id": 408,
+        "content": "/tools/io_test.py",
+        "type": "filepath"
+    },
+    "2047": {
+        "file_id": 408,
+        "content": "Code initializes a BytesIO object named \"target\" and defines two functions: read_target() to continuously print the bytes being read from target, and check_target() to print the buffer and value of target. It then writes \"abc\" to target, checks its properties, reads 1 byte (value), prints it, resets cursor with seek(), and finally reads and prints the contents again.",
+        "type": "summary"
+    },
+    "2048": {
+        "file_id": 408,
+        "content": "import io\nimport threading\nimport time\ntarget = io.BytesIO()\ndef read_target():\n    while True:\n        bytes_ = target.read()\n        print(\"bytes:\", bytes_)\ndef check_target():\n    print(\"buffer:\",target.getbuffer())\n    print(\"value:\",target.getvalue())\nprint(dir(target))\ntarget.write(b\"abc\")\ncheck_target()\ntarget.flush()\ncheck_target()\nvalues = target.read1()\nprint(values)\n# nothing could be read.\nprint(target.tell())\n# this is the cursor, we can reset it of course.\ntarget.seek(0)\nprint(target.read())",
+        "type": "code",
+        "location": "/tools/io_test.py:1-25"
+    },
+    "2049": {
+        "file_id": 408,
+        "content": "Code initializes a BytesIO object named \"target\" and defines two functions: read_target() to continuously print the bytes being read from target, and check_target() to print the buffer and value of target. It then writes \"abc\" to target, checks its properties, reads 1 byte (value), prints it, resets cursor with seek(), and finally reads and prints the contents again.",
+        "type": "comment"
+    },
+    "2050": {
+        "file_id": 409,
+        "content": "/tools/lazero",
+        "type": "filepath"
+    },
+    "2051": {
+        "file_id": 409,
+        "content": "This script is a CLI invoker for the lazero tool. It supports two commands: \"install\" to install the file specified, and any other command will display available commands. If the \"install\" command is used without specifying a file location, it prompts the user to enter the location. After verifying if the file already exists, it prompts for confirmation before overwriting. If confirmed, it copies the file to its destination and sets its permissions to 777. The script provides status messages at each step.",
+        "type": "summary"
+    },
+    "2052": {
+        "file_id": 409,
+        "content": "#!/bin/bash\nif [ \"$1\" == \"\" ]; then\n\techo lazero tool cli invoker.\n\techo\n\techo avaliable commands:\n\techo\n\techo \"    install\"\nelif [ \"$1\" == \"install\" ]; then\n\tif [ \"$2\" == \"\" ]; then\n\t\techo please tell me where the file is.\n\t\texit 1\n\tfi\n\ttarget=$PWD/$2\n\tchmod 777 $target\n\tif [ $? -eq 0 ]; then\n\t\techo change mode success.\n\telse\n\t\techo failed change file mode to 777.\n\t\texit 1\n\tfi\n\tdest=$(which bash | sed \"s/bash//g\")\n\ttest -e $dest$2\n\tif [ $? -eq 0 ]; then\n\t\techo file exists.\n\t\techo do you want to overwrite?\n\t\twhile true\n\t\tdo  # (1) prompt user, and read command line argument\n\t\t\tread -p \"y/Y to overwrite, n/N to give up.\" answer\n\t\t\tcase $answer in\n\t\t\t\t   [yY]* ) break;;\n\t\t\t\t   [nN]* ) exit 1;;\n\t\t\t\t   * )     echo \"Dude, just enter Y or N, please.\";;\n\t\t\tesac\n\t\tdone\n\tfi\n\tcp $target $dest\n\tif [ $? -eq 0 ]; then\n\t\techo installation complete.\n\telse\n\t\techo failed to copy files.\n\t\texit 1\n\tfi\n\t#chmod 777 $dest$2\nfi",
+        "type": "code",
+        "location": "/tools/lazero:1-44"
+    },
+    "2053": {
+        "file_id": 409,
+        "content": "This script is a CLI invoker for the lazero tool. It supports two commands: \"install\" to install the file specified, and any other command will display available commands. If the \"install\" command is used without specifying a file location, it prompts the user to enter the location. After verifying if the file already exists, it prompts for confirmation before overwriting. If confirmed, it copies the file to its destination and sets its permissions to 777. The script provides status messages at each step.",
+        "type": "comment"
+    },
+    "2054": {
+        "file_id": 410,
+        "content": "/tools/node_init.sh",
+        "type": "filepath"
+    },
+    "2055": {
+        "file_id": 410,
+        "content": "Installing global dependencies: ws and collections using npm.",
+        "type": "summary"
+    },
+    "2056": {
+        "file_id": 410,
+        "content": "npm i -g ws\nnpm i -g collections",
+        "type": "code",
+        "location": "/tools/node_init.sh:1-2"
+    },
+    "2057": {
+        "file_id": 410,
+        "content": "Installing global dependencies: ws and collections using npm.",
+        "type": "comment"
+    },
+    "2058": {
+        "file_id": 411,
+        "content": "/tools/pexpect.sh",
+        "type": "filepath"
+    },
+    "2059": {
+        "file_id": 411,
+        "content": "The code executes the Python script \"demo_run.py\" using Python 3 interpreter.",
+        "type": "summary"
+    },
+    "2060": {
+        "file_id": 411,
+        "content": "python3 demo_run.py",
+        "type": "code",
+        "location": "/tools/pexpect.sh:1-1"
+    },
+    "2061": {
+        "file_id": 411,
+        "content": "The code executes the Python script \"demo_run.py\" using Python 3 interpreter.",
+        "type": "comment"
+    },
+    "2062": {
+        "file_id": 412,
+        "content": "/tools/rdir",
+        "type": "filepath"
+    },
+    "2063": {
+        "file_id": 412,
+        "content": "The \"abc\" function provides options to display, search and jump directories from a recent directory list. It also allows editing the list using Vim. The code writes the PWD and user input to ~/.recent_dirs depending on command-line arguments.",
+        "type": "summary"
+    },
+    "2064": {
+        "file_id": 412,
+        "content": "#!/bin/bash\n# choose one from the target please?\nfunction abc {\n\techo \"-read to read the recent dirs.\"\n\techo \"-jump to jump to the target recent dir.\"\n\techo \"-search to search for target dirs.\"\n\techo \"-sjump to search and jump to the first search candidate.\"\n\techo \"-edit to edit the recent dirs.\"\n\techo \"-h or -help for help.\"\n\techo \"other arguments will be treated as comments\"\n\techo \"pass no argument to read comment from stdin and write to ~/.recent_dirs.\"\n}\nif [ \"$1\" == \"-read\" ]; then\n\tcat ~/.recent_dirs | grep -n \"\"\nelif [ \"$1\" == \"-search\" ]; then\n\tcat ~/.recent_dirs | grep -n \"$2\"\nelif [ \"$1\" == \"-sjump\" ]; then\n\t# working for fish, not sure for others.\n\ttarget=$(cat ~/.recent_dirs | grep \"$2\" | awk '{print $1}' | head --lines 1)\n\t$SHELL -C \"cd $target\"\nelif [ \"$1\" == \"-jump\" ]; then\n\ttarget=$(cat ~/.recent_dirs | sed -n \"$2p\" | awk '{print $1}')\n\t#env PWD=$target $SHELL\n\t$SHELL -C \"cd $target\"\n\t# use default shell\nelif [ \"$1\" == \"-edit\" ]; then\n\tvim ~/.recent_dirs\nelif [ \"$1\" == \"-h\" ]; then\n\tabc\nelif [ \"$1\" == \"-help\" ]; then",
+        "type": "code",
+        "location": "/tools/rdir:1-31"
+    },
+    "2065": {
+        "file_id": 412,
+        "content": "Function \"abc\" provides available commands and options for the script.\n\"-read\" displays recent directories.\n\"-jump\" changes to a specific directory from the list.\n\"-search\" finds directories containing a specified string.\n\"-sjump\" searches, finds the first match, and jumps to it.\n\"-edit\" opens recent_dirs file in Vim for editing.\n\"-h\", \"-help\" display help information.",
+        "type": "comment"
+    },
+    "2066": {
+        "file_id": 412,
+        "content": "\tabc\nelse\n\tif [ \"$1\" == \"\" ]; then\n\t\tread\n\t\tcontent=\"$PWD $REPLY\"\n\t\techo \"writing content: $content\"\n\t\techo  >> ~/.recent_dirs\n\telse\n\t\tcontent=\"$PWD $@\"\n\t\techo \"writing content: $content\"\n\t\techo \"$PWD $@\" >> ~/.recent_dirs\n\tfi\nfi",
+        "type": "code",
+        "location": "/tools/rdir:32-44"
+    },
+    "2067": {
+        "file_id": 412,
+        "content": "This code checks if a command-line argument is provided. If none, it prompts the user to input a value, stores the working directory and user input in \"content\", and appends it to the file ~/.recent_dirs. If an argument is given, it combines the PWD and arguments into \"content\" before writing it to ~/.recent_dirs.",
+        "type": "comment"
+    },
+    "2068": {
+        "file_id": 413,
+        "content": "/tools/requirements.txt",
+        "type": "filepath"
+    },
+    "2069": {
+        "file_id": 413,
+        "content": "This code snippet contains the name of a Python library, \"pexpect\", which is used for automating interaction with other programs through telnet, ssh and other applications to control them as though a human user is sitting at the keyboard.",
+        "type": "summary"
+    },
+    "2070": {
+        "file_id": 413,
+        "content": "pexpect",
+        "type": "code",
+        "location": "/tools/requirements.txt:1-1"
+    },
+    "2071": {
+        "file_id": 413,
+        "content": "This code snippet contains the name of a Python library, \"pexpect\", which is used for automating interaction with other programs through telnet, ssh and other applications to control them as though a human user is sitting at the keyboard.",
+        "type": "comment"
+    },
+    "2072": {
+        "file_id": 414,
+        "content": "/tools/sample_script.py",
+        "type": "filepath"
+    },
+    "2073": {
+        "file_id": 414,
+        "content": "This code prints a greeting message, prompts the user to input their lucky number and then reaffirms it as their lucky number.",
+        "type": "summary"
+    },
+    "2074": {
+        "file_id": 414,
+        "content": "print(\"hello WORLD!!!!\")\ntarget = input(\"what is your lucky number?\\n\")\nprint(target, \"is your lucky number!\")",
+        "type": "code",
+        "location": "/tools/sample_script.py:1-3"
+    },
+    "2075": {
+        "file_id": 414,
+        "content": "This code prints a greeting message, prompts the user to input their lucky number and then reaffirms it as their lucky number.",
+        "type": "comment"
+    }
+}

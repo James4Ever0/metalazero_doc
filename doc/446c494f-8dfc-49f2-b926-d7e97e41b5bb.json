@@ -1,0 +1,10 @@
+{
+    "summary": "This code creates a neural network with meta-targets, setting initial targets randomly but ensuring high-level targets are not random.",
+    "details": [
+        {
+            "comment": "This code creates a neural network with meta-targets, setting initial targets randomly but ensuring high-level targets are not random.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_kali_amd64/mainService/unsupervised_neural_network/README\":0-0",
+            "content": "this is to create the neural network with meta-targets. so initial targets are random but high-level targets are not."
+        }
+    ]
+}

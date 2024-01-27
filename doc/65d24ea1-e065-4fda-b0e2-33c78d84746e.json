@@ -1,0 +1,10 @@
+{
+    "summary": "Code generates a list of strings, randomly selects and inputs them into a shell using the \"shellConnect\" module. It then waits 1 second before displaying the output from the shell, selects a substring from the displayed content, and repeats the process. If the selected substring is not empty, it sets a flag to override the list of strings and continues the loop.",
+    "details": [
+        {
+            "comment": "Code generates a list of strings, randomly selects and inputs them into a shell using the \"shellConnect\" module. It then waits 1 second before displaying the output from the shell, selects a substring from the displayed content, and repeats the process. If the selected substring is not empty, it sets a flag to override the list of strings and continues the loop.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_kali_amd64/cognitionService/interaction_2.py\":0-37",
+            "content": "import shellConnect as Sc\n# to represent how you type these words? type it exactly according to what you've done in the past?\n# we want it to learn anything from this process.\nimport time as T\nclist=[\"hello world{}\".format(x) for x in range(5)]\ncnt=0\nimport random as R\nSR=R.SystemRandom()\ndef rsel(string,l=7):\n    ls=len(string)\n    if ls>l:\n        r=SR.choice(list(range(0,ls-l)))\n        ts=string[r:r+l]\n        return ts\n    elif ls==l:\n        return string\n    else:\n        return \"\"\nnx,override=\"\",False\nwhile True:\n    Sc.restart()\n    if not override:\n        cmd=clist[cnt]\n        Sc.inputs(cmd)\n    else:\n        Sc.inputs(nx)\n    T.sleep(1)\n    content = Sc.display()\n    print(content)\n    nx=rsel(content)\n    if nx!=\"\":\n        override=True\n    cnt+=1\n    cnt%=len(clist)"
+        }
+    ]
+}

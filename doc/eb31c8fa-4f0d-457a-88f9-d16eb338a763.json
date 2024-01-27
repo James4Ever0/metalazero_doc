@@ -1,0 +1,10 @@
+{
+    "summary": "This script checks if there's an argument passed, if not, it exits and displays \"no argument.\" Then, it removes all files from the specified directory. It uses sudo for elevated privileges and xargs to process multiple filenames at once.",
+    "details": [
+        {
+            "comment": "This script checks if there's an argument passed, if not, it exits and displays \"no argument.\" Then, it removes all files from the specified directory. It uses sudo for elevated privileges and xargs to process multiple filenames at once.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_kali_amd64/virtualService/tools/sandserv/mclean.sh\":0-12",
+            "content": "#!/bin/bash\nc0=$(echo $1 |wc -c )\n#echo $c0\nif [ $c0 -le 1 ]\nthen\n        echo \"no argument.\"\n        exit 1\nelse\n        :\nfi\nsudo rm -f multiserv/$1/ramdisk/*\nsudo find -P multiserv/$1/ramdisk/ | xargs sudo unlink\nsudo rm -rf multiserv/$1/ramdisk/*"
+        }
+    ]
+}

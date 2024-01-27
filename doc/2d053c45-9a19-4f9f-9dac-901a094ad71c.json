@@ -1,0 +1,10 @@
+{
+    "summary": "This code defines a Systemd unit file for a trivial service. It specifies dependencies, startup order, execution script, and restart settings. The service is marked as \"simple\" type and will be wanted by the \"multi-user.target\".",
+    "details": [
+        {
+            "comment": "This code defines a Systemd unit file for a trivial service. It specifies dependencies, startup order, execution script, and restart settings. The service is marked as \"simple\" type and will be wanted by the \"multi-user.target\".",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/daemonize_startup/linux_systemd/discovery_service.service\":0-14",
+            "content": "[Unit]\nDescription=trivial_service\nWants=network.target\nAfter=syslog.target network-online.target\n[Service]\nType=simple\nExecStart=bash /root/AGI/metalazero/daemonize_startup/linux_systemd/discovery_service.sh\nRestart=on-failure\nRestartSec=10\nKillMode=process\n[Install]\nWantedBy=multi-user.target"
+        }
+    ]
+}

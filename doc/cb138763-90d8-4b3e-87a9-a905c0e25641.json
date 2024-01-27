@@ -1,0 +1,10 @@
+{
+    "summary": "This service file defines a trivial systemd service called \"trivial_service\", which depends on network connectivity and relies on syslog for logging. It executes a bash script located at /root/AGI/metalazero/daemonize_startup/linux_systemd/novnc_service.sh as its main process, and will automatically restart if it fails with a delay of 10 seconds between restarts. The service is intended to be part of the multi-user target configuration.",
+    "details": [
+        {
+            "comment": "This service file defines a trivial systemd service called \"trivial_service\", which depends on network connectivity and relies on syslog for logging. It executes a bash script located at /root/AGI/metalazero/daemonize_startup/linux_systemd/novnc_service.sh as its main process, and will automatically restart if it fails with a delay of 10 seconds between restarts. The service is intended to be part of the multi-user target configuration.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/daemonize_startup/linux_systemd/novnc_service.service\":0-14",
+            "content": "[Unit]\nDescription=trivial_service\nWants=network.target\nAfter=syslog.target network-online.target\n[Service]\nType=simple\nExecStart=bash /root/AGI/metalazero/daemonize_startup/linux_systemd/novnc_service.sh\nRestart=on-failure\nRestartSec=10\nKillMode=process\n[Install]\nWantedBy=multi-user.target"
+        }
+    ]
+}

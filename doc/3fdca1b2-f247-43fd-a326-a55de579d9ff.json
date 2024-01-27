@@ -1,0 +1,10 @@
+{
+    "summary": "This script clears the contents of the 'ramdisk' directory, ensuring a clean slate for subsequent operations. It uses 'sudo rm -f' to remove files and 'find -P | xargs sudo unlink' to recursively delete all directories within 'ramdisk'.",
+    "details": [
+        {
+            "comment": "This script clears the contents of the 'ramdisk' directory, ensuring a clean slate for subsequent operations. It uses 'sudo rm -f' to remove files and 'find -P | xargs sudo unlink' to recursively delete all directories within 'ramdisk'.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_kali_amd64/virtualService/tools/sandserv/tclean.sh\":0-3",
+            "content": "#!/bin/bash\nsudo rm -f ramdisk/*\nsudo find -P ramdisk/ | xargs sudo unlink\nsudo rm -rf ramdisk/*"
+        }
+    ]
+}

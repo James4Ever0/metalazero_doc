@@ -1,0 +1,10 @@
+{
+    "summary": "This script sets up a secure environment to execute a command on an AMD64 Kali Linux system. It loads essential files, grants root permissions, and uses proot to isolate the execution, preventing any potential security threats from the command. Finally, it executes the desired command in the secured environment.",
+    "details": [
+        {
+            "comment": "This script sets up a secure environment to execute a command on an AMD64 Kali Linux system. It loads essential files, grants root permissions, and uses proot to isolate the execution, preventing any potential security threats from the command. Finally, it executes the desired command in the secured environment.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_kali_amd64/virtualService/tools/sandserv/tsimple_jail_x64.sh\":0-19",
+            "content": "#!/bin/bash\n# cd $(dirname $0)\n## unset LD_PRELOAD in case termux-exec is installed\n#./loadram.sh\n./tloadroot_x64.sh\nsudo chmod  777 root\n#sudo chmod -R 777 root\n#unset LD_PRELOAD\n#set LD_PRELOAD=/lib/libtermux-exec.so\n#set LD_LIBRARY=/lib\n#bin/x86_64/libjudger.so  --exe_path=\"./command_x64.sh\"\n#bin/x86_64/libjudger.so  --seccomp_rule_name=\"nokill\" --exe_path=\"./command_x64.sh\"\n#command=\"sudo proot\"\n#command+=\" -0 \"\n#command+=\" -r root -b /dev/null:/dev/null \"\n##command+=\" -b /sys/fs/selinux/null:/sys/fs/selinux/null \"\n#command+=\" -b /dev/tty:/dev/tty \"\n#$command\n./command_x64.sh\n# no need to use selinux/null."
+        }
+    ]
+}

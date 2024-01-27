@@ -1,0 +1,15 @@
+{
+    "summary": "The \"abc\" function provides options to display, search and jump directories from a recent directory list. It also allows editing the list using Vim. The code writes the PWD and user input to ~/.recent_dirs depending on command-line arguments.",
+    "details": [
+        {
+            "comment": "Function \"abc\" provides available commands and options for the script.\n\"-read\" displays recent directories.\n\"-jump\" changes to a specific directory from the list.\n\"-search\" finds directories containing a specified string.\n\"-sjump\" searches, finds the first match, and jumps to it.\n\"-edit\" opens recent_dirs file in Vim for editing.\n\"-h\", \"-help\" display help information.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/tools/rdir\":0-30",
+            "content": "#!/bin/bash\n# choose one from the target please?\nfunction abc {\n\techo \"-read to read the recent dirs.\"\n\techo \"-jump to jump to the target recent dir.\"\n\techo \"-search to search for target dirs.\"\n\techo \"-sjump to search and jump to the first search candidate.\"\n\techo \"-edit to edit the recent dirs.\"\n\techo \"-h or -help for help.\"\n\techo \"other arguments will be treated as comments\"\n\techo \"pass no argument to read comment from stdin and write to ~/.recent_dirs.\"\n}\nif [ \"$1\" == \"-read\" ]; then\n\tcat ~/.recent_dirs | grep -n \"\"\nelif [ \"$1\" == \"-search\" ]; then\n\tcat ~/.recent_dirs | grep -n \"$2\"\nelif [ \"$1\" == \"-sjump\" ]; then\n\t# working for fish, not sure for others.\n\ttarget=$(cat ~/.recent_dirs | grep \"$2\" | awk '{print $1}' | head --lines 1)\n\t$SHELL -C \"cd $target\"\nelif [ \"$1\" == \"-jump\" ]; then\n\ttarget=$(cat ~/.recent_dirs | sed -n \"$2p\" | awk '{print $1}')\n\t#env PWD=$target $SHELL\n\t$SHELL -C \"cd $target\"\n\t# use default shell\nelif [ \"$1\" == \"-edit\" ]; then\n\tvim ~/.recent_dirs\nelif [ \"$1\" == \"-h\" ]; then\n\tabc\nelif [ \"$1\" == \"-help\" ]; then"
+        },
+        {
+            "comment": "This code checks if a command-line argument is provided. If none, it prompts the user to input a value, stores the working directory and user input in \"content\", and appends it to the file ~/.recent_dirs. If an argument is given, it combines the PWD and arguments into \"content\" before writing it to ~/.recent_dirs.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/tools/rdir\":31-43",
+            "content": "\tabc\nelse\n\tif [ \"$1\" == \"\" ]; then\n\t\tread\n\t\tcontent=\"$PWD $REPLY\"\n\t\techo \"writing content: $content\"\n\t\techo  >> ~/.recent_dirs\n\telse\n\t\tcontent=\"$PWD $@\"\n\t\techo \"writing content: $content\"\n\t\techo \"$PWD $@\" >> ~/.recent_dirs\n\tfi\nfi"
+        }
+    ]
+}

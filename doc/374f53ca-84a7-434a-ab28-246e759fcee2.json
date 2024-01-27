@@ -1,0 +1,10 @@
+{
+    "summary": "This script initializes Emacs in batch mode, initializes packages and LSP, adds current directory to workspace folders, opens \"lsp.sh\", reinitializes LSP, performs completion at point, and prints LSP completion cache.",
+    "details": [
+        {
+            "comment": "This script initializes Emacs in batch mode, initializes packages and LSP, adds current directory to workspace folders, opens \"lsp.sh\", reinitializes LSP, performs completion at point, and prints LSP completion cache.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_kali_amd64/cognitionService/virtual/batch_mode.sh\":0-1",
+            "content": "#!/bin/bash\nemacs --batch --eval '(progn (package-initialize) (lsp) (lsp-workspace-folders-add \".\") (find-file \"lsp.sh\") (lsp) (completion-at-point) (print lsp-completion--cache))'"
+        }
+    ]
+}

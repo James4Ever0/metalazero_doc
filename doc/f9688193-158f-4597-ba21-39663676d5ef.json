@@ -1,0 +1,10 @@
+{
+    "summary": "This code executes the Python script \"transmit_bashls.py\" and pipes its output into the Bash Language Server (bash-language-server), starting it up.",
+    "details": [
+        {
+            "comment": "This code executes the Python script \"transmit_bashls.py\" and pipes its output into the Bash Language Server (bash-language-server), starting it up.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_kali_amd64/cognitionService/virtual/transmit_bashls.sh\":0-1",
+            "content": "#python3 transmit_pyls.py | pyls\npython3 transmit_bashls.py | bash-language-server start"
+        }
+    ]
+}

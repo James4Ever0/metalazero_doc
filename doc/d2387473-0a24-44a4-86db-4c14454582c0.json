@@ -1,0 +1,10 @@
+{
+    "summary": "This code imports the pymysql library and connects to a MySQL database using SSH randomly generated IP addresses. It checks if the connection is successful and prints the IP address if connected.",
+    "details": [
+        {
+            "comment": "This code imports the pymysql library and connects to a MySQL database using SSH randomly generated IP addresses. It checks if the connection is successful and prints the IP address if connected.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_chromeos_aarch64/cognitionService/mysql_randomly.py\":0-13",
+            "content": "import pymysql\nfrom ssh_randomly import *\nuser = \"root\"\npassword = \"root\"\ndbname = \"users\"\nif __name__ == \"__main__\":\n    ip = get_ip()\n    while True:\n        try:\n            db = pymysql.connect(host=ip,user=user,password=password,database=dbname,connect_timeout=3)\n            print(\"connected?\",ip)\n        except:\n            import traceback\n            traceback.print_exc()"
+        }
+    ]
+}

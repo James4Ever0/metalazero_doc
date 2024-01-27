@@ -1,0 +1,10 @@
+{
+    "summary": "Code installs the 'expect' package using apt with the -y flag for non-interactive installation.",
+    "details": [
+        {
+            "comment": "Code installs the 'expect' package using apt with the -y flag for non-interactive installation.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/tools/init.sh\":0-0",
+            "content": "apt install -y expect"
+        }
+    ]
+}

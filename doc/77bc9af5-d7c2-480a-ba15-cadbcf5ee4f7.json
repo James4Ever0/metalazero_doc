@@ -1,0 +1,10 @@
+{
+    "summary": "Imports numpy library, creates a numpy array with elements 1, 2, and 3, then adds the array to itself.",
+    "details": [
+        {
+            "comment": "Imports numpy library, creates a numpy array with elements 1, 2, and 3, then adds the array to itself.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_kali_amd64/cognitionService/virtual/python_complete.py\":0-3",
+            "content": "import numpy as np\na=np.array([1,2,3])\na+=a"
+        }
+    ]
+}

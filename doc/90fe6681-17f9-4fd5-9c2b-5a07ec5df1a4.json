@@ -1,0 +1,10 @@
+{
+    "summary": "The code is a Bash script that checks if the input argument exists and then executes 'proot' with specific options like -0, -r, and -b to create a chroot environment. The script also uses 'which bash' to get the path of bash for later usage in the command.",
+    "details": [
+        {
+            "comment": "The code is a Bash script that checks if the input argument exists and then executes 'proot' with specific options like -0, -r, and -b to create a chroot environment. The script also uses 'which bash' to get the path of bash for later usage in the command.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_kali_amd64/virtualService/tools/sandserv/multichroot.sh\":0-23",
+            "content": "#!/bin/bash\nc0=$(echo $1 |wc -c )\n#echo $c0\nif [ $c0 -le 1 ]\nthen\n        echo \"chroot no argument.\"\n        exit 1\nelse\n        :\nfi\nd1=$1\ns3=$(which bash)\ncommand=\"sudo proot\"\n#command=\"$PWD/bin/libjudger.so --exe_path=$3 --args='proot -0'\" \n#command+=\" -i $s2:$s2 \"   \ncommand+=\" -0 \"   \ncommand+=\" -r multiserv/$d1/root -b /dev/null:/dev/null \"\ncommand+=\" -b /sys/fs/selinux/null:/sys/fs/selinux/null \"  \ncommand+=\" -b /dev/tty:/dev/tty \" \n#command+=\" $PWD/bin/libjudger.so --exe_path=$s3 --seccomp_rule_name=\\\"nokill\\\"\"    \n#command+=\" /bin/sh\"     \ncommand+=\" $s3 -c ./incage.sh\"     \n$command"
+        }
+    ]
+}

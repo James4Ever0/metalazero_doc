@@ -1,0 +1,10 @@
+{
+    "summary": "This code generates stimuli by applying a sine function to a range of values, adding a random frequency and summing the results. If the sum is within a specific threshold, it prints \"stimulation!\" with intensity based on the value's proximity to the threshold. The process repeats every 0.3 seconds.",
+    "details": [
+        {
+            "comment": "This code generates stimuli by applying a sine function to a range of values, adding a random frequency and summing the results. If the sum is within a specific threshold, it prints \"stimulation!\" with intensity based on the value's proximity to the threshold. The process repeats every 0.3 seconds.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/tools/deep-text-editor/neural_network/generate_stimuli.py\":0-17",
+            "content": "import random\nimport math\nthr=23\nimport time\nbase=lambda x:0.2*math.sin(x)\nfreq=lambda:random.random()\nsm=0\nfor x in range(5000):\n    f=base(x)+freq()\n    sm+=f\n    sm%=(2 * thr)\n    print(\"frequency:\",f)\n    print(\"sum:\",sm)\n    amp=sm-thr\n    if amp>0 and amp <2:\n        print(\"stimulation!\",1-abs(amp-1))\n    time.sleep(0.3)"
+        }
+    ]
+}

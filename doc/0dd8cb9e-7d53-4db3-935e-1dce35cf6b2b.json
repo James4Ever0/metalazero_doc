@@ -1,0 +1,10 @@
+{
+    "summary": "Creates a directory for offline tasks, initializes variable 'abc', writes exported tasks to JSON in the directory without format checking.",
+    "details": [
+        {
+            "comment": "Creates a directory for offline tasks, initializes variable 'abc', writes exported tasks to JSON in the directory without format checking.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/schedules/export_offline_tasks.sh\":0-4",
+            "content": "mkdir offline_tasks\nabc=$()\ntask export > offline_tasks/$($abc)tasks.json\n# are you sure that this is the best shot?\n# you don't check the format first?"
+        }
+    ]
+}

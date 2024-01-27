@@ -1,0 +1,10 @@
+{
+    "summary": "Script retrieves IP address, sets port number using sed, copies and pastes the formatted address, removes temporary file, and runs test_events.py script.",
+    "details": [
+        {
+            "comment": "Script retrieves IP address, sets port number using sed, copies and pastes the formatted address, removes temporary file, and runs test_events.py script.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/remote_control/server/test_events.sh\":0-7",
+            "content": "ifconfig | grep -C 1 arc0 | grep -Eo \"inet [0-9]+.[0-9]+.[0-9]+.[0-9]+\" | grep -Eo \"[0-9]+.[0-9]+.[0-9]+.[0-9]+\" | tee tmp_ip.confidential | termux-clipboard-set\nport=19243\nsed -i \"s/^/http:\\/\\//;s/$/:$port/g\" tmp_ip.confidential\ncat tmp_ip.confidential\ncat tmp_ip.confidential | termux-clipboard-set\nrm tmp_ip.confidential\necho address copied!\npython3 test_events.py"
+        }
+    ]
+}

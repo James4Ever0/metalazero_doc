@@ -1,0 +1,44 @@
+#!/bin/bash
+# choose one from the target please?
+function abc {
+	echo "-read to read the recent dirs."
+	echo "-jump to jump to the target recent dir."
+	echo "-search to search for target dirs."
+	echo "-sjump to search and jump to the first search candidate."
+	echo "-edit to edit the recent dirs."
+	echo "-h or -help for help."
+	echo "other arguments will be treated as comments"
+	echo "pass no argument to read comment from stdin and write to ~/.recent_dirs."
+}
+
+if [ "$1" == "-read" ]; then
+	cat ~/.recent_dirs | grep -n ""
+elif [ "$1" == "-search" ]; then
+	cat ~/.recent_dirs | grep -n "$2"
+elif [ "$1" == "-sjump" ]; then
+	# working for fish, not sure for others.
+	target=$(cat ~/.recent_dirs | grep "$2" | awk '{print $1}' | head --lines 1)
+	$SHELL -C "cd $target"
+elif [ "$1" == "-jump" ]; then
+	target=$(cat ~/.recent_dirs | sed -n "$2p" | awk '{print $1}')
+	#env PWD=$target $SHELL
+	$SHELL -C "cd $target"
+	# use default shell
+elif [ "$1" == "-edit" ]; then
+	vim ~/.recent_dirs
+elif [ "$1" == "-h" ]; then
+	abc
+elif [ "$1" == "-help" ]; then
+	abc
+else
+	if [ "$1" == "" ]; then
+		read
+		content="$PWD $REPLY"
+		echo "writing content: $content"
+		echo  >> ~/.recent_dirs
+	else
+		content="$PWD $@"
+		echo "writing content: $content"
+		echo "$PWD $@" >> ~/.recent_dirs
+	fi
+fi

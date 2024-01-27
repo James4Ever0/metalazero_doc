@@ -1,0 +1,10 @@
+{
+    "summary": "The code initializes a neural network with random weights, trains it on a binary classification task using logistic regression algorithm, and outputs the final weighted output.",
+    "details": [
+        {
+            "comment": "The code initializes a neural network with random weights, trains it on a binary classification task using logistic regression algorithm, and outputs the final weighted output.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/tools/deep-text-editor/neural_network/base.py\":0-8",
+            "content": "from numpy import exp, array, random, dot\ntraining_set_inputs = array([[0, 0, 1], [1, 1, 1], [1, 0, 1], [0, 1, 1]])\ntraining_set_outputs = array([[0, 1, 1, 0]]).T\nrandom.seed(1)\nsynaptic_weights = 2 * random.random((3, 1)) - 1\nfor iteration in xrange(10000):\n    output = 1 / (1 + exp(-(dot(training_set_inputs, synaptic_weights))))\n    synaptic_weights += dot(training_set_inputs.T, (training_set_outputs - output) * output * (1 - output))\nprint (1 / (1 + exp(-(dot(array([1, 0, 0]), synaptic_weights)))))"
+        }
+    ]
+}

@@ -1,0 +1,10 @@
+{
+    "summary": "The script checks the number of arguments, if it's less than or equal to 1, it displays \"no argument\" and exits with a status code 1. Otherwise, it continues executing the subsequent commands which include unloading RAM using multiunloadram.sh, creating a directory for the specified argument, setting its permissions, and mounting a temporary filesystem (tmpfs) of size 10M as 'myramdisk' within the specified directory.",
+    "details": [
+        {
+            "comment": "The script checks the number of arguments, if it's less than or equal to 1, it displays \"no argument\" and exits with a status code 1. Otherwise, it continues executing the subsequent commands which include unloading RAM using multiunloadram.sh, creating a directory for the specified argument, setting its permissions, and mounting a temporary filesystem (tmpfs) of size 10M as 'myramdisk' within the specified directory.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_kali_amd64/virtualService/tools/sandserv/multiram.sh\":0-13",
+            "content": "#!/bin/bash\nc0=$(echo $1 |wc -c )\n#echo $c0\nif [ $c0 -le 1 ]\nthen\n        echo \"no argument.\"\n        exit 1\nelse\n        :\nfi\n./multiunloadram.sh $1\nsudo mkdir -p multiserv/$1/ramdisk\nsudo chmod 777 multiserv/$1/ramdisk\nsudo mount -t tmpfs -o size=10m myramdisk multiserv/$1/ramdisk"
+        }
+    ]
+}

@@ -1,0 +1,533 @@
+{
+    "1200": {
+        "file_id": 248,
+        "content": "/native/lazero_kali_amd64/virtualService/tools/sandserv/multiroot.sh",
+        "type": "filepath"
+    },
+    "1201": {
+        "file_id": 248,
+        "content": "This script checks the argument count, creates a directory for multiroot, sets up unionfs to bind mount the root filesystem, and ensures permissions are set correctly.",
+        "type": "summary"
+    },
+    "1202": {
+        "file_id": 248,
+        "content": "#!/bin/bash\nc0=$(echo $1 |wc -c )\n#echo $c0\nif [ $c0 -le 1 ]\nthen\n        echo \"no argument.\"\n        exit 1\nelse\n        :\nfi\nbash -c \"./multiunloadroot.sh $1\"\nsudo mkdir -p multiserv/$1/root\n# there's autodetect.\n#better use bindfs as standard.\nsudo bin/unionfs -o allow_root,cow,uid=0,gid=0 multiserv/$1/ramdisk/=RW:/=RO multiserv/$1/root/\nsudo chmod 777 multiserv/$1/root",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/virtualService/tools/sandserv/multiroot.sh:1-16"
+    },
+    "1203": {
+        "file_id": 248,
+        "content": "This script checks the argument count, creates a directory for multiroot, sets up unionfs to bind mount the root filesystem, and ensures permissions are set correctly.",
+        "type": "comment"
+    },
+    "1204": {
+        "file_id": 249,
+        "content": "/native/lazero_kali_amd64/virtualService/tools/sandserv/multiterm.sh",
+        "type": "filepath"
+    },
+    "1205": {
+        "file_id": 249,
+        "content": "This script checks the number of command line arguments, and if it is less than or equal to 1, it outputs \"no argument\" and exits with an error code. Otherwise, it runs multiple scripts in sequence.",
+        "type": "summary"
+    },
+    "1206": {
+        "file_id": 249,
+        "content": "#!/bin/bash\nc0=$(echo $1 |wc -c )\n#echo $c0\nif [ $c0 -le 1 ]\nthen\n        echo \"no argument.\"\n        exit 1\nelse\n        :\nfi\nbash -c \"./multikill.sh $1\"\nbash -c \"./multiunloadroot.sh $1\"\nbash -c \"./multiunloadram.sh $1\"",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/virtualService/tools/sandserv/multiterm.sh:1-13"
+    },
+    "1207": {
+        "file_id": 249,
+        "content": "This script checks the number of command line arguments, and if it is less than or equal to 1, it outputs \"no argument\" and exits with an error code. Otherwise, it runs multiple scripts in sequence.",
+        "type": "comment"
+    },
+    "1208": {
+        "file_id": 250,
+        "content": "/native/lazero_kali_amd64/virtualService/tools/sandserv/multiunloadram.sh",
+        "type": "filepath"
+    },
+    "1209": {
+        "file_id": 250,
+        "content": "This script checks the number of arguments provided, and if it's less than or equal to 1, it displays \"no argument\" and exits with status 1. Otherwise, it unmounts and removes the specified ramdisk directory in multiserv.",
+        "type": "summary"
+    },
+    "1210": {
+        "file_id": 250,
+        "content": "#!/bin/bash\nc0=$(echo $1 |wc -c )\n#echo $c0\nif [ $c0 -le 1 ]\nthen\n        echo \"no argument.\"\n        exit 1\nelse\n        :\nfi\nsudo umount -f multiserv/$1/ramdisk\nsudo rm -rf multiserv/$1/ramdisk",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/virtualService/tools/sandserv/multiunloadram.sh:1-12"
+    },
+    "1211": {
+        "file_id": 250,
+        "content": "This script checks the number of arguments provided, and if it's less than or equal to 1, it displays \"no argument\" and exits with status 1. Otherwise, it unmounts and removes the specified ramdisk directory in multiserv.",
+        "type": "comment"
+    },
+    "1212": {
+        "file_id": 251,
+        "content": "/native/lazero_kali_amd64/virtualService/tools/sandserv/multiunloadroot.sh",
+        "type": "filepath"
+    },
+    "1213": {
+        "file_id": 251,
+        "content": "This script checks the number of arguments provided and performs umount, ls, and rm operations if the argument count is greater than one. It also checks the size of the directory to avoid failed operations and remove the directory if it's empty.",
+        "type": "summary"
+    },
+    "1214": {
+        "file_id": 251,
+        "content": "#!/bin/bash\nc0=$(echo $1 |wc -c )\n#echo $c0\nif [ $c0 -le 1 ]\nthen\n        echo \"no argument.\"\n        exit 1\nelse\n        :\nfi\nsudo umount -f multiserv/$1/root\npsk=$(sudo ls -1 multiserv/$1/root/ | wc -c)\n# if failed, then do not continue! unless you are an idiot.\n# or not.\n# just think! also for symlink on windows. caution when doing chroot/symlink.\nif [ $psk -eq 0 ]\nthen\n\tsudo rm -rf multiserv/$1/root\nfi",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/virtualService/tools/sandserv/multiunloadroot.sh:1-19"
+    },
+    "1215": {
+        "file_id": 251,
+        "content": "This script checks the number of arguments provided and performs umount, ls, and rm operations if the argument count is greater than one. It also checks the size of the directory to avoid failed operations and remove the directory if it's empty.",
+        "type": "comment"
+    },
+    "1216": {
+        "file_id": 252,
+        "content": "/native/lazero_kali_amd64/virtualService/tools/sandserv/nchroot.sh",
+        "type": "filepath"
+    },
+    "1217": {
+        "file_id": 252,
+        "content": "This Bash script uses proot to create a chroot environment. It sets the command variable with options to isolate the process, such as root permissions and null SELinux contexts. It finally executes the given bash binary within this restricted environment.",
+        "type": "summary"
+    },
+    "1218": {
+        "file_id": 252,
+        "content": "#!/bin/bash\ns3=$(which bash)\ncommand=\"sudo proot\"\n#command=\"$PWD/bin/libjudger.so --exe_path=$3 --args='proot -0'\" \n#command+=\" -i $s2:$s2 \"   \ncommand+=\" -0 \"   \ncommand+=\" -r root -b /dev/null:/dev/null \"\ncommand+=\" -b /sys/fs/selinux/null:/sys/fs/selinux/null \"  \ncommand+=\" -b /dev/tty:/dev/tty \" \n#command+=\" $PWD/bin/libjudger.so --exe_path=$s3 --seccomp_rule_name=\\\"nokill\\\"\"    \n#command+=\" /bin/sh\"     \ncommand+=\" $s3 \"     \n$command",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/virtualService/tools/sandserv/nchroot.sh:1-14"
+    },
+    "1219": {
+        "file_id": 252,
+        "content": "This Bash script uses proot to create a chroot environment. It sets the command variable with options to isolate the process, such as root permissions and null SELinux contexts. It finally executes the given bash binary within this restricted environment.",
+        "type": "comment"
+    },
+    "1220": {
+        "file_id": 253,
+        "content": "/native/lazero_kali_amd64/virtualService/tools/sandserv/normal_shell.py",
+        "type": "filepath"
+    },
+    "1221": {
+        "file_id": 253,
+        "content": "This code imports the os module, prints \"enter normal shell\", executes a bash shell using os.system(), and finally prints \"exit normal shell\". It provides access to a normal shell within the script's execution context.",
+        "type": "summary"
+    },
+    "1222": {
+        "file_id": 253,
+        "content": "import os\nprint(\"enter normal shell\")\nos.system(\"bash\")\nprint(\"exit normal shell\")",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/virtualService/tools/sandserv/normal_shell.py:1-4"
+    },
+    "1223": {
+        "file_id": 253,
+        "content": "This code imports the os module, prints \"enter normal shell\", executes a bash shell using os.system(), and finally prints \"exit normal shell\". It provides access to a normal shell within the script's execution context.",
+        "type": "comment"
+    },
+    "1224": {
+        "file_id": 254,
+        "content": "/native/lazero_kali_amd64/virtualService/tools/sandserv/nsjail_reloadscript_x64.sh",
+        "type": "filepath"
+    },
+    "1225": {
+        "file_id": 254,
+        "content": "The script ensures correct mounting of ramdisk and root file systems, executes specific scripts, creates directories for system binaries, uses efilter for directory creation, sets permissions, and pivots.",
+        "type": "summary"
+    },
+    "1226": {
+        "file_id": 254,
+        "content": "#!/bin/bash\nsudo touch judger.log\nsudo chmod 777 judger.log\ns0=$(sudo mount 2>&1 | grep $PWD/ramdisk | grep myramdisk |  wc -c)\ns1=$(sudo mount 2>&1 | grep $PWD/root | grep unionfs |  wc -c)\nif [ $s0 -eq 0 ]\nthen\n\tbash -c ./loadram.sh\nfi\nif [ $s1 -eq 0 ]\nthen\n\tbash -c ./treloadroot_x64.sh\nfi\ns7=$(which tmux)\ns6=$(sudo which init)\n#s5=$(sudo which kill)\n#s9=$(sudo which su)\ns10=$(sudo which sudo)\ns4=$(which kill)\n#s8=/system/bin/kill\n#s11=/sbin/su\n#echo $s7 | python3 efilter.py ramdisk\n# it is able to kill itself.\n# sorry. no one can stop that from happening.\n# and that is part of the game.\necho $s6 | python3 efilter.py ramdisk | xargs sudo mkdir -p\n#echo $s5 | python3 efilter.py ramdisk | xargs sudo mkdir -p\necho $s4 | python3 efilter.py ramdisk | xargs sudo mkdir -p\necho $s7 | python3 efilter.py ramdisk | xargs sudo mkdir -p\n#echo $s8 | python3 efilter.py ramdisk | xargs sudo mkdir -p\n#echo $s9 | python3 efilter.py ramdisk | xargs sudo mkdir -p\necho $s10 | python3 efilter.py ramdisk | xargs sudo mkdir -p\n#echo $s11 | python3 efilter.py ramdisk | xargs sudo mkdir -p",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/virtualService/tools/sandserv/nsjail_reloadscript_x64.sh:1-33"
+    },
+    "1227": {
+        "file_id": 254,
+        "content": "The script checks if the ramdisk and root file systems are mounted correctly, then executes specific scripts based on their availability. It also creates directories for certain system binaries, presumably to ensure they can be executed later in the process. The script uses Python3's efilter to filter commands for creating directories in the ramdisk.",
+        "type": "comment"
+    },
+    "1228": {
+        "file_id": 254,
+        "content": "sudo touch ramdisk$s6\n#sudo touch ramdisk$s5\n#sudo touch ramdisk$s9\n#sudo touch ramdisk$s11\nsudo touch ramdisk$s10\nsudo touch ramdisk$s4\n#sudo touch ramdisk$s8\nsudo touch ramdisk$s7\nsudo chmod 777 root\nsudo chmod 777 ramdisk\n./pivot.sh\n#./command_x64.sh\n#command=\"bash -c ./chroot.sh\"\n#command=\"sudo $PWD/bin/libjudger.so --exe_path=$PWD/chroot.sh\"\n#command+=\" -i $s2:$s2 \"\n#command+=\" --seccomp_rule_name=\\\"nokill\\\"\"\n#$command",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/virtualService/tools/sandserv/nsjail_reloadscript_x64.sh:34-50"
+    },
+    "1229": {
+        "file_id": 254,
+        "content": "The script creates touch files for various ramdisk folders, sets their permissions to 777, and then executes a pivot.sh script. It also includes comments for alternative command options that are not executed.",
+        "type": "comment"
+    },
+    "1230": {
+        "file_id": 255,
+        "content": "/native/lazero_kali_amd64/virtualService/tools/sandserv/pivot.sh",
+        "type": "filepath"
+    },
+    "1231": {
+        "file_id": 255,
+        "content": "The code is using nsjail to create a containerized environment, likely for cross-platform compatibility. The command launches bash in the current directory and chroots to root/. It also disables newns clone and restricts read-only access, potentially making it slower.",
+        "type": "summary"
+    },
+    "1232": {
+        "file_id": 255,
+        "content": "#!/bin/bash\n# is this not for aarch64? it's slow anyway.\nbin/x86_64/nsjail -Mo --chroot root/ --rw  --disable_clone_newns -- $(which bash) -c \"cd $PWD && bash\"",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/virtualService/tools/sandserv/pivot.sh:1-3"
+    },
+    "1233": {
+        "file_id": 255,
+        "content": "The code is using nsjail to create a containerized environment, likely for cross-platform compatibility. The command launches bash in the current directory and chroots to root/. It also disables newns clone and restricts read-only access, potentially making it slower.",
+        "type": "comment"
+    },
+    "1234": {
+        "file_id": 256,
+        "content": "/native/lazero_kali_amd64/virtualService/tools/sandserv/ptyproc.py",
+        "type": "filepath"
+    },
+    "1235": {
+        "file_id": 256,
+        "content": "This module utilizes ptyprocess, threading, and signal handling to provide a virtual terminal for process management. It uses Tornado framework for GET requests and external scripts, and handles input reading, status monitoring, HTTP interaction, argument formats, and Flask application routes with defined server routes and termination capabilities.",
+        "type": "summary"
+    },
+    "1236": {
+        "file_id": 256,
+        "content": "from __future__ import unicode_literals\nimport ptyprocess\n# this module is exclusive for windows. to port to linux there should be extra steps.\n# i mean, android.\n# hey! do not run this shit outside of sandbox, unless you want to get me killed.\nimport threading\nimport pyte\n# can you format things into colorful output?\n# or just raw terminal string which can be transformed into html.\nimport traceback\nimport tornado.ioloop\nimport tornado.web\nimport requests\nimport base64\nimport signal\nimport os\n# no watchdog for this?\nLF_CRLF=b\"\\n\"\nmaxbark = 2\nmaxbark_granual = 5\nmaxterm = 3\nmaxterm_granual = 5\nbark = 0\nterm = 0\nport=8788\n# you can turn off the barking dog sometimes.\n# we can use a big dog every since then.\ndef kill(pipe):\n    try:\n        pipe.terminate()\n# here.\n        pipe.kill(signal.SIGKILL)\n    except:\n        print(\"_____process kill error_____\")\n        traceback.print_exc()\n# signal.signal(signal.SIGINT, signal_handler)\ndisplay = \"\"\nlag = 0.05\n#executable ='./tsimple_jail.sh'\n#executable =['./tsimple_jail.sh']\nexecutable =['./reloadscript.sh']",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/virtualService/tools/sandserv/ptyproc.py:1-41"
+    },
+    "1237": {
+        "file_id": 256,
+        "content": "Module for Windows, exclusive for sandbox usage, contains threading, pyte, traceback imports, tornado web and ioloop, requests, base64, signal, constant variables for bark and term limits, a kill function for process termination, and an executable variable.",
+        "type": "comment"
+    },
+    "1238": {
+        "file_id": 256,
+        "content": "cols, rows = 80, 25\nimport time\nwatch_rate = 0.5\nscreen = pyte.Screen(cols,rows)\nstream = pyte.ByteStream(screen)\nprocess =  ptyprocess.PtyProcess.spawn(executable,dimensions=(rows,cols))\ndef read_to_term():\n    global display, stream, screen\n    # read a global list?\n    # you can start another server. not quite like terminal. like execution shell.\n    noerr=True\n    while noerr:\n        try:\n            reading=process.read()\n# will block.\n    # will raise error if not good.\n            stream.feed(reading)\n            display = \"\\n\".join(screen.display)\n        except:\n            noerr = False\n            break\nt0=threading.Thread(target=read_to_term,args=())\nt0.setDaemon(True)\nt0.start()\ndef barkdog():\n    global bark, maxbark_granual\n    while True:\n        bark = 0\n        time.sleep(maxbark_granual)\ntb=threading.Thread(target=barkdog,args=())\ntb.setDaemon(True)\ntb.start()\ndef termdog():\n    global term, maxterm_granual\n    while True:\n        term = 0\n        time.sleep(maxterm_granual)\ntx=threading.Thread(target=termdog,args=())",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/virtualService/tools/sandserv/ptyproc.py:42-79"
+    },
+    "1239": {
+        "file_id": 256,
+        "content": "This code sets up a virtual terminal process using the ptyprocess module and handles input/output between the process and screen. It creates three threads for reading from the process, barking (possibly signaling an event), and managing the terminal display.",
+        "type": "comment"
+    },
+    "1240": {
+        "file_id": 256,
+        "content": "tx.setDaemon(True)\ntx.start()\ndef watchdog():\n    global process, watch_rate, port, bark, maxbark\n    alive=True\n    while alive:\n        alive = process.isalive()\n#        print(\"alive?\",alive)\n        time.sleep(watch_rate)\n#    print(\"bark\")\n    bark+=1\n    if bark > maxbark:\n        print(\"max bark exceed.\",bark)\n# what the heck?\n        pass\n    else:\n#        print(\"did get to here\")\n# if server is down this will cause dead shit.\n        requests.get(\"http://localhost:{}/restart\".format(port),stream=False,verify=False,timeout=1)\n# does that work?\n    # if not, call the handler. use requests.\nt1=threading.Thread(target=watchdog,args=())\nt1.setDaemon(True)\nt1.start()\nclass RHandler(tornado.web.RequestHandler):\n    def get(self):\n        global process, screen, stream, t0, t1, executable, display, term, maxterm\n        # print(type(process))\n        # print(dir(process))\n        term += 1\n        if term > maxterm:\n            self.write(\"exceeding max termination quota!\\n\")\n        else:\n            kill(process)\n            os.system(\"./terminate.sh\")",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/virtualService/tools/sandserv/ptyproc.py:80-115"
+    },
+    "1241": {
+        "file_id": 256,
+        "content": "This code starts a daemon thread that continuously checks if the process is alive and periodically sends a restart request if it's not. Additionally, it has a handler class for handling GET requests which can terminate the process if the termination quota is exceeded. It also uses threads, Tornado web framework, and external scripts like \"terminate.sh\".",
+        "type": "comment"
+    },
+    "1242": {
+        "file_id": 256,
+        "content": "# did it stuck here?\n# nope.\n            for x in [process, screen, stream, t0, t1]:\n                # print(\"deleting\")\n                del x\n            display = \"\"\n            screen = pyte.Screen(cols,rows)\n            stream = pyte.ByteStream(screen)\n            process =  ptyprocess.PtyProcess.spawn(executable,dimensions=(rows,cols))\n            t0=threading.Thread(target=read_to_term,args=())\n            t0.setDaemon(True)\n            t0.start()\n            t1=threading.Thread(target=watchdog,args=())\n            t1.setDaemon(True)\n            t1.start()\n            self.write(\"terminal restart!\\n\")\nclass IHandler(tornado.web.RequestHandler):\n    def get(self):\n        global display, process, lag\n        # print(\"type request received.\")\n        argument = self.get_argument(\"type\",None)\n        argumentx = self.get_argument(\"b64type\",None)\n        # that is for argument!\n        autoreturn = self.get_argument(\"autoreturn\",None) == \"true\"\n        # print(\"actual argument\",[argument],type(argument))\n        # string.",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/virtualService/tools/sandserv/ptyproc.py:116-141"
+    },
+    "1243": {
+        "file_id": 256,
+        "content": "This code is setting up a terminal process with PTY and two separate threads for reading from the terminal and watching the process. It defines a class IHandler that extends Tornado web RequestHandler and has methods to handle GET requests, allowing users to interact with the virtual service by sending data over HTTP. The global variables are used to maintain state between different requests, such as the current display, process, and other information.",
+        "type": "comment"
+    },
+    "1244": {
+        "file_id": 256,
+        "content": "        if not process.isalive():\n            self.write(\"process is dead.\\n\")\n        elif argument is not None:\n            # unicode.\n            # may encounter error.\n            if autoreturn:\n                process.write(argument.encode(\"utf8\")+b'\\r')\n            else:\n                process.write(argument.encode(\"utf8\"))\n            time.sleep(lag)\n            self.write(display)\n        elif argumentx is not None:\n            # check if correctly formed.\n# check if not dead.\n            try:\n                arx = base64.b64decode(argumentx)\n                # the result is not right.\n                # cannot decode here.\n                if autoreturn:\n                    process.write(arx+b'\\r')\n                else:\n                    process.write(arx)\n                    # this is not unicode string.\n                time.sleep(lag)\n                self.write(display)\n            except:\n                self.write(\"incorrect format\\n\")\n                # pass\n                # D:\\Programs\\Python\\Python36\\lib\\site-packages\\winpty\\winpty_wrapper.py",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/virtualService/tools/sandserv/ptyproc.py:142-170"
+    },
+    "1245": {
+        "file_id": 256,
+        "content": "This code checks if the process is alive and then writes encoded arguments to it, with a lag and display action. If the argument format is incorrect, it displays an error message.",
+        "type": "comment"
+    },
+    "1246": {
+        "file_id": 256,
+        "content": "        else:\n            self.write(\"empty input\\n\")\n            # pass\nclass MainHandler(tornado.web.RequestHandler):\n    def get(self):\n        global display\n        self.write(display)\n    def make_app():\n        return tornado.web.Application([(r\"/display\",MainHandler),(r\"/restart\",RHandler),(r\"/input\",IHandler)])\n# get a window watcher. if want to lock the winsize better use that.\n# why the fuck that the code needs to be compiled? could we just examine the code and prepare for tested binaries?\napp = MainHandler.make_app()\napp.listen(port)\n# here's the shit.\ntornado.ioloop.IOLoop.current().start()\n# register handler.\nexit()",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/virtualService/tools/sandserv/ptyproc.py:171-188"
+    },
+    "1247": {
+        "file_id": 256,
+        "content": "The code defines a Flask application with three handlers for different routes (\"/display\", \"/restart\", and \"/input\"). It starts the server on a specified port and then terminates. The code could be compiled to execute, but examining it would only allow for testing prepared binaries rather than directly understanding its functionality.",
+        "type": "comment"
+    },
+    "1248": {
+        "file_id": 257,
+        "content": "/native/lazero_kali_amd64/virtualService/tools/sandserv/ptyproc_x64.py",
+        "type": "filepath"
+    },
+    "1249": {
+        "file_id": 257,
+        "content": "The Python module is exclusive to Windows and utilizes threading, pyte, tornado, requests for setting up a watchdog process that manages a terminal within a web app, handling GET requests like \"/display\", \"/restart\" & \"/input\". It initiates a Tornado web application with request handlers and starts the event loop on specified port.",
+        "type": "summary"
+    },
+    "1250": {
+        "file_id": 257,
+        "content": "from __future__ import unicode_literals\nimport ptyprocess\n# this module is exclusive for windows. to port to linux there should be extra steps.\n# i mean, android.\n# hey! do not run this shit outside of sandbox, unless you want to get me killed.\nimport threading\nimport pyte\n# can you format things into colorful output?\n# or just raw terminal string which can be transformed into html.\nimport traceback\nimport tornado.ioloop\nimport tornado.web\nimport requests\nimport base64\nimport signal\nimport os\n# no watchdog for this?\nLF_CRLF=b\"\\n\"\nmaxbark = 2\nmaxbark_granual = 5\nmaxterm = 3\nmaxterm_granual = 5\nbark = 0\nterm = 0\nport=8788\n# you can turn off the barking dog sometimes.\n# we can use a big dog every since then.\ndef kill(pipe):\n    try:\n        pipe.terminate()\n# here.\n        pipe.kill(signal.SIGKILL)\n    except:\n        print(\"_____process kill error_____\")\n        traceback.print_exc()\n# signal.signal(signal.SIGINT, signal_handler)\ndisplay = \"\"\nlag = 0.05\n#executable ='./tsimple_jail.sh'\n#executable =['./tsimple_jail.sh']\nexecutable =['./reloadscript_x64.sh']",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/virtualService/tools/sandserv/ptyproc_x64.py:1-41"
+    },
+    "1251": {
+        "file_id": 257,
+        "content": "The code is a Python module for Windows, exclusive to that platform and requiring porting steps for Linux. It uses threading, pyte, tornado, requests, base64, and signal libraries. The code includes variables for barking and terminating signals, defines kill function, display string, and lag value. It uses executable variable to specify the script it will run.",
+        "type": "comment"
+    },
+    "1252": {
+        "file_id": 257,
+        "content": "cols, rows = 80, 25\nimport time\nwatch_rate = 0.5\nscreen = pyte.Screen(cols,rows)\nstream = pyte.ByteStream(screen)\nprocess =  ptyprocess.PtyProcess.spawn(executable,dimensions=(rows,cols))\ndef read_to_term():\n    global display, stream, screen\n    # read a global list?\n    # you can start another server. not quite like terminal. like execution shell.\n    noerr=True\n    while noerr:\n        try:\n            reading=process.read()\n# will block.\n    # will raise error if not good.\n            stream.feed(reading)\n            display = \"\\n\".join(screen.display)\n        except:\n            noerr = False\n            break\nt0=threading.Thread(target=read_to_term,args=())\nt0.setDaemon(True)\nt0.start()\ndef barkdog():\n    global bark, maxbark_granual\n    while True:\n        bark = 0\n        time.sleep(maxbark_granual)\ntb=threading.Thread(target=barkdog,args=())\ntb.setDaemon(True)\ntb.start()\ndef termdog():\n    global term, maxterm_granual\n    while True:\n        term = 0\n        time.sleep(maxterm_granual)\ntx=threading.Thread(target=termdog,args=())",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/virtualService/tools/sandserv/ptyproc_x64.py:42-79"
+    },
+    "1253": {
+        "file_id": 257,
+        "content": "Code snippet initializes screen dimensions, imports time and uses pyte library for terminal emulation. It spawns a process using ptyprocess and defines three threads: read_to_term() reads from the process, barkdog() periodically sets bark variable, termdog() periodically sets term variable. Threads run in background as daemons.",
+        "type": "comment"
+    },
+    "1254": {
+        "file_id": 257,
+        "content": "tx.setDaemon(True)\ntx.start()\ndef watchdog():\n    global process, watch_rate, port, bark, maxbark\n    alive=True\n    while alive:\n        alive = process.isalive()\n#        print(\"alive?\",alive)\n        time.sleep(watch_rate)\n#    print(\"bark\")\n    bark+=1\n    if bark > maxbark:\n        print(\"max bark exceed.\",bark)\n# what the heck?\n        pass\n    else:\n#        print(\"did get to here\")\n# if server is down this will cause dead shit.\n        requests.get(\"http://localhost:{}/restart\".format(port),stream=False,verify=False,timeout=1)\n# does that work?\n    # if not, call the handler. use requests.\nt1=threading.Thread(target=watchdog,args=())\nt1.setDaemon(True)\nt1.start()\nclass RHandler(tornado.web.RequestHandler):\n    def get(self):\n        global process, screen, stream, t0, t1, executable, display, term, maxterm\n        # print(type(process))\n        # print(dir(process))\n        term += 1\n        if term > maxterm:\n            self.write(\"exceeding max termination quota!\\n\")\n        else:\n            kill(process)\n            os.system(\"./terminate.sh\")",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/virtualService/tools/sandserv/ptyproc_x64.py:80-115"
+    },
+    "1255": {
+        "file_id": 257,
+        "content": "This code sets up a watchdog process that monitors the status of another process and restarts it if it stops responding. It also includes a request handler to gracefully terminate the main process after reaching a specified maximum number of iterations, and starts two threads for the watchdog and the request handler.",
+        "type": "comment"
+    },
+    "1256": {
+        "file_id": 257,
+        "content": "# did it stuck here?\n# nope.\n            for x in [process, screen, stream, t0, t1]:\n                # print(\"deleting\")\n                del x\n            display = \"\"\n            screen = pyte.Screen(cols,rows)\n            stream = pyte.ByteStream(screen)\n            process =  ptyprocess.PtyProcess.spawn(executable,dimensions=(rows,cols))\n            t0=threading.Thread(target=read_to_term,args=())\n            t0.setDaemon(True)\n            t0.start()\n            t1=threading.Thread(target=watchdog,args=())\n            t1.setDaemon(True)\n            t1.start()\n            self.write(\"terminal restart!\\n\")\nclass IHandler(tornado.web.RequestHandler):\n    def get(self):\n        global display, process, lag\n        # print(\"type request received.\")\n        argument = self.get_argument(\"type\",None)\n        argumentx = self.get_argument(\"b64type\",None)\n        # that is for argument!\n        autoreturn = self.get_argument(\"autoreturn\",None) == \"true\"\n        # print(\"actual argument\",[argument],type(argument))\n        # string.",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/virtualService/tools/sandserv/ptyproc_x64.py:116-141"
+    },
+    "1257": {
+        "file_id": 257,
+        "content": "This code is part of a Python program that manages a terminal process within a web application using Tornado and pyte libraries. The code initializes the necessary objects for the terminal, starts two threads (one for reading from the terminal and one for monitoring), and handles GET requests to interact with the terminal. It also supports passing arguments via URL parameters and has an option for automatic return after handling a request.",
+        "type": "comment"
+    },
+    "1258": {
+        "file_id": 257,
+        "content": "        if not process.isalive():\n            self.write(\"process is dead.\\n\")\n        elif argument is not None:\n            # unicode.\n            # may encounter error.\n            if autoreturn:\n                process.write(argument.encode(\"utf8\")+b'\\r')\n            else:\n                process.write(argument.encode(\"utf8\"))\n            time.sleep(lag)\n            self.write(display)\n        elif argumentx is not None:\n            # check if correctly formed.\n# check if not dead.\n            try:\n                arx = base64.b64decode(argumentx)\n                # the result is not right.\n                # cannot decode here.\n                if autoreturn:\n                    process.write(arx+b'\\r')\n                else:\n                    process.write(arx)\n                    # this is not unicode string.\n                time.sleep(lag)\n                self.write(display)\n            except:\n                self.write(\"incorrect format\\n\")\n                # pass\n                # D:\\Programs\\Python\\Python36\\lib\\site-packages\\winpty\\winpty_wrapper.py",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/virtualService/tools/sandserv/ptyproc_x64.py:142-170"
+    },
+    "1259": {
+        "file_id": 257,
+        "content": "Code checks if the process is alive, writes encoded argument to process, and handles incorrect format.",
+        "type": "comment"
+    },
+    "1260": {
+        "file_id": 257,
+        "content": "        else:\n            self.write(\"empty input\\n\")\n            # pass\nclass MainHandler(tornado.web.RequestHandler):\n    def get(self):\n        global display\n        self.write(display)\n    def make_app():\n        return tornado.web.Application([(r\"/display\",MainHandler),(r\"/restart\",RHandler),(r\"/input\",IHandler)])\n# get a window watcher. if want to lock the winsize better use that.\n# why the fuck that the code needs to be compiled? could we just examine the code and prepare for tested binaries?\napp = MainHandler.make_app()\napp.listen(port)\n# here's the shit.\ntornado.ioloop.IOLoop.current().start()\n# register handler.\nexit()",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/virtualService/tools/sandserv/ptyproc_x64.py:171-188"
+    },
+    "1261": {
+        "file_id": 257,
+        "content": "This code defines a Tornado web application with different handlers for handling requests to \"/display\", \"/restart\", and \"/input\". The MainHandler's get method writes the display variable to the response. The make_app function creates an instance of the Tornado web application using these handlers. The application listens on a specified port, and the IOLoop starts the event loop for handling network connections.",
+        "type": "comment"
+    },
+    "1262": {
+        "file_id": 258,
+        "content": "/native/lazero_kali_amd64/virtualService/tools/sandserv/reloadscript.sh",
+        "type": "filepath"
+    },
+    "1263": {
+        "file_id": 258,
+        "content": "This code prepares a Linux environment by managing system services, creating directories for tools, ensuring binaries are available, and initializing variables before executing the specified command within a bash environment.",
+        "type": "summary"
+    },
+    "1264": {
+        "file_id": 258,
+        "content": "#!/bin/bash\nsudo touch judger.log\nsudo chmod 777 judger.log\ns0=$(sudo mount 2>&1 | grep $PWD/ramdisk | grep myramdisk |  wc -c)\ns1=$(sudo mount 2>&1 | grep $PWD/root | grep unionfs |  wc -c)\nif [ $s0 -eq 0 ]\nthen\n\tbash -c ./loadram.sh\nfi\nif [ $s1 -eq 0 ]\nthen\n\tbash -c ./treloadroot.sh\nfi\ns7=$(which tmux)\ns6=$(sudo which init)\ns5=$(sudo which kill)\ns9=$(sudo which su)\ns10=$(sudo which sudo)\ns4=$(which kill)\ns8=/system/bin/kill\ns11=/sbin/su\n#echo $s7 | python3 efilter.py ramdisk\n# it is able to kill itself.\n# sorry. no one can stop that from happening.\n# and that is part of the game.\necho $s6 | python3 efilter.py ramdisk | xargs sudo mkdir -p\necho $s5 | python3 efilter.py ramdisk | xargs sudo mkdir -p\necho $s4 | python3 efilter.py ramdisk | xargs sudo mkdir -p\necho $s7 | python3 efilter.py ramdisk | xargs sudo mkdir -p\necho $s8 | python3 efilter.py ramdisk | xargs sudo mkdir -p\necho $s9 | python3 efilter.py ramdisk | xargs sudo mkdir -p\necho $s10 | python3 efilter.py ramdisk | xargs sudo mkdir -p\necho $s11 | python3 efilter.py ramdisk | xargs sudo mkdir -p",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/virtualService/tools/sandserv/reloadscript.sh:1-33"
+    },
+    "1265": {
+        "file_id": 258,
+        "content": "Script for managing system services, creates directories for necessary tools.\nEnsures required binaries are available before running specific scripts.\nUses Python filter to create directories from binary paths.",
+        "type": "comment"
+    },
+    "1266": {
+        "file_id": 258,
+        "content": "sudo touch ramdisk$s6\nsudo touch ramdisk$s5\nsudo touch ramdisk$s9\nsudo touch ramdisk$s11\nsudo touch ramdisk$s10\nsudo touch ramdisk$s4\nsudo touch ramdisk$s8\nsudo touch ramdisk$s7\nsudo chmod 777 root\nsudo chmod 777 ramdisk\n#s2=$(id -u)\n#s3=$(which bash)\n#unset LD_PRELOAD\n#set LD_PRELOAD=/lib/libtermux-exec.so\n#set LD_LIBRARY=/lib\ncommand=\"bash -c ./chroot.sh\"\n#command=\"sudo $PWD/bin/libjudger.so --exe_path=$PWD/chroot.sh\"\n#command+=\" -i $s2:$s2 \"\n#command+=\" --seccomp_rule_name=\\\"nokill\\\"\"\n$command",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/virtualService/tools/sandserv/reloadscript.sh:34-53"
+    },
+    "1267": {
+        "file_id": 258,
+        "content": "This code is preparing a Linux environment for running software. It creates ramdisk files, sets permissions, and initializes variables before executing the specified command (chroot.sh) within a bash environment.",
+        "type": "comment"
+    },
+    "1268": {
+        "file_id": 259,
+        "content": "/native/lazero_kali_amd64/virtualService/tools/sandserv/reloadscript_x64.sh",
+        "type": "filepath"
+    },
+    "1269": {
+        "file_id": 259,
+        "content": "This script checks mounts, executes loadram and treloadroot scripts, filters invalid commands using efilter.py, creates directories for system commands, sets permissions, and runs command_x64 file with alternative options available.",
+        "type": "summary"
+    },
+    "1270": {
+        "file_id": 259,
+        "content": "#!/bin/bash\nsudo touch judger.log\nsudo chmod 777 judger.log\ns0=$(sudo mount 2>&1 | grep $PWD/ramdisk | grep myramdisk |  wc -c)\ns1=$(sudo mount 2>&1 | grep $PWD/root | grep unionfs |  wc -c)\nif [ $s0 -eq 0 ]\nthen\n\tbash -c ./loadram.sh\nfi\nif [ $s1 -eq 0 ]\nthen\n\tbash -c ./treloadroot_x64.sh\nfi\ns7=$(which tmux)\ns6=$(sudo which init)\n#s5=$(sudo which kill)\n#s9=$(sudo which su)\ns10=$(sudo which sudo)\ns4=$(which kill)\n#s8=/system/bin/kill\n#s11=/sbin/su\n#echo $s7 | python3 efilter.py ramdisk\n# it is able to kill itself.\n# sorry. no one can stop that from happening.\n# and that is part of the game.\necho $s6 | python3 efilter.py ramdisk | xargs sudo mkdir -p\n#echo $s5 | python3 efilter.py ramdisk | xargs sudo mkdir -p\necho $s4 | python3 efilter.py ramdisk | xargs sudo mkdir -p\necho $s7 | python3 efilter.py ramdisk | xargs sudo mkdir -p\n#echo $s8 | python3 efilter.py ramdisk | xargs sudo mkdir -p\n#echo $s9 | python3 efilter.py ramdisk | xargs sudo mkdir -p\necho $s10 | python3 efilter.py ramdisk | xargs sudo mkdir -p\n#echo $s11 | python3 efilter.py ramdisk | xargs sudo mkdir -p",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/virtualService/tools/sandserv/reloadscript_x64.sh:1-33"
+    },
+    "1271": {
+        "file_id": 259,
+        "content": "This script checks if the \"ramdisk\" and \"unionfs\" directories are mounted, then executes loadram.sh and treloadroot_x64.sh scripts accordingly. It also creates directories for important system commands (tmux, init, kill, sudo) to ensure they can be executed by the script. The script utilizes efilter.py to filter out any invalid commands from being created as directories.",
+        "type": "comment"
+    },
+    "1272": {
+        "file_id": 259,
+        "content": "sudo touch ramdisk$s6\n#sudo touch ramdisk$s5\n#sudo touch ramdisk$s9\n#sudo touch ramdisk$s11\nsudo touch ramdisk$s10\nsudo touch ramdisk$s4\n#sudo touch ramdisk$s8\nsudo touch ramdisk$s7\nsudo chmod 777 root\nsudo chmod 777 ramdisk\n./command_x64.sh\n#command=\"bash -c ./chroot.sh\"\n#command=\"sudo $PWD/bin/libjudger.so --exe_path=$PWD/chroot.sh\"\n#command+=\" -i $s2:$s2 \"\n#command+=\" --seccomp_rule_name=\\\"nokill\\\"\"\n#$command",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/virtualService/tools/sandserv/reloadscript_x64.sh:34-49"
+    },
+    "1273": {
+        "file_id": 259,
+        "content": "Creates ramdisk files for specific numbers (s4, s6, s7, s10), sets chmod permissions, and executes command_x64.sh file. Includes alternative command options that could be used but not currently active.",
+        "type": "comment"
+    },
+    "1274": {
+        "file_id": 260,
+        "content": "/native/lazero_kali_amd64/virtualService/tools/sandserv/runas.sh",
+        "type": "filepath"
+    },
+    "1275": {
+        "file_id": 260,
+        "content": "This script uses Termux's bash shell to run commands as user 10144 using sudo. It likely executes a set of system operations or scripts specific to the Kali Linux environment.",
+        "type": "summary"
+    },
+    "1276": {
+        "file_id": 260,
+        "content": "#!/data/data/com.termux/files/usr/bin/bash\nsudo -u 10144 bash",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/virtualService/tools/sandserv/runas.sh:1-2"
+    },
+    "1277": {
+        "file_id": 260,
+        "content": "This script uses Termux's bash shell to run commands as user 10144 using sudo. It likely executes a set of system operations or scripts specific to the Kali Linux environment.",
+        "type": "comment"
+    },
+    "1278": {
+        "file_id": 261,
+        "content": "/native/lazero_kali_amd64/virtualService/tools/sandserv/tclean.sh",
+        "type": "filepath"
+    },
+    "1279": {
+        "file_id": 261,
+        "content": "This script clears the contents of the 'ramdisk' directory, ensuring a clean slate for subsequent operations. It uses 'sudo rm -f' to remove files and 'find -P | xargs sudo unlink' to recursively delete all directories within 'ramdisk'.",
+        "type": "summary"
+    },
+    "1280": {
+        "file_id": 261,
+        "content": "#!/bin/bash\nsudo rm -f ramdisk/*\nsudo find -P ramdisk/ | xargs sudo unlink\nsudo rm -rf ramdisk/*",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/virtualService/tools/sandserv/tclean.sh:1-4"
+    },
+    "1281": {
+        "file_id": 261,
+        "content": "This script clears the contents of the 'ramdisk' directory, ensuring a clean slate for subsequent operations. It uses 'sudo rm -f' to remove files and 'find -P | xargs sudo unlink' to recursively delete all directories within 'ramdisk'.",
+        "type": "comment"
+    },
+    "1282": {
+        "file_id": 262,
+        "content": "/native/lazero_kali_amd64/virtualService/tools/sandserv/terminate.sh",
+        "type": "filepath"
+    },
+    "1283": {
+        "file_id": 262,
+        "content": "This script terminates processes related to a program, then runs two scripts (tunloadroot.sh and unloadram.sh) to clean up resources. It uses top command to find relevant process IDs, filters them using grep, and finally kills the processes with xargs kill.",
+        "type": "summary"
+    },
+    "1284": {
+        "file_id": 262,
+        "content": "#!/bin/bash\nenv COLUMNS=500 LINES=500 top -n 1 -q 2>&1 | grep bash | grep reloadscript | grep -Eo '^.?.?.?[0-9]+'  | xargs kill\nbash -c ./tunloadroot.sh\nbash -c ./unloadram.sh",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/virtualService/tools/sandserv/terminate.sh:1-4"
+    },
+    "1285": {
+        "file_id": 262,
+        "content": "This script terminates processes related to a program, then runs two scripts (tunloadroot.sh and unloadram.sh) to clean up resources. It uses top command to find relevant process IDs, filters them using grep, and finally kills the processes with xargs kill.",
+        "type": "comment"
+    },
+    "1286": {
+        "file_id": 263,
+        "content": "/native/lazero_kali_amd64/virtualService/tools/sandserv/tloadroot.sh",
+        "type": "filepath"
+    },
+    "1287": {
+        "file_id": 263,
+        "content": "Script for loading root filesystem in Kali Linux, using unionfs to mount read-write and read-only partitions into a single directory named \"root\". User ID and Group ID are set for security.",
+        "type": "summary"
+    },
+    "1288": {
+        "file_id": 263,
+        "content": "#!/bin/bash\nbash -c ./tunloadroot.sh\nbash -c ./loadram.sh\nmkdir root\n# there's autodetect.\n# better use bindfs as standard.\ns0=$(id -u)\nsudo bin/unionfs -o allow_root,cow,uid=$s0,gid=$s0 ramdisk/=RW:/=RO root/\nsudo chmod 777 root",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/virtualService/tools/sandserv/tloadroot.sh:1-9"
+    },
+    "1289": {
+        "file_id": 263,
+        "content": "Script for loading root filesystem in Kali Linux, using unionfs to mount read-write and read-only partitions into a single directory named \"root\". User ID and Group ID are set for security.",
+        "type": "comment"
+    },
+    "1290": {
+        "file_id": 264,
+        "content": "/native/lazero_kali_amd64/virtualService/tools/sandserv/tloadroot_x64.sh",
+        "type": "filepath"
+    },
+    "1291": {
+        "file_id": 264,
+        "content": "This script runs tuneloadroot.sh and loadram.sh, creates a root directory, uses unionfs to bind mount ramdisk read-write and / read-only under root directory, sets appropriate permissions, and auto detects changes.",
+        "type": "summary"
+    },
+    "1292": {
+        "file_id": 264,
+        "content": "#!/bin/bash\nbash -c ./tunloadroot.sh\nbash -c ./loadram.sh\nmkdir root\n# there's autodetect.\n# better use bindfs as standard.\ns0=$(id -u)\nsudo bin/x86_64/unionfs -o allow_root,cow,uid=$s0,gid=$s0 ramdisk/=RW:/=RO root/\nsudo chmod 777 root",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/virtualService/tools/sandserv/tloadroot_x64.sh:1-9"
+    },
+    "1293": {
+        "file_id": 264,
+        "content": "This script runs tuneloadroot.sh and loadram.sh, creates a root directory, uses unionfs to bind mount ramdisk read-write and / read-only under root directory, sets appropriate permissions, and auto detects changes.",
+        "type": "comment"
+    },
+    "1294": {
+        "file_id": 265,
+        "content": "/native/lazero_kali_amd64/virtualService/tools/sandserv/treloadroot.sh",
+        "type": "filepath"
+    },
+    "1295": {
+        "file_id": 265,
+        "content": "This script runs tunloadroot.sh, creates a root directory, uses unionfs with RW and RO modes, and sets root permissions for further execution.",
+        "type": "summary"
+    },
+    "1296": {
+        "file_id": 265,
+        "content": "#!/bin/bash\nbash -c ./tunloadroot.sh\nmkdir root\n# there's autodetect.\n#better use bindfs as standard.\nsudo bin/unionfs -o allow_root,cow,uid=0,gid=0 ramdisk/=RW:/=RO root/\nsudo chmod 777 root",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/virtualService/tools/sandserv/treloadroot.sh:1-7"
+    },
+    "1297": {
+        "file_id": 265,
+        "content": "This script runs tunloadroot.sh, creates a root directory, uses unionfs with RW and RO modes, and sets root permissions for further execution.",
+        "type": "comment"
+    },
+    "1298": {
+        "file_id": 266,
+        "content": "/native/lazero_kali_amd64/virtualService/tools/sandserv/treloadroot_x64.sh",
+        "type": "filepath"
+    },
+    "1299": {
+        "file_id": 266,
+        "content": "The script executes tunloadroot.sh, creates a root directory, utilizes unionfs for read-write and read-only access, sets appropriate permissions on the root directory, and uses bindfs as a standard method for file system binding.",
+        "type": "summary"
+    }
+}

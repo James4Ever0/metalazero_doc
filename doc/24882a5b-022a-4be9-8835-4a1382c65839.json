@@ -1,0 +1,10 @@
+{
+    "summary": "This code reads a file, filters lines, and randomly chooses one. It then prompts the user to answer parts of the line sequentially, checking correctness. If an exception occurs, it prints the traceback and continues.",
+    "details": [
+        {
+            "comment": "This code reads a file, filters lines, and randomly chooses one. It then prompts the user to answer parts of the line sequentially, checking correctness. If an exception occurs, it prints the traceback and continues.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/tools/deep-text-editor/neural_network/make_gradual_slider.py\":0-31",
+            "content": "truth=open(\"base.py\",\"r\").read().split(\"\\n\")\ntruth=list(filter(lambda x: len(x)> 2, truth))\nimport random\nimport traceback\nwindow=5\nimport tty\nimport sys\ntty.setcbreak(sys.stdin)\nwhile True:\n    try:\n        r=random.choice(truth)\n        fst=r[:5]\n        nxt=r[5:]\n        r1=fst\n        for r0 in nxt:\n            print(\"question:\",r1)\n            print(\"answer:\")\n            ans=sys.stdin.read(1)\n            if ans == r0:\n                print(\"correct!\")\n            else:\n                print(\"incorrect!\")\n                print(\"the correct answer is:\", r0)\n                print(\"your answer is:\", ans)\n            r1+=r0\n        print(\"correct form:\",r)\n        print(\"continue?\")\n        input()\n    except:\n        traceback.print_exc()\n        print(\"exception printed above!\")\n        pass"
+        }
+    ]
+}

@@ -1,0 +1,10 @@
+{
+    "summary": "The code creates a function called \"formula\" and applies it to a range of values from 0 to 1000. The formula calculates the value based on the input x, and the result is printed with asterisks. The program pauses for 0.1 seconds after each print statement.",
+    "details": [
+        {
+            "comment": "The code creates a function called \"formula\" and applies it to a range of values from 0 to 1000. The formula calculates the value based on the input x, and the result is printed with asterisks. The program pauses for 0.1 seconds after each print statement.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/tools/deep-text-editor/neural_network/make_model.py\":0-7",
+            "content": "formula=lambda x: x/(1+2**x)\nimport time\nfor x in range(0,1000):\n    v=x/50\n    if x%50==0:\n        v=formula(v)\n        print(round(v*50)*\"*\")\n        time.sleep(0.1)"
+        }
+    ]
+}

@@ -1,0 +1,10 @@
+{
+    "summary": "This code is continuously printing a JSON string representing a JSON-RPC request to restart the Solargraph server, with a random parameter. It does not import or use the time module. The while loop keeps repeating this process indefinitely.",
+    "details": [
+        {
+            "comment": "This code is continuously printing a JSON string representing a JSON-RPC request to restart the Solargraph server, with a random parameter. It does not import or use the time module. The while loop keeps repeating this process indefinitely.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_kali_amd64/cognitionService/virtual/python_rpc_lsp.py\":0-13",
+            "content": "cnt=\"\"\"\\r\\n\n{\n\t\"jsonrpc\": \"2.0\",\n\t\"id\": 1,\n\t\"method\": \"$/solargraph/restartServer\",\n\t\"params\": {\n        \"random\":true\n\t}\n}\n\"\"\"\n#import time\nwhile True:\n    #time.sleep(1)\n    print(cnt,end=\"\\r\\n\",flush=True)"
+        }
+    ]
+}

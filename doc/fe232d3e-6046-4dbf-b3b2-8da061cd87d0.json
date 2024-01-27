@@ -1,0 +1,10 @@
+{
+    "summary": "This code is interacting with an Emacs server to load and execute Lisp functions. It sets up a voidnow function that switches to a buffer, completes at point, and prints the completion cache. Additionally, it evaluates expressions and prints 'hello'.",
+    "details": [
+        {
+            "comment": "This code is interacting with an Emacs server to load and execute Lisp functions. It sets up a voidnow function that switches to a buffer, completes at point, and prints the completion cache. Additionally, it evaluates expressions and prints 'hello'.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_kali_amd64/cognitionService/virtual/client_print.sh\":0-5",
+            "content": "#emacsclient -s ~/.emacs.d/server/server -e \"(load \\\"client_print\\\")\"\nemacsclient -s ~/.emacs.d/server/server -e \"(defun voidnow () (switch-to-buffer \\\"lsp.sh\\\") (completion-at-point) (print lsp-completion--cache))\"\nemacsclient -s ~/.emacs.d/server/server -e \"(voidnow)\"\n#emacsclient -s ~/.emacs.d/server/server -e \"(eval-expression '(completion-at-point))\"\n#emacsclient -s ~/.emacs.d/server/server -e \"(print lsp-completion--cache)\"\n#emacsclient -s ~/.emacs.d/server/server -e \"(print 'hello)\""
+        }
+    ]
+}

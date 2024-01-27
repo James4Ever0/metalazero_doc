@@ -1,0 +1,10 @@
+{
+    "summary": "This code uses Tornado web framework to create a server that listens on port 8888 and returns \"Hello, world\" when requested. It also prints the requesting IP address. The \"ifconfig\" command is executed in the terminal to display network interface information.",
+    "details": [
+        {
+            "comment": "This code uses Tornado web framework to create a server that listens on port 8888 and returns \"Hello, world\" when requested. It also prints the requesting IP address. The \"ifconfig\" command is executed in the terminal to display network interface information.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/tools/get_ip.py\":0-19",
+            "content": "import tornado.ioloop\nimport tornado.web\nimport os\nos.system(\"ifconfig\")\nclass MainHandler(tornado.web.RequestHandler):\n    def get(self):\n#        print(dir(self.request))\n        ip = self.request.remote_ip\n        print(\"request from:\",ip)\n        self.write(\"Hello, world\")\n    def make_app():\n        return tornado.web.Application([ (r\"/\", MainHandler), ])  # URL Mapping\nif __name__ == \"__main__\":\n    app = MainHandler.make_app()\n    app.listen(8888)    # Port Number\n    tornado.ioloop.IOLoop.current().start()"
+        }
+    ]
+}

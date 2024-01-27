@@ -1,0 +1,10 @@
+{
+    "summary": "This Python script repeatedly sends commands from the list 'clist' to a shell (using the 'Sc.inputs()' function) and receives responses from it (using the 'Sc.display()' function). The 'rsel()' function randomly selects a word from the response content, and if a selection is made, the 'override' flag is set to True. The script continues this process indefinitely, with each command being selected at random from 'clist'.",
+    "details": [
+        {
+            "comment": "This Python script repeatedly sends commands from the list 'clist' to a shell (using the 'Sc.inputs()' function) and receives responses from it (using the 'Sc.display()' function). The 'rsel()' function randomly selects a word from the response content, and if a selection is made, the 'override' flag is set to True. The script continues this process indefinitely, with each command being selected at random from 'clist'.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_kali_amd64/cognitionService/interaction_3.py\":0-31",
+            "content": "import shellConnect as Sc\n# to represent how you type these words? type it exactly according to what you've done in the past?\n# we want it to learn anything from this process.\nimport time as T\nclist=[\"hello world{}\".format(x) for x in range(5)]\ncnt=0\nimport random as R\nSR=R.SystemRandom()\ndef rsel(string):\n    try:\n        return SR.choice(string.split())\n    except:\n        return \"\"\nnx,override=\"\",False\nwhile True:\n    Sc.restart()\n    if not override:\n        cmd=clist[cnt]\n        Sc.inputs(cmd)\n    else:\n        Sc.inputs(nx)\n    T.sleep(1)\n    content = Sc.display()\n    print(content)\n    nx=rsel(content)\n    if nx!=\"\":\n        override=True\n    cnt+=1\n    cnt%=len(clist)"
+        }
+    ]
+}

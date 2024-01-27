@@ -1,0 +1,10 @@
+{
+    "summary": "The developer is expressing dissatisfaction with the current system and considering modifications or alternatives like PyPI or VNC/RDP. They also discuss locking mouse pointer in web browsers, and question the relevance of remote controlling an Android device.",
+    "details": [
+        {
+            "comment": "The developer is expressing dissatisfaction with the current system and considering modifications or alternatives like PyPI or VNC/RDP. They also discuss locking mouse pointer in web browsers, and question the relevance of remote controlling an Android device.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/remote_control/README\":0-10",
+            "content": "because it really sucks so i wish i could at least do some modification over this?\nshall i do some research over pypi or look forward to vnc/rdp?\nit really sucks. does not provide much control.\nby the way, how to lock mouse pointer inside the web browser? and is it really necessary?\nwho's gonna remote control an android device anyway? evil hacker? without root we cannot do anything meaningful yet, unless for those hardcore android developers.\nwe are looting not wandering."
+        }
+    ]
+}

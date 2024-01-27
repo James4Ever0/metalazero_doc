@@ -1,0 +1,10 @@
+{
+    "summary": "This code creates a UUID server using Tornado web framework. It generates a unique identifier for each request and writes it to an HTTP file before running the server. The server listens on port 8010.",
+    "details": [
+        {
+            "comment": "This code creates a UUID server using Tornado web framework. It generates a unique identifier for each request and writes it to an HTTP file before running the server. The server listens on port 8010.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/remote_control/discovery/uuid_server.py\":0-29",
+            "content": "from generate_uuid import get_uuid\n\"\"\"from jinja2 import Template\nimport os\nif not os.path.exists(\"index.http\"):\n    with open(\"template.j2\",\"r\") as f:\n        template = f.read()\n    tmp = Template(template)\n    tmp = tmp.render({\"content\": get_uuid()})\n    with open(\"index.http\",\"w+\") as f:\n        f.write(tmp)\ncmd = \"bash uuid_server.sh\"\nos.system(cmd)\"\"\"\nimport tornado.ioloop\nimport tornado.web\nclass MainHandler(tornado.web.RequestHandler):\n    def get(self):\n        self.write(get_uuid())\n    def make_app():\n        return tornado.web.Application([ (r\"/\", MainHandler), ])  # URL Mapping\nif __name__ == \"__main__\":\n    app = MainHandler.make_app()\n    app.listen(8010)    # Port Number\n    tornado.ioloop.IOLoop.current().start()"
+        }
+    ]
+}

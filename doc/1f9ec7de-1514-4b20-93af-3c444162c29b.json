@@ -1,0 +1,10 @@
+{
+    "summary": "This script uses espeak to speak a provided word or phrase, sets the speech rate at 200 and the volume at 100. It logs the date and time when the script starts speaking, waits for 2 seconds before executing, and has bash shell support.",
+    "details": [
+        {
+            "comment": "This script uses espeak to speak a provided word or phrase, sets the speech rate at 200 and the volume at 100. It logs the date and time when the script starts speaking, waits for 2 seconds before executing, and has bash shell support.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/schedules/speak_word.sh\":0-3",
+            "content": "#!/bin/bash\necho \"[$(date)] speaking: $@\"\nespeak -a 200 -p 100 \"$@\"\nsleep 2"
+        }
+    ]
+}

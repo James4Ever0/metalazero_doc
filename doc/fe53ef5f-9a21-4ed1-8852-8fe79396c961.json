@@ -1,0 +1,10 @@
+{
+    "summary": "This code imports the sys module and continuously reads input from stdin, appending each character to a command string. The current line read is printed, along with the growing command. Finally, it prompts if it should continue to the next round of reading.",
+    "details": [
+        {
+            "comment": "This code imports the sys module and continuously reads input from stdin, appending each character to a command string. The current line read is printed, along with the growing command. Finally, it prompts if it should continue to the next round of reading.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_kali_amd64/cognitionService/virtual/transmit_js_ipc.py\":0-7",
+            "content": "import sys\nwhile True:\n    cmd=\"\"\n    for line in sys.stdin.buffer.readline():\n        cmd+=chr(line)\n        print(\"reading:\",line)\n        print(\"buffer:\",cmd)\n    print(\"next round?\")"
+        }
+    ]
+}

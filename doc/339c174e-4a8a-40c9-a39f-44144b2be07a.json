@@ -1,0 +1,10 @@
+{
+    "summary": "This script removes all files with \".hi\" and \".o\" extensions, likely cleaning compiled files in the current directory.",
+    "details": [
+        {
+            "comment": "This script removes all files with \".hi\" and \".o\" extensions, likely cleaning compiled files in the current directory.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_kali_amd64/cognitionService/virtual/clean.sh\":0-1",
+            "content": "rm *.hi\nrm *.o"
+        }
+    ]
+}

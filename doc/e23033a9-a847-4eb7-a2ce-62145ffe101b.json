@@ -1,0 +1,10 @@
+{
+    "summary": "This script checks the size of a mounted \"multiserv\" directory and removes it if its size is zero. It also cautions about potential issues with symlinks on Windows and chroot operations.",
+    "details": [
+        {
+            "comment": "This script checks the size of a mounted \"multiserv\" directory and removes it if its size is zero. It also cautions about potential issues with symlinks on Windows and chroot operations.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_kali_amd64/virtualService/tools/sandserv/unloadmulti.sh\":0-9",
+            "content": "#!/bin/bash\nsudo umount -f multiserv\npsk=$(sudo ls -1 multiserv/ | wc -c)\n# if failed, then do not continue! unless you are an idiot.\n# or not.\n# just think! also for symlink on windows. caution when doing chroot/symlink.\nif [ $psk -eq 0 ]\nthen\n\tsudo rm -rf multiserv\nfi"
+        }
+    ]
+}

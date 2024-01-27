@@ -1,0 +1,10 @@
+{
+    "summary": "This Bash script uses top, grep, and xargs to find processes and kill them. It finds PIDs of proot-rooted, chroot.sh, and reloadscript.sh processes then kills them with -9 signal.",
+    "details": [
+        {
+            "comment": "This Bash script uses top, grep, and xargs to find processes and kill them. It finds PIDs of proot-rooted, chroot.sh, and reloadscript.sh processes then kills them with -9 signal.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_kali_amd64/virtualService/tools/sandserv/gkill.sh\":0-3",
+            "content": "#!/bin/bash\nsudo env COLUMNS=500 LINES=500 top -n 1 -q 2>&1 | grep proot | grep root | grep -Eo '^.?.?.?[0-9]+' | xargs sudo kill -s 9\nenv COLUMNS=500 LINES=500 top -n 1 -q 2>&1 | grep bash | grep chroot.sh | grep -Eo '^.?.?.?[0-9]+'  | xargs kill -s 9 \nenv COLUMNS=500 LINES=500 top -n 1 -q 2>&1 | grep bash | grep reloadscript.sh | grep -Eo '^.?.?.?[0-9]+'  | xargs kill -s 9 "
+        }
+    ]
+}

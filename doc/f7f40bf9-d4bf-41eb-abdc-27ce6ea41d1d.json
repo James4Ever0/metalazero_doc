@@ -1,0 +1,10 @@
+{
+    "summary": "This code checks if the script is being run directly and sets up argument parsing for IP address. It then tries to send a GET request to the specified IP's port 8010, printing the IP and response text if successful, otherwise it does nothing.",
+    "details": [
+        {
+            "comment": "This code checks if the script is being run directly and sets up argument parsing for IP address. It then tries to send a GET request to the specified IP's port 8010, printing the IP and response text if successful, otherwise it does nothing.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/remote_control/discovery/uuid_client.py\":0-12",
+            "content": "if __name__ == \"__main__\":\n    import argparse\n    parser = argparse.ArgumentParser()\n    parser.add_argument(\"-i\",\"--ip\",type=str,required=True)\n    args = parser.parse_args()\n    host = args.ip\n    import requests\n    try:\n        req = requests.get(\"http://{}:8010\".format(host),timeout=1)\n        text = req.text\n        print({\"ip\":host,\"text\":text})\n    except:\n        pass"
+        }
+    ]
+}

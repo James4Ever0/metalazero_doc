@@ -1,0 +1,10 @@
+{
+    "summary": "This code is running an \"expect\" script named \"demo.expect\". It utilizes the expect utility to automate interactions with other programs, typically shells, networking devices, or GUIs, by sending commands and reading their responses.",
+    "details": [
+        {
+            "comment": "This code is running an \"expect\" script named \"demo.expect\". It utilizes the expect utility to automate interactions with other programs, typically shells, networking devices, or GUIs, by sending commands and reading their responses.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/tools/expect_script_sleep.sh\":0-0",
+            "content": "expect -f demo.expect"
+        }
+    ]
+}

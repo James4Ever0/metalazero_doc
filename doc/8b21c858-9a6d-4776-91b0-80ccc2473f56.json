@@ -1,0 +1,10 @@
+{
+    "summary": "This command sets the NODE_PATH environment variable to \"/usr/local/lib/node_modules\" and executes \"stdio_jsonrpc.js\" using Node.js. It appears to be launching a script with the necessary environment variable set for the codebase's functionality.",
+    "details": [
+        {
+            "comment": "This command sets the NODE_PATH environment variable to \"/usr/local/lib/node_modules\" and executes \"stdio_jsonrpc.js\" using Node.js. It appears to be launching a script with the necessary environment variable set for the codebase's functionality.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_kali_amd64/cognitionService/virtual/stdio_jsonrpc.sh\":0-0",
+            "content": "env NODE_PATH=/usr/local/lib/node_modules node stdio_jsonrpc.js"
+        }
+    ]
+}

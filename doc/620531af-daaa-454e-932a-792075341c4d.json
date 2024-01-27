@@ -1,0 +1,10 @@
+{
+    "summary": "This code prints a greeting message, prompts the user to input their lucky number and then reaffirms it as their lucky number.",
+    "details": [
+        {
+            "comment": "This code prints a greeting message, prompts the user to input their lucky number and then reaffirms it as their lucky number.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/tools/sample_script.py\":0-2",
+            "content": "print(\"hello WORLD!!!!\")\ntarget = input(\"what is your lucky number?\\n\")\nprint(target, \"is your lucky number!\")"
+        }
+    ]
+}

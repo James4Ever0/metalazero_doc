@@ -1,0 +1,10 @@
+{
+    "summary": "The code randomly selects a user and an IP address within the range of 0 to 255 for each iteration. It then uses SSH (Secure Shell) to connect to the specified IP address using the 'sshpass' tool with a hardcoded password \"admin\". The command is executed using 'os.system()'. The purpose seems to be randomly attempting SSH connections across the network without any specific objective or knowledge about the target systems.",
+    "details": [
+        {
+            "comment": "The code randomly selects a user and an IP address within the range of 0 to 255 for each iteration. It then uses SSH (Secure Shell) to connect to the specified IP address using the 'sshpass' tool with a hardcoded password \"admin\". The command is executed using 'os.system()'. The purpose seems to be randomly attempting SSH connections across the network without any specific objective or knowledge about the target systems.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_chromeos_aarch64/cognitionService/ssh_randomly.py\":0-16",
+            "content": "import os\ncmd = lambda user,ip: \"sshpass -p \\\"admin\\\" ssh -o ConnectTimeout=3 -o BatchMode=yes -o StrictHostKeyChecking=no {}@{}\".format(user,ip)\n# this time we do not know shit about this fucking shit.\n# we are just aimlessly hacking around the fucking internet.\n# does not mean anything interesting.\nimport random\ndef get_ip():\n    mp = lambda: str(random.randint(0,255))\n    address = \".\".join([mp() for x in range(4)])\n    return address\nif __name__ == \"__main__\":\n    while True:\n        address = get_ip()\n        user = random.choice((\"administrator\",\"root\",\"test\",\"guest\"))\n        command = cmd(user,address)\n        os.system(command)"
+        }
+    ]
+}

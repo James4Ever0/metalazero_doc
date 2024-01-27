@@ -1,0 +1,10 @@
+{
+    "summary": "This code indicates that due to Termux app's different IP mappings, it is difficult to discover network devices easily. However, there's still a possibility of direct contact with the real IP address.",
+    "details": [
+        {
+            "comment": "This code indicates that due to Termux app's different IP mappings, it is difficult to discover network devices easily. However, there's still a possibility of direct contact with the real IP address.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_chromeos_aarch64/shareService/README\":0-2",
+            "content": "because the termux app is using different ip mappings, we cannot simply discover anything on the network easliy?\nbut there's still chance, since we could still have direct contact with the real ip address."
+        }
+    ]
+}

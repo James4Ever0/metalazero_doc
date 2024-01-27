@@ -1,0 +1,10 @@
+{
+    "summary": "The script retrieves a list of Windows IP addresses from Shodan by searching for them, extracts the IP addresses using regular expressions, and then feeds those IPs to a Python script called \"hacking_service.py\". The Python script likely performs some form of attack or scan against the discovered Windows systems.",
+    "details": [
+        {
+            "comment": "The script retrieves a list of Windows IP addresses from Shodan by searching for them, extracts the IP addresses using regular expressions, and then feeds those IPs to a Python script called \"hacking_service.py\". The Python script likely performs some form of attack or scan against the discovered Windows systems.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_chromeos_aarch64/cognitionService/get_targets.sh\":0-1",
+            "content": "#!/bin/bash\nlinks -dump https://shodan.io/search?query=windows | grep -Eo \"[0-9]+\\.[0-9]+\\.[0-9]+\\.[0-9]+\" | xargs -iabc python3 hacking_service.py -d abc"
+        }
+    ]
+}

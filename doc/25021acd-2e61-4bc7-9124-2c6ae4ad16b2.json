@@ -1,0 +1,10 @@
+{
+    "summary": "This script seems to stop a background process, start two Node.js scripts in separate directories, and potentially kill any other processes related to the same names. It then shows the PIDs of both processes with ps -W.",
+    "details": [
+        {
+            "comment": "This script seems to stop a background process, start two Node.js scripts in separate directories, and potentially kill any other processes related to the same names. It then shows the PIDs of both processes with ps -W.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_win10_amd64/debug_init.sh\":0-8",
+            "content": "#!/bin/bash\n# the shit must be running on the background.\n# can we run this under bash?\n# cannot find the cli args.\nps aux | cat | grep node | grep chrome_receive | awk '{print $2}' | xargs kill -s SIGKILL\ncd eventService && node chrome_receive.js &\ncd replService && node chrome_console.js\ncd ../\n# ps -W <- show both processes."
+        }
+    ]
+}

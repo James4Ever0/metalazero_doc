@@ -1,0 +1,10 @@
+{
+    "summary": "This code generates a random program by randomly selecting operators and variables to form a sequence of expressions. The generated program is then printed along with the comment \"monkey program\". It waits for 0.5 seconds before generating the next random program.",
+    "details": [
+        {
+            "comment": "This code generates a random program by randomly selecting operators and variables to form a sequence of expressions. The generated program is then printed along with the comment \"monkey program\". It waits for 0.5 seconds before generating the next random program.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_kali_amd64/mainService/program_database/python_monkey.py\":0-25",
+            "content": "a = \"lambda {} : {}\"\ncomment = \"monkey program\"\nimport random\noperator = [x for x in \"+-*/%\"]\nletters = [x for x in \"xyzabcdef\"]\nimport time\nrest = lambda: time.sleep(0.5)\nwhile True:\n    tl = random.randint(2,5)\n    ts = random.randint(3,6)\n    # internal is equally important than external.\n    tl0 = [random.choice(operator) for _ in range(tl+ts-1)]\n    tl1 = random.sample(letters,tl)\n    tl3 = [str(random.random()) for _ in range(ts)]\n    tl2 = tl3+tl1\n    random.shuffle(tl2)\n    seq = [tl2[x]+tl0[x] for x in range(tl+ts-1)]\n    seq += [tl2[-1]]\n    seq = \"\".join(seq)\n    head = \",\".join(tl1)\n    target = a.format(head, seq)\n    rest()\n    print(target,end=\"\\r\\n\")\n    rest()\n    print(comment,end=\"\\r\\n\")"
+        }
+    ]
+}

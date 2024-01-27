@@ -1,0 +1,10 @@
+{
+    "summary": "The code is discussing the pexpect tool, questioning its handling of case sensitivity and simple string containment. It also mentions whether pexpect creates a virtual TTY, if it can be run like tornado, if sleeping is possible, if expect can do the same thing, and introducing \"et\" shell. \"ET\" seems to be a remote shell that automatically reconnects without interrupting the session.",
+    "details": [
+        {
+            "comment": "The code is discussing the pexpect tool, questioning its handling of case sensitivity and simple string containment. It also mentions whether pexpect creates a virtual TTY, if it can be run like tornado, if sleeping is possible, if expect can do the same thing, and introducing \"et\" shell. \"ET\" seems to be a remote shell that automatically reconnects without interrupting the session.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/tools/README\":0-11",
+            "content": "there is a tool called pexpect. but i doubt about it.\ndoes it handle case sensitiveness? simple string containing?\ndoes pexpect create a virtual tty? can we really run it like the tornado stuff? can we sleep with this one?\ncan we do the same with expect?\nwhat is this \"et\" shell?\net/stable 6.0.13-1 arm\n  A remote shell that automatically reconnects without interrupting the session"
+        }
+    ]
+}

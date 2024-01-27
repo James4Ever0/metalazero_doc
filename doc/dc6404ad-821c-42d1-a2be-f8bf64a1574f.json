@@ -1,0 +1,10 @@
+{
+    "summary": "This script executes pure_fuzz.py with -d 2 argument, and then removes any existing node_curl_telnet_abc.js file before replacing the TEMPLATE in the node_curl_telnet.template file with \"abc\" and saving it as node_curl_telnet_abc.js.",
+    "details": [
+        {
+            "comment": "This script executes pure_fuzz.py with -d 2 argument, and then removes any existing node_curl_telnet_abc.js file before replacing the TEMPLATE in the node_curl_telnet.template file with \"abc\" and saving it as node_curl_telnet_abc.js.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_kali_amd64/cognitionService/virtual/node_curl_template2.sh\":0-2",
+            "content": "#!/bin/bash\npython3 pure_fuzz.py -d 2 | xargs -iabc bash -c \"rm node_curl_telnet_abc.js\"\n#python3 pure_fuzz.py -d 2 | xargs -iabc bash -c \"sed \\\"s/TEMPLATE/abc/g\\\" node_curl_telnet.template > node_curl_telnet_abc.js\""
+        }
+    ]
+}

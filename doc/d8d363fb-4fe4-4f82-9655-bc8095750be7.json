@@ -1,0 +1,10 @@
+{
+    "summary": "This code reads the 'programs.log' file, uses xargs to iterate over each line, and creates a new file named 'abc_program_generator.py' for every line read.",
+    "details": [
+        {
+            "comment": "This code reads the 'programs.log' file, uses xargs to iterate over each line, and creates a new file named 'abc_program_generator.py' for every line read.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_kali_amd64/mainService/generator/program_generator.sh\":0-0",
+            "content": "cat programs.log | xargs -iabc touch abc_program_generator.py"
+        }
+    ]
+}

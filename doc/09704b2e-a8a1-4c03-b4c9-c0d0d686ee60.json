@@ -1,0 +1,10 @@
+{
+    "summary": "This code imports pyautogui and random libraries to simulate random mouse movements, clicks, and keyboard actions on a computer. It defines functions for each action with optional delay parameters and uses random selection to determine which function to execute each time. The code runs continuously in an infinite loop.",
+    "details": [
+        {
+            "comment": "This code imports pyautogui and random libraries to simulate random mouse movements, clicks, and keyboard actions on a computer. It defines functions for each action with optional delay parameters and uses random selection to determine which function to execute each time. The code runs continuously in an infinite loop.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_win10_amd64/mainService/monkey_basic.py\":0-31",
+            "content": "import pyautogui\nimport random\nimport time\ndef mouseMove(delay=0.2):\n    x,y = pyautogui.size()\n    x0, y0 = random.randint(0,x), random.randint(0,y)\n    print(\"new location:\",x0,y0)\n    pyautogui.moveTo(x0,y0,duration=delay)\ndef mouseClick(delay=0.2):\n    pyautogui.mouseDown()\n    time.sleep(delay)\n    pyautogui.mouseUp()\ndef keyToggle(delay=0.2):\n    keys = pyautogui.KEYBOARD_KEYS\n    k = random.choice(keys)\n    print(\"pressing key:\",k)\n    pyautogui.keyDown(k)\n    time.sleep(delay)\n    pyautogui.keyUp(k)\ndef execute():\n    functions = [mouseMove, mouseClick, keyToggle]\n    f = random.choice(functions)\n    print(\"executing function:\",f.__name__)\n    f()\nif __name__ == \"__main__\":\n    while True:\n        execute()"
+        }
+    ]
+}

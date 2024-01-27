@@ -1,0 +1,10 @@
+{
+    "summary": "This code configures a Systemd service for a trivial service named \"trivial_service\". It depends on the network and requires syslog and network-online.target to be activated beforehand. The service uses a simple type, executes a bash script, and restarts on failure with a 10 second delay. It is installed as wanted by multi-user.target.",
+    "details": [
+        {
+            "comment": "This code configures a Systemd service for a trivial service named \"trivial_service\". It depends on the network and requires syslog and network-online.target to be activated beforehand. The service uses a simple type, executes a bash script, and restarts on failure with a 10 second delay. It is installed as wanted by multi-user.target.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/daemonize_startup/linux_systemd/x11vnc_service.service\":0-14",
+            "content": "[Unit]\nDescription=trivial_service\nWants=network.target\nAfter=syslog.target network-online.target\n[Service]\nType=simple\nExecStart=bash /root/AGI/metalazero/daemonize_startup/linux_systemd/x11vnc_service.sh\nRestart=on-failure\nRestartSec=10\nKillMode=process\n[Install]\nWantedBy=multi-user.target"
+        }
+    ]
+}

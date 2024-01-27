@@ -1,0 +1,10 @@
+{
+    "summary": "The code imports the pyswip library and defines a substring function that checks if one string (a) is contained within another (b). It then prints the directory of the substring function, which lists its attributes and methods.",
+    "details": [
+        {
+            "comment": "The code imports the pyswip library and defines a substring function that checks if one string (a) is contained within another (b). It then prints the directory of the substring function, which lists its attributes and methods.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_kali_amd64/cognitionService/virtual/cog_core.py\":0-4",
+            "content": "#import pyswip as PS\n# use it or not to use it, does not matter that much.\ndef substring(a,b):\n    return a in b\nprint(dir(substring))"
+        }
+    ]
+}

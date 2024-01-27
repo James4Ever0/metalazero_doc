@@ -1,0 +1,10 @@
+(defun voidme ()
+(interactive)
+(server-force-delete)
+(setq server-socket-dir "~/.emacs.d/server")
+(server-force-delete)
+;(call-interactively 'server-start)
+(server-start)
+)
+(run-with-idle-timer 0 nil 'voidme)
+;now idle.

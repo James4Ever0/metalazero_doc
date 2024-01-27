@@ -1,0 +1,10 @@
+{
+    "summary": "This code executes a Python script using pyls and jedi library to perform autocompletion for a given file path. The line number is used as the index, but it should be noted that line numbers are not necessarily equivalent to the index of the tokens within the script.",
+    "details": [
+        {
+            "comment": "This code executes a Python script using pyls and jedi library to perform autocompletion for a given file path. The line number is used as the index, but it should be noted that line numbers are not necessarily equivalent to the index of the tokens within the script.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_kali_amd64/cognitionService/virtual/python_lsp.sh\":0-3",
+            "content": "#echo {} | pyls\n# this is extraneous,\npython3 -c \"import jedi;s=jedi.Script(path='python_complete.py');print(s.complete(2+1,len('a=np.')))\"\n#line num is not index num."
+        }
+    ]
+}

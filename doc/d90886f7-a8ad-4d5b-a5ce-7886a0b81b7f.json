@@ -1,0 +1,10 @@
+{
+    "summary": "The code is parsing arguments, ensuring the specified directory is absolute and valid. It then generates a shell script to change all files in the given directory into executables, creates a temporary directory, writes the shell script, makes it executable, and runs it.",
+    "details": [
+        {
+            "comment": "The code is parsing arguments, ensuring the specified directory is absolute and valid. It then generates a shell script to change all files in the given directory into executables, creates a temporary directory, writes the shell script, makes it executable, and runs it.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_kali_amd64/tools/exec_all.py\":0-28",
+            "content": "import argparse\nparser = argparse.ArgumentParser()\nparser.add_argument(\"-d\",\"--dir\",type=str,required=True,help=\"absolute directory to change all files under it into executables.\")\nargs = parser.parse_args()\nimport os.path as P\nimport os\n_dir = args.dir\nassert P.isabs(_dir)\nassert P.isdir(_dir)\n# execute the shell script?\nimport tempfile\ncmd = [\"#!/bin/bash\",\"cd {}\".format(_dir),\"find | xargs -iabc chmod +x abc\"]\ncmd = \"\\n\".join(cmd)\nfrom uuid_fname import ufname\nwith tempfile.TemporaryDirectory() as tmpdir:\n    assert P.isabs(tmpdir)\n    fname = ufname(\"sh\")\n    script_path = P.join(tmpdir,fname)\n    with open(script_path,\"w+\",encoding=\"utf-8\") as f:\n        f.write(cmd)\n    os.system(\"chmod +x {}\".format(script_path))\n    os.system(script_path)"
+        }
+    ]
+}

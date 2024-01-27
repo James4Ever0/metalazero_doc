@@ -1,0 +1,10 @@
+{
+    "summary": "This code imports socket and generate_uuid modules to create a broadcast client. It takes an IP address as argument, uses it to send a message with a unique UUID over a network port. The script can be executed directly or from command line with the -i/--ip option for IP customization.",
+    "details": [
+        {
+            "comment": "This code imports socket and generate_uuid modules to create a broadcast client. It takes an IP address as argument, uses it to send a message with a unique UUID over a network port. The script can be executed directly or from command line with the -i/--ip option for IP customization.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/remote_control/discovery/broadcast_client.py\":0-19",
+            "content": "from socket import *\nfrom generate_uuid import get_uuid\n# with different ip?\nhost = \"255.255.255.255\"\nif __name__ == \"__main__\":\n    import argparse\n    parser = argparse.ArgumentParser()\n    parser.add_argument(\"-i\",\"--ip\",type=str,default= \"255.255.255.255\")\n    args = parser.parse_args()\n    host = args.ip\ndef reply_info(address=host):\n    uuid = get_uuid()\n    message = \"[LNRR]: {}\".format(uuid).encode(\"utf-8\")\n    port = 30000\n    s = socket(AF_INET, SOCK_DGRAM)\n    s.setsockopt(SOL_SOCKET, SO_BROADCAST, 1)\n    s.sendto(message,(address,port))\nif __name__ == \"__main__\":\n    reply_info()"
+        }
+    ]
+}

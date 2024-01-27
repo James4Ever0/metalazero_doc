@@ -1,0 +1,10 @@
+{
+    "summary": "The code opens a headless instance of Neovim (nvim) using the script \"nedit.vim\". It also supports running Python 2/3, RubyGem, and NodeJS scripts within this environment.",
+    "details": [
+        {
+            "comment": "The code opens a headless instance of Neovim (nvim) using the script \"nedit.vim\". It also supports running Python 2/3, RubyGem, and NodeJS scripts within this environment.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_kali_amd64/cognitionService/virtual/nedit.sh\":0-1",
+            "content": "nvim --headless -s nedit.vim\n#python2/3, rubygem, nodejs"
+        }
+    ]
+}

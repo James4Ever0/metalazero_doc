@@ -1,0 +1,10 @@
+{
+    "summary": "This code is a basic server for Windows, MacOS, and Linux, with limitations on ChromeOS, Android, and iOS. It serves screen, mouse, and keyboard via a given port and can be accessed through web browsers or CLI clients. The author considers using setInterval instead of setTimeout, ponders recursive tasks, and wonders if it truly matters.",
+    "details": [
+        {
+            "comment": "This code is a basic server for Windows, MacOS, and Linux, with limitations on ChromeOS, Android, and iOS. It serves screen, mouse, and keyboard via a given port and can be accessed through web browsers or CLI clients. The author considers using setInterval instead of setTimeout, ponders recursive tasks, and wonders if it truly matters.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/remote_control/server/README\":0-8",
+            "content": "this is the base server for windows/macos/linux, due to the limitation of chromeos/android/ios.\nwill serve the screen, mouse and keyboard via given port.\ncan be visited directly from the web browser, or use cli clients to do extra fun.\nuse setInterval(()=>{},t) instead of setTimeout?\nhow to perform recursive tasks? does this really matters? really have any difference at all?"
+        }
+    ]
+}

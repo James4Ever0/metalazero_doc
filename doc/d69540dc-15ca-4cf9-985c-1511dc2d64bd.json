@@ -1,0 +1,10 @@
+{
+    "summary": "The code defines a function \"voidme\" which forces server deletion, sets the server socket directory, and starts the server. It also runs this function every time the idle timer reaches 0.",
+    "details": [
+        {
+            "comment": "The code defines a function \"voidme\" which forces server deletion, sets the server socket directory, and starts the server. It also runs this function every time the idle timer reaches 0.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_kali_amd64/cognitionService/virtual/server.el\":0-9",
+            "content": "(defun voidme ()\n(interactive)\n(server-force-delete)\n(setq server-socket-dir \"~/.emacs.d/server\")\n(server-force-delete)\n;(call-interactively 'server-start)\n(server-start)\n)\n(run-with-idle-timer 0 nil 'voidme)\n;now idle."
+        }
+    ]
+}

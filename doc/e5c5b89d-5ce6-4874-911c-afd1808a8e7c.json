@@ -1,0 +1,10 @@
+{
+    "summary": "Executing a \"su\" command using subprocess module and sending input text \"123\". Communicating with the process and capturing output and error messages.",
+    "details": [
+        {
+            "comment": "Executing a \"su\" command using subprocess module and sending input text \"123\". Communicating with the process and capturing output and error messages.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_android_aarch64/inputService/type_test.py\":0-8",
+            "content": "from subprocess import Popen, PIPE\ncmd=\"su\"\np=Popen([cmd],stdin=PIPE,stdout=PIPE,stderr=PIPE)\n# print(dir(p.stdin))\n# use communicate\n#for _ in range(3):\nout,err= p.communicate(input='input text \"123\"'.encode(\"utf-8\"))\nprint(out,err)"
+        }
+    ]
+}

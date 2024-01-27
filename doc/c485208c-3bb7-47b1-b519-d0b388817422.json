@@ -1,0 +1,10 @@
+{
+    "summary": "Code imports shellConnect module and time module. It enters a loop where it restarts the connection, sends \"hello world\" input, waits for 1 second, retrieves displayed content, and prints it. This code continuously interacts with the connected device and prints its output.",
+    "details": [
+        {
+            "comment": "Code imports shellConnect module and time module. It enters a loop where it restarts the connection, sends \"hello world\" input, waits for 1 second, retrieves displayed content, and prints it. This code continuously interacts with the connected device and prints its output.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_kali_amd64/cognitionService/interaction_0.py\":0-10",
+            "content": "import shellConnect as Sc\n# to represent how you type these words? type it exactly according to what you've done in the past?\n# we want it to learn anything from this process.\nimport time as T\nwhile True:\n    Sc.restart()\n    Sc.inputs(\"hello world\")\n    T.sleep(1)\n    content = Sc.display()\n    print(content)"
+        }
+    ]
+}

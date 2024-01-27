@@ -1,0 +1,10 @@
+{
+    "summary": "Code initializes a BytesIO object named \"target\" and defines two functions: read_target() to continuously print the bytes being read from target, and check_target() to print the buffer and value of target. It then writes \"abc\" to target, checks its properties, reads 1 byte (value), prints it, resets cursor with seek(), and finally reads and prints the contents again.",
+    "details": [
+        {
+            "comment": "Code initializes a BytesIO object named \"target\" and defines two functions: read_target() to continuously print the bytes being read from target, and check_target() to print the buffer and value of target. It then writes \"abc\" to target, checks its properties, reads 1 byte (value), prints it, resets cursor with seek(), and finally reads and prints the contents again.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/tools/io_test.py\":0-24",
+            "content": "import io\nimport threading\nimport time\ntarget = io.BytesIO()\ndef read_target():\n    while True:\n        bytes_ = target.read()\n        print(\"bytes:\", bytes_)\ndef check_target():\n    print(\"buffer:\",target.getbuffer())\n    print(\"value:\",target.getvalue())\nprint(dir(target))\ntarget.write(b\"abc\")\ncheck_target()\ntarget.flush()\ncheck_target()\nvalues = target.read1()\nprint(values)\n# nothing could be read.\nprint(target.tell())\n# this is the cursor, we can reset it of course.\ntarget.seek(0)\nprint(target.read())"
+        }
+    ]
+}

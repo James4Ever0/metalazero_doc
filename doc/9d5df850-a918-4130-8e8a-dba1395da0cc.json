@@ -1,0 +1,10 @@
+{
+    "summary": "This code discusses the development of a client for remote control operations. The clients should be used for headless tasks and avoid improper chording keys. It suggests emulating classic Vim modes or decoding chording keycodes (preferably not). Uppercase keys are considered functional/modifier keys, while lowercase keys are normal keys. The purpose includes capturing screenshots and recording videos. Additionally, the code proposes designing a machine-accessible API for scripting purposes.",
+    "details": [
+        {
+            "comment": "This code discusses the development of a client for remote control operations. The clients should be used for headless tasks and avoid improper chording keys. It suggests emulating classic Vim modes or decoding chording keycodes (preferably not). Uppercase keys are considered functional/modifier keys, while lowercase keys are normal keys. The purpose includes capturing screenshots and recording videos. Additionally, the code proposes designing a machine-accessible API for scripting purposes.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/remote_control/client/README\":0-8",
+            "content": "cli clients can only be used for headless operations, may not send proper chording keys!\nshall you emulate the classic vim modes? or trying to decode the chording keycodes? (better not)\nlet's define all uppercase keys as functional/modifier keys, and all lowercase keys are somehow normal keys.\nshall be used to take screenshots, record videos.\nalso you shall design a machine accessible api, avaliable for scripting."
+        }
+    ]
+}

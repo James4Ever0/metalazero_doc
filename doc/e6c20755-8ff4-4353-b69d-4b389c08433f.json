@@ -1,0 +1,10 @@
+{
+    "summary": "This script adds a path to Node.js modules for Termux users, allowing them to access and use specific modules within their environment.",
+    "details": [
+        {
+            "comment": "This script adds a path to Node.js modules for Termux users, allowing them to access and use specific modules within their environment.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_kali_amd64/cognitionService/virtual/add_global_js_module.sh\":0-2",
+            "content": "#!/bin/bash\necho -e \"\\nexport NODE_MODULES=/data/data/com.termux/files/usr/lib/node_modules/\" >> ~/.bashrc\nsource ~/.bashrc"
+        }
+    ]
+}

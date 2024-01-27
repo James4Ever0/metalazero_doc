@@ -1,0 +1,15 @@
+{
+    "summary": "Creates SQLite database, executes queries to create and insert data into tables, handles exceptions for error management. Checks validity of user input program using eval().",
+    "details": [
+        {
+            "comment": "Creates a SQLite database and executes queries to create and insert data into tables, using exception handling for error management.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_kali_amd64/mainService/program_database/python_database.py\":0-34",
+            "content": "#import apsw\nimport sqlite3\n#import pysqlite3\n# we need to verify its correctness.\n# like coq in python?\nc = sqlite3.connect(\"python.db\")\n#c = apsw.Connection(\"python.db\")\n#print(dir(sqlite))\n#print(dir(c))\n#help(c)\n#cursor = c.cursor()\n#help(cursor)\nimport traceback\ndef try_execute(statement,data=None):\n    try:\n        if data == None:\n            c.execute(statement)\n        else:\n            assert type(data) == tuple\n            c.execute(statement, data)\n        c.commit()\n        return True\n    except:\n        traceback.print_exc()\n    return False\nstatement = \"create table source_code ( Id int primary key, Program varchar(255) unique, Comment varchar(255))\"\ntry_execute(statement)\nstatement = \"insert into source_code (Id, Program, Comment) values (1, \\\"import numpy\\\",\\\"import statement\\\")\"\ntry_execute(statement)\nstatement = \"insert into source_code (Id, Program, Comment) values (2, ?, ?)\"\ndata = ('lambda x: x.replace(\"abc\",\"\")','replace statement')\ntry_execute(statement, data)\nstatement = \"select distinct Id, Program, Comment from source_code order by -Id \""
+        },
+        {
+            "comment": "This code takes user input for a program and its comment, checks if the program is valid by attempting to evaluate it using eval(), and then inserts the program and comment into a database if the program is valid.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_kali_amd64/mainService/program_database/python_database.py\":35-59",
+            "content": "cursor = c.execute(statement)\n# how do you escape anything?\nind=0\nfor a in cursor:\n    ind,_,_ = a\n    break\nind+=1\nprint(\"will start recording if is valid statement.\")\nprint(\"i will categorize these functions.\")\nwhile True:\n    program = input(\"please give the code:\\n\")\n    comment = input(\"code comment:\\n\")\n    statement = \"insert into source_code (Id, Program, Comment) values (?, ?, ?)\"\n    try:\n        eval(program)\n        print(\"eval succeed.\")\n        data = (ind, program, comment)\n        result = try_execute(statement, data)\n        if result:\n            ind+=1\n            print(\"insert succeed.\")\n        else:\n            print(\"failed to insert program.\")\n    except:\n        print(\"invalid program.\")"
+        }
+    ]
+}

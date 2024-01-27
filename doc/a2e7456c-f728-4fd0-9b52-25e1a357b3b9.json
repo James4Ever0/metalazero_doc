@@ -1,0 +1,10 @@
+{
+    "summary": "This script deletes the directories \"chrome_html\" and \"chrome_monitor\" using recursive force removal (rm -rf) in Bash.",
+    "details": [
+        {
+            "comment": "This script deletes the directories \"chrome_html\" and \"chrome_monitor\" using recursive force removal (rm -rf) in Bash.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_kali_amd64/rmtest.sh\":0-2",
+            "content": "#!/bin/bash\nrm -rf chrome_html\nrm -rf chrome_monitor"
+        }
+    ]
+}

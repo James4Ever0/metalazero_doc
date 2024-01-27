@@ -1,0 +1,10 @@
+{
+    "summary": "Checking if the string 'This' is present in the main string and printing either 'true' or 'false'.",
+    "details": [
+        {
+            "comment": "Checking if the string 'This' is present in the main string and printing either 'true' or 'false'.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_kali_amd64/cognitionService/virtual/cog_core.php\":0-13",
+            "content": "<?php\n//print(\"hello world\")\n$str = 'This is Main String';\nif (strpos($str, 'This') !== false) {\n    echo 'true';\n}else{\n\techo 'false';\n}\n//$obj= new ReflectionObject(\"str\");\n//$obj= new ReflectionClass($str).getMethods();\nprint_r($GLOBALS);\n?>"
+        }
+    ]
+}

@@ -1,0 +1,15 @@
+{
+    "summary": "The code defines functions for comparing and sorting datetime objects, imports necessary libraries, includes an argument parser for running the script, and performs time comparisons based on user inputs.",
+    "details": [
+        {
+            "comment": "This code defines three functions for comparing and sorting datetime objects. It imports the necessary libraries, allows decoding of input strings, and provides options to reverse order and use different formats. The main argument parser is included for running the script directly.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/schedules/get_time.py\":0-32",
+            "content": "import datetime\nfrom concat import encode, decode\ndef get_now():\n    return datetime.datetime.now()\ndef compare_time(a,b,decode=True,inverse=False):\n    if decode:\n        a, b = decode(a), decode(b)\n    a, b = datetime.datetime.fromisoformat(a), datetime.datetime.fromisoformat(b)\n    target = a > b\n    if inverse:\n        target = not target\n    return target\ndef sort_time(_list, decode=True, encode=True, inverse=False):\n    if decode:\n        _list = [decode(x) for x in _list]\n    _list = [datetime.datetime.fromisoformat(x) for x in _list]\n    _list = list(sorted(_list))\n    _list = [x.isoformat() for x in _list]\n    if encode:\n        _list = [encode(x) for x in _list]\n    if inverse:\n        _list = list(reversed(_list))\n    return _list\nif __name__ == \"__main__\":\n    import argparse\n    parser = argparse.ArgumentParser()\n    parser.add_argument(\"-a\",type=str)\n    parser.add_argument(\"-b\",type=str)\n    parser.add_argument(\"-d\",\"--decode\",action=\"store_true\")\n    parser.add_argument(\"-n\",\"--now\",action=\"store_true\")"
+        },
+        {
+            "comment": "Code takes input arguments for time comparison and encoding, parses them, and performs the corresponding action based on the given inputs. If args.now is True, it gets current time, encodes if encode is True, and prints. If a and b are specified, compares them according to decode and inverse flags, converts result to int and exits. If input format is incorrect, displays an error message.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/schedules/get_time.py\":33-49",
+            "content": "    parser.add_argument(\"-i\",\"--inverse\",action=\"store_true\")\n    parser.add_argument(\"-e\",\"--encode\",action=\"store_true\")\n    args = parser.parse_args()\n    a, b = args.a, args.b\n    if args.now:\n        target=get_now().isoformat()\n        if args.encode:\n            target=encode(target)\n        print(target)\n    elif args.a is not None and args.b is not None:\n        target = compare_time(a, b, args.decode, args.inverse)\n        target = int(target)\n        exit(target)\n    else:\n        print(\"the argument format is somehow wrong.\")\n# you can compare in this way.\n# you can also specify to decode or not."
+        }
+    ]
+}

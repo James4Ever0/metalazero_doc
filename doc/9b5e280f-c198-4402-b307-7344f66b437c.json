@@ -1,0 +1,10 @@
+{
+    "summary": "Sets up alternative versions of GCC and G++ for different versions (8, 9, 10) using update-alternatives command in Linux.",
+    "details": [
+        {
+            "comment": "Sets up alternative versions of GCC and G++ for different versions (8, 9, 10) using update-alternatives command in Linux.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_kali_amd64/cognitionService/prepare_gcc_alternatives.sh\":0-7",
+            "content": "#cat gcc_targets.log | xargs -iabc bash -c \"amd=\\$(which abc); echo \\$amd\"\nupdate-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-8 5\nupdate-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-9 4\nupdate-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-10 3\nupdate-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-8 5\nupdate-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-9 4\nupdate-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-10 3"
+        }
+    ]
+}

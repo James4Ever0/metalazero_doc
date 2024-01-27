@@ -1,0 +1,10 @@
+{
+    "summary": "This code initiates Emacs with different scripts and files for various tasks such as running lsp.el and adv.el, likely for text editing and language server protocol support.",
+    "details": [
+        {
+            "comment": "This code initiates Emacs with different scripts and files for various tasks such as running lsp.el and adv.el, likely for text editing and language server protocol support.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_kali_amd64/cognitionService/virtual/adv.sh\":0-4",
+            "content": "emacs --script adv.el\n# run all thia aftet init.\n#emacs --file lsp.sh -l lsp.el\n#emacs -l lsp.el\n#emacs --script lsp.el"
+        }
+    ]
+}

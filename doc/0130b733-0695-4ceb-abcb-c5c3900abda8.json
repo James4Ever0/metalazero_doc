@@ -1,0 +1,10 @@
+{
+    "summary": "Script for loading root filesystem in Kali Linux, using unionfs to mount read-write and read-only partitions into a single directory named \"root\". User ID and Group ID are set for security.",
+    "details": [
+        {
+            "comment": "Script for loading root filesystem in Kali Linux, using unionfs to mount read-write and read-only partitions into a single directory named \"root\". User ID and Group ID are set for security.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_kali_amd64/virtualService/tools/sandserv/tloadroot.sh\":0-8",
+            "content": "#!/bin/bash\nbash -c ./tunloadroot.sh\nbash -c ./loadram.sh\nmkdir root\n# there's autodetect.\n# better use bindfs as standard.\ns0=$(id -u)\nsudo bin/unionfs -o allow_root,cow,uid=$s0,gid=$s0 ramdisk/=RW:/=RO root/\nsudo chmod 777 root"
+        }
+    ]
+}

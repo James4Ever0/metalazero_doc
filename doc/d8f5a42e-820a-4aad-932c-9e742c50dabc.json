@@ -1,0 +1,10 @@
+{
+    "summary": "This script takes a target IP address as an argument, searches for files with \".js\" extension in the current directory, and replaces all occurrences of \"localhost:4999\" with the provided target IP address and port in each file.",
+    "details": [
+        {
+            "comment": "This script takes a target IP address as an argument, searches for files with \".js\" extension in the current directory, and replaces all occurrences of \"localhost:4999\" with the provided target IP address and port in each file.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/browser_plugin/lazero_crx_17_kiwi_ip_change/change_ip.sh\":0-1",
+            "content": "target_ip=$1\nls -1 | grep js | xargs -iabc sed -i \"s/localhost:4999/$target_ip:4999/g\" abc"
+        }
+    ]
+}

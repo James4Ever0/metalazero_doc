@@ -1,0 +1,10 @@
+{
+    "summary": "The code uses Bash scripting to execute a Python program (pure_fuzz.py) and replace the \"TEMPLATE\" in the node_curl_telnet.template file with a generated value (\"abc\") before saving it as node_curl_telnet_abc.js. This process repeats for each iteration, removing the previous js file before creating a new one.",
+    "details": [
+        {
+            "comment": "The code uses Bash scripting to execute a Python program (pure_fuzz.py) and replace the \"TEMPLATE\" in the node_curl_telnet.template file with a generated value (\"abc\") before saving it as node_curl_telnet_abc.js. This process repeats for each iteration, removing the previous js file before creating a new one.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_kali_amd64/cognitionService/virtual/node_curl_template.sh\":0-2",
+            "content": "#!/bin/bash\npython3 pure_fuzz.py -d 3 | xargs -iabc bash -c \"rm node_curl_telnet_abc.js\"\n#python3 pure_fuzz.py -d 3 | xargs -iabc bash -c \"sed \\\"s/TEMPLATE/abc/g\\\" node_curl_telnet.template > node_curl_telnet_abc.js\""
+        }
+    ]
+}

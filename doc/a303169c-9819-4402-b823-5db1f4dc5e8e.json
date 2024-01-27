@@ -1,0 +1,10 @@
+{
+    "summary": "This code specifies the required libraries for the \"metalazero/native/lazero_win10_amd64\" project. The developer notes that using \"ptyprocess\" is not recommended on Windows due to lack of support, and lists alternative libraries such as \"pyte\", \"tornado\", \"twisted\", \"requests\", and \"service_identity\".",
+    "details": [
+        {
+            "comment": "This code specifies the required libraries for the \"metalazero/native/lazero_win10_amd64\" project. The developer notes that using \"ptyprocess\" is not recommended on Windows due to lack of support, and lists alternative libraries such as \"pyte\", \"tornado\", \"twisted\", \"requests\", and \"service_identity\".",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_win10_amd64/requirements.txt\":0-6",
+            "content": "# ptyprocess\n# this is not good. windows does not support this shit.\npyte\ntornado\ntwisted\nrequests\nservice_identity"
+        }
+    ]
+}

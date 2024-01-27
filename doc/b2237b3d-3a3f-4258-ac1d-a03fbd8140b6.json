@@ -1,0 +1,10 @@
+{
+    "summary": "This code randomly performs editing operations on a text editor, such as inserting, replacing, copying, pasting, deleting, and moving text. It generates random strings of length 2-5 characters and repeats these operations for 500 times, displaying the current state of the editor after each operation.",
+    "details": [
+        {
+            "comment": "This code randomly performs editing operations on a text editor, such as inserting, replacing, copying, pasting, deleting, and moving text. It generates random strings of length 2-5 characters and repeats these operations for 500 times, displaying the current state of the editor after each operation.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/tools/deep-text-editor/monkey_editing.py\":0-21",
+            "content": "from editor import editor\nimport random\nimport time\ndef gen_str():\n    return \"\".join([chr(random.randint(0,200)) for x in range(random.randint(2,5))])\nwhile True:\n    print(\"starting over.\")\n    insert=lambda: e.insert(gen_str())\n    replace=lambda: e.replace(gen_str())\n    copy=lambda: e.copy(gen_str())\n    paste=lambda: e.paste()\n    forward=lambda: e.forward(random.randint(2,5))\n    backward=lambda: e.backward(random.randint(2,5))\n    delete=lambda: e.delete(random.randint(2,5))\n    backspace=lambda: e.backspace(random.randint(2,5))\n    e=editor(\"\".join([gen_str() for x in range(5)]))\n    ops=[insert,replace,copy,paste,backspace,delete,forward,backward]\n    for _ in range(500):\n        random.choice(ops)()\n        print(\"current state:\",e.content,e.position)\n        time.sleep(0.01)"
+        }
+    ]
+}

@@ -1,0 +1,10 @@
+{
+    "summary": "Writes company candidates to \"buffer.log\" file.",
+    "details": [
+        {
+            "comment": "Writes company candidates to \"buffer.log\" file.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_kali_amd64/cognitionService/virtual/get_complete.el\":0-0",
+            "content": "(write-region (format \"%s\" company-candidates) nil \"buffer.log\")"
+        }
+    ]
+}

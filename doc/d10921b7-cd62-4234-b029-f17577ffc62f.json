@@ -1,0 +1,10 @@
+{
+    "summary": "This script checks the number of arguments provided and then uses top command to find processes matching the argument, and finally kills those processes.",
+    "details": [
+        {
+            "comment": "This script checks the number of arguments provided and then uses top command to find processes matching the argument, and finally kills those processes.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_kali_amd64/virtualService/tools/sandserv/multikill.sh\":0-12",
+            "content": "#!/bin/bash\nc0=$(echo $1 |wc -c )\n#echo $c0\nif [ $c0 -le 1 ]\nthen\n        echo \"no argument.\"\n        exit 1\nelse\n        :\nfi\nsudo env COLUMNS=500 LINES=500 top -n 1 -q 2>&1 | grep proot | grep multiserv/$1/root | grep -Eo '^.?.?.?[0-9]+' | xargs  sudo kill -s 9 \nenv COLUMNS=500 LINES=500 top -n 1 -q 2>&1 | grep bash | grep multichroot | grep -E \"\\.sh.?.?.?$1\" | grep -Eo '^.?.?.?[0-9]+'  | xargs kill -s 9\nenv COLUMNS=500 LINES=500 top -n 1 -q 2>&1 | grep bash | grep multireload | grep -E \"\\.sh.?.?.?$1\" | grep -Eo '^.?.?.?[0-9]+'  | xargs kill -s 9 "
+        }
+    ]
+}

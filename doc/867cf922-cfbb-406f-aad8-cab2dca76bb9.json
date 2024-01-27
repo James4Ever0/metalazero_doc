@@ -1,0 +1,10 @@
+{
+    "summary": "This code generates a multiple-choice question from a given text file and asks the user for the answer. It randomly selects words as options, excluding one word that is replaced with \"___\". The correct answer is then printed, and the process continues until the user decides to stop.",
+    "details": [
+        {
+            "comment": "This code generates a multiple-choice question from a given text file and asks the user for the answer. It randomly selects words as options, excluding one word that is replaced with \"___\". The correct answer is then printed, and the process continues until the user decides to stop.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/tools/deep-text-editor/neural_network/make_multiselect.py\":0-35",
+            "content": "truth=open(\"base.py\",\"r\").read().split(\"\\n\")\ntruth=list(filter(lambda x: len(x)> 2, truth))\ntokens=[x.split() for x in truth]\ntokens=[x for y in tokens for x in y]\ntokens=list(set(tokens))\nimport random\nimport traceback\nwhile True:\n    try:\n        r=random.choice(truth)\n        r0=r.split()\n        r0=random.choice(r0)\n        r1=r.replace(r0,\"___\")\n        print(\"question:\",r1)\n        dnd=[x for x in tokens if x != r0]\n        dnd=random.sample(dnd,3)\n        choices=dnd+[r0]\n        random.shuffle(choices)\n        print(\"choices:\")\n        print(\"\\n\".join(choices))\n        ans=input(\"answer:\\n\")\n        ans=int(ans)\n        ans=choices[ans]\n        if ans == r0:\n            print(\"correct!\")\n        else:\n            print(\"incorrect!\")\n            print(\"the correct answer is:\", r0)\n            print(\"your answer is:\", ans)\n        print(\"correct form:\",r)\n        print(\"continue?\")\n        input()\n    except:\n        traceback.print_exc()\n        print(\"exception printed above!\")\n        pass"
+        }
+    ]
+}

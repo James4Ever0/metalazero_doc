@@ -1,0 +1,5 @@
+(apropos "")
+(print obarray)
+(documentation 'print)
+(mapatoms (lambda (x) (print x)))
+(print load-history)

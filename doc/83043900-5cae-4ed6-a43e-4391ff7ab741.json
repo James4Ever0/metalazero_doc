@@ -1,0 +1,10 @@
+{
+    "summary": "This code performs a series of actions: 1. Seeks functions related to the given argument using apropos, 2. Prints the obtained function names in obarray, 3. Displays documentation for the print function, 4. Iterates through all atoms and prints them using mapatoms, and 5. Prints the load-history information.",
+    "details": [
+        {
+            "comment": "This code performs a series of actions: 1. Seeks functions related to the given argument using apropos, 2. Prints the obtained function names in obarray, 3. Displays documentation for the print function, 4. Iterates through all atoms and prints them using mapatoms, and 5. Prints the load-history information.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_kali_amd64/cognitionService/virtual/reflection.el\":0-4",
+            "content": "(apropos \"\")\n(print obarray)\n(documentation 'print)\n(mapatoms (lambda (x) (print x)))\n(print load-history)"
+        }
+    ]
+}

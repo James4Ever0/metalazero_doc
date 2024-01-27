@@ -1,0 +1,10 @@
+{
+    "summary": "This code executes a Java jar file, specifically bsh-core-2.0b4.jar, running the script cog_core.bsh within it. This likely involves some form of scripting or behavioral processing with the BeanShell scripting language.",
+    "details": [
+        {
+            "comment": "This code executes a Java jar file, specifically bsh-core-2.0b4.jar, running the script cog_core.bsh within it. This likely involves some form of scripting or behavioral processing with the BeanShell scripting language.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_kali_amd64/cognitionService/virtual/run.sh\":0-0",
+            "content": "java -jar bsh-core-2.0b4.jar cog_core.bsh"
+        }
+    ]
+}

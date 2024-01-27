@@ -1,0 +1,10 @@
+{
+    "summary": "This code appears to be a template for an HTTP response, specifically returning a status 200 (OK) with UTF-8 encoded HTML content. The server identifier is \"netcat!\" and the variable `content` seems to hold dynamic data that will be included in the response body.",
+    "details": [
+        {
+            "comment": "This code appears to be a template for an HTTP response, specifically returning a status 200 (OK) with UTF-8 encoded HTML content. The server identifier is \"netcat!\" and the variable `content` seems to hold dynamic data that will be included in the response body.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/remote_control/discovery/template.j2\":0-4",
+            "content": "HTTP/1.1 200 OK\nContent-Type: text/html; charset=UTF-8\nServer: netcat!\n{{ content }}"
+        }
+    ]
+}

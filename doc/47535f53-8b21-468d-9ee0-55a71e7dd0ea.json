@@ -1,0 +1,10 @@
+{
+    "summary": "The code sets up a connection for the language server using VSCode's LSP and handles initialization by registering it with the connection and returning capabilities. It listens for incoming requests on the connection, logging \"initialized program\" when done.",
+    "details": [
+        {
+            "comment": "The code sets up a connection for the language server using VSCode's LSP and handles initialization by registering it with the connection and returning capabilities. It listens for incoming requests on the connection, logging \"initialized program\" when done.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_kali_amd64/cognitionService/virtual/vscode_lsp.js\":0-15",
+            "content": "const LSP = require(\"vscode-languageserver\");\nconst connection = LSP.createConnection(new LSP.StreamMessageReader(process.stdin), new LSP.StreamMessageWriter(process.stdout));\n//console.dir(connection)\nconnection.onInitialize((params) => __awaiter(this, void 0, void 0, function* () {console.log(\"initialized program\")\n        connection.console.log(`Initialized server v. 9999 for ${params.rootUri}`);\n        const server = yield server_1.default.initialize(connection, params);\n        server.register(connection);\n        return {\n            capabilities: server.capabilities(),\n        };\n    }));\nconnection.listen();\nconsole.log(\"not blocking?\")\n// this is coming right from the process.\n//sure thing. so we need to handle the initialization."
+        }
+    ]
+}

@@ -1,0 +1,10 @@
+{
+    "summary": "This code sets up an Emacs client to load a file, execute functions on it, and run additional commands. It uses the `emacsclient` command to communicate with the Emacs server, setting the load path, loading the file \"client\", defining a function `voidme`, and running various operations such as finding files, executing LSP script, and next-line navigation.",
+    "details": [
+        {
+            "comment": "This code sets up an Emacs client to load a file, execute functions on it, and run additional commands. It uses the `emacsclient` command to communicate with the Emacs server, setting the load path, loading the file \"client\", defining a function `voidme`, and running various operations such as finding files, executing LSP script, and next-line navigation.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_kali_amd64/cognitionService/virtual/client.sh\":0-7",
+            "content": "emacsclient -s ~/.emacs.d/server/server -e \"(add-to-list 'load-path \\\".\\\")\"\nemacsclient -s ~/.emacs.d/server/server -e \"(load \\\"client\\\")\"\nemacsclient -s ~/.emacs.d/server/server -e \"(defun voidme () (find-file \\\"lsp.sh\\\") (lsp) (next-line))\"\nemacsclient -s ~/.emacs.d/server/server -e \"(voidme)\"\n#emacsclient -s ~/.emacs.d/server/server -e\n#\"((lambda () ((next-line))))\"\n#emacsclient -s ~/.emacs.d/server/server -e \"((lambda () ((switch-to-buffer \\\"lsp.sh\\\") (next-line))))\"\n#emacsclient -s ~/.emacs.d/server/server -e \"(print 'hello)\""
+        }
+    ]
+}

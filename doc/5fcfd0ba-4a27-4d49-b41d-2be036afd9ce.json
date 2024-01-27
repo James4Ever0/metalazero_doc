@@ -1,0 +1,15 @@
+{
+    "summary": "The code imports modules, takes password and address from command line, connects to VNC server, defines functions for random mouse and keyboard actions, and executes them in a loop. It also generates a random function to execute repeatedly.",
+    "details": [
+        {
+            "comment": "The code imports necessary modules, takes command line arguments for password and address, connects to a VNC server using the provided details, defines two functions to simulate random mouse movement and keyboard input, and finally executes these actions in a main loop.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_kali_amd64/mainService/vnc_monkey.py\":0-36",
+            "content": "#import os\nimport argparse\nparser = argparse.ArgumentParser()\nparser.add_argument(\"-p\",\"--passwd\",type=str,required=True)\nparser.add_argument(\"-a\",\"--address\",\"--add_argumentress\",type=str,required=True)\nargs = parser.parse_args()\npasswd = args.passwd\n#passwd = passwd.encode()\naddress = args.address\nfrom vncdotool import api\nclient = api.connect(address.replace(\":\",\"::\"),password=passwd)\n#tmp = lambda x: \"vncdotool -s {} -p {} {}\".format(address,passwd,x)\nimport random\nimport time\n# that's called software testing? do you want to test me baby~\ndef mouseMove(delay=0.2):\n    x,y = random.randint(0,1024),random.randint(0,768)\n    client.mouseMove(x,y)\n    print(\"moving to click at:\",(x,y))\n    time.sleep(delay/2)\n    client.mousePress(1)\n    time.sleep(delay/2)\ndef keyType(delay=0.2):\n    t = \"abcdefghijklmnopqrstuvwxyz\"\n    t+= t.upper()\n    t+= \"0123456789\"\n    t = [x for x in t]\n    t = random.choice(t)\n    print(\"pressing key:\",t)\n    client.keyPress(t)\n    time.sleep(delay)\nif __name__ == \"__main__\":\n    fs = [keyType, mouseMove]"
+        },
+        {
+            "comment": "Generates a random function from a list of available functions and executes it repeatedly.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_kali_amd64/mainService/vnc_monkey.py\":37-40",
+            "content": "#    fs = [keyType]\n    while True:\n        f = random.choice(fs)\n        f()"
+        }
+    ]
+}

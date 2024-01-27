@@ -1,0 +1,10 @@
+{
+    "summary": "This code installs the \"python3-preshed\" package using the APT (Advanced Packaging Tool) package manager. This package is likely required for the script to run successfully, and it might be used for hashing or checksum calculation operations.",
+    "details": [
+        {
+            "comment": "This code installs the \"python3-preshed\" package using the APT (Advanced Packaging Tool) package manager. This package is likely required for the script to run successfully, and it might be used for hashing or checksum calculation operations.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_kali_amd64/cognitionService/init.sh\":0-0",
+            "content": "apt install python3-preshed"
+        }
+    ]
+}

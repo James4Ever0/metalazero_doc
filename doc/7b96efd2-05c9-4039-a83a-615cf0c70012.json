@@ -1,0 +1,10 @@
+{
+    "summary": "This code imports the Telnet library, establishes a connection to localhost on port 10000, sends \"hello world\\n\" over the connection, reads until a newline character is received, and then prints the response.",
+    "details": [
+        {
+            "comment": "This code imports the Telnet library, establishes a connection to localhost on port 10000, sends \"hello world\\n\" over the connection, reads until a newline character is received, and then prints the response.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_kali_amd64/cognitionService/virtual/telnetlib_connect.py\":0-4",
+            "content": "from telnetlib import Telnet\nt = Telnet(\"localhost\",10000)\nt.write(b\"hello world\\n\")\nc=t.read_until(b\"\\n\")\nprint(c)"
+        }
+    ]
+}

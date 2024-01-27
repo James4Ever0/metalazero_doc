@@ -1,0 +1,10 @@
+{
+    "summary": "This script is using proot to create a chroot environment, changing permissions for root access, and setting up necessary bind mounts. It also unset LD_PRELOAD and sets other variables before executing the command.",
+    "details": [
+        {
+            "comment": "This script is using proot to create a chroot environment, changing permissions for root access, and setting up necessary bind mounts. It also unset LD_PRELOAD and sets other variables before executing the command.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_kali_amd64/virtualService/tools/sandserv/tsimple_jail.sh\":0-15",
+            "content": "#!/data/data/com.termux/files/usr/bin/bash\n# cd $(dirname $0)\n## unset LD_PRELOAD in case termux-exec is installed\n#./loadram.sh\n./tloadroot.sh\nsudo chmod 777 root\n#unset LD_PRELOAD\n#set LD_PRELOAD=/lib/libtermux-exec.so\n#set LD_LIBRARY=/lib\ncommand=\"sudo proot\"\ncommand+=\" -0 \"\ncommand+=\" -r root -b /dev/null:/dev/null \"\ncommand+=\" -b /sys/fs/selinux/null:/sys/fs/selinux/null \"\ncommand+=\" -b /dev/tty:/dev/tty \"\n$command\n# no need to use selinux/null."
+        }
+    ]
+}

@@ -1,0 +1,10 @@
+{
+    "summary": "The code executes a script to unload existing multi-server instances, creates a directory for multiserv with permissions and mounts a tmpfs filesystem named \"myramdisk\" within the \"multiserv\" directory with an allocated size of 10M.",
+    "details": [
+        {
+            "comment": "The code executes a script to unload existing multi-server instances, creates a directory for multiserv with permissions and mounts a tmpfs filesystem named \"myramdisk\" within the \"multiserv\" directory with an allocated size of 10M.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_kali_amd64/virtualService/tools/sandserv/loadmulti.sh\":0-4",
+            "content": "#!/bin/bash\n./unloadmulti.sh\nsudo mkdir multiserv\nsudo chmod 777 multiserv\nsudo mount -t tmpfs -o size=10m myramdisk multiserv"
+        }
+    ]
+}

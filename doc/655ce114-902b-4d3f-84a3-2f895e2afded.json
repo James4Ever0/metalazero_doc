@@ -1,0 +1,10 @@
+{
+    "summary": "This script uses proot, a userspace control plane for containerization, to execute a command within an isolated environment. It sets various options like SELinux and seccomp rules, and potentially limits CPU time and memory usage. The command is specified as a variable named \"command\" which combines the proot binary with additional arguments, ultimately executing the command in an isolated, controlled manner.",
+    "details": [
+        {
+            "comment": "This script uses proot, a userspace control plane for containerization, to execute a command within an isolated environment. It sets various options like SELinux and seccomp rules, and potentially limits CPU time and memory usage. The command is specified as a variable named \"command\" which combines the proot binary with additional arguments, ultimately executing the command in an isolated, controlled manner.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_kali_amd64/virtualService/tools/sandserv/command_x64.sh\":0-13",
+            "content": "#!/bin/bash\nexport PROOT_NO_SECCOMP=0\ncommand=\"bin/x86_64/proot\"\ncommand+=\" -0 \"\n#command+=\" -r root --cwd=$PWD --pwd=$PWD\"\ncommand+=\" -r root -b /dev/null:/dev/null \"\n#command+=\" bin/x86_64/libjudger.so --max_cpu_time=100 --exe_path=$(which bash)\"\n#command+=\" bin/x86_64/libjudger.so --max_cpu_time=100 --exe_path=$(which bash) --seccomp_rule_name=nokill\"\n#command+=\" -b /sys/fs/selinux/null:/sys/fs/selinux/null \"\n#command+=\" -b /dev/tty:/dev/tty \"\n#command+=\" -b /dev/stdin:/dev/stdin \"\n#command+=\" -b /dev/stdout:/dev/stdout \"\n#command+=\" -b /dev/stderr:/dev/stderr \"\n$command"
+        }
+    ]
+}

@@ -1,0 +1,10 @@
+{
+    "summary": "The code reads a Python file (\"base.py\"), filters empty lines, and then randomly selects a line from the remaining ones. It replaces a random word in that line with \"__\", creating a distorted version of the original line. The user is prompted to provide an answer, which is compared against the correct one. If incorrect, it displays the correct answer. This process continues until an exception occurs or the user stops the program.",
+    "details": [
+        {
+            "comment": "The code reads a Python file (\"base.py\"), filters empty lines, and then randomly selects a line from the remaining ones. It replaces a random word in that line with \"__\", creating a distorted version of the original line. The user is prompted to provide an answer, which is compared against the correct one. If incorrect, it displays the correct answer. This process continues until an exception occurs or the user stops the program.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/tools/deep-text-editor/neural_network/make_incorrect.py\":0-25",
+            "content": "truth=open(\"base.py\",\"r\").read().split(\"\\n\")\ntruth=list(filter(lambda x: len(x)> 2, truth))\nimport random\nimport traceback\nwhile True:\n    try:\n        r=random.choice(truth)\n        r0=r.split()\n        r2=random.choice(r0)\n        r0=random.choice(r0)\n        r1=r.replace(r0,\"___\")\n        print(\"question:\",r1)\n        ans=input(\"answer:\\n\")\n        if ans == r2:\n            print(\"correct!\")\n        else:\n            print(\"incorrect!\")\n            print(\"the correct answer is:\", r2)\n            print(\"your answer is:\", ans)\n        print(\"correct form:\",r)\n        print(\"continue?\")\n        input()\n    except:\n        traceback.print_exc()\n        print(\"exception printed above!\")\n        pass"
+        }
+    ]
+}

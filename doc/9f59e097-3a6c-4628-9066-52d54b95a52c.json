@@ -1,0 +1,10 @@
+{
+    "summary": "Code creates a class \"myclass\", instantiates an object 'a' from the class, assigns values to instance variables 'b' and 'c', then prints the class attributes using dir() function. Output will be the list of class attributes (including 'b' and 'c') followed by the assigned values.",
+    "details": [
+        {
+            "comment": "Code creates a class \"myclass\", instantiates an object 'a' from the class, assigns values to instance variables 'b' and 'c', then prints the class attributes using dir() function. Output will be the list of class attributes (including 'b' and 'c') followed by the assigned values.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_kali_amd64/tools/python_namespace.py\":0-6",
+            "content": "class myclass(object):\n    pass\na = myclass()\na.b=\"a\"\na.c=\"b\"\nprint(dir(a),a.b,a.c)"
+        }
+    ]
+}

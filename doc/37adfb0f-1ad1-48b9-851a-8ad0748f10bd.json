@@ -1,0 +1,10 @@
+{
+    "summary": "This code is running the C/C++ Code Style Analysis Tool (ccls) on a given file. The `echo {}` part pipes an empty string to ccls for analysis or compilation. This could be used in scripting to automate checks on C/C++ code.",
+    "details": [
+        {
+            "comment": "This code is running the C/C++ Code Style Analysis Tool (ccls) on a given file. The `echo {}` part pipes an empty string to ccls for analysis or compilation. This could be used in scripting to automate checks on C/C++ code.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_kali_amd64/cognitionService/virtual/launch_c_lsp.sh\":0-0",
+            "content": "echo {}|ccls"
+        }
+    ]
+}

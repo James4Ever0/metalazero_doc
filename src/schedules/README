@@ -1,0 +1,6 @@
+there are two things: diary and to-do list.
+keep these things together, sync if necessary?
+
+apparently i will not launch the scheduler here since this repo is somehow bloated and not containing only the info i need everyday.
+
+use mktemp and that is only for linux. on windows that's apparently a different story there.

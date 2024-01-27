@@ -1,0 +1,10 @@
+{
+    "summary": "Attaching to nvim instance using pynvim library, setting address and port for TCP communication, executing a command and printing details of editor.",
+    "details": [
+        {
+            "comment": "Attaching to nvim instance using pynvim library, setting address and port for TCP communication, executing a command and printing details of editor.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_kali_amd64/cognitionService/virtual/nserv.py\":0-13",
+            "content": "from pynvim import attach\nad, pt=\"localhost\", 9897\nargs=[\"nvim\", \"--embed\", \"--headless\"]\n#args=[\"env\", \"nvim\", \"--embed\", \"--headless\"]\ned=attach(\"child\",argv=args)\n#ed=attach(\"stdio\",argv=args)\n#ed=attach('tcp', address=ad, port=pt)\ncmd=\"echo 'hello world'\"\ned.command(cmd)\nprint(dir(ed))\nprint([x for x in ed.windows])\nprint([x for x in ed.buffers])\nprint(ed.version)\nprint(ed.command_output(cmd))"
+        }
+    ]
+}

@@ -1,0 +1,10 @@
+{
+    "summary": "The code snippet calls the `(completion-at-point)` function, which retrieves the list of completions at the current cursor position. Then, it prints the content of the variable `lsp-completion--cache`, likely for debugging purposes or to display completion suggestions to the user.",
+    "details": [
+        {
+            "comment": "The code snippet calls the `(completion-at-point)` function, which retrieves the list of completions at the current cursor position. Then, it prints the content of the variable `lsp-completion--cache`, likely for debugging purposes or to display completion suggestions to the user.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_kali_amd64/cognitionService/virtual/client_print.el\":0-1",
+            "content": "(completion-at-point)\n(print lsp-completion--cache)"
+        }
+    ]
+}

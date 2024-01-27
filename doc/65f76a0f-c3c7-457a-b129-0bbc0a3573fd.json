@@ -1,0 +1,15 @@
+{
+    "summary": "This code parses arguments, creates a Jinja2 template, renders it with data, and saves as a .service file. It derives service description and script from command-line inputs and optionally executes a bash script.",
+    "details": [
+        {
+            "comment": "This code parses arguments, creates a template using Jinja2, renders the template with provided data, and saves it as a .service file. The service description and script are derived from command-line inputs.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/daemonize_startup/linux_systemd/render_install_service.py\":0-32",
+            "content": "import jinja2\nimport os\nimport argparse\nparser = argparse.ArgumentParser()\nparser.add_argument(\"-d\",\"--description\",type=str,default=\"trivial_service\")\nparser.add_argument(\"-s\",\"--script\",type=str,required=True)\nparser.add_argument(\"-n\",\"--name\",type=str,required=True)\nparser.add_argument(\"-e\",\"--execute\",action=\"store_true\")\nargs = parser.parse_args()\nexecute = args.execute\ndesc = args.description\nscript = args.script\nname = args.name\ndef get_template(file_name):\n    with open(file_name,\"r\") as f:\n        content = f.read()\n        template = jinja2.Template(content)\n        return template\ndef render_template(file_name,dic):\n    return get_template(file_name).render(dic)\ndef save_render_template(file_name, data, outfile):\n    with open(outfile,\"w+\") as f:\n        f.write(render_template(file_name, data))\nif __name__ == \"__main__\":\n    service_file = name + \".service\"\n    execute_script_file = \"script.sh\"\n    save_render_template(\"template.j2\", {\"service_description\": desc, \"service_script\": script}, service_file)"
+        },
+        {
+            "comment": "This code saves a rendered template called \"routine.j2\" with the service name and file path, and then executes a bash script if the \"execute\" variable is set.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/daemonize_startup/linux_systemd/render_install_service.py\":33-35",
+            "content": "    save_render_template(\"routine.j2\", {\"service\": name, \"service_file\": service_file}, execute_script_file)\n    if execute:\n        os.system(\"bash {}\".format(execute_script_file))"
+        }
+    ]
+}

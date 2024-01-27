@@ -1,0 +1,532 @@
+{
+    "1700": {
+        "file_id": 334,
+        "content": "                                        document.addEventListener(\"mouseup\",(e)=>{mouseLog(\"mouseup event\\n\"+JSON.stringify({x:e.x,y:e.y,movementX:e.movementX,movementY:e.movementY,type:e.type,timeStamp:e.timeStamp,ctrlKey:e.ctrlKey,altKey:e.altKey,shiftKey:e.shiftKey,metaKey:e.metaKey}));\n                                                                                });\n                                        document.addEventListener(\"click\",(e)=>{mouseLog(\"click event\\n\"+JSON.stringify({x:e.x,y:e.y,movementX:e.movementX,movementY:e.movementY,type:e.type,timeStamp:e.timeStamp,ctrlKey:e.ctrlKey,altKey:e.altKey,shiftKey:e.shiftKey,metaKey:e.metaKey}));\n\t\t\t\t\t});\n                                        document.addEventListener(\"dblclick\",(e)=>{mouseLog(\"dblclick event\\n\"+JSON.stringify({x:e.x,y:e.y,movementX:e.movementX,movementY:e.movementY,type:e.type,timeStamp:e.timeStamp,ctrlKey:e.ctrlKey,altKey:e.altKey,shiftKey:e.shiftKey,metaKey:e.metaKey}));\n                                                                                });",
+        "type": "code",
+        "location": "/remote_control/server/test_events.js:28-33"
+    },
+    "1701": {
+        "file_id": 334,
+        "content": "The code adds event listeners for mouseup, click, and dblclick events on the document. Upon triggering an event, it logs the event details, including coordinates, keyboard modifiers, and timestamp, using the mouseLog function.",
+        "type": "comment"
+    },
+    "1702": {
+        "file_id": 334,
+        "content": "                                        document.addEventListener(\"mousemove\",(e)=>{mouseLog(\"mousemove event\\n\"+JSON.stringify({x:e.x,y:e.y,movementX:e.movementX,movementY:e.movementY,type:e.type,timeStamp:e.timeStamp,ctrlKey:e.ctrlKey,altKey:e.altKey,shiftKey:e.shiftKey,metaKey:e.metaKey}));\n                                                                                //      console.log(\"mousemove event\");\n                                                                                //      console.log(e);\n                                                                                        // must log the event contents.\n                                                                                });\n                                        document.addEventListener(\"touchstart\",(e)=>{\n                                                                                        var firstTouch = e.touches[0];\n                                                                               ",
+        "type": "code",
+        "location": "/remote_control/server/test_events.js:34-41"
+    },
+    "1703": {
+        "file_id": 334,
+        "content": "Event listeners for mousemove and touchstart events added to log event data using the mouseLog function.",
+        "type": "comment"
+    },
+    "1704": {
+        "file_id": 334,
+        "content": "         touchLog(\"touchstart event\\n\"+JSON.stringify({metaKey:e.metaKey,altKey:e.altKey,ctrlKey:e.ctrlKey,shiftKey:e.shiftKey,touches:{clientX:firstTouch.clientX,clientY:firstTouch.clientY,force:firstTouch.force,identifier:firstTouch.identifier,pageX:firstTouch.pageX,pageY:firstTouch.pageY,radiusX:firstTouch.radiusX,radiusY:firstTouch.radiusY,rotationAngle:firstTouch.rotationAngle,screenX:firstTouch.screenX,screenY:firstTouch.screenY},type:e.type,timeStamp:e.timeStamp}));\n//console.log(e);\n                                                                                });\n                                        document.addEventListener(\"touchmove\",(e)=>{\n        var firstTouch = e.touches[0];\n                                                                                        touchLog(\"touchmove event\\n\"+JSON.stringify({metaKey:e.metaKey,altKey:e.altKey,ctrlKey:e.ctrlKey,shiftKey:e.shiftKey,touches:{clientX:firstTouch.clientX,clientY:firstTouch.clientY,force:firstTouch.force,identifier",
+        "type": "code",
+        "location": "/remote_control/server/test_events.js:41-46"
+    },
+    "1705": {
+        "file_id": 334,
+        "content": "This code adds event listeners for \"touchstart\" and \"touchmove\" events on the document. It logs information about the touch event, including metadata (e.g., metaKey, altKey) and touch details (e.g., clientX, force), using the touchLog function. The JSON.stringify method is used to format the data for logging.",
+        "type": "comment"
+    },
+    "1706": {
+        "file_id": 334,
+        "content": ":firstTouch.identifier,pageX:firstTouch.pageX,pageY:firstTouch.pageY,radiusX:firstTouch.radiusX,radiusY:firstTouch.radiusY,rotationAngle:firstTouch.rotationAngle,screenX:firstTouch.screenX,screenY:firstTouch.screenY},type:e.type,timeStamp:e.timeStamp}));\n//console.log(e);\n                                                                                });\n                                        document.addEventListener(\"touchend\",(e)=>{\n        //      var firstTouch = e.touches[0];\n                                                                                        touchLog(\"touchend event\\n\"+JSON.stringify({metaKey:e.metaKey,altKey:e.altKey,ctrlKey:e.ctrlKey,shiftKey:e.shiftKey,type:e.type,timeStamp:e.timeStamp}));\n//console.log(e);\n                                                                        });\n                                        document.addEventListener(\"touchleave\",(e)=>{\n        var firstTouch = e.touches[0];\n                                                             ",
+        "type": "code",
+        "location": "/remote_control/server/test_events.js:46-59"
+    },
+    "1707": {
+        "file_id": 334,
+        "content": "Event listeners for \"touchstart\", \"touchend\", and \"touchleave\" are added to the document. For each event, an anonymous function is executed that logs the event details using the touchLog function with JSON-formatted data containing relevant properties of the event. Additionally, a comment log statement is included but not used in this code snippet.",
+        "type": "comment"
+    },
+    "1708": {
+        "file_id": 334,
+        "content": "                           touchLog(\"touchleave event\\n\"+JSON.stringify({metaKey:e.metaKey,altKey:e.altKey,ctrlKey:e.ctrlKey,shiftKey:e.shiftKey,touches:{clientX:firstTouch.clientX,clientY:firstTouch.clientY,force:firstTouch.force,identifier:firstTouch.identifier,pageX:firstTouch.pageX,pageY:firstTouch.pageY,radiusX:firstTouch.radiusX,radiusY:firstTouch.radiusY,rotationAngle:firstTouch.rotationAngle,screenX:firstTouch.screenX,screenY:firstTouch.screenY},type:e.type,timeStamp:e.timeStamp}));\n//console.log(e);\n                                                                                });\n                                        document.addEventListener(\"touchcancel\",(e)=>{\n                                                                                        var firstTouch = e.touches[0];\n                                                                                        touchLog(\"touchcancel event\\n\"+JSON.stringify({metaKey:e.metaKey,altKey:e.altKey,ctrlKey:e.ctrlKey,shiftKey:e.shi",
+        "type": "code",
+        "location": "/remote_control/server/test_events.js:59-66"
+    },
+    "1709": {
+        "file_id": 334,
+        "content": "addEventListener for \"touchcancel\" event, logs JSON object containing event details such as metaKey, altKey, ctrlKey, shiftKey, touch information, and timestamp.",
+        "type": "comment"
+    },
+    "1710": {
+        "file_id": 334,
+        "content": "ftKey,touches:{clientX:firstTouch.clientX,clientY:firstTouch.clientY,force:firstTouch.force,identifier:firstTouch.identifier,pageX:firstTouch.pageX,pageY:firstTouch.pageY,radiusX:firstTouch.radiusX,radiusY:firstTouch.radiusY,rotationAngle:firstTouch.rotationAngle,screenX:firstTouch.screenX,screenY:firstTouch.screenY},type:e.type,timeStamp:e.timeStamp}));\n//console.log(e);\n                                                                                });\n                                        // reset all events when idle, in client and server side.\n                                        function clearText(){\n                                                                                        var textarea = document.getElementById(\"hiddenInput\");\n                                                                                        textarea.value=\"\";\n                                                                                        setTimeout(()=>{clearText()},500);\n                                                                                }",
+        "type": "code",
+        "location": "/remote_control/server/test_events.js:66-76"
+    },
+    "1711": {
+        "file_id": 334,
+        "content": "This code handles touch events, extracting relevant information such as coordinates and force. It then logs the event data. The function clears a textarea after 500ms, ensuring it's continuously cleared on client-side idleness.",
+        "type": "comment"
+    },
+    "1712": {
+        "file_id": 334,
+        "content": "                                        function focusText(){\n                                                                                        var textarea = document.getElementById(\"hiddenInput\");\n                                                                                        textarea.focus();\n                                                                                        setTimeout(()=>{focusText()},200);\n                                                                                }\n                                        function onLoad(lambda){window.addEventListener(\"load\",lambda);}\n                                        onLoad(clearText);\n                                /*      function probeText(){var textarea = document.getElementById(\"hiddenInput\");\n                                                                                        console.log(\"text: \"+textarea.value);\n                                                                                }\n                                       */",
+        "type": "code",
+        "location": "/remote_control/server/test_events.js:77-87"
+    },
+    "1713": {
+        "file_id": 334,
+        "content": "This code defines two functions: `focusText` and `onLoad`. `focusText` repeatedly focuses on the textarea element with id \"hiddenInput\" using `setTimeout`, creating an auto-refreshing focus. The `onLoad` function adds a load event listener to the window object, calling the `clearText` function when the page finishes loading. There's also a commented out `probeText` function that logs the textarea value to the console.",
+        "type": "comment"
+    },
+    "1714": {
+        "file_id": 334,
+        "content": "                                        onLoad(focusText);",
+        "type": "code",
+        "location": "/remote_control/server/test_events.js:88-88"
+    },
+    "1715": {
+        "file_id": 334,
+        "content": "This line is calling the \"onLoad\" function with a parameter named \"focusText\". The purpose of this code may be to handle the loading event and pass the focusText as an argument for further processing.",
+        "type": "comment"
+    },
+    "1716": {
+        "file_id": 335,
+        "content": "/remote_control/server/test_events.py",
+        "type": "filepath"
+    },
+    "1717": {
+        "file_id": 335,
+        "content": "This code sets up a Flask server with a single route (\"/\") that returns the content of \"test_events.html\" when accessed. The server listens on host \"0.0.0.0\" and port 19243.",
+        "type": "summary"
+    },
+    "1718": {
+        "file_id": 335,
+        "content": "from flask import Flask\napp = Flask(__name__)\nhost=\"0.0.0.0\"\nport=19243\ndef homepage():\n    with open(\"test_events.html\",\"r\") as f:\n        return f.read()\n@app.route(\"/\")\ndef index():\n    return homepage()\nif __name__ == \"__main__\":\n    app.run(host=host,port=port)",
+        "type": "code",
+        "location": "/remote_control/server/test_events.py:1-16"
+    },
+    "1719": {
+        "file_id": 335,
+        "content": "This code sets up a Flask server with a single route (\"/\") that returns the content of \"test_events.html\" when accessed. The server listens on host \"0.0.0.0\" and port 19243.",
+        "type": "comment"
+    },
+    "1720": {
+        "file_id": 336,
+        "content": "/remote_control/server/test_events.sh",
+        "type": "filepath"
+    },
+    "1721": {
+        "file_id": 336,
+        "content": "Script retrieves IP address, sets port number using sed, copies and pastes the formatted address, removes temporary file, and runs test_events.py script.",
+        "type": "summary"
+    },
+    "1722": {
+        "file_id": 336,
+        "content": "ifconfig | grep -C 1 arc0 | grep -Eo \"inet [0-9]+.[0-9]+.[0-9]+.[0-9]+\" | grep -Eo \"[0-9]+.[0-9]+.[0-9]+.[0-9]+\" | tee tmp_ip.confidential | termux-clipboard-set\nport=19243\nsed -i \"s/^/http:\\/\\//;s/$/:$port/g\" tmp_ip.confidential\ncat tmp_ip.confidential\ncat tmp_ip.confidential | termux-clipboard-set\nrm tmp_ip.confidential\necho address copied!\npython3 test_events.py",
+        "type": "code",
+        "location": "/remote_control/server/test_events.sh:1-8"
+    },
+    "1723": {
+        "file_id": 336,
+        "content": "Script retrieves IP address, sets port number using sed, copies and pastes the formatted address, removes temporary file, and runs test_events.py script.",
+        "type": "comment"
+    },
+    "1724": {
+        "file_id": 337,
+        "content": "/remote_control/server/test_post.js",
+        "type": "filepath"
+    },
+    "1725": {
+        "file_id": 337,
+        "content": "Code is making a POST request using Fetch API to the provided URL with JSON data representing user information. It expects response in JSON format, then logs it to console.",
+        "type": "summary"
+    },
+    "1726": {
+        "file_id": 337,
+        "content": "// const url_base = window.location.href;\n// post body data \nconst user = {\n    first_name: 'John',\n    last_name: 'Doe',\n    job_title: 'Blogger'\n};\n// request options\nconst options = {\n    method: 'POST',\n    body: JSON.stringify(user),\n    headers: {\n        'Content-Type': 'application/json'\n    }\n}\n// send POST request\nfetch(url, options)\n    .then(res => res.json())\n    .then(res => console.log(res));",
+        "type": "code",
+        "location": "/remote_control/server/test_post.js:1-22"
+    },
+    "1727": {
+        "file_id": 337,
+        "content": "Code is making a POST request using Fetch API to the provided URL with JSON data representing user information. It expects response in JSON format, then logs it to console.",
+        "type": "comment"
+    },
+    "1728": {
+        "file_id": 338,
+        "content": "/remote_control/server/translate.py",
+        "type": "filepath"
+    },
+    "1729": {
+        "file_id": 338,
+        "content": "The code creates dictionaries for key and code translations, separates modifiers, generates dictionaries for letters, symbols, digits, and extra keys, then updates the \"key_translate\" dictionary and prints translation tables.",
+        "type": "summary"
+    },
+    "1730": {
+        "file_id": 338,
+        "content": "abc = [chr(ord(\"a\")+x) for x in range(26)]\nABC = [x.upper() for x in abc]\n#print(abc)\n#print(ABC)\nkeyABC = [\"Key\"+x for x in ABC]\n#print(keyABC)\nmodifier = [\"Alt\",\"Ctrl\",\"Shift\",\"Meta\",\"MetaLeft\",\"MetaRight\",\"ShiftLeft\",\"ShiftRight\",\"AltLeft\",\"AltRight\",\"CtrlLeft\",\"CtrlRight\"]\nsymbols=\"~`!@#$%^&*()-_+={}[]|\\\\:;\\\"'<,>.?/\"\ndigits= \"0123456789\"\nextras= [\"Tab\",\"Enter\",\"Escape\",\"ArrowUp\",\"ArrowDown\",\"ArrowLeft\",\"ArrowRight\",\"PageUp\",\"PageDown\",\"Home\",\"End\",\"Space\",\"Backspace\",\"Delete\"]\nkey_translate={}\ncode_translate={}\nkey_modifier=[x for x in modifier if \"Left\" not in x and \"Right\" not in x]\ncode_modifier = [x for x in modifier if x not in key_modifier]\nkey_abc = {x:x for x in abc}\nkey_ABC = {x:x.lower() for x in ABC}\nkey_symbols = {x:x for x in symbols}\nkey_digits = {x:x for x in digits}\nkey_extras = {x:x.lower().replace(\"arrow\",\"\") for x in extras}\nkey_extras.pop(\"Space\")\nkey_extras.update({\" \":\"space\"})\n# if modifier then translate using code. may still have some shits.\n# if not using key translate table.\nmodifier_translate = {x:x.lower() for x in modifier}",
+        "type": "code",
+        "location": "/remote_control/server/translate.py:1-26"
+    },
+    "1731": {
+        "file_id": 338,
+        "content": "The code creates two dictionaries: 'key_translate' and 'code_translate'. It generates a list of lowercase letters ('abc'), their uppercase equivalents ('ABC'), and combines them with the prefix \"Key\" to form 'keyABC'. The code also defines a list of modifiers, symbols, digits, and extras. Then, it separates key and code modifiers, creates dictionaries for letters (lowercase, uppercase), symbols, digits, and lowercased extra keys, removes the space key, and adds it as \"space\". Finally, it creates a modifier dictionary using lowercase names.",
+        "type": "comment"
+    },
+    "1732": {
+        "file_id": 338,
+        "content": "for x in [key_abc, key_ABC, key_symbols, key_digits, key_extras]:\n    key_translate.update(x)\nprint(\"key_modifier:\",key_modifier)\nprint(\"main translate table:\\n\",key_translate)\nprint(\"modifier trabslate table (code):\\n\", modifier_translate)",
+        "type": "code",
+        "location": "/remote_control/server/translate.py:28-33"
+    },
+    "1733": {
+        "file_id": 338,
+        "content": "This code is iterating over a list of keys and updating the \"key_translate\" dictionary. It then prints \"key_modifier\" and the main and modifier translate tables for review.",
+        "type": "comment"
+    },
+    "1734": {
+        "file_id": 339,
+        "content": "/remote_control/tools/clipboard/linux/demo_clipboard.sh",
+        "type": "filepath"
+    },
+    "1735": {
+        "file_id": 339,
+        "content": "This script copies the text \"hello world\" to the clipboard, splits it into two parts using echo \"spilter\", and then retrieves and outputs the first part of the clipped text.",
+        "type": "summary"
+    },
+    "1736": {
+        "file_id": 339,
+        "content": "#!/bin/bash\n# why this little shit is so goddamn handy in my fucking hand?\n# i don't know because it is one of these infinite mistories.\necho hello worls | xclip -i\necho spilter\nxclip -o",
+        "type": "code",
+        "location": "/remote_control/tools/clipboard/linux/demo_clipboard.sh:1-6"
+    },
+    "1737": {
+        "file_id": 339,
+        "content": "This script copies the text \"hello world\" to the clipboard, splits it into two parts using echo \"spilter\", and then retrieves and outputs the first part of the clipped text.",
+        "type": "comment"
+    },
+    "1738": {
+        "file_id": 340,
+        "content": "/remote_control/tools/clipboard/macos/demo_clipboard.sh",
+        "type": "filepath"
+    },
+    "1739": {
+        "file_id": 340,
+        "content": "This code is a script for macOS that copies the string \"hello world\" to the clipboard, displays \"indicator\", and then prints out whatever text is currently in the clipboard. It's used for demonstrating the functionality of the clipboard tool.",
+        "type": "summary"
+    },
+    "1740": {
+        "file_id": 340,
+        "content": "echo hello world | pbcopy\necho indicator\npbpaste",
+        "type": "code",
+        "location": "/remote_control/tools/clipboard/macos/demo_clipboard.sh:1-3"
+    },
+    "1741": {
+        "file_id": 340,
+        "content": "This code is a script for macOS that copies the string \"hello world\" to the clipboard, displays \"indicator\", and then prints out whatever text is currently in the clipboard. It's used for demonstrating the functionality of the clipboard tool.",
+        "type": "comment"
+    },
+    "1742": {
+        "file_id": 341,
+        "content": "/remote_control/tools/clipboard/pyperclip_clipboard.py",
+        "type": "filepath"
+    },
+    "1743": {
+        "file_id": 341,
+        "content": "This code imports the pyperclip module, defines functions for copying and pasting text using pyperclip's methods, uses argparse to accept a command-line argument for action (copy or paste), reads input from stdin, performs the selected action (copy or paste), and outputs the pasted result if requested.",
+        "type": "summary"
+    },
+    "1744": {
+        "file_id": 341,
+        "content": "import pyperclip\nimport argparse\nimport sys\n# macos pbcopy pbpaste\n# linux xclip xsel\n# kw: copy paste\ndef copy(content):\n    pyperclip.copy(content)\ndef paste():\n    return pyperclip.paste()\ndef read():\n    return sys.stdin.read()\nparser = argparse.ArgumentParser()\nparser.add_argument(\"action\",type=str,choices=[\"copy\",\"paste\"],required=True)\nargs = parser.parse_args()\naction = args.action\nif action == \"copy\":\n    content = read()\n    copy(content)\nelse:\n    print(paste(),end=\"\")",
+        "type": "code",
+        "location": "/remote_control/tools/clipboard/pyperclip_clipboard.py:1-25"
+    },
+    "1745": {
+        "file_id": 341,
+        "content": "This code imports the pyperclip module, defines functions for copying and pasting text using pyperclip's methods, uses argparse to accept a command-line argument for action (copy or paste), reads input from stdin, performs the selected action (copy or paste), and outputs the pasted result if requested.",
+        "type": "comment"
+    },
+    "1746": {
+        "file_id": 342,
+        "content": "/remote_control/tools/clipboard/windows/README",
+        "type": "filepath"
+    },
+    "1747": {
+        "file_id": 342,
+        "content": "The code provided is a link to an external tutorial on pasting in MS-DOS, which might be useful for understanding the functioning of this particular tool.",
+        "type": "summary"
+    },
+    "1748": {
+        "file_id": 342,
+        "content": "https://www.c3scripts.com/tutorials/msdos/paste.html",
+        "type": "code",
+        "location": "/remote_control/tools/clipboard/windows/README:1-1"
+    },
+    "1749": {
+        "file_id": 342,
+        "content": "The code provided is a link to an external tutorial on pasting in MS-DOS, which might be useful for understanding the functioning of this particular tool.",
+        "type": "comment"
+    },
+    "1750": {
+        "file_id": 343,
+        "content": "/remote_control/tools/clipboard/windows/demo_clipboard.ps1",
+        "type": "filepath"
+    },
+    "1751": {
+        "file_id": 343,
+        "content": "This code sets the clipboard text to \"hello world\", displays a separator, and then outputs the current clipboard content.",
+        "type": "summary"
+    },
+    "1752": {
+        "file_id": 343,
+        "content": "echo hello world | Set-Clipboard\necho seperator\nGet-Clipboard | echo",
+        "type": "code",
+        "location": "/remote_control/tools/clipboard/windows/demo_clipboard.ps1:1-3"
+    },
+    "1753": {
+        "file_id": 343,
+        "content": "This code sets the clipboard text to \"hello world\", displays a separator, and then outputs the current clipboard content.",
+        "type": "comment"
+    },
+    "1754": {
+        "file_id": 344,
+        "content": "/remote_control/tools/jupyter_userscript_autosave.js",
+        "type": "filepath"
+    },
+    "1755": {
+        "file_id": 344,
+        "content": "The code is written in JavaScript and it is intended to execute when the document (web page) is fully loaded.",
+        "type": "summary"
+    },
+    "1756": {
+        "file_id": 344,
+        "content": "// shall execute when the document is ready.\n// fully loaded.",
+        "type": "code",
+        "location": "/remote_control/tools/jupyter_userscript_autosave.js:1-2"
+    },
+    "1757": {
+        "file_id": 344,
+        "content": "The code is written in JavaScript and it is intended to execute when the document (web page) is fully loaded.",
+        "type": "comment"
+    },
+    "1758": {
+        "file_id": 345,
+        "content": "/schedules/README",
+        "type": "filepath"
+    },
+    "1759": {
+        "file_id": 345,
+        "content": "Code snippet focuses on managing two items (diary and to-do list) together, mentioning sync requirements. It avoids launching the scheduler in this codebase due to its size and lack of required information. Differences in handling temporary files between Linux and Windows are acknowledged.",
+        "type": "summary"
+    },
+    "1760": {
+        "file_id": 345,
+        "content": "there are two things: diary and to-do list.\nkeep these things together, sync if necessary?\napparently i will not launch the scheduler here since this repo is somehow bloated and not containing only the info i need everyday.\nuse mktemp and that is only for linux. on windows that's apparently a different story there.",
+        "type": "code",
+        "location": "/schedules/README:1-6"
+    },
+    "1761": {
+        "file_id": 345,
+        "content": "Code snippet focuses on managing two items (diary and to-do list) together, mentioning sync requirements. It avoids launching the scheduler in this codebase due to its size and lack of required information. Differences in handling temporary files between Linux and Windows are acknowledged.",
+        "type": "comment"
+    },
+    "1762": {
+        "file_id": 346,
+        "content": "/schedules/add_test.sh",
+        "type": "filepath"
+    },
+    "1763": {
+        "file_id": 346,
+        "content": "This code snippet appears to define a task named \"add\" with a subtask or variant called \"test0\". It could be part of a script or configuration file for managing tasks.",
+        "type": "summary"
+    },
+    "1764": {
+        "file_id": 346,
+        "content": "task add test0",
+        "type": "code",
+        "location": "/schedules/add_test.sh:1-1"
+    },
+    "1765": {
+        "file_id": 346,
+        "content": "This code snippet appears to define a task named \"add\" with a subtask or variant called \"test0\". It could be part of a script or configuration file for managing tasks.",
+        "type": "comment"
+    },
+    "1766": {
+        "file_id": 347,
+        "content": "/schedules/concat.py",
+        "type": "filepath"
+    },
+    "1767": {
+        "file_id": 347,
+        "content": "The code defines two functions, `decode` and `encode`, that perform base64 encoding and decoding on input data. The `decode` function first checks if the data is a string, and if so, encodes it as UTF-8 before performing base64 decoding and returning the decoded string. Similarly, the `encode` function encodes the data as UTF-8 before performing base64 encoding. The program takes input from the user, determines whether to decode or encode based on command-line arguments, and prints the result.",
+        "type": "summary"
+    },
+    "1768": {
+        "file_id": 347,
+        "content": "import base64\ndef decode(data):\n    if type(data) == str:\n        data = data.encode(\"utf-8\")\n    return base64.b64decode(data).decode(\"utf-8\")\ndef encode(data):\n    if type(data) == str:\n        data = data.encode(\"utf-8\")\n    return base64.b64encode(data).decode(\"utf-8\")\nif __name__ == \"__main__\":\n    import argparse\n    parser = argparse.ArgumentParser()\n    parser.add_argument(\"-d\",\"--decode\",action=\"store_true\")\n    args = parser.parse_args()\n    data=input()\n    if args.decode:\n        print(decode(data),end=\"\")\n    else:\n        print(encode(data),end=\"\")",
+        "type": "code",
+        "location": "/schedules/concat.py:1-21"
+    },
+    "1769": {
+        "file_id": 347,
+        "content": "The code defines two functions, `decode` and `encode`, that perform base64 encoding and decoding on input data. The `decode` function first checks if the data is a string, and if so, encodes it as UTF-8 before performing base64 decoding and returning the decoded string. Similarly, the `encode` function encodes the data as UTF-8 before performing base64 encoding. The program takes input from the user, determines whether to decode or encode based on command-line arguments, and prints the result.",
+        "type": "comment"
+    },
+    "1770": {
+        "file_id": 348,
+        "content": "/schedules/demo_load.py",
+        "type": "filepath"
+    },
+    "1771": {
+        "file_id": 348,
+        "content": "This code reads input data from standard input, converts it into a string using UTF-8 encoding, and then loads the JSON object. Finally, it prints the loaded JSON object.",
+        "type": "summary"
+    },
+    "1772": {
+        "file_id": 348,
+        "content": "import sys\nbytebuffer = bytearray()\nfor x in sys.stdin.buffer.read():\n    bytebuffer.append(x)\nstring = bytes(bytebuffer).decode(\"utf-8\")\n#print(string,end=\"\")\nimport json\ntarget = json.loads(string)\nprint(target)",
+        "type": "code",
+        "location": "/schedules/demo_load.py:1-10"
+    },
+    "1773": {
+        "file_id": 348,
+        "content": "This code reads input data from standard input, converts it into a string using UTF-8 encoding, and then loads the JSON object. Finally, it prints the loaded JSON object.",
+        "type": "comment"
+    },
+    "1774": {
+        "file_id": 349,
+        "content": "/schedules/demo_load.sh",
+        "type": "filepath"
+    },
+    "1775": {
+        "file_id": 349,
+        "content": "This code runs a task called \"export\" and then executes a Python script named demo_load.py using python3 interpreter. The purpose of this script might be to load some data or run a specific task related to the \"demo\".",
+        "type": "summary"
+    },
+    "1776": {
+        "file_id": 349,
+        "content": "task export | python3 demo_load.py",
+        "type": "code",
+        "location": "/schedules/demo_load.sh:1-1"
+    },
+    "1777": {
+        "file_id": 349,
+        "content": "This code runs a task called \"export\" and then executes a Python script named demo_load.py using python3 interpreter. The purpose of this script might be to load some data or run a specific task related to the \"demo\".",
+        "type": "comment"
+    },
+    "1778": {
+        "file_id": 350,
+        "content": "/schedules/export_offline_tasks.sh",
+        "type": "filepath"
+    },
+    "1779": {
+        "file_id": 350,
+        "content": "Creates a directory for offline tasks, initializes variable 'abc', writes exported tasks to JSON in the directory without format checking.",
+        "type": "summary"
+    },
+    "1780": {
+        "file_id": 350,
+        "content": "mkdir offline_tasks\nabc=$()\ntask export > offline_tasks/$($abc)tasks.json\n# are you sure that this is the best shot?\n# you don't check the format first?",
+        "type": "code",
+        "location": "/schedules/export_offline_tasks.sh:1-5"
+    },
+    "1781": {
+        "file_id": 350,
+        "content": "Creates a directory for offline tasks, initializes variable 'abc', writes exported tasks to JSON in the directory without format checking.",
+        "type": "comment"
+    },
+    "1782": {
+        "file_id": 351,
+        "content": "/schedules/export_tasks.sh",
+        "type": "filepath"
+    },
+    "1783": {
+        "file_id": 351,
+        "content": "Code exports a task in an unspecified format to tasks.json file without checking the format first.",
+        "type": "summary"
+    },
+    "1784": {
+        "file_id": 351,
+        "content": "task export > tasks.json\n# are you sure that this is the best shot?\n# you don't check the format first?",
+        "type": "code",
+        "location": "/schedules/export_tasks.sh:1-3"
+    },
+    "1785": {
+        "file_id": 351,
+        "content": "Code exports a task in an unspecified format to tasks.json file without checking the format first.",
+        "type": "comment"
+    },
+    "1786": {
+        "file_id": 352,
+        "content": "/schedules/get_time.py",
+        "type": "filepath"
+    },
+    "1787": {
+        "file_id": 352,
+        "content": "The code defines functions for comparing and sorting datetime objects, imports necessary libraries, includes an argument parser for running the script, and performs time comparisons based on user inputs.",
+        "type": "summary"
+    },
+    "1788": {
+        "file_id": 352,
+        "content": "import datetime\nfrom concat import encode, decode\ndef get_now():\n    return datetime.datetime.now()\ndef compare_time(a,b,decode=True,inverse=False):\n    if decode:\n        a, b = decode(a), decode(b)\n    a, b = datetime.datetime.fromisoformat(a), datetime.datetime.fromisoformat(b)\n    target = a > b\n    if inverse:\n        target = not target\n    return target\ndef sort_time(_list, decode=True, encode=True, inverse=False):\n    if decode:\n        _list = [decode(x) for x in _list]\n    _list = [datetime.datetime.fromisoformat(x) for x in _list]\n    _list = list(sorted(_list))\n    _list = [x.isoformat() for x in _list]\n    if encode:\n        _list = [encode(x) for x in _list]\n    if inverse:\n        _list = list(reversed(_list))\n    return _list\nif __name__ == \"__main__\":\n    import argparse\n    parser = argparse.ArgumentParser()\n    parser.add_argument(\"-a\",type=str)\n    parser.add_argument(\"-b\",type=str)\n    parser.add_argument(\"-d\",\"--decode\",action=\"store_true\")\n    parser.add_argument(\"-n\",\"--now\",action=\"store_true\")",
+        "type": "code",
+        "location": "/schedules/get_time.py:1-33"
+    },
+    "1789": {
+        "file_id": 352,
+        "content": "This code defines three functions for comparing and sorting datetime objects. It imports the necessary libraries, allows decoding of input strings, and provides options to reverse order and use different formats. The main argument parser is included for running the script directly.",
+        "type": "comment"
+    },
+    "1790": {
+        "file_id": 352,
+        "content": "    parser.add_argument(\"-i\",\"--inverse\",action=\"store_true\")\n    parser.add_argument(\"-e\",\"--encode\",action=\"store_true\")\n    args = parser.parse_args()\n    a, b = args.a, args.b\n    if args.now:\n        target=get_now().isoformat()\n        if args.encode:\n            target=encode(target)\n        print(target)\n    elif args.a is not None and args.b is not None:\n        target = compare_time(a, b, args.decode, args.inverse)\n        target = int(target)\n        exit(target)\n    else:\n        print(\"the argument format is somehow wrong.\")\n# you can compare in this way.\n# you can also specify to decode or not.",
+        "type": "code",
+        "location": "/schedules/get_time.py:34-50"
+    },
+    "1791": {
+        "file_id": 352,
+        "content": "Code takes input arguments for time comparison and encoding, parses them, and performs the corresponding action based on the given inputs. If args.now is True, it gets current time, encodes if encode is True, and prints. If a and b are specified, compares them according to decode and inverse flags, converts result to int and exits. If input format is incorrect, displays an error message.",
+        "type": "comment"
+    },
+    "1792": {
+        "file_id": 353,
+        "content": "/schedules/import_tasks.sh",
+        "type": "filepath"
+    },
+    "1793": {
+        "file_id": 353,
+        "content": "This code checks if a file named \"tasks.json\" exists. If it does, the script proceeds to import tasks from this file; otherwise, it notifies that no such file exists and exits with an error status.",
+        "type": "summary"
+    },
+    "1794": {
+        "file_id": 353,
+        "content": "# only if there is tasks.json can we import anything\nif [[ -f tasks.json ]]; then\n\ttask import < tasks.json\nelse\n\techo there is no tasks.json\n\texit 1\nfi",
+        "type": "code",
+        "location": "/schedules/import_tasks.sh:1-7"
+    },
+    "1795": {
+        "file_id": 353,
+        "content": "This code checks if a file named \"tasks.json\" exists. If it does, the script proceeds to import tasks from this file; otherwise, it notifies that no such file exists and exits with an error status.",
+        "type": "comment"
+    },
+    "1796": {
+        "file_id": 354,
+        "content": "/schedules/init.sh",
+        "type": "filepath"
+    },
+    "1797": {
+        "file_id": 354,
+        "content": "This code installs Taskwarrior and Espeak, copies a configuration file, creates a gitignore file with 'latest' as the only item, and may set volume for Termux music at 15 (though commented out).",
+        "type": "summary"
+    },
+    "1798": {
+        "file_id": 354,
+        "content": "apt install -y taskwarrior espeak\ncp .taskrc ~/.taskrc\ntouch .gitignore\necho .latest >  .gitignore\n#echo .latest >  .gitignore\n#termux-volume music 15",
+        "type": "code",
+        "location": "/schedules/init.sh:1-6"
+    },
+    "1799": {
+        "file_id": 354,
+        "content": "This code installs Taskwarrior and Espeak, copies a configuration file, creates a gitignore file with 'latest' as the only item, and may set volume for Termux music at 15 (though commented out).",
+        "type": "comment"
+    }
+}

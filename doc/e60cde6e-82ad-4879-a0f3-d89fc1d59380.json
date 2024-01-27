@@ -1,0 +1,10 @@
+{
+    "summary": "This code snippet contains the name of a Python library, \"pexpect\", which is used for automating interaction with other programs through telnet, ssh and other applications to control them as though a human user is sitting at the keyboard.",
+    "details": [
+        {
+            "comment": "This code snippet contains the name of a Python library, \"pexpect\", which is used for automating interaction with other programs through telnet, ssh and other applications to control them as though a human user is sitting at the keyboard.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/tools/requirements.txt\":0-0",
+            "content": "pexpect"
+        }
+    ]
+}

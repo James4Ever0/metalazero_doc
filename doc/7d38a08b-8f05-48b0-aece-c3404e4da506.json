@@ -1,0 +1,10 @@
+{
+    "summary": "This script starts Emacs with a LSP (Language Server Protocol) configuration. It adds the current directory to workspace folders, sets idle delay to 0, and uses LSP completion functions. The code also includes a timer function that runs every 10 seconds for completion at point printing and cache checking.",
+    "details": [
+        {
+            "comment": "This script starts Emacs with a LSP (Language Server Protocol) configuration. It adds the current directory to workspace folders, sets idle delay to 0, and uses LSP completion functions. The code also includes a timer function that runs every 10 seconds for completion at point printing and cache checking.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_kali_amd64/cognitionService/virtual/eval_single_line.sh\":0-4",
+            "content": "#!/bin/bash\n#headless? repl?\nemacs --eval \"(list (find-file \\\"lsp.sh\\\") (lsp) (lsp-workspace-folders-add \\\".\\\") (setq lsp-idle-delay 0) (setq completion-at-point-functions (list #'lsp-completion-at-point)) (run-with-timer 10 nil (lambda () (list (completion-at-point) (print lsp-completion--cache)))))\"\n# hook *Messages*\n# post/pre-command-hook polling with-current-buffer"
+        }
+    ]
+}

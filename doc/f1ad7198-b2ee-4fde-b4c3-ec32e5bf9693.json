@@ -1,0 +1,10 @@
+{
+    "summary": "This script uses Termux's bash shell to run commands as user 10144 using sudo. It likely executes a set of system operations or scripts specific to the Kali Linux environment.",
+    "details": [
+        {
+            "comment": "This script uses Termux's bash shell to run commands as user 10144 using sudo. It likely executes a set of system operations or scripts specific to the Kali Linux environment.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_kali_amd64/virtualService/tools/sandserv/runas.sh\":0-1",
+            "content": "#!/data/data/com.termux/files/usr/bin/bash\nsudo -u 10144 bash"
+        }
+    ]
+}

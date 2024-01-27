@@ -1,0 +1,12 @@
+concurrent design.
+
+Self-hosting DNS. Or something else.
+
+prepare a low-priviliege user, or just use default one or even root?
+
+on x64 it was hell.
+
+[pid  8411] execve("/bin/bash", ["/bin/bash"], 0x7ffc4fd079d0 /* 0 vars */) = ?
+[pid  8411] +++ killed by SIGSYS +++	
+
+can we do this without the help of judger? for example, do our own work.

@@ -1,0 +1,533 @@
+{
+    "1400": {
+        "file_id": 284,
+        "content": "@echo off\nset AWK=E:\\android-ndk-r10e\\prebuilt\\windows-x86_64\\bin\\awk.exe\nset THISPATH=%CD%\npowershell.exe -File find_process.ps1 \"node.exe\" | grep node | grep chrome_console | %AWK% \"{print $1}\" | xargs -iabc cmd /C \"taskkill /F /PID abc\"\npowershell.exe -File find_process.ps1 \"node.exe\" | grep node | grep chrome_receive | %AWK% \"{print $1}\" | xargs -iabc cmd /C \"taskkill /F /PID abc\"\nstart /B cmd /C \"cd eventService && node chrome_receive.js\"\nstart /B cmd /C \"cd replService && node chrome_console.js\"\npowershell.exe -File find_process.ps1 \"python36.exe\" | grep node | grep ptyproc_cmd.py | %AWK% \"{print $1}\" | xargs -iabc cmd /C \"taskkill /F /PID abc\"\ncd shellService && python36 ptyproc_cmd.py\ncd %THISPATH%",
+        "type": "code",
+        "location": "/native/lazero_win10_amd64/debug_init.cmd:1-11"
+    },
+    "1401": {
+        "file_id": 284,
+        "content": "This script is stopping specific processes, starting others, and then cleaning up. It uses a combination of batch scripts, PowerShell, and grep commands to identify processes by their names and kill them if necessary. Afterward, it starts the desired services (chrome_receive.js and chrome_console.js) and finally cleans up the directory path before exiting.",
+        "type": "comment"
+    },
+    "1402": {
+        "file_id": 285,
+        "content": "/native/lazero_win10_amd64/debug_init.sh",
+        "type": "filepath"
+    },
+    "1403": {
+        "file_id": 285,
+        "content": "This script seems to stop a background process, start two Node.js scripts in separate directories, and potentially kill any other processes related to the same names. It then shows the PIDs of both processes with ps -W.",
+        "type": "summary"
+    },
+    "1404": {
+        "file_id": 285,
+        "content": "#!/bin/bash\n# the shit must be running on the background.\n# can we run this under bash?\n# cannot find the cli args.\nps aux | cat | grep node | grep chrome_receive | awk '{print $2}' | xargs kill -s SIGKILL\ncd eventService && node chrome_receive.js &\ncd replService && node chrome_console.js\ncd ../\n# ps -W <- show both processes.",
+        "type": "code",
+        "location": "/native/lazero_win10_amd64/debug_init.sh:1-9"
+    },
+    "1405": {
+        "file_id": 285,
+        "content": "This script seems to stop a background process, start two Node.js scripts in separate directories, and potentially kill any other processes related to the same names. It then shows the PIDs of both processes with ps -W.",
+        "type": "comment"
+    },
+    "1406": {
+        "file_id": 286,
+        "content": "/native/lazero_win10_amd64/eventService/chrome_receive.js",
+        "type": "filepath"
+    },
+    "1407": {
+        "file_id": 286,
+        "content": "This code creates an HTTP server handling GET and POST requests, writing data to files based on URL. It also sets up a server for POST requests, logging success/error messages and listening on port 5000.",
+        "type": "summary"
+    },
+    "1408": {
+        "file_id": 286,
+        "content": "var http = require('http');\nconst fs = require(\"fs\");\nconst chrome_html = \"/chrome_html\";\nconst chrome_monitor = \"/chrome_monitor\";\nvar monotonic_html=0;\nvar monotonic_monitor=0;\n//logger=require('html-differ/lib/logger')\n//this is too slow.\n//you can use some other abstract syntax. such as monotonic+timestamp.\nconst writeFileRecursive = function(path, buffer, callback){\n    let lastPath = path.substring(0, path.lastIndexOf(\"/\"));\n    fs.mkdir(lastPath, {recursive: true}, (err) => {\n        if (err) return callback(err);\n        fs.writeFile(path, buffer, function(err){\n            if (err) return callback(err);\n            return callback(null);\n        });\n    });\n}\nvar prev=null;\n    var server = http.createServer ( function(request,response){\n    response.writeHead(200,{\"Content-Type\":\"text/plain\"});\n    if(request.method == \"GET\")\n        {\n            response.end(\"received GET request.\")\n        }\n    else if(request.method == \"POST\")\n        {//console.log(request.data);\n\t\tvar body=[]\n\t\trequest.on('data', function(data) {",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/eventService/chrome_receive.js:1-31"
+    },
+    "1409": {
+        "file_id": 286,
+        "content": "Creates an HTTP server to handle GET and POST requests, writes received data to files using a recursive file creation function.",
+        "type": "comment"
+    },
+    "1410": {
+        "file_id": 286,
+        "content": "      body.push(data)\n      //console.log('Partial body: ' , data)\n    })\n    request.on('end', function() {\n\t    var concatBody=Buffer.concat(body)\n\t    if (request.url == chrome_html){\n\t\t    monotonic_html+=1;\n\t    var next=concatBody.toString('utf-8')\n\t    writeFileRecursive(\"./chrome_html/\"+Date.now()+\"-\"+monotonic_html+\".html\",next,error => {if (error) return console.log(\"error to write file.\\n\"+error.message); console.log(\"saved successfully\");});}\n\t    else if (request.url == chrome_monitor){\nmonotonic_monitor+=1;\n\t    var next=concatBody.toString('utf-8')\n\t    writeFileRecursive(\"./chrome_monitor/\"+Date.now()+\"-\"+monotonic_monitor+\".json\",next,error => {if (error) return console.log(\"error to write file.\\n\"+error.message); console.log(\"saved successfully\");});}\n\t    // why are you doing it?\n\t    // we are going to save the file, in case that you are dumb.\n      console.log('Body From '+request.url+'\\nLength:',concatBody.length)\n      response.writeHead(200, {'Content-Type': 'text/html'})\n\t    // this is not.",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/eventService/chrome_receive.js:32-49"
+    },
+    "1411": {
+        "file_id": 286,
+        "content": "The code reads the request data and concatenates it into a buffer. If the request URL is for \"chrome_html\", it increments the monotonic count, converts the data to UTF-8 string, writes it to a file with a timestamped name, and logs a success message or an error message if failed. Similarly, if the request URL is for \"chrome_monitor\", it increments the monotonic count, saves the concatenated data as a JSON file, and logs the success/error message accordingly. The code also sends a 200 response with the content type of 'text/html'.",
+        "type": "comment"
+    },
+    "1412": {
+        "file_id": 286,
+        "content": "      response.end('post received')\n    })\n        }\n    else\n        {\n            response.end(\"Undefined request .\");\n        }\n});\n//arbitrary path.\nserver.listen(5000);\nconsole.log(\"Server running on port 5000\");\n// the socket port might need some change. do not use the same port?",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/eventService/chrome_receive.js:50-61"
+    },
+    "1413": {
+        "file_id": 286,
+        "content": "This code sets up a server to handle POST requests, returning \"post received\" if the request is defined and \"Undefined request .\" otherwise. The server listens on port 5000 and logs a message upon successful startup. The socket port might need modification to avoid conflicts with other ports in use.",
+        "type": "comment"
+    },
+    "1414": {
+        "file_id": 287,
+        "content": "/native/lazero_win10_amd64/find_process.ps1",
+        "type": "filepath"
+    },
+    "1415": {
+        "file_id": 287,
+        "content": "This code retrieves the process ID and command line for a specified process using WMI in PowerShell.",
+        "type": "summary"
+    },
+    "1416": {
+        "file_id": 287,
+        "content": "$process = $args[0]\nGet-WmiObject Win32_Process -Filter \"name = '$process'\" | Format-Table -Property ProcessId, CommandLine",
+        "type": "code",
+        "location": "/native/lazero_win10_amd64/find_process.ps1:1-2"
+    },
+    "1417": {
+        "file_id": 287,
+        "content": "This code retrieves the process ID and command line for a specified process using WMI in PowerShell.",
+        "type": "comment"
+    },
+    "1418": {
+        "file_id": 288,
+        "content": "/native/lazero_win10_amd64/inputService/pyautogui_server.py",
+        "type": "filepath"
+    },
+    "1419": {
+        "file_id": 288,
+        "content": "This code imports the pyautogui module as PAG, which provides a way to control mouse and keyboard inputs for automation purposes.",
+        "type": "summary"
+    },
+    "1420": {
+        "file_id": 288,
+        "content": "# providing write service?\n# everything's like game.\nimport pyautogui as PAG",
+        "type": "code",
+        "location": "/native/lazero_win10_amd64/inputService/pyautogui_server.py:1-3"
+    },
+    "1421": {
+        "file_id": 288,
+        "content": "This code imports the pyautogui module as PAG, which provides a way to control mouse and keyboard inputs for automation purposes.",
+        "type": "comment"
+    },
+    "1422": {
+        "file_id": 289,
+        "content": "/native/lazero_win10_amd64/mainService/README",
+        "type": "filepath"
+    },
+    "1423": {
+        "file_id": 289,
+        "content": "The code explores the formation of a cognition core, learning targets, and optimizing performance through Docker or similar solutions to prevent damage. It creates a virtual environment to avoid human issues.",
+        "type": "summary"
+    },
+    "1424": {
+        "file_id": 289,
+        "content": "the main service is about exploration, forming the cognition core and memorize/learn the targets. optimize the performance, controlling overall tasks.\nif you cannot prove the shit, just remember it. that's called flattering.\nmaybe that's why we shall invent this machine that invents itself.\nwe want this shit to run something freely on its own, and do not damage my structure.\nbetter use docker or something similar. we do not want shit to happen.\nyou can create your own jail. it is similar. but i doubt about that.\nthe idea is that we are going to do all this virtually. i hate all kinds of human shits.",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/mainService/README:1-13"
+    },
+    "1425": {
+        "file_id": 289,
+        "content": "The code explores the formation of a cognition core, learning targets, and optimizing performance through Docker or similar solutions to prevent damage. It creates a virtual environment to avoid human issues.",
+        "type": "comment"
+    },
+    "1426": {
+        "file_id": 290,
+        "content": "/native/lazero_win10_amd64/mainService/docker_monkey.py",
+        "type": "filepath"
+    },
+    "1427": {
+        "file_id": 290,
+        "content": "This Python script uses winpexpect to interact with Docker. It spawns a Docker container, continuously reads its output, and randomly sends commands from a list of options (whoami, pwd, ls). The readings and command executions are performed in separate threads for efficiency.",
+        "type": "summary"
+    },
+    "1428": {
+        "file_id": 290,
+        "content": "# without monkey typers we cannot really say that we are making any progress with this shitty computer.\n# we are not familar with this shit though!\nimport winpexpect as pexpect\nimport threading\nimport random\nimport time\n# maybe you need winpexpect.\n# we shall start shits from simple rules.\n# anything unpredictable that could also last forever.\np = pexpect.spawn(\"docker run --rm --read-only -i alpine\")\ndef read_me():\n    while True:\n        content = p.readline()\n        print(\"content:\\n\",content)\n#print(dir(p))\nthreading.Thread(target=read_me,daemon=True).start()\ndelay=0.2\nwhile True:\n    payloads = [\"whoami\",\"pwd\",\"ls\"]\n    time.sleep(delay)\n    target = random.choice(payloads)\n    print(\"sending command:\",target)\n    p.sendline(target)",
+        "type": "code",
+        "location": "/native/lazero_win10_amd64/mainService/docker_monkey.py:1-24"
+    },
+    "1429": {
+        "file_id": 290,
+        "content": "This Python script uses winpexpect to interact with Docker. It spawns a Docker container, continuously reads its output, and randomly sends commands from a list of options (whoami, pwd, ls). The readings and command executions are performed in separate threads for efficiency.",
+        "type": "comment"
+    },
+    "1430": {
+        "file_id": 291,
+        "content": "/native/lazero_win10_amd64/mainService/docker_vt100_base.py",
+        "type": "filepath"
+    },
+    "1431": {
+        "file_id": 291,
+        "content": "This Python server app, using Tornado and pyte, handles VT100 commands, process management, port listening, colored output, and Docker container display in a terminal interface. It runs on specified ports with adjustable command and line limits and employs three threads for monitoring processes and managing terminal operations via threading, pyte for virtual terminals, and winpty for Windows sessions.",
+        "type": "summary"
+    },
+    "1432": {
+        "file_id": 291,
+        "content": "from __future__ import unicode_literals\n# i mean, android.\n# hey! do not run this shit outside of sandbox, unless you want to get me killed.\nimport threading\nimport pyte\n# can you format things into colorful output?\n# or just raw terminal string which can be transformed into html.\nimport traceback\nimport tornado.ioloop\nimport tornado.web\nimport requests\nimport base64\n# import signal\n# no watchdog for this?\n# we can still be running bash.\nLF_CRLF=b\"\\n\"\nmaxbark = 2\nmaxbark_granual = 5\nmaxterm = 3\nmaxterm_granual = 5\nbark = 0\nterm = 0\nimport argparse\nparser = argparse.ArgumentParser()\nparser.add_argument(\"-p\",\"--port\",type=int,default=8788,help=\"port number\")\nargs = parser.parse_args()\nport=args.port\nassert port>0 and port <65535\nprint(\"server running on port %d\" %port)\n# you can turn off the barking dog sometimes.\n# we can use a big dog every since then.\nimport os\ndef kill(pipe):\n    try:\n        pid = pipe.pid\n        os.system(\"taskkill /F /PID {}\".format(pid))\n        # pipe.kill()\n        pipe.terminate()\n        # print(type(pipe),dir(pipe))",
+        "type": "code",
+        "location": "/native/lazero_win10_amd64/mainService/docker_vt100_base.py:1-39"
+    },
+    "1433": {
+        "file_id": 291,
+        "content": "This code is a server application written in Python, running on a specific port and using the Tornado web framework. It uses the pyte module to handle VT100 terminal commands and has an option to kill processes based on their PID. The code also handles errors and exceptions, potentially for debugging or reporting issues. The server listens for incoming connections and can output colorful or formatted text. The maximum number of barks (commands) allowed is 2, and the maximum number of terms (lines) allowed is 3. There are granular adjustments for these limits as well. The code takes port number as an argument, with a default value of 8788. If the port is between 1 and 65534, it will run on that specified port.",
+        "type": "comment"
+    },
+    "1434": {
+        "file_id": 291,
+        "content": "        # pipe.kill(signal.SIGKILL)\n    except:\n        print(\"_____process kill error_____\")\n        traceback.print_exc()\n# signal.signal(signal.SIGINT, signal_handler)\nimport winpty\ndisplay = \"\"\nlag = 0.05\nexecutable ='docker run --rm -i --read-only alpine' # this is wrong. could get your computer in danger.\n# unless you want to take the risk. everything worth the try?\ncols, rows = 80, 25\nimport time\nwatch_rate = 0.5\nscreen = pyte.Screen(cols,rows)\nstream = pyte.ByteStream(screen)\nprocess =  winpty.PtyProcess.spawn(executable.split(\" \"),dimensions=(rows,cols))\ndef read_to_term():\n    global display, stream, screen\n    # read a global list?\n    # you can start another server. not quite like terminal. like execution shell.\n    noerr=True\n    while noerr:\n        try:\n            reading=process.read()\n            stream.feed(reading.encode(\"utf-8\"))# no controlling characters. great now?\n            display = \"\\n\".join(screen.display)\n        except:\n            noerr = False\n            break\nt0=threading.Thread(target=read_to_term,args=())",
+        "type": "code",
+        "location": "/native/lazero_win10_amd64/mainService/docker_vt100_base.py:40-70"
+    },
+    "1435": {
+        "file_id": 291,
+        "content": "Code is reading and displaying a docker container in a terminal-like interface using pyte and winpty. If process kill error occurs, it prints the traceback. It uses threading to continuously read from the process and update the display.",
+        "type": "comment"
+    },
+    "1436": {
+        "file_id": 291,
+        "content": "t0.setDaemon(True)\nt0.start()\ndef barkdog():\n    global bark, maxbark_granual\n    while True:\n        bark = 0\n        time.sleep(maxbark_granual)\ntb=threading.Thread(target=barkdog,args=())\ntb.setDaemon(True)\ntb.start()\ndef termdog():\n    global term, maxterm_granual\n    while True:\n        term = 0\n        time.sleep(maxterm_granual)\ntx=threading.Thread(target=termdog,args=())\ntx.setDaemon(True)\ntx.start()\ndef watchdog():\n    global process, watch_rate, port, bark, maxbark\n    alive=True\n    while alive:\n        alive = process.isalive()\n#        print(\"alive?\",alive)\n        time.sleep(watch_rate)\n#    print(\"bark\")\n    bark+=1\n    if bark > maxbark:\n        print(\"max bark exceed.\",bark)\n# what the heck?\n        pass\n    else:\n#        print(\"did get to here\")\n# if server is down this will cause dead shit.\n        requests.get(\"http://localhost:{}/restart\".format(port),stream=False,verify=False,timeout=1)\n# does that work?\n    # if not, call the handler. use requests.\nt1=threading.Thread(target=watchdog,args=())\nt1.setDaemon(True)",
+        "type": "code",
+        "location": "/native/lazero_win10_amd64/mainService/docker_vt100_base.py:71-109"
+    },
+    "1437": {
+        "file_id": 291,
+        "content": "This code sets up three separate threads to monitor and manage a running process. Two of the threads, `barkdog` and `termdog`, are responsible for resetting the `bark` and `term` global variables after certain intervals. The `watchdog` thread continuously checks if the process is still alive and, if not, sends a restart request to the local server. If the maximum bark count is exceeded, it prints a warning message. Lastly, a new thread called `t1` is created to run the `watchdog` function asynchronously.",
+        "type": "comment"
+    },
+    "1438": {
+        "file_id": 291,
+        "content": "t1.start()\nclass RHandler(tornado.web.RequestHandler):\n    def get(self):\n        global process, screen, stream, t0, t1, executable, display, term, maxterm\n        # print(type(process))\n        # print(dir(process))\n        term += 1\n        if term > maxterm:\n            self.write(\"exceeding max termination quota!\\n\")\n        else:\n            kill(process)\n# did it stuck here?\n# nope.\n            for x in [process, screen, stream, t0, t1]:\n                # print(\"deleting\")\n                del x\n            display = \"\"\n            screen = pyte.Screen(cols,rows)\n            stream = pyte.ByteStream(screen)\n            process =  winpty.PtyProcess.spawn([executable],dimensions=(rows,cols))\n            t0=threading.Thread(target=read_to_term,args=())\n            t0.setDaemon(True)\n            t0.start()\n            t1=threading.Thread(target=watchdog,args=())\n            t1.setDaemon(True)\n            t1.start()\n            self.write(\"terminal restart!\\n\")\nclass IHandler(tornado.web.RequestHandler):\n    def get(self):",
+        "type": "code",
+        "location": "/native/lazero_win10_amd64/mainService/docker_vt100_base.py:110-139"
+    },
+    "1439": {
+        "file_id": 291,
+        "content": "This code is part of a Tornado web application. It handles two request handler classes (RHandler and IHandler). RHandler manages the lifecycle of a terminal process, allowing for a maximum number of processes before terminating them. It starts a new process when the maximum limit is not exceeded. IHandler is responsible for serving a simple \"terminal restart!\" message. Both handlers use threading to manage separate processes and communicate with a virtual terminal (pyte). The code also uses winpty for handling Windows terminal sessions.",
+        "type": "comment"
+    },
+    "1440": {
+        "file_id": 291,
+        "content": "        global display, process, lag\n        # print(\"type request received.\")\n        argument = self.get_argument(\"type\",None)\n        argumentx = self.get_argument(\"b64type\",None)\n        # that is for argument!\n        autoreturn = self.get_argument(\"autoreturn\",None) == \"true\"\n        # print(\"actual argument\",[argument],type(argument))\n        # string.\n        if not process.isalive():\n            self.write(\"process is dead.\\n\")\n        elif argument is not None:\n            # unicode.\n            # may encounter error.\n            if autoreturn:\n                # shall be decoded.\n                process.write(argument+\"\\r\") # universal return?\n            else:\n                process.write(argument)\n            time.sleep(lag)\n            self.write(display)\n        elif argumentx is not None:\n            # check if correctly formed.\n# check if not dead.\n            try:\n                arx = base64.b64decode(argumentx).decode(\"utf-8\")\n                # the result is not right.\n                # cannot decode here.",
+        "type": "code",
+        "location": "/native/lazero_win10_amd64/mainService/docker_vt100_base.py:140-166"
+    },
+    "1441": {
+        "file_id": 291,
+        "content": "This code is handling type requests in a process. It checks the type and b64type arguments to determine if the process is alive, then writes the argument (if not None) to the process, and sleeps for a specified lag time before writing the display. If the argument is of type \"b64type\", it decodes it from base64 and attempts to write it. The code also includes error handling in case the decoding fails or if the process is dead.",
+        "type": "comment"
+    },
+    "1442": {
+        "file_id": 291,
+        "content": "                if autoreturn:\n                    process.write(arx+\"\\r\")\n                else:\n                    process.write(arx)\n                    # this is not unicode string.\n                time.sleep(lag)\n                self.write(display)\n            except:\n                self.write(\"incorrect format\\n\")\n                # pass\n                # D:\\Programs\\Python\\Python36\\lib\\site-packages\\winpty\\winpty_wrapper.py\n        else:\n            self.write(\"empty input\\n\")\n            # pass\nclass MainHandler(tornado.web.RequestHandler):\n    def get(self):\n        global display\n        self.write(display)\n    def make_app():\n        return tornado.web.Application([(r\"/display\",MainHandler),(r\"/restart\",RHandler),(r\"/input\",IHandler)])\n# get a window watcher. if want to lock the winsize better use that.\n# why the fuck that the code needs to be compiled? could we just examine the code and prepare for tested binaries?\napp = MainHandler.make_app()\napp.listen(port)\n# here's the shit.\ntornado.ioloop.IOLoop.current().start()",
+        "type": "code",
+        "location": "/native/lazero_win10_amd64/mainService/docker_vt100_base.py:167-193"
+    },
+    "1443": {
+        "file_id": 291,
+        "content": "Code handles input and output for a Tornado web application, creates an instance of the MainHandler class, sets up routes for displaying content on \"/display\" and handling input on \"/input\". It listens on a specified port and starts the IOLoop to handle network connections.",
+        "type": "comment"
+    },
+    "1444": {
+        "file_id": 291,
+        "content": "# register handler.\nexit()",
+        "type": "code",
+        "location": "/native/lazero_win10_amd64/mainService/docker_vt100_base.py:194-195"
+    },
+    "1445": {
+        "file_id": 291,
+        "content": "Registers a handler for the exit event, preventing further code execution when the program is terminated.",
+        "type": "comment"
+    },
+    "1446": {
+        "file_id": 292,
+        "content": "/native/lazero_win10_amd64/mainService/launch_monkey.sh",
+        "type": "filepath"
+    },
+    "1447": {
+        "file_id": 292,
+        "content": "This command is running a Python script named monkey_controller.py within the X virtual framebuffer (Xvfb) environment, which is useful for running GUI tests on headless systems.",
+        "type": "summary"
+    },
+    "1448": {
+        "file_id": 292,
+        "content": "xvfb-run python3 monkey_controller.py",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/mainService/launch_monkey.sh:1-1"
+    },
+    "1449": {
+        "file_id": 292,
+        "content": "This command is running a Python script named monkey_controller.py within the X virtual framebuffer (Xvfb) environment, which is useful for running GUI tests on headless systems.",
+        "type": "comment"
+    },
+    "1450": {
+        "file_id": 293,
+        "content": "/native/lazero_win10_amd64/mainService/launch_monkey_basic.sh",
+        "type": "filepath"
+    },
+    "1451": {
+        "file_id": 293,
+        "content": "The code is running a Python script named monkey\\_basic.py inside an X Virtual Frame Buffer (Xvfb) environment, ensuring the GUI testing functionality runs smoothly.",
+        "type": "summary"
+    },
+    "1452": {
+        "file_id": 293,
+        "content": "xvfb-run python3 monkey_basic.py",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/mainService/launch_monkey_basic.sh:1-1"
+    },
+    "1453": {
+        "file_id": 293,
+        "content": "The code is running a Python script named monkey\\_basic.py inside an X Virtual Frame Buffer (Xvfb) environment, ensuring the GUI testing functionality runs smoothly.",
+        "type": "comment"
+    },
+    "1454": {
+        "file_id": 294,
+        "content": "/native/lazero_win10_amd64/mainService/logic_fuzzer.py",
+        "type": "filepath"
+    },
+    "1455": {
+        "file_id": 294,
+        "content": "The code generates random logic expressions, allows for value swaps and list insertions, and can output a final logic statement. Optimization options are not clear.",
+        "type": "summary"
+    },
+    "1456": {
+        "file_id": 294,
+        "content": "# this is to create custom function via shits.\n# basic binary shits.\n# who can tell?\nimport random\n# we want some basic logic expressions. not just shits.\n# we want our fucking program.\ndef generate_expression(length,complexity=5,brackets=3,join=True):\n    kw =[\"and\", \"or\",\"not\"]\n    assert length > 1 and type(length) == int\n    output = []\n    kw0 = [\"k{}\".format(x) for x in range(length)]\n    br = [\"(\",\")\"]\n    output.append(random.choice(kw0))\n    for x in range(complexity-1):\n        a,b = random.choice(kw0), random.choice(kw)\n        if b == \"not\":\n            output.append(br[0])\n        output.append(b)\n        output.append(a)        \n        if b == \"not\":\n            output.append(br[1])\n#    random.shuffle(kw0)\n#    i=0\n    # we want brackets.\n    # but how to add these shits?\n#    for x in kw0:\n#        output.insert(0+i,x)\n    for x in range(brackets):\n        inds = []\n        for a,b in enumerate(output):\n            if b not in kw:\n                inds.append(a)\n        t0 = random.sample(inds,2)\n        a,b = t0",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/mainService/logic_fuzzer.py:1-36"
+    },
+    "1457": {
+        "file_id": 294,
+        "content": "The code generates a random logic expression with specified length, complexity, and brackets. It uses keyword functions and variables in the form \"k0\" to k(length-1) and includes \"and\", \"or\", \"not\" operators, along with brackets to create complex expressions. The purpose seems to be creating a diverse range of logic expressions for testing or analysis purposes.",
+        "type": "comment"
+    },
+    "1458": {
+        "file_id": 294,
+        "content": "        if a>b:\n            a,b = b,a\n        adjustment = 4\n        output.insert(a,br[0])\n        output.insert(b+adjustment,br[1])\n    return \" \".join(output) if join else output\nif __name__ == \"__main__\":\n    length = 5\n    output = generate_expression(length)\n    # how do we find the optimization function?\n    # how do we change the fucking logic?\n    print(\"target logic:\",output)",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/mainService/logic_fuzzer.py:37-48"
+    },
+    "1459": {
+        "file_id": 294,
+        "content": "This code compares two values, swaps them if necessary, and inserts two elements into a list with specific indices. It then joins the list (optionally) into a string and finally prints a target logic statement. The optimization function and changing the logic remain unclear.",
+        "type": "comment"
+    },
+    "1460": {
+        "file_id": 295,
+        "content": "/native/lazero_win10_amd64/mainService/monkey_basic.py",
+        "type": "filepath"
+    },
+    "1461": {
+        "file_id": 295,
+        "content": "This code imports pyautogui and random libraries to simulate random mouse movements, clicks, and keyboard actions on a computer. It defines functions for each action with optional delay parameters and uses random selection to determine which function to execute each time. The code runs continuously in an infinite loop.",
+        "type": "summary"
+    },
+    "1462": {
+        "file_id": 295,
+        "content": "import pyautogui\nimport random\nimport time\ndef mouseMove(delay=0.2):\n    x,y = pyautogui.size()\n    x0, y0 = random.randint(0,x), random.randint(0,y)\n    print(\"new location:\",x0,y0)\n    pyautogui.moveTo(x0,y0,duration=delay)\ndef mouseClick(delay=0.2):\n    pyautogui.mouseDown()\n    time.sleep(delay)\n    pyautogui.mouseUp()\ndef keyToggle(delay=0.2):\n    keys = pyautogui.KEYBOARD_KEYS\n    k = random.choice(keys)\n    print(\"pressing key:\",k)\n    pyautogui.keyDown(k)\n    time.sleep(delay)\n    pyautogui.keyUp(k)\ndef execute():\n    functions = [mouseMove, mouseClick, keyToggle]\n    f = random.choice(functions)\n    print(\"executing function:\",f.__name__)\n    f()\nif __name__ == \"__main__\":\n    while True:\n        execute()",
+        "type": "code",
+        "location": "/native/lazero_win10_amd64/mainService/monkey_basic.py:1-32"
+    },
+    "1463": {
+        "file_id": 295,
+        "content": "This code imports pyautogui and random libraries to simulate random mouse movements, clicks, and keyboard actions on a computer. It defines functions for each action with optional delay parameters and uses random selection to determine which function to execute each time. The code runs continuously in an infinite loop.",
+        "type": "comment"
+    },
+    "1464": {
+        "file_id": 296,
+        "content": "/native/lazero_win10_amd64/mainService/monkey_controller.py",
+        "type": "filepath"
+    },
+    "1465": {
+        "file_id": 296,
+        "content": "This code is using PyAutoGUI library and randomly selecting functions to execute, providing basic data for algorithm training. It fuzz-tests around the code by choosing random commands from available functions in PyAutoGUI. The purpose is to gather data for advanced algorithms but currently operates in a relatively simple manner.",
+        "type": "summary"
+    },
+    "1466": {
+        "file_id": 296,
+        "content": "# this is the pyautogui version of the monkey, providing our basic data for training.\n# advanced algos will be possible only if we have the data.\n# we go dumb first.\nimport pyautogui\nimport random\n# but first we must fuzz around the code.\ntargets=dir(pyautogui)\nwhile True:\n    t = random.choice(targets)\n    cmd = \"pyautogui.{}\".format(t)\n    print(\"executing command:\",cmd)\n    r = eval(cmd)\n    print(\"result:\",r)\n    # let me know more about the controller.\n    # we do not know the shit yet.",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/mainService/monkey_controller.py:1-15"
+    },
+    "1467": {
+        "file_id": 296,
+        "content": "This code is using PyAutoGUI library and randomly selecting functions to execute, providing basic data for algorithm training. It fuzz-tests around the code by choosing random commands from available functions in PyAutoGUI. The purpose is to gather data for advanced algorithms but currently operates in a relatively simple manner.",
+        "type": "comment"
+    },
+    "1468": {
+        "file_id": 297,
+        "content": "/native/lazero_win10_amd64/mainService/regex_generator.py",
+        "type": "filepath"
+    },
+    "1469": {
+        "file_id": 297,
+        "content": "The code generates random strings of length 7 using a given generator function and checks if they match any valid regular expression. It does this by compiling the generated string into a regex pattern and returning True or False based on its validity. The main loop runs this process 200 times to test various expressions.",
+        "type": "summary"
+    },
+    "1470": {
+        "file_id": 297,
+        "content": "# usually regular expression just contains everything, so we use every shit to develop the regular expression.\nimport random\nimport re\ndef test_regular(expression):\n    try:\n        re.compile(expression)\n        return True\n    except:\n        return False\ndef generate_expression(length=7,generator=lambda: chr(random.randint(0,200))):\n    target=\"\"\n    for _ in range(length):\n        target += generator()\n    return target\nif __name__ == \"__main__\":\n    # undecidable, we never know what the heck will be going on.\n    # cause you don't see it happens.\n    for _ in range(200):\n        g = generate_expression()\n        print(\"expression:\",g,\"isValid:\",test_regular(g))\n# can we build some shit out of our discovery?",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/mainService/generator/regex_generator.py:1-24"
+    },
+    "1471": {
+        "file_id": 297,
+        "content": "The code generates random strings of length 7 using a given generator function and checks if they match any valid regular expression. It does this by compiling the generated string into a regex pattern and returning True or False based on its validity. The main loop runs this process 200 times to test various expressions.",
+        "type": "comment"
+    },
+    "1472": {
+        "file_id": 298,
+        "content": "/native/lazero_win10_amd64/mainService/uniq_filter.py",
+        "type": "filepath"
+    },
+    "1473": {
+        "file_id": 298,
+        "content": "Code reads user inputs and stores unique targets in a list. Continuously looks for new inputs to add to the list, printing new unique targets found.",
+        "type": "summary"
+    },
+    "1474": {
+        "file_id": 298,
+        "content": "#import sys\ntargets=[]\n# this is program database.\nwhile True:\n#    line=sys.stdin.readline()\n    line = input()\n    if line not in targets:\n        targets.append(line)\n        print(\"found uniq target:\\n\",line)",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/mainService/uniq_filter.py:1-9"
+    },
+    "1475": {
+        "file_id": 298,
+        "content": "Code reads user inputs and stores unique targets in a list. Continuously looks for new inputs to add to the list, printing new unique targets found.",
+        "type": "comment"
+    },
+    "1476": {
+        "file_id": 299,
+        "content": "/native/lazero_win10_amd64/mainService/uniq_monkey_launcher.sh",
+        "type": "filepath"
+    },
+    "1477": {
+        "file_id": 299,
+        "content": "This code executes the \"launch_monkey.sh\" script using Bash, then pipes the output to Python3's \"uniq_filter.py\" script for filtering unique results.",
+        "type": "summary"
+    },
+    "1478": {
+        "file_id": 299,
+        "content": "bash launch_monkey.sh | python3 uniq_filter.py",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/mainService/uniq_monkey_launcher.sh:1-1"
+    },
+    "1479": {
+        "file_id": 299,
+        "content": "This code executes the \"launch_monkey.sh\" script using Bash, then pipes the output to Python3's \"uniq_filter.py\" script for filtering unique results.",
+        "type": "comment"
+    },
+    "1480": {
+        "file_id": 300,
+        "content": "/native/lazero_win10_amd64/mkdirs.sh",
+        "type": "filepath"
+    },
+    "1481": {
+        "file_id": 300,
+        "content": "Creates directories for various services and components within the project.",
+        "type": "summary"
+    },
+    "1482": {
+        "file_id": 300,
+        "content": "#!/usr/bin/fish\nmkdir {browserService, eventService, virtualService, shellService, inputService, cognitionService, configClass, tools, replService, mainService, backupService, floatwindow, shareService, init}\ncd virtualService\nmkdir {shellService, inputService, eventService, tools, replService}",
+        "type": "code",
+        "location": "/native/lazero_android_aarch64/mkdirs.sh:1-4"
+    },
+    "1483": {
+        "file_id": 300,
+        "content": "Creates directories for various services and components within the project.",
+        "type": "comment"
+    },
+    "1484": {
+        "file_id": 301,
+        "content": "/native/lazero_win10_amd64/nodejs_require",
+        "type": "filepath"
+    },
+    "1485": {
+        "file_id": 301,
+        "content": "Code includes 'ws' and 'collections', likely used for web sockets communication and data management in a project.",
+        "type": "summary"
+    },
+    "1486": {
+        "file_id": 301,
+        "content": "ws\ncollections",
+        "type": "code",
+        "location": "/native/lazero_win10_amd64/nodejs_require:1-2"
+    },
+    "1487": {
+        "file_id": 301,
+        "content": "Code includes 'ws' and 'collections', likely used for web sockets communication and data management in a project.",
+        "type": "comment"
+    },
+    "1488": {
+        "file_id": 302,
+        "content": "/native/lazero_win10_amd64/replService/chrome_console.js",
+        "type": "filepath"
+    },
+    "1489": {
+        "file_id": 302,
+        "content": "The code creates a Node.js server with WebSocket, manages sessions, and uses readline for input, logging connection details upon successful connection.",
+        "type": "summary"
+    },
+    "1490": {
+        "file_id": 302,
+        "content": "// Print info about Node.JS version\nconsole.log(new Date() + ' | Using Node ' + process.version + ' version to run server');\n// Setting up server.\nconst http = require('http');\nconst server = http.createServer();\nconst port = 4999;\n// Needed for parsing URLs.\nconst url = require('url');\n// Setting WebSockets\nconst WebSocket = require('ws');\nconst wss = new WebSocket.Server({ noServer: true, clientTracking: true });\n// make this shit accessible via cmdline.\n// Needed to generate player ids\n//const uuidv4 = require('uuid/v4');\nvar Set = require(\"collections/set\");\nvar mySet = new Set();\nvar readline = require('readline');\nvar state=true;\nvar index=0;\nvar rl = readline.createInterface(process.stdin, process.stdout);\nrl.setPrompt('select> ');\nrl.prompt();\nrl.on('line', function(line) {\n\ttry{\n\t\tif (state){\nindex=parseInt(line);\nvar inx=mySet.toArray().length\nif (index<inx){\n//var ws =myArr.toArray()[index];\n\t\trl.setPrompt(index+'> ');\n\t\tstate=false;\n\t\trl.prompt();}else{console.log(\"total \"+inx+\" sessions\");}}else{\n\t\t\tvar ws =mySet.toArray()[index];",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/replService/chrome_console.js:2-39"
+    },
+    "1491": {
+        "file_id": 302,
+        "content": "The code sets up a server using Node.js, creates a WebSocket server instance, and uses readline for command-line input. It also manages a set of sessions and prompts the user to select an index from the set of active sessions.",
+        "type": "comment"
+    },
+    "1492": {
+        "file_id": 302,
+        "content": "\t\t\tws.send(line);\nstate=true;\n\t\t\trl.setPrompt('select> ');\n    rl.prompt();\n\t\t}}catch(err){console.log(err);state=true;\n\t\t\trl.setPrompt('select> ');\n\t\t\trl.prompt();\n\t\t}\n}).on('close',function(){\n    process.exit(0);\n});\n// Websocket connection handler.\nwss.on('connection', function connection(ws, request) {\n  console.log(new Date() + ' | A new client is connected.');\n  // Assign player Id to connected client.\n  // Registering player with the session.\nmySet.add(ws);\n\tvar id = mySet.toArray().length;\n\tconsole.log(\"new session joined. now \"+id+\" sessions\");\n  // Sending confirm message to the connected client.\n//  ws.send('print(\"hello world\")');\n  // Handle all messages from users.\n  ws.on('message', function(msgStr) {\n    console.log('Message Received: '+msgStr);\n    // Send back the same message.\n    // ws.send(msgStr);\n  });\n  // What to do when client disconnect?\n  ws.on('close', function(connection) {\n\t  mySet.delete(ws);\n\t  var id = mySet.toArray().length;  \n\t  console.log(\"one session closed. now \"+id+\" sessions\");",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/replService/chrome_console.js:40-75"
+    },
+    "1493": {
+        "file_id": 302,
+        "content": "The code establishes a WebSocket server and manages client connections. It sends messages, tracks the number of sessions, and handles client disconnections.",
+        "type": "comment"
+    },
+    "1494": {
+        "file_id": 302,
+        "content": "    console.log(new Date() + ' | Closing connection for a client.');\n// remove element.\n    // One of the clients has disconnected.\n  });\n});\n// HTTP Server ==> WebSocket upgrade handling:\nserver.on('upgrade', function upgrade(request, socket, head) {\n    console.log(new Date() + ' | Upgrading http connection to wss: url = '+request.url);\n    // Parsing url from the request.\n    var parsedUrl = url.parse(request.url, true, true);\n    const pathname = parsedUrl.pathname\n    console.log(new Date() + ' | Pathname = '+pathname);\n    // If path is valid connect to the websocket.\n    if (pathname === '/chrome_console') {\n      wss.handleUpgrade(request, socket, head, function done(ws) {\nconsole.log(\"add 1 upgraded.\");\n        wss.emit('connection', ws, request);\n      });\n    } else {\n\t    // no fucking destroy!\n      socket.destroy();\n    }\n});\n// On establishing port listener.\nserver.listen(port, function() {\n    console.log(new Date() + ' | Server is listening on port ' + port);\n    // Server is running.\n});",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/replService/chrome_console.js:76-110"
+    },
+    "1495": {
+        "file_id": 302,
+        "content": "Code sets up a WebSocket server, handles client connections and disconnections, and listens on a specified port. Upon successful connection, it logs the date and time along with relevant information about the connection, such as pathname or disconnecting clients.",
+        "type": "comment"
+    },
+    "1496": {
+        "file_id": 303,
+        "content": "/native/lazero_win10_amd64/replService/chrome_console_logger.js",
+        "type": "filepath"
+    },
+    "1497": {
+        "file_id": 303,
+        "content": "The code creates a Node.js server with WebSocket, manages sessions, and uses readline for input, logging connection details upon successful connection.",
+        "type": "summary"
+    },
+    "1498": {
+        "file_id": 303,
+        "content": "// Print info about Node.JS version\nconsole.log(new Date() + ' | Using Node ' + process.version + ' version to run server');\n// Setting up server.\nconst http = require('http');\nconst server = http.createServer();\nconst port = 4999;\n// Needed for parsing URLs.\nconst url = require('url');\n// Setting WebSockets\nconst WebSocket = require('ws');\nconst wss = new WebSocket.Server({ noServer: true, clientTracking: true });\n// make this shit accessible via cmdline.\n// Needed to generate player ids\n//const uuidv4 = require('uuid/v4');\nvar Set = require(\"collections/set\");\nvar mySet = new Set();\nvar readline = require('readline');\nvar state=true;\nvar index=0;\nvar rl = readline.createInterface(process.stdin, process.stdout);\nrl.setPrompt('select> ');\nrl.prompt();\nrl.on('line', function(line) {\n\ttry{\n\t\tif (state){\nindex=parseInt(line);\nvar inx=mySet.toArray().length\nif (index<inx){\n//var ws =myArr.toArray()[index];\n\t\trl.setPrompt(index+'> ');\n\t\tstate=false;\n\t\trl.prompt();}else{console.log(\"total \"+inx+\" sessions\");}}else{\n\t\t\tvar ws =mySet.toArray()[index];",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/replService/chrome_console.js:2-39"
+    },
+    "1499": {
+        "file_id": 303,
+        "content": "The code sets up a server using Node.js, creates a WebSocket server instance, and uses readline for command-line input. It also manages a set of sessions and prompts the user to select an index from the set of active sessions.",
+        "type": "comment"
+    }
+}

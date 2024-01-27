@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="github-markdown.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <title>Project structure of: /x00e0d991e368/metalazero</title>
+    <style>
+        .directory:hover {
+            cursor: pointer;
+            text-decoration: underline;
+        }
+
+        :target {
+            background-color: yellow !important;
+        }
+
+        .folded::before {
+            content: '\25B6';
+            margin-right: 8px;
+            /* Add space between marker and text */
+        }
+
+        .expanded::before {
+            content: '\25BC';
+            margin-right: 8px;
+            /* Add space between marker and text */
+        }
+    </style>
+    <script>
+        function toggleVisibility(element) {
+            let mclass = element.getAttribute("class");
+            if (mclass == "expanded") {
+                element.setAttribute('class', 'folded');
+            } else {
+                element.setAttribute('class', 'expanded');
+            }
+            const siblings = element.parentNode.children;
+            for (const sibling of siblings) {
+                if (sibling !== element) {
+                    sibling.style.display = (sibling.style.display === 'none') ? 'block' : 'none';
+                }
+            }
+        }
+    </script>
+    <style>
+        .markdown-body {
+            box-sizing: border-box;
+            min-width: 200px;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 45px;
+        }
+
+        @media (max-width: 767px) {
+            .markdown-body {
+                padding: 15px;
+            }
+
+            .partial-repository-url {
+                display: none;
+            }
+        }
+
+        ul {
+            list-style: none;
+        }
+        #feeling-lucky:hover{
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <article class="markdown-body">
+        <h2>Project structure<span hierarchy="0" class="partial-repository-url"> of: /x00e0d991e368/metalazero</span><div style="float: right;"><a title="Document index" style="margin:3.5px;" href="index.html"><i class="bi bi-search"></i></a><a title="Feeling lucky" style="margin:3.5px;" id="feeling-lucky" href="#"><i class="bi bi-dice-3"></i></a><a title="Expand tree" style="margin:3.5px;" href="tree.html?full=true" id="expand-tree"><i class="bi bi-caret-down-square"></i></a></div></h2>
+<ul>
+<li><span hierarchy="0" class="expanded" onclick="toggleVisibility(this)" ><strong class="directory" id="/"><code>metalazero</code></strong> <em>AI-powered debugging and IP replacement tools.</em></span><ul>
+<li><span hierarchy="1" class="expanded" onclick="toggleVisibility(this)" ><strong class="directory" id="/browser_plugin/"><code>browser&UnderBar;plugin</code></strong></span><ul>
+<li><span hierarchy="2" class="expanded" onclick="toggleVisibility(this)" ><strong class="directory" id="/browser_plugin/lazero_crx_17_kiwi_ip_change/"><code>lazero&UnderBar;crx&UnderBar;17&UnderBar;kiwi&UnderBar;ip&UnderBar;change</code></strong> <em>Browser plugin for URL, WebSocket debug &amp; IP replacement</em></span><ul>
+<li><a class="file_link" href="index.html?q=/browser_plugin/lazero_crx_17_kiwi_ip_change/background.js" id="/browser_plugin/lazero_crx_17_kiwi_ip_change/background.js"><code>background&period;js</code></a> <em>Browser extension background script for URL interception and WebSocket debugging.</em></li>
+<li><a class="file_link" href="index.html?q=/browser_plugin/lazero_crx_17_kiwi_ip_change/change_ip.sh" id="/browser_plugin/lazero_crx_17_kiwi_ip_change/change_ip.sh"><code>change&UnderBar;ip&period;sh</code></a> <em>Replace "localhost:4999" with target IP in JS files.</em></li>
+<li><a class="file_link" href="index.html?q=/browser_plugin/lazero_crx_17_kiwi_ip_change/content.js" id="/browser_plugin/lazero_crx_17_kiwi_ip_change/content.js"><code>content&period;js</code></a> <em>Content script for browser plugin, checks for words, highlights errors.</em></li>
+<li><a class="file_link" href="index.html?q=/browser_plugin/lazero_crx_17_kiwi_ip_change/dispatch.sh" id="/browser_plugin/lazero_crx_17_kiwi_ip_change/dispatch.sh"><code>dispatch&period;sh</code></a> <em>Script counts files, creates zip with count.</em></li>
+<li><a class="file_link" href="index.html?q=/browser_plugin/lazero_crx_17_kiwi_ip_change/format.sed" id="/browser_plugin/lazero_crx_17_kiwi_ip_change/format.sed"><code>format&period;sed</code></a> <em>Replaces symbols with newlines in files.</em></li>
+<li><a class="file_link" href="index.html?q=/browser_plugin/lazero_crx_17_kiwi_ip_change/format_code.sh" id="/browser_plugin/lazero_crx_17_kiwi_ip_change/format_code.sh"><code>format&UnderBar;code&period;sh</code></a> <em>Formats 'background.js' for readability using sed.</em></li>
+<li><a class="file_link" href="index.html?q=/browser_plugin/lazero_crx_17_kiwi_ip_change/local_dispatch.sh" id="/browser_plugin/lazero_crx_17_kiwi_ip_change/local_dispatch.sh"><code>local&UnderBar;dispatch&period;sh</code></a> <em>Creates new ZIP file with incremented version number</em></li>
+<li><a class="file_link" href="index.html?q=/browser_plugin/lazero_crx_17_kiwi_ip_change/popup.js" id="/browser_plugin/lazero_crx_17_kiwi_ip_change/popup.js"><code>popup&period;js</code></a> <em>Chrome runtime message listener, logs data on "something_completed" messages.</em></li>
+<li><a class="file_link" href="index.html?q=/browser_plugin/lazero_crx_17_kiwi_ip_change/README.md" id="/browser_plugin/lazero_crx_17_kiwi_ip_change/README.md"><code>README&period;md</code></a> <em>Create Chrome extension demo with typo fixes and backup</em></li>
+<li><a class="file_link" href="index.html?q=/browser_plugin/lazero_crx_17_kiwi_ip_change/reformat.sed" id="/browser_plugin/lazero_crx_17_kiwi_ip_change/reformat.sed"><code>reformat&period;sed</code></a> <em>Delete empty lines with regex</em></li>
+<li><a class="file_link" href="index.html?q=/browser_plugin/lazero_crx_17_kiwi_ip_change/reformat.sh" id="/browser_plugin/lazero_crx_17_kiwi_ip_change/reformat.sh"><code>reformat&period;sh</code></a> <em>Reformats 'background.js' using sed instructions</em></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><span hierarchy="1" class="expanded" onclick="toggleVisibility(this)" ><strong class="directory" id="/daemonize_startup/"><code>daemonize&UnderBar;startup</code></strong> <em>Daemonized Linux scripts for system startup.</em></span><ul>
+<li><span hierarchy="2" class="expanded" onclick="toggleVisibility(this)" ><strong class="directory" id="/daemonize_startup/linux_systemd/"><code>linux&UnderBar;systemd</code></strong> <em>Linux Systemd Daemonized Scripts</em></span><ul>
+<li><a class="file_link" href="index.html?q=/daemonize_startup/linux_systemd/discovery_service.service" id="/daemonize_startup/linux_systemd/discovery_service.service"><code>discovery&UnderBar;service&period;service</code></a> <em>Discovers Linux service, Systemd unit file for "simple" startup.</em></li>
+<li><a class="file_link" href="index.html?q=/daemonize_startup/linux_systemd/frp_service.service" id="/daemonize_startup/linux_systemd/frp_service.service"><code>frp&UnderBar;service&period;service</code></a> <em>Installs "trivial_service" with dependencies, scripts, and restart on failure.</em></li>
+<li><a class="file_link" href="index.html?q=/daemonize_startup/linux_systemd/jupyter_service.service" id="/daemonize_startup/linux_systemd/jupyter_service.service"><code>jupyter&UnderBar;service&period;service</code></a> <em>Create Jupyter service unit file for Linux SystemD.</em></li>
+<li><a class="file_link" href="index.html?q=/daemonize_startup/linux_systemd/novnc_service.service" id="/daemonize_startup/linux_systemd/novnc_service.service"><code>novnc&UnderBar;service&period;service</code></a> <em>Systemd service for novnc with script execution and auto-restart.</em></li>
+<li><a class="file_link" href="index.html?q=/daemonize_startup/linux_systemd/render_install_service.py" id="/daemonize_startup/linux_systemd/render_install_service.py"><code>render&UnderBar;install&UnderBar;service&period;py</code></a> <em>Install service from command-line inputs, renders Jinja2 template.</em></li>
+<li><a class="file_link" href="index.html?q=/daemonize_startup/linux_systemd/routine.j2" id="/daemonize_startup/linux_systemd/routine.j2"><code>routine&period;j2</code></a> <em>Daemonizes Linux SystemD service, starts &amp; enables.</em></li>
+<li><a class="file_link" href="index.html?q=/daemonize_startup/linux_systemd/script.sh" id="/daemonize_startup/linux_systemd/script.sh"><code>script&period;sh</code></a> <em>Starts and enables "novnc_service" on Linux systemd.</em></li>
+<li><a class="file_link" href="index.html?q=/daemonize_startup/linux_systemd/template.j2" id="/daemonize_startup/linux_systemd/template.j2"><code>template&period;j2</code></a> <em>Systemd unit file setup for Linux service.</em></li>
+<li><a class="file_link" href="index.html?q=/daemonize_startup/linux_systemd/wifimouse_service.service" id="/daemonize_startup/linux_systemd/wifimouse_service.service"><code>wifimouse&UnderBar;service&period;service</code></a> <em>Systemd service unit file for trivial service with dependencies, restart options, and logging.</em></li>
+<li><a class="file_link" href="index.html?q=/daemonize_startup/linux_systemd/x11vnc_service.service" id="/daemonize_startup/linux_systemd/x11vnc_service.service"><code>x11vnc&UnderBar;service&period;service</code></a> <em>Configures Systemd service for trivial dependency, restarting on failure.</em></li>
+</ul>
+</li>
+<li><a class="file_link" href="index.html?q=/daemonize_startup/README" id="/daemonize_startup/README"><code>README</code></a> <em>Starting program from startup on different systems.</em></li>
+</ul>
+</li>
+<li><span hierarchy="1" class="expanded" onclick="toggleVisibility(this)" ><strong class="directory" id="/native/"><code>native</code></strong> <em>Android AArch64 Native Tools &amp; ChromeOS Testing</em></span><ul>
+<li><span hierarchy="2" class="expanded" onclick="toggleVisibility(this)" ><strong class="directory" id="/native/lazero_android_aarch64/"><code>lazero&UnderBar;android&UnderBar;aarch64</code></strong> <em>Android aarch64 native tools directory</em></span><ul>
+<li><span hierarchy="3" class="expanded" onclick="toggleVisibility(this)" ><strong class="directory" id="/native/lazero_android_aarch64/inputService/"><code>inputService</code></strong> <em>Test scripts for inputService with "123" su command.</em></span><ul>
+<li><a class="file_link" href="index.html?q=/native/lazero_android_aarch64/inputService/autojs_type_test.js" id="/native/lazero_android_aarch64/inputService/autojs_type_test.js"><code>autojs&UnderBar;type&UnderBar;test&period;js</code></a> <em>AutoJS frustration: 1000ms interval, "123" output</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_android_aarch64/inputService/twisted_type_test.py" id="/native/lazero_android_aarch64/inputService/twisted_type_test.py"><code>twisted&UnderBar;type&UnderBar;test&period;py</code></a> <em>Test script: sends "123" 5 times using su command</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_android_aarch64/inputService/type_test.py" id="/native/lazero_android_aarch64/inputService/type_test.py"><code>type&UnderBar;test&period;py</code></a> <em>Test input service: su command with "123" input.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_android_aarch64/inputService/type_test.sh" id="/native/lazero_android_aarch64/inputService/type_test.sh"><code>type&UnderBar;test&period;sh</code></a> <em>Switches to su mode, inputs "123" with MagiskSU.</em></li>
+</ul>
+</li>
+<li><a class="file_link" href="index.html?q=/native/lazero_android_aarch64/mkdirs.sh" id="/native/lazero_android_aarch64/mkdirs.sh"><code>mkdirs&period;sh</code></a> <em>Creates directories for services/components</em></li>
+<li><span hierarchy="3" class="expanded" onclick="toggleVisibility(this)" ><strong class="directory" id="/native/lazero_android_aarch64/tools/"><code>tools</code></strong> <em>Android AArch64 process management and location tools.</em></span><ul>
+<li><a class="file_link" href="index.html?q=/native/lazero_android_aarch64/tools/twisted_template.py" id="/native/lazero_android_aarch64/tools/twisted_template.py"><code>twisted&UnderBar;template&period;py</code></a> <em>Windows process management tool with buffering and event handling.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_android_aarch64/tools/where.py" id="/native/lazero_android_aarch64/tools/where.py"><code>where&period;py</code></a> <em>Find executable location tool for Android AArch64.</em></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><span hierarchy="2" class="expanded" onclick="toggleVisibility(this)" ><strong class="directory" id="/native/lazero_chromeos_aarch64/"><code>lazero&UnderBar;chromeos&UnderBar;aarch64</code></strong> <em>Test and discover network devices on ChromeOS AArch64.</em></span><ul>
+<li><span hierarchy="3" class="expanded" onclick="toggleVisibility(this)" ><strong class="directory" id="/native/lazero_chromeos_aarch64/cognitionService/"><code>cognitionService</code></strong> <em>Cognition service scripts/tools for ChromeOS AArch64.</em></span><ul>
+<li><a class="file_link" href="index.html?q=/native/lazero_chromeos_aarch64/cognitionService/check_attribute.py" id="/native/lazero_chromeos_aarch64/cognitionService/check_attribute.py"><code>check&UnderBar;attribute&period;py</code></a> <em>Checks "parse" attribute names.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_chromeos_aarch64/cognitionService/get_commands.sh" id="/native/lazero_chromeos_aarch64/cognitionService/get_commands.sh"><code>get&UnderBar;commands&period;sh</code></a> <em>Bash script, autocomplete options.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_chromeos_aarch64/cognitionService/get_targets.sh" id="/native/lazero_chromeos_aarch64/cognitionService/get_targets.sh"><code>get&UnderBar;targets&period;sh</code></a> <em>Script gathers Windows IPs, feeds to Python script for potential attack.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_chromeos_aarch64/cognitionService/hacking_service.py" id="/native/lazero_chromeos_aarch64/cognitionService/hacking_service.py"><code>hacking&UnderBar;service&period;py</code></a> <em>Hack service: Nmap scan tool.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_chromeos_aarch64/cognitionService/mysql_randomly.py" id="/native/lazero_chromeos_aarch64/cognitionService/mysql_randomly.py"><code>mysql&UnderBar;randomly&period;py</code></a> <em>Randomly connects to MySQL via SSH.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_chromeos_aarch64/cognitionService/ssh_randomly.py" id="/native/lazero_chromeos_aarch64/cognitionService/ssh_randomly.py"><code>ssh&UnderBar;randomly&period;py</code></a> <em>Random SSH attempts with hardcoded password</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_chromeos_aarch64/cognitionService/test_commands.py" id="/native/lazero_chromeos_aarch64/cognitionService/test_commands.py"><code>test&UnderBar;commands&period;py</code></a> <em>Test commands script for cognition service.</em></li>
+</ul>
+</li>
+<li><span hierarchy="3" class="expanded" onclick="toggleVisibility(this)" ><strong class="directory" id="/native/lazero_chromeos_aarch64/eventService/"><code>eventService</code></strong></span><ul>
+<li><a class="file_link" href="index.html?q=/native/lazero_chromeos_aarch64/eventService/placeholder.sh" id="/native/lazero_chromeos_aarch64/eventService/placeholder.sh"><code>placeholder&period;sh</code></a> <em>ChromeOS relies on Chrome, automates with API.</em></li>
+</ul>
+</li>
+<li><span hierarchy="3" class="expanded" onclick="toggleVisibility(this)" ><strong class="directory" id="/native/lazero_chromeos_aarch64/inputService/"><code>inputService</code></strong> <em>Testing ChromeOS AutoJS input service functionality.</em></span><ul>
+<li><a class="file_link" href="index.html?q=/native/lazero_chromeos_aarch64/inputService/autojs_type_test.js" id="/native/lazero_chromeos_aarch64/inputService/autojs_type_test.js"><code>autojs&UnderBar;type&UnderBar;test&period;js</code></a> <em>AutoJS instability test, continuous "123" output</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_chromeos_aarch64/inputService/placeholder.sh" id="/native/lazero_chromeos_aarch64/inputService/placeholder.sh"><code>placeholder&period;sh</code></a> <em>Automate ChromeOS via Chrome API.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_chromeos_aarch64/inputService/twisted_type_test.py" id="/native/lazero_chromeos_aarch64/inputService/twisted_type_test.py"><code>twisted&UnderBar;type&UnderBar;test&period;py</code></a> <em>Test script for input service in twisted process.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_chromeos_aarch64/inputService/type_test.py" id="/native/lazero_chromeos_aarch64/inputService/type_test.py"><code>type&UnderBar;test&period;py</code></a> <em>Input test for subprocess 'su' command.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_chromeos_aarch64/inputService/type_test.sh" id="/native/lazero_chromeos_aarch64/inputService/type_test.sh"><code>type&UnderBar;test&period;sh</code></a> <em>MagiskSU switches to su mode, inputs "123".</em></li>
+</ul>
+</li>
+<li><a class="file_link" href="index.html?q=/native/lazero_chromeos_aarch64/mkdirs.sh" id="/native/lazero_chromeos_aarch64/mkdirs.sh"><code>mkdirs&period;sh</code></a> <em>Creates directories for services and components.</em></li>
+<li><span hierarchy="3" class="expanded" onclick="toggleVisibility(this)" ><strong class="directory" id="/native/lazero_chromeos_aarch64/shareService/"><code>shareService</code></strong></span><ul>
+<li><a class="file_link" href="index.html?q=/native/lazero_chromeos_aarch64/shareService/README" id="/native/lazero_chromeos_aarch64/shareService/README"><code>README</code></a> <em>Discovering network devices in Termux challenging due to IP mappings.</em></li>
+</ul>
+</li>
+<li><span hierarchy="3" class="expanded" onclick="toggleVisibility(this)" ><strong class="directory" id="/native/lazero_chromeos_aarch64/tools/"><code>tools</code></strong> <em>ChromeOS AArch64 development tools</em></span><ul>
+<li><a class="file_link" href="index.html?q=/native/lazero_chromeos_aarch64/tools/twisted_template.py" id="/native/lazero_chromeos_aarch64/tools/twisted_template.py"><code>twisted&UnderBar;template&period;py</code></a> <em>Windows process manager with Twisted template.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_chromeos_aarch64/tools/where.py" id="/native/lazero_chromeos_aarch64/tools/where.py"><code>where&period;py</code></a> <em>Find executable file locations in system path.</em></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><span hierarchy="2" class="expanded" onclick="toggleVisibility(this)" ><strong class="directory" id="/native/lazero_kali_amd64/"><code>lazero&UnderBar;kali&UnderBar;amd64</code></strong> <em>Native Kali AMD64 tools and libraries.</em></span><ul>
+<li><span hierarchy="3" class="expanded" onclick="toggleVisibility(this)" ><strong class="directory" id="/native/lazero_kali_amd64/cognitionService/"><code>cognitionService</code></strong> <em>Installable, GCC-powered, virtualized cognition services in Kali AMD64 with TF, NLTK command interactivity.</em></span><ul>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/cognitionService/change_gcc.sh" id="/native/lazero_kali_amd64/cognitionService/change_gcc.sh"><code>change&UnderBar;gcc&period;sh</code></a> <em>Replace 'abc' executable with 'abc-8' version.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/cognitionService/chatbot_study.py" id="/native/lazero_kali_amd64/cognitionService/chatbot_study.py"><code>chatbot&UnderBar;study&period;py</code></a> <em>Explores info processing, models, and sharing.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/cognitionService/deltaWrapper.py" id="/native/lazero_kali_amd64/cognitionService/deltaWrapper.py"><code>deltaWrapper&period;py</code></a> <em>Waits for input, prints time and line. No prediction or analysis.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/cognitionService/init.sh" id="/native/lazero_kali_amd64/cognitionService/init.sh"><code>init&period;sh</code></a> <em>Installs "python3-preshed" package.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/cognitionService/interaction_0.py" id="/native/lazero_kali_amd64/cognitionService/interaction_0.py"><code>interaction&UnderBar;0&period;py</code></a> <em>Interactive shell script with continuous input and output.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/cognitionService/interaction_1.py" id="/native/lazero_kali_amd64/cognitionService/interaction_1.py"><code>interaction&UnderBar;1&period;py</code></a> <em>Automated script sending commands indefinitely</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/cognitionService/interaction_2.py" id="/native/lazero_kali_amd64/cognitionService/interaction_2.py"><code>interaction&UnderBar;2&period;py</code></a> <em>Shell interaction with string selection and delay.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/cognitionService/interaction_3.py" id="/native/lazero_kali_amd64/cognitionService/interaction_3.py"><code>interaction&UnderBar;3&period;py</code></a> <em>Randomly sends commands, receives responses. Continues indefinitely.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/cognitionService/prepare_gcc_alternatives.sh" id="/native/lazero_kali_amd64/cognitionService/prepare_gcc_alternatives.sh"><code>prepare&UnderBar;gcc&UnderBar;alternatives&period;sh</code></a> <em>Setup GCC/G++ alternatives for Linux.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/cognitionService/recover_gcc.sh" id="/native/lazero_kali_amd64/cognitionService/recover_gcc.sh"><code>recover&UnderBar;gcc&period;sh</code></a> <em>Recovers GCC binaries by linking older versions.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/cognitionService/requirements.txt" id="/native/lazero_kali_amd64/cognitionService/requirements.txt"><code>requirements&period;txt</code></a> <em>Project requirements: nltk, tensorflow-gpu, keras.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/cognitionService/shellConnect.py" id="/native/lazero_kali_amd64/cognitionService/shellConnect.py"><code>shellConnect&period;py</code></a> <em>Python script fetches data, sends inputs with optional autorestart.</em></li>
+<li><span hierarchy="4" class="expanded" onclick="toggleVisibility(this)" ><strong class="directory" id="/native/lazero_kali_amd64/cognitionService/virtual/"><code>virtual</code></strong> <em>Virtualized cognition services in Kali AMD64.</em></span><ul>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/cognitionService/virtual/add_global_js_module.sh" id="/native/lazero_kali_amd64/cognitionService/virtual/add_global_js_module.sh"><code>add&UnderBar;global&UnderBar;js&UnderBar;module&period;sh</code></a> <em>Adds Node.js module path for Termux users</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/cognitionService/virtual/add_melpa.sh" id="/native/lazero_kali_amd64/cognitionService/virtual/add_melpa.sh"><code>add&UnderBar;melpa&period;sh</code></a> <em>Add Melpa packages to Emacs config.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/cognitionService/virtual/adv.el" id="/native/lazero_kali_amd64/cognitionService/virtual/adv.el"><code>adv&period;el</code></a> <em>Emacs code handles buffers, hooks, and binding with potential issues.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/cognitionService/virtual/adv.sh" id="/native/lazero_kali_amd64/cognitionService/virtual/adv.sh"><code>adv&period;sh</code></a> <em>Initiates Emacs with scripts for text editing and LSP support.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/cognitionService/virtual/adv2.el" id="/native/lazero_kali_amd64/cognitionService/virtual/adv2.el"><code>adv2&period;el</code></a> <em>Emacs LSP integration, minibuffer input macro.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/cognitionService/virtual/async.el" id="/native/lazero_kali_amd64/cognitionService/virtual/async.el"><code>async&period;el</code></a> <em>Asynchronous Elisp code with timer and example function.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/cognitionService/virtual/async.sh" id="/native/lazero_kali_amd64/cognitionService/virtual/async.sh"><code>async&period;sh</code></a> <em>Automates tasks with async.el in Emacs using --script and -l options</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/cognitionService/virtual/batch_mode.sh" id="/native/lazero_kali_amd64/cognitionService/virtual/batch_mode.sh"><code>batch&UnderBar;mode&period;sh</code></a> <em>Emacs batch mode, packages init, LSP completion cache.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/cognitionService/virtual/clean.sh" id="/native/lazero_kali_amd64/cognitionService/virtual/clean.sh"><code>clean&period;sh</code></a> <em>Removes ".hi" and ".o" files, likely cleaning compiled items.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/cognitionService/virtual/client.el" id="/native/lazero_kali_amd64/cognitionService/virtual/client.el"><code>client&period;el</code></a> <em>LSP setup for Emacs with workspace, disabled idle delay, and config functions.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/cognitionService/virtual/client.sh" id="/native/lazero_kali_amd64/cognitionService/virtual/client.sh"><code>client&period;sh</code></a> <em>Emacs client setup with load, function calls, and navigation.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/cognitionService/virtual/client_lambda.sh" id="/native/lazero_kali_amd64/cognitionService/virtual/client_lambda.sh"><code>client&UnderBar;lambda&period;sh</code></a> <em>Emacs client script finds "lsp.sh" info</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/cognitionService/virtual/client_let.sh" id="/native/lazero_kali_amd64/cognitionService/virtual/client_let.sh"><code>client&UnderBar;let&period;sh</code></a> <em>Launch Emacs, execute Lisp code, open lsp.sh for editing.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/cognitionService/virtual/client_list.sh" id="/native/lazero_kali_amd64/cognitionService/virtual/client_list.sh"><code>client&UnderBar;list&period;sh</code></a> <em>Executes Emacs Lisp commands, lists files and prints buffers.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/cognitionService/virtual/client_multiline.sh" id="/native/lazero_kali_amd64/cognitionService/virtual/client_multiline.sh"><code>client&UnderBar;multiline&period;sh</code></a> <em>Emacs client script for Lisp commands and buffer management.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/cognitionService/virtual/client_print.el" id="/native/lazero_kali_amd64/cognitionService/virtual/client_print.el"><code>client&UnderBar;print&period;el</code></a> <em>Displays LSP completions at cursor position.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/cognitionService/virtual/client_print.sh" id="/native/lazero_kali_amd64/cognitionService/virtual/client_print.sh"><code>client&UnderBar;print&period;sh</code></a> <em>Load Lisp functions, evaluate expressions, print 'hello'.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/cognitionService/virtual/client_progn.sh" id="/native/lazero_kali_amd64/cognitionService/virtual/client_progn.sh"><code>client&UnderBar;progn&period;sh</code></a> <em>Runs Lisp script, sets buffer to "lsp.sh", prints "hello" and "world".</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/cognitionService/virtual/client_with_current_buffer.sh" id="/native/lazero_kali_amd64/cognitionService/virtual/client_with_current_buffer.sh"><code>client&UnderBar;with&UnderBar;current&UnderBar;buffer&period;sh</code></a> <em>Emacs Lisp command execution through emacsclient.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/cognitionService/virtual/codium_debug.js" id="/native/lazero_kali_amd64/cognitionService/virtual/codium_debug.js"><code>codium&UnderBar;debug&period;js</code></a> <em>WebSocket, random numbers, logging, event handler</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/cognitionService/virtual/codium_debug.sh" id="/native/lazero_kali_amd64/cognitionService/virtual/codium_debug.sh"><code>codium&UnderBar;debug&period;sh</code></a> <em>Debugs Node.js with codium_debug.js and NODE_PATH set to /usr/local/lib/node_modules.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/cognitionService/virtual/cog_core.bsh" id="/native/lazero_kali_amd64/cognitionService/virtual/cog_core.bsh"><code>cog&UnderBar;core&period;bsh</code></a> <em>String manipulation, method printing, class exploration.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/cognitionService/virtual/cog_core.c" id="/native/lazero_kali_amd64/cognitionService/virtual/cog_core.c"><code>cog&UnderBar;core&period;c</code></a> <em>Finds substring position in a string.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/cognitionService/virtual/cog_core.el" id="/native/lazero_kali_amd64/cognitionService/virtual/cog_core.el"><code>cog&UnderBar;core&period;el</code></a> <em>Lisp code snippet demonstrates pattern matching with regular expressions.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/cognitionService/virtual/cog_core.erl" id="/native/lazero_kali_amd64/cognitionService/virtual/cog_core.erl"><code>cog&UnderBar;core&period;erl</code></a> <em>"hello world" code checks for word "world" and prints 1 or 0.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/cognitionService/virtual/cog_core.go" id="/native/lazero_kali_amd64/cognitionService/virtual/cog_core.go"><code>cog&UnderBar;core&period;go</code></a> <em>Imports fmt, strings, reflect; checks substring presence and accesses type info.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/cognitionService/virtual/cog_core.hs" id="/native/lazero_kali_amd64/cognitionService/virtual/cog_core.hs"><code>cog&UnderBar;core&period;hs</code></a> <em>Conditionally prints "Hello World" based on infix check.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/cognitionService/virtual/cog_core.java" id="/native/lazero_kali_amd64/cognitionService/virtual/cog_core.java"><code>cog&UnderBar;core&period;java</code></a> <em>Cog_core: Checks if 'abc' or '123' in a.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/cognitionService/virtual/cog_core.js" id="/native/lazero_kali_amd64/cognitionService/virtual/cog_core.js"><code>cog&UnderBar;core&period;js</code></a> <em>Inspects object properties and prints names.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/cognitionService/virtual/cog_core.lisp" id="/native/lazero_kali_amd64/cognitionService/virtual/cog_core.lisp"><code>cog&UnderBar;core&period;lisp</code></a> <em>Searches "emacs" in "emacs_lisp", prints result.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/cognitionService/virtual/cog_core.lua" id="/native/lazero_kali_amd64/cognitionService/virtual/cog_core.lua"><code>cog&UnderBar;core&period;lua</code></a> <em>Finds "world" in "hello world", then prints indices and metatable.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/cognitionService/virtual/cog_core.m" id="/native/lazero_kali_amd64/cognitionService/virtual/cog_core.m"><code>cog&UnderBar;core&period;m</code></a> <em>Imports, logs "Hello, World!"</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/cognitionService/virtual/cog_core.php" id="/native/lazero_kali_amd64/cognitionService/virtual/cog_core.php"><code>cog&UnderBar;core&period;php</code></a> <em>Checks if "This" is in string</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/cognitionService/virtual/cog_core.pl" id="/native/lazero_kali_amd64/cognitionService/virtual/cog_core.pl"><code>cog&UnderBar;core&period;pl</code></a> <em>Checks if $two is in $one.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/cognitionService/virtual/cog_core.pro" id="/native/lazero_kali_amd64/cognitionService/virtual/cog_core.pro"><code>cog&UnderBar;core&period;pro</code></a> <em>Checks if string is substring using Prolog.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/cognitionService/virtual/cog_core.py" id="/native/lazero_kali_amd64/cognitionService/virtual/cog_core.py"><code>cog&UnderBar;core&period;py</code></a> <em>PySWIP substring check, list attributes.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/cognitionService/virtual/cog_core.rb" id="/native/lazero_kali_amd64/cognitionService/virtual/cog_core.rb"><code>cog&UnderBar;core&period;rb</code></a> <em>Ruby code prints index value, methods, and global variables.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/cognitionService/virtual/cog_core.rs" id="/native/lazero_kali_amd64/cognitionService/virtual/cog_core.rs"><code>cog&UnderBar;core&period;rs</code></a> <em>Checks if second string contains all chars of the first.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/cognitionService/virtual/cog_core.sh" id="/native/lazero_kali_amd64/cognitionService/virtual/cog_core.sh"><code>cog&UnderBar;core&period;sh</code></a> <em>Script checks if "Ubuntu is a Linux OS" contains "Linux".</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/cognitionService/virtual/cog_core.swift" id="/native/lazero_kali_amd64/cognitionService/virtual/cog_core.swift"><code>cog&UnderBar;core&period;swift</code></a> <em>Checks if character 'c' in "hello Swift" exists</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/cognitionService/virtual/cog_core.tcl" id="/native/lazero_kali_amd64/cognitionService/virtual/cog_core.tcl"><code>cog&UnderBar;core&period;tcl</code></a> <em>Checks last char of "bxxxcxxx" for "xxfx"</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/cognitionService/virtual/company2.el" id="/native/lazero_kali_amd64/cognitionService/virtual/company2.el"><code>company2&period;el</code></a> <em>Setup company mode with async-await and Eglot.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/cognitionService/virtual/company2.sh" id="/native/lazero_kali_amd64/cognitionService/virtual/company2.sh"><code>company2&period;sh</code></a> <em>Loads Emacs, runs company2.el script with two approaches.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/cognitionService/virtual/compile.sh" id="/native/lazero_kali_amd64/cognitionService/virtual/compile.sh"><code>compile&period;sh</code></a> <em>Compiles and runs cog_core Java bytecode.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/cognitionService/virtual/connect_websocketd_ielm.py" id="/native/lazero_kali_amd64/cognitionService/virtual/connect_websocketd_ielm.py"><code>connect&UnderBar;websocketd&UnderBar;ielm&period;py</code></a> <em>WebSocket client connects, sends "Hello, Server", times out after 2 seconds</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/cognitionService/virtual/deltaWrapper.py" id="/native/lazero_kali_amd64/cognitionService/virtual/deltaWrapper.py"><code>deltaWrapper&period;py</code></a> <em>Continuously reading input, printing time and line.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/cognitionService/virtual/echo_server.el" id="/native/lazero_kali_amd64/cognitionService/virtual/echo_server.el"><code>echo&UnderBar;server&period;el</code></a> <em>Emacs echo server management functions</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/cognitionService/virtual/echo_server.sh" id="/native/lazero_kali_amd64/cognitionService/virtual/echo_server.sh"><code>echo&UnderBar;server&period;sh</code></a> <em>Emacs editor with echo server configuration</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/cognitionService/virtual/ecl_run.sh" id="/native/lazero_kali_amd64/cognitionService/virtual/ecl_run.sh"><code>ecl&UnderBar;run&period;sh</code></a> <em>ECL shell launches "cog_core.lisp" script</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/cognitionService/virtual/edit.sh" id="/native/lazero_kali_amd64/cognitionService/virtual/edit.sh"><code>edit&period;sh</code></a> <em>Open Vim with "edit.vim" script.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/cognitionService/virtual/edit.vim" id="/native/lazero_kali_amd64/cognitionService/virtual/edit.vim"><code>edit&period;vim</code></a> <em>Interacting Vim editor with "hello" messages and line numbering.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/cognitionService/virtual/eserv.py" id="/native/lazero_kali_amd64/cognitionService/virtual/eserv.py"><code>eserv&period;py</code></a> <em>Emacs batch mode Lisp evaluator, prints 'hello' error with "(lsp)"</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/cognitionService/virtual/eval_server.el" id="/native/lazero_kali_amd64/cognitionService/virtual/eval_server.el"><code>eval&UnderBar;server&period;el</code></a> <em>Echo server with logging functionality.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/cognitionService/virtual/eval_single_line.sh" id="/native/lazero_kali_amd64/cognitionService/virtual/eval_single_line.sh"><code>eval&UnderBar;single&UnderBar;line&period;sh</code></a> <em>Emacs LSP configuration with real-time completion and cache checking.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/cognitionService/virtual/fuzz.py" id="/native/lazero_kali_amd64/cognitionService/virtual/fuzz.py"><code>fuzz&period;py</code></a> <em>Python script generating all possible command combinations</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/cognitionService/virtual/gen_comp.sh" id="/native/lazero_kali_amd64/cognitionService/virtual/gen_comp.sh"><code>gen&UnderBar;comp&period;sh</code></a> <em>Generate Bash script completions using compgen.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/cognitionService/virtual/get_complete.el" id="/native/lazero_kali_amd64/cognitionService/virtual/get_complete.el"><code>get&UnderBar;complete&period;el</code></a> <em>Writes candidates to log.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/cognitionService/virtual/hello" id="/native/lazero_kali_amd64/cognitionService/virtual/hello"><code>hello</code></a> <em>Code snippet placeholder, requires context for functionality.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/cognitionService/virtual/ielm_server.sh" id="/native/lazero_kali_amd64/cognitionService/virtual/ielm_server.sh"><code>ielm&UnderBar;server&period;sh</code></a> <em>Launches Emacs, continuously evaluates user-input expressions.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/cognitionService/virtual/init_emacs.el" id="/native/lazero_kali_amd64/cognitionService/virtual/init_emacs.el"><code>init&UnderBar;emacs&period;el</code></a> <em>Emacs init script installs 'lsp-mode' and 'company' using package.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/cognitionService/virtual/interaction_0.py" id="/native/lazero_kali_amd64/cognitionService/virtual/interaction_0.py"><code>interaction&UnderBar;0&period;py</code></a> <em>Processor class, get/set methods, continuous connection restarts.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/cognitionService/virtual/interaction_1.py" id="/native/lazero_kali_amd64/cognitionService/virtual/interaction_1.py"><code>interaction&UnderBar;1&period;py</code></a> <em>Continuously inputs "Hello world" and displays response.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/cognitionService/virtual/json_rpc.sh" id="/native/lazero_kali_amd64/cognitionService/virtual/json_rpc.sh"><code>json&UnderBar;rpc&period;sh</code></a> <em>Executes JSON-RPC POST request at localhost:7658.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/cognitionService/virtual/launch_c_lsp.sh" id="/native/lazero_kali_amd64/cognitionService/virtual/launch_c_lsp.sh"><code>launch&UnderBar;c&UnderBar;lsp&period;sh</code></a> <em>Automate C/C++ code analysis with ccls script.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/cognitionService/virtual/launch_codium_debugger.sh" id="/native/lazero_kali_amd64/cognitionService/virtual/launch_codium_debugger.sh"><code>launch&UnderBar;codium&UnderBar;debugger&period;sh</code></a> <em>Launch Codium debugger, port 9999 with inspect extensions.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/cognitionService/virtual/launch_websocketd_ielm.sh" id="/native/lazero_kali_amd64/cognitionService/virtual/launch_websocketd_ielm.sh"><code>launch&UnderBar;websocketd&UnderBar;ielm&period;sh</code></a> <em>Launch websocketd, start ielm_server.sh.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/cognitionService/virtual/lsp.el" id="/native/lazero_kali_amd64/cognitionService/virtual/lsp.el"><code>lsp&period;el</code></a> <em>Eglot setup for Emacs with modes and functions</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/cognitionService/virtual/lsp.sh" id="/native/lazero_kali_amd64/cognitionService/virtual/lsp.sh"><code>lsp&period;sh</code></a> <em>Emacs sets up LSP script execution.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/cognitionService/virtual/make.sh" id="/native/lazero_kali_amd64/cognitionService/virtual/make.sh"><code>make&period;sh</code></a> <em>Compiles Haskell source with dependencies, produces executable.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/cognitionService/virtual/nedit.sh" id="/native/lazero_kali_amd64/cognitionService/virtual/nedit.sh"><code>nedit&period;sh</code></a> <em>Open headless Neovim with script support</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/cognitionService/virtual/nedit.vim" id="/native/lazero_kali_amd64/cognitionService/virtual/nedit.vim"><code>nedit&period;vim</code></a> <em>Echoes, displays, sets, inspects, quits Vim commands.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/cognitionService/virtual/node_curl_telnet.js" id="/native/lazero_kali_amd64/cognitionService/virtual/node_curl_telnet.js"><code>node&UnderBar;curl&UnderBar;telnet&period;js</code></a> <em>Curl process connects, logs, writes "hello" periodically.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/cognitionService/virtual/node_curl_telnet.sh" id="/native/lazero_kali_amd64/cognitionService/virtual/node_curl_telnet.sh"><code>node&UnderBar;curl&UnderBar;telnet&period;sh</code></a> <em>Shell script for Node.js with CURL and Telnet capabilities</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/cognitionService/virtual/node_curl_telnet.template" id="/native/lazero_kali_amd64/cognitionService/virtual/node_curl_telnet.template"><code>node&UnderBar;curl&UnderBar;telnet&period;template</code></a> <em>Curl server listens Telnet, child processes, logging.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/cognitionService/virtual/node_curl_template.sh" id="/native/lazero_kali_amd64/cognitionService/virtual/node_curl_template.sh"><code>node&UnderBar;curl&UnderBar;template&period;sh</code></a> <em>Iteratively generates node_curl_telnet_*.js with Bash scripting and Python</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/cognitionService/virtual/node_curl_template2.sh" id="/native/lazero_kali_amd64/cognitionService/virtual/node_curl_template2.sh"><code>node&UnderBar;curl&UnderBar;template2&period;sh</code></a> <em>Executes pure_fuzz.py and replaces TEMPLATE with "abc" in node_curl_telnet.template.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/cognitionService/virtual/nserv.py" id="/native/lazero_kali_amd64/cognitionService/virtual/nserv.py"><code>nserv&period;py</code></a> <em>Python script for remote editing with pynvim.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/cognitionService/virtual/nserv.sh" id="/native/lazero_kali_amd64/cognitionService/virtual/nserv.sh"><code>nserv&period;sh</code></a> <em>Headless Neovim editor on localhost 9897 for programmatic interaction.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/cognitionService/virtual/objc_compile.sh" id="/native/lazero_kali_amd64/cognitionService/virtual/objc_compile.sh"><code>objc&UnderBar;compile&period;sh</code></a> <em>Compiles "cog_core.m" for native iOS-like Kali Linux environment.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/cognitionService/virtual/post_data.el" id="/native/lazero_kali_amd64/cognitionService/virtual/post_data.el"><code>post&UnderBar;data&period;el</code></a> <em>Posts data with key-value pairs to localhost:8786/post.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/cognitionService/virtual/post_data.sh" id="/native/lazero_kali_amd64/cognitionService/virtual/post_data.sh"><code>post&UnderBar;data&period;sh</code></a> <em>Automates Emacs tasks for cognition service virtual environment.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/cognitionService/virtual/processes.js" id="/native/lazero_kali_amd64/cognitionService/virtual/processes.js"><code>processes&period;js</code></a> <em>Terminate given process forcefully</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/cognitionService/virtual/pure_fuzz.py" id="/native/lazero_kali_amd64/cognitionService/virtual/pure_fuzz.py"><code>pure&UnderBar;fuzz&period;py</code></a> <em>Potential flags generated using character combinations</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/cognitionService/virtual/python_complete.py" id="/native/lazero_kali_amd64/cognitionService/virtual/python_complete.py"><code>python&UnderBar;complete&period;py</code></a> <em>Python script adds numpy array to itself</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/cognitionService/virtual/python_lsp.sh" id="/native/lazero_kali_amd64/cognitionService/virtual/python_lsp.sh"><code>python&UnderBar;lsp&period;sh</code></a> <em>Autocomplete Python script using pyls and jedi.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/cognitionService/virtual/python_rpc_lsp.py" id="/native/lazero_kali_amd64/cognitionService/virtual/python_rpc_lsp.py"><code>python&UnderBar;rpc&UnderBar;lsp&period;py</code></a> <em>Continuously printing JSON-RPC request to restart Solargraph server with random parameter.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/cognitionService/virtual/README" id="/native/lazero_kali_amd64/cognitionService/virtual/README"><code>README</code></a> <em>Install webtelnet, alias nvim, explore similar tools</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/cognitionService/virtual/recv.py" id="/native/lazero_kali_amd64/cognitionService/virtual/recv.py"><code>recv&period;py</code></a> <em>Infinite loop, reads lines from stdin with buffer method.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/cognitionService/virtual/reflection.el" id="/native/lazero_kali_amd64/cognitionService/virtual/reflection.el"><code>reflection&period;el</code></a> <em>Performs function search, prints names, docs, atoms, load-history.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/cognitionService/virtual/reflection.sh" id="/native/lazero_kali_amd64/cognitionService/virtual/reflection.sh"><code>reflection&period;sh</code></a> <em>Open Emacs with "reflection.el" for Lisp editing/operations.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/cognitionService/virtual/ruby_api_list.rb" id="/native/lazero_kali_amd64/cognitionService/virtual/ruby_api_list.rb"><code>ruby&UnderBar;api&UnderBar;list&period;rb</code></a> <em>Ruby API list: Retrieves 'String' class methods.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/cognitionService/virtual/run.sh" id="/native/lazero_kali_amd64/cognitionService/virtual/run.sh"><code>run&period;sh</code></a> <em>Runs Java jar with BeanShell scripting language.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/cognitionService/virtual/server.el" id="/native/lazero_kali_amd64/cognitionService/virtual/server.el"><code>server&period;el</code></a> <em>Server deletion, socket directory set, idle timer function.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/cognitionService/virtual/server.sh" id="/native/lazero_kali_amd64/cognitionService/virtual/server.sh"><code>server&period;sh</code></a> <em>Launch Emacs with flags to execute "server.el" script.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/cognitionService/virtual/shellConnect.py" id="/native/lazero_kali_amd64/cognitionService/virtual/shellConnect.py"><code>shellConnect&period;py</code></a> <em>Shell script for cognition service interactions</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/cognitionService/virtual/stdio_jsonrpc.js" id="/native/lazero_kali_amd64/cognitionService/virtual/stdio_jsonrpc.js"><code>stdio&UnderBar;jsonrpc&period;js</code></a> <em>stdio jsonrpc, handles notifications, sends ping/pong requests</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/cognitionService/virtual/stdio_jsonrpc.sh" id="/native/lazero_kali_amd64/cognitionService/virtual/stdio_jsonrpc.sh"><code>stdio&UnderBar;jsonrpc&period;sh</code></a> <em>Sets NODE_PATH and launches script.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/cognitionService/virtual/tee_rcsh.rc" id="/native/lazero_kali_amd64/cognitionService/virtual/tee_rcsh.rc"><code>tee&UnderBar;rcsh&period;rc</code></a> <em>Bash language server setup with separate logs for rcshell.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/cognitionService/virtual/telnet_client.el" id="/native/lazero_kali_amd64/cognitionService/virtual/telnet_client.el"><code>telnet&UnderBar;client&period;el</code></a> <em>Telnet client connects, filters, logs 'hello world'</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/cognitionService/virtual/telnet_client.sh" id="/native/lazero_kali_amd64/cognitionService/virtual/telnet_client.sh"><code>telnet&UnderBar;client&period;sh</code></a> <em>Launch Emacs with telnet client script.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/cognitionService/virtual/telnetlib_connect.py" id="/native/lazero_kali_amd64/cognitionService/virtual/telnetlib_connect.py"><code>telnetlib&UnderBar;connect&period;py</code></a> <em>Telnet connects, sends "hello", gets response.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/cognitionService/virtual/test.sh" id="/native/lazero_kali_amd64/cognitionService/virtual/test.sh"><code>test&period;sh</code></a> <em>Bash script prints "hello" to terminal and logs output.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/cognitionService/virtual/transmit_bashls.py" id="/native/lazero_kali_amd64/cognitionService/virtual/transmit_bashls.py"><code>transmit&UnderBar;bashls&period;py</code></a> <em>Initialize and send debug request to VSCode server.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/cognitionService/virtual/transmit_bashls.sh" id="/native/lazero_kali_amd64/cognitionService/virtual/transmit_bashls.sh"><code>transmit&UnderBar;bashls&period;sh</code></a> <em>Executes script, pipes output into bash-language-server.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/cognitionService/virtual/transmit_js_ipc.js" id="/native/lazero_kali_amd64/cognitionService/virtual/transmit_js_ipc.js"><code>transmit&UnderBar;js&UnderBar;ipc&period;js</code></a> <em>Child process communication setup with error handling, JavaScript completion.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/cognitionService/virtual/transmit_js_ipc.py" id="/native/lazero_kali_amd64/cognitionService/virtual/transmit_js_ipc.py"><code>transmit&UnderBar;js&UnderBar;ipc&period;py</code></a> <em>Real-time command input and printing</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/cognitionService/virtual/transmit_js_tee.js" id="/native/lazero_kali_amd64/cognitionService/virtual/transmit_js_tee.js"><code>transmit&UnderBar;js&UnderBar;tee&period;js</code></a> <em>Handles VSCode logs, server processes, errors, and messaging connections.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/cognitionService/virtual/transmit_pyls.py" id="/native/lazero_kali_amd64/cognitionService/virtual/transmit_pyls.py"><code>transmit&UnderBar;pyls&period;py</code></a> <em>Initialize JSON-RPC request with method "initialize"</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/cognitionService/virtual/transmit_pyls.sh" id="/native/lazero_kali_amd64/cognitionService/virtual/transmit_pyls.sh"><code>transmit&UnderBar;pyls&period;sh</code></a> <em>Transmits data to language servers via scripts.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/cognitionService/virtual/transmit_pyls_legacy.py" id="/native/lazero_kali_amd64/cognitionService/virtual/transmit_pyls_legacy.py"><code>transmit&UnderBar;pyls&UnderBar;legacy&period;py</code></a> <em>Sets vars a, b, c; prints strings in sequence.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/cognitionService/virtual/vscode_baremetal.py" id="/native/lazero_kali_amd64/cognitionService/virtual/vscode_baremetal.py"><code>vscode&UnderBar;baremetal&period;py</code></a> <em>Repeated JSONRPC shutdown requests with 1-second intervals.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/cognitionService/virtual/vscode_client_lsp.js" id="/native/lazero_kali_amd64/cognitionService/virtual/vscode_client_lsp.js"><code>vscode&UnderBar;client&UnderBar;lsp&period;js</code></a> <em>Visual Studio Code LSP client initialization.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/cognitionService/virtual/vscode_client_lsp.sh" id="/native/lazero_kali_amd64/cognitionService/virtual/vscode_client_lsp.sh"><code>vscode&UnderBar;client&UnderBar;lsp&period;sh</code></a> <em>Executes VS Code LSP client script in Linux-based Kali.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/cognitionService/virtual/vscode_ipc.js" id="/native/lazero_kali_amd64/cognitionService/virtual/vscode_ipc.js"><code>vscode&UnderBar;ipc&period;js</code></a> <em>VSCode bash language server communication with child processes, streams, and modules.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/cognitionService/virtual/vscode_ipc.sh" id="/native/lazero_kali_amd64/cognitionService/virtual/vscode_ipc.sh"><code>vscode&UnderBar;ipc&period;sh</code></a> <em>Running Node.js script in VS Code IPC, Kali Linux, AMD64</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/cognitionService/virtual/vscode_ipc2.js" id="/native/lazero_kali_amd64/cognitionService/virtual/vscode_ipc2.js"><code>vscode&UnderBar;ipc2&period;js</code></a> <em>VSCode IDE connects with language server using child processes.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/cognitionService/virtual/vscode_ipc3.js" id="/native/lazero_kali_amd64/cognitionService/virtual/vscode_ipc3.js"><code>vscode&UnderBar;ipc3&period;js</code></a> <em>Language Server Communication Setup and Request Handling</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/cognitionService/virtual/vscode_lsp.js" id="/native/lazero_kali_amd64/cognitionService/virtual/vscode_lsp.js"><code>vscode&UnderBar;lsp&period;js</code></a> <em>VSCode LSP connection setup and initialization.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/cognitionService/virtual/websocket_client_app.py" id="/native/lazero_kali_amd64/cognitionService/virtual/websocket_client_app.py"><code>websocket&UnderBar;client&UnderBar;app&period;py</code></a> <em>WebSocket client app on localhost 9998.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/cognitionService/virtual/websocket_test_server.py" id="/native/lazero_kali_amd64/cognitionService/virtual/websocket_test_server.py"><code>websocket&UnderBar;test&UnderBar;server&period;py</code></a> <em>WebSocket server, sends "thanks" thrice, runs forever.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/cognitionService/virtual/with_message_hook.el" id="/native/lazero_kali_amd64/cognitionService/virtual/with_message_hook.el"><code>with&UnderBar;message&UnderBar;hook&period;el</code></a> <em>Emacs module tracks email changes and updates markers.</em></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/debug_init.sh" id="/native/lazero_kali_amd64/debug_init.sh"><code>debug&UnderBar;init&period;sh</code></a> <em>Kills, launches virtual service, blocking.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/emacs_require" id="/native/lazero_kali_amd64/emacs_require"><code>emacs&UnderBar;require</code></a> <em>Emacs config: requiring packages for enhanced features.</em></li>
+<li><span hierarchy="3" class="expanded" onclick="toggleVisibility(this)" ><strong class="directory" id="/native/lazero_kali_amd64/eventService/"><code>eventService</code></strong> <em>Event service for keylogger server, port 5000, file handling</em></span><ul>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/eventService/chrome_receive.js" id="/native/lazero_kali_amd64/eventService/chrome_receive.js"><code>chrome&UnderBar;receive&period;js</code></a> <em>Chrome server, GET/POST, file writing, POST logging, port 5000</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/eventService/emacs_receive.js" id="/native/lazero_kali_amd64/eventService/emacs_receive.js"><code>emacs&UnderBar;receive&period;js</code></a> <em>Emacs server for HTTP requests, writes files, handles URLs, logs info.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/eventService/keylog_server.py" id="/native/lazero_kali_amd64/eventService/keylog_server.py"><code>keylog&UnderBar;server&period;py</code></a> <em>Keylogger, queue, threaded logging</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/eventService/keylogger.py" id="/native/lazero_kali_amd64/eventService/keylogger.py"><code>keylogger&period;py</code></a> <em>Keylogger implementation using pynput library</em></li>
+</ul>
+</li>
+<li><span hierarchy="3" class="expanded" onclick="toggleVisibility(this)" ><strong class="directory" id="/native/lazero_kali_amd64/mainService/"><code>mainService</code></strong> <em>Docker monitoring, Tornado web app for JSON file evaluation and Python testing tool with fault protection. Unsupervised pen testing script with filtering.</em></span><ul>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/mainService/docker_monkey.py" id="/native/lazero_kali_amd64/mainService/docker_monkey.py"><code>docker&UnderBar;monkey&period;py</code></a> <em>Automated Docker command execution and output monitoring.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/mainService/docker_vt100_base.py" id="/native/lazero_kali_amd64/mainService/docker_vt100_base.py"><code>docker&UnderBar;vt100&UnderBar;base&period;py</code></a> <em>Alpine container, Windows server, Tornado web app.</em></li>
+<li><span hierarchy="4" class="expanded" onclick="toggleVisibility(this)" ><strong class="directory" id="/native/lazero_kali_amd64/mainService/evaluator/"><code>evaluator</code></strong></span><ul>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/mainService/evaluator/prepare.py" id="/native/lazero_kali_amd64/mainService/evaluator/prepare.py"><code>prepare&period;py</code></a> <em>Prepares executable files from JSON data.</em></li>
+</ul>
+</li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/mainService/filter_common_pattern.py" id="/native/lazero_kali_amd64/mainService/filter_common_pattern.py"><code>filter&UnderBar;common&UnderBar;pattern&period;py</code></a> <em>Filter common patterns from lines.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/mainService/filter_python_bullshits.sh" id="/native/lazero_kali_amd64/mainService/filter_python_bullshits.sh"><code>filter&UnderBar;python&UnderBar;bullshits&period;sh</code></a> <em>Executes Python program multiple times, filters output.</em></li>
+<li><span hierarchy="4" class="expanded" onclick="toggleVisibility(this)" ><strong class="directory" id="/native/lazero_kali_amd64/mainService/generator/"><code>generator</code></strong> <em>Advanced Python program generator, recursive fault protection, regex validation.</em></span><ul>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/mainService/generator/program_generator.sh" id="/native/lazero_kali_amd64/mainService/generator/program_generator.sh"><code>program&UnderBar;generator&period;sh</code></a> <em>Creates new files from 'programs.log' entries.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/mainService/generator/python_program_generator.py" id="/native/lazero_kali_amd64/mainService/generator/python_program_generator.py"><code>python&UnderBar;program&UnderBar;generator&period;py</code></a> <em>Python program generator with error handling and recursive fault protection.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/mainService/generator/regex_generator.py" id="/native/lazero_kali_amd64/mainService/generator/regex_generator.py"><code>regex&UnderBar;generator&period;py</code></a> <em>Random string generator with regex validation.</em></li>
+</ul>
+</li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/mainService/launch_monkey.sh" id="/native/lazero_kali_amd64/mainService/launch_monkey.sh"><code>launch&UnderBar;monkey&period;sh</code></a> <em>Runs GUI tests on headless systems with Xvfb.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/mainService/launch_monkey_basic.sh" id="/native/lazero_kali_amd64/mainService/launch_monkey_basic.sh"><code>launch&UnderBar;monkey&UnderBar;basic&period;sh</code></a> <em>Runs Python script in Xvfb for GUI testing.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/mainService/logic_fuzzer.py" id="/native/lazero_kali_amd64/mainService/logic_fuzzer.py"><code>logic&UnderBar;fuzzer&period;py</code></a> <em>Generate random logic expressions, swap values, insert lists.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/mainService/monkey_basic.py" id="/native/lazero_kali_amd64/mainService/monkey_basic.py"><code>monkey&UnderBar;basic&period;py</code></a> <em>Monkey Python script with mouse &amp; keyboard functions</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/mainService/monkey_controller.py" id="/native/lazero_kali_amd64/mainService/monkey_controller.py"><code>monkey&UnderBar;controller&period;py</code></a> <em>Fuzz-testing PyAutoGUI with random commands for algorithm data.</em></li>
+<li><span hierarchy="4" class="expanded" onclick="toggleVisibility(this)" ><strong class="directory" id="/native/lazero_kali_amd64/mainService/problem_generator/"><code>problem&UnderBar;generator</code></strong></span><ul>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/mainService/problem_generator/README" id="/native/lazero_kali_amd64/mainService/problem_generator/README"><code>README</code></a> <em>Unique problem sets for effective training. Start from scratch, avoid relying on standards.</em></li>
+</ul>
+</li>
+<li><span hierarchy="4" class="expanded" onclick="toggleVisibility(this)" ><strong class="directory" id="/native/lazero_kali_amd64/mainService/program_database/"><code>program&UnderBar;database</code></strong> <em>Native Kali Python scripts with database ops and service programming.</em></span><ul>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/mainService/program_database/launch.sh" id="/native/lazero_kali_amd64/mainService/program_database/launch.sh"><code>launch&period;sh</code></a> <em>Launch script for Python database operations.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/mainService/program_database/python_database.py" id="/native/lazero_kali_amd64/mainService/program_database/python_database.py"><code>python&UnderBar;database&period;py</code></a> <em>Python SQLite database creation, queries, exception handling.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/mainService/program_database/python_monkey.py" id="/native/lazero_kali_amd64/mainService/program_database/python_monkey.py"><code>python&UnderBar;monkey&period;py</code></a> <em>Monkey program generator, prints random expressions.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/mainService/program_database/python_monkey_database.py" id="/native/lazero_kali_amd64/mainService/program_database/python_monkey_database.py"><code>python&UnderBar;monkey&UnderBar;database&period;py</code></a> <em>Random Python expressions generator and storage.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/mainService/program_database/README" id="/native/lazero_kali_amd64/mainService/program_database/README"><code>README</code></a> <em>Essential starting point for program development.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/mainService/program_database/requirements.txt" id="/native/lazero_kali_amd64/mainService/program_database/requirements.txt"><code>requirements&period;txt</code></a> <em>Python project requirements: apsw, pysqlite3 (py2 compatibility)</em></li>
+</ul>
+</li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/mainService/README" id="/native/lazero_kali_amd64/mainService/README"><code>README</code></a> <em>Cognition core, learning targets, and performance optimization in a virtual environment.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/mainService/target_basic.py" id="/native/lazero_kali_amd64/mainService/target_basic.py"><code>target&UnderBar;basic&period;py</code></a> <em>Manipulates tuples for observer.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/mainService/tee_shell.sh" id="/native/lazero_kali_amd64/mainService/tee_shell.sh"><code>tee&UnderBar;shell&period;sh</code></a> <em>Executes, appends stdout to inputs.log, stderr to outputs.log.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/mainService/torch_monkey.sh" id="/native/lazero_kali_amd64/mainService/torch_monkey.sh"><code>torch&UnderBar;monkey&period;sh</code></a> <em>Continuously launches VNC monkey and bruteforcer with timeouts.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/mainService/uniq_filter.py" id="/native/lazero_kali_amd64/mainService/uniq_filter.py"><code>uniq&UnderBar;filter&period;py</code></a> <em>Unique target list generator</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/mainService/uniq_monkey_launcher.sh" id="/native/lazero_kali_amd64/mainService/uniq_monkey_launcher.sh"><code>uniq&UnderBar;monkey&UnderBar;launcher&period;sh</code></a> <em>Executes "launch_monkey.sh" and filters unique results with Python3's "uniq_filter.py".</em></li>
+<li><span hierarchy="4" class="expanded" onclick="toggleVisibility(this)" ><strong class="directory" id="/native/lazero_kali_amd64/mainService/unsupervised_neural_network/"><code>unsupervised&UnderBar;neural&UnderBar;network</code></strong></span><ul>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/mainService/unsupervised_neural_network/README" id="/native/lazero_kali_amd64/mainService/unsupervised_neural_network/README"><code>README</code></a> <em>Neural network with meta-targets, non-random high-level initialization</em></li>
+</ul>
+</li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/mainService/vnc_bruteforcer.py" id="/native/lazero_kali_amd64/mainService/vnc_bruteforcer.py"><code>vnc&UnderBar;bruteforcer&period;py</code></a> <em>VNC bruteforcer script for password cracking.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/mainService/vnc_monkey.py" id="/native/lazero_kali_amd64/mainService/vnc_monkey.py"><code>vnc&UnderBar;monkey&period;py</code></a> <em>Automated VNC mouse and keyboard actions.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/mainService/xdo_torch_monkey.sh" id="/native/lazero_kali_amd64/mainService/xdo_torch_monkey.sh"><code>xdo&UnderBar;torch&UnderBar;monkey&period;sh</code></a> <em>Retrieve X auth file, set env vars, perform mouse move with xdotool. No VNC.</em></li>
+</ul>
+</li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/mkdirs.sh" id="/native/lazero_kali_amd64/mkdirs.sh"><code>mkdirs&period;sh</code></a> <em>Creates directories for project components.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/nodejs_require" id="/native/lazero_kali_amd64/nodejs_require"><code>nodejs&UnderBar;require</code></a> <em>Dependencies for programming project, handling sockets and data structures.</em></li>
+<li><span hierarchy="3" class="expanded" onclick="toggleVisibility(this)" ><strong class="directory" id="/native/lazero_kali_amd64/replService/"><code>replService</code></strong> <em>WebSocket server, session management, readline input, and logging</em></span><ul>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/replService/chrome_console.js" id="/native/lazero_kali_amd64/replService/chrome_console.js"><code>chrome&UnderBar;console&period;js</code></a> <em>Node server with WebSocket, sessions, readline input, and logging</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/replService/chrome_console_logger.js" id="/native/lazero_kali_amd64/replService/chrome_console_logger.js"><code>chrome&UnderBar;console&UnderBar;logger&period;js</code></a> <em>WebSocket server, session management, readline input, logging.</em></li>
+</ul>
+</li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/rmtest.sh" id="/native/lazero_kali_amd64/rmtest.sh"><code>rmtest&period;sh</code></a> <em>Remove chrome directories recursively.</em></li>
+<li><span hierarchy="3" class="expanded" onclick="toggleVisibility(this)" ><strong class="directory" id="/native/lazero_kali_amd64/shellService/"><code>shellService</code></strong> <em>WebXFS script, server, libraries, process management, and web app features in Kali AMD64 shellService directory.</em></span><ul>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/shellService/ptyproc.py" id="/native/lazero_kali_amd64/shellService/ptyproc.py"><code>ptyproc&period;py</code></a> <em>Python module with server, libraries, process management, and web application features.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/shellService/pyte_template.py" id="/native/lazero_kali_amd64/shellService/pyte_template.py"><code>pyte&UnderBar;template&period;py</code></a> <em>Pyte terminal class with feed and display methods.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/shellService/webXFS.py" id="/native/lazero_kali_amd64/shellService/webXFS.py"><code>webXFS&period;py</code></a> <em>WebXFS script: connect, wait, print output. Launches process, writes commands, sleeps, exits on termination.</em></li>
+</ul>
+</li>
+<li><span hierarchy="3" class="expanded" onclick="toggleVisibility(this)" ><strong class="directory" id="/native/lazero_kali_amd64/tools/"><code>tools</code></strong> <em>Tools for stack, queue handling, unique filenames in Kali Linux.</em></span><ul>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/tools/exec_all.py" id="/native/lazero_kali_amd64/tools/exec_all.py"><code>exec&UnderBar;all&period;py</code></a> <em>Executes all files in directory as scripts.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/tools/python_namespace.py" id="/native/lazero_kali_amd64/tools/python_namespace.py"><code>python&UnderBar;namespace&period;py</code></a> <em>Python namespace tool.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/tools/stackMe.py" id="/native/lazero_kali_amd64/tools/stackMe.py"><code>stackMe&period;py</code></a> <em>Stack and queue handling class with size operations.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/tools/uuid_fname.py" id="/native/lazero_kali_amd64/tools/uuid_fname.py"><code>uuid&UnderBar;fname&period;py</code></a> <em>Generates unique filenames using UUIDs.</em></li>
+</ul>
+</li>
+<li><span hierarchy="3" class="expanded" onclick="toggleVisibility(this)" ><strong class="directory" id="/native/lazero_kali_amd64/virtualService/"><code>virtualService</code></strong> <em>Secure virtual tool for Kali Linux automation, shellService component.</em></span><ul>
+<li><span hierarchy="4" class="expanded" onclick="toggleVisibility(this)" ><strong class="directory" id="/native/lazero_kali_amd64/virtualService/shellService/"><code>shellService</code></strong></span><ul>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/virtualService/shellService/ptyproc.py" id="/native/lazero_kali_amd64/virtualService/shellService/ptyproc.py"><code>ptyproc&period;py</code></a> <em>Windows module, process spawning &amp; termination, threading, Tornado web handler.</em></li>
+</ul>
+</li>
+<li><span hierarchy="4" class="expanded" onclick="toggleVisibility(this)" ><strong class="directory" id="/native/lazero_kali_amd64/virtualService/tools/"><code>tools</code></strong></span><ul>
+<li><span hierarchy="5" class="expanded" onclick="toggleVisibility(this)" ><strong class="directory" id="/native/lazero_kali_amd64/virtualService/tools/sandserv/"><code>sandserv</code></strong> <em>Secure virtual tool for Kali Linux automation</em></span><ul>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/virtualService/tools/sandserv/52-basic-load.py" id="/native/lazero_kali_amd64/virtualService/tools/sandserv/52-basic-load.py"><code>52-basic-load&period;py</code></a> <em>Seccomp library test script for controlling system calls</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/virtualService/tools/sandserv/52_immortal.py" id="/native/lazero_kali_amd64/virtualService/tools/sandserv/52_immortal.py"><code>52&UnderBar;immortal&period;py</code></a> <em>Seccomp Library test program with exception rule.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/virtualService/tools/sandserv/argtest.sh" id="/native/lazero_kali_amd64/virtualService/tools/sandserv/argtest.sh"><code>argtest&period;sh</code></a> <em>Arg count check script</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/virtualService/tools/sandserv/chroot.sh" id="/native/lazero_kali_amd64/virtualService/tools/sandserv/chroot.sh"><code>chroot&period;sh</code></a> <em>Create chroot environment with proot and execute shell script.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/virtualService/tools/sandserv/command_x64.sh" id="/native/lazero_kali_amd64/virtualService/tools/sandserv/command_x64.sh"><code>command&UnderBar;x64&period;sh</code></a> <em>Isolate command execution with proot.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/virtualService/tools/sandserv/efilter.py" id="/native/lazero_kali_amd64/virtualService/tools/sandserv/efilter.py"><code>efilter&period;py</code></a> <em>Processes input lines, removes specified elements.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/virtualService/tools/sandserv/gkill.sh" id="/native/lazero_kali_amd64/virtualService/tools/sandserv/gkill.sh"><code>gkill&period;sh</code></a> <em>Bash script finds and kills selected processes.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/virtualService/tools/sandserv/incage.sh" id="/native/lazero_kali_amd64/virtualService/tools/sandserv/incage.sh"><code>incage&period;sh</code></a> <em>Incage.sh: Restricts system calls with seccomp rules.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/virtualService/tools/sandserv/loadmulti.sh" id="/native/lazero_kali_amd64/virtualService/tools/sandserv/loadmulti.sh"><code>loadmulti&period;sh</code></a> <em>Unloads instances, creates multiserv directory and mounts tmpfs filesystem.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/virtualService/tools/sandserv/loadram.sh" id="/native/lazero_kali_amd64/virtualService/tools/sandserv/loadram.sh"><code>loadram&period;sh</code></a> <em>Loads RAM disk and sets up tmpfs</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/virtualService/tools/sandserv/mclean.sh" id="/native/lazero_kali_amd64/virtualService/tools/sandserv/mclean.sh"><code>mclean&period;sh</code></a> <em>Removes all files from specified directory with sudo and xargs.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/virtualService/tools/sandserv/multichroot.sh" id="/native/lazero_kali_amd64/virtualService/tools/sandserv/multichroot.sh"><code>multichroot&period;sh</code></a> <em>Bash script creates chroot environment with proot.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/virtualService/tools/sandserv/multiclean.sh" id="/native/lazero_kali_amd64/virtualService/tools/sandserv/multiclean.sh"><code>multiclean&period;sh</code></a> <em>Script for cleaning multiple service instances.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/virtualService/tools/sandserv/multikill.sh" id="/native/lazero_kali_amd64/virtualService/tools/sandserv/multikill.sh"><code>multikill&period;sh</code></a> <em>Kills processes matching argument using top command.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/virtualService/tools/sandserv/multipty.py" id="/native/lazero_kali_amd64/virtualService/tools/sandserv/multipty.py"><code>multipty&period;py</code></a> <em>Multipty: Tornado web server, multiple instances, virtual terminals.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/virtualService/tools/sandserv/multipurge.sh" id="/native/lazero_kali_amd64/virtualService/tools/sandserv/multipurge.sh"><code>multipurge&period;sh</code></a> <em>Multipurge script: Lists, terminates, unloads, deletes multiserv.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/virtualService/tools/sandserv/multiram.sh" id="/native/lazero_kali_amd64/virtualService/tools/sandserv/multiram.sh"><code>multiram&period;sh</code></a> <em>Script checks args, unloads RAM, creates &amp; mounts tmpfs directory</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/virtualService/tools/sandserv/multireload.sh" id="/native/lazero_kali_amd64/virtualService/tools/sandserv/multireload.sh"><code>multireload&period;sh</code></a> <em>Restarts multiple programs, manages files and permissions.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/virtualService/tools/sandserv/multiroot.sh" id="/native/lazero_kali_amd64/virtualService/tools/sandserv/multiroot.sh"><code>multiroot&period;sh</code></a> <em>Multiroot setup script with unionfs, permission checks.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/virtualService/tools/sandserv/multiterm.sh" id="/native/lazero_kali_amd64/virtualService/tools/sandserv/multiterm.sh"><code>multiterm&period;sh</code></a> <em>Run multiple scripts sequentially with valid args.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/virtualService/tools/sandserv/multiunloadram.sh" id="/native/lazero_kali_amd64/virtualService/tools/sandserv/multiunloadram.sh"><code>multiunloadram&period;sh</code></a> <em>Unmounts and removes specified ramdisk directory.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/virtualService/tools/sandserv/multiunloadroot.sh" id="/native/lazero_kali_amd64/virtualService/tools/sandserv/multiunloadroot.sh"><code>multiunloadroot&period;sh</code></a> <em>Multiunloadroot: umount, ls, rm operations for directory removal.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/virtualService/tools/sandserv/nchroot.sh" id="/native/lazero_kali_amd64/virtualService/tools/sandserv/nchroot.sh"><code>nchroot&period;sh</code></a> <em>Create chroot environment with proot and isolated process.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/virtualService/tools/sandserv/normal_shell.py" id="/native/lazero_kali_amd64/virtualService/tools/sandserv/normal_shell.py"><code>normal&UnderBar;shell&period;py</code></a> <em>Access normal shell within script's context.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/virtualService/tools/sandserv/nsjail_reloadscript_x64.sh" id="/native/lazero_kali_amd64/virtualService/tools/sandserv/nsjail_reloadscript_x64.sh"><code>nsjail&UnderBar;reloadscript&UnderBar;x64&period;sh</code></a> <em>Reloads system, mounts filesystems, executes scripts, sets permissions.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/virtualService/tools/sandserv/pivot.sh" id="/native/lazero_kali_amd64/virtualService/tools/sandserv/pivot.sh"><code>pivot&period;sh</code></a> <em>Launches bash in containerized environment, using nsjail.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/virtualService/tools/sandserv/ptyproc.py" id="/native/lazero_kali_amd64/virtualService/tools/sandserv/ptyproc.py"><code>ptyproc&period;py</code></a> <em>Virtual terminal for process management with Tornado, Flask</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/virtualService/tools/sandserv/ptyproc_x64.py" id="/native/lazero_kali_amd64/virtualService/tools/sandserv/ptyproc_x64.py"><code>ptyproc&UnderBar;x64&period;py</code></a> <em>Manages terminal within web app via Tornado, requests</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/virtualService/tools/sandserv/README" id="/native/lazero_kali_amd64/virtualService/tools/sandserv/README"><code>README</code></a> <em>Troubleshooting low-priv user x64 DNS issues</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/virtualService/tools/sandserv/reloadscript.sh" id="/native/lazero_kali_amd64/virtualService/tools/sandserv/reloadscript.sh"><code>reloadscript&period;sh</code></a> <em>Prepares Linux environment, manages services.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/virtualService/tools/sandserv/reloadscript_x64.sh" id="/native/lazero_kali_amd64/virtualService/tools/sandserv/reloadscript_x64.sh"><code>reloadscript&UnderBar;x64&period;sh</code></a> <em>Reloads system commands after mount checks.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/virtualService/tools/sandserv/runas.sh" id="/native/lazero_kali_amd64/virtualService/tools/sandserv/runas.sh"><code>runas&period;sh</code></a> <em>Runs commands as user 10144 with sudo in Kali Linux.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/virtualService/tools/sandserv/tclean.sh" id="/native/lazero_kali_amd64/virtualService/tools/sandserv/tclean.sh"><code>tclean&period;sh</code></a> <em>Clears 'ramdisk' directory for fresh start.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/virtualService/tools/sandserv/terminate.sh" id="/native/lazero_kali_amd64/virtualService/tools/sandserv/terminate.sh"><code>terminate&period;sh</code></a> <em>Terminates program processes, cleans up resources. Uses top, grep, xargs kill.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/virtualService/tools/sandserv/tloadroot.sh" id="/native/lazero_kali_amd64/virtualService/tools/sandserv/tloadroot.sh"><code>tloadroot&period;sh</code></a> <em>Loads Kali Linux rootfs using unionfs for security.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/virtualService/tools/sandserv/tloadroot_x64.sh" id="/native/lazero_kali_amd64/virtualService/tools/sandserv/tloadroot_x64.sh"><code>tloadroot&UnderBar;x64&period;sh</code></a> <em>Automates root creation with unionfs and detects changes.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/virtualService/tools/sandserv/treloadroot.sh" id="/native/lazero_kali_amd64/virtualService/tools/sandserv/treloadroot.sh"><code>treloadroot&period;sh</code></a> <em>Runs tunloadroot.sh, sets root permissions, uses unionfs for execution.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/virtualService/tools/sandserv/treloadroot_x64.sh" id="/native/lazero_kali_amd64/virtualService/tools/sandserv/treloadroot_x64.sh"><code>treloadroot&UnderBar;x64&period;sh</code></a> <em>Creates writable unionfs root with bindfs.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/virtualService/tools/sandserv/tsimple_jail.sh" id="/native/lazero_kali_amd64/virtualService/tools/sandserv/tsimple_jail.sh"><code>tsimple&UnderBar;jail&period;sh</code></a> <em>Chroot env with proot, permissions, bind mounts, unset LD_PRELOAD.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/virtualService/tools/sandserv/tsimple_jail_x64.sh" id="/native/lazero_kali_amd64/virtualService/tools/sandserv/tsimple_jail_x64.sh"><code>tsimple&UnderBar;jail&UnderBar;x64&period;sh</code></a> <em>Set up secure environment for command execution.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/virtualService/tools/sandserv/tunloadroot.sh" id="/native/lazero_kali_amd64/virtualService/tools/sandserv/tunloadroot.sh"><code>tunloadroot&period;sh</code></a> <em>Root directory removal tool, use with caution.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/virtualService/tools/sandserv/unloadmulti.sh" id="/native/lazero_kali_amd64/virtualService/tools/sandserv/unloadmulti.sh"><code>unloadmulti&period;sh</code></a> <em>Unloads empty multiserv directories, warns of symlinks issues.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/virtualService/tools/sandserv/unloadram.sh" id="/native/lazero_kali_amd64/virtualService/tools/sandserv/unloadram.sh"><code>unloadram&period;sh</code></a> <em>Unmounts and removes 'ramdisk' directory, frees memory.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_kali_amd64/virtualService/tools/sandserv/util.py" id="/native/lazero_kali_amd64/virtualService/tools/sandserv/util.py"><code>util&period;py</code></a> <em>Python utility for libseccomp test suite with signal, argparse handling.</em></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><span hierarchy="2" class="expanded" onclick="toggleVisibility(this)" ><strong class="directory" id="/native/lazero_win10_amd64/"><code>lazero&UnderBar;win10&UnderBar;amd64</code></strong> <em>Native Windows 10 AMD64 Lazarus GUI testing suite.</em></span><ul>
+<li><span hierarchy="3" class="expanded" onclick="toggleVisibility(this)" ><strong class="directory" id="/native/lazero_win10_amd64/cognitionService/"><code>cognitionService</code></strong> <em>Automated cognitive service loops. Cross-platform, error logging.</em></span><ul>
+<li><a class="file_link" href="index.html?q=/native/lazero_win10_amd64/cognitionService/deltaWrapper.py" id="/native/lazero_win10_amd64/cognitionService/deltaWrapper.py"><code>deltaWrapper&period;py</code></a> <em>Continuously reads input, prints time and line. No prediction or relationship analysis.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_win10_amd64/cognitionService/interaction_0.py" id="/native/lazero_win10_amd64/cognitionService/interaction_0.py"><code>interaction&UnderBar;0&period;py</code></a> <em>Simulates constant input and displays interactions.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_win10_amd64/cognitionService/interaction_1.py" id="/native/lazero_win10_amd64/cognitionService/interaction_1.py"><code>interaction&UnderBar;1&period;py</code></a> <em>Auto-restarts connection and sends commands in an infinite loop.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_win10_amd64/cognitionService/interaction_2.py" id="/native/lazero_win10_amd64/cognitionService/interaction_2.py"><code>interaction&UnderBar;2&period;py</code></a> <em>Randomly selects strings, inputs into shell, displays output, loops.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_win10_amd64/cognitionService/interaction_3.py" id="/native/lazero_win10_amd64/cognitionService/interaction_3.py"><code>interaction&UnderBar;3&period;py</code></a> <em>Script sends commands to shell, receives responses, and randomly overrides.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_win10_amd64/cognitionService/shellConnect.py" id="/native/lazero_win10_amd64/cognitionService/shellConnect.py"><code>shellConnect&period;py</code></a> <em>Python script fetches, sends data via localhost ports 8788.</em></li>
+<li><span hierarchy="4" class="expanded" onclick="toggleVisibility(this)" ><strong class="directory" id="/native/lazero_win10_amd64/cognitionService/virtual/"><code>virtual</code></strong> <em>Cross-platform error logging LSC, continuous data reader/writer, virtual environment.</em></span><ul>
+<li><a class="file_link" href="index.html?q=/native/lazero_win10_amd64/cognitionService/virtual/bash_test.js" id="/native/lazero_win10_amd64/cognitionService/virtual/bash_test.js"><code>bash&UnderBar;test&period;js</code></a> <em>Language server client setup with snippets and requests support.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_win10_amd64/cognitionService/virtual/get_error.js" id="/native/lazero_win10_amd64/cognitionService/virtual/get_error.js"><code>get&UnderBar;error&period;js</code></a> <em>Catch error, extract stack trace, log to stderr</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_win10_amd64/cognitionService/virtual/processes.js" id="/native/lazero_win10_amd64/cognitionService/virtual/processes.js"><code>processes&period;js</code></a> <em>Cross-platform process termination function</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_win10_amd64/cognitionService/virtual/pyls_test.js" id="/native/lazero_win10_amd64/cognitionService/virtual/pyls_test.js"><code>pyls&UnderBar;test&period;js</code></a> <em>Node.js spying code, issues in initialization and completion.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_win10_amd64/cognitionService/virtual/spy_process.py" id="/native/lazero_win10_amd64/cognitionService/virtual/spy_process.py"><code>spy&UnderBar;process&period;py</code></a> <em>Continuous data stream reader/writer</em></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="file_link" href="index.html?q=/native/lazero_win10_amd64/debug_init.cmd" id="/native/lazero_win10_amd64/debug_init.cmd"><code>debug&UnderBar;init&period;cmd</code></a> <em>Stop, start processes, cleanup. Batch, PowerShell, grep.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_win10_amd64/debug_init.sh" id="/native/lazero_win10_amd64/debug_init.sh"><code>debug&UnderBar;init&period;sh</code></a> <em>Stop, start Node.js scripts, show PIDs with ps -W</em></li>
+<li><span hierarchy="3" class="expanded" onclick="toggleVisibility(this)" ><strong class="directory" id="/native/lazero_win10_amd64/eventService/"><code>eventService</code></strong></span><ul>
+<li><a class="file_link" href="index.html?q=/native/lazero_win10_amd64/eventService/chrome_receive.js" id="/native/lazero_win10_amd64/eventService/chrome_receive.js"><code>chrome&UnderBar;receive&period;js</code></a> <em>Handles GET/POST requests, writes data to files on port 5000.</em></li>
+</ul>
+</li>
+<li><a class="file_link" href="index.html?q=/native/lazero_win10_amd64/find_process.ps1" id="/native/lazero_win10_amd64/find_process.ps1"><code>find&UnderBar;process&period;ps1</code></a> <em>Find process ID and command line using WMI in PowerShell.</em></li>
+<li><span hierarchy="3" class="expanded" onclick="toggleVisibility(this)" ><strong class="directory" id="/native/lazero_win10_amd64/inputService/"><code>inputService</code></strong></span><ul>
+<li><a class="file_link" href="index.html?q=/native/lazero_win10_amd64/inputService/pyautogui_server.py" id="/native/lazero_win10_amd64/inputService/pyautogui_server.py"><code>pyautogui&UnderBar;server&period;py</code></a> <em>Automates mouse &amp; keyboard inputs via PyAutoGUI</em></li>
+</ul>
+</li>
+<li><span hierarchy="3" class="expanded" onclick="toggleVisibility(this)" ><strong class="directory" id="/native/lazero_win10_amd64/mainService/"><code>mainService</code></strong> <em>Headless Windows GUI testing automation with monkey filtering.</em></span><ul>
+<li><a class="file_link" href="index.html?q=/native/lazero_win10_amd64/mainService/docker_monkey.py" id="/native/lazero_win10_amd64/mainService/docker_monkey.py"><code>docker&UnderBar;monkey&period;py</code></a> <em>Docker container interaction via Python script with winpexpect.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_win10_amd64/mainService/docker_vt100_base.py" id="/native/lazero_win10_amd64/mainService/docker_vt100_base.py"><code>docker&UnderBar;vt100&UnderBar;base&period;py</code></a> <em>Python app handles VT100, processes, ports, and Docker terminal.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_win10_amd64/mainService/launch_monkey.sh" id="/native/lazero_win10_amd64/mainService/launch_monkey.sh"><code>launch&UnderBar;monkey&period;sh</code></a> <em>Runs Python script in Xvfb for GUI tests on headless systems.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_win10_amd64/mainService/launch_monkey_basic.sh" id="/native/lazero_win10_amd64/mainService/launch_monkey_basic.sh"><code>launch&UnderBar;monkey&UnderBar;basic&period;sh</code></a> <em>Runs Python script in Xvfb environment for GUI testing.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_win10_amd64/mainService/logic_fuzzer.py" id="/native/lazero_win10_amd64/mainService/logic_fuzzer.py"><code>logic&UnderBar;fuzzer&period;py</code></a> <em>Logic fuzzer: random expressions, value swaps, list insertions.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_win10_amd64/mainService/monkey_basic.py" id="/native/lazero_win10_amd64/mainService/monkey_basic.py"><code>monkey&UnderBar;basic&period;py</code></a> <em>Monkey tests randomized GUI interactions</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_win10_amd64/mainService/monkey_controller.py" id="/native/lazero_win10_amd64/mainService/monkey_controller.py"><code>monkey&UnderBar;controller&period;py</code></a> <em>Monkey-controlled PyAutoGUI fuzzer.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_win10_amd64/mainService/README" id="/native/lazero_win10_amd64/mainService/README"><code>README</code></a> <em>Cognition core, learning targets, Docker optimization.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_win10_amd64/mainService/regex_generator.py" id="/native/lazero_win10_amd64/mainService/regex_generator.py"><code>regex&UnderBar;generator&period;py</code></a> <em>Random string generator and regex tester</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_win10_amd64/mainService/uniq_filter.py" id="/native/lazero_win10_amd64/mainService/uniq_filter.py"><code>uniq&UnderBar;filter&period;py</code></a> <em>Filters and stores unique targets.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_win10_amd64/mainService/uniq_monkey_launcher.sh" id="/native/lazero_win10_amd64/mainService/uniq_monkey_launcher.sh"><code>uniq&UnderBar;monkey&UnderBar;launcher&period;sh</code></a> <em>Launch monkey script with unique filtering.</em></li>
+</ul>
+</li>
+<li><a class="file_link" href="index.html?q=/native/lazero_win10_amd64/mkdirs.sh" id="/native/lazero_win10_amd64/mkdirs.sh"><code>mkdirs&period;sh</code></a> <em>Creates directories for services.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_win10_amd64/nodejs_require" id="/native/lazero_win10_amd64/nodejs_require"><code>nodejs&UnderBar;require</code></a> <em>Web sockets, data management with 'ws' and 'collections'.</em></li>
+<li><span hierarchy="3" class="expanded" onclick="toggleVisibility(this)" ><strong class="directory" id="/native/lazero_win10_amd64/replService/"><code>replService</code></strong> <em>Node.js WebSocket server with session management, readline input, and logging</em></span><ul>
+<li><a class="file_link" href="index.html?q=/native/lazero_win10_amd64/replService/chrome_console.js" id="/native/lazero_win10_amd64/replService/chrome_console.js"><code>chrome&UnderBar;console&period;js</code></a> <em>Node.js server, WebSocket, sessions, readline input, logging</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_win10_amd64/replService/chrome_console_logger.js" id="/native/lazero_win10_amd64/replService/chrome_console_logger.js"><code>chrome&UnderBar;console&UnderBar;logger&period;js</code></a> <em>Node.js WebSocket server with session management and readline input.</em></li>
+</ul>
+</li>
+<li><a class="file_link" href="index.html?q=/native/lazero_win10_amd64/requirements.txt" id="/native/lazero_win10_amd64/requirements.txt"><code>requirements&period;txt</code></a> <em>Requirements for "metalazero/native/lazero_win10_amd64" project.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_win10_amd64/rmtest.sh" id="/native/lazero_win10_amd64/rmtest.sh"><code>rmtest&period;sh</code></a> <em>Remove Chrome directories forcefully.</em></li>
+<li><span hierarchy="3" class="expanded" onclick="toggleVisibility(this)" ><strong class="directory" id="/native/lazero_win10_amd64/shellService/"><code>shellService</code></strong> <em>Native Windows 10 amd64 shell service for PTY interaction.</em></span><ul>
+<li><a class="file_link" href="index.html?q=/native/lazero_win10_amd64/shellService/ptyproc.py" id="/native/lazero_win10_amd64/shellService/ptyproc.py"><code>ptyproc&period;py</code></a> <em>Ptyproc: Virtual terminal, process monitoring, Tornado web app.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_win10_amd64/shellService/pyte_template.py" id="/native/lazero_win10_amd64/shellService/pyte_template.py"><code>pyte&UnderBar;template&period;py</code></a> <em>Pyte terminal class for screen and stream interaction.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_win10_amd64/shellService/twisted_proc.py" id="/native/lazero_win10_amd64/shellService/twisted_proc.py"><code>twisted&UnderBar;proc&period;py</code></a> <em>Control dog bark limits with Python server.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_win10_amd64/shellService/twisted_template.py" id="/native/lazero_win10_amd64/shellService/twisted_template.py"><code>twisted&UnderBar;template&period;py</code></a> <em>Twisted MyPP Reader for child processes, PTY, and reactor.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_win10_amd64/shellService/webXFS.py" id="/native/lazero_win10_amd64/shellService/webXFS.py"><code>webXFS&period;py</code></a> <em>Python script using Twisted for command execution and error handling.</em></li>
+<li><a class="file_link" href="index.html?q=/native/lazero_win10_amd64/shellService/winpty_template.py" id="/native/lazero_win10_amd64/shellService/winpty_template.py"><code>winpty&UnderBar;template&period;py</code></a> <em>Spawns command, writes "hello, world!", and reads output with error correction.</em></li>
+</ul>
+</li>
+<li><span hierarchy="3" class="expanded" onclick="toggleVisibility(this)" ><strong class="directory" id="/native/lazero_win10_amd64/tools/"><code>tools</code></strong></span><ul>
+<li><a class="file_link" href="index.html?q=/native/lazero_win10_amd64/tools/where.py" id="/native/lazero_win10_amd64/tools/where.py"><code>where&period;py</code></a> <em>Finds executable locations with subprocess.</em></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="file_link" href="index.html?q=/README.md" id="/README.md"><code>README&period;md</code></a> <em>Lzero: Cross-platform AI autonomy code with Wireshark/Frida integration.</em></li>
+<li><span hierarchy="1" class="expanded" onclick="toggleVisibility(this)" ><strong class="directory" id="/remote_control/"><code>remote&UnderBar;control</code></strong> <em>Remote server control and management tools.</em></span><ul>
+<li><span hierarchy="2" class="expanded" onclick="toggleVisibility(this)" ><strong class="directory" id="/remote_control/client/"><code>client</code></strong></span><ul>
+<li><a class="file_link" href="index.html?q=/remote_control/client/README" id="/remote_control/client/README"><code>README</code></a> <em>Remote control client development for headless tasks, Vim modes.</em></li>
+</ul>
+</li>
+<li><span hierarchy="2" class="expanded" onclick="toggleVisibility(this)" ><strong class="directory" id="/remote_control/discovery/"><code>discovery</code></strong> <em>Real-time UUID discovery and server update system</em></span><ul>
+<li><a class="file_link" href="index.html?q=/remote_control/discovery/broadcast_client.py" id="/remote_control/discovery/broadcast_client.py"><code>broadcast&UnderBar;client&period;py</code></a> <em>Broadcast client sends unique UUID via network port.</em></li>
+<li><a class="file_link" href="index.html?q=/remote_control/discovery/broadcast_client.sh" id="/remote_control/discovery/broadcast_client.sh"><code>broadcast&UnderBar;client&period;sh</code></a> <em>Iteratively broadcasts 200x, counts down to 0, Python script.</em></li>
+<li><a class="file_link" href="index.html?q=/remote_control/discovery/broadcast_server.py" id="/remote_control/discovery/broadcast_server.py"><code>broadcast&UnderBar;server&period;py</code></a> <em>Broadcast server sets up socket, listens for messages, updates table.</em></li>
+<li><a class="file_link" href="index.html?q=/remote_control/discovery/checkmate.sh" id="/remote_control/discovery/checkmate.sh"><code>checkmate&period;sh</code></a> <em>Exploits ifconfig for IP broadcast retrieval and use.</em></li>
+<li><a class="file_link" href="index.html?q=/remote_control/discovery/generate_uuid.py" id="/remote_control/discovery/generate_uuid.py"><code>generate&UnderBar;uuid&period;py</code></a> <em>Generate UUID, store in .local_uuid, retrieve when needed.</em></li>
+<li><a class="file_link" href="index.html?q=/remote_control/discovery/get_fastest_ip.py" id="/remote_control/discovery/get_fastest_ip.py"><code>get&UnderBar;fastest&UnderBar;ip&period;py</code></a> <em>Find UUID-IP pairs, print random IP for target UUID.</em></li>
+<li><a class="file_link" href="index.html?q=/remote_control/discovery/README" id="/remote_control/discovery/README"><code>README</code></a> <em>Sudo required for discovery code</em></li>
+<li><a class="file_link" href="index.html?q=/remote_control/discovery/template.j2" id="/remote_control/discovery/template.j2"><code>template&period;j2</code></a> <em>HTTP template for 200 OK response with dynamic content.</em></li>
+<li><a class="file_link" href="index.html?q=/remote_control/discovery/test_server.py" id="/remote_control/discovery/test_server.py"><code>test&UnderBar;server&period;py</code></a> <em>Flask app, host 0.0.0.0, port 5999, route "/" returns "lazero".</em></li>
+<li><a class="file_link" href="index.html?q=/remote_control/discovery/update_local_name_resolution_table.py" id="/remote_control/discovery/update_local_name_resolution_table.py"><code>update&UnderBar;local&UnderBar;name&UnderBar;resolution&UnderBar;table&period;py</code></a> <em>Update local name resolution table for UUID devices.</em></li>
+<li><a class="file_link" href="index.html?q=/remote_control/discovery/uuid_client.py" id="/remote_control/discovery/uuid_client.py"><code>uuid&UnderBar;client&period;py</code></a> <em>Script sends GET request to IP, prints response.</em></li>
+<li><a class="file_link" href="index.html?q=/remote_control/discovery/uuid_server.py" id="/remote_control/discovery/uuid_server.py"><code>uuid&UnderBar;server&period;py</code></a> <em>UUID server using Tornado, listens on 8010</em></li>
+<li><a class="file_link" href="index.html?q=/remote_control/discovery/uuid_server.sh" id="/remote_control/discovery/uuid_server.sh"><code>uuid&UnderBar;server&period;sh</code></a> <em>Continuously listens for HTTP requests, sends data to specified host.</em></li>
+</ul>
+</li>
+<li><a class="file_link" href="index.html?q=/remote_control/README" id="/remote_control/README"><code>README</code></a> <em>Remote system issues, PyPI/VNC alternatives considered</em></li>
+<li><span hierarchy="2" class="expanded" onclick="toggleVisibility(this)" ><strong class="directory" id="/remote_control/server/"><code>server</code></strong> <em>Remote server script management and control</em></span><ul>
+<li><a class="file_link" href="index.html?q=/remote_control/server/deprecated_index.js" id="/remote_control/server/deprecated_index.js"><code>deprecated&UnderBar;index&period;js</code></a> <em>Deprecated script captures screenshots, touch/mouse events, updates cursor positions.</em></li>
+<li><a class="file_link" href="index.html?q=/remote_control/server/deprecated_lazero_remote_control.py" id="/remote_control/server/deprecated_lazero_remote_control.py"><code>deprecated&UnderBar;lazero&UnderBar;remote&UnderBar;control&period;py</code></a> <em>Remote Control Server - Flask, Screenshots, API Routes</em></li>
+<li><a class="file_link" href="index.html?q=/remote_control/server/lazero_keyboard.py" id="/remote_control/server/lazero_keyboard.py"><code>lazero&UnderBar;keyboard&period;py</code></a> <em>Remote control Chromebook hotkeys with Python.</em></li>
+<li><a class="file_link" href="index.html?q=/remote_control/server/lazero_mouse.py" id="/remote_control/server/lazero_mouse.py"><code>lazero&UnderBar;mouse&period;py</code></a> <em>Asynchronous mouse control with PyAutoGUI.</em></li>
+<li><a class="file_link" href="index.html?q=/remote_control/server/lazero_remote_control.py" id="/remote_control/server/lazero_remote_control.py"><code>lazero&UnderBar;remote&UnderBar;control&period;py</code></a> <em>Control web server for mouse, keyboard, video feed.</em></li>
+<li><a class="file_link" href="index.html?q=/remote_control/server/README" id="/remote_control/server/README"><code>README</code></a> <em>Simple server for Windows, MacOS, Linux with limited ChromeOS, Android, iOS support.</em></li>
+<li><a class="file_link" href="index.html?q=/remote_control/server/test_events.js" id="/remote_control/server/test_events.js"><code>test&UnderBar;events&period;js</code></a> <em>Event logging, touch management, data logging, textarea clearing, "hiddenInput" refresh.</em></li>
+<li><a class="file_link" href="index.html?q=/remote_control/server/test_events.py" id="/remote_control/server/test_events.py"><code>test&UnderBar;events&period;py</code></a> <em>Flask server, route "/", listens 0.0.0.0:19243</em></li>
+<li><a class="file_link" href="index.html?q=/remote_control/server/test_events.sh" id="/remote_control/server/test_events.sh"><code>test&UnderBar;events&period;sh</code></a> <em>Script configures test_events.py for remote execution.</em></li>
+<li><a class="file_link" href="index.html?q=/remote_control/server/test_post.js" id="/remote_control/server/test_post.js"><code>test&UnderBar;post&period;js</code></a> <em>POST request with JSON data to URL, logs response.</em></li>
+<li><a class="file_link" href="index.html?q=/remote_control/server/translate.py" id="/remote_control/server/translate.py"><code>translate&period;py</code></a> <em>Translate.py: Dictionary-based key translation and table generation</em></li>
+</ul>
+</li>
+<li><span hierarchy="2" class="expanded" onclick="toggleVisibility(this)" ><strong class="directory" id="/remote_control/tools/"><code>tools</code></strong> <em>Remote control tools directory.</em></span><ul>
+<li><span hierarchy="3" class="expanded" onclick="toggleVisibility(this)" ><strong class="directory" id="/remote_control/tools/clipboard/"><code>clipboard</code></strong> <em>Clipboard tools for Linux &amp; MacOS; Windows tutorial.</em></span><ul>
+<li><span hierarchy="4" class="expanded" onclick="toggleVisibility(this)" ><strong class="directory" id="/remote_control/tools/clipboard/linux/"><code>linux</code></strong></span><ul>
+<li><a class="file_link" href="index.html?q=/remote_control/tools/clipboard/linux/demo_clipboard.sh" id="/remote_control/tools/clipboard/linux/demo_clipboard.sh"><code>demo&UnderBar;clipboard&period;sh</code></a> <em>Copy "hello world", split, first part output.</em></li>
+</ul>
+</li>
+<li><span hierarchy="4" class="expanded" onclick="toggleVisibility(this)" ><strong class="directory" id="/remote_control/tools/clipboard/macos/"><code>macos</code></strong></span><ul>
+<li><a class="file_link" href="index.html?q=/remote_control/tools/clipboard/macos/demo_clipboard.sh" id="/remote_control/tools/clipboard/macos/demo_clipboard.sh"><code>demo&UnderBar;clipboard&period;sh</code></a> <em>MacOS clipboard demo script. Copies "hello world" and displays clipboard contents.</em></li>
+</ul>
+</li>
+<li><a class="file_link" href="index.html?q=/remote_control/tools/clipboard/pyperclip_clipboard.py" id="/remote_control/tools/clipboard/pyperclip_clipboard.py"><code>pyperclip&UnderBar;clipboard&period;py</code></a> <em>Pyperclip clipboard tool with copy-paste functions.</em></li>
+<li><span hierarchy="4" class="expanded" onclick="toggleVisibility(this)" ><strong class="directory" id="/remote_control/tools/clipboard/windows/"><code>windows</code></strong> <em>Windows Clipboard Tool Tutorial and Demo</em></span><ul>
+<li><a class="file_link" href="index.html?q=/remote_control/tools/clipboard/windows/demo_clipboard.ps1" id="/remote_control/tools/clipboard/windows/demo_clipboard.ps1"><code>demo&UnderBar;clipboard&period;ps1</code></a> <em>Windows Clipboard Demo: Sets "Hello World", Displays Current Content</em></li>
+<li><a class="file_link" href="index.html?q=/remote_control/tools/clipboard/windows/README" id="/remote_control/tools/clipboard/windows/README"><code>README</code></a> <em>Clipboard tool tutorial for MS-DOS pasting.</em></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="file_link" href="index.html?q=/remote_control/tools/jupyter_userscript_autosave.js" id="/remote_control/tools/jupyter_userscript_autosave.js"><code>jupyter&UnderBar;userscript&UnderBar;autosave&period;js</code></a> <em>Autosave Jupyter user script on document load.</em></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><span hierarchy="1" class="expanded" onclick="toggleVisibility(this)" ><strong class="directory" id="/schedules/"><code>schedules</code></strong> <em>Taskwarrior scripts and Vim diary scheduler directory</em></span><ul>
+<li><a class="file_link" href="index.html?q=/schedules/add_test.sh" id="/schedules/add_test.sh"><code>add&UnderBar;test&period;sh</code></a> <em>Task: "add" with test0 subtask.</em></li>
+<li><a class="file_link" href="index.html?q=/schedules/concat.py" id="/schedules/concat.py"><code>concat&period;py</code></a> <em>Base64 encoding/decoding with UTF-8 conversion</em></li>
+<li><a class="file_link" href="index.html?q=/schedules/demo_load.py" id="/schedules/demo_load.py"><code>demo&UnderBar;load&period;py</code></a> <em>Loads, prints JSON object from UTF-8 encoded input</em></li>
+<li><a class="file_link" href="index.html?q=/schedules/demo_load.sh" id="/schedules/demo_load.sh"><code>demo&UnderBar;load&period;sh</code></a> <em>Loads demo data using export task.</em></li>
+<li><a class="file_link" href="index.html?q=/schedules/export_offline_tasks.sh" id="/schedules/export_offline_tasks.sh"><code>export&UnderBar;offline&UnderBar;tasks&period;sh</code></a> <em>Creates dir, initializes 'abc', writes exported tasks to JSON without format checking.</em></li>
+<li><a class="file_link" href="index.html?q=/schedules/export_tasks.sh" id="/schedules/export_tasks.sh"><code>export&UnderBar;tasks&period;sh</code></a> <em>Unchecked task export to tasks.json</em></li>
+<li><a class="file_link" href="index.html?q=/schedules/get_time.py" id="/schedules/get_time.py"><code>get&UnderBar;time&period;py</code></a> <em>Time-sorting and comparison functions for datetime objects.</em></li>
+<li><a class="file_link" href="index.html?q=/schedules/import_tasks.sh" id="/schedules/import_tasks.sh"><code>import&UnderBar;tasks&period;sh</code></a> <em>Imports tasks from "tasks.json" file.</em></li>
+<li><a class="file_link" href="index.html?q=/schedules/init.sh" id="/schedules/init.sh"><code>init&period;sh</code></a> <em>Install Taskwarrior, Espeak, configure, ignore 'latest', set volume (if needed)</em></li>
+<li><a class="file_link" href="index.html?q=/schedules/merge_file.py" id="/schedules/merge_file.py"><code>merge&UnderBar;file&period;py</code></a> <em>Merges JSON task files after fetching latest repository.</em></li>
+<li><a class="file_link" href="index.html?q=/schedules/merge_tasks.sh" id="/schedules/merge_tasks.sh"><code>merge&UnderBar;tasks&period;sh</code></a> <em>Merges tasks, ensures database sync without accidental removal.</em></li>
+<li><a class="file_link" href="index.html?q=/schedules/purge_test.sh" id="/schedules/purge_test.sh"><code>purge&UnderBar;test&period;sh</code></a> <em>Purge and delete test resources task.</em></li>
+<li><a class="file_link" href="index.html?q=/schedules/README" id="/schedules/README"><code>README</code></a> <em>Schedules combined, sync needed, no launcher due to size.</em></li>
+<li><a class="file_link" href="index.html?q=/schedules/speak_tasks.sh" id="/schedules/speak_tasks.sh"><code>speak&UnderBar;tasks&period;sh</code></a> <em>Automates task reading using Python and espeak.</em></li>
+<li><a class="file_link" href="index.html?q=/schedules/speak_word.sh" id="/schedules/speak_word.sh"><code>speak&UnderBar;word&period;sh</code></a> <em>Speak word using espeak with bash support</em></li>
+<li><a class="file_link" href="index.html?q=/schedules/sync.sh" id="/schedules/sync.sh"><code>sync&period;sh</code></a> <em>Sync script checks pull status and creates/removes ".latest" file.</em></li>
+<li><a class="file_link" href="index.html?q=/schedules/write_diary.sh" id="/schedules/write_diary.sh"><code>write&UnderBar;diary&period;sh</code></a> <em>Diary schedule script for Vim</em></li>
+</ul>
+</li>
+<li><span hierarchy="1" class="expanded" onclick="toggleVisibility(this)" ><strong class="directory" id="/tools/"><code>tools</code></strong> <em>Automate deep learning tool interactions.</em></span><ul>
+<li><a class="file_link" href="index.html?q=/tools/blocking_io_string.py" id="/tools/blocking_io_string.py"><code>blocking&UnderBar;io&UnderBar;string&period;py</code></a> <em>Cleanup after reading bytes from specific location.</em></li>
+<li><a class="file_link" href="index.html?q=/tools/bytes_blocking.py" id="/tools/bytes_blocking.py"><code>bytes&UnderBar;blocking&period;py</code></a> <em>BytesMemPipe: Memory pipe for byte data, thread-safe read/write.</em></li>
+<li><a class="file_link" href="index.html?q=/tools/chrome_logger.sh" id="/tools/chrome_logger.sh"><code>chrome&UnderBar;logger&period;sh</code></a> <em>Logs Chrome console output in Node.js</em></li>
+<li><span hierarchy="2" class="expanded" onclick="toggleVisibility(this)" ><strong class="directory" id="/tools/deep-text-editor/"><code>deep-text-editor</code></strong> <em>Neural-driven deep text toolset.</em></span><ul>
+<li><a class="file_link" href="index.html?q=/tools/deep-text-editor/editor.py" id="/tools/deep-text-editor/editor.py"><code>editor&period;py</code></a> <em>Powerful text editor with logging, validation, undoing.</em></li>
+<li><a class="file_link" href="index.html?q=/tools/deep-text-editor/monkey_editing.py" id="/tools/deep-text-editor/monkey_editing.py"><code>monkey&UnderBar;editing&period;py</code></a> <em>Monkey editor: random text edits, 500 repeats.</em></li>
+<li><span hierarchy="3" class="expanded" onclick="toggleVisibility(this)" ><strong class="directory" id="/tools/deep-text-editor/neural_network/"><code>neural&UnderBar;network</code></strong> <em>Neural-powered deep text editor and classifier.</em></span><ul>
+<li><a class="file_link" href="index.html?q=/tools/deep-text-editor/neural_network/base.py" id="/tools/deep-text-editor/neural_network/base.py"><code>base&period;py</code></a> <em>Trains neural network for binary classification.</em></li>
+<li><a class="file_link" href="index.html?q=/tools/deep-text-editor/neural_network/editor.py" id="/tools/deep-text-editor/neural_network/editor.py"><code>editor&period;py</code></a> <em>Neural network text editor with backup, undo/redo functions.</em></li>
+<li><a class="file_link" href="index.html?q=/tools/deep-text-editor/neural_network/generate_code.py" id="/tools/deep-text-editor/neural_network/generate_code.py"><code>generate&UnderBar;code&period;py</code></a> <em>Generate random text editor actions using neural network</em></li>
+<li><a class="file_link" href="index.html?q=/tools/deep-text-editor/neural_network/generate_stimuli.py" id="/tools/deep-text-editor/neural_network/generate_stimuli.py"><code>generate&UnderBar;stimuli&period;py</code></a> <em>Generate stimuli using sine function, random frequency, and threshold.</em></li>
+<li><a class="file_link" href="index.html?q=/tools/deep-text-editor/neural_network/kdnugget.py" id="/tools/deep-text-editor/neural_network/kdnugget.py"><code>kdnugget&period;py</code></a> <em>NeuralNetwork: Sigmoid, Backprop, User Input Prediction</em></li>
+<li><a class="file_link" href="index.html?q=/tools/deep-text-editor/neural_network/make_arithmatic.py" id="/tools/deep-text-editor/neural_network/make_arithmatic.py"><code>make&UnderBar;arithmatic&period;py</code></a> <em>Generates, checks arithmetic problems, catches exceptions.</em></li>
+<li><a class="file_link" href="index.html?q=/tools/deep-text-editor/neural_network/make_backward_slider.py" id="/tools/deep-text-editor/neural_network/make_backward_slider.py"><code>make&UnderBar;backward&UnderBar;slider&period;py</code></a> <em>Interactive code: filters, prompts, and reveals lines from "base.py".</em></li>
+<li><a class="file_link" href="index.html?q=/tools/deep-text-editor/neural_network/make_correction.py" id="/tools/deep-text-editor/neural_network/make_correction.py"><code>make&UnderBar;correction&period;py</code></a> <em>Automated code edits with random modifications and user confirmation.</em></li>
+<li><a class="file_link" href="index.html?q=/tools/deep-text-editor/neural_network/make_execute_order.py" id="/tools/deep-text-editor/neural_network/make_execute_order.py"><code>make&UnderBar;execute&UnderBar;order&period;py</code></a> <em>Randomly shuffled, ordered questions sequence from base.py.</em></li>
+<li><a class="file_link" href="index.html?q=/tools/deep-text-editor/neural_network/make_gradual_slider.py" id="/tools/deep-text-editor/neural_network/make_gradual_slider.py"><code>make&UnderBar;gradual&UnderBar;slider&period;py</code></a> <em>Prompts user to fill line parts, handles exceptions</em></li>
+<li><a class="file_link" href="index.html?q=/tools/deep-text-editor/neural_network/make_hint_quiz.py" id="/tools/deep-text-editor/neural_network/make_hint_quiz.py"><code>make&UnderBar;hint&UnderBar;quiz&period;py</code></a> <em>Generate question with 3 hints from "base.py" until answer correct or exception</em></li>
+<li><a class="file_link" href="index.html?q=/tools/deep-text-editor/neural_network/make_imagine_quiz.py" id="/tools/deep-text-editor/neural_network/make_imagine_quiz.py"><code>make&UnderBar;imagine&UnderBar;quiz&period;py</code></a> <em>Interactive word guessing game with shuffled lines.</em></li>
+<li><a class="file_link" href="index.html?q=/tools/deep-text-editor/neural_network/make_incorrect.py" id="/tools/deep-text-editor/neural_network/make_incorrect.py"><code>make&UnderBar;incorrect&period;py</code></a> <em>Trains on Python file, tests knowledge</em></li>
+<li><a class="file_link" href="index.html?q=/tools/deep-text-editor/neural_network/make_missing.py" id="/tools/deep-text-editor/neural_network/make_missing.py"><code>make&UnderBar;missing&period;py</code></a> <em>Python tool generates random lines for insertion into "base.py"</em></li>
+<li><a class="file_link" href="index.html?q=/tools/deep-text-editor/neural_network/make_mixed_content.py" id="/tools/deep-text-editor/neural_network/make_mixed_content.py"><code>make&UnderBar;mixed&UnderBar;content&period;py</code></a> <em>Neural network, random numbers, user input, stack element creation.</em></li>
+<li><a class="file_link" href="index.html?q=/tools/deep-text-editor/neural_network/make_model.py" id="/tools/deep-text-editor/neural_network/make_model.py"><code>make&UnderBar;model&period;py</code></a> <em>Creates a formula function, applies to values 0-1000 with print and pause.</em></li>
+<li><a class="file_link" href="index.html?q=/tools/deep-text-editor/neural_network/make_multiselect.py" id="/tools/deep-text-editor/neural_network/make_multiselect.py"><code>make&UnderBar;multiselect&period;py</code></a> <em>Generate multiple-choice questions using neural networks.</em></li>
+<li><a class="file_link" href="index.html?q=/tools/deep-text-editor/neural_network/make_piece_sort.py" id="/tools/deep-text-editor/neural_network/make_piece_sort.py"><code>make&UnderBar;piece&UnderBar;sort&period;py</code></a> <em>Sorting neural network exercise generator</em></li>
+<li><a class="file_link" href="index.html?q=/tools/deep-text-editor/neural_network/make_quiz.py" id="/tools/deep-text-editor/neural_network/make_quiz.py"><code>make&UnderBar;quiz&period;py</code></a> <em>Make quiz from base.py, one-word gap fill.</em></li>
+<li><a class="file_link" href="index.html?q=/tools/deep-text-editor/neural_network/make_rev_str_quiz.py" id="/tools/deep-text-editor/neural_network/make_rev_str_quiz.py"><code>make&UnderBar;rev&UnderBar;str&UnderBar;quiz&period;py</code></a> <em>Randomly tests and executes commands, no hints feature.</em></li>
+<li><a class="file_link" href="index.html?q=/tools/deep-text-editor/neural_network/make_search_slider.py" id="/tools/deep-text-editor/neural_network/make_search_slider.py"><code>make&UnderBar;search&UnderBar;slider&period;py</code></a> <em>Create searchable text list from base.py with feedback and confirmation.</em></li>
+<li><a class="file_link" href="index.html?q=/tools/deep-text-editor/neural_network/make_seen.py" id="/tools/deep-text-editor/neural_network/make_seen.py"><code>make&UnderBar;seen&period;py</code></a> <em>Recursive memory function generates random lists, tracks seen within limit.</em></li>
+<li><a class="file_link" href="index.html?q=/tools/deep-text-editor/neural_network/make_sort.py" id="/tools/deep-text-editor/neural_network/make_sort.py"><code>make&UnderBar;sort&period;py</code></a> <em>Shuffle, reorder and validate user input.</em></li>
+<li><a class="file_link" href="index.html?q=/tools/deep-text-editor/neural_network/make_str_functional.py" id="/tools/deep-text-editor/neural_network/make_str_functional.py"><code>make&UnderBar;str&UnderBar;functional&period;py</code></a> <em>Generate random code, answer, repeat until exception or stop.</em></li>
+<li><a class="file_link" href="index.html?q=/tools/deep-text-editor/neural_network/make_str_quiz.py" id="/tools/deep-text-editor/neural_network/make_str_quiz.py"><code>make&UnderBar;str&UnderBar;quiz&period;py</code></a> <em>Interactive function guessing game using neural network</em></li>
+<li><a class="file_link" href="index.html?q=/tools/deep-text-editor/neural_network/make_sync.py" id="/tools/deep-text-editor/neural_network/make_sync.py"><code>make&UnderBar;sync&period;py</code></a> <em>Clock ticking. Random surprise.</em></li>
+<li><a class="file_link" href="index.html?q=/tools/deep-text-editor/neural_network/monkey_editing.py" id="/tools/deep-text-editor/neural_network/monkey_editing.py"><code>monkey&UnderBar;editing&period;py</code></a> <em>Monkey editor: generates, edits random strings.</em></li>
+<li><span hierarchy="4" class="expanded" onclick="toggleVisibility(this)" ><strong class="directory" id="/tools/deep-text-editor/neural_network/qcl/"><code>qcl</code></strong></span><ul>
+<li><a class="file_link" href="index.html?q=/tools/deep-text-editor/neural_network/qcl/convert.sh" id="/tools/deep-text-editor/neural_network/qcl/convert.sh"><code>convert&period;sh</code></a> <em>Convert PDFs to HTML using mutool.</em></li>
+</ul>
+</li>
+<li><a class="file_link" href="index.html?q=/tools/deep-text-editor/neural_network/README" id="/tools/deep-text-editor/neural_network/README"><code>README</code></a> <em>Neural network editor with non-standard functions, attention mechanisms.</em></li>
+</ul>
+</li>
+<li><a class="file_link" href="index.html?q=/tools/deep-text-editor/README" id="/tools/deep-text-editor/README"><code>README</code></a> <em>Neural network simulates human editing behavior.</em></li>
+<li><a class="file_link" href="index.html?q=/tools/deep-text-editor/test.py" id="/tools/deep-text-editor/test.py"><code>test&period;py</code></a> <em>Test script for reversible text editor AI, with logging.</em></li>
+</ul>
+</li>
+<li><a class="file_link" href="index.html?q=/tools/demo_run.py" id="/tools/demo_run.py"><code>demo&UnderBar;run&period;py</code></a> <em>Automates data export with pexpect interaction.</em></li>
+<li><a class="file_link" href="index.html?q=/tools/expect_script_sleep.sh" id="/tools/expect_script_sleep.sh"><code>expect&UnderBar;script&UnderBar;sleep&period;sh</code></a> <em>Automates interactions with programs using expect utility.</em></li>
+<li><span hierarchy="2" class="expanded" onclick="toggleVisibility(this)" ><strong class="directory" id="/tools/generic_io_linux_hid/"><code>generic&UnderBar;io&UnderBar;linux&UnderBar;hid</code></strong> <em>Install necessary tools for IO Linux HID, read README.</em></span><ul>
+<li><a class="file_link" href="index.html?q=/tools/generic_io_linux_hid/init.sh" id="/tools/generic_io_linux_hid/init.sh"><code>init&period;sh</code></a> <em>Install necessary tools for IO Linux HID.</em></li>
+<li><a class="file_link" href="index.html?q=/tools/generic_io_linux_hid/README" id="/tools/generic_io_linux_hid/README"><code>README</code></a> <em>Unnecessary libinput record reading?</em></li>
+</ul>
+</li>
+<li><a class="file_link" href="index.html?q=/tools/get_help.sh" id="/tools/get_help.sh"><code>get&UnderBar;help&period;sh</code></a> <em>Documenting pexpect.pty_spawn.spawn function/module with pydoc3</em></li>
+<li><a class="file_link" href="index.html?q=/tools/get_ip.py" id="/tools/get_ip.py"><code>get&UnderBar;ip&period;py</code></a> <em>Python server listens on 8888, prints IP, "Hello, world"</em></li>
+<li><a class="file_link" href="index.html?q=/tools/get_logged.sh" id="/tools/get_logged.sh"><code>get&UnderBar;logged&period;sh</code></a> <em>Redirects 'sample_script.py' output to console and log file simultaneously.</em></li>
+<li><a class="file_link" href="index.html?q=/tools/init.sh" id="/tools/init.sh"><code>init&period;sh</code></a> <em>Install Expect package non-interactively.</em></li>
+<li><a class="file_link" href="index.html?q=/tools/io2.py" id="/tools/io2.py"><code>io2&period;py</code></a> <em>IO tool with read, write, seek, and print functions.</em></li>
+<li><a class="file_link" href="index.html?q=/tools/io_test.py" id="/tools/io_test.py"><code>io&UnderBar;test&period;py</code></a> <em>IO test script initializes BytesIO, writes "abc", checks properties, reads bytes.</em></li>
+<li><a class="file_link" href="index.html?q=/tools/lazero" id="/tools/lazero"><code>lazero</code></a> <em>CLI tool for lazero, installs files with permission 777</em></li>
+<li><a class="file_link" href="index.html?q=/tools/node_init.sh" id="/tools/node_init.sh"><code>node&UnderBar;init&period;sh</code></a> <em>Installs global dependencies ws, collections using npm.</em></li>
+<li><a class="file_link" href="index.html?q=/tools/pexpect.sh" id="/tools/pexpect.sh"><code>pexpect&period;sh</code></a> <em>Execute demo_run.py with Python 3</em></li>
+<li><a class="file_link" href="index.html?q=/tools/rdir" id="/tools/rdir"><code>rdir</code></a> <em>Manage recent directories with "abc" function.</em></li>
+<li><a class="file_link" href="index.html?q=/tools/README" id="/tools/README"><code>README</code></a> <em>PEXpect tool capabilities and limitations explained</em></li>
+<li><a class="file_link" href="index.html?q=/tools/requirements.txt" id="/tools/requirements.txt"><code>requirements&period;txt</code></a> <em>Automate program interaction with pexpect Python library.</em></li>
+<li><a class="file_link" href="index.html?q=/tools/sample_script.py" id="/tools/sample_script.py"><code>sample&UnderBar;script&period;py</code></a> <em>Greeting, lucky number confirmation script.</em></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+    </article>
+    <script type="text/javascript">
+        function getQueryParams() {
+            var search = window.location.search.substring(1); // Remove leading '?'
+            var queryParams = {};
+            search.split('&').forEach(function (pair) {
+                var parts = pair.split('=');
+                var key = decodeURIComponent(parts[0]);
+                var value = decodeURIComponent(parts[1]);
+                queryParams[key] = value;
+            });
+            return queryParams;
+        }
+
+        const queryParams = getQueryParams(window.location.search);
+        const show_full = queryParams.full == "true";
+        //const is_random = queryParams.random == 'true';
+        function feelingLucky() {
+            var elements = document.getElementsByClassName("file_link");
+            var randomIndex = Math.floor(Math.random() * elements.length);
+            window.location = elements[randomIndex].href;
+        }
+        //if (is_random) {feelingLucky();}
+        document.getElementById("feeling-lucky").onclick = feelingLucky;
+        if (!show_full) {
+            const spans = document.querySelectorAll('span');
+            for (let span of spans) {
+                if (span.getAttribute("hierarchy") == '0') { continue }
+                toggleVisibility(span);
+            }
+        } else {
+            const expand_elem = document.getElementById('expand-tree');
+            expand_elem.setAttribute("href", "tree.html");
+            expand_elem.setAttribute("title", "Undo expand");
+            expand_elem.innerHTML = '<i class="bi bi-caret-up-square"></i>'
+        }
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,15 @@
+{
+    "summary": "The script ensures correct mounting of ramdisk and root file systems, executes specific scripts, creates directories for system binaries, uses efilter for directory creation, sets permissions, and pivots.",
+    "details": [
+        {
+            "comment": "The script checks if the ramdisk and root file systems are mounted correctly, then executes specific scripts based on their availability. It also creates directories for certain system binaries, presumably to ensure they can be executed later in the process. The script uses Python3's efilter to filter commands for creating directories in the ramdisk.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_kali_amd64/virtualService/tools/sandserv/nsjail_reloadscript_x64.sh\":0-32",
+            "content": "#!/bin/bash\nsudo touch judger.log\nsudo chmod 777 judger.log\ns0=$(sudo mount 2>&1 | grep $PWD/ramdisk | grep myramdisk |  wc -c)\ns1=$(sudo mount 2>&1 | grep $PWD/root | grep unionfs |  wc -c)\nif [ $s0 -eq 0 ]\nthen\n\tbash -c ./loadram.sh\nfi\nif [ $s1 -eq 0 ]\nthen\n\tbash -c ./treloadroot_x64.sh\nfi\ns7=$(which tmux)\ns6=$(sudo which init)\n#s5=$(sudo which kill)\n#s9=$(sudo which su)\ns10=$(sudo which sudo)\ns4=$(which kill)\n#s8=/system/bin/kill\n#s11=/sbin/su\n#echo $s7 | python3 efilter.py ramdisk\n# it is able to kill itself.\n# sorry. no one can stop that from happening.\n# and that is part of the game.\necho $s6 | python3 efilter.py ramdisk | xargs sudo mkdir -p\n#echo $s5 | python3 efilter.py ramdisk | xargs sudo mkdir -p\necho $s4 | python3 efilter.py ramdisk | xargs sudo mkdir -p\necho $s7 | python3 efilter.py ramdisk | xargs sudo mkdir -p\n#echo $s8 | python3 efilter.py ramdisk | xargs sudo mkdir -p\n#echo $s9 | python3 efilter.py ramdisk | xargs sudo mkdir -p\necho $s10 | python3 efilter.py ramdisk | xargs sudo mkdir -p\n#echo $s11 | python3 efilter.py ramdisk | xargs sudo mkdir -p"
+        },
+        {
+            "comment": "The script creates touch files for various ramdisk folders, sets their permissions to 777, and then executes a pivot.sh script. It also includes comments for alternative command options that are not executed.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_kali_amd64/virtualService/tools/sandserv/nsjail_reloadscript_x64.sh\":33-49",
+            "content": "sudo touch ramdisk$s6\n#sudo touch ramdisk$s5\n#sudo touch ramdisk$s9\n#sudo touch ramdisk$s11\nsudo touch ramdisk$s10\nsudo touch ramdisk$s4\n#sudo touch ramdisk$s8\nsudo touch ramdisk$s7\nsudo chmod 777 root\nsudo chmod 777 ramdisk\n./pivot.sh\n#./command_x64.sh\n#command=\"bash -c ./chroot.sh\"\n#command=\"sudo $PWD/bin/libjudger.so --exe_path=$PWD/chroot.sh\"\n#command+=\" -i $s2:$s2 \"\n#command+=\" --seccomp_rule_name=\\\"nokill\\\"\"\n#$command"
+        }
+    ]
+}

@@ -1,0 +1,10 @@
+{
+    "summary": "Code imports keylogger functions and creates a queue of size 20. It starts a thread targeting the log_to_queue function from keylogger with the created queue as an argument, running it in daemon mode. The code then enters an infinite loop where it prints the content of the queue every 2 seconds.",
+    "details": [
+        {
+            "comment": "Code imports keylogger functions and creates a queue of size 20. It starts a thread targeting the log_to_queue function from keylogger with the created queue as an argument, running it in daemon mode. The code then enters an infinite loop where it prints the content of the queue every 2 seconds.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_kali_amd64/eventService/keylog_server.py\":0-11",
+            "content": "from keylogger import log_to_queue as L\nfrom keylogger import *\nq = Q(20)\nimport threading as TH\nTH.Thread(target=L,args=(q,),daemon=True).start()\nwhile True:\n    T.sleep(2)\n    print(q.dump())"
+        }
+    ]
+}

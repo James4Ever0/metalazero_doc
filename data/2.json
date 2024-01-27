@@ -1,0 +1,529 @@
+{
+    "200": {
+        "file_id": 36,
+        "content": "/native/lazero_chromeos_aarch64/cognitionService/test_commands.py",
+        "type": "filepath"
+    },
+    "201": {
+        "file_id": 36,
+        "content": "The code imports the subprocess module and uses it to execute a bash script named \"get_commands.sh\". It captures the stdout and stderr outputs in variables, then splits the stdout into lines and stores them in an array. The code then iterates through combinations of two commands from the array, joins them together and executes them using os.system().",
+        "type": "summary"
+    },
+    "202": {
+        "file_id": 36,
+        "content": "import subprocess\nprogram = subprocess.Popen([\"bash\",\"get_commands.sh\"],stdout=subprocess.PIPE,stderr=subprocess.PIPE)\n#print(dir(program))\nstdout, stderr = program.communicate()\n#print(stdout, stderr)\n#nothing from stderr.\narray = stdout.decode(\"utf-8\")\narray = array.split(\"\\n\")\n#print(\"length of commands:\",len(array))\nimport itertools\nimport os\nfor comp in itertools.combinations(array,r=2):\n    cmd = \" \".join(comp)\n    os.system(cmd)",
+        "type": "code",
+        "location": "/native/lazero_chromeos_aarch64/cognitionService/test_commands.py:1-15"
+    },
+    "203": {
+        "file_id": 36,
+        "content": "The code imports the subprocess module and uses it to execute a bash script named \"get_commands.sh\". It captures the stdout and stderr outputs in variables, then splits the stdout into lines and stores them in an array. The code then iterates through combinations of two commands from the array, joins them together and executes them using os.system().",
+        "type": "comment"
+    },
+    "204": {
+        "file_id": 37,
+        "content": "/native/lazero_chromeos_aarch64/eventService/placeholder.sh",
+        "type": "filepath"
+    },
+    "205": {
+        "file_id": 37,
+        "content": "Code snippet introduces ChromeOS's reliance on Chrome, and mentions that dev channels contain Chrome.Automation API for automating ChromeOS.",
+        "type": "summary"
+    },
+    "206": {
+        "file_id": 37,
+        "content": "echo the chromeos is all about chrome. dev channels have chrome.automation api, which could be used to automate chromeos.",
+        "type": "code",
+        "location": "/native/lazero_chromeos_aarch64/eventService/placeholder.sh:1-1"
+    },
+    "207": {
+        "file_id": 37,
+        "content": "Code snippet introduces ChromeOS's reliance on Chrome, and mentions that dev channels contain Chrome.Automation API for automating ChromeOS.",
+        "type": "comment"
+    },
+    "208": {
+        "file_id": 38,
+        "content": "/native/lazero_chromeos_aarch64/inputService/autojs_type_test.js",
+        "type": "filepath"
+    },
+    "209": {
+        "file_id": 38,
+        "content": "This code initializes a function 'fun' that outputs \"123\" and sets an interval of 1000 milliseconds. It continuously executes the 'fun' function every 1000 ms until the program exits, expressing frustration with AutoJS due to its instability or issues.",
+        "type": "summary"
+    },
+    "210": {
+        "file_id": 38,
+        "content": "// this is rhino.\nfun=()=>{Text(\"123\");};\nitv=1000;\nsetInterval(fun,itv);\n// exiting all the time. autojs sucks.",
+        "type": "code",
+        "location": "/native/lazero_android_aarch64/inputService/autojs_type_test.js:1-5"
+    },
+    "211": {
+        "file_id": 38,
+        "content": "This code initializes a function 'fun' that outputs \"123\" and sets an interval of 1000 milliseconds. It continuously executes the 'fun' function every 1000 ms until the program exits, expressing frustration with AutoJS due to its instability or issues.",
+        "type": "comment"
+    },
+    "212": {
+        "file_id": 39,
+        "content": "/native/lazero_chromeos_aarch64/inputService/placeholder.sh",
+        "type": "filepath"
+    },
+    "213": {
+        "file_id": 39,
+        "content": "Code snippet introduces ChromeOS's reliance on Chrome, and mentions that dev channels contain Chrome.Automation API for automating ChromeOS.",
+        "type": "summary"
+    },
+    "214": {
+        "file_id": 39,
+        "content": "echo the chromeos is all about chrome. dev channels have chrome.automation api, which could be used to automate chromeos.",
+        "type": "code",
+        "location": "/native/lazero_chromeos_aarch64/eventService/placeholder.sh:1-1"
+    },
+    "215": {
+        "file_id": 39,
+        "content": "Code snippet introduces ChromeOS's reliance on Chrome, and mentions that dev channels contain Chrome.Automation API for automating ChromeOS.",
+        "type": "comment"
+    },
+    "216": {
+        "file_id": 40,
+        "content": "/native/lazero_chromeos_aarch64/inputService/twisted_type_test.py",
+        "type": "filepath"
+    },
+    "217": {
+        "file_id": 40,
+        "content": "Imports necessary modules, sets system path, initializes a TwistedProcess instance with the command \"su\", then writes input text \"123\" 5 times after a delay, and prints the read output.",
+        "type": "summary"
+    },
+    "218": {
+        "file_id": 40,
+        "content": "import sys\nsys.path.append(\"../tools\")\nfrom twisted_template import TwistedProcess as TP\ncmd=\"su\"\nimport time\nwait=lambda:time.sleep(1)\ntp=TP([cmd])\nfor _ in range(5):\n    tp.write(b'input text \"123\"\\n')\n    wait()\n    print(tp.read(blocking=False))",
+        "type": "code",
+        "location": "/native/lazero_android_aarch64/inputService/twisted_type_test.py:1-15"
+    },
+    "219": {
+        "file_id": 40,
+        "content": "Imports necessary modules, sets system path, initializes a TwistedProcess instance with the command \"su\", then writes input text \"123\" 5 times after a delay, and prints the read output.",
+        "type": "comment"
+    },
+    "220": {
+        "file_id": 41,
+        "content": "/native/lazero_chromeos_aarch64/inputService/type_test.py",
+        "type": "filepath"
+    },
+    "221": {
+        "file_id": 41,
+        "content": "Executing a \"su\" command using subprocess module and sending input text \"123\". Communicating with the process and capturing output and error messages.",
+        "type": "summary"
+    },
+    "222": {
+        "file_id": 41,
+        "content": "from subprocess import Popen, PIPE\ncmd=\"su\"\np=Popen([cmd],stdin=PIPE,stdout=PIPE,stderr=PIPE)\n# print(dir(p.stdin))\n# use communicate\n#for _ in range(3):\nout,err= p.communicate(input='input text \"123\"'.encode(\"utf-8\"))\nprint(out,err)",
+        "type": "code",
+        "location": "/native/lazero_android_aarch64/inputService/type_test.py:1-9"
+    },
+    "223": {
+        "file_id": 41,
+        "content": "Executing a \"su\" command using subprocess module and sending input text \"123\". Communicating with the process and capturing output and error messages.",
+        "type": "comment"
+    },
+    "224": {
+        "file_id": 42,
+        "content": "/native/lazero_chromeos_aarch64/inputService/type_test.sh",
+        "type": "filepath"
+    },
+    "225": {
+        "file_id": 42,
+        "content": "This code switches to the superuser mode (su) and inputs the text \"123\" using MagiskSU, a popular Android superuser management tool.",
+        "type": "summary"
+    },
+    "226": {
+        "file_id": 42,
+        "content": "su -c 'input text \"123\"'\n# this is MagiskSU.",
+        "type": "code",
+        "location": "/native/lazero_android_aarch64/inputService/type_test.sh:1-2"
+    },
+    "227": {
+        "file_id": 42,
+        "content": "This code switches to the superuser mode (su) and inputs the text \"123\" using MagiskSU, a popular Android superuser management tool.",
+        "type": "comment"
+    },
+    "228": {
+        "file_id": 43,
+        "content": "/native/lazero_chromeos_aarch64/mkdirs.sh",
+        "type": "filepath"
+    },
+    "229": {
+        "file_id": 43,
+        "content": "Creates directories for various services and components within the project.",
+        "type": "summary"
+    },
+    "230": {
+        "file_id": 43,
+        "content": "#!/usr/bin/fish\nmkdir {browserService, eventService, virtualService, shellService, inputService, cognitionService, configClass, tools, replService, mainService, backupService, floatwindow, shareService, init}\ncd virtualService\nmkdir {shellService, inputService, eventService, tools, replService}",
+        "type": "code",
+        "location": "/native/lazero_android_aarch64/mkdirs.sh:1-4"
+    },
+    "231": {
+        "file_id": 43,
+        "content": "Creates directories for various services and components within the project.",
+        "type": "comment"
+    },
+    "232": {
+        "file_id": 44,
+        "content": "/native/lazero_chromeos_aarch64/shareService/README",
+        "type": "filepath"
+    },
+    "233": {
+        "file_id": 44,
+        "content": "This code indicates that due to Termux app's different IP mappings, it is difficult to discover network devices easily. However, there's still a possibility of direct contact with the real IP address.",
+        "type": "summary"
+    },
+    "234": {
+        "file_id": 44,
+        "content": "because the termux app is using different ip mappings, we cannot simply discover anything on the network easliy?\nbut there's still chance, since we could still have direct contact with the real ip address.",
+        "type": "code",
+        "location": "/native/lazero_chromeos_aarch64/shareService/README:1-3"
+    },
+    "235": {
+        "file_id": 44,
+        "content": "This code indicates that due to Termux app's different IP mappings, it is difficult to discover network devices easily. However, there's still a possibility of direct contact with the real IP address.",
+        "type": "comment"
+    },
+    "236": {
+        "file_id": 45,
+        "content": "/native/lazero_chromeos_aarch64/tools/twisted_template.py",
+        "type": "filepath"
+    },
+    "237": {
+        "file_id": 45,
+        "content": "This code creates 'Reader' and 'MyPP' classes for buffering, event handling, and protocol extension on Windows. It spawns processes with threaded communication and allows data exchange and subprocess control, functioning as part of a process management system that stops the reactor and checks if the process has ended.",
+        "type": "summary"
+    },
+    "238": {
+        "file_id": 45,
+        "content": "from twisted.internet import protocol, reactor\nimport time\n# import sys\nimport threading\n# password is a must here. not kidding.\nimport os\ndef isWINDOWS():\n    return os.name == \"nt\"\nclass Reader:\n    def __init__(self):\n        self.event = threading.Event()\n        self.event.clear()\n        self.buffer = bytearray(b'')\n    def clear(self):\n        self.event.clear()\n    def set(self):\n        self.event.set()\n    def write(self,_bytes,blocking=True):\n        assert type(_bytes) == bytes\n        if blocking:\n            if len(_bytes) == 0:\n                return\n        self.buffer.extend(_bytes)\n        self.event.set()\n    def read(self,blocking=True):\n        if blocking:\n            self.event.wait()\n            self.event.clear()\n        _bytes = bytes(self.buffer)\n        self.buffer.clear()\n        return _bytes\n    def clear(self):\n        self.buffer.clear()\nclass MyPP(protocol.ProcessProtocol):\n    def __init__(self,reader):\n        super().__init__()\n        self.reader = reader\n    def connectionMade(self):\n        CM = lambda: print(\"\\n[Connection Made]\\n\")",
+        "type": "code",
+        "location": "/native/lazero_android_aarch64/tools/twisted_template.py:1-43"
+    },
+    "239": {
+        "file_id": 45,
+        "content": "The code defines a class 'Reader' for handling data buffering and events, and another class 'MyPP' as a protocol extension for communicating with a process. It uses threading, event handling, and byte manipulation.",
+        "type": "comment"
+    },
+    "240": {
+        "file_id": 45,
+        "content": "        CM()\n        # reactor.callLater(1.0, CM)\n    def write(self, a):\n        # binary.\n        assert type(a) == bytes\n        self.transport.write(a)\n    def processExited(self, reason):\n        print(\"processExited, status %s\" % (reason.value.exitCode,))\n    def outReceived(self, data):\n        self.reader.write(data)\n    def errReceived(self, data):\n        self.reader.write(data)\nimport sys\n#sys.path.append(\"..\\\\tools\")\nfrom where import where\nclass TwistedProcess:\n    # def __init__(self,command=[\"cmd.exe\"],usePTY=True):\n    def __init__(self,command=[\"cmd\"],usePTY=True,env=dict(os.environ), path=None,autolocate=True):\n        assert type(command) == list and len(command)>0\n        if isWINDOWS():\n            print(\"System is Windows. Forced to use non-PTY mode.\")\n            usePTY = False\n    # how to kill this process?\n        reader = Reader()\n        self.reader = reader\n        pp = MyPP(reader)\n        def theFunc(a):\n            try:\n                a.run()\n            except:\n                pass\n        # process = reactor.spawnProcess(pp, command[0], command, usePTY=usePTY)",
+        "type": "code",
+        "location": "/native/lazero_android_aarch64/tools/twisted_template.py:44-82"
+    },
+    "241": {
+        "file_id": 45,
+        "content": "This code defines a TwistedProcess class that spawns a new process using the Twisted library, with optional command, usePTY, env variables and path settings. It also creates a reader object to receive output and handles process exit status. The class is designed for Windows platforms and forces non-PTY mode if it detects the system as Windows.",
+        "type": "comment"
+    },
+    "242": {
+        "file_id": 45,
+        "content": "        executable = command[0]\n        if autolocate:\n            if not os.path.isabs(executable):\n                executable = where(executable)[0]\n        process = reactor.spawnProcess(pp, executable, command, env=env, path=path, usePTY=usePTY)\n        # print(dir(process))\n        # ['__class__', '__delattr__', '__dict__', '__dir__', '__doc__', '__eq__', '__format__', '__ge__', '__getattribute__', '__gt__', '__hash__', '__implemented__', '__init__', '__init_subclass__', '__le__', '__lt__', '__module__', '__ne__', '__new__', '__providedBy__', '__provides__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', '__weakref__', '_addPollableResource', '_callProcessExited', '_checkPollingState', '_currentTimeout', '_getReason', '_pause', '_paused', '_pollEvent', '_pollTimer', '_reschedule', '_resources', '_startPolling', '_stopPolling', '_unpause', 'closeChildFD', 'closeStderr', 'closeStdin', 'closeStdout', 'closedNotifies', 'connectionLostN",
+        "type": "code",
+        "location": "/native/lazero_android_aarch64/tools/twisted_template.py:83-89"
+    },
+    "243": {
+        "file_id": 45,
+        "content": "This code is creating a process by spawning it with the given executable and command. If autolocate is enabled, it checks if the executable path is absolute and if not, uses \"where\" to find its location. The process is then spawned using reactor's \"spawnProcess\" method with provided environment, path, and usePTY options. Finally, some attributes of the created process are printed to the console.",
+        "type": "comment"
+    },
+    "244": {
+        "file_id": 45,
+        "content": "otify', 'errConnectionLost', 'hProcess', 'hStderrR', 'hStdinW', 'hStdoutR', 'hThread', 'inConnectionLost', 'loseConnection', 'lostProcess', 'maybeCallProcessEnded', 'outConnectionLost', 'pauseProducing', 'pid', 'processEnded', 'proto', 'reactor', 'registerProducer', 'resumeProducing', 'signalProcess', 'status', 'stderr', 'stdin', 'stdout', 'stopProducing', 'unregisterProducer', 'write', 'writeSequence', 'writeToChild']\n        self.process=process\n        self.pp = pp\n        p = threading.Thread(target=theFunc,args=(reactor,)) # pause the reactor?\n        p.setDaemon(True)\n        p.start() # not RUN!\n    def write(self,text):\n        assert type(text) == bytes\n        self.pp.write(text)\n    def read(self,blocking=True):\n        return self.reader.read(blocking=blocking)\n    def terminate(self):\n        # usually not reusable. all will be deleted.\n        self.reader.clear()\n        pid = self.process.pid\n        # try:\n        #     self.process.closeStderr()\n        #     self.process.closeStdin()\n        #     self.process.closeStdout()",
+        "type": "code",
+        "location": "/native/lazero_android_aarch64/tools/twisted_template.py:89-107"
+    },
+    "245": {
+        "file_id": 45,
+        "content": "This code sets up a thread to manage communication with a subprocess, allowing for asynchronous interaction by pausing and resuming the reactor, writing data to the process's stdin, and reading from its stdout. The terminate function clears the reader and closes stdin, stderr, and stdout before the process is terminated.",
+        "type": "comment"
+    },
+    "246": {
+        "file_id": 45,
+        "content": "        #     # reactor.stop()\n        # except:\n        #     pass\n        return pid\n    def isalive(self):\n        return self.process.processEnded",
+        "type": "code",
+        "location": "/native/lazero_android_aarch64/tools/twisted_template.py:108-113"
+    },
+    "247": {
+        "file_id": 45,
+        "content": "This code snippet appears to be part of a process management system. It attempts to stop the reactor, and if an exception occurs during this process, it ignores it and returns the PID (Process ID). The 'isalive' function checks whether the process has ended or not.",
+        "type": "comment"
+    },
+    "248": {
+        "file_id": 46,
+        "content": "/native/lazero_chromeos_aarch64/tools/where.py",
+        "type": "filepath"
+    },
+    "249": {
+        "file_id": 46,
+        "content": "This code imports the subprocess module and defines a function called \"where\" that takes a target as input. It runs the \"which\" command on the given target, filters out empty strings, and returns the non-empty results as a list. This function can be used to find the location of executable files in the system path.",
+        "type": "summary"
+    },
+    "250": {
+        "file_id": 46,
+        "content": "# import subprocess\nfrom subprocess import Popen, PIPE\ndef where(target):\n    p = Popen([\"which\",target],stderr=PIPE,stdout=PIPE)\n    p = p.communicate()[0].decode(\"utf-8\") # bytes.\n    p0 = p.split(\"\\n\")\n    p0 = [x.replace(\"\\n\", \"\").replace(\"\\r\",\"\") for x in p0]\n    p0 = list(filter(lambda x:len(x)>0,p0))\n    return p0",
+        "type": "code",
+        "location": "/native/lazero_android_aarch64/tools/where.py:1-10"
+    },
+    "251": {
+        "file_id": 46,
+        "content": "This code imports the subprocess module and defines a function called \"where\" that takes a target as input. It runs the \"which\" command on the given target, filters out empty strings, and returns the non-empty results as a list. This function can be used to find the location of executable files in the system path.",
+        "type": "comment"
+    },
+    "252": {
+        "file_id": 47,
+        "content": "/native/lazero_kali_amd64/cognitionService/change_gcc.sh",
+        "type": "filepath"
+    },
+    "253": {
+        "file_id": 47,
+        "content": "The code is using xargs to iterate over the contents of gcc_targets.log and for each item, it checks which 'abc' executable is available, removes it if found (presumably a different version), finds the 'abc-8' executable, and creates a symbolic link to it with the name of the original 'abc' executable.",
+        "type": "summary"
+    },
+    "254": {
+        "file_id": 47,
+        "content": "#cat gcc_targets.log | xargs -iabc bash -c \"amd=\\$(which abc); echo \\$amd\"\ncat gcc_targets.log | xargs -iabc bash -c \"amd=\\$(which abc); unlink \\$amd; target=\\$(which abc-8); ln -s \\$target \\$amd\"",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/cognitionService/change_gcc.sh:1-2"
+    },
+    "255": {
+        "file_id": 47,
+        "content": "The code is using xargs to iterate over the contents of gcc_targets.log and for each item, it checks which 'abc' executable is available, removes it if found (presumably a different version), finds the 'abc-8' executable, and creates a symbolic link to it with the name of the original 'abc' executable.",
+        "type": "comment"
+    },
+    "256": {
+        "file_id": 48,
+        "content": "/native/lazero_kali_amd64/cognitionService/chatbot_study.py",
+        "type": "filepath"
+    },
+    "257": {
+        "file_id": 48,
+        "content": "This code explores information processing using internal modeling or machine learning, emphasizing self-evaluation and different approaches for exchanging/sharing info. It also imports libraries and contains negative comments expressing concerns about compatibility and availability.",
+        "type": "summary"
+    },
+    "258": {
+        "file_id": 48,
+        "content": "# this is how the fuck we can get our information somehow making sense.\n# first we feed in the data from the book, and then we will act.\n# then we will collect new information, perform actions according to our talk.\n# hope there are some internal modeling.\n# or just some function array/machine learning.\n# whatever. you just fucking said that this shit is not in conflict with my fucking shit.\n# think about these fucking human. what kind of fucking shit are they doing right fucking now? are they comparable to the fucking computer? nothing but fucking around.\n# you want to fool people around? better fool yourself first.\n# see if you can fool yourself. trick the fuck out.\n# for the computer, if it is dead, then it is really dead.\n# i don't even need to verify. if this is the real world.\n# even the dinosaurs can extinct.\n# so you can explore randomly. why the fuck would you learn?\n# i expect the thing goes in two ways. one is for exchange, one is to share the mind.\n# and once you are agreeing on others, there's no turning back.",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/cognitionService/chatbot_study.py:1-15"
+    },
+    "259": {
+        "file_id": 48,
+        "content": "This code seems to be a jumbled collection of thoughts about how information can be processed, potentially using internal modeling or machine learning. It emphasizes the importance of self-evaluation and explores different approaches for exchanging or sharing information. The author also acknowledges the possibility of extinction and random exploration without learning.",
+        "type": "comment"
+    },
+    "260": {
+        "file_id": 48,
+        "content": "# the fucking screen is about to be fucked.\n# what makes this shit so special huh?\n# i do not care about the fucking speed. are you sure that your fucking shit is working or not?\n# JUST PURE PYTHON. MAXIMUM COMPATIBILITY.\n# what the fuck? shall i do something else?\n# why the fuck the shit is not avaliable?\n# freaking shit.\nimport numpy as np\nimport scipy as sp\nimport networkx as nx\nimport nltk as nk\nimport regex\nimport rstr\nimport random\nimport keras as k\n# we want to make this shit happen right...\n# you know what? do not even start the war you don't even know how the fuck you shall start.",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/cognitionService/chatbot_study.py:16-32"
+    },
+    "261": {
+        "file_id": 48,
+        "content": "This code imports various libraries and seems to contain negative comments, possibly from a frustrated developer or user. It expresses concerns about compatibility and availability but does not reveal the specific purpose of the code.",
+        "type": "comment"
+    },
+    "262": {
+        "file_id": 49,
+        "content": "/native/lazero_kali_amd64/cognitionService/deltaWrapper.py",
+        "type": "filepath"
+    },
+    "263": {
+        "file_id": 49,
+        "content": "The code is continuously reading lines from the standard input, printing the current time and the received line. It does not specify any prediction or relationship analysis with the text being typed. The code appears to be waiting for a specific command or input but doesn't provide information on how to predict the next move or show the relationship between the current text being typed.",
+        "type": "summary"
+    },
+    "264": {
+        "file_id": 49,
+        "content": "import sys\nimport time as T\n# be it monad or anything. just show me how?\nwhile True:\n    line = sys.stdin.readline()\n    print(\"line received!\\n\",T.time(),line)\n    # how do you predict the next move? i don't care how the fuck you're gonna do the next. show me how.\n    # next, get me the words that i am currently typing. show the relationship somehow.",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/cognitionService/deltaWrapper.py:1-10"
+    },
+    "265": {
+        "file_id": 49,
+        "content": "The code is continuously reading lines from the standard input, printing the current time and the received line. It does not specify any prediction or relationship analysis with the text being typed. The code appears to be waiting for a specific command or input but doesn't provide information on how to predict the next move or show the relationship between the current text being typed.",
+        "type": "comment"
+    },
+    "266": {
+        "file_id": 50,
+        "content": "/native/lazero_kali_amd64/cognitionService/init.sh",
+        "type": "filepath"
+    },
+    "267": {
+        "file_id": 50,
+        "content": "This code installs the \"python3-preshed\" package using the APT (Advanced Packaging Tool) package manager. This package is likely required for the script to run successfully, and it might be used for hashing or checksum calculation operations.",
+        "type": "summary"
+    },
+    "268": {
+        "file_id": 50,
+        "content": "apt install python3-preshed",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/cognitionService/init.sh:1-1"
+    },
+    "269": {
+        "file_id": 50,
+        "content": "This code installs the \"python3-preshed\" package using the APT (Advanced Packaging Tool) package manager. This package is likely required for the script to run successfully, and it might be used for hashing or checksum calculation operations.",
+        "type": "comment"
+    },
+    "270": {
+        "file_id": 51,
+        "content": "/native/lazero_kali_amd64/cognitionService/interaction_0.py",
+        "type": "filepath"
+    },
+    "271": {
+        "file_id": 51,
+        "content": "Code imports shellConnect module and time module. It enters a loop where it restarts the connection, sends \"hello world\" input, waits for 1 second, retrieves displayed content, and prints it. This code continuously interacts with the connected device and prints its output.",
+        "type": "summary"
+    },
+    "272": {
+        "file_id": 51,
+        "content": "import shellConnect as Sc\n# to represent how you type these words? type it exactly according to what you've done in the past?\n# we want it to learn anything from this process.\nimport time as T\nwhile True:\n    Sc.restart()\n    Sc.inputs(\"hello world\")\n    T.sleep(1)\n    content = Sc.display()\n    print(content)",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/cognitionService/interaction_0.py:1-11"
+    },
+    "273": {
+        "file_id": 51,
+        "content": "Code imports shellConnect module and time module. It enters a loop where it restarts the connection, sends \"hello world\" input, waits for 1 second, retrieves displayed content, and prints it. This code continuously interacts with the connected device and prints its output.",
+        "type": "comment"
+    },
+    "274": {
+        "file_id": 52,
+        "content": "/native/lazero_kali_amd64/cognitionService/interaction_1.py",
+        "type": "filepath"
+    },
+    "275": {
+        "file_id": 52,
+        "content": "The code imports the \"shellConnect\" module and a time module, creates a list of commands, and enters an infinite loop. In each iteration, it restarts the connection, sends a command from the list, waits for 1 second, prints the displayed content, increments the counter, and repeats the process.",
+        "type": "summary"
+    },
+    "276": {
+        "file_id": 52,
+        "content": "import shellConnect as Sc\n# to represent how you type these words? type it exactly according to what you've done in the past?\n# we want it to learn anything from this process.\nimport time as T\nclist=[\"hello world{}\".format(x) for x in range(5)]\ncnt=0\nwhile True:\n    Sc.restart()\n    cmd=clist[cnt]\n    Sc.inputs(cmd)\n    T.sleep(1)\n    content = Sc.display()\n    print(content)\n    cnt+=1\n    cnt%=len(clist)",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/cognitionService/interaction_1.py:1-16"
+    },
+    "277": {
+        "file_id": 52,
+        "content": "The code imports the \"shellConnect\" module and a time module, creates a list of commands, and enters an infinite loop. In each iteration, it restarts the connection, sends a command from the list, waits for 1 second, prints the displayed content, increments the counter, and repeats the process.",
+        "type": "comment"
+    },
+    "278": {
+        "file_id": 53,
+        "content": "/native/lazero_kali_amd64/cognitionService/interaction_2.py",
+        "type": "filepath"
+    },
+    "279": {
+        "file_id": 53,
+        "content": "Code generates a list of strings, randomly selects and inputs them into a shell using the \"shellConnect\" module. It then waits 1 second before displaying the output from the shell, selects a substring from the displayed content, and repeats the process. If the selected substring is not empty, it sets a flag to override the list of strings and continues the loop.",
+        "type": "summary"
+    },
+    "280": {
+        "file_id": 53,
+        "content": "import shellConnect as Sc\n# to represent how you type these words? type it exactly according to what you've done in the past?\n# we want it to learn anything from this process.\nimport time as T\nclist=[\"hello world{}\".format(x) for x in range(5)]\ncnt=0\nimport random as R\nSR=R.SystemRandom()\ndef rsel(string,l=7):\n    ls=len(string)\n    if ls>l:\n        r=SR.choice(list(range(0,ls-l)))\n        ts=string[r:r+l]\n        return ts\n    elif ls==l:\n        return string\n    else:\n        return \"\"\nnx,override=\"\",False\nwhile True:\n    Sc.restart()\n    if not override:\n        cmd=clist[cnt]\n        Sc.inputs(cmd)\n    else:\n        Sc.inputs(nx)\n    T.sleep(1)\n    content = Sc.display()\n    print(content)\n    nx=rsel(content)\n    if nx!=\"\":\n        override=True\n    cnt+=1\n    cnt%=len(clist)",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/cognitionService/interaction_2.py:1-38"
+    },
+    "281": {
+        "file_id": 53,
+        "content": "Code generates a list of strings, randomly selects and inputs them into a shell using the \"shellConnect\" module. It then waits 1 second before displaying the output from the shell, selects a substring from the displayed content, and repeats the process. If the selected substring is not empty, it sets a flag to override the list of strings and continues the loop.",
+        "type": "comment"
+    },
+    "282": {
+        "file_id": 54,
+        "content": "/native/lazero_kali_amd64/cognitionService/interaction_3.py",
+        "type": "filepath"
+    },
+    "283": {
+        "file_id": 54,
+        "content": "This Python script repeatedly sends commands from the list 'clist' to a shell (using the 'Sc.inputs()' function) and receives responses from it (using the 'Sc.display()' function). The 'rsel()' function randomly selects a word from the response content, and if a selection is made, the 'override' flag is set to True. The script continues this process indefinitely, with each command being selected at random from 'clist'.",
+        "type": "summary"
+    },
+    "284": {
+        "file_id": 54,
+        "content": "import shellConnect as Sc\n# to represent how you type these words? type it exactly according to what you've done in the past?\n# we want it to learn anything from this process.\nimport time as T\nclist=[\"hello world{}\".format(x) for x in range(5)]\ncnt=0\nimport random as R\nSR=R.SystemRandom()\ndef rsel(string):\n    try:\n        return SR.choice(string.split())\n    except:\n        return \"\"\nnx,override=\"\",False\nwhile True:\n    Sc.restart()\n    if not override:\n        cmd=clist[cnt]\n        Sc.inputs(cmd)\n    else:\n        Sc.inputs(nx)\n    T.sleep(1)\n    content = Sc.display()\n    print(content)\n    nx=rsel(content)\n    if nx!=\"\":\n        override=True\n    cnt+=1\n    cnt%=len(clist)",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/cognitionService/interaction_3.py:1-32"
+    },
+    "285": {
+        "file_id": 54,
+        "content": "This Python script repeatedly sends commands from the list 'clist' to a shell (using the 'Sc.inputs()' function) and receives responses from it (using the 'Sc.display()' function). The 'rsel()' function randomly selects a word from the response content, and if a selection is made, the 'override' flag is set to True. The script continues this process indefinitely, with each command being selected at random from 'clist'.",
+        "type": "comment"
+    },
+    "286": {
+        "file_id": 55,
+        "content": "/native/lazero_kali_amd64/cognitionService/prepare_gcc_alternatives.sh",
+        "type": "filepath"
+    },
+    "287": {
+        "file_id": 55,
+        "content": "Sets up alternative versions of GCC and G++ for different versions (8, 9, 10) using update-alternatives command in Linux.",
+        "type": "summary"
+    },
+    "288": {
+        "file_id": 55,
+        "content": "#cat gcc_targets.log | xargs -iabc bash -c \"amd=\\$(which abc); echo \\$amd\"\nupdate-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-8 5\nupdate-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-9 4\nupdate-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-10 3\nupdate-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-8 5\nupdate-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-9 4\nupdate-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-10 3",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/cognitionService/prepare_gcc_alternatives.sh:1-8"
+    },
+    "289": {
+        "file_id": 55,
+        "content": "Sets up alternative versions of GCC and G++ for different versions (8, 9, 10) using update-alternatives command in Linux.",
+        "type": "comment"
+    },
+    "290": {
+        "file_id": 56,
+        "content": "/native/lazero_kali_amd64/cognitionService/recover_gcc.sh",
+        "type": "filepath"
+    },
+    "291": {
+        "file_id": 56,
+        "content": "This script reads the file gcc_targets.log, then uses xargs to iterate over its contents (abc). For each entry (abc), it finds the path to a program by using 'which', stores it in amd, deletes the original program, and creates a symbolic link (ln) to another program version (-10) at the same location (amd).",
+        "type": "summary"
+    },
+    "292": {
+        "file_id": 56,
+        "content": "#cat gcc_targets.log | xargs -iabc bash -c \"amd=\\$(which abc); echo \\$amd\"\ncat gcc_targets.log | xargs -iabc bash -c \"amd=\\$(which abc); unlink \\$amd; target=\\$(which abc-10); ln -s \\$target \\$amd\"",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/cognitionService/recover_gcc.sh:1-2"
+    },
+    "293": {
+        "file_id": 56,
+        "content": "This script reads the file gcc_targets.log, then uses xargs to iterate over its contents (abc). For each entry (abc), it finds the path to a program by using 'which', stores it in amd, deletes the original program, and creates a symbolic link (ln) to another program version (-10) at the same location (amd).",
+        "type": "comment"
+    },
+    "294": {
+        "file_id": 57,
+        "content": "/native/lazero_kali_amd64/cognitionService/requirements.txt",
+        "type": "filepath"
+    },
+    "295": {
+        "file_id": 57,
+        "content": "The code specifies the required Python libraries for the project, including nltk (Natural Language Toolkit), tensorflow-gpu (GPU-accelerated deep learning framework), and keras (high-level neural networks API).",
+        "type": "summary"
+    },
+    "296": {
+        "file_id": 57,
+        "content": "nltk\ntensorflow-gpu\nkeras",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/cognitionService/requirements.txt:1-3"
+    },
+    "297": {
+        "file_id": 57,
+        "content": "The code specifies the required Python libraries for the project, including nltk (Natural Language Toolkit), tensorflow-gpu (GPU-accelerated deep learning framework), and keras (high-level neural networks API).",
+        "type": "comment"
+    },
+    "298": {
+        "file_id": 58,
+        "content": "/native/lazero_kali_amd64/cognitionService/shellConnect.py",
+        "type": "filepath"
+    },
+    "299": {
+        "file_id": 58,
+        "content": "This Python script imports the requests library, defines a display function that fetches data from localhost port 8788, an inputs function to send data and receive responses from localhost port 8788 with optional autoreturn feature, and a restart function to reset the process.",
+        "type": "summary"
+    }
+}

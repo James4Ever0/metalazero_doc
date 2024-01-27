@@ -1,0 +1,12 @@
+there is a tool called pexpect. but i doubt about it.
+
+does it handle case sensitiveness? simple string containing?
+
+does pexpect create a virtual tty? can we really run it like the tornado stuff? can we sleep with this one?
+
+can we do the same with expect?
+
+what is this "et" shell?
+
+et/stable 6.0.13-1 arm
+  A remote shell that automatically reconnects without interrupting the session

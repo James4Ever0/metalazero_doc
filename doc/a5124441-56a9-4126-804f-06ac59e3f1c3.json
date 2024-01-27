@@ -1,0 +1,10 @@
+{
+    "summary": "This script copies the text \"hello world\" to the clipboard, splits it into two parts using echo \"spilter\", and then retrieves and outputs the first part of the clipped text.",
+    "details": [
+        {
+            "comment": "This script copies the text \"hello world\" to the clipboard, splits it into two parts using echo \"spilter\", and then retrieves and outputs the first part of the clipped text.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/remote_control/tools/clipboard/linux/demo_clipboard.sh\":0-5",
+            "content": "#!/bin/bash\n# why this little shit is so goddamn handy in my fucking hand?\n# i don't know because it is one of these infinite mistories.\necho hello worls | xclip -i\necho spilter\nxclip -o"
+        }
+    ]
+}

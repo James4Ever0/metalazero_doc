@@ -1,0 +1,7 @@
+# ptyprocess
+# this is not good. windows does not support this shit.
+pyte
+tornado
+twisted
+requests
+service_identity

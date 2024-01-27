@@ -1,0 +1,15 @@
+{
+    "summary": "This code uses pyautogui library to define mouse functions for movement, clicking, and resetting in separate threads, allowing asynchronous execution.",
+    "details": [
+        {
+            "comment": "This code defines functions for mouse movement, clicking, and resetting the mouse using pyautogui library. It runs these actions in separate threads to avoid blocking the main program. The reset_mouse() function triggers a mouseUp event and doubleClick() allows users to simulate left or right clicks, or both.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/remote_control/server/lazero_mouse.py\":0-34",
+            "content": "import traceback\nimport threading\nimport os\ndef mouseMove(deltaX, deltaY):\n    print(\"request move:\", deltaX, deltaY)\n    print(type(deltaX))\n    try:\n        cmd = \"python3 -c \\\"import pyautogui; pyautogui.moveRel({},{})\\\"\".format(deltaX, deltaY)\n        threading.Thread(target=os.system,args=(cmd,),daemon=True).start()\n    except:\n        traceback.print_exc()\ndef mouseDown():\n    cmd = \"python3 -c \\\"import pyautogui; pyautogui.mouseDown()\\\"\"    \n    threading.Thread(target=os.system,args=(cmd,),daemon=True).start()\ndef mouseUp():\n    cmd = \"python3 -c \\\"import pyautogui; pyautogui.mouseUp()\\\"\"    \n    threading.Thread(target=os.system,args=(cmd,),daemon=True).start()\ndef click(button=\"left\"):\n    cmd = \"python3 -c \\\"import pyautogui; pyautogui.click(button='{}')\\\"\".format(button)\n    threading.Thread(target=os.system,args=(cmd,),daemon=True).start()\n\"\"\"\ndef leftClick():\n    pyautogui.leftClick()\ndef rightClick():\n    pyautogui.rightClick()\n\"\"\"\ndef reset_mouse():\n    mouseUp()\n    return\ndef doubleClick(button=\"left\"):"
+        },
+        {
+            "comment": "This code is executing a double click on the specified button using Python's pyautogui library. It creates and starts a new thread to run the command asynchronously.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/remote_control/server/lazero_mouse.py\":35-36",
+            "content": "    cmd = \"python3 -c \\\"import pyautogui; pyautogui.doubleClick(button='{}')\\\"\".format(button)\n    threading.Thread(target=os.system,args=(cmd,),daemon=True).start()"
+        }
+    ]
+}

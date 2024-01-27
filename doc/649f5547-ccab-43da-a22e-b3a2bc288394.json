@@ -1,0 +1,10 @@
+{
+    "summary": "This code snippet uses the 'sed' command to replace specific characters in a file. It replaces opening curly braces with newline followed by opening curly brace, and semicolons with newline followed by semicolon.",
+    "details": [
+        {
+            "comment": "This code snippet uses the 'sed' command to replace specific characters in a file. It replaces opening curly braces with newline followed by opening curly brace, and semicolons with newline followed by semicolon.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/browser_plugin/lazero_crx_17_kiwi_ip_change/format.sed\":0-1",
+            "content": "s/{/{\\n/g\ns/\\;/\\;\\n/g"
+        }
+    ]
+}

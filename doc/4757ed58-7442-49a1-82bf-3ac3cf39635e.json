@@ -1,0 +1,10 @@
+{
+    "summary": "This code declares two character pointers, \"a\" and \"b\", with \"b\" containing a substring of \"a\". It then uses the strstr function to find the first occurrence of \"b\" within \"a\" and prints the result.",
+    "details": [
+        {
+            "comment": "This code declares two character pointers, \"a\" and \"b\", with \"b\" containing a substring of \"a\". It then uses the strstr function to find the first occurrence of \"b\" within \"a\" and prints the result.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_kali_amd64/cognitionService/virtual/cog_core.c\":0-8",
+            "content": "#include <string.h>\n#include <stdio.h>\nint main(){\n\tchar* a=\"abcdef\";\n\tchar* b=\"123\";\n\t//char* b=\"abc\";\n\tprintf(\"%s\\n\",strstr(a,b));\n}"
+        }
+    ]
+}

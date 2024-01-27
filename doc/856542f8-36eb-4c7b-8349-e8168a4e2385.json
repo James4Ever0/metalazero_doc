@@ -1,0 +1,10 @@
+{
+    "summary": "This script compiles the \"cog_core.m\" file with GCC-10, includes necessary headers and libraries from GNUstep, links against gnustep-base library, and enables ObjC exceptions support for a native iOS-like environment on Kali Linux.",
+    "details": [
+        {
+            "comment": "This script compiles the \"cog_core.m\" file with GCC-10, includes necessary headers and libraries from GNUstep, links against gnustep-base library, and enables ObjC exceptions support for a native iOS-like environment on Kali Linux.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_kali_amd64/cognitionService/virtual/objc_compile.sh\":0-6",
+            "content": "#gcc-8 -o hello -objc cog_core.m \n#gcc-10 -o hello -objc cog_core.m\ngcc-10 -o cog_core cog_core.m -I `gnustep-config --variable=GNUSTEP_SYSTEM_HEADERS` \\\n                       -L `gnustep-config --variable=GNUSTEP_SYSTEM_LIBRARIES` \\\n                       -lgnustep-base -fconstant-string-class=NSConstantString \\\n                       -D_NATIVE_OBJC_EXCEPTIONS \\\n                       -lobjc"
+        }
+    ]
+}

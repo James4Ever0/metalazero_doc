@@ -1,0 +1,10 @@
+{
+    "summary": "This code is using pydoc3 to document the 'pexpect.pty_spawn.spawn' function or module, providing information about its usage and syntax.",
+    "details": [
+        {
+            "comment": "This code is using pydoc3 to document the 'pexpect.pty_spawn.spawn' function or module, providing information about its usage and syntax.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/tools/get_help.sh\":0-0",
+            "content": "pydoc3 pexpect.pty_spawn.spawn"
+        }
+    ]
+}

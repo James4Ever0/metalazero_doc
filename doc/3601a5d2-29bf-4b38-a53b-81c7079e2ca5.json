@@ -1,0 +1,10 @@
+{
+    "summary": "Code imports the LanguageClient class from vscode-languageclient package and initializes an instance of it. This client will be used for language service communication between Visual Studio Code and the server. The console.dir(LanguageClient) line is used to inspect the properties and methods of the imported LanguageClient class.",
+    "details": [
+        {
+            "comment": "Code imports the LanguageClient class from vscode-languageclient package and initializes an instance of it. This client will be used for language service communication between Visual Studio Code and the server. The console.dir(LanguageClient) line is used to inspect the properties and methods of the imported LanguageClient class.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_kali_amd64/cognitionService/virtual/vscode_client_lsp.js\":0-3",
+            "content": "const {LanguageClient}= require(\"vscode-languageclient/node\");\n//const LC=LSP.LanguageClient\n//requires vscode, which shouldn't be installed.\nconsole.dir(LanguageClient)"
+        }
+    ]
+}

@@ -1,0 +1,537 @@
+{
+    "1500": {
+        "file_id": 303,
+        "content": "\t\t\tws.send(line);\nstate=true;\n\t\t\trl.setPrompt('select> ');\n    rl.prompt();\n\t\t}}catch(err){console.log(err);state=true;\n\t\t\trl.setPrompt('select> ');\n\t\t\trl.prompt();\n\t\t}\n}).on('close',function(){\n    process.exit(0);\n});\n// Websocket connection handler.\nwss.on('connection', function connection(ws, request) {\n  console.log(new Date() + ' | A new client is connected.');\n  // Assign player Id to connected client.\n  // Registering player with the session.\nmySet.add(ws);\n\tvar id = mySet.toArray().length;\n\tconsole.log(\"new session joined. now \"+id+\" sessions\");\n  // Sending confirm message to the connected client.\n//  ws.send('print(\"hello world\")');\n  // Handle all messages from users.\n  ws.on('message', function(msgStr) {\n    console.log('Message Received: '+msgStr);\n    // Send back the same message.\n    // ws.send(msgStr);\n  });\n  // What to do when client disconnect?\n  ws.on('close', function(connection) {\n\t  mySet.delete(ws);\n\t  var id = mySet.toArray().length;  \n\t  console.log(\"one session closed. now \"+id+\" sessions\");",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/replService/chrome_console.js:40-75"
+    },
+    "1501": {
+        "file_id": 303,
+        "content": "The code establishes a WebSocket server and manages client connections. It sends messages, tracks the number of sessions, and handles client disconnections.",
+        "type": "comment"
+    },
+    "1502": {
+        "file_id": 303,
+        "content": "    console.log(new Date() + ' | Closing connection for a client.');\n// remove element.\n    // One of the clients has disconnected.\n  });\n});\n// HTTP Server ==> WebSocket upgrade handling:\nserver.on('upgrade', function upgrade(request, socket, head) {\n    console.log(new Date() + ' | Upgrading http connection to wss: url = '+request.url);\n    // Parsing url from the request.\n    var parsedUrl = url.parse(request.url, true, true);\n    const pathname = parsedUrl.pathname\n    console.log(new Date() + ' | Pathname = '+pathname);\n    // If path is valid connect to the websocket.\n    if (pathname === '/chrome_console') {\n      wss.handleUpgrade(request, socket, head, function done(ws) {\nconsole.log(\"add 1 upgraded.\");\n        wss.emit('connection', ws, request);\n      });\n    } else {\n\t    // no fucking destroy!\n      socket.destroy();\n    }\n});\n// On establishing port listener.\nserver.listen(port, function() {\n    console.log(new Date() + ' | Server is listening on port ' + port);\n    // Server is running.\n});",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/replService/chrome_console.js:76-110"
+    },
+    "1503": {
+        "file_id": 303,
+        "content": "Code sets up a WebSocket server, handles client connections and disconnections, and listens on a specified port. Upon successful connection, it logs the date and time along with relevant information about the connection, such as pathname or disconnecting clients.",
+        "type": "comment"
+    },
+    "1504": {
+        "file_id": 304,
+        "content": "/native/lazero_win10_amd64/requirements.txt",
+        "type": "filepath"
+    },
+    "1505": {
+        "file_id": 304,
+        "content": "This code specifies the required libraries for the \"metalazero/native/lazero_win10_amd64\" project. The developer notes that using \"ptyprocess\" is not recommended on Windows due to lack of support, and lists alternative libraries such as \"pyte\", \"tornado\", \"twisted\", \"requests\", and \"service_identity\".",
+        "type": "summary"
+    },
+    "1506": {
+        "file_id": 304,
+        "content": "# ptyprocess\n# this is not good. windows does not support this shit.\npyte\ntornado\ntwisted\nrequests\nservice_identity",
+        "type": "code",
+        "location": "/native/lazero_win10_amd64/requirements.txt:1-7"
+    },
+    "1507": {
+        "file_id": 304,
+        "content": "This code specifies the required libraries for the \"metalazero/native/lazero_win10_amd64\" project. The developer notes that using \"ptyprocess\" is not recommended on Windows due to lack of support, and lists alternative libraries such as \"pyte\", \"tornado\", \"twisted\", \"requests\", and \"service_identity\".",
+        "type": "comment"
+    },
+    "1508": {
+        "file_id": 305,
+        "content": "/native/lazero_win10_amd64/rmtest.sh",
+        "type": "filepath"
+    },
+    "1509": {
+        "file_id": 305,
+        "content": "This script deletes the directories \"chrome_html\" and \"chrome_monitor\" using recursive force removal (rm -rf) in Bash.",
+        "type": "summary"
+    },
+    "1510": {
+        "file_id": 305,
+        "content": "#!/bin/bash\nrm -rf chrome_html\nrm -rf chrome_monitor",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/rmtest.sh:1-3"
+    },
+    "1511": {
+        "file_id": 305,
+        "content": "This script deletes the directories \"chrome_html\" and \"chrome_monitor\" using recursive force removal (rm -rf) in Bash.",
+        "type": "comment"
+    },
+    "1512": {
+        "file_id": 306,
+        "content": "/native/lazero_win10_amd64/shellService/ptyproc.py",
+        "type": "filepath"
+    },
+    "1513": {
+        "file_id": 306,
+        "content": "The code imports libraries, sets up argument parsing, creates a virtual terminal using pyte, and monitors processes with threading and HTTP GET requests. It creates a Tornado web app handling \"/display\" and \"/restart\" routes, processing type requests, sending data to ptyproc.py, and includes error handling for incorrect inputs while also registering handlers for system events or signals before exiting the program.",
+        "type": "summary"
+    },
+    "1514": {
+        "file_id": 306,
+        "content": "from __future__ import unicode_literals\n# i mean, android.\n# hey! do not run this shit outside of sandbox, unless you want to get me killed.\nimport threading\nimport pyte\n# can you format things into colorful output?\n# or just raw terminal string which can be transformed into html.\nimport traceback\nimport tornado.ioloop\nimport tornado.web\nimport requests\nimport base64\n# import signal\n# no watchdog for this?\n# we can still be running bash.\nLF_CRLF=b\"\\n\"\nmaxbark = 2\nmaxbark_granual = 5\nmaxterm = 3\nmaxterm_granual = 5\nbark = 0\nterm = 0\nimport argparse\nparser = argparse.ArgumentParser()\nparser.add_argument(\"-p\",\"--port\",type=int,default=8788,help=\"port number\")\nargs = parser.parse_args()\nport=args.port\nassert port>0 and port <65535\nprint(\"server running on port %d\" %port)\n# you can turn off the barking dog sometimes.\n# we can use a big dog every since then.\nimport os\ndef kill(pipe):\n    try:\n        pid = pipe.pid\n        os.system(\"taskkill /F /PID {}\".format(pid))\n        # pipe.kill()\n        pipe.terminate()\n        # print(type(pipe),dir(pipe))",
+        "type": "code",
+        "location": "/native/lazero_win10_amd64/shellService/ptyproc.py:1-39"
+    },
+    "1515": {
+        "file_id": 306,
+        "content": "Code snippet imports necessary libraries and sets up argument parsing for the port number. It defines a kill function to terminate processes, and prints that the server is running on the specified port. The code also includes variables for barking dog messages and maximum values for bark and term counts.",
+        "type": "comment"
+    },
+    "1516": {
+        "file_id": 306,
+        "content": "        # pipe.kill(signal.SIGKILL)\n    except:\n        print(\"_____process kill error_____\")\n        traceback.print_exc()\n# signal.signal(signal.SIGINT, signal_handler)\nimport winpty\ndisplay = \"\"\nlag = 0.05\nexecutable ='cmd' # this is wrong. could get your computer in danger.\n# unless you want to take the risk. everything worth the try?\ncols, rows = 80, 25\nimport time\nwatch_rate = 0.5\nscreen = pyte.Screen(cols,rows)\nstream = pyte.ByteStream(screen)\nprocess =  winpty.PtyProcess.spawn([executable],dimensions=(rows,cols))\ndef read_to_term():\n    global display, stream, screen\n    # read a global list?\n    # you can start another server. not quite like terminal. like execution shell.\n    noerr=True\n    while noerr:\n        try:\n            reading=process.read()\n            stream.feed(reading.encode(\"utf-8\"))# no controlling characters. great now?\n            display = \"\\n\".join(screen.display)\n        except:\n            noerr = False\n            break\nt0=threading.Thread(target=read_to_term,args=())\nt0.setDaemon(True)",
+        "type": "code",
+        "location": "/native/lazero_win10_amd64/shellService/ptyproc.py:40-71"
+    },
+    "1517": {
+        "file_id": 306,
+        "content": "The code imports necessary libraries and sets up a virtual terminal using the pyte library. It creates a PTY (Pseudo-terminal) process with specified dimensions, and starts a separate thread to continuously read from the process and display the output on the main screen in real-time. However, the current executable is set to 'cmd' which can be dangerous if not used cautiously. The code also includes error handling for the process kill command.",
+        "type": "comment"
+    },
+    "1518": {
+        "file_id": 306,
+        "content": "t0.start()\ndef barkdog():\n    global bark, maxbark_granual\n    while True:\n        bark = 0\n        time.sleep(maxbark_granual)\ntb=threading.Thread(target=barkdog,args=())\ntb.setDaemon(True)\ntb.start()\ndef termdog():\n    global term, maxterm_granual\n    while True:\n        term = 0\n        time.sleep(maxterm_granual)\ntx=threading.Thread(target=termdog,args=())\ntx.setDaemon(True)\ntx.start()\ndef watchdog():\n    global process, watch_rate, port, bark, maxbark\n    alive=True\n    while alive:\n        alive = process.isalive()\n#        print(\"alive?\",alive)\n        time.sleep(watch_rate)\n#    print(\"bark\")\n    bark+=1\n    if bark > maxbark:\n        print(\"max bark exceed.\",bark)\n# what the heck?\n        pass\n    else:\n#        print(\"did get to here\")\n# if server is down this will cause dead shit.\n        requests.get(\"http://localhost:{}/restart\".format(port),stream=False,verify=False,timeout=1)\n# does that work?\n    # if not, call the handler. use requests.\nt1=threading.Thread(target=watchdog,args=())\nt1.setDaemon(True)\nt1.start()",
+        "type": "code",
+        "location": "/native/lazero_win10_amd64/shellService/ptyproc.py:72-110"
+    },
+    "1519": {
+        "file_id": 306,
+        "content": "This code sets up and starts multiple threads to monitor the process, bark/terminate if necessary, and restart a server. It uses threading for parallel execution, time.sleep for wait intervals, and requests library to send HTTP GET request to the server.",
+        "type": "comment"
+    },
+    "1520": {
+        "file_id": 306,
+        "content": "class RHandler(tornado.web.RequestHandler):\n    def get(self):\n        global process, screen, stream, t0, t1, executable, display, term, maxterm\n        # print(type(process))\n        # print(dir(process))\n        term += 1\n        if term > maxterm:\n            self.write(\"exceeding max termination quota!\\n\")\n        else:\n            kill(process)\n# did it stuck here?\n# nope.\n            for x in [process, screen, stream, t0, t1]:\n                # print(\"deleting\")\n                del x\n            display = \"\"\n            screen = pyte.Screen(cols,rows)\n            stream = pyte.ByteStream(screen)\n            process =  winpty.PtyProcess.spawn([executable],dimensions=(rows,cols))\n            t0=threading.Thread(target=read_to_term,args=())\n            t0.setDaemon(True)\n            t0.start()\n            t1=threading.Thread(target=watchdog,args=())\n            t1.setDaemon(True)\n            t1.start()\n            self.write(\"terminal restart!\\n\")\nclass IHandler(tornado.web.RequestHandler):\n    def get(self):",
+        "type": "code",
+        "location": "/native/lazero_win10_amd64/shellService/ptyproc.py:112-139"
+    },
+    "1521": {
+        "file_id": 306,
+        "content": "The code defines two classes, RHandler and IHandler, which extend Tornado's RequestHandler. In the get method of RHandler, it checks if the current term is exceeding the max term limit. If it does, an error message is written; otherwise, the process, screen, stream, t0, and t1 objects are deleted, a new empty screen is created, and two new threads are spawned to control the terminal, restarting the terminal. The IHandler class's get method is not explained in this code chunk.",
+        "type": "comment"
+    },
+    "1522": {
+        "file_id": 306,
+        "content": "        global display, process, lag\n        # print(\"type request received.\")\n        argument = self.get_argument(\"type\",None)\n        argumentx = self.get_argument(\"b64type\",None)\n        # that is for argument!\n        autoreturn = self.get_argument(\"autoreturn\",None) == \"true\"\n        # print(\"actual argument\",[argument],type(argument))\n        # string.\n        if not process.isalive():\n            self.write(\"process is dead.\\n\")\n        elif argument is not None:\n            # unicode.\n            # may encounter error.\n            if autoreturn:\n                # shall be decoded.\n                process.write(argument+\"\\r\") # universal return?\n            else:\n                process.write(argument)\n            time.sleep(lag)\n            self.write(display)\n        elif argumentx is not None:\n            # check if correctly formed.\n# check if not dead.\n            try:\n                arx = base64.b64decode(argumentx).decode(\"utf-8\")\n                # the result is not right.\n                # cannot decode here.",
+        "type": "code",
+        "location": "/native/lazero_win10_amd64/shellService/ptyproc.py:140-166"
+    },
+    "1523": {
+        "file_id": 306,
+        "content": "The code handles type requests and sends data to a process based on the received argument. If the argument is not None, it checks if the process is alive and writes the argument to it with potential encoding. If the argumentx (base64 encoded type) is present, it decodes and writes it.",
+        "type": "comment"
+    },
+    "1524": {
+        "file_id": 306,
+        "content": "                if autoreturn:\n                    process.write(arx+\"\\r\")\n                else:\n                    process.write(arx)\n                    # this is not unicode string.\n                time.sleep(lag)\n                self.write(display)\n            except:\n                self.write(\"incorrect format\\n\")\n                # pass\n                # D:\\Programs\\Python\\Python36\\lib\\site-packages\\winpty\\winpty_wrapper.py\n        else:\n            self.write(\"empty input\\n\")\n            # pass\nclass MainHandler(tornado.web.RequestHandler):\n    def get(self):\n        global display\n        self.write(display)\n    def make_app():\n        return tornado.web.Application([(r\"/display\",MainHandler),(r\"/restart\",RHandler),(r\"/input\",IHandler)])\n# get a window watcher. if want to lock the winsize better use that.\n# why the fuck that the code needs to be compiled? could we just examine the code and prepare for tested binaries?\napp = MainHandler.make_app()\napp.listen(port)\n# here's the shit.\ntornado.ioloop.IOLoop.current().start()",
+        "type": "code",
+        "location": "/native/lazero_win10_amd64/shellService/ptyproc.py:167-193"
+    },
+    "1525": {
+        "file_id": 306,
+        "content": "The code defines a class `MainHandler` for a Tornado web application, which handles GET requests on the routes \"/display\" and \"/restart\". The `make_app()` function creates an instance of the Tornado web application with these handlers. The script listens on a specified port and starts the Tornado IOLoop to handle incoming connections. The code also includes error handling for incorrect or empty input in a `ptyproc.py` module.",
+        "type": "comment"
+    },
+    "1526": {
+        "file_id": 306,
+        "content": "# register handler.\nexit()",
+        "type": "code",
+        "location": "/native/lazero_win10_amd64/shellService/ptyproc.py:194-195"
+    },
+    "1527": {
+        "file_id": 306,
+        "content": "The code is registering a handler to handle system events or signals, and then exiting the program.",
+        "type": "comment"
+    },
+    "1528": {
+        "file_id": 307,
+        "content": "/native/lazero_win10_amd64/shellService/pyte_template.py",
+        "type": "filepath"
+    },
+    "1529": {
+        "file_id": 307,
+        "content": "The code imports the pyte module, defines a class called terminal with an init method that initializes a screen and stream object using provided width and height parameters. It also includes methods feed and display for feeding data to the stream and returning the screen's display respectively.",
+        "type": "summary"
+    },
+    "1530": {
+        "file_id": 307,
+        "content": "import pyte\nclass terminal:\n    def __init__(self,width=80,height=25):\n        self.screen = pyte.Screen(width,height)\n        self.stream = pyte.Stream(screen)\n    def feed(self):\n        self.stream.feed(bin_str)\n    def display(self):\n        return self.screen.display",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/shellService/pyte_template.py:1-10"
+    },
+    "1531": {
+        "file_id": 307,
+        "content": "The code imports the pyte module, defines a class called terminal with an init method that initializes a screen and stream object using provided width and height parameters. It also includes methods feed and display for feeding data to the stream and returning the screen's display respectively.",
+        "type": "comment"
+    },
+    "1532": {
+        "file_id": 308,
+        "content": "/native/lazero_win10_amd64/shellService/twisted_proc.py",
+        "type": "filepath"
+    },
+    "1533": {
+        "file_id": 308,
+        "content": "This Python server program uses command line arguments and libraries like pyte, tornado.web, requests, traceback, and TwistedProcess to control dog barking sound limits, handle HTTP GET/POST requests, and error handling while listening on a specific port.",
+        "type": "summary"
+    },
+    "1534": {
+        "file_id": 308,
+        "content": "from __future__ import unicode_literals\n# i mean, android.\n# hey! do not run this shit outside of sandbox, unless you want to get me killed.\nimport threading\nimport pyte\n# can you format things into colorful output?\n# or just raw terminal string which can be transformed into html.\nimport traceback\nimport tornado.ioloop\nimport tornado.web\nimport requests\nimport base64\n# import signal\nfrom twisted_template import TwistedProcess as TP\n# no watchdog for this?\n# we can still be running bash.\nLF_CRLF=b\"\\n\" #IMPORTANT. WITHOUT THIS SHIT YOU CANNOT TYPE SHIT INTO THE TERMINAL.\nmaxbark = 2\nmaxbark_granual = 5\nmaxterm = 3\nmaxterm_granual = 5\nbark = 0\nterm = 0\nimport argparse\nparser = argparse.ArgumentParser()\nparser.add_argument(\"-p\",\"--port\",type=int,default=8788,help=\"port number\")\nargs = parser.parse_args()\nport=args.port\nassert port>0 and port <65535\nprint(\"server running on port %d\" %port)\n# you can turn off the barking dog sometimes.\n# we can use a big dog every since then.\nimport os\ndef kill(pipe):\n    try:\n        pid = pipe.terminate()",
+        "type": "code",
+        "location": "/native/lazero_win10_amd64/shellService/twisted_proc.py:1-37"
+    },
+    "1535": {
+        "file_id": 308,
+        "content": "This code appears to be a part of a larger program for a server that runs on a specified port. It uses threading, pyte, tornado.web, and requests libraries. The server listens for input and responds based on the input received. The code also has error handling using traceback and TwistedProcess as TP. There's a barking dog sound limit and it can be controlled via command line arguments with flags -p or --port.",
+        "type": "comment"
+    },
+    "1536": {
+        "file_id": 308,
+        "content": "        os.system(\"taskkill /F /PID {}\".format(pid))\n    except:\n        print(\"_____process kill error_____\")\n        traceback.print_exc()\n# signal.signal(signal.SIGINT, signal_handler)\n# import winpty\ndisplay = \"\"\nlag = 0.05\nexecutable ='cmd' # this is wrong. could get your computer in danger.\n# unless you want to take the risk. everything worth the try?\ncols, rows = 80, 25\nimport time\nwatch_rate = 0.5\nscreen = pyte.Screen(cols,rows)\nstream = pyte.ByteStream(screen)\nprocess =  TP([executable]) # not implemented.\ndef read_to_term():\n    global display, stream, screen\n    # read a global list?\n    # you can start another server. not quite like terminal. like execution shell.\n    noerr=True\n    while noerr:\n        try:\n            reading=process.read()\n            stream.feed(reading)# no controlling characters. great now?\n            display = \"\\n\".join(screen.display)\n        except:\n            noerr = False\n            break\nt0=threading.Thread(target=read_to_term,args=())\nt0.setDaemon(True)\nt0.start()\ndef barkdog():",
+        "type": "code",
+        "location": "/native/lazero_win10_amd64/shellService/twisted_proc.py:38-71"
+    },
+    "1537": {
+        "file_id": 308,
+        "content": "This code kills a process, potentially poses security risks, sets up a terminal-like environment with pyte library, and creates two functions: \"read_to_term\" for reading from the process and displaying it in the terminal, and \"barkdog\" (not fully implemented).",
+        "type": "comment"
+    },
+    "1538": {
+        "file_id": 308,
+        "content": "    global bark, maxbark_granual\n    while True:\n        bark = 0\n        time.sleep(maxbark_granual)\ntb=threading.Thread(target=barkdog,args=())\ntb.setDaemon(True)\ntb.start()\ndef termdog():\n    global term, maxterm_granual\n    while True:\n        term = 0\n        time.sleep(maxterm_granual)\ntx=threading.Thread(target=termdog,args=())\ntx.setDaemon(True)\ntx.start()\ndef watchdog():\n    global process, watch_rate, port, bark, maxbark\n    alive=True\n    while alive:\n        alive = process.isalive()\n#        print(\"alive?\",alive)\n        time.sleep(watch_rate)\n#    print(\"bark\")\n    bark+=1\n    if bark > maxbark:\n        print(\"max bark exceed.\",bark)\n# what the heck?\n        pass\n    else:\n#        print(\"did get to here\")\n# if server is down this will cause dead shit.\n        requests.get(\"http://localhost:{}/restart\".format(port),stream=False,verify=False,timeout=1)\n# does that work?\n    # if not, call the handler. use requests.\nt1=threading.Thread(target=watchdog,args=())\nt1.setDaemon(True)\nt1.start()\nclass RHandler(tornado.web.RequestHandler):",
+        "type": "code",
+        "location": "/native/lazero_win10_amd64/shellService/twisted_proc.py:72-110"
+    },
+    "1539": {
+        "file_id": 308,
+        "content": "This code is running a background process with multiple threads to monitor the status of a server. If the server has been down for too long, it will send a restart request. The watchdog thread increases a bark variable and if it exceeds maxbark, it prints a warning message. A handler class is defined but its purpose isn't clear from this code snippet. It uses threads from the threading module, time.sleep() for timing, and requests to send HTTP GET request.",
+        "type": "comment"
+    },
+    "1540": {
+        "file_id": 308,
+        "content": "    def get(self):\n        global process, screen, stream, t0, t1, executable, display, term, maxterm\n        # print(type(process))\n        # print(dir(process))\n        term += 1\n        if term > maxterm:\n            self.write(\"exceeding max termination quota!\\n\")\n        else:\n            kill(process)\n# did it stuck here?\n# nope.\n            for x in [process, screen, stream, t0, t1]:\n                # print(\"deleting\")\n                del x\n            display = \"\"\n            screen = pyte.Screen(cols,rows)\n            stream = pyte.ByteStream(screen)\n            process =  TP([executable])\n            t0=threading.Thread(target=read_to_term,args=())\n            t0.setDaemon(True)\n            t0.start()\n            t1=threading.Thread(target=watchdog,args=())\n            t1.setDaemon(True)\n            t1.start()\n            self.write(\"terminal restart!\\n\")\nclass IHandler(tornado.web.RequestHandler):\n    def get(self):\n        global display, process, lag\n        # print(\"type request received.\")\n        argument = self.get_argument(\"type\",None)",
+        "type": "code",
+        "location": "/native/lazero_win10_amd64/shellService/twisted_proc.py:111-140"
+    },
+    "1541": {
+        "file_id": 308,
+        "content": "This code handles a terminal restart in case the maximum termination quota is exceeded. It deletes old process and screen objects, restarts them, and notifies with a message. The get() function in IHandler class receives a \"type\" argument in GET requests.",
+        "type": "comment"
+    },
+    "1542": {
+        "file_id": 308,
+        "content": "        argumentx = self.get_argument(\"b64type\",None)\n        # that is for argument!\n        autoreturn = self.get_argument(\"autoreturn\",None) == \"true\"\n        # print(\"actual argument\",[argument],type(argument))\n        # string.\n        if not process.isalive():\n            self.write(\"process is dead.\\n\")\n        elif argument is not None:\n            # unicode.\n            # may encounter error.\n            if autoreturn:\n                # shall be decoded.\n                process.write(argument.encode(\"utf8\")+LF_CRLF) # universal return?\n            else:\n                process.write(argument.encode(\"utf8\"))\n            time.sleep(lag)\n            self.write(display)\n        elif argumentx is not None:\n            # check if correctly formed.\n# check if not dead.\n            try:\n                arx = base64.b64decode(argumentx)\n                # the result is not right.\n                # cannot decode here.\n                if autoreturn:\n                    process.write(arx+LF_CRLF) # not universal. use '\\n' instead!",
+        "type": "code",
+        "location": "/native/lazero_win10_amd64/shellService/twisted_proc.py:141-166"
+    },
+    "1543": {
+        "file_id": 308,
+        "content": "This code snippet handles an HTTP POST request for a process. It checks if the process is alive, receives arguments from the request, and writes to the process based on whether the argument is a string or base64 encoded data. If the process is dead, it notifies the user. The code also includes error handling and encodes strings in UTF-8 before writing to the process.",
+        "type": "comment"
+    },
+    "1544": {
+        "file_id": 308,
+        "content": "                else:\n                    process.write(arx)\n                    # this is not unicode string.\n                time.sleep(lag)\n                self.write(display)\n            except:\n                self.write(\"incorrect format\\n\")\n                # pass\n                # D:\\Programs\\Python\\Python36\\lib\\site-packages\\winpty\\winpty_wrapper.py\n        else:\n            self.write(\"empty input\\n\")\n            # pass\nclass MainHandler(tornado.web.RequestHandler):\n    def get(self):\n        global display\n        self.write(display)\n    def make_app():\n        return tornado.web.Application([(r\"/display\",MainHandler),(r\"/restart\",RHandler),(r\"/input\",IHandler)])\n# get a window watcher. if want to lock the winsize better use that.\n# why the fuck that the code needs to be compiled? could we just examine the code and prepare for tested binaries?\napp = MainHandler.make_app()\napp.listen(port)\n# here's the shit.\ntornado.ioloop.IOLoop.current().start()\n# register handler.\nexit()",
+        "type": "code",
+        "location": "/native/lazero_win10_amd64/shellService/twisted_proc.py:167-193"
+    },
+    "1545": {
+        "file_id": 308,
+        "content": "This code appears to be a Python program using the Tornado web framework, with a main handler for handling requests. It seems to have endpoints for displaying content, restarting, and handling input. The code also includes a function for making the application and listening on a specific port. After starting the IOLoop, it exits the program. The code mentions using a window watcher for resizing windows but doesn't explicitly use it in this context.",
+        "type": "comment"
+    },
+    "1546": {
+        "file_id": 309,
+        "content": "/native/lazero_win10_amd64/shellService/twisted_template.py",
+        "type": "filepath"
+    },
+    "1547": {
+        "file_id": 309,
+        "content": "This code defines a Reader class for Twisted's MyPP, handling child processes and PTY usage with reactor support. It stops the reactor and returns PID while ignoring errors, checking process status with isalive function.",
+        "type": "summary"
+    },
+    "1548": {
+        "file_id": 309,
+        "content": "from twisted.internet import protocol, reactor\nimport time\n# import sys\nimport threading\n# password is a must here. not kidding.\nimport os\ndef isWINDOWS():\n    return os.name == \"nt\"\nclass Reader:\n    def __init__(self):\n        self.event = threading.Event()\n        self.event.clear()\n        self.buffer = bytearray(b'')\n    def clear(self):\n        self.event.clear()\n    def set(self):\n        self.event.set()\n    def write(self,_bytes,blocking=True):\n        assert type(_bytes) == bytes\n        if blocking:\n            if len(_bytes) == 0:\n                return\n        self.buffer.extend(_bytes)\n        self.event.set()\n    def read(self,blocking=True):\n        if blocking:\n            self.event.wait()\n            self.event.clear()\n        _bytes = bytes(self.buffer)\n        self.buffer.clear()\n        return _bytes\n    def clear(self):\n        self.buffer.clear()\nclass MyPP(protocol.ProcessProtocol):\n    def __init__(self,reader):\n        super().__init__()\n        self.reader = reader\n    def connectionMade(self):\n        CM = lambda: print(\"\\n[Connection Made]\\n\")",
+        "type": "code",
+        "location": "/native/lazero_win10_amd64/shellService/twisted_template.py:1-43"
+    },
+    "1549": {
+        "file_id": 309,
+        "content": "This code defines a `Reader` class for reading and writing data, and a `MyPP` class that extends `protocol.ProcessProtocol`. The reader class uses an event and a buffer to manage read/write operations, while the `MyPP` class is responsible for handling connections made in a process protocol.",
+        "type": "comment"
+    },
+    "1550": {
+        "file_id": 309,
+        "content": "        CM()\n        # reactor.callLater(1.0, CM)\n    def write(self, a):\n        # binary.\n        assert type(a) == bytes\n        self.transport.write(a)\n    def processExited(self, reason):\n        print(\"processExited, status %s\" % (reason.value.exitCode,))\n    def outReceived(self, data):\n        self.reader.write(data)\n    def errReceived(self, data):\n        self.reader.write(data)\nimport sys\nsys.path.append(\"..\\\\tools\")\nfrom where import where\nclass TwistedProcess:\n    # def __init__(self,command=[\"cmd.exe\"],usePTY=True):\n    def __init__(self,command=[\"cmd\"],usePTY=True,env=dict(os.environ), path=None,autolocate=True):\n        assert type(command) == list and len(command)>0\n        if isWINDOWS():\n            print(\"System is Windows. Forced to use non-PTY mode.\")\n            usePTY = False\n    # how to kill this process?\n        reader = Reader()\n        self.reader = reader\n        pp = MyPP(reader)\n        def theFunc(a):\n            try:\n                a.run()\n            except:\n                pass\n        # process = reactor.spawnProcess(pp, command[0], command, usePTY=usePTY)",
+        "type": "code",
+        "location": "/native/lazero_win10_amd64/shellService/twisted_template.py:44-81"
+    },
+    "1551": {
+        "file_id": 309,
+        "content": "This code defines a TwistedProcess class that represents a child process using Twisted's MyPP. It takes a list of commands, environment variables, and an optional path. The class sets up a reader object and spawns the process using the Twisted reactor. The process exited event prints the exit code, while outReceived and errReceived events write data to the reader object. The usePTY parameter determines if the process should use a PTY (pseudo-terminal), and the isWINDOWS function checks the system's OS.",
+        "type": "comment"
+    },
+    "1552": {
+        "file_id": 309,
+        "content": "        executable = command[0]\n        if autolocate:\n            if not os.path.isabs(executable):\n                executable = where(executable)[0]\n        process = reactor.spawnProcess(pp, executable, command, env=env, path=path, usePTY=usePTY)\n        # print(dir(process))\n        # ['__class__', '__delattr__', '__dict__', '__dir__', '__doc__', '__eq__', '__format__', '__ge__', '__getattribute__', '__gt__', '__hash__', '__implemented__', '__init__', '__init_subclass__', '__le__', '__lt__', '__module__', '__ne__', '__new__', '__providedBy__', '__provides__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', '__weakref__', '_addPollableResource', '_callProcessExited', '_checkPollingState', '_currentTimeout', '_getReason', '_pause', '_paused', '_pollEvent', '_pollTimer', '_reschedule', '_resources', '_startPolling', '_stopPolling', '_unpause', 'closeChildFD', 'closeStderr', 'closeStdin', 'closeStdout', 'closedNotifies', 'connectionLostN",
+        "type": "code",
+        "location": "/native/lazero_win10_amd64/shellService/twisted_template.py:82-88"
+    },
+    "1553": {
+        "file_id": 309,
+        "content": "The code is creating a process using Twisted's reactor and spawning it. It first assigns the executable name from the command list, checks if it's an absolute path (if autolocate is True), and then creates the process with the provided executable and command. The env, path, and usePTY parameters are also passed to the process.",
+        "type": "comment"
+    },
+    "1554": {
+        "file_id": 309,
+        "content": "otify', 'errConnectionLost', 'hProcess', 'hStderrR', 'hStdinW', 'hStdoutR', 'hThread', 'inConnectionLost', 'loseConnection', 'lostProcess', 'maybeCallProcessEnded', 'outConnectionLost', 'pauseProducing', 'pid', 'processEnded', 'proto', 'reactor', 'registerProducer', 'resumeProducing', 'signalProcess', 'status', 'stderr', 'stdin', 'stdout', 'stopProducing', 'unregisterProducer', 'write', 'writeSequence', 'writeToChild']\n        self.process=process\n        self.pp = pp\n        p = threading.Thread(target=theFunc,args=(reactor,)) # pause the reactor?\n        p.setDaemon(True)\n        p.start() # not RUN!\n    def write(self,text):\n        assert type(text) == bytes\n        self.pp.write(text)\n    def read(self,blocking=True):\n        return self.reader.read(blocking=blocking)\n    def terminate(self):\n        # usually not reusable. all will be deleted.\n        self.reader.clear()\n        pid = self.process.pid\n        # try:\n        #     self.process.closeStderr()\n        #     self.process.closeStdin()\n        #     self.process.closeStdout()",
+        "type": "code",
+        "location": "/native/lazero_win10_amd64/shellService/twisted_template.py:88-106"
+    },
+    "1555": {
+        "file_id": 309,
+        "content": "This code creates a thread to pause the reactor and handle process communication using threads, byte write functionality, reader functionality, and termination capability.",
+        "type": "comment"
+    },
+    "1556": {
+        "file_id": 309,
+        "content": "        #     # reactor.stop()\n        # except:\n        #     pass\n        return pid\n    def isalive(self):\n        return self.process.processEnded",
+        "type": "code",
+        "location": "/native/lazero_win10_amd64/shellService/twisted_template.py:107-112"
+    },
+    "1557": {
+        "file_id": 309,
+        "content": "The code is responsible for stopping the reactor and returning the process ID (PID). If an error occurs during the stop, it will be ignored. The isalive function checks if the process has ended or not by checking the processEnded flag.",
+        "type": "comment"
+    },
+    "1558": {
+        "file_id": 310,
+        "content": "/native/lazero_win10_amd64/shellService/webXFS.py",
+        "type": "filepath"
+    },
+    "1559": {
+        "file_id": 310,
+        "content": "This code uses Twisted to connect and execute commands, handles output and errors, schedules a print statement after 1 second, and includes error handling and termination methods. It also creates a thread, writes to a file, and executes commands in a specific order with potential issue handling.",
+        "type": "summary"
+    },
+    "1560": {
+        "file_id": 310,
+        "content": "from twisted.internet import protocol, reactor\nimport time\n# import sys\n# import multiprocessing\nimport threading\n# password is a must here. not kidding.\nclass MyPP(protocol.ProcessProtocol):\n    def connectionMade(self):\n        CM = lambda: print(\"ConnectionMade\")\n        reactor.callLater(1.0, CM)\n    def write(self, a):\n        # binary.\n        assert type(a) == bytes\n        self.transport.write(a)\n    def processExited(self, reason):\n        print(\"processExited, status %s\" % (reason.value.exitCode,))\n    def outReceived(self, data):\n        print(data)\n    def errReceived(self, data):\n        print(\"errReceived!\", data)\nif __name__ == \"__main__\":\n    # multiprocessing.freeze_support()\n    # while mainthread is alive... -> do the thing.\n    pp = MyPP()\n    # command = ['screen', '-x']\n#    command = ['bash']\n    command=['C:\\\\Windows\\\\System32\\\\cmd.exe'] # be exact this time.\n    # does this work in WINDOWS?\n    def theFunc(a):\n        a.run()\n    reactor.spawnProcess(pp, command[0], command, {'TERM': 'xterm'}, usePTY=False)",
+        "type": "code",
+        "location": "/native/lazero_win10_amd64/shellService/webXFS.py:1-37"
+    },
+    "1561": {
+        "file_id": 310,
+        "content": "This code is implementing a Twisted protocol with process spawning and handling capabilities. It connects to a specified command (e.g., 'cmd.exe' for Windows) and prints the output, error messages, and exit status. The connectionMade method schedules a print statement after 1 second.",
+        "type": "comment"
+    },
+    "1562": {
+        "file_id": 310,
+        "content": "    # print(\"{MIDDLE}\")\n    p =threading.Thread(target=theFunc,args=(reactor,))\n    p.setDaemon(True) # the whole shit.\n    # print(\"{AHEAD}\")\n    # start after the set.\n    # somehow.\n    # all dead here. not even better than JS.\n    p.start() # not RUN!\n    # what the heck?\n    # with TIMESTAMP.\n    # print(\"{OF}\")\n    ik = 5\n    pp.write(b\"parrot\\n\")\n    time.sleep(1)\n    # not working here.\n    while ik > 0:\n        pp.write(b\"ls\\n\")\n        print(\"[HELLO WORLD]\")\n        time.sleep(1)\n        ik-=1\n    pp.write(b\"exit\\n\")\n    time.sleep(1)\n    # this will provide the debug info.\n    pp.write(b\"ls\\n\")\n    time.sleep(1)\n    # this will not work.\n    # p.kill()\n    # print(dir(p))\n    # quit()\n    print(\"__EOL__\")\n    # sys.exit()\n    exit()\n    # it works.\n    # how to terminate? pid?\n    # p.terminate()\n    # must be thread?\n# do we need a separate process?\n# this is running fine.\n# but how to communicate?\n# somehow worked.",
+        "type": "code",
+        "location": "/native/lazero_win10_amd64/shellService/webXFS.py:38-77"
+    },
+    "1563": {
+        "file_id": 310,
+        "content": "Code snippet creates a thread, sets it as a daemon, writes to a file, sleeps, and executes commands. It also includes error handling attempts, debugging information, and termination methods. The code is attempting to execute commands and write to a file in a specific order while handling potential issues such as non-working commands or thread termination.",
+        "type": "comment"
+    },
+    "1564": {
+        "file_id": 311,
+        "content": "/native/lazero_win10_amd64/shellService/winpty_template.py",
+        "type": "filepath"
+    },
+    "1565": {
+        "file_id": 311,
+        "content": "This code uses the PtyProcess class from winpty module to spawn a command process, writes 'print(\"hello, world!\")\\r\\n' and continuously reads output until time limit. Code is part of winpty_template.py and includes potential error correction. Asciinema.org is used for reviewing/replaying sessions.",
+        "type": "summary"
+    },
+    "1566": {
+        "file_id": 311,
+        "content": "# High level usage using `spawn`\nfrom winpty import PtyProcess\nimport time\n# the only thing that's left is for a cross-platform twisted implementation.\nproc = PtyProcess.spawn('cmd')\n# proc = PtyProcess.spawn('python36')\nproc.write('print(\"hello, world!\")\\r\\n')\n# proc.write('exit()\\r\\n')\n# too quick.\n# while proc.isalive():\n# so it is time to do some hosting, convert terminal sequence into real stuff?\n# or fuck it.\nT=-5\nwhile T<0:\n    print(\"reading\",proc.read())# this is blocking.\n    # actually can read faster.\n    T+=1\n    time.sleep(0.5)\n# print(dir(proc))\n# ['__class__', '__del__', '__delattr__', '__dict__', '__dir__', '__doc__', '__eq__', '__format__', '__ge__', '__getattribute__', '__gt__', '__hash__', '__init__', '__init_subclass__', '__le__', '__lt__', '__module__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', '__weakref__', '_server', '_thread', '_winsize', 'argv', 'close', 'closed', 'decoder', 'delayafterclose', 'delayafterterminate',",
+        "type": "code",
+        "location": "/native/lazero_win10_amd64/shellService/winpty_template.py:1-20"
+    },
+    "1567": {
+        "file_id": 311,
+        "content": "The code is using the PtyProcess class from the winpty module to spawn a command process (either 'cmd' or 'python36'). It writes 'print(\"hello, world!\")\\r\\n' to the process and continuously reads its output in a loop until the time limit of -5 seconds has been reached. The code also mentions some additional unexecuted lines for further functionality exploration.",
+        "type": "comment"
+    },
+    "1568": {
+        "file_id": 311,
+        "content": "# 'env', 'eof', 'exitstatus', 'fd', 'fileno', 'fileobj', 'flag_eof', 'flush', 'getwinsize', 'isalive', 'isatty', 'kill', 'launch_dir', 'pid', 'pty', 'read', 'read_blocking', 'readline', 'sendcontrol', 'sendeof', 'sendintr', 'setwinsize', 'spawn', 'terminate', 'wait', 'write']\n# check for read screen.\n# proc.close(force=True) <- SIGINT first.\nproc.terminate()\n# must close.\n# End winpty-agent process\ndel proc\nexit(0)\n# however, pty related things are not about stderr/stdout distinguishing. \n# they are merged.\n# yawinpty has different io. check for another pty equivalent.\n# https://pypi.org/project/yawinpty/\n# https://asciinema.org/ -> replaying session or reviewing it?\n# replace ;; with ;.\n# multiple errors, i suppose.",
+        "type": "code",
+        "location": "/native/lazero_win10_amd64/shellService/winpty_template.py:21-35"
+    },
+    "1569": {
+        "file_id": 311,
+        "content": "The code snippet is a part of the winpty_template.py file. It checks for read screen, closes the process (SIGINT first), terminates the winpty-agent process by deleting proc, and exits with an exit status of 0. The code also mentions that pty related things are not about distinguishing stderr/stdout and that yawinpty has different IO. Additionally, it highlights a potential error by replacing ;; with ;. Lastly, the code refers to asciinema.org for reviewing or replaying sessions.",
+        "type": "comment"
+    },
+    "1570": {
+        "file_id": 312,
+        "content": "/native/lazero_win10_amd64/tools/where.py",
+        "type": "filepath"
+    },
+    "1571": {
+        "file_id": 312,
+        "content": "This Python code imports the subprocess module and defines a function called 'where' that takes a target as input. It runs a command using subprocess, captures its output, filters out empty lines, and returns the resulting list of non-empty strings representing the locations of the target executable.",
+        "type": "summary"
+    },
+    "1572": {
+        "file_id": 312,
+        "content": "# import subprocess\nfrom subprocess import Popen, PIPE\ndef where(target):\n    p = Popen([\"where\",target],stderr=PIPE,stdout=PIPE)\n    p = p.communicate()[0].decode(\"utf-8\") # bytes.\n    p0 = p.split(\"\\n\")\n    p0 = [x.replace(\"\\n\", \"\").replace(\"\\r\",\"\") for x in p0]\n    p0 = list(filter(lambda x:len(x)>0,p0))\n    return p0",
+        "type": "code",
+        "location": "/native/lazero_win10_amd64/tools/where.py:1-10"
+    },
+    "1573": {
+        "file_id": 312,
+        "content": "This Python code imports the subprocess module and defines a function called 'where' that takes a target as input. It runs a command using subprocess, captures its output, filters out empty lines, and returns the resulting list of non-empty strings representing the locations of the target executable.",
+        "type": "comment"
+    },
+    "1574": {
+        "file_id": 313,
+        "content": "/remote_control/README",
+        "type": "filepath"
+    },
+    "1575": {
+        "file_id": 313,
+        "content": "The developer is expressing dissatisfaction with the current system and considering modifications or alternatives like PyPI or VNC/RDP. They also discuss locking mouse pointer in web browsers, and question the relevance of remote controlling an Android device.",
+        "type": "summary"
+    },
+    "1576": {
+        "file_id": 313,
+        "content": "because it really sucks so i wish i could at least do some modification over this?\nshall i do some research over pypi or look forward to vnc/rdp?\nit really sucks. does not provide much control.\nby the way, how to lock mouse pointer inside the web browser? and is it really necessary?\nwho's gonna remote control an android device anyway? evil hacker? without root we cannot do anything meaningful yet, unless for those hardcore android developers.\nwe are looting not wandering.",
+        "type": "code",
+        "location": "/remote_control/README:1-11"
+    },
+    "1577": {
+        "file_id": 313,
+        "content": "The developer is expressing dissatisfaction with the current system and considering modifications or alternatives like PyPI or VNC/RDP. They also discuss locking mouse pointer in web browsers, and question the relevance of remote controlling an Android device.",
+        "type": "comment"
+    },
+    "1578": {
+        "file_id": 314,
+        "content": "/remote_control/client/README",
+        "type": "filepath"
+    },
+    "1579": {
+        "file_id": 314,
+        "content": "This code discusses the development of a client for remote control operations. The clients should be used for headless tasks and avoid improper chording keys. It suggests emulating classic Vim modes or decoding chording keycodes (preferably not). Uppercase keys are considered functional/modifier keys, while lowercase keys are normal keys. The purpose includes capturing screenshots and recording videos. Additionally, the code proposes designing a machine-accessible API for scripting purposes.",
+        "type": "summary"
+    },
+    "1580": {
+        "file_id": 314,
+        "content": "cli clients can only be used for headless operations, may not send proper chording keys!\nshall you emulate the classic vim modes? or trying to decode the chording keycodes? (better not)\nlet's define all uppercase keys as functional/modifier keys, and all lowercase keys are somehow normal keys.\nshall be used to take screenshots, record videos.\nalso you shall design a machine accessible api, avaliable for scripting.",
+        "type": "code",
+        "location": "/remote_control/client/README:1-9"
+    },
+    "1581": {
+        "file_id": 314,
+        "content": "This code discusses the development of a client for remote control operations. The clients should be used for headless tasks and avoid improper chording keys. It suggests emulating classic Vim modes or decoding chording keycodes (preferably not). Uppercase keys are considered functional/modifier keys, while lowercase keys are normal keys. The purpose includes capturing screenshots and recording videos. Additionally, the code proposes designing a machine-accessible API for scripting purposes.",
+        "type": "comment"
+    },
+    "1582": {
+        "file_id": 315,
+        "content": "/remote_control/discovery/README",
+        "type": "filepath"
+    },
+    "1583": {
+        "file_id": 315,
+        "content": "This code mentions the requirement of using some form of sudo access.",
+        "type": "summary"
+    },
+    "1584": {
+        "file_id": 315,
+        "content": "they all need some sort of sudo.",
+        "type": "code",
+        "location": "/remote_control/discovery/README:1-1"
+    },
+    "1585": {
+        "file_id": 315,
+        "content": "This code mentions the requirement of using some form of sudo access.",
+        "type": "comment"
+    },
+    "1586": {
+        "file_id": 316,
+        "content": "/remote_control/discovery/broadcast_client.py",
+        "type": "filepath"
+    },
+    "1587": {
+        "file_id": 316,
+        "content": "This code imports socket and generate_uuid modules to create a broadcast client. It takes an IP address as argument, uses it to send a message with a unique UUID over a network port. The script can be executed directly or from command line with the -i/--ip option for IP customization.",
+        "type": "summary"
+    },
+    "1588": {
+        "file_id": 316,
+        "content": "from socket import *\nfrom generate_uuid import get_uuid\n# with different ip?\nhost = \"255.255.255.255\"\nif __name__ == \"__main__\":\n    import argparse\n    parser = argparse.ArgumentParser()\n    parser.add_argument(\"-i\",\"--ip\",type=str,default= \"255.255.255.255\")\n    args = parser.parse_args()\n    host = args.ip\ndef reply_info(address=host):\n    uuid = get_uuid()\n    message = \"[LNRR]: {}\".format(uuid).encode(\"utf-8\")\n    port = 30000\n    s = socket(AF_INET, SOCK_DGRAM)\n    s.setsockopt(SOL_SOCKET, SO_BROADCAST, 1)\n    s.sendto(message,(address,port))\nif __name__ == \"__main__\":\n    reply_info()",
+        "type": "code",
+        "location": "/remote_control/discovery/broadcast_client.py:1-20"
+    },
+    "1589": {
+        "file_id": 316,
+        "content": "This code imports socket and generate_uuid modules to create a broadcast client. It takes an IP address as argument, uses it to send a message with a unique UUID over a network port. The script can be executed directly or from command line with the -i/--ip option for IP customization.",
+        "type": "comment"
+    },
+    "1590": {
+        "file_id": 317,
+        "content": "/remote_control/discovery/broadcast_client.sh",
+        "type": "filepath"
+    },
+    "1591": {
+        "file_id": 317,
+        "content": "The code is a Bash script that continuously runs the Python script \"broadcast_client.py\" for 200 iterations, sending packets and counting down each iteration until it reaches 0.",
+        "type": "summary"
+    },
+    "1592": {
+        "file_id": 317,
+        "content": "#!/bin/bash\ncnt=200\nwhile true\ndo\n\tif [ $cnt -gt 0 ]; then\n\t\tpython3 broadcast_client.py\n\t\tcnt=$(( $cnt - 1 ))\n\t\techo sending packet $cnt\n\telse\n\t\tbreak\n\tfi\ndone",
+        "type": "code",
+        "location": "/remote_control/discovery/broadcast_client.sh:1-12"
+    },
+    "1593": {
+        "file_id": 317,
+        "content": "The code is a Bash script that continuously runs the Python script \"broadcast_client.py\" for 200 iterations, sending packets and counting down each iteration until it reaches 0.",
+        "type": "comment"
+    },
+    "1594": {
+        "file_id": 318,
+        "content": "/remote_control/discovery/broadcast_server.py",
+        "type": "filepath"
+    },
+    "1595": {
+        "file_id": 318,
+        "content": "The code imports modules, sets up variables, binds a socket to specified port, listens for messages, extracts UUIDs, updates table, and responds based on unique status and limit conditions. It also sets options for broadcasting and sends messages to specified host and port.",
+        "type": "summary"
+    },
+    "1596": {
+        "file_id": 318,
+        "content": "from socket import *\nfrom generate_uuid import get_uuid\nfrom update_local_name_resolution_table import set_table\nfrom broadcast_client import reply_info\nimport argparse\nparser = argparse.ArgumentParser()\nparser.add_argument(\"-o\",\"--override\",action=\"store_true\",help=\"overriding the uniq-filtering feature\")\nparser.add_argument(\"-u\",\"--unique\",help=\"number of unique collections to be collected before close (not including self\", type=int, default = 0)\n#message = \"lazero name resolution request\nargs = parser.parse_args()\n# shall be updating the name resolution table.\n# you will refer to the unique identifier once and ever.\n# to translate the thing.\ndef parse_uuid(string):\n    prefix = \"[LNRR]: \"\n    if string.startswith(prefix):\n        return string.replace(prefix,\"\")\n    return False\n# i really want to know that what is the best way to do this job, but let me say it again.\nport = 30000\nhost = \"\"\nuuid = get_uuid()\ns = socket(AF_INET, SOCK_DGRAM)\ns.bind((host,port))\nself_uuid = get_uuid()\nassert args.unique >= 0\nunique = args.unique",
+        "type": "code",
+        "location": "/remote_control/discovery/broadcast_server.py:1-27"
+    },
+    "1597": {
+        "file_id": 318,
+        "content": "The code imports necessary modules, sets up argument parsing for command-line inputs, and initializes variables such as the socket port, host, and unique collection count. It defines a function to parse UUIDs from incoming messages and binds a socket to the specified port. The code also generates and stores its own unique identifier for later use.",
+        "type": "comment"
+    },
+    "1598": {
+        "file_id": 318,
+        "content": "override = args.override\nlimit = unique\ncountdown = unique > 0\nwhile True:\n    m = s.recvfrom(1024)\n    print(\"message received:\",m)\n    # tuple.\n    ip_location = m[1][0]\n    string = m[0].decode(\"utf-8\")\n    uuid = parse_uuid(string)\n    result = set_table(uuid,ip_location)\n    # not for once?\n    def respond(unique=False):\n        mark = \" \" if not unique else \" unique \"\n        print(\"reply to{}message from {} at {}\".format(mark,uuid,ip_location))\n        reply_info(ip_location)\n        # you shall reply the shit.\n    if countdown:\n        if limit > 0:\n            if uuid != self_uuid:\n                print(\"checking uuid:\",uuid,self_uuid)\n                respond(True)\n                limit -= 1\n        else:\n            # exit the loop.\n            break\n        #check the limit, if exceeds then we exit.\n    else:\n        if not result or override:\n            respond()\n            # you have got the new shit! reply for gratitide.\n    # try to check it once and for good?\n    # if it is yourself then do not send shit? if inside then do not send shit.",
+        "type": "code",
+        "location": "/remote_control/discovery/broadcast_server.py:28-60"
+    },
+    "1599": {
+        "file_id": 318,
+        "content": "Code listens for incoming messages, extracts IP location and UUID from the received message, updates a table with the information, and responds accordingly based on unique or non-unique status and limit conditions.",
+        "type": "comment"
+    }
+}

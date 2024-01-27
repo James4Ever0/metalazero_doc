@@ -1,0 +1,11 @@
+similar tool for inspection:
+language server
+static analysis (jedi for python)
+reflection (metaprogramming)
+
+editor recovery:
+#.*(#) for emacs, .*swp for vim
+
+shall make alias for nvim
+
+npm i -g webtelnet

@@ -1,0 +1,10 @@
+{
+    "summary": "This code launches the Embedded Common Lisp (ECL) shell, running the \"cog_core.lisp\" script in the \"native/lazero_kali_amd64/cognitionService/virtual\" directory.",
+    "details": [
+        {
+            "comment": "This code launches the Embedded Common Lisp (ECL) shell, running the \"cog_core.lisp\" script in the \"native/lazero_kali_amd64/cognitionService/virtual\" directory.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_kali_amd64/cognitionService/virtual/ecl_run.sh\":0-0",
+            "content": "ecl --shell cog_core.lisp"
+        }
+    ]
+}

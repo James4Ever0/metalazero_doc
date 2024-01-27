@@ -1,0 +1,10 @@
+{
+    "summary": "Launches Emacs in batch mode, continuously evaluates user-input expressions until interrupted.",
+    "details": [
+        {
+            "comment": "Launches Emacs in batch mode, continuously evaluates user-input expressions until interrupted.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_kali_amd64/cognitionService/virtual/ielm_server.sh\":0-1",
+            "content": "#!/bin/bash\nemacs --batch --eval \"(while t (condition-case err (print (catch 'err (eval (read)))) (error (princ (format \\\"%s\\\\n\\\" (error-message-string err))))))\""
+        }
+    ]
+}

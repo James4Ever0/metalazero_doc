@@ -1,0 +1,10 @@
+{
+    "summary": "This code runs the Python script \"python_monkey_database.py\" using Python 3 interpreter, likely for database operations or program execution within the 'launch.sh' shell script.",
+    "details": [
+        {
+            "comment": "This code runs the Python script \"python_monkey_database.py\" using Python 3 interpreter, likely for database operations or program execution within the 'launch.sh' shell script.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_kali_amd64/mainService/program_database/launch.sh\":0-0",
+            "content": "python3 python_monkey_database.py"
+        }
+    ]
+}

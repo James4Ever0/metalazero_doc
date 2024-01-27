@@ -1,0 +1,10 @@
+{
+    "summary": "The code retrieves the broadcast IP address from the output of ifconfig, filters and extracts it using grep, and then passes the extracted IP to python3's broadcast_client.py script with -i flag.",
+    "details": [
+        {
+            "comment": "The code retrieves the broadcast IP address from the output of ifconfig, filters and extracts it using grep, and then passes the extracted IP to python3's broadcast_client.py script with -i flag.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/remote_control/discovery/checkmate.sh\":0-1",
+            "content": "#!/bin/bash\nifconfig | grep -Eo \"broadcast.+\" | grep -Eo \"[0-9]+.[0-9]+.[0-9]+.[0-9]+\" | xargs -iabc python3 broadcast_client.py -i abc"
+        }
+    ]
+}

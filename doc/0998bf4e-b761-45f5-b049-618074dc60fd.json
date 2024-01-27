@@ -1,0 +1,15 @@
+{
+    "summary": "This code uses pexpect to spawn a process, redirect output, continuously read logfile, interact with child, and close windows after exporting data.",
+    "details": [
+        {
+            "comment": "This code utilizes pexpect library to spawn a process (sample_script.py) and redirects its output to a BytesMemPipe instance called logfile. A read_logfile function is created to continuously print the contents of logfile. After creating a new thread to read the logfile, it sleeps for 2 seconds, inspects child's properties, expects the string \"lucky\", writes \"123\" followed by a carriage return and linefeed, and finally reads from the target, printing its content.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/tools/demo_run.py\":0-43",
+            "content": "import pexpect\nimport time\nimport threading\nfrom bytes_blocking import BytesMemPipe\nlogfile = BytesMemPipe()\nchild = pexpect.spawn(\"python3 sample_script.py\", logfile=logfile)\n#child = pexpect.spawn(\"python3 sample_script.py\", logfile=logfile, use_poll=True )\ndef read_logfile():\n    while True:\n        print(\"logfile:\",logfile.read())\nthreading.Thread(target=read_logfile,daemon=True).start()\n# this is not transparent. \n# child.write_to_stdout=True\n# this is a function.\n# we shall have the lock here.\ntime.sleep(2)\nprint(dir(child))\nprint(type(child))\n# you don't expect you get shit.\ntarget = child.expect(\"lucky\")\nprint(target)\ntime.sleep(2)\n# stuck forever?\n#child.sendline(\"123\")\n#child.sendeof()\nchild.write(\"123\\r\\n\")\n#child.flush()\n# this is to clear the buffer?\n#child.write(\"\")\n#child.flush()\n#child.interact()\n# the return is not right.\n#child.expect(pexpect.EOF)\ntarget = child.read()\nprint(\"read from target:\", target)\n# when you do this you shall not be doing other shits.\n#child.read_nonblocking()\n#child.expect(\"does not exist\")"
+        },
+        {
+            "comment": "Checking if the child process is alive and connected to a terminal, waiting for it to finish, and sleeping for a second (potentially hackish solution). Goal: export data to specified directory and close all windows.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/tools/demo_run.py\":44-49",
+            "content": "print(child.isalive())\nprint(child.isatty())\nchild.wait()\ntime.sleep(1)\n# this is hackish enough? or not?\n# i've got to say today's mission is about exporting all the data to my fucking directory, and then close all windows."
+        }
+    ]
+}

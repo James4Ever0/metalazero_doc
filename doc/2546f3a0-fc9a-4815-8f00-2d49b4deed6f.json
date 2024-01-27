@@ -1,0 +1,10 @@
+{
+    "summary": "The code defines three variables: \"first\", \"last\", and \"ret\". It sets the value of \"ret\" to the last character of the string \"bxxxcxxx\" if it matches \"xxfx\". Finally, it prints the value of \"ret\" to the console.",
+    "details": [
+        {
+            "comment": "The code defines three variables: \"first\", \"last\", and \"ret\". It sets the value of \"ret\" to the last character of the string \"bxxxcxxx\" if it matches \"xxfx\". Finally, it prints the value of \"ret\" to the console.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_kali_amd64/cognitionService/virtual/cog_core.tcl\":0-5",
+            "content": "#string first xxx bxxxcxxx\n#string last xxx bxxxcxxx\n#set ret [string last xxfx bxxxcxxx]\nputs [string last xxfx bxxxcxxx]\n#puts $ret\n#puts \"hello world\""
+        }
+    ]
+}

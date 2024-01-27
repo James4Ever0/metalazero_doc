@@ -1,0 +1,530 @@
+{
+    "500": {
+        "file_id": 105,
+        "content": "/native/lazero_kali_amd64/cognitionService/virtual/deltaWrapper.py",
+        "type": "filepath"
+    },
+    "501": {
+        "file_id": 105,
+        "content": "The code is continuously reading lines from the standard input, printing the current time and the received line. It does not specify any prediction or relationship analysis with the text being typed. The code appears to be waiting for a specific command or input but doesn't provide information on how to predict the next move or show the relationship between the current text being typed.",
+        "type": "summary"
+    },
+    "502": {
+        "file_id": 105,
+        "content": "import sys\nimport time as T\n# be it monad or anything. just show me how?\nwhile True:\n    line = sys.stdin.readline()\n    print(\"line received!\\n\",T.time(),line)\n    # how do you predict the next move? i don't care how the fuck you're gonna do the next. show me how.\n    # next, get me the words that i am currently typing. show the relationship somehow.",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/cognitionService/deltaWrapper.py:1-10"
+    },
+    "503": {
+        "file_id": 105,
+        "content": "The code is continuously reading lines from the standard input, printing the current time and the received line. It does not specify any prediction or relationship analysis with the text being typed. The code appears to be waiting for a specific command or input but doesn't provide information on how to predict the next move or show the relationship between the current text being typed.",
+        "type": "comment"
+    },
+    "504": {
+        "file_id": 106,
+        "content": "/native/lazero_kali_amd64/cognitionService/virtual/echo_server.el",
+        "type": "filepath"
+    },
+    "505": {
+        "file_id": 106,
+        "content": "The code provides functions for managing an Emacs echo server, handling client connections and logging messages using a sentinel function to detect disconnections.",
+        "type": "summary"
+    },
+    "506": {
+        "file_id": 106,
+        "content": "(defvar echo-server-port 10000\n    \"port of the echo server\")\n(defvar echo-server-clients '() \n    \"alist where KEY is a client process and VALUE is the string\")\n(defun echo-server-start nil\n    \"starts an emacs echo server\"\n    (interactive)\n    (unless (process-status \"echo-server\")\n      (make-network-process :name \"echo-server\" :buffer \"*echo-server*\" :family 'ipv4 :service echo-server-port :sentinel 'echo-server-sentinel :filter 'echo-server-filter :server 't) \n      (setq echo-server-clients '())\n      )\n    )\n  (defun echo-server-stop nil\n    \"stop an emacs echo server\"\n    (interactive)\n    (while  echo-server-clients\n      (delete-process (car (car echo-server-clients)))\n      (setq echo-server-clients (cdr echo-server-clients)))\n    (delete-process \"echo-server\")\n    )\n  (defun echo-server-filter (proc string)   \n    (let ((pending (assoc proc echo-server-clients))\n        message\n        index)\n      ;;create entry if required\n      (unless pending\n        (setq echo-server-clients (cons (cons proc \"\") echo-server-clients))",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/cognitionService/virtual/echo_server.el:1-32"
+    },
+    "507": {
+        "file_id": 106,
+        "content": "This code defines three functions for starting, stopping, and filtering an Emacs echo server. It sets the server's port number and manages a list of client processes connected to the server. The \"echo-server-start\" function starts the server process and initializes the client list. The \"echo-server-stop\" function terminates all client processes and deletes the server process. The \"echo-server-filter\" function handles incoming messages from clients, creating a new entry in the client list if necessary.",
+        "type": "comment"
+    },
+    "508": {
+        "file_id": 106,
+        "content": "        (setq pending  (assoc proc echo-server-clients)))\n      (setq message (concat (cdr pending) string))\n      (while (setq index (string-match \"\\n\" message))\n        (setq index (1+ index))\n        (process-send-string proc \"shit_happens\\n\")\n        (echo-server-log  (substring message 0 index) proc)\n        (setq message (substring message index)))\n      (setcdr pending message))\n    )\n  (defun echo-server-sentinel (proc msg)\n   (when (string= msg \"connection broken by remote peer\\n\")\n    (setq echo-server-clients (assq-delete-all proc echo-server-clients))\n    (echo-server-log (format \"client %s has quit\" proc))))\n  ;;from server.el\n  (defun echo-server-log (string &optional client)\n      \"If a *echo-server* buffer exists, write STRING to it for logging purposes.\"\n    (if (get-buffer \"*echo-server*\")\n        (with-current-buffer \"*echo-server*\"\n          (goto-char (point-max))\n          (insert (current-time-string)\n                  (if client (format \" %s:\" client) \" \")\n                  string)\n          (or (bolp) (newline)))))",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/cognitionService/virtual/echo_server.el:33-57"
+    },
+    "509": {
+        "file_id": 106,
+        "content": "This code manages the echo server functionality, handling client connections and logging messages. It sets up a sentinel function for detecting client disconnections and logs relevant information in a *echo-server* buffer. The code uses Lisp syntax and functions like assoc, string-match, and substring for processing and sending data between the server and clients. The echo-server-log function is used to log messages into the buffer if it exists.",
+        "type": "comment"
+    },
+    "510": {
+        "file_id": 106,
+        "content": "(echo-server-start)",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/cognitionService/virtual/echo_server.el:59-59"
+    },
+    "511": {
+        "file_id": 106,
+        "content": "The code initiates the Echo Server, which listens for incoming client connections and processes their requests by echoing back the received data.",
+        "type": "comment"
+    },
+    "512": {
+        "file_id": 107,
+        "content": "/native/lazero_kali_amd64/cognitionService/virtual/echo_server.sh",
+        "type": "filepath"
+    },
+    "513": {
+        "file_id": 107,
+        "content": "This script launches the Emacs editor with the 'echo_server.el' configuration file, used for a virtual echo server.",
+        "type": "summary"
+    },
+    "514": {
+        "file_id": 107,
+        "content": "#!/bin/bash\nemacs -l echo_server.el",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/cognitionService/virtual/echo_server.sh:1-2"
+    },
+    "515": {
+        "file_id": 107,
+        "content": "This script launches the Emacs editor with the 'echo_server.el' configuration file, used for a virtual echo server.",
+        "type": "comment"
+    },
+    "516": {
+        "file_id": 108,
+        "content": "/native/lazero_kali_amd64/cognitionService/virtual/ecl_run.sh",
+        "type": "filepath"
+    },
+    "517": {
+        "file_id": 108,
+        "content": "This code launches the Embedded Common Lisp (ECL) shell, running the \"cog_core.lisp\" script in the \"native/lazero_kali_amd64/cognitionService/virtual\" directory.",
+        "type": "summary"
+    },
+    "518": {
+        "file_id": 108,
+        "content": "ecl --shell cog_core.lisp",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/cognitionService/virtual/ecl_run.sh:1-1"
+    },
+    "519": {
+        "file_id": 108,
+        "content": "This code launches the Embedded Common Lisp (ECL) shell, running the \"cog_core.lisp\" script in the \"native/lazero_kali_amd64/cognitionService/virtual\" directory.",
+        "type": "comment"
+    },
+    "520": {
+        "file_id": 109,
+        "content": "/native/lazero_kali_amd64/cognitionService/virtual/edit.sh",
+        "type": "filepath"
+    },
+    "521": {
+        "file_id": 109,
+        "content": "This code opens the Vim text editor with a script using the `vim -s` command and specifies the name of the Vim script file to be opened as \"edit.vim\".",
+        "type": "summary"
+    },
+    "522": {
+        "file_id": 109,
+        "content": "vim -s edit.vim",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/cognitionService/virtual/edit.sh:1-1"
+    },
+    "523": {
+        "file_id": 109,
+        "content": "This code opens the Vim text editor with a script using the `vim -s` command and specifies the name of the Vim script file to be opened as \"edit.vim\".",
+        "type": "comment"
+    },
+    "524": {
+        "file_id": 110,
+        "content": "/native/lazero_kali_amd64/cognitionService/virtual/edit.vim",
+        "type": "filepath"
+    },
+    "525": {
+        "file_id": 110,
+        "content": "The code snippet is interacting with a Vim editor. It displays the message \"hello world\" and \"hello again\", shows the messages buffer, and enables line numbering for improved readability.",
+        "type": "summary"
+    },
+    "526": {
+        "file_id": 110,
+        "content": ":echo \"hello world\"\n:echom \"hello again\"\n:messages\n:set number",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/cognitionService/virtual/edit.vim:1-4"
+    },
+    "527": {
+        "file_id": 110,
+        "content": "The code snippet is interacting with a Vim editor. It displays the message \"hello world\" and \"hello again\", shows the messages buffer, and enables line numbering for improved readability.",
+        "type": "comment"
+    },
+    "528": {
+        "file_id": 111,
+        "content": "/native/lazero_kali_amd64/cognitionService/virtual/eserv.py",
+        "type": "filepath"
+    },
+    "529": {
+        "file_id": 111,
+        "content": "Code imports Emacs module and runs it in batch mode. It evaluates Lisp expressions using emacs.eval() function, printing results. The code attempts to print 'hello' using emacs but encounters an error when trying to evaluate \"(lsp)\".",
+        "type": "summary"
+    },
+    "530": {
+        "file_id": 111,
+        "content": "from emacs import Emacs\nemacs = Emacs.batch(['-q'])\nsrc = '(princ (format \"One plus two is %d\" (+ 1 2)))'\nprint(emacs.eval(src))\n#print(emacs.eval(\"(lsp)\"))\n#subprocess.CalledProcessError: Command '['emacs', '--batch', '-q', '--eval', '(lsp)'\n#error.\n#it is repeated?\nprint(emacs.eval(\"(print 'hello)\"))",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/cognitionService/virtual/eserv.py:1-9"
+    },
+    "531": {
+        "file_id": 111,
+        "content": "Code imports Emacs module and runs it in batch mode. It evaluates Lisp expressions using emacs.eval() function, printing results. The code attempts to print 'hello' using emacs but encounters an error when trying to evaluate \"(lsp)\".",
+        "type": "comment"
+    },
+    "532": {
+        "file_id": 112,
+        "content": "/native/lazero_kali_amd64/cognitionService/virtual/eval_server.el",
+        "type": "filepath"
+    },
+    "533": {
+        "file_id": 112,
+        "content": "The code handles an echo server, managing client connections and messages, while logging information. The \"echo-server-start\" function checks for a buffer, inserts data with timestamps and client names, and logs information.",
+        "type": "summary"
+    },
+    "534": {
+        "file_id": 112,
+        "content": "(defvar echo-server-port 10000\n    \"port of the echo server\")\n(defvar echo-server-clients '() \n    \"alist where KEY is a client process and VALUE is the string\")\n(defun echo-server-start nil\n    \"starts an emacs echo server\"\n    (interactive)\n    (unless (process-status \"echo-server\")\n      (make-network-process :name \"echo-server\" :buffer \"*echo-server*\" :family 'ipv4 :service echo-server-port :sentinel 'echo-server-sentinel :filter 'echo-server-filter :server 't) \n      (setq echo-server-clients '())\n      )\n    )\n  (defun echo-server-stop nil\n    \"stop an emacs echo server\"\n    (interactive)\n    (while  echo-server-clients\n      (delete-process (car (car echo-server-clients)))\n      (setq echo-server-clients (cdr echo-server-clients)))\n    (delete-process \"echo-server\")\n    )\n  (defun echo-server-filter (proc string)   \n    (let ((pending (assoc proc echo-server-clients))\n        message\n        index)\n      ;;create entry if required\n      (unless pending\n        (setq echo-server-clients (cons (cons proc \"\") echo-server-clients))",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/cognitionService/virtual/eval_server.el:1-32"
+    },
+    "535": {
+        "file_id": 112,
+        "content": "Starts an Emacs echo server, stops it. Defines variables for server port and clients. Initializes clients list as empty. When the \"echo-server\" process is not running, starts it with specified parameters (port, buffer, family, service, sentinel, filter). If already running, does nothing. Stops the echo server by deleting all client processes and removing the \"echo-server\" process. Handles incoming messages for each client process, creating an entry if required.",
+        "type": "comment"
+    },
+    "536": {
+        "file_id": 112,
+        "content": "        (setq pending  (assoc proc echo-server-clients)))\n      (setq message (concat (cdr pending) string))\n      (while (setq index (string-match \"\\n\" message))\n        (setq index (1+ index))\n        (echo-server-log  (substring message 0 index) proc)\n        (condition-case err \n\t\t(progn (setq eval_output (eval (car (read-from-string (substring message 0 (1- index))))))\n\t\t(process-send-string proc (format \"%s\\n\" eval_output))\n\t\t)\n\t\t;(process-send-string proc (with-temp-buffer (insert (substring message 0 (1- index))) (eval-buffer)))\n\t\t(error (process-send-string proc (format \"%s\\n\" (error-message-string err))))\n\t\t)\n        (setq message (substring message index)))\n      (setcdr pending message))\n    )\n  (defun echo-server-sentinel (proc msg)\n   (when (string= msg \"connection broken by remote peer\\n\")\n    (setq echo-server-clients (assq-delete-all proc echo-server-clients))\n    (echo-server-log (format \"client %s has quit\" proc))))\n  ;;from server.el\n  (defun echo-server-log (string &optional client)\n      \"If a *echo-server* buffer exists, write STRING to it for logging purposes.\"",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/cognitionService/virtual/eval_server.el:33-56"
+    },
+    "537": {
+        "file_id": 112,
+        "content": "This code handles messages in an echo server, processing each line and sending it back to clients. It also manages client connections and logs information.",
+        "type": "comment"
+    },
+    "538": {
+        "file_id": 112,
+        "content": "    (if (get-buffer \"*echo-server*\")\n        (with-current-buffer \"*echo-server*\"\n          (goto-char (point-max))\n          (insert (current-time-string)\n                  (if client (format \" %s:\" client) \" \")\n                  string)\n          (or (bolp) (newline)))))\n(echo-server-start)",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/cognitionService/virtual/eval_server.el:57-65"
+    },
+    "539": {
+        "file_id": 112,
+        "content": "This code checks if the \"*echo-server*\" buffer exists, and if so, inserts a timestamp, client name (if present), and the input string into it. If the buffer doesn't exist, it creates one before inserting the data. This code is part of the function \"echo-server-start\".",
+        "type": "comment"
+    },
+    "540": {
+        "file_id": 113,
+        "content": "/native/lazero_kali_amd64/cognitionService/virtual/eval_single_line.sh",
+        "type": "filepath"
+    },
+    "541": {
+        "file_id": 113,
+        "content": "This script starts Emacs with a LSP (Language Server Protocol) configuration. It adds the current directory to workspace folders, sets idle delay to 0, and uses LSP completion functions. The code also includes a timer function that runs every 10 seconds for completion at point printing and cache checking.",
+        "type": "summary"
+    },
+    "542": {
+        "file_id": 113,
+        "content": "#!/bin/bash\n#headless? repl?\nemacs --eval \"(list (find-file \\\"lsp.sh\\\") (lsp) (lsp-workspace-folders-add \\\".\\\") (setq lsp-idle-delay 0) (setq completion-at-point-functions (list #'lsp-completion-at-point)) (run-with-timer 10 nil (lambda () (list (completion-at-point) (print lsp-completion--cache)))))\"\n# hook *Messages*\n# post/pre-command-hook polling with-current-buffer",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/cognitionService/virtual/eval_single_line.sh:1-5"
+    },
+    "543": {
+        "file_id": 113,
+        "content": "This script starts Emacs with a LSP (Language Server Protocol) configuration. It adds the current directory to workspace folders, sets idle delay to 0, and uses LSP completion functions. The code also includes a timer function that runs every 10 seconds for completion at point printing and cache checking.",
+        "type": "comment"
+    },
+    "544": {
+        "file_id": 114,
+        "content": "/native/lazero_kali_amd64/cognitionService/virtual/fuzz.py",
+        "type": "filepath"
+    },
+    "545": {
+        "file_id": 114,
+        "content": "The code defines an argument parser, requires a program name and its depth of possible flags combination. It generates all possible combinations of 26 letters (both lowercase and uppercase). Then, it iterates through each combination, forming the command string with the program name, flags, and additional arguments before printing the complete command.",
+        "type": "summary"
+    },
+    "546": {
+        "file_id": 114,
+        "content": "import os\n#import sys\nimport argparse\nparser=argparse.ArgumentParser()\nparser.add_argument('-p','--program',type=str,help='program name to launch',required=True)\nparser.add_argument('-d','--depth',type=int,help='depth of possible flags combination',default=2)\nparser.add_argument('args',metavar='N',type=str,nargs='+',help='subargs passing to program')\nargs=parser.parse_args()\nprogram=args.program\ndepth=args.depth\npargs=args.args\ncandidates=[chr(x+ord('a'))for x in range(26)]\ncandidates=candidates+[x.upper() for x in candidates]\nimport itertools\nflags=[\"-\"+\"\".join(x) for x in itertools.combinations(candidates,depth)]\n#print(pargs)\nfor x in flags:\n    cmd=\" \".join([program,x,*pargs])\n    print(cmd)",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/cognitionService/virtual/fuzz.py:1-22"
+    },
+    "547": {
+        "file_id": 114,
+        "content": "The code defines an argument parser, requires a program name and its depth of possible flags combination. It generates all possible combinations of 26 letters (both lowercase and uppercase). Then, it iterates through each combination, forming the command string with the program name, flags, and additional arguments before printing the complete command.",
+        "type": "comment"
+    },
+    "548": {
+        "file_id": 115,
+        "content": "/native/lazero_kali_amd64/cognitionService/virtual/gen_comp.sh",
+        "type": "filepath"
+    },
+    "549": {
+        "file_id": 115,
+        "content": "This script is a Bash shell script for generating completions. It utilizes the \"compgen\" command with arguments -abcdefgjksuv to generate completions for specified arguments or options.",
+        "type": "summary"
+    },
+    "550": {
+        "file_id": 115,
+        "content": "#!/bin/bash\ncompgen -abcdefgjksuv $@",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/cognitionService/virtual/gen_comp.sh:1-2"
+    },
+    "551": {
+        "file_id": 115,
+        "content": "This script is a Bash shell script for generating completions. It utilizes the \"compgen\" command with arguments -abcdefgjksuv to generate completions for specified arguments or options.",
+        "type": "comment"
+    },
+    "552": {
+        "file_id": 116,
+        "content": "/native/lazero_kali_amd64/cognitionService/virtual/get_complete.el",
+        "type": "filepath"
+    },
+    "553": {
+        "file_id": 116,
+        "content": "Writes company candidates to \"buffer.log\" file.",
+        "type": "summary"
+    },
+    "554": {
+        "file_id": 116,
+        "content": "(write-region (format \"%s\" company-candidates) nil \"buffer.log\")",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/cognitionService/virtual/get_complete.el:1-1"
+    },
+    "555": {
+        "file_id": 116,
+        "content": "Writes company candidates to \"buffer.log\" file.",
+        "type": "comment"
+    },
+    "556": {
+        "file_id": 117,
+        "content": "/native/lazero_kali_amd64/cognitionService/virtual/hello",
+        "type": "filepath"
+    },
+    "557": {
+        "file_id": 117,
+        "content": "The code snippet \"hello\" appears to be a placeholder or a starting point for a program. It likely needs further context and additional lines of code to function properly within its intended environment.",
+        "type": "summary"
+    },
+    "558": {
+        "file_id": 117,
+        "content": "hello",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/cognitionService/virtual/hello:1-1"
+    },
+    "559": {
+        "file_id": 117,
+        "content": "The code snippet \"hello\" appears to be a placeholder or a starting point for a program. It likely needs further context and additional lines of code to function properly within its intended environment.",
+        "type": "comment"
+    },
+    "560": {
+        "file_id": 118,
+        "content": "/native/lazero_kali_amd64/cognitionService/virtual/ielm_server.sh",
+        "type": "filepath"
+    },
+    "561": {
+        "file_id": 118,
+        "content": "Launches Emacs in batch mode, continuously evaluates user-input expressions until interrupted.",
+        "type": "summary"
+    },
+    "562": {
+        "file_id": 118,
+        "content": "#!/bin/bash\nemacs --batch --eval \"(while t (condition-case err (print (catch 'err (eval (read)))) (error (princ (format \\\"%s\\\\n\\\" (error-message-string err))))))\"",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/cognitionService/virtual/ielm_server.sh:1-2"
+    },
+    "563": {
+        "file_id": 118,
+        "content": "Launches Emacs in batch mode, continuously evaluates user-input expressions until interrupted.",
+        "type": "comment"
+    },
+    "564": {
+        "file_id": 119,
+        "content": "/native/lazero_kali_amd64/cognitionService/virtual/init_emacs.el",
+        "type": "filepath"
+    },
+    "565": {
+        "file_id": 119,
+        "content": "The code requires the 'package' package, initializes it, and installs 'lsp-mode' and 'company' packages using the 'package-install' function.",
+        "type": "summary"
+    },
+    "566": {
+        "file_id": 119,
+        "content": "(require 'package)\n(package-initialize)\n(package-install 'lsp-mode)\n(package-install 'company)",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/cognitionService/virtual/init_emacs.el:1-4"
+    },
+    "567": {
+        "file_id": 119,
+        "content": "The code requires the 'package' package, initializes it, and installs 'lsp-mode' and 'company' packages using the 'package-install' function.",
+        "type": "comment"
+    },
+    "568": {
+        "file_id": 120,
+        "content": "/native/lazero_kali_amd64/cognitionService/virtual/interaction_0.py",
+        "type": "filepath"
+    },
+    "569": {
+        "file_id": 120,
+        "content": "The code imports necessary modules, defines a Processor class with get and set methods, initializes an instance of the Processor class, continuously restarts the connection, gets input from the Processor, sends it using Sc.inputs, sleeps for 1 second, retrieves content from display, sets the content in the Processor, and prints the content.",
+        "type": "summary"
+    },
+    "570": {
+        "file_id": 120,
+        "content": "import shellConnect as Sc\n# we can use multiple methods simutaneously.\n# to represent how you type these words? type it exactly according to what you've done in the past?\n# we want it to learn anything from this process.\nimport time as T\n# let's mutate!\nclass Processor:\n    def __init__(self):\n        pass\n    def get(self):\n        return \"Hello world\"\n    def set(self,content):\n        return\np = Processor()\nwhile True:\n    Sc.restart()\n    inp = p.get()\n    Sc.inputs(inp)\n    T.sleep(1)\n    content = Sc.display()\n    p.set(content)\n    print(content)",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/cognitionService/virtual/interaction_0.py:1-25"
+    },
+    "571": {
+        "file_id": 120,
+        "content": "The code imports necessary modules, defines a Processor class with get and set methods, initializes an instance of the Processor class, continuously restarts the connection, gets input from the Processor, sends it using Sc.inputs, sleeps for 1 second, retrieves content from display, sets the content in the Processor, and prints the content.",
+        "type": "comment"
+    },
+    "572": {
+        "file_id": 121,
+        "content": "/native/lazero_kali_amd64/cognitionService/virtual/interaction_1.py",
+        "type": "filepath"
+    },
+    "573": {
+        "file_id": 121,
+        "content": "The code uses the `shellConnect` module to continuously input \"Hello world\" into an unspecified system and display its response. The processor class initializes with no attributes, gets and sets the same static string, and sleeps for one second between each iteration.",
+        "type": "summary"
+    },
+    "574": {
+        "file_id": 121,
+        "content": "import shellConnect as Sc\n# we can use multiple methods simutaneously.\n# to represent how you type these words? type it exactly according to what you've done in the past?\n# we want it to learn anything from this process.\nimport time as T\n# let's mutate!\n# why can't you proceed? it is just some proof of concept! it's creative!\n# you shall stop learning from \"mistakes\". it is not yours.\nclass Processor:\n    def __init__(self):\n        pass\n    def get(self):\n        return \"Hello world\"\n    def set(self,content):\n        return\np = Processor()\nwhile True:\n    Sc.restart()\n    inp = p.get()\n    Sc.inputs(inp)\n    T.sleep(1)\n    content = Sc.display()\n    p.set(content)\n    print(content)",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/cognitionService/virtual/interaction_1.py:1-26"
+    },
+    "575": {
+        "file_id": 121,
+        "content": "The code uses the `shellConnect` module to continuously input \"Hello world\" into an unspecified system and display its response. The processor class initializes with no attributes, gets and sets the same static string, and sleeps for one second between each iteration.",
+        "type": "comment"
+    },
+    "576": {
+        "file_id": 122,
+        "content": "/native/lazero_kali_amd64/cognitionService/virtual/json_rpc.sh",
+        "type": "filepath"
+    },
+    "577": {
+        "file_id": 122,
+        "content": "Executes a POST request to the JSON-RPC server at localhost:7658, calling the \"solargraph/checkGemVersion\" method with empty parameters.",
+        "type": "summary"
+    },
+    "578": {
+        "file_id": 122,
+        "content": "curl -X POST -H \"Content-Type: application/json\" \\\n    -d '{\"method\": \"$/solargraph/checkGemVersion\", \"params\": \"\"}' \\\n    tcp://localhost:7658",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/cognitionService/virtual/json_rpc.sh:1-3"
+    },
+    "579": {
+        "file_id": 122,
+        "content": "Executes a POST request to the JSON-RPC server at localhost:7658, calling the \"solargraph/checkGemVersion\" method with empty parameters.",
+        "type": "comment"
+    },
+    "580": {
+        "file_id": 123,
+        "content": "/native/lazero_kali_amd64/cognitionService/virtual/launch_c_lsp.sh",
+        "type": "filepath"
+    },
+    "581": {
+        "file_id": 123,
+        "content": "This code is running the C/C++ Code Style Analysis Tool (ccls) on a given file. The `echo {}` part pipes an empty string to ccls for analysis or compilation. This could be used in scripting to automate checks on C/C++ code.",
+        "type": "summary"
+    },
+    "582": {
+        "file_id": 123,
+        "content": "echo {}|ccls",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/cognitionService/virtual/launch_c_lsp.sh:1-1"
+    },
+    "583": {
+        "file_id": 123,
+        "content": "This code is running the C/C++ Code Style Analysis Tool (ccls) on a given file. The `echo {}` part pipes an empty string to ccls for analysis or compilation. This could be used in scripting to automate checks on C/C++ code.",
+        "type": "comment"
+    },
+    "584": {
+        "file_id": 124,
+        "content": "/native/lazero_kali_amd64/cognitionService/virtual/launch_codium_debugger.sh",
+        "type": "filepath"
+    },
+    "585": {
+        "file_id": 124,
+        "content": "Launches Codium with inspect extensions and listens on port 9999.",
+        "type": "summary"
+    },
+    "586": {
+        "file_id": 124,
+        "content": "codium --inspect-extensions 9999",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/cognitionService/virtual/launch_codium_debugger.sh:1-1"
+    },
+    "587": {
+        "file_id": 124,
+        "content": "Launches Codium with inspect extensions and listens on port 9999.",
+        "type": "comment"
+    },
+    "588": {
+        "file_id": 125,
+        "content": "/native/lazero_kali_amd64/cognitionService/virtual/launch_websocketd_ielm.sh",
+        "type": "filepath"
+    },
+    "589": {
+        "file_id": 125,
+        "content": "This script launches websocketd server on port 9999, and then starts the ielm_server.sh script in a bash environment within it.",
+        "type": "summary"
+    },
+    "590": {
+        "file_id": 125,
+        "content": "#!/bin/bash\n/data/data/com.termux/files/home/metalazero/native/lazero_kali_amd64/tools/websocketd/websocketd -port 9999 bash ielm_server.sh",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/cognitionService/virtual/launch_websocketd_ielm.sh:1-2"
+    },
+    "591": {
+        "file_id": 125,
+        "content": "This script launches websocketd server on port 9999, and then starts the ielm_server.sh script in a bash environment within it.",
+        "type": "comment"
+    },
+    "592": {
+        "file_id": 126,
+        "content": "/native/lazero_kali_amd64/cognitionService/virtual/lsp.el",
+        "type": "filepath"
+    },
+    "593": {
+        "file_id": 126,
+        "content": "This code sets up 'eglot' in Emacs, ensuring availability and configuring for various modes. It prints the eglot-server-programs list and includes functions like eglot-completion-at-point, sleep-for, and add-hook.",
+        "type": "summary"
+    },
+    "594": {
+        "file_id": 126,
+        "content": ";try to import the eglot.el\n; or find the way to import? or spy the import stack.\n;(use-package eglot)\n(require 'package)\n(package-initialize)\n(require 'lsp-mode)\n(require 'company)\n(require 'request)\n(company-mode)\n(lsp)\n;(use-package lsp-mode\n;  :config\n;  (setq lsp-idle-delay 0.5)\n;  :hook\n;  ((python-mode . lsp)\n;   (sh-mode . lsp))\n;  )\n;(require 'lsp-mode)\n;(lsp)\n(setq lsp-idle-delay 0)\n;(company-complete-common)\n(find-file \"lsp.sh\")\n;(lsp-workspace-folders-add \"/data/data/com.termux/files/home/metalazero/native/lazero_kali_amd64/cognitionService/virtual\")\n(lsp-workspace-folders-add \".\")\n(find-file \"lsp.sh\");wtf is going on?\n;(print \"init done?\")\n(company-complete-common)\n(completion-at-point) ;;this is the function\n;; minibuffer.el, even accessible for ielm?\n(setq cnds (format \"%s\" company-candidates))\n(request \"http://localhost:8786/post\" :type \"POST\" :data `((\"key\" . ,cnds) (\"key2\" . \"value2\")) :parser 'json-read :success (cl-function(lambda (&key data &allow-other-keys)(message \"I sent: %S\" (assoc-default 'form data)))))",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/cognitionService/virtual/lsp.el:1-32"
+    },
+    "595": {
+        "file_id": 126,
+        "content": "This code seems to be setting up LSP (Language Server Protocol) and Eglot for Elisp programming. It imports necessary packages, initializes LSP mode, sets idle delay, adds workspace folders, executes a file, and makes a request to a localhost server with some data. The purpose appears to be related to completing common actions and retrieving information from the Elisp environment.",
+        "type": "comment"
+    },
+    "596": {
+        "file_id": 126,
+        "content": ";completion-all-sorted-completions\n;completion--all-sorted-completions-location\n;(apply #'eglot--connect (eglot--guess-contact));no def here.\n;(describe-function #'lsp-mode)\n;(print-buffer)\n;(describe-function #'eglot)\n;(eglot 'sh-mode (project-current) 'eglot-lsp-server 'eglot-server-programs nil)\n;(find-file \"lsp.sh\"); not executing.\n;(run-with-timer 2 2 #'eglot-completion-at-point)\n;(run-with-idle-timer eglot-completion-at-point)\n;(package-install 'helm)\n;(ielm) in buffer, not stdout.\n;(defun find-symbols-having-properties (properties)\n;  (let (ret)\n;    (mapatoms (lambda (s)\n;                (when (cl-loop for prop in properties\n;                               thereis (get s prop))\n;                    (push s ret))))\n;    ret))\n;(find-symbols-having-properties)\n;(autoload 'use-package)\n;(use-package \"eglot\")\n;(package-activate 'eglot)\n;(require 'eglot)\n;(eglot-ensure)\n;(find-file \"vscode_ipc.sh\")\n;(package-install 'async-await)\n;(add-to-list 'load-path \".\")\n;(print load-path)\n;(require 'package)\n;(require 'eglot)",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/cognitionService/virtual/lsp.el:33-63"
+    },
+    "597": {
+        "file_id": 126,
+        "content": "This code snippet includes various commands and function calls related to package installation, file operations, and setting up the environment for a specific program. It involves loading packages like helm and async-await, configuring paths, executing scripts, and ensuring the eglot package is properly set up. The ultimate purpose of this code seems to be related to setting up the environment for a programming tool or IDE.",
+        "type": "comment"
+    },
+    "598": {
+        "file_id": 126,
+        "content": ";(load \"eglot\")\n;(eglot-ensure)\n;(sleep-for 20)\n;(eglot-completion-at-point)\n;(eglot t t t)\n;(print (eglot--all-major-modes))\n;(managed-major-mode project class contact &optional interactive)\n;(setq project-root \".\")\n;(eglot \".\" t t t)\n;(eglot t t)\n;(eglot t t t t t)\n;(eglot t t t)\n;(add-hook 'sh-mode-hook 'eglot-ensure)\n;(sh-mode)\n;(sleep for a while...)\n;(eglot-completion-at-point)\n;(add-hook 'text-mode 'eglot-ensure)\n;(add-hook 'sh-mode-hook 'eglot-ensure)\n;(add-hook 'foo-mode-hook 'eglot-ensure)\n;(print eglot-server-programs)",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/cognitionService/virtual/lsp.el:64-83"
+    },
+    "599": {
+        "file_id": 126,
+        "content": "This code sets up the 'eglot' package for Emacs, ensures its availability, and configures it to run in various modes including project, class, and contact. It also prints the eglot-server-programs list. The code includes functions such as eglot-completion-at-point, sleep-for, and add-hook.",
+        "type": "comment"
+    }
+}

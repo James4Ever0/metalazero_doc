@@ -1,0 +1,10 @@
+{
+    "summary": "This code is a shell script that runs a JavaScript file (node_curl_telnet.js) using the Node.js runtime, likely for making HTTP requests or interacting with network services via CURL and Telnet functionalities.",
+    "details": [
+        {
+            "comment": "This code is a shell script that runs a JavaScript file (node_curl_telnet.js) using the Node.js runtime, likely for making HTTP requests or interacting with network services via CURL and Telnet functionalities.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_kali_amd64/cognitionService/virtual/node_curl_telnet.sh\":0-1",
+            "content": "#!/bin/bash\nnode node_curl_telnet.js"
+        }
+    ]
+}

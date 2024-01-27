@@ -1,0 +1,10 @@
+{
+    "summary": "Installing global dependencies: ws and collections using npm.",
+    "details": [
+        {
+            "comment": "Installing global dependencies: ws and collections using npm.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/tools/node_init.sh\":0-1",
+            "content": "npm i -g ws\nnpm i -g collections"
+        }
+    ]
+}

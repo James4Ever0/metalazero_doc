@@ -1,0 +1,10 @@
+{
+    "summary": "The code implements a recursive memory function that generates a random list of numbers and asks the user if they have seen it before. It keeps track of previously seen lists within a specified memory limit.",
+    "details": [
+        {
+            "comment": "The code implements a recursive memory function that generates a random list of numbers and asks the user if they have seen it before. It keeps track of previously seen lists within a specified memory limit.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/tools/deep-text-editor/neural_network/make_seen.py\":0-25",
+            "content": "import random\nimport copy\nmem=10\nwindow=3\nmemory=[]\n# we want to know how deep it goes like.\n# this shall be recursive memory.\n# we develop this from scratch.\nrng=lambda: random.randint(1,5)\nbase=[rng() for _ in range(window)]\nwhile True:\n    print(\"world:\", base)\n    ans=input(\"seen?\\n\")\n    r0=base in memory\n    ans= ans==\"yes\"\n    if ans == r0:\n        print(\"correct!\")\n    else:\n        print(\"incorrect!\")\n        print(\"seen:\",r0)\n    memory.insert(0,copy.deepcopy(base))\n    if len(memory)>mem:\n        memory.pop()\n    base.insert(0,rng())\n    base.pop()"
+        }
+    ]
+}

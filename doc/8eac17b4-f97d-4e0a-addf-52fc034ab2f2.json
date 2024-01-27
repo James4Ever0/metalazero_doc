@@ -1,0 +1,10 @@
+{
+    "summary": "The code reads a continuous stream of data from stdin, does not perform any specific actions on the received data, and writes it to stdout without modification. It is designed for continuously streaming data between processes.",
+    "details": [
+        {
+            "comment": "The code reads a continuous stream of data from stdin, does not perform any specific actions on the received data, and writes it to stdout without modification. It is designed for continuously streaming data between processes.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_win10_amd64/cognitionService/virtual/spy_process.py\":0-10",
+            "content": "import sys\nwhile True:\n    m = sys.stdin.buffer.readline()\n    # print(m)\n    sys.stdout.buffer.write(m)\n    # sys.stdout.buffer.write(bytearray(\"hello world\\n\",encoding='utf-8'))\n    sys.stdout.buffer.flush()\n        # print(chr(line),end=\"\",file=sys.stdout)\n        # print(line)\n    # sys.stdout.buffer.write(bytearray([line]))"
+        }
+    ]
+}

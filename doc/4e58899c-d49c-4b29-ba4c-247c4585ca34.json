@@ -1,0 +1,10 @@
+{
+    "summary": "This code is a keylogger implementation using the pynput library. It logs keystrokes and timestamps, storing them in a queue for further processing. The `log_to_queue()` function sets up a listener to continuously capture keyboard events and store them in the specified queue. The `on_press()` function is responsible for handling each key press event and adding it to the queue along with a timestamp.",
+    "details": [
+        {
+            "comment": "This code is a keylogger implementation using the pynput library. It logs keystrokes and timestamps, storing them in a queue for further processing. The `log_to_queue()` function sets up a listener to continuously capture keyboard events and store them in the specified queue. The `on_press()` function is responsible for handling each key press event and adding it to the queue along with a timestamp.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_kali_amd64/eventService/keylogger.py\":0-34",
+            "content": "from pynput.keyboard import Key, Listener\n#        socket.send(\"client message to server1\")\nimport time as T\n# so doing self-looping?\nfrom sys import path as SP\nSP.append(\"../tools\")\nfrom stackMe import queue as Q\ndef GT():\n    return T.time()\ndef on_press(key,queue=None,keycode_only=True):\n    typecode = str(type(key))\n    key_str = str(key)\n#    print(dir(key))\n    print(\"LOGGING:\",key_str,typecode)\n    if keycode_only:\n        if \"KeyCode\" in typecode:\n#            print(\"passed 1\")\n            if len(key.char) == 1:\n#                print(\"passed 2\")\n                queue.queue((key.char,GT()))\n    else:\n        queue.queue((key_str,GT()))\n    #print(str(key),typecode)\ndef log_to_queue(queue,keycode_only=True):\n    assert type(queue) == type(Q(0))\n    on_press2 = lambda key: on_press(key,queue=queue,keycode_only=keycode_only)\n    with Listener(on_press=on_press2) as listener:\n        try:\n            listener.join()\n        except:\n            pass"
+        }
+    ]
+}

@@ -1,0 +1,10 @@
+{
+    "summary": "The code imports the pyte module, defines a class called terminal with an init method that initializes a screen and stream object using provided width and height parameters. It also includes methods feed and display for feeding data to the stream and returning the screen's display respectively.",
+    "details": [
+        {
+            "comment": "The code imports the pyte module, defines a class called terminal with an init method that initializes a screen and stream object using provided width and height parameters. It also includes methods feed and display for feeding data to the stream and returning the screen's display respectively.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_kali_amd64/shellService/pyte_template.py\":0-9",
+            "content": "import pyte\nclass terminal:\n    def __init__(self,width=80,height=25):\n        self.screen = pyte.Screen(width,height)\n        self.stream = pyte.Stream(screen)\n    def feed(self):\n        self.stream.feed(bin_str)\n    def display(self):\n        return self.screen.display"
+        }
+    ]
+}

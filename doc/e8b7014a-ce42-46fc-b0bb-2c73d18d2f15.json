@@ -1,0 +1,10 @@
+{
+    "summary": "This code uses Emacsclient to execute a Lisp script named \"lsp.sh\". It sets the buffer to \"lsp.sh\", prints 'hello, and then prints 'world. No mention of writing a macro is present in this code.",
+    "details": [
+        {
+            "comment": "This code uses Emacsclient to execute a Lisp script named \"lsp.sh\". It sets the buffer to \"lsp.sh\", prints 'hello, and then prints 'world. No mention of writing a macro is present in this code.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_kali_amd64/cognitionService/virtual/client_progn.sh\":0-1",
+            "content": "emacsclient -s foo -e \"(progn (set-buffer \\\"lsp.sh\\\") (print 'hello) (print 'world))\"\n# shall you write macro?"
+        }
+    ]
+}

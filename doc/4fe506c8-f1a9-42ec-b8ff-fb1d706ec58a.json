@@ -1,0 +1,10 @@
+{
+    "summary": "The code imports the UUID module and defines a function named 'ufname' that takes an extension as its argument. It checks if there are any dots in the file extension, generates a random UUID prefix, and returns the prefix prepended to or suffixed with the extension.",
+    "details": [
+        {
+            "comment": "The code imports the UUID module and defines a function named 'ufname' that takes an extension as its argument. It checks if there are any dots in the file extension, generates a random UUID prefix, and returns the prefix prepended to or suffixed with the extension.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_kali_amd64/tools/uuid_fname.py\":0-8",
+            "content": "import uuid\ndef ufname(ext):\n    assert len(ext.replace(\".\",\"\"))>0\n    prefix = str(uuid.uuid4())\n    if ext.startswith(\".\"):\n        return prefix+ext\n    else:\n        return \".\".join([prefix,ext])"
+        }
+    ]
+}

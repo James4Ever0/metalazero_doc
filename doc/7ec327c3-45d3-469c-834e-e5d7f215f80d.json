@@ -1,0 +1,10 @@
+{
+    "summary": "This code is running a Node.js script named \"chrome_console.js\" from the specified location and piping its output to a file named \"chrome_logger.log\". The NODE_PATH environment variable points to the necessary module directory for execution.",
+    "details": [
+        {
+            "comment": "This code is running a Node.js script named \"chrome_console.js\" from the specified location and piping its output to a file named \"chrome_logger.log\". The NODE_PATH environment variable points to the necessary module directory for execution.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/tools/chrome_logger.sh\":0-0",
+            "content": "NODE_PATH=/data/data/com.termux/files/usr/lib/node_modules node ../native/lazero_kali_amd64/replService/chrome_console.js | tee chrome_logger.log"
+        }
+    ]
+}

@@ -1,0 +1,10 @@
+{
+    "summary": "This code opens the Vim text editor with a script using the `vim -s` command and specifies the name of the Vim script file to be opened as \"edit.vim\".",
+    "details": [
+        {
+            "comment": "This code opens the Vim text editor with a script using the `vim -s` command and specifies the name of the Vim script file to be opened as \"edit.vim\".",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_kali_amd64/cognitionService/virtual/edit.sh\":0-0",
+            "content": "vim -s edit.vim"
+        }
+    ]
+}

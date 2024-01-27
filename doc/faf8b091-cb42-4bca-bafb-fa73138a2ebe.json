@@ -1,0 +1,10 @@
+{
+    "summary": "This code sets up a Systemd unit file for a simple service on Linux. It specifies the description, dependencies, startup type and script, restart behavior, and desired runlevels. The service will start automatically after network is available and logged events are stored in syslog.",
+    "details": [
+        {
+            "comment": "This code sets up a Systemd unit file for a simple service on Linux. It specifies the description, dependencies, startup type and script, restart behavior, and desired runlevels. The service will start automatically after network is available and logged events are stored in syslog.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/daemonize_startup/linux_systemd/template.j2\":0-14",
+            "content": "[Unit]\nDescription={{ service_description }}\nWants=network.target\nAfter=syslog.target network-online.target\n[Service]\nType=simple\nExecStart={{ service_script }}\nRestart=on-failure\nRestartSec=10\nKillMode=process\n[Install]\nWantedBy=multi-user.target"
+        }
+    ]
+}

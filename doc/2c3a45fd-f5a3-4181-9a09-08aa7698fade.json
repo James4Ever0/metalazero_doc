@@ -1,0 +1,10 @@
+{
+    "summary": "Executes a POST request to the JSON-RPC server at localhost:7658, calling the \"solargraph/checkGemVersion\" method with empty parameters.",
+    "details": [
+        {
+            "comment": "Executes a POST request to the JSON-RPC server at localhost:7658, calling the \"solargraph/checkGemVersion\" method with empty parameters.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_kali_amd64/cognitionService/virtual/json_rpc.sh\":0-2",
+            "content": "curl -X POST -H \"Content-Type: application/json\" \\\n    -d '{\"method\": \"$/solargraph/checkGemVersion\", \"params\": \"\"}' \\\n    tcp://localhost:7658"
+        }
+    ]
+}

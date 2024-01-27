@@ -1,0 +1,6 @@
+#emacsclient -s ~/.emacs.d/server/server -e "(load \"client_print\")"
+emacsclient -s ~/.emacs.d/server/server -e "(defun voidnow () (switch-to-buffer \"lsp.sh\") (completion-at-point) (print lsp-completion--cache))"
+emacsclient -s ~/.emacs.d/server/server -e "(voidnow)"
+#emacsclient -s ~/.emacs.d/server/server -e "(eval-expression '(completion-at-point))"
+#emacsclient -s ~/.emacs.d/server/server -e "(print lsp-completion--cache)"
+#emacsclient -s ~/.emacs.d/server/server -e "(print 'hello)"

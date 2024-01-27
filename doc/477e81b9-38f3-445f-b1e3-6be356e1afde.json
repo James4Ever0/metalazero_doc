@@ -1,0 +1,10 @@
+{
+    "summary": "The code discusses using non-standard functions, allowing models to create and fix problems themselves. It highlights the importance of simulating irregularities and incorporating attention mechanisms for tracking in real-world scenarios. Additionally, it mentions a problematic display aspect that is causing frustration.",
+    "details": [
+        {
+            "comment": "The code discusses using non-standard functions, allowing models to create and fix problems themselves. It highlights the importance of simulating irregularities and incorporating attention mechanisms for tracking in real-world scenarios. Additionally, it mentions a problematic display aspect that is causing frustration.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/tools/deep-text-editor/neural_network/README\":0-10",
+            "content": "THIS IS THE CAUSE, THE UNDERIVABLE PROBLEMS, BY USING NON-STANDARD FUNCTIONS YOU WILL NEVER EVER FIND ON THE MATH BOOK.\nyou shall let the model to create chaos on its own, and fix it on its own.\nto train you into the dream, first we need to simulate some irregularities.\nin real world, there is no such thing called a single problem, nor something that only happen for once.\nthe attention mechanism, the tracking.\nalso the fucking display.it is killing me."
+        }
+    ]
+}

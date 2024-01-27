@@ -1,0 +1,10 @@
+{
+    "summary": "This command is running a Python script named monkey_controller.py within the X virtual framebuffer (Xvfb) environment, which is useful for running GUI tests on headless systems.",
+    "details": [
+        {
+            "comment": "This command is running a Python script named monkey_controller.py within the X virtual framebuffer (Xvfb) environment, which is useful for running GUI tests on headless systems.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_kali_amd64/mainService/launch_monkey.sh\":0-0",
+            "content": "xvfb-run python3 monkey_controller.py"
+        }
+    ]
+}

@@ -1,0 +1,10 @@
+{
+    "summary": "The code is a Bash script that continuously runs the Python script \"broadcast_client.py\" for 200 iterations, sending packets and counting down each iteration until it reaches 0.",
+    "details": [
+        {
+            "comment": "The code is a Bash script that continuously runs the Python script \"broadcast_client.py\" for 200 iterations, sending packets and counting down each iteration until it reaches 0.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/remote_control/discovery/broadcast_client.sh\":0-11",
+            "content": "#!/bin/bash\ncnt=200\nwhile true\ndo\n\tif [ $cnt -gt 0 ]; then\n\t\tpython3 broadcast_client.py\n\t\tcnt=$(( $cnt - 1 ))\n\t\techo sending packet $cnt\n\telse\n\t\tbreak\n\tfi\ndone"
+        }
+    ]
+}

@@ -1,0 +1,10 @@
+{
+    "summary": "The code defines an argument parser, requires a program name and its depth of possible flags combination. It generates all possible combinations of 26 letters (both lowercase and uppercase). Then, it iterates through each combination, forming the command string with the program name, flags, and additional arguments before printing the complete command.",
+    "details": [
+        {
+            "comment": "The code defines an argument parser, requires a program name and its depth of possible flags combination. It generates all possible combinations of 26 letters (both lowercase and uppercase). Then, it iterates through each combination, forming the command string with the program name, flags, and additional arguments before printing the complete command.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_kali_amd64/cognitionService/virtual/fuzz.py\":0-21",
+            "content": "import os\n#import sys\nimport argparse\nparser=argparse.ArgumentParser()\nparser.add_argument('-p','--program',type=str,help='program name to launch',required=True)\nparser.add_argument('-d','--depth',type=int,help='depth of possible flags combination',default=2)\nparser.add_argument('args',metavar='N',type=str,nargs='+',help='subargs passing to program')\nargs=parser.parse_args()\nprogram=args.program\ndepth=args.depth\npargs=args.args\ncandidates=[chr(x+ord('a'))for x in range(26)]\ncandidates=candidates+[x.upper() for x in candidates]\nimport itertools\nflags=[\"-\"+\"\".join(x) for x in itertools.combinations(candidates,depth)]\n#print(pargs)\nfor x in flags:\n    cmd=\" \".join([program,x,*pargs])\n    print(cmd)"
+        }
+    ]
+}

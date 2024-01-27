@@ -1,0 +1,10 @@
+{
+    "summary": "This script continuously launches a VNC monkey and bruteforcer, both connecting to localhost:5800 with the stored password. The first command times out for 100 seconds before launching the VNC monkey, followed by launching the bruteforcer that times out for 20 seconds. The script uses vncdotool commands to control mouse and keyboard actions within the VNC session.",
+    "details": [
+        {
+            "comment": "This script continuously launches a VNC monkey and bruteforcer, both connecting to localhost:5800 with the stored password. The first command times out for 100 seconds before launching the VNC monkey, followed by launching the bruteforcer that times out for 20 seconds. The script uses vncdotool commands to control mouse and keyboard actions within the VNC session.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_kali_amd64/mainService/torch_monkey.sh\":0-18",
+            "content": "#DISPLAY=:99 xhost +\n#DISPLAY=:99 python3 monkey_basic.py\naddress=localhost:5800\npasswd=$(cat .secret)\n#passwd=randompassword\nstime0=100\nstime1=20\nwhile true\ndo\n\techo launching monkey.\n\ttimeout $stime0 python3 vnc_monkey.py -p $passwd -a $address\n\techo launching bruteforcer.\n\ttimeout $stime1 python3 vnc_bruteforcer.py -p $passwd -a $address\ndone\n#vncdotool -p $passwd -s 127.0.0.1::5800 mouseup 1 \n#vncdotool -p $passwd -s 127.0.0.1::5800 -vvvv keydown A\n# we launch the shit within the shit.\n#vncdotool -p $passwd -s 127.0.0.1::5800 mousemove 500 500  \n#vncdotool -p $passwd -s 127.0.0.1::5800 mousedown 1 "
+        }
+    ]
+}

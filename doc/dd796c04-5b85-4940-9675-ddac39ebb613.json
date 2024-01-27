@@ -1,0 +1,10 @@
+{
+    "summary": "The code defines a function `boolStr` that takes a condition and returns either \"TRUE\" or \"FALSE\" based on its truthiness. The main function calls `boolStr` with the condition \"worl\" is infixed in \"hello world\", then prints the result using `putStrLn`. This results in printing \"FALSE\" instead of \"Hello World\" because \"worl\" is not found in \"hello world\".",
+    "details": [
+        {
+            "comment": "The code defines a function `boolStr` that takes a condition and returns either \"TRUE\" or \"FALSE\" based on its truthiness. The main function calls `boolStr` with the condition \"worl\" is infixed in \"hello world\", then prints the result using `putStrLn`. This results in printing \"FALSE\" instead of \"Hello World\" because \"worl\" is not found in \"hello world\".",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_kali_amd64/cognitionService/virtual/cog_core.hs\":0-6",
+            "content": "import Data.List\nboolStr condition = if condition then \"TRUE\" else \"FALSE\"\nmain = do\n\tputStrLn (boolStr (\"worl\" `isInfixOf` \"hello world\"))\n--main = putStrLn \"Hello World\""
+        }
+    ]
+}

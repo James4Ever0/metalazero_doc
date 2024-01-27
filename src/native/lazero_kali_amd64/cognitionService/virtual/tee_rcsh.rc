@@ -1,0 +1,4 @@
+#!/bin/rc
+#tee -a bash_lsp_input.log | bash-language-server start 2>(tee -a bash_lsp_error.log 1>&2) 1>(tee -a bash_lsp_output.log)
+# rcshell only.
+tee -a bash_lsp_stdin.log | bash-language-server start

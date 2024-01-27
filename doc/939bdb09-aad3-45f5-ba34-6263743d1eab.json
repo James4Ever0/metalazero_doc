@@ -1,0 +1,15 @@
+{
+    "summary": "The code sets up a timer for `sm-poll-message-changes`, adds it to the `post-command-hook`, and defines variables for marker positions and tick values. It checks changes in the buffer, calculates deltas, updates markers, and prints the delta.",
+    "details": [
+        {
+            "comment": "This code sets up a timer to run `sm-poll-message-changes` every 3 seconds, and adds it to the `post-command-hook`. It also defines variables for marker positions and tick values. The function checks if there are any changes in the buffer since the last poll and calculates the delta of deleted and inserted characters. It then updates the markers and prints the delta.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_kali_amd64/cognitionService/virtual/with_message_hook.el\":0-25",
+            "content": "(run-with-timer 3 3 #'sm-poll-message-changes)\n(add-hook 'post-command-hook #'sm-poll-message-changes)\n(defvar sm--pmc-marker nil)\n(defvar sm--pmc-marker-pos nil)\n(defvar sm--pmc-tick nil)\n(setq content_notice \"buffer has changed\")\n(with-current-buffer (get-buffer \"*Messages*\")\n  (setq sm--pmc-marker (point-max-marker))\n  (setq sm--pmc-marker-pos (point-max))\n  (setq sm--pmc-tick (buffer-chars-modified-tick)))\n(defun sm-poll-message-changes ()\n  (with-current-buffer (marker-buffer sm--pmc-marker)\n    (unless (eq sm--pmc-tick (buffer-chars-modified-tick))\n      ;; A change happened.\n      (let ((deleted-chars-at-bob\n             (- sm--pmc-marker-pos sm--pmc-marker))\n            (inserted-chars-at-eob\n             (- (point-max) sm--pmc-marker)))\n\t(setq previous-marker sm--pmc-marker-pos)\n        (setq sm--pmc-marker-pos (point-max))\n        (setq sm--pmc-tick (buffer-chars-modified-tick))\n        (move-marker sm--pmc-marker (point-max))\n\t(print (format \"delta: %s\" (buffer-substring previous-marker (point-max))))"
+        },
+        {
+            "comment": "This code snippet is checking the difference between previous-marker and (point-max), which represents the maximum possible point value in a text editor. It then prints this difference using format function with the message \"delta: %d-%d\".",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_kali_amd64/cognitionService/virtual/with_message_hook.el\":26-28",
+            "content": "\t;(print (format \"delta: %d-%d\" previous-marker (point-max)))\n\t; do shit here.\n\t))))"
+        }
+    ]
+}

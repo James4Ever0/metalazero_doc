@@ -1,0 +1,10 @@
+{
+    "summary": "This code defines a Systemd service unit file for a trivial service, specifying dependencies, execution commands, and restart options. The service is set to run after network connectivity and uses syslog for logging. It executes a bash script and will automatically restart upon failure with a 10-second delay. It is configured to be wanted by the multi-user target.",
+    "details": [
+        {
+            "comment": "This code defines a Systemd service unit file for a trivial service, specifying dependencies, execution commands, and restart options. The service is set to run after network connectivity and uses syslog for logging. It executes a bash script and will automatically restart upon failure with a 10-second delay. It is configured to be wanted by the multi-user target.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/daemonize_startup/linux_systemd/wifimouse_service.service\":0-14",
+            "content": "[Unit]\nDescription=trivial_service\nWants=network.target\nAfter=syslog.target network-online.target\n[Service]\nType=simple\nExecStart=bash /root/AGI/metalazero/daemonize_startup/linux_systemd/wifimouse_service.sh\nRestart=on-failure\nRestartSec=10\nKillMode=process\n[Install]\nWantedBy=multi-user.target"
+        }
+    ]
+}

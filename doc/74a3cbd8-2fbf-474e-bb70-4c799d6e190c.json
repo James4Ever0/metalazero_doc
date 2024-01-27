@@ -1,0 +1,10 @@
+{
+    "summary": "The code defines two functions, `decode` and `encode`, that perform base64 encoding and decoding on input data. The `decode` function first checks if the data is a string, and if so, encodes it as UTF-8 before performing base64 decoding and returning the decoded string. Similarly, the `encode` function encodes the data as UTF-8 before performing base64 encoding. The program takes input from the user, determines whether to decode or encode based on command-line arguments, and prints the result.",
+    "details": [
+        {
+            "comment": "The code defines two functions, `decode` and `encode`, that perform base64 encoding and decoding on input data. The `decode` function first checks if the data is a string, and if so, encodes it as UTF-8 before performing base64 decoding and returning the decoded string. Similarly, the `encode` function encodes the data as UTF-8 before performing base64 encoding. The program takes input from the user, determines whether to decode or encode based on command-line arguments, and prints the result.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/schedules/concat.py\":0-20",
+            "content": "import base64\ndef decode(data):\n    if type(data) == str:\n        data = data.encode(\"utf-8\")\n    return base64.b64decode(data).decode(\"utf-8\")\ndef encode(data):\n    if type(data) == str:\n        data = data.encode(\"utf-8\")\n    return base64.b64encode(data).decode(\"utf-8\")\nif __name__ == \"__main__\":\n    import argparse\n    parser = argparse.ArgumentParser()\n    parser.add_argument(\"-d\",\"--decode\",action=\"store_true\")\n    args = parser.parse_args()\n    data=input()\n    if args.decode:\n        print(decode(data),end=\"\")\n    else:\n        print(encode(data),end=\"\")"
+        }
+    ]
+}

@@ -1,0 +1,10 @@
+{
+    "summary": "This code repeatedly sends the phrase \"hello world\" as input, waits for 1 second, displays content from the interaction, and then restarts. It aims to simulate a constant stream of input and display interactions.",
+    "details": [
+        {
+            "comment": "This code repeatedly sends the phrase \"hello world\" as input, waits for 1 second, displays content from the interaction, and then restarts. It aims to simulate a constant stream of input and display interactions.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_win10_amd64/cognitionService/interaction_0.py\":0-10",
+            "content": "import shellConnect as Sc\n# to represent how you type these words? type it exactly according to what you've done in the past?\n# we want it to learn anything from this process.\nimport time as T\nwhile True:\n    Sc.inputs(\"hello world\")\n    T.sleep(1)\n    content = Sc.display()\n    print(content)\n    Sc.restart()"
+        }
+    ]
+}

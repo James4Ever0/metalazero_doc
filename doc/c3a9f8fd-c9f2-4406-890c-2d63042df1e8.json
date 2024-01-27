@@ -1,0 +1,10 @@
+{
+    "summary": "This code sets up the LSP (Language Server Protocol) for Emacs, adding a workspace folder, disabling idle delay, and configuring completion-at-point functions. It also mentions that some features are not ready yet.",
+    "details": [
+        {
+            "comment": "This code sets up the LSP (Language Server Protocol) for Emacs, adding a workspace folder, disabling idle delay, and configuring completion-at-point functions. It also mentions that some features are not ready yet.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_kali_amd64/cognitionService/virtual/client.el\":0-11",
+            "content": "; set the thing.\n;(company)\n(lsp)\n(lsp-workspace-folders-add \".\")\n(setq lsp-idle-delay 0)\n;(find-file \"lsp.sh\")\n;(lsp)\n;(setq completion-at-point-functions (cons lsp-completion-at-point '()))\n;(next-line)\n; not ready yet.\n;(completion-at-point)\n;(print lsp-completion--cache)"
+        }
+    ]
+}

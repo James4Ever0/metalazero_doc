@@ -1,0 +1,10 @@
+{
+    "summary": "The code executes an Emacs Lisp command through the `emacsclient` tool. It specifies a server (foo), runs Lisp code within the \"lsp.sh\" buffer, prints the current buffer's name, and then moves to the next line.",
+    "details": [
+        {
+            "comment": "The code executes an Emacs Lisp command through the `emacsclient` tool. It specifies a server (foo), runs Lisp code within the \"lsp.sh\" buffer, prints the current buffer's name, and then moves to the next line.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_kali_amd64/cognitionService/virtual/client_with_current_buffer.sh\":0-0",
+            "content": "emacsclient -s foo -e \"(with-current-buffer \\\"lsp.sh\\\" (print (current-buffer)) (next-line))\""
+        }
+    ]
+}

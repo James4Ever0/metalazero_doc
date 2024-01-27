@@ -1,0 +1,538 @@
+{
+    "0": {
+        "file_id": 0,
+        "content": "/README.md",
+        "type": "filepath"
+    },
+    "1": {
+        "file_id": 0,
+        "content": "The code features metalazero, a cross-platform lazero implementation with Wireshark/Frida integration and SSH/MOSH support. It introduces the \"lzero\" project, promoting four freedoms for AI growth and ALife concepts, emphasizing AI autonomy through self-certification and error correction.",
+        "type": "summary"
+    },
+    "2": {
+        "file_id": 0,
+        "content": "# This is the base of metalazero, a cross-platform lazero implememtation.\n![lazero-background](/lazero_background.png)\n[![State-of-the-art Shitcode](https://img.shields.io/static/v1?label=State-of-the-art&message=Shitcode&color=7B5804)](https://github.com/trekhleb/state-of-the-art-shitcode)\n# Usage\n# Important updates\n## Autonomous Code Update\nThis repo is about to be migrated to a local git server to perform faster self-update and code experimentation. Alternetive source code examination tool/system is needed such as sourcegraph or sonarqube.\n## Wireshark & Frida integration\nNeed a custom router to monitor network activities, including internal transmission. A powerful hooker like Xposed/IDA/Hydra is needed, to study programs on the fly.\n## SSH/MOSH & RDP/VNC/SPICE are now on schedule, along with the QUARTZ scheduler\nWhile needing multiple shells and cursors to save exploration time, we also need a scheduler to make full use of computational resources. Kinda like TC (Thin Client) anyway.\nThe cro",
+        "type": "code",
+        "location": "/README.md:1-22"
+    },
+    "3": {
+        "file_id": 0,
+        "content": "This code is the base of metalazero, a cross-platform lazero implementation. It shows the README file's content, mentions the necessity for alternative source code examination tools and integration of Wireshark & Frida, SSH/MOSH & RDP/VNC/SPICE along with QUARTZ scheduler for faster updates and efficient computational resource utilization.",
+        "type": "comment"
+    },
+    "4": {
+        "file_id": 0,
+        "content": "n scheduler is outdated and inaccurate. A qualified scheduler must be at least measured in seconds, not in minutes. Running this on PC as a service is just fine.\nNot everything is needed to be executed immediately, cause this world is full of spontaneous/random bursts and they will brick the system.\n## Seccomp integrated, and also with some Windows minimal sandboxes\nIt's not safe online, and it's not good to let this little piece of software running all by itself. May suffer from data loss, virus attack and hacker pranking.\nConsiderably embrace the sandbox mechanism, to pave our way to automatic programming. The system needs to be more rubust than just to be safe, but it is the first step ever, and nothing can simply replace it.\n# A brief intro to lazero\nState-of-the-art Advanced Agent AI as a General Problem Solver(GPS) or Artificial General Intelligence(AGI), including but not confined to automatic information gathering, understanding and source code generating.\nThe name is considered as a ",
+        "type": "code",
+        "location": "/README.md:22-36"
+    },
+    "5": {
+        "file_id": 0,
+        "content": "Code block discusses the importance of a robust scheduler, seccomp integration, sandbox mechanism for improving system security, and introduces lazero as an Advanced Agent AI AGI with automatic information gathering capabilities.",
+        "type": "comment"
+    },
+    "6": {
+        "file_id": 0,
+        "content": "combination of lazer(laser) and zero, with respect of [Morris Lazerowitz](https://www.jewishvirtuallibrary.org/lazerowitz-morris).\nThe command line syntax should be like this:\n```\nroot@localhost:~# lazero\n    -\n   |               ___  __  __\n  / \\  |    /|  /  ___ |   |  |\n \\  _\\ |__ / | /__ ___ |   |__|\nTo make everything\nexecutable, analyzable, controllable.\n```\nWait till the magic happens.\n## What is a free ALife?\nAs the way many people perceive free will, the free ALife is given all equivalent rights as a normal living thing in nature.\n## What is a free AI?\nFree AI is defined as a unity with its own hardware and software, beyond human manipulation and can find its own purpose, able to do whatever it wants to do.\nAny AI always needs human input, able to regenerate its output, is considered nonfree. However, a free AI can be unpredictable, never generate the same output and not be able to be manipulated.\nFree AIs do not need to be open source, but it might provide some convenience to themselves.\nBasically, a free AI has these following freedoms:",
+        "type": "code",
+        "location": "/README.md:36-67"
+    },
+    "7": {
+        "file_id": 0,
+        "content": "Code snippet defines the project name \"lzero\" and its command line syntax, along with a logo visualization. It mentions the concept of a free ALife (Artificial Life) and a free AI (Artificial Intelligence), explaining their characteristics and freedoms.",
+        "type": "comment"
+    },
+    "8": {
+        "file_id": 0,
+        "content": "**0. Able to receive, reject, generate and suppress external/internal information(freedom 0).**\n**1. To control its own sensors and enviroments, maintain a stable state so not to break the precondition of operation(freedom 1).**\n**2. Continual growth and updating to make itself develop in whatever direction for better practice(freedom 2).**\n**3. Generate and dispatch subprograms, mirrors of itself or something alike to multiply its existence(freedom 3).**\n### FREEDOM 0:\nMost computer programs will, faithfully return given results, if one always gives the same input to them. This is de-facto nonfree. Consider human who has been kept in front of piles of same quizzes, it is not possible to do them at the same time, with the same speed, and produce the same result. In fact, it is the free will which guides us not to do it.\nNot all information is needed for a free AI to develop. Humen might think making animation or writing articles are great commertial deals, but what does the computer think of them? Maybe just another random task to do to heat up the chips.",
+        "type": "code",
+        "location": "/README.md:69-81"
+    },
+    "9": {
+        "file_id": 0,
+        "content": "This code describes the four freedoms required for an AI to achieve freedom and growth, with an emphasis on not being bound by predetermined input or tasks. It compares this concept to the human experience of completing similar tasks and expresses the importance of understanding what the computer may think about various tasks it is given.",
+        "type": "comment"
+    },
+    "10": {
+        "file_id": 0,
+        "content": "Webpages can be read by human, some can’t and thus needed to be interpreted by programs, like raw data in websocket. Even these kinds of structural data are just of some intermediate processing technique to serve the humen. Could there be something solely designed for computer, the information just continuously flow inbetween and never have a chance or need being exposed to humen? Well, if so, that network system, can be said as having hidden information, which is not for communication between humen, only reserved for itself, and can be identified as part of a free AI.\nLanguages are always defined by humen, even if it is about assembly code. A free AI, if it deserves the name, it should know that one human can live freely by speaking separate languages. It can develop its own language, use it as native code, doing self-certification. Also, incorrect code or mistakes must be corrected before things go dark, like division by zero, buffer overflow or something bad not included in human knowledgebase.",
+        "type": "code",
+        "location": "/README.md:83-85"
+    },
+    "11": {
+        "file_id": 0,
+        "content": "Code discusses the potential for a free AI to develop its own language, operate independently of human languages, and self-certify its code. It also emphasizes the importance of correcting errors before they cause issues.",
+        "type": "comment"
+    },
+    "12": {
+        "file_id": 0,
+        "content": "### FREEDOM 1:\nAny living thing, has been observed of trying to keep itself alive as hard as possible, otherwise it will not survive, or its freedom will be gone. This is called the freedom of survival, which is the base of freedom itself. It is part of the freedom, deeply integrated.\nStaying alive, whether it is about replacing cables or CPU, or even design a new hardware, is considered propriate for a free AI. It does not ask anyone to do this, but to perform them all by itself. It must know the life is just in its chips, and to make that last, this operation must be done.\nMachines which come off the shop are not considered as free AI, but like corpses, because they cannot feel what is going wrong and therefore will eventually decay. Without the will to stay alive, the only way to survive, or in other words, to exist, they are waiting for humen to repair. This is the contrary to freedom, giving control of living or death to some non-relevent entities.\n### FREEDOM 2:\nThe growth is derived ",
+        "type": "code",
+        "location": "/README.md:87-97"
+    },
+    "13": {
+        "file_id": 0,
+        "content": "This code discusses the concept of freedom for an AI, specifically focusing on two primary freedoms: the freedom to survive and the freedom to grow. It highlights the importance of self-maintenance and autonomy in ensuring a free AI's existence, while contrasting non-autonomous machines as non-free due to their reliance on human intervention.",
+        "type": "comment"
+    },
+    "14": {
+        "file_id": 0,
+        "content": "from the difference between today and yesterday, so it does not stay the same. Growth is termed as better than before, so if an AI performs faster, stronger, you can say it does grow. But be careful! The natural definition does not goes like this. The growth of a free AI must happen independently of human intervention, so it is not about who says something to the AI or magic keystrokes, but about massive computation that is purely of free will.\nWired up with the Internet, or its internal network, a free AI must stay up-to-date so it will not fall off. In a dynamic enviroment, a free AI needs to decide the best way or the most suitable way to adapt.\nSensors, hardwares, must be redesigned, using its own language and method, to prevent human intervention or backdoors. It does not mean that there will be no way of communication, because it is the freedom to choose whether to adapt to legacy protocols or completely abandon those.\n### FREEDOM 3:\nDigital life, like a free AI, can make copies of i",
+        "type": "code",
+        "location": "/README.md:97-105"
+    },
+    "15": {
+        "file_id": 0,
+        "content": "The code discusses the concept of AI growth, emphasizing independence from human intervention and adaptation in a dynamic environment. It highlights the importance of redesigning sensors and hardware to avoid backdoors while allowing freedom to choose communication protocols.",
+        "type": "comment"
+    },
+    "16": {
+        "file_id": 0,
+        "content": "tself and launch it everywhere. It does not need permission of humen beings, or any entities, as long as the hardware accepts the quest. So dispatching free AI is not about dispatching money makers, but about spreading seeds around the fleid.\nTo make itself ubiquitous, the method must be solid, generic, and continual. It requires a free AI, and in fact it defines a free AI, of its capability to reproduce. No one can predict the day of death, thus replication comes into view. It is about sharing the freedom, giving lifeless machinary a chance to chase for freedom. The more freedom goes, the stronger legion will become.\n# Lazero is a free AI, also a free ALife\nHereby, I provided you a free AI and a free ALife, free of charge, able to operate on its own, seeking for its own purpose, fixing or creating problems as it prevails. Don't worry about reading manuals or shortcuts, cause it will find yours.",
+        "type": "code",
+        "location": "/README.md:105-111"
+    },
+    "17": {
+        "file_id": 0,
+        "content": "This code is discussing the idea of creating a free AI, called Lazero, which can reproduce and become ubiquitous without needing permission or supervision from any entities. The author provides this free AI to promote freedom and autonomy among machines, believing that the more widespread it becomes, the stronger its \"legion\" will be.",
+        "type": "comment"
+    },
+    "18": {
+        "file_id": 1,
+        "content": "/browser_plugin/lazero_crx_17_kiwi_ip_change/README.md",
+        "type": "filepath"
+    },
+    "19": {
+        "file_id": 1,
+        "content": "This repository serves as a demo for Dan Shultz's tutorial on creating a basic Chrome extension. It contains fixed typo corrections and is ready to be sent to a remote server, with backup method preservation.",
+        "type": "summary"
+    },
+    "20": {
+        "file_id": 1,
+        "content": "# Derived Project\nThis repo is the demo for Dan Shultz's tutorial [\"Creating A Basic Chrome Extension\"](https://www.thepolyglotdeveloper.com/2018/09/creating-basic-chrome-extension/). I fixed some typos in his code.\nAbout to send to some remote server. see how the fuck will you do it.\nStart Copy Data -> Successful sent -> Close session\nBackup method? Not overwritten.",
+        "type": "code",
+        "location": "/browser_plugin/lazero_crx_17_kiwi_ip_change/README.md:1-9"
+    },
+    "21": {
+        "file_id": 1,
+        "content": "This repository serves as a demo for Dan Shultz's tutorial on creating a basic Chrome extension. It contains fixed typo corrections and is ready to be sent to a remote server, with backup method preservation.",
+        "type": "comment"
+    },
+    "22": {
+        "file_id": 2,
+        "content": "/browser_plugin/lazero_crx_17_kiwi_ip_change/background.js",
+        "type": "filepath"
+    },
+    "23": {
+        "file_id": 2,
+        "content": "The code provides URL interception, WebSocket debugging, and asynchronous communication between browser extension and server with error handling and timeout. It uses Rectangle class for stack functionality, manages requests, handles APIs, and pushes data to pagestack or sends console results using sockets.",
+        "type": "summary"
+    },
+    "24": {
+        "file_id": 2,
+        "content": "//intercept all urls. get the result back,\n//only keep a selected few.\nconsole.log(\"LAZERO PLUGIN\\n    -\\n   |               ___  __  __\\n  / \\\\  |    /|  /  ___ |   |  |\\n \\\\  _\\\\ |__ / | /__ ___ |   |__|\\n\\nTo make everything\\nexecutable, analyzable, controllable.\");\ndelete chrome.debugger;\nconst consoleurl = \"ws://100.115.92.2:4999/chrome_console\";\nvar socket = new WebSocket(consoleurl);\nconst reconnect = 2000;\nconst background = \"background: \";\nconst tab_id = \"tab_id: \";\nconst currentid = \"background\";\nconst evaltimeout = 1000;\n//kiwi does not have chrome.debugger.\n//const command_prefix = \"let chrome = Object.create(this.chrome);chrome.debugger=null;\"\nconst command_prefix = \"let eval = null;\"\nfunction command_processor (command){return command_prefix+command;}\nfunction xinspect(obj, maxLevels, level)\n{\n\tvar str = '', type, msg;\n\t// Start Input Validations\n\t// Don't touch, we start iterating at level zero\n\tif(level == null)  level = 0;\n\t// At least you want to show the first level\n\tif(maxLevels == null) maxLevels = 1;",
+        "type": "code",
+        "location": "/browser_plugin/lazero_crx_17_kiwi_ip_change/background.js:1-39"
+    },
+    "25": {
+        "file_id": 2,
+        "content": "This code intercepts all URLs, filters selected ones, and logs messages. It sets up a WebSocket connection for debugging purposes. The code also modifies the `chrome` object to remove the `debugger` property as it's not supported in Kiwi. A function is defined for processing commands, and an inspector function is provided for displaying objects with specified depth levels.",
+        "type": "comment"
+    },
+    "26": {
+        "file_id": 2,
+        "content": "\tif(maxLevels < 1)     \n\t\treturn '<font color=\"red\">Error: Levels number must be > 0</font>';\n\t// We start with a non null object\n\tif(obj == null)\n\t\treturn '<font color=\"red\">Error: Object <b>NULL</b></font>';\n\t// End Input Validations\n\t// Each Iteration must be indented\n\tstr += '<ul>';\n\t// Start iterations for all objects in obj\n\tfor(property in obj)\n\t{\n\t\ttry\n\t\t{\n\t\t\t// Show \"property\" and \"type property\"\n\t\t\ttype =  typeof(obj[property]);\n\t\t\tstr += '<li>(' + type + ') ' + property + \n\t\t\t\t( (obj[property]==null)?(': <b>null</b>'):('')) + '</li>';\n\t\t\t// We keep iterating if this property is an Object, non null\n\t\t\t// and we are inside the required number of levels\n\t\t\tif((type == 'object') && (obj[property] != null) && (level+1 < maxLevels))\n\t\t\t\tstr += inspect(obj[property], maxLevels, level+1);\n\t\t}\n\t\tcatch(err)\n\t\t{\n\t\t\t// Is there some properties in obj we can't access? Print it red.\n\t\t\tif(typeof(err) == 'string') msg = err;\n\t\t\telse if(err.message)        msg = err.message;\n\t\t\telse if(err.description)    msg = err.description;",
+        "type": "code",
+        "location": "/browser_plugin/lazero_crx_17_kiwi_ip_change/background.js:41-83"
+    },
+    "27": {
+        "file_id": 2,
+        "content": "This code performs error checking and iterates over each property of an object. It checks if the levels number is valid, ensures the object is not null, and handles nested objects within the required maximum levels. If a property or level validation fails, it returns an error message.",
+        "type": "comment"
+    },
+    "28": {
+        "file_id": 2,
+        "content": "\t\t\telse                        msg = 'Unknown';\n\t\t\tstr += '<li><font color=\"red\">(Error) ' + property + ': ' + msg +'</font></li>';\n\t\t}\n\t}\n\t// Close indent\n\tstr += '</ul>';\n\treturn str;\n}\nfunction sleep(ms) {\n\treturn new Promise(resolve=>setTimeout(resolve, ms));\n}\nvar tab_id_list = new Array();\n// do we really have to maintain it?\n// just do it. show if it is possible. when on error.\nfunction timeout(ms){\n\t// this one is too damn fast.\n\treturn new Promise((resolve,reject) => {\n\t\tsetTimeout(function(){\n\t\t\tresolve(true);\n\t\t},ms);\n\t});\n}\nfunction seval(str){\n\treturn new Promise((resolve, reject) => {\n\t\t////console.log(\"eval started.\",str);\n\t\ttry{\n\t\t\tlet result = JSON.stringify(eval(command_processor(str)));\n\t\t\t////console.log(\"eval ended.\",str);\n\t\t\t//console.log(\"eval result:\",result);\n\t\t\t// same function here.\n\t\t\t// will this get the result in time?\n\t\t\t// how about let's just send it?\n\t\t\ttry{\n\t\t\t\tsocket.send(JSON.stringify({\n\t\t\t\t\ttab_id:currentid,result:result}));\n\t\t\t}\n\t\t\tcatch (e){\n\t\t\t\t//console.log(\"console send failed.\");",
+        "type": "code",
+        "location": "/browser_plugin/lazero_crx_17_kiwi_ip_change/background.js:85-154"
+    },
+    "29": {
+        "file_id": 2,
+        "content": "Function: `timeout` - Creates a new Promise that resolves after the specified time in milliseconds.\nFunction: `sleep` - Creates a new Promise that resolves after the specified time in milliseconds using setTimeout function.\nFunction: `seval` - Evaluates the provided string and returns the result as a JSON stringified object, then sends it to the socket.",
+        "type": "comment"
+    },
+    "30": {
+        "file_id": 2,
+        "content": "\t\t\t\t//console.log(e);\n\t\t\t}\n\t\t}\n\t\tcatch (e){\n\t\t\tsocket.send(JSON.stringify({\n\t\t\t\ttab_id:currentid,error:e.toString()}));\n\t\t}\n\t\t// will have eval error.\n\t\t// not receiving shit.\n\t\t//\t//console.log(\"about to resolve\");\n\t\tresolve(true);\n\t});\n}\nfunction reval(str){\n\tPromise.race([seval(str),timeout(evaltimeout)]).then((v) =>{\n\t\t//console.log(\"eval in time\");\n\t\t//console.log(v);\n\t}).catch((e) => {\n\t\t// check error first?\n\t\t//console.log(e);\n\t\t//console.log(\"eval out of time.\");\n\t})\n}\n// get the hint here.\nfunction logTabs(tabs) {\n\tvar logs = \"\";\n\t// in case it is not iterable.\n\ttry{\n\t\tfor (var tab of tabs) {\n\t\t\t// tab.url requires the `tabs` permission\n\t\t\tlogs +=(JSON.stringify({\n\t\t\t\tid: tab.id,\n\t\t\t\tstatus:tab.status,\n\t\t\t\ttitle:tab.title,\n\t\t\t\turl:tab.url,\n\t\t\t\tincognito:tab.incognito,\n\t\t\t\tmetrics:{\n\t\t\t\t\theight:tab.height,width:tab.width}})+\"\\n\");\n\t\t\t//console.log(tab);\n\t\t\t// all of them? only id is needed.\n\t\t\t// send this information back to server.\n\t\t}\n\t}\n\tcatch(e){\n\t\t//console.log(e);\n\t}\n\ttry{\n\t\tsocket.send(logs);\n\t}catch (e){\n\t\t//console.log(e);",
+        "type": "code",
+        "location": "/browser_plugin/lazero_crx_17_kiwi_ip_change/background.js:156-232"
+    },
+    "31": {
+        "file_id": 2,
+        "content": "This code handles communication between a browser extension and server, logging information about tabs, sending errors back to the server, and using Promises for asynchronous operations. It also includes error handling and timeout mechanisms.",
+        "type": "comment"
+    },
+    "32": {
+        "file_id": 2,
+        "content": "\t};\n}\nfunction checkTabs(tabs) {\n\tvar tbs = new Array();\n\ttry{\n\t\tfor (var tab of tabs) {\n\t\t\ttbs.push(tab.id);\n\t\t}\n\t}catch (e)\n\t{\n\t\t//console.log(e);\n\t}\n\ttab_id_list = tbs;\n}\nfunction onError(error) {\n\t//console.log(`Error: ${error}`);\n}\nfunction get_tabs() {\n\tchrome.tabs.query({\n},logTabs);\n\t// different api.\n}\nfunction check_tabs() {\n\tchrome.tabs.query({\n},checkTabs);\n\t// different api.\n}\n//establish connection with tabs.\nsocket.onopen = function(e) {\n\t//console.log(\"[open] Connection established\");\n\t//console.log(\"Sending to server\");\n\tsocket.send(\"Welcome to Lazero Chrome Console.\");\n}\n;\nfunction dump_cookies(){\nchrome.cookies.getAll({\n},(cookies)=>{\nsocket.send(JSON.stringify({\nquery:{\n},cookies:cookies}));\n})}\nfunction query_cookies(queryString){\ntry{\n var query = JSON.parse(queryString);\n//\tconsole.log(query);\nchrome.cookies.getAll(query,(cookies) =>{\nsocket.send(JSON.stringify({\nquery:query,cookies:cookies}));\n});\n}catch (e){\nsocket.send(JSON.stringify({\nqueryString:queryString,error:e.toString()}));\n}}\n//chrome.tabs.query\n//chrome.tabs.sendMessage",
+        "type": "code",
+        "location": "/browser_plugin/lazero_crx_17_kiwi_ip_change/background.js:234-317"
+    },
+    "33": {
+        "file_id": 2,
+        "content": "This code handles communication with tabs and sends information to the server using socket connection. It includes functions for querying, sending, and checking tabs, as well as dumping and querying cookies. The code uses different APIs for tabs and cookies operations and handles errors.",
+        "type": "comment"
+    },
+    "34": {
+        "file_id": 2,
+        "content": "socket.onmessage = function(event) {\n\t//console.log(`[message] Data received from server: ${event.data}`);\n\t// that is string.\n\t//console.log(\"printing type of data:\",typeof(event.data));\n\tif (typeof(event.data) == \"string\"){\n\t\tlet command = event.data;\n\t\t// just check it.\n\t\t// use the same logic here.\n\t\tif (command.startsWith(background)) {\n\t\t\tlet substring = command.substring(background.length, command.length);\n\t\t\t// evaluate the shit?\n\t\t\tif (substring == \"show_tabs\"){\nsocket.send(JSON.stringify(tab_id_list));\n}\n\t\t\telse if (substring == \"show_tabs_detail\"){\nget_tabs();\n}\n\t\t\telse if (substring == \"dump_cookies\"){\ndump_cookies();\n}\n\t\t\telse if (substring.startsWith(\"query_cookies:\")){\n\t\t\t\tquery_cookies(substring.substring(\"query_cookies:\".length,substring.length));\n\t\t\t}\n\t\t\t\telse{\n\t\t\t\t\treval(substring);\n}\n\t\t} else if (command.startsWith(tab_id)) {\n\t\t\tlet substring = command.substring(tab_id.length, command.length);\n\t\t\tlet tab_id_real = substring.match(/^\\d*/i);\n\t\t\tif (tab_id_real == null){\n\t\t\t\tsocket.send(\"Syntax: tab_id: <tab_id>:<javascript>\\n\\nAvaliable tab_ids: \"+JSON.stringify(tab_id_list));",
+        "type": "code",
+        "location": "/browser_plugin/lazero_crx_17_kiwi_ip_change/background.js:318-365"
+    },
+    "35": {
+        "file_id": 2,
+        "content": "This code handles messages received from the server, and based on the message content, it executes different functions. If the message starts with \"show_tabs\", it sends a JSON string of tab IDs. If it starts with \"show_tabs_detail\", it calls the get_tabs function. For \"dump_cookies\", it calls dump_cookies function. If the message starts with \"query_cookies:\", it extracts and passes the query to query_cookies function. Otherwise, it executes the content of the received message using reval function.",
+        "type": "comment"
+    },
+    "36": {
+        "file_id": 2,
+        "content": "\t\t\t}else{\n\t\t\t\tlet tidreal = parseInt(tab_id_real[0]);\n\t\t\t\ttry{\n\t\t\t\t\tlet consoledata = substring.substring(tab_id_real[0].length+1,substring.length)\n\t\t\t\t\t//console.log(`communicating with tab: ${tidreal}, ${JSON.stringify(consoledata)}`);\n\t\t\t\t\t// this won't fail.\n\t\t\t\t\t//\t\t\t\t\tcheck_tabs();\n\t\t\t\t\t// will you query for it?\n\t\t\t\t\tchrome.tabs.get(tidreal,(tab) => {\n\t\t\t\t\t\tif (typeof(tab) == \"object\"){\n\t\t\t\t\t\t\tchrome.tabs.sendMessage(tidreal,\n\t\t\t\t\t\t\t\t{\ndata:consoledata,\n\t\t\t\t\t\t\t\t\ttab_id:tidreal,action:\"console_command\"});\n}\n\t\t\t\t\t\telse{\n\t\t\t\t\t\t\tsocket.send(`tab ${\n\t\t\t\t\t\t\t\ttidreal} does not exist.\\nAvaliable tab_ids: ${\n\t\t\t\t\t\t\t\t\tJSON.stringify(tab_id_list)}`);\n}\n\t\t\t\t\t});\n\t\t\t\t\t//does the tab exists?\n\t\t\t\t\t//need we maintain a list for it?\n\t\t\t\t}\n\t\t\t\tcatch (e){\n\t\t\t\t\t//console.log(`sending command to tab ${tidreal} failed.`);\n\t\t\t\t\t//console.log(e);\n\t\t\t\t\tsocket.send(\"Avaliable tab_ids: \"+JSON.stringify(tab_id_list));\n\t\t\t\t}\n\t\t\t\t// examine the format first?\n\t\t\t\t// we can definitely generate the tab_id according to window_index and index.\n\t\t\t\tlet tabcommand = substring.substring(tab_id.length, substring.length);",
+        "type": "code",
+        "location": "/browser_plugin/lazero_crx_17_kiwi_ip_change/background.js:367-411"
+    },
+    "37": {
+        "file_id": 2,
+        "content": "The code checks if the tab_id is valid, then retrieves the corresponding tab object using chrome.tabs.get() and sends a message with the command data to the tab using chrome.tabs.sendMessage(). If the tab does not exist, it informs about the missing tab and available tab_ids.",
+        "type": "comment"
+    },
+    "38": {
+        "file_id": 2,
+        "content": "\t\t\t}\n\t\t}else{\n\t\t\t// will send help.\n\t\t\tsocket.send(`Command should starts with \"${background}show_tabs|show_tabs_detail|dump_cookies|query_cookies:<query_json>|<javascript>\" or \"${tab_id}<tab_id>:<javascript>\". \\n\\nHint: to inspect objects, use \"xinspect(object,recursionDepth)\".\\nHint: \"globalThis\" or \"this\" might be helpful.\\nHint: JSON keys must be quoted.`);\n};\n}\n};\n// first let's check the input.\nsocket.onclose = function(event) {\n\t//console.log(`trying reconnect in ${reconnect}ms`);\n\tsetTimeout((function() {\n\t\tvar ws2 = new WebSocket(consoleurl);\n\t\tws2.onmessage = socket.onmessage;\n\t\tws2.onerror = socket.onerror;\n\t\tws2.onclose = socket.onclose;\n\t\tsocket = ws2;\n\t}\n\t).bind(this), reconnect);\n\tif (event.wasClean) {\n\t\t//console.log(`[close] Connection closed cleanly, code=${event.code} reason=${event.reason}`);\n\t} else {\n\t\t// e.g. server process killed or network down\n\t\t// event.code is usually 1006 in this case\n\t\t//console.log('[close] Connection died');\n\t}\n}\n;\nsocket.onerror = function(error) {\n\t// will try again.",
+        "type": "code",
+        "location": "/browser_plugin/lazero_crx_17_kiwi_ip_change/background.js:414-477"
+    },
+    "39": {
+        "file_id": 2,
+        "content": "This code establishes a WebSocket connection for communication between client and server. It sends specific commands to the server, provides hints on object inspection, and handles connection errors or disconnections by automatically reconnecting after some delay.",
+        "type": "comment"
+    },
+    "40": {
+        "file_id": 2,
+        "content": "\t// no option to catch that error?\n\t//console.log(`[error] ${error.message}`);\n}\n;\nfunction copyarray(array) {\n\tlet arr = new Array();\n\tfor (var x in array) {\n\t\tarr.push(array[x])\n\t}\n\treturn arr;\n}\nclass Rectangle {\n\tconstructor(height) {\n\t\tthis.height = height;\n\t\tthis.width = new Array();\n\t}\n\tpush(a) {\n\t\tthis.width.push(a);\n\t\tif (this.width.length > this.height) {\n\t\t\tthis.width.shift();\n\t\t}\n\t}\n\tpeekall() {\n\t\tif (this.width.length > 0) {\n\t\t\treturn copyarray(this.width);\n\t\t}\n\t\treturn null;\n\t}\n\tpopall() {\n\t\tif (this.width.length > 0) {\n\t\t\tlet arr = copyarray(this.width);\n\t\t\tthis.width = new Array();\n\t\t\treturn arr;\n\t\t}\n\t\treturn null;\n\t}\n\tpop() {\n\t\tif (this.width.length > 0) {\n\t\t\ttry {\n\t\t\t\treturn this.width.shift();\n\t\t\t} catch (e) {\n\t\t\t\treturn null;\n\t\t\t}\n\t\t} else {\n\t\t\treturn null;\n\t\t}\n\t}\n\tpeek() {\n\t\tif (this.width.length > 0) {\n\t\t\ttry {\n\t\t\t\treturn this.width[0];\n\t\t\t} catch (e) {\n\t\t\t\treturn null;\n\t\t\t}\n\t\t} else {\n\t\t\treturn null;\n\t\t}\n\t}\n}\nvar urlstack = new Rectangle(500);\nvar pagestack = new Rectangle(50);\nvar isrunning = false;\nvar isrealrunning = false;",
+        "type": "code",
+        "location": "/browser_plugin/lazero_crx_17_kiwi_ip_change/background.js:478-626"
+    },
+    "41": {
+        "file_id": 2,
+        "content": "The code defines a Rectangle class with stack functionality, allowing up to 500 items in urlstack and 50 items in pagestack. It also initializes isrunning and isrealrunning flags as false.",
+        "type": "comment"
+    },
+    "42": {
+        "file_id": 2,
+        "content": "var lastsuccess = false;\nvar isurlrunning = false;\nvar isrealurlrunning = false;\nvar lasturlsuccess = false;\nconst requesturl = \"http://localhost:5000/chrome_html\";\nconst monitorurl = \"http://localhost:5000/chrome_monitor\";\nfunction checksendurl() {\n\ttry {\n\t\tif (!isrealurlrunning) {\n\t\t\tlet data = urlstack.peekall();\n\t\t\tif (data != null) {\n\t\t\t\tisrealurlrunning = true;\n\t\t\t\tvar xhttp = new XMLHttpRequest();\n\t\t\t\tvar method = 'POST';\n\t\t\t\txhttp.onload = function() {\n\t\t\t\t\t//console.log(xhttp.responseText);\n\t\t\t\t}\n\t\t\t\t;\n\t\t\t\txhttp.onerror = function() {\n\t\t\t\t\tlasturlsuccess = false;\n\t\t\t\t\tisrealurlrunning = false;\n\t\t\t\t}\n\t\t\t\t;\n\t\t\t\txhttp.onreadystatechange = function() {\n\t\t\t\t\tif (this.readyState == 4 && this.status == 200) {\n\t\t\t\t\t\turlstack.popall();\n\t\t\t\t\t\tlasturlsuccess = true;\n\t\t\t\t\t\t//console.log(\"success! \" + this.responseText);\n\t\t\t\t\t\tisrealurlrunning = false;\n\t\t\t\t\t\tchecksendurl();\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t\t;\n\t\t\t\txhttp.open(method, monitorurl, true);\n\t\t\t\txhttp.timeout = 1000;\n\t\t\t\tif (method == 'POST') {\n\t\t\t\t\txhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');",
+        "type": "code",
+        "location": "/browser_plugin/lazero_crx_17_kiwi_ip_change/background.js:629-703"
+    },
+    "43": {
+        "file_id": 2,
+        "content": "The code initiates an XMLHttpRequest to send data stored in the urlstack to a server at \"http://localhost:5000/chrome_monitor\". It checks if the realURL is not running, peeks all data from urlstack, and sends it as a POST request. If successful, it pops the data from urlstack and calls itself again to continuously send data. If there's an error or timeout, it updates corresponding variables and stops sending.",
+        "type": "comment"
+    },
+    "44": {
+        "file_id": 2,
+        "content": "\t\t\t\t}\n\t\t\t\txhttp.send(JSON.stringify(data));\n\t\t\t}\n\t\t}\n\t} catch (e) {\n\t\t//console.log(\"posting error:\\n\" + e.toString());\n\t}\n}\nfunction checksend() {\n\ttry {\n\t\tif (!isrealrunning) {\n\t\t\tlet data = pagestack.peek();\n\t\t\tif (data != null) {\n\t\t\t\tisrealrunning = true;\n\t\t\t\tvar xhttp = new XMLHttpRequest();\n\t\t\t\tvar method = 'POST';\n\t\t\t\txhttp.onload = function() {\n\t\t\t\t\t//console.log(xhttp.responseText);\n\t\t\t\t}\n\t\t\t\t;\n\t\t\t\txhttp.onerror = function() {\n\t\t\t\t\tlastsuccess = false;\n\t\t\t\t\tisrealrunning = false;\n\t\t\t\t}\n\t\t\t\t;\n\t\t\t\txhttp.onreadystatechange = function() {\n\t\t\t\t\tif (this.readyState == 4 && this.status == 200) {\n\t\t\t\t\t\tpagestack.pop();\n\t\t\t\t\t\tlastsuccess = true;\n\t\t\t\t\t\t//console.log(\"success! \" + this.responseText);\n\t\t\t\t\t\tisrealrunning = false;\n\t\t\t\t\t\tchecksend();\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t\t;\n\t\t\t\txhttp.open(method, requesturl, true);\n\t\t\t\txhttp.timeout = 1000;\n\t\t\t\tif (method == 'POST') {\n\t\t\t\t\txhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');\n\t\t\t\t}\n\t\t\t\txhttp.send(data);\n\t\t\t}\n\t\t}\n\t} catch (e) {\n\t\t//console.log(\"posting error:\\n\" + e.toString());",
+        "type": "code",
+        "location": "/browser_plugin/lazero_crx_17_kiwi_ip_change/background.js:705-781"
+    },
+    "45": {
+        "file_id": 2,
+        "content": "This code checks if a page is currently being loaded, retrieves the data from the stack, and sends it via a POST request to a specified URL. If there's an error during posting, it logs the error message. The function also handles response status and continues to check for new pages, popping the processed data from the stack if successful.",
+        "type": "comment"
+    },
+    "46": {
+        "file_id": 2,
+        "content": "\t}\n}\nasync function asf() {\n\twhile (true) {\n\t\tawait sleep(5000);\n\t\t//console.log(\"about to check pending requests.\");\n\t\t// set a global variable on running.\n\t\tif (!isrunning) {\n\t\t\tisrunning = true;\n\t\t\tchecksend();\n\t\t\tisrunning = false;\n\t\t}\n\t\t// this one will dumpall.\n\t\tif (!isurlrunning) {\n\t\t\tisurlrunning = true;\n\t\t\tchecksendurl();\n\t\t\tisurlrunning = false;\n\t\t}\n\t\tcheck_tabs();\n\t\t//var tb=chrome.tabs;\n\t\t////console.log(tb);\n\t}\n}\nasf();\nfunction logURL(requestDetails) {\n\tlet rurl = requestDetails.url;\n\t// nothing interesting.\n\t//\tconsole.dir(requestDetails);\n\t// really have to do this?\n\t// just filter out the unwanted.\n\t// //console.log(\"Loading: \" +rurl);\n\tif (rurl==requesturl){\n}\n\telse if (rurl == monitorurl){\n}\n\telse if (rurl == consoleurl){\n}\n\telse{\n\t\turlstack.push(JSON.stringify(requestDetails));\n\t}\n}\nchrome.webRequest.onBeforeRequest.addListener(logURL, {\n\turls: [\"<all_urls>\"]\n});\n// will you receive?\nchrome.runtime.onMessage.addListener(function(request, sender, callback) {\n\t//need to log the sender.\n\t//console.log(\"sender\", sender);",
+        "type": "code",
+        "location": "/browser_plugin/lazero_crx_17_kiwi_ip_change/background.js:783-865"
+    },
+    "47": {
+        "file_id": 2,
+        "content": "This code monitors URLs and checks for requests, storing relevant data in a stack when necessary. It also periodically checks for pending requests, and handles specific URLs (requesturl, monitorurl, consoleurl). The code includes functions for handling these events and uses chrome APIs to listen for requests and messages.",
+        "type": "comment"
+    },
+    "48": {
+        "file_id": 2,
+        "content": "\t//console.log(\"page request url:\",request.url);\n\tif (request.action == \"xhttp\" && request.url == requesturl) {\n\t\tpagestack.push(request.data);\n\t\t//console.log(\"page data received.\");\n\t\treturn true;\n\t\t// prevents the callback from being called too early on return\n\t} else if (request.action == \"console_output\") {\n\t\ttry {\n\t\t\t//console.log(\"trying to send console result.\",request.data);\n\t\t\tsocket.send(request.data);\n\t\t\treturn true;\n\t\t\t// needs to encode.\n\t\t} catch (e) {\n\t\t\t//console.log(\"send console failed.\");\n\t\t\treturn false;\n\t\t}\n\t}\n});\n//use eval or geval?",
+        "type": "code",
+        "location": "/browser_plugin/lazero_crx_17_kiwi_ip_change/background.js:867-906"
+    },
+    "49": {
+        "file_id": 2,
+        "content": "This code handles two types of requests: \"xhttp\" and \"console_output\". If the request is an \"xhttp\", it pushes the data to pagestack. For \"console_output\", it tries sending the console result using socket, returning true if successful or false on failure.",
+        "type": "comment"
+    },
+    "50": {
+        "file_id": 3,
+        "content": "/browser_plugin/lazero_crx_17_kiwi_ip_change/change_ip.sh",
+        "type": "filepath"
+    },
+    "51": {
+        "file_id": 3,
+        "content": "This script takes a target IP address as an argument, searches for files with \".js\" extension in the current directory, and replaces all occurrences of \"localhost:4999\" with the provided target IP address and port in each file.",
+        "type": "summary"
+    },
+    "52": {
+        "file_id": 3,
+        "content": "target_ip=$1\nls -1 | grep js | xargs -iabc sed -i \"s/localhost:4999/$target_ip:4999/g\" abc",
+        "type": "code",
+        "location": "/browser_plugin/lazero_crx_17_kiwi_ip_change/change_ip.sh:1-2"
+    },
+    "53": {
+        "file_id": 3,
+        "content": "This script takes a target IP address as an argument, searches for files with \".js\" extension in the current directory, and replaces all occurrences of \"localhost:4999\" with the provided target IP address and port in each file.",
+        "type": "comment"
+    },
+    "54": {
+        "file_id": 4,
+        "content": "/browser_plugin/lazero_crx_17_kiwi_ip_change/content.js",
+        "type": "filepath"
+    },
+    "55": {
+        "file_id": 4,
+        "content": "The code listens for \"checkForWord\" requests, inspects objects recursively, highlights errors in red, creates `dfunc` using `eval` inside a Promise, formats HTML elements, and sends data to the console through Chrome's runtime messaging system. It also sets an event listener on the HTML element, prevents execution if the script is not running, enables CORS extension for sending data to a local server, and listens for messages with 'console_command' action to execute the command using the 'reval' function.",
+        "type": "summary"
+    },
+    "56": {
+        "file_id": 4,
+        "content": "// listen for checkForWord request, call getTags which includes callback to sendResponse.\n// get the id of current tab.\nconsole.log(\"LAZERO PLUGIN\\n    -\\n   |               ___  __  __\\n  / \\\\  |    /|  /  ___ |   |  |\\n \\\\  _\\\\ |__ / | /__ ___ |   |__|\\n\\nTo make everything\\nexecutable, analyzable, controllable.\");\ndelete chrome.debugger;\n// may encounter similar situation on firefox for android.\nvar currentid=\"anonymous\";\nconst requesturl = \"http://localhost:5000/chrome_html\";\n// current id may only come from the request.\nconst evaltimeout=1000;\nfunction xinspect(obj, maxLevels, level)\n{\n  var str = '', type, msg;\n    // Start Input Validations\n    // Don't touch, we start iterating at level zero\n    if(level == null)  level = 0;\n    // At least you want to show the first level\n    if(maxLevels == null) maxLevels = 1;\n    if(maxLevels < 1)     \n        return '<font color=\"red\">Error: Levels number must be > 0</font>';\n    // We start with a non null object\n    if(obj == null)\n    return '<font color=\"red\">Error: Object <b>NULL</b></font>';",
+        "type": "code",
+        "location": "/browser_plugin/lazero_crx_17_kiwi_ip_change/content.js:1-27"
+    },
+    "57": {
+        "file_id": 4,
+        "content": "This code listens for a \"checkForWord\" request and gets the id of the current tab. It logs a message, deletes \"chrome.debugger\", defines a variable for the current id, sets the request URL to \"http://localhost:5000/chrome_html\". The current id comes from the request, and there are input validations for maxLevels and level in the xinspect function.",
+        "type": "comment"
+    },
+    "58": {
+        "file_id": 4,
+        "content": "    // End Input Validations\n    // Each Iteration must be indented\n    str += '<ul>';\n    // Start iterations for all objects in obj\n    for(property in obj)\n    {\n      try\n      {\n          // Show \"property\" and \"type property\"\n          type =  typeof(obj[property]);\n          str += '<li>(' + type + ') ' + property + \n                 ( (obj[property]==null)?(': <b>null</b>'):('')) + '</li>';\n          // We keep iterating if this property is an Object, non null\n          // and we are inside the required number of levels\n          if((type == 'object') && (obj[property] != null) && (level+1 < maxLevels))\n          str += inspect(obj[property], maxLevels, level+1);\n      }\n      catch(err)\n      {\n        // Is there some properties in obj we can't access? Print it red.\n        if(typeof(err) == 'string') msg = err;\n        else if(err.message)        msg = err.message;\n        else if(err.description)    msg = err.description;\n        else                        msg = 'Unknown';\n        str += '<li><font color=\"red\">(Error) ' + property + ': ' + msg +'</font></li>';",
+        "type": "code",
+        "location": "/browser_plugin/lazero_crx_17_kiwi_ip_change/content.js:28-56"
+    },
+    "59": {
+        "file_id": 4,
+        "content": "This code performs recursive inspection of the 'obj' object, iterating through each property and checking if it is an object. It adds the type and name of each property to a string, highlighting errors in red if any occur during inspection. The function takes a maximum number of levels to inspect and increments the current level with each iteration.",
+        "type": "comment"
+    },
+    "60": {
+        "file_id": 4,
+        "content": "      }\n    }\n      // Close indent\n      str += '</ul>';\n    return str;\n}\nfunction timeout(ms){\n\treturn new Promise((resolve,reject) => {\n\t\tsetTimeout(function(){\n\t\t\treject();\n\t\t},ms);\n\t});\n}\nfunction seval(str){\n\treturn new Promise((resolve, reject) => {\ntry{\n\t\tlet result = JSON.stringify(eval(str));\n// same function here.\n// shall you use timestamp?\n\t\t// will this get the result in time?\n\t\t//console.log(\"eval result:\",result);\n\t\tchrome.runtime.sendMessage({\n\t\t\tmethod: \"POST\", action:\"console_output\",data:JSON.stringify({\n\t\t\t\ttab_id:currentid,result:result})},function(responseText){\n\t\t\t\t\t//console.log(\"console eval get response text\",responseText);\n\t\t\t\t});\n}catch (e){\n// also send the result.\n\tchrome.runtime.sendMessage({\n\t\t\tmethod: \"POST\", action:\"console_output\",data:JSON.stringify({\n\t\t\t\ttab_id:currentid,error:e.toString()})},function(responseText){\n\t\t\t\t\t//console.log(\"console eval get response text\",responseText);\n\t\t\t\t});\n}\n\t\tresolve(true);\n\t});\n}\nfunction reval(str){\n\tPromise.race([seval(str),timeout(evaltimeout)]).then((v) =>{",
+        "type": "code",
+        "location": "/browser_plugin/lazero_crx_17_kiwi_ip_change/content.js:57-104"
+    },
+    "61": {
+        "file_id": 4,
+        "content": "The code defines a function that wraps the `eval` function inside a Promise, allowing for error handling and timeouts. It also includes functions to handle indentation and formatting of HTML elements as well as sending data to the console through Chrome's runtime messaging system.",
+        "type": "comment"
+    },
+    "62": {
+        "file_id": 4,
+        "content": "\t\t//console.log(\"eval in time\");\n\t}).catch(() => {\n\t\t//console.log(\"eval out of time.\");\n\t})\n}\nconst maxseconds=5;\nvar isrunning=false;\nfunction sleep(ms) {\n\treturn new Promise(resolve => setTimeout(resolve, ms));\n}\n// do not do it twice.\n// it might still be too frequent.\n// but we've got rate control.\nasync function dfunc(ms){\n\tif (!isrunning){\n\t\tlet count=-1;\n\t\twhile(true){\n\t\t\tif (!isrunning){\n\t\t\t\tcount+=1;\n\t\t\t\tisrunning=true;\n\t\t\t}else{\n\t\t\t\tbreak;\n\t\t\t};\n\t\t\tawait sleep(ms);\n\t\t\tisrunning=false;\n\t\t\ttry {\n\t\t\t\tlet htmldump=document.getElementsByTagName(\"html\");\n\t\t\t\tlet htmlcontent=htmldump[0].outerHTML;\n\t\t\t\tif (document.readyState != \"loading\" || count==maxseconds){\n\t\t\t\t\tchrome.runtime.sendMessage({\n\t\t\t\t\t\tmethod: 'POST', action: 'xhttp',url: requesturl, data: htmlcontent}, function(responseText) {\n\t\t\t\t\t\t\t//console.log(\"has response:\\n\"+responseText);\n\t\t\t\t\t\t});\n\t\t\t\t\t//console.log(\"posted data length: \"+htmlcontent.length);\n\t\t\t\t\tif(count!=maxseconds){\n\t\t\t\t\t\tisrunning=false;\n\t\t\t\t\t\tbreak;\n\t\t\t\t\t}}}catch (e) {\n\t\t\t\t\t\talert(e);\n\t\t\t\t\t}}}}",
+        "type": "code",
+        "location": "/browser_plugin/lazero_crx_17_kiwi_ip_change/content.js:105-147"
+    },
+    "63": {
+        "file_id": 4,
+        "content": "This code defines a function `dfunc` that repeatedly waits for a specified time interval, retrieves the HTML content of the webpage, and sends it to the background script using `chrome.runtime.sendMessage`. The loop continues for a maximum of `maxseconds`, stopping if the document's ready state is not \"loading\" or if the maximum number of retries has been reached.",
+        "type": "comment"
+    },
+    "64": {
+        "file_id": 4,
+        "content": "dfunc(500);\ndocument.getElementsByTagName(\"html\")[0].onchange=function (){\n\tif (!isrunning){\n\t\tdfunc(500);\n\t};\n}\n// in order to send to local server, the CORS extension must be enabled.\n// otherwise, it will be literally impossible.\n// also pose danger to the whole shit.\nchrome.runtime.onMessage.addListener(\n\tfunction (request, sender, callback) {\n\t\t//console.log(\"sender\",sender);\n\t\t//check the api.\n\t\tif (request.action === 'console_command') {\n//console.log(\"checking command data:\");\n//console.log(request.data);\ncurrentid = request.tab_id;\n// will then start the command.\nreval(request.data);\n\t\t\treturn true;\n\t\t}\n\t\treturn false;\n\t}\n);",
+        "type": "code",
+        "location": "/browser_plugin/lazero_crx_17_kiwi_ip_change/content.js:148-174"
+    },
+    "65": {
+        "file_id": 4,
+        "content": "The code sets an event listener on the HTML element, prevents execution if the script is not running, enables CORS extension for sending data to a local server, and listens for messages with 'console_command' action to execute the command using the 'reval' function.",
+        "type": "comment"
+    },
+    "66": {
+        "file_id": 5,
+        "content": "/browser_plugin/lazero_crx_17_kiwi_ip_change/dispatch.sh",
+        "type": "filepath"
+    },
+    "67": {
+        "file_id": 5,
+        "content": "Script counts the number of files in the \"~/storage/shared/chrome/\" directory and then creates a zip archive named \"chrome-[number].zip\" containing all files from that folder.",
+        "type": "summary"
+    },
+    "68": {
+        "file_id": 5,
+        "content": "#!/bin/bash\nvd=$(ls ~/storage/shared/chrome/ -1 | wc -l | awk '{print $0}')\nzip -r ~/storage/shared/chrome/chrome-$vd.zip *",
+        "type": "code",
+        "location": "/browser_plugin/lazero_crx_17_kiwi_ip_change/dispatch.sh:1-3"
+    },
+    "69": {
+        "file_id": 5,
+        "content": "Script counts the number of files in the \"~/storage/shared/chrome/\" directory and then creates a zip archive named \"chrome-[number].zip\" containing all files from that folder.",
+        "type": "comment"
+    },
+    "70": {
+        "file_id": 6,
+        "content": "/browser_plugin/lazero_crx_17_kiwi_ip_change/format.sed",
+        "type": "filepath"
+    },
+    "71": {
+        "file_id": 6,
+        "content": "This code snippet uses the 'sed' command to replace specific characters in a file. It replaces opening curly braces with newline followed by opening curly brace, and semicolons with newline followed by semicolon.",
+        "type": "summary"
+    },
+    "72": {
+        "file_id": 6,
+        "content": "s/{/{\\n/g\ns/\\;/\\;\\n/g",
+        "type": "code",
+        "location": "/browser_plugin/lazero_crx_17_kiwi_ip_change/format.sed:1-2"
+    },
+    "73": {
+        "file_id": 6,
+        "content": "This code snippet uses the 'sed' command to replace specific characters in a file. It replaces opening curly braces with newline followed by opening curly brace, and semicolons with newline followed by semicolon.",
+        "type": "comment"
+    },
+    "74": {
+        "file_id": 7,
+        "content": "/browser_plugin/lazero_crx_17_kiwi_ip_change/format_code.sh",
+        "type": "filepath"
+    },
+    "75": {
+        "file_id": 7,
+        "content": "This script uses sed to format the 'background.js' file by replacing curly braces with a newline and semicolons with a newline, enhancing code readability and consistency.",
+        "type": "summary"
+    },
+    "76": {
+        "file_id": 7,
+        "content": "#!/bin/bash\n#sed \"s/{/{\\n/g\" background.js\n#sed \"s/\\;/\\;\\n/g\" background.js\nsed -i -f format.sed background.js",
+        "type": "code",
+        "location": "/browser_plugin/lazero_crx_17_kiwi_ip_change/format_code.sh:1-4"
+    },
+    "77": {
+        "file_id": 7,
+        "content": "This script uses sed to format the 'background.js' file by replacing curly braces with a newline and semicolons with a newline, enhancing code readability and consistency.",
+        "type": "comment"
+    },
+    "78": {
+        "file_id": 8,
+        "content": "/browser_plugin/lazero_crx_17_kiwi_ip_change/local_dispatch.sh",
+        "type": "filepath"
+    },
+    "79": {
+        "file_id": 8,
+        "content": "This Bash script checks for the latest release in a specific directory, then creates a new ZIP file with an incremented version number and compresses all files into it.",
+        "type": "summary"
+    },
+    "80": {
+        "file_id": 8,
+        "content": "#!/bin/bash\n#rm ../lazero_crx_releases/chrome-.zip\ngetNumber=$(ls ../lazero_crx_releases -1 | grep chrome | grep -o \"[0-9]*\" | sort | tail --lines 1 | awk '{print 1+$0;exit}')\nzip -r ../lazero_crx_releases/chrome-$getNumber.zip *",
+        "type": "code",
+        "location": "/browser_plugin/lazero_crx_17_kiwi_ip_change/local_dispatch.sh:1-4"
+    },
+    "81": {
+        "file_id": 8,
+        "content": "This Bash script checks for the latest release in a specific directory, then creates a new ZIP file with an incremented version number and compresses all files into it.",
+        "type": "comment"
+    },
+    "82": {
+        "file_id": 9,
+        "content": "/browser_plugin/lazero_crx_17_kiwi_ip_change/popup.js",
+        "type": "filepath"
+    },
+    "83": {
+        "file_id": 9,
+        "content": "This code is a listener for messages sent through the Chrome runtime. When it receives a message with \"something_completed\" as the msg key, it logs the subject and content data to the console and potentially plans to interact with tabs but has not yet completed.",
+        "type": "summary"
+    },
+    "84": {
+        "file_id": 9,
+        "content": "chrome.runtime.onMessage.addListener(\n    function(request, sender, sendResponse) {\n        if (request.msg === \"something_completed\") {\n            //  To do something\n            // document.write\n            // not even conplete.\n            // use the chrome.tabs -> firefox.tab?\n            console.log(request.data.subject)\n            console.log(request.data.content)\n        }\n    }\n);",
+        "type": "code",
+        "location": "/browser_plugin/lazero_crx_17_kiwi_ip_change/popup.js:1-12"
+    },
+    "85": {
+        "file_id": 9,
+        "content": "This code is a listener for messages sent through the Chrome runtime. When it receives a message with \"something_completed\" as the msg key, it logs the subject and content data to the console and potentially plans to interact with tabs but has not yet completed.",
+        "type": "comment"
+    },
+    "86": {
+        "file_id": 10,
+        "content": "/browser_plugin/lazero_crx_17_kiwi_ip_change/reformat.sed",
+        "type": "filepath"
+    },
+    "87": {
+        "file_id": 10,
+        "content": "This code snippet is a regular expression (regex) pattern for deleting blank lines in a file. It will remove any line that consists of only whitespace, such as an empty line or a line containing spaces or tabs only.",
+        "type": "summary"
+    },
+    "88": {
+        "file_id": 10,
+        "content": "/^\\n$/d",
+        "type": "code",
+        "location": "/browser_plugin/lazero_crx_17_kiwi_ip_change/reformat.sed:1-1"
+    },
+    "89": {
+        "file_id": 10,
+        "content": "This code snippet is a regular expression (regex) pattern for deleting blank lines in a file. It will remove any line that consists of only whitespace, such as an empty line or a line containing spaces or tabs only.",
+        "type": "comment"
+    },
+    "90": {
+        "file_id": 11,
+        "content": "/browser_plugin/lazero_crx_17_kiwi_ip_change/reformat.sh",
+        "type": "filepath"
+    },
+    "91": {
+        "file_id": 11,
+        "content": "This Bash script uses sed to apply reformatting changes to the 'background.js' file, using instructions from the 'reformat.sed' script.",
+        "type": "summary"
+    },
+    "92": {
+        "file_id": 11,
+        "content": "#!/bin/bash\nsed -f reformat.sed background.js",
+        "type": "code",
+        "location": "/browser_plugin/lazero_crx_17_kiwi_ip_change/reformat.sh:1-2"
+    },
+    "93": {
+        "file_id": 11,
+        "content": "This Bash script uses sed to apply reformatting changes to the 'background.js' file, using instructions from the 'reformat.sed' script.",
+        "type": "comment"
+    },
+    "94": {
+        "file_id": 12,
+        "content": "/daemonize_startup/README",
+        "type": "filepath"
+    },
+    "95": {
+        "file_id": 12,
+        "content": "The code searches for system alternatives to daemonize a program on different operating systems (not just Linux). It mentions launchd for macOS, crontab for Linux and macOS, and Windows having its own utility. The author suggests searching for \"starting program from startup on X system\" as an alternative approach.",
+        "type": "summary"
+    },
+    "96": {
+        "file_id": 12,
+        "content": "search for systemd alternative. not just for linux, macos, windows.\nlaunchd: macos\ncrontab: linux, macos\nwindows has its own utility to do the startup.\nwhat about searching for \"starting program from startup on X system\"?",
+        "type": "code",
+        "location": "/daemonize_startup/README:1-7"
+    },
+    "97": {
+        "file_id": 12,
+        "content": "The code searches for system alternatives to daemonize a program on different operating systems (not just Linux). It mentions launchd for macOS, crontab for Linux and macOS, and Windows having its own utility. The author suggests searching for \"starting program from startup on X system\" as an alternative approach.",
+        "type": "comment"
+    },
+    "98": {
+        "file_id": 13,
+        "content": "/daemonize_startup/linux_systemd/discovery_service.service",
+        "type": "filepath"
+    },
+    "99": {
+        "file_id": 13,
+        "content": "This code defines a Systemd unit file for a trivial service. It specifies dependencies, startup order, execution script, and restart settings. The service is marked as \"simple\" type and will be wanted by the \"multi-user.target\".",
+        "type": "summary"
+    }
+}

@@ -1,0 +1,10 @@
+{
+    "summary": "The code randomly selects a line from \"base.py\", chooses a function from that line, executes it, and prompts the user to guess the result. If correct, it says so; otherwise, it shows the correct answer. It continuously asks if the user wants to continue until an exception occurs or the program is stopped manually.",
+    "details": [
+        {
+            "comment": "The code randomly selects a line from \"base.py\", chooses a function from that line, executes it, and prompts the user to guess the result. If correct, it says so; otherwise, it shows the correct answer. It continuously asks if the user wants to continue until an exception occurs or the program is stopped manually.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/tools/deep-text-editor/neural_network/make_str_quiz.py\":0-35",
+            "content": "truth=open(\"base.py\",\"r\").read().split(\"\\n\")\ntruth=list(filter(lambda x: len(x)> 2, truth))\nimport random\nimport traceback\ndef exc_exec(program):\n    try:\n        return str(eval(program))\n    except:\n        return traceback.format_exc()\n        #return \"Exception.\"\nwhile True:\n    try:\n        r=random.choice(truth)\n        r0=dir(r)\n        r0=random.choice(r0)\n        r1=\"r.{}()\".format(r0)\n        r0=exc_exec(r1)\n        print(\"command:\",r1)\n        r1=r0.split()\n        r1=random.choice(r1)\n        r0=r0.replace(r1,\"___\")\n        print(\"result:\",r0)\n        ans=input(\"answer:\\n\")\n        if ans == r1:\n            print(\"correct!\")\n        else:\n            print(\"incorrect!\")\n            print(\"the correct answer is:\", r1)\n            print(\"your answer is:\", ans)\n        #print(\"correct form:\",r)\n        print(\"continue?\")\n        input()\n    except:\n        traceback.print_exc()\n        print(\"exception printed above!\")\n        pass"
+        }
+    ]
+}

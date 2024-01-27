@@ -1,0 +1,10 @@
+{
+    "summary": "This code is using the emacsclient to execute Emacs Lisp commands, retrieving current buffer contents, and opening/printing \"autopush.sh\" file.",
+    "details": [
+        {
+            "comment": "This code is using the emacsclient to execute Emacs Lisp commands, retrieving current buffer contents, and opening/printing \"autopush.sh\" file.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_kali_amd64/cognitionService/virtual/client_multiline.sh\":0-1",
+            "content": "emacsclient -s foo -e \"\\`(,(print (current-buffer)) ,(find-file \\\"autopush.sh\\\") ,(print (current-buffer)))\"\n# not the same in fish. backtick no need to escape."
+        }
+    ]
+}

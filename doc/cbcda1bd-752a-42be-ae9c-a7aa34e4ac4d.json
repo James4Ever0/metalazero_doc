@@ -1,0 +1,10 @@
+{
+    "summary": "Code reads user inputs and stores unique targets in a list. Continuously looks for new inputs to add to the list, printing new unique targets found.",
+    "details": [
+        {
+            "comment": "Code reads user inputs and stores unique targets in a list. Continuously looks for new inputs to add to the list, printing new unique targets found.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_kali_amd64/mainService/uniq_filter.py\":0-8",
+            "content": "#import sys\ntargets=[]\n# this is program database.\nwhile True:\n#    line=sys.stdin.readline()\n    line = input()\n    if line not in targets:\n        targets.append(line)\n        print(\"found uniq target:\\n\",line)"
+        }
+    ]
+}

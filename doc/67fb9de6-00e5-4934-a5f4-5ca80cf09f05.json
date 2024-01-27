@@ -1,0 +1,10 @@
+{
+    "summary": "The code snippet is running a Python script called 'merge_file.py' to merge tasks and ensuring successful database synchronization before proceeding with the task syncing process, while also preventing accidental removal of tasks.",
+    "details": [
+        {
+            "comment": "The code snippet is running a Python script called 'merge_file.py' to merge tasks and ensuring successful database synchronization before proceeding with the task syncing process, while also preventing accidental removal of tasks.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/schedules/merge_tasks.sh\":0-3",
+            "content": "# use a python program to do the job, but instead you need some uuid stuff right? you need to check the latest one and then you get the update.\n# only if you've successifully sync with the database can you safely sync the shit!\npython3 merge_file.py\n# we shall not accidentally remove tasks shall we?"
+        }
+    ]
+}

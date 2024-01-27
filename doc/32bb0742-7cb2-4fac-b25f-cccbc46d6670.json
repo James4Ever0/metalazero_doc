@@ -1,0 +1,10 @@
+{
+    "summary": "This code sets the clipboard text to \"hello world\", displays a separator, and then outputs the current clipboard content.",
+    "details": [
+        {
+            "comment": "This code sets the clipboard text to \"hello world\", displays a separator, and then outputs the current clipboard content.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/remote_control/tools/clipboard/windows/demo_clipboard.ps1\":0-2",
+            "content": "echo hello world | Set-Clipboard\necho seperator\nGet-Clipboard | echo"
+        }
+    ]
+}

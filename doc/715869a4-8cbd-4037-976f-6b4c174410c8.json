@@ -1,0 +1,10 @@
+{
+    "summary": "Code snippet focuses on managing two items (diary and to-do list) together, mentioning sync requirements. It avoids launching the scheduler in this codebase due to its size and lack of required information. Differences in handling temporary files between Linux and Windows are acknowledged.",
+    "details": [
+        {
+            "comment": "Code snippet focuses on managing two items (diary and to-do list) together, mentioning sync requirements. It avoids launching the scheduler in this codebase due to its size and lack of required information. Differences in handling temporary files between Linux and Windows are acknowledged.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/schedules/README\":0-5",
+            "content": "there are two things: diary and to-do list.\nkeep these things together, sync if necessary?\napparently i will not launch the scheduler here since this repo is somehow bloated and not containing only the info i need everyday.\nuse mktemp and that is only for linux. on windows that's apparently a different story there."
+        }
+    ]
+}

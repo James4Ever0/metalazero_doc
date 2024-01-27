@@ -1,0 +1,10 @@
+{
+    "summary": "This script reads the file gcc_targets.log, then uses xargs to iterate over its contents (abc). For each entry (abc), it finds the path to a program by using 'which', stores it in amd, deletes the original program, and creates a symbolic link (ln) to another program version (-10) at the same location (amd).",
+    "details": [
+        {
+            "comment": "This script reads the file gcc_targets.log, then uses xargs to iterate over its contents (abc). For each entry (abc), it finds the path to a program by using 'which', stores it in amd, deletes the original program, and creates a symbolic link (ln) to another program version (-10) at the same location (amd).",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_kali_amd64/cognitionService/recover_gcc.sh\":0-1",
+            "content": "#cat gcc_targets.log | xargs -iabc bash -c \"amd=\\$(which abc); echo \\$amd\"\ncat gcc_targets.log | xargs -iabc bash -c \"amd=\\$(which abc); unlink \\$amd; target=\\$(which abc-10); ln -s \\$target \\$amd\""
+        }
+    ]
+}

@@ -1,0 +1,10 @@
+{
+    "summary": "The code is running a Python script named monkey\\_basic.py inside an X Virtual Frame Buffer (Xvfb) environment, ensuring the GUI testing functionality runs smoothly.",
+    "details": [
+        {
+            "comment": "The code is running a Python script named monkey\\_basic.py inside an X Virtual Frame Buffer (Xvfb) environment, ensuring the GUI testing functionality runs smoothly.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_kali_amd64/mainService/launch_monkey_basic.sh\":0-0",
+            "content": "xvfb-run python3 monkey_basic.py"
+        }
+    ]
+}

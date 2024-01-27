@@ -1,0 +1,15 @@
+{
+    "summary": "The code reads \"base.py\", filters content, creates a list of unique words for searching, and handles user input for search prompts. It checks user's input against stored value r0, provides feedback, updates r1, and asks for confirmation to continue while handling exceptions.",
+    "details": [
+        {
+            "comment": "The code reads a file called \"base.py\", filters out lines with less than 3 characters, creates a list of unique words from the filtered content, and then randomly selects a token for searching in each line of the original content. It also handles user input to answer search prompts.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/tools/deep-text-editor/neural_network/make_search_slider.py\":0-40",
+            "content": "truth0=open(\"base.py\",\"r\").read().split(\"\\n\")\ntruth0=list(filter(lambda x: len(x)> 2, truth0))\nimport copy\ntruth=copy.deepcopy(truth0)\ntruth=[x.split() for x in truth]\ntruth=list(set([x for y in truth for x in y]))\ndef findall(content,target,span=5):\n    cnt=copy.deepcopy(content)\n    cur=0\n    r=[]\n    while cur != -1:\n        cur=cnt.find(target)\n        if cur != -1:\n            x,y=cur-span,cur+len(target)+span\n            if x<0:\n                x=0\n            result=cnt[x:y]\n            r.append(result)\n            cnt=cnt[y:]\n    return r\nimport random\nimport traceback\nwindow=5\nimport tty\nimport sys\ntty.setcbreak(sys.stdin)\nwhile True:\n    rtoken=random.choice(truth)\n    rtarget=[findall(x,rtoken) for x in truth0]\n    rtarget=[x for y in rtarget for x in y]\n    random.shuffle(rtarget)\n    for r in rtarget:\n        print(\"searching token:\", rtoken)\n        fst=r[:5]\n        nxt=r[5:]\n        r1=fst\n        try:\n            for r0 in nxt:\n                print(\"question:\",r1)\n                print(\"answer:\")\n                ans=sys.stdin.read(1)"
+        },
+        {
+            "comment": "This code checks if the user's input matches the stored value, r0. If correct, it prints \"correct!\". If incorrect, it provides feedback on the correct and incorrect answers. It updates r1 with r0 and displays a progress message. It then asks for confirmation to continue and catches any exceptions, printing them before continuing.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/tools/deep-text-editor/neural_network/make_search_slider.py\":41-54",
+            "content": "                if ans == r0:\n                    print(\"correct!\")\n                else:\n                    print(\"incorrect!\")\n                    print(\"the correct answer is:\", r0)\n                    print(\"your answer is:\", ans)\n                r1+=r0\n            print(\"correct form:\",r)\n            print(\"continue?\")\n            input()\n        except:\n            traceback.print_exc()\n            print(\"exception printed above!\")\n            pass"
+        }
+    ]
+}

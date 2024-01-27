@@ -1,0 +1,10 @@
+{
+    "summary": "This script installs necessary tools for generic IO Linux HID. It requires evtest, libinput-tools, and ydotool, while excluding unreliable options like ydotoold. Wtype and consolation are not mentioned as required for this specific codebase.",
+    "details": [
+        {
+            "comment": "This script installs necessary tools for generic IO Linux HID. It requires evtest, libinput-tools, and ydotool, while excluding unreliable options like ydotoold. Wtype and consolation are not mentioned as required for this specific codebase.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/tools/generic_io_linux_hid/init.sh\":0-6",
+            "content": "apt install -y evtest \napt install -y libinput-tools\n#apt install -y wtype\napt install -y ydotool # very hard to compile. or is it? \n#apt install -y ydotoold # not reliable.\n# what is consolation\n# i guess this only works when i am watching this computer."
+        }
+    ]
+}

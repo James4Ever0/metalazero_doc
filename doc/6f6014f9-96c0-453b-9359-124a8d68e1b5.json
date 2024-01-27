@@ -1,0 +1,10 @@
+{
+    "summary": "This code sets up a curl server process that listens to a telnet server on localhost port 10000. It uses child processes, string decoding, and setInterval for communication. Standard output, standard error, and standard input are being logged or written to accordingly.",
+    "details": [
+        {
+            "comment": "This code sets up a curl server process that listens to a telnet server on localhost port 10000. It uses child processes, string decoding, and setInterval for communication. Standard output, standard error, and standard input are being logged or written to accordingly.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_kali_amd64/cognitionService/virtual/node_curl_telnet.template\":0-16",
+            "content": "const process = require(\"./processes\")\nconst cp = require(\"child_process\")\nfunction log(a) {console.log(a)}\nconst { StringDecoder } = require('string_decoder');\nconst decoder = new StringDecoder('utf8');\nfunction dc(a){return decoder.write(a)}\nvar serverprocess = cp.spawn(\"curl\",[\"-TEMPLATE\",\"telnet://localhost:10000\"])\nserverprocess.stderr.on(\"data\",d=>{log(\"stderr\\n\"+dc(d))})\nserverprocess.stdout.on(\"data\",d=>{log(\"stdout\\n\"+dc(d))})\n/*serverprocess.stdin.write=(data)=>{\n\tlog(\"stdin\\n\"+data)\n\tserverprocess.stdin.prototype.write(data)}*/\nsetInterval(()=>{serverprocess.stdin.write(\"hello\\n\")},1000)"
+        }
+    ]
+}

@@ -1,0 +1,10 @@
+{
+    "summary": "This script continuously exports tasks, pipes the output to a Python speaker script and then to an espeak text-to-speech tool. The while loop fetches tasks, excludes header and unnecessary lines, selects a random non-numeric string from the remaining tasks, and executes a separate script (speak_word.sh) with the selected task as input.",
+    "details": [
+        {
+            "comment": "This script continuously exports tasks, pipes the output to a Python speaker script and then to an espeak text-to-speech tool. The while loop fetches tasks, excludes header and unnecessary lines, selects a random non-numeric string from the remaining tasks, and executes a separate script (speak_word.sh) with the selected task as input.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/schedules/speak_tasks.sh\":0-5",
+            "content": "#task export | python3 speaker.py | espeak\nwhile true\ndo\n#\ttask ls | tail -n +4 | grep -Eo \"[^0-9]+\"\n\ttask ls | tail -n +4 | head -n -2 |grep -Eo \"[^0-9]+\" | shuf | xargs -iabc bash speak_word.sh abc \ndone"
+        }
+    ]
+}

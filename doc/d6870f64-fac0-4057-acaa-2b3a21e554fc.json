@@ -1,0 +1,10 @@
+{
+    "summary": "The code seems to question the necessity of reading a libinput record, which may contain information like tty/pid/network-port/timestamp. It suggests that this data is not useful unless there's a way to replay the entire scenario.",
+    "details": [
+        {
+            "comment": "The code seems to question the necessity of reading a libinput record, which may contain information like tty/pid/network-port/timestamp. It suggests that this data is not useful unless there's a way to replay the entire scenario.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/tools/generic_io_linux_hid/README\":0-4",
+            "content": "the libinput record is more readable but do we have to read this?\ni mean this is not useful at all till you can somehow replay this whole scenario.\ntty/pid/network-port/timestamp all these concepts."
+        }
+    ]
+}

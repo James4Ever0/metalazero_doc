@@ -1,0 +1,10 @@
+{
+    "summary": "Code reads \"base.py\" file, filters lines with more than 2 characters, randomly selects a line as question, replaces one word in the question with \"___\", asks user for answer, checks if the answer is correct and prints accordingly, and then asks if the user wants to continue.",
+    "details": [
+        {
+            "comment": "Code reads \"base.py\" file, filters lines with more than 2 characters, randomly selects a line as question, replaces one word in the question with \"___\", asks user for answer, checks if the answer is correct and prints accordingly, and then asks if the user wants to continue.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/tools/deep-text-editor/neural_network/make_quiz.py\":0-24",
+            "content": "truth=open(\"base.py\",\"r\").read().split(\"\\n\")\ntruth=list(filter(lambda x: len(x)> 2, truth))\nimport random\nimport traceback\nwhile True:\n    try:\n        r=random.choice(truth)\n        r0=r.split()\n        r0=random.choice(r0)\n        r1=r.replace(r0,\"___\")\n        print(\"question:\",r1)\n        ans=input(\"answer:\\n\")\n        if ans == r0:\n            print(\"correct!\")\n        else:\n            print(\"incorrect!\")\n            print(\"the correct answer is:\", r0)\n            print(\"your answer is:\", ans)\n        print(\"correct form:\",r)\n        print(\"continue?\")\n        input()\n    except:\n        traceback.print_exc()\n        print(\"exception printed above!\")\n        pass"
+        }
+    ]
+}

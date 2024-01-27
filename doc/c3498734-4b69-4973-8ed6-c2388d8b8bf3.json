@@ -1,0 +1,10 @@
+{
+    "summary": "This code executes the \"transmit_pyls.py\" script, which sends data to a language server. It uses two options: \"python3 transmit_pyls.py | pyls\", which passes the output of the script directly into the \"pyls\" tool; and \"python3 transmit_pyls.py | bash-language-server start\", which does the same but with the \"bash-language-server\". Both options are used for interacting with language servers, likely for coding assistance or analysis.",
+    "details": [
+        {
+            "comment": "This code executes the \"transmit_pyls.py\" script, which sends data to a language server. It uses two options: \"python3 transmit_pyls.py | pyls\", which passes the output of the script directly into the \"pyls\" tool; and \"python3 transmit_pyls.py | bash-language-server start\", which does the same but with the \"bash-language-server\". Both options are used for interacting with language servers, likely for coding assistance or analysis.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_kali_amd64/cognitionService/virtual/transmit_pyls.sh\":0-1",
+            "content": "python3 transmit_pyls.py | pyls\n#python3 transmit_pyls.py | bash-language-server start"
+        }
+    ]
+}

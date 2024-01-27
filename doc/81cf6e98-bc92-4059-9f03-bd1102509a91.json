@@ -1,0 +1,10 @@
+{
+    "summary": "This Python code imports the subprocess module and defines a function called 'where' that takes a target as input. It runs a command using subprocess, captures its output, filters out empty lines, and returns the resulting list of non-empty strings representing the locations of the target executable.",
+    "details": [
+        {
+            "comment": "This Python code imports the subprocess module and defines a function called 'where' that takes a target as input. It runs a command using subprocess, captures its output, filters out empty lines, and returns the resulting list of non-empty strings representing the locations of the target executable.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_win10_amd64/tools/where.py\":0-9",
+            "content": "# import subprocess\nfrom subprocess import Popen, PIPE\ndef where(target):\n    p = Popen([\"where\",target],stderr=PIPE,stdout=PIPE)\n    p = p.communicate()[0].decode(\"utf-8\") # bytes.\n    p0 = p.split(\"\\n\")\n    p0 = [x.replace(\"\\n\", \"\").replace(\"\\r\",\"\") for x in p0]\n    p0 = list(filter(lambda x:len(x)>0,p0))\n    return p0"
+        }
+    ]
+}

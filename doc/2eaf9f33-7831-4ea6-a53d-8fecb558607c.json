@@ -1,0 +1,15 @@
+{
+    "summary": "This code enables hotkey functionality on Chromebooks using Python, with modifier key mappings, separate threaded key commands, and a keyboard controller for typing uppercase letters.",
+    "details": [
+        {
+            "comment": "This code provides common hotkeys in chromebook keyboard mappings and allows for pressing keys and executing keydown/keyup events using Python. The translate function maps specific keys like \"meta\" to their appropriate equivalents based on the system being used (Darwin or Windows). The keyDown and keyUp functions execute the corresponding key actions in separate threads, while the hotkey function allows for executing hotkeys defined by a set of modifiers and character.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/remote_control/server/lazero_keyboard.py\":0-36",
+            "content": "import traceback\nimport threading\nimport os\n# shall provide common hotkeys in chromebook keyboard mappings.\nimport platform\nsystem = platform.system()\nkeyset = set()\ndef win_meta(key):\n    return key.replace(\"meta\",\"win\")\ndef translate(key):\n    if key in [\"meta\",\"metaleft\",\"metaright\"]:\n        if system == \"Darwin\":\n            return \"command\"\n        return win_meta(key)\n    return key\ndef press(key):\n    cmd = \"python3 -c \\\"import pyautogui;pyautogui.press('{}')\\\"\".format(key.replace(\"'\",\"\\\\'\"))\n    threading.Thread(target=os.system,args=(cmd,),daemon=True).start()\n    # what shall be included in these keys?\n\"\"\"\ndef hotkey(keys):\n    target = keys[\"modifier\"]+keys[\"char\"]\n    pyautogui.hotkey(*target)\n\"\"\"\ndef keyDown(key):\n    global keyset\n    keyset.add(key)\n    cmd = \"python3 -c \\\"import pyautogui;pyautogui.keyDown('{}')\\\"\".format(key.replace(\"'\",\"\\\\'\"))\n    threading.Thread(target=os.system,args=(cmd,),daemon=True).start()\ndef keyUp(key):\n    cmd = \"python3 -c \\\"import pyautogui;pyautogui.keyUp('{}')\\\"\".format(key.replace(\"'\",\"\\\\'\"))"
+        },
+        {
+            "comment": "This code is for a keyboard controller that allows typing uppercase letters. It uses threading to run key commands and remove them from the set, ensuring only one command is running at a time. The `write` function types the given key, `reset_keyboard` resets all keys in the set, and the main section prints key information.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/remote_control/server/lazero_keyboard.py\":37-54",
+            "content": "    threading.Thread(target=os.system,args=(cmd,),daemon=True).start()\n    keyset.remove(key)\n\"\"\"\ndef write(key):\n    pyautogui.write(key)# able to type uppercase letters?\n\"\"\"\ndef reset_keyboard():\n    for x in keyset:\n#        threading.Thread(target=keyUp,args=(x,),daemon=True).start()\n        try:\n            keyUp(x)\n        except:\n            traceback.print_exc()\n    return\nif __name__ == \"__main__\":\n    print(\"KEYBOARD_KEYS\",pyautogui.KEYBOARD_KEYS)\n    print(\"KEY_NAMES\",pyautogui.KEY_NAMES)"
+        }
+    ]
+}

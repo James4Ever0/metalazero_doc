@@ -1,0 +1,10 @@
+{
+    "summary": "This script continuously listens for incoming HTTP requests on port 8010, then reads the request data and sends it to the specified host using netcat (nc).",
+    "details": [
+        {
+            "comment": "This script continuously listens for incoming HTTP requests on port 8010, then reads the request data and sends it to the specified host using netcat (nc).",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/remote_control/discovery/uuid_server.sh\":0-0",
+            "content": "while true; do cat index.http | nc -l 8010; done"
+        }
+    ]
+}

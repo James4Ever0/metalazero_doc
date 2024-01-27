@@ -1,0 +1,10 @@
+{
+    "summary": "The code imports json and defines a function parse_file to load JSON data from a target file. It also checks if the latest repository has been fetched, and if so, it will begin merging task files. The sorting of datetime objects remains unclear.",
+    "details": [
+        {
+            "comment": "The code imports json and defines a function parse_file to load JSON data from a target file. It also checks if the latest repository has been fetched, and if so, it will begin merging task files. The sorting of datetime objects remains unclear.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/schedules/merge_file.py\":0-12",
+            "content": "import json\ndef parse_file(target):\n    with open(target,\"r\") as f:\n        target = json.loads(target)\n    return target\nif __name__ == \"__main__\":\n    import os\n    from get_time import sort_time\n    # how to sort this datetime shit?\n    # i mean they are apparently time sorted.\n    if os.path.exists(\".latest\"):\n        print(\"latest repo have been fetched. will begin to merge task files.\")"
+        }
+    ]
+}

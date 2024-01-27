@@ -1,0 +1,533 @@
+{
+    "1100": {
+        "file_id": 228,
+        "content": "            t1.setDaemon(True)\n            t1.start()\n            self.write(\"terminal restart!\\n\")\nclass IHandler(tornado.web.RequestHandler):\n    def get(self):\n        global display, process, lag\n        # print(\"type request received.\")\n        argument = self.get_argument(\"type\",None)\n        argumentx = self.get_argument(\"b64type\",None)\n        # that is for argument!\n        autoreturn = self.get_argument(\"autoreturn\",None) == \"true\"\n        # print(\"actual argument\",[argument],type(argument))\n        # string.\n        if not process.isalive():\n            self.write(\"process is dead.\\n\")\n        elif argument is not None:\n            # unicode.\n            # may encounter error.\n            if autoreturn:\n                process.write(argument.encode(\"utf8\")+b'\\r')\n            else:\n                process.write(argument.encode(\"utf8\"))\n            time.sleep(lag)\n            self.write(display)\n        elif argumentx is not None:\n            # check if correctly formed.\n# check if not dead.\n            try:",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/virtualService/shellService/ptyproc.py:142-169"
+    },
+    "1101": {
+        "file_id": 228,
+        "content": "The code snippet is part of a web request handler that handles different types of requests. It checks if the process is alive, then writes data to the process based on the type and format of the received argument. If the argument is not None, it encodes the data into UTF-8 format and writes it to the process. The code also includes error handling for potentially incorrectly formed data and ensures that the process is not dead before attempting to write data to it.",
+        "type": "comment"
+    },
+    "1102": {
+        "file_id": 228,
+        "content": "                arx = base64.b64decode(argumentx)\n                # the result is not right.\n                # cannot decode here.\n                if autoreturn:\n                    process.write(arx+b'\\r')\n                else:\n                    process.write(arx)\n                    # this is not unicode string.\n                time.sleep(lag)\n                self.write(display)\n            except:\n                self.write(\"incorrect format\\n\")\n                # pass\n                # D:\\Programs\\Python\\Python36\\lib\\site-packages\\winpty\\winpty_wrapper.py\n        else:\n            self.write(\"empty input\\n\")\n            # pass\nclass MainHandler(tornado.web.RequestHandler):\n    def get(self):\n        global display\n        self.write(display)\n    def make_app():\n        return tornado.web.Application([(r\"/display\",MainHandler),(r\"/restart\",RHandler),(r\"/input\",IHandler)])\n# get a window watcher. if want to lock the winsize better use that.\n# why the fuck that the code needs to be compiled? could we just examine the code and prepare for tested binaries?",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/virtualService/shellService/ptyproc.py:170-195"
+    },
+    "1103": {
+        "file_id": 228,
+        "content": "This code appears to be a part of a larger program, likely for managing terminal sessions or interactive shell services. It involves encoding and decoding data using base64, interacting with a process, and handling potential errors. The code includes a class (`MainHandler`) that seems to handle HTTP GET requests related to displaying and input operations, suggesting it could be part of a web interface for managing the terminal sessions or shell services. However, without more context, it's difficult to provide a complete understanding of the purpose or functionality of this particular code snippet.",
+        "type": "comment"
+    },
+    "1104": {
+        "file_id": 228,
+        "content": "app = MainHandler.make_app()\napp.listen(port)\n# here's the shit.\ntornado.ioloop.IOLoop.current().start()\n# register handler.\nexit()",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/virtualService/shellService/ptyproc.py:196-201"
+    },
+    "1105": {
+        "file_id": 228,
+        "content": "The code sets up a Tornado application, listens on the specified port, starts the IOLoop to handle network connections, and then exits.",
+        "type": "comment"
+    },
+    "1106": {
+        "file_id": 229,
+        "content": "/native/lazero_kali_amd64/virtualService/tools/sandserv/52-basic-load.py",
+        "type": "filepath"
+    },
+    "1107": {
+        "file_id": 229,
+        "content": "The Python script is a seccomp library test program for controlling system calls using syscall filters, allowing API version setting, trap installation, and arch support management, with potential integration into libseccomp tests. It adds rules to monitor processes and terminates those with insufficient permissions before launching restricted bash.",
+        "type": "summary"
+    },
+    "1108": {
+        "file_id": 229,
+        "content": "#!/usr/bin/env python\n#\n# Seccomp Library test program\n#\n# Copyright (c) 2019 Cisco Systems, Inc. <pmoore2@cisco.com>\n# Author: Paul Moore <paul@paul-moore.com>\n#\n#\n# This library is free software; you can redistribute it and/or modify it\n# under the terms of version 2.1 of the GNU Lesser General Public License as\n# published by the Free Software Foundation.\n#\n# This library is distributed in the hope that it will be useful, but WITHOUT\n# ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or\n# FITNESS FOR A PARTICULAR PURPOSE.  See the GNU Lesser General Public License\n# for more details.\n#\n# You should have received a copy of the GNU Lesser General Public License\n# along with this library; if not, see <http://www.gnu.org/licenses>.\n#\nimport argparse\nimport sys\nimport os\nimport util\nfrom seccomp import *\nimport errno\n# check for official libseccomp tests for usage!\ndef test():\n#    set_api(3)\n    util.install_trap()\n    f = SyscallFilter(ALLOW)\n#    f.remove_arch(Arch())\n#    f.add_arch(Arch(\"x86_64\"))",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/virtualService/tools/sandserv/52-basic-load.py:1-40"
+    },
+    "1109": {
+        "file_id": 229,
+        "content": "This Python script is a seccomp library test program for checking and controlling system calls using the syscall filter. It allows setting API version, installing trap, managing arch support, and possibly integrates with libseccomp tests.",
+        "type": "comment"
+    },
+    "1110": {
+        "file_id": 229,
+        "content": "#    f.add_arch(Arch(\"x86\"))\n    #f.add_rule_exactly(ERRNO(13),\"kill\")\n    f.add_rule_exactly(ERRNO(errno.EACCES),\"kill\")\n    # add more shits.\n    f.load()\ntest()\nprint(\"about to launch restricted bash.\")\nos.system(\"/bin/bash\")\nprint(\"exit restricted bash.\")\n# kate: syntax python;\n# kate: indent-mode python; space-indent on; indent-width 4; mixedindent off;",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/virtualService/tools/sandserv/52-basic-load.py:41-52"
+    },
+    "1111": {
+        "file_id": 229,
+        "content": "This code adds a rule to monitor and terminate processes with insufficient permissions using the errno module, loads the rules, and then launches restricted bash.",
+        "type": "comment"
+    },
+    "1112": {
+        "file_id": 230,
+        "content": "/native/lazero_kali_amd64/virtualService/tools/sandserv/52_immortal.py",
+        "type": "filepath"
+    },
+    "1113": {
+        "file_id": 230,
+        "content": "The code is a Seccomp Library test program that sets API version 3, installs a trap, creates a SyscallFilter with ALLOW access, and adds exception rule for ERRNO(errno.EACCES) before launching restricted bash after reload script execution.",
+        "type": "summary"
+    },
+    "1114": {
+        "file_id": 230,
+        "content": "#!/usr/bin/env python\n#\n# Seccomp Library test program\n#\n# Copyright (c) 2019 Cisco Systems, Inc. <pmoore2@cisco.com>\n# Author: Paul Moore <paul@paul-moore.com>\n#\n#\n# This library is free software; you can redistribute it and/or modify it\n# under the terms of version 2.1 of the GNU Lesser General Public License as\n# published by the Free Software Foundation.\n#\n# This library is distributed in the hope that it will be useful, but WITHOUT\n# ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or\n# FITNESS FOR A PARTICULAR PURPOSE.  See the GNU Lesser General Public License\n# for more details.\n#\n# You should have received a copy of the GNU Lesser General Public License\n# along with this library; if not, see <http://www.gnu.org/licenses>.\n#\nimport argparse\nimport sys\nimport os\nimport util\nfrom seccomp import *\nimport errno\n# check for official libseccomp tests for usage!\ndef test():\n#    set_api(3)\n    util.install_trap()\n    f = SyscallFilter(ALLOW)\n#    f.remove_arch(Arch())\n#    f.add_arch(Arch(\"x86_64\"))",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/virtualService/tools/sandserv/52_immortal.py:1-40"
+    },
+    "1115": {
+        "file_id": 230,
+        "content": "This code is a Seccomp Library test program. It imports necessary modules, sets the API version to 3, installs a trap, creates a SyscallFilter with ALLOW access, and optionally removes or adds architectures.",
+        "type": "comment"
+    },
+    "1116": {
+        "file_id": 230,
+        "content": "#    f.add_arch(Arch(\"x86\"))\n    #f.add_rule_exactly(ERRNO(13),\"kill\")\n    f.add_rule_exactly(ERRNO(errno.EACCES),\"kill\")\n    # add more shits.\n    f.load()\ntest()\nprint(\"about to launch restricted bash.\")\nos.system(\"./reloadscript_x64.sh\")\nprint(\"exit restricted bash.\")\n# kate: syntax python;\n# kate: indent-mode python; space-indent on; indent-width 4; mixedindent off;",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/virtualService/tools/sandserv/52_immortal.py:41-52"
+    },
+    "1117": {
+        "file_id": 230,
+        "content": "This code adds an exception rule for ERRNO(errno.EACCES) and loads the filter, then launches restricted bash after running a reload script.",
+        "type": "comment"
+    },
+    "1118": {
+        "file_id": 231,
+        "content": "/native/lazero_kali_amd64/virtualService/tools/sandserv/README",
+        "type": "filepath"
+    },
+    "1119": {
+        "file_id": 231,
+        "content": "Discussing concurrent design and self-hosted DNS, considering using a low-privilege user or even root, encountered issues on x64, tried executing \"/bin/bash\", killed by SIGSYS, exploring whether to do without judger's help.",
+        "type": "summary"
+    },
+    "1120": {
+        "file_id": 231,
+        "content": "concurrent design.\nSelf-hosting DNS. Or something else.\nprepare a low-priviliege user, or just use default one or even root?\non x64 it was hell.\n[pid  8411] execve(\"/bin/bash\", [\"/bin/bash\"], 0x7ffc4fd079d0 /* 0 vars */) = ?\n[pid  8411] +++ killed by SIGSYS +++\t\ncan we do this without the help of judger? for example, do our own work.",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/virtualService/tools/sandserv/README:1-12"
+    },
+    "1121": {
+        "file_id": 231,
+        "content": "Discussing concurrent design and self-hosted DNS, considering using a low-privilege user or even root, encountered issues on x64, tried executing \"/bin/bash\", killed by SIGSYS, exploring whether to do without judger's help.",
+        "type": "comment"
+    },
+    "1122": {
+        "file_id": 232,
+        "content": "/native/lazero_kali_amd64/virtualService/tools/sandserv/argtest.sh",
+        "type": "filepath"
+    },
+    "1123": {
+        "file_id": 232,
+        "content": "This script checks if the argument count is less than or equal to 1. If true, it outputs \"no argument\" and exits with status 1. Else, it outputs \"good\" and exits with status 0.",
+        "type": "summary"
+    },
+    "1124": {
+        "file_id": 232,
+        "content": "#!/bin/bash\nc0=$(echo $1 |wc -c )\n#echo $c0\nif [ $c0 -le 1 ]\nthen\n\techo \"no argument.\"\n\texit 1\nelse\n\techo \"good\"\n\texit 0\nfi",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/virtualService/tools/sandserv/argtest.sh:1-11"
+    },
+    "1125": {
+        "file_id": 232,
+        "content": "This script checks if the argument count is less than or equal to 1. If true, it outputs \"no argument\" and exits with status 1. Else, it outputs \"good\" and exits with status 0.",
+        "type": "comment"
+    },
+    "1126": {
+        "file_id": 233,
+        "content": "/native/lazero_kali_amd64/virtualService/tools/sandserv/chroot.sh",
+        "type": "filepath"
+    },
+    "1127": {
+        "file_id": 233,
+        "content": "This script uses proot to create a chroot environment, configuring file and device mappings, and executes the specified shell script within the chroot.",
+        "type": "summary"
+    },
+    "1128": {
+        "file_id": 233,
+        "content": "#!/bin/bash\ns3=$(which bash)\ncommand=\"sudo proot\"\n#command=\"$PWD/bin/libjudger.so --exe_path=$3 --args='proot -0'\" \n#command+=\" -i $s2:$s2 \"   \ncommand+=\" -0 \"   \ncommand+=\" -r root -b /dev/null:/dev/null \"\ncommand+=\" -b /sys/fs/selinux/null:/sys/fs/selinux/null \"  \ncommand+=\" -b /dev/tty:/dev/tty \" \n#command+=\" $PWD/bin/libjudger.so --exe_path=$s3 --seccomp_rule_name=\\\"nokill\\\"\"    \n#command+=\" /bin/sh\"     \ncommand+=\" $s3 -c ./incage.sh\"     \n$command",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/virtualService/tools/sandserv/chroot.sh:1-14"
+    },
+    "1129": {
+        "file_id": 233,
+        "content": "This script uses proot to create a chroot environment, configuring file and device mappings, and executes the specified shell script within the chroot.",
+        "type": "comment"
+    },
+    "1130": {
+        "file_id": 234,
+        "content": "/native/lazero_kali_amd64/virtualService/tools/sandserv/command_x64.sh",
+        "type": "filepath"
+    },
+    "1131": {
+        "file_id": 234,
+        "content": "This script uses proot, a userspace control plane for containerization, to execute a command within an isolated environment. It sets various options like SELinux and seccomp rules, and potentially limits CPU time and memory usage. The command is specified as a variable named \"command\" which combines the proot binary with additional arguments, ultimately executing the command in an isolated, controlled manner.",
+        "type": "summary"
+    },
+    "1132": {
+        "file_id": 234,
+        "content": "#!/bin/bash\nexport PROOT_NO_SECCOMP=0\ncommand=\"bin/x86_64/proot\"\ncommand+=\" -0 \"\n#command+=\" -r root --cwd=$PWD --pwd=$PWD\"\ncommand+=\" -r root -b /dev/null:/dev/null \"\n#command+=\" bin/x86_64/libjudger.so --max_cpu_time=100 --exe_path=$(which bash)\"\n#command+=\" bin/x86_64/libjudger.so --max_cpu_time=100 --exe_path=$(which bash) --seccomp_rule_name=nokill\"\n#command+=\" -b /sys/fs/selinux/null:/sys/fs/selinux/null \"\n#command+=\" -b /dev/tty:/dev/tty \"\n#command+=\" -b /dev/stdin:/dev/stdin \"\n#command+=\" -b /dev/stdout:/dev/stdout \"\n#command+=\" -b /dev/stderr:/dev/stderr \"\n$command",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/virtualService/tools/sandserv/command_x64.sh:1-14"
+    },
+    "1133": {
+        "file_id": 234,
+        "content": "This script uses proot, a userspace control plane for containerization, to execute a command within an isolated environment. It sets various options like SELinux and seccomp rules, and potentially limits CPU time and memory usage. The command is specified as a variable named \"command\" which combines the proot binary with additional arguments, ultimately executing the command in an isolated, controlled manner.",
+        "type": "comment"
+    },
+    "1134": {
+        "file_id": 235,
+        "content": "/native/lazero_kali_amd64/virtualService/tools/sandserv/efilter.py",
+        "type": "filepath"
+    },
+    "1135": {
+        "file_id": 235,
+        "content": "This code reads input lines, splits them by \"/\", removes specific elements using a filter function, and then joins the remaining elements with \"/\". It takes an optional argument from command line and outputs the processed lines.",
+        "type": "summary"
+    },
+    "1136": {
+        "file_id": 235,
+        "content": "import sys\ndef f(a,b):\n    return filter(lambda x:x!=b,a)\ne=sys.argv[1:]\na=\"\"\nif len(e)==0:\n    pass\nelse:\n    a=e[0]\nfor x in sys.stdin:\n    print(\"/\".join([a]+list(f(f(x.split(\"/\"),\"\"),\"/\"))[:-1]))",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/virtualService/tools/sandserv/efilter.py:1-11"
+    },
+    "1137": {
+        "file_id": 235,
+        "content": "This code reads input lines, splits them by \"/\", removes specific elements using a filter function, and then joins the remaining elements with \"/\". It takes an optional argument from command line and outputs the processed lines.",
+        "type": "comment"
+    },
+    "1138": {
+        "file_id": 236,
+        "content": "/native/lazero_kali_amd64/virtualService/tools/sandserv/gkill.sh",
+        "type": "filepath"
+    },
+    "1139": {
+        "file_id": 236,
+        "content": "This Bash script uses top, grep, and xargs to find processes and kill them. It finds PIDs of proot-rooted, chroot.sh, and reloadscript.sh processes then kills them with -9 signal.",
+        "type": "summary"
+    },
+    "1140": {
+        "file_id": 236,
+        "content": "#!/bin/bash\nsudo env COLUMNS=500 LINES=500 top -n 1 -q 2>&1 | grep proot | grep root | grep -Eo '^.?.?.?[0-9]+' | xargs sudo kill -s 9\nenv COLUMNS=500 LINES=500 top -n 1 -q 2>&1 | grep bash | grep chroot.sh | grep -Eo '^.?.?.?[0-9]+'  | xargs kill -s 9 \nenv COLUMNS=500 LINES=500 top -n 1 -q 2>&1 | grep bash | grep reloadscript.sh | grep -Eo '^.?.?.?[0-9]+'  | xargs kill -s 9 ",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/virtualService/tools/sandserv/gkill.sh:1-4"
+    },
+    "1141": {
+        "file_id": 236,
+        "content": "This Bash script uses top, grep, and xargs to find processes and kill them. It finds PIDs of proot-rooted, chroot.sh, and reloadscript.sh processes then kills them with -9 signal.",
+        "type": "comment"
+    },
+    "1142": {
+        "file_id": 237,
+        "content": "/native/lazero_kali_amd64/virtualService/tools/sandserv/incage.sh",
+        "type": "filepath"
+    },
+    "1143": {
+        "file_id": 237,
+        "content": "Executing libjudger.so with 'bash' as exe_path and 'freeze' seccomp rule, potentially restricting system calls for the running instance. Alternatively, it can also use 'runas.sh' with 'nokill' seccomp rule, implying different restrictions.",
+        "type": "summary"
+    },
+    "1144": {
+        "file_id": 237,
+        "content": "#!/bin/bash\nbin/libjudger.so --exe_path=$(which bash) --seccomp_rule_name=freeze\n#bin/libjudger.so --exe_path=$PWD/runas.sh --seccomp_rule_name=nokill",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/virtualService/tools/sandserv/incage.sh:1-3"
+    },
+    "1145": {
+        "file_id": 237,
+        "content": "Executing libjudger.so with 'bash' as exe_path and 'freeze' seccomp rule, potentially restricting system calls for the running instance. Alternatively, it can also use 'runas.sh' with 'nokill' seccomp rule, implying different restrictions.",
+        "type": "comment"
+    },
+    "1146": {
+        "file_id": 238,
+        "content": "/native/lazero_kali_amd64/virtualService/tools/sandserv/loadmulti.sh",
+        "type": "filepath"
+    },
+    "1147": {
+        "file_id": 238,
+        "content": "The code executes a script to unload existing multi-server instances, creates a directory for multiserv with permissions and mounts a tmpfs filesystem named \"myramdisk\" within the \"multiserv\" directory with an allocated size of 10M.",
+        "type": "summary"
+    },
+    "1148": {
+        "file_id": 238,
+        "content": "#!/bin/bash\n./unloadmulti.sh\nsudo mkdir multiserv\nsudo chmod 777 multiserv\nsudo mount -t tmpfs -o size=10m myramdisk multiserv",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/virtualService/tools/sandserv/loadmulti.sh:1-5"
+    },
+    "1149": {
+        "file_id": 238,
+        "content": "The code executes a script to unload existing multi-server instances, creates a directory for multiserv with permissions and mounts a tmpfs filesystem named \"myramdisk\" within the \"multiserv\" directory with an allocated size of 10M.",
+        "type": "comment"
+    },
+    "1150": {
+        "file_id": 239,
+        "content": "/native/lazero_kali_amd64/virtualService/tools/sandserv/loadram.sh",
+        "type": "filepath"
+    },
+    "1151": {
+        "file_id": 239,
+        "content": "This script executes unloadram.sh, creates a ramdisk directory, sets its permissions to 777, and mounts a tmpfs filesystem named \"myramdisk\" with 10MiB size into the ramdisk directory.",
+        "type": "summary"
+    },
+    "1152": {
+        "file_id": 239,
+        "content": "#!/bin/bash\n./unloadram.sh\nsudo mkdir ramdisk\nsudo chmod 777 ramdisk\nsudo mount -t tmpfs -o size=10m myramdisk ramdisk",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/virtualService/tools/sandserv/loadram.sh:1-5"
+    },
+    "1153": {
+        "file_id": 239,
+        "content": "This script executes unloadram.sh, creates a ramdisk directory, sets its permissions to 777, and mounts a tmpfs filesystem named \"myramdisk\" with 10MiB size into the ramdisk directory.",
+        "type": "comment"
+    },
+    "1154": {
+        "file_id": 240,
+        "content": "/native/lazero_kali_amd64/virtualService/tools/sandserv/mclean.sh",
+        "type": "filepath"
+    },
+    "1155": {
+        "file_id": 240,
+        "content": "This script checks if there's an argument passed, if not, it exits and displays \"no argument.\" Then, it removes all files from the specified directory. It uses sudo for elevated privileges and xargs to process multiple filenames at once.",
+        "type": "summary"
+    },
+    "1156": {
+        "file_id": 240,
+        "content": "#!/bin/bash\nc0=$(echo $1 |wc -c )\n#echo $c0\nif [ $c0 -le 1 ]\nthen\n        echo \"no argument.\"\n        exit 1\nelse\n        :\nfi\nsudo rm -f multiserv/$1/ramdisk/*\nsudo find -P multiserv/$1/ramdisk/ | xargs sudo unlink\nsudo rm -rf multiserv/$1/ramdisk/*",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/virtualService/tools/sandserv/mclean.sh:1-13"
+    },
+    "1157": {
+        "file_id": 240,
+        "content": "This script checks if there's an argument passed, if not, it exits and displays \"no argument.\" Then, it removes all files from the specified directory. It uses sudo for elevated privileges and xargs to process multiple filenames at once.",
+        "type": "comment"
+    },
+    "1158": {
+        "file_id": 241,
+        "content": "/native/lazero_kali_amd64/virtualService/tools/sandserv/multichroot.sh",
+        "type": "filepath"
+    },
+    "1159": {
+        "file_id": 241,
+        "content": "The code is a Bash script that checks if the input argument exists and then executes 'proot' with specific options like -0, -r, and -b to create a chroot environment. The script also uses 'which bash' to get the path of bash for later usage in the command.",
+        "type": "summary"
+    },
+    "1160": {
+        "file_id": 241,
+        "content": "#!/bin/bash\nc0=$(echo $1 |wc -c )\n#echo $c0\nif [ $c0 -le 1 ]\nthen\n        echo \"chroot no argument.\"\n        exit 1\nelse\n        :\nfi\nd1=$1\ns3=$(which bash)\ncommand=\"sudo proot\"\n#command=\"$PWD/bin/libjudger.so --exe_path=$3 --args='proot -0'\" \n#command+=\" -i $s2:$s2 \"   \ncommand+=\" -0 \"   \ncommand+=\" -r multiserv/$d1/root -b /dev/null:/dev/null \"\ncommand+=\" -b /sys/fs/selinux/null:/sys/fs/selinux/null \"  \ncommand+=\" -b /dev/tty:/dev/tty \" \n#command+=\" $PWD/bin/libjudger.so --exe_path=$s3 --seccomp_rule_name=\\\"nokill\\\"\"    \n#command+=\" /bin/sh\"     \ncommand+=\" $s3 -c ./incage.sh\"     \n$command",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/virtualService/tools/sandserv/multichroot.sh:1-24"
+    },
+    "1161": {
+        "file_id": 241,
+        "content": "The code is a Bash script that checks if the input argument exists and then executes 'proot' with specific options like -0, -r, and -b to create a chroot environment. The script also uses 'which bash' to get the path of bash for later usage in the command.",
+        "type": "comment"
+    },
+    "1162": {
+        "file_id": 242,
+        "content": "/native/lazero_kali_amd64/virtualService/tools/sandserv/multiclean.sh",
+        "type": "filepath"
+    },
+    "1163": {
+        "file_id": 242,
+        "content": "The code attempts to clean up multiple instances of a service, likely by unloading them and removing files. It uses xargs to iterate through the list of multiserv instances and execute commands on each instance individually. It also includes additional steps like running \"unloadmulti.sh\" and deleting the multiserv directory if needed.",
+        "type": "summary"
+    },
+    "1164": {
+        "file_id": 242,
+        "content": "#!/bin/bash\n#sudo ls -1 multiserv | xargs -I % bash -c \"./multikill.sh %\"\nsudo ls -1 multiserv | xargs -I % bash -c \"./mclean.sh %\"\n#./unloadmulti.sh\n#sudo rm -rf multiserv\n# you need to unload the thing.",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/virtualService/tools/sandserv/multiclean.sh:1-6"
+    },
+    "1165": {
+        "file_id": 242,
+        "content": "The code attempts to clean up multiple instances of a service, likely by unloading them and removing files. It uses xargs to iterate through the list of multiserv instances and execute commands on each instance individually. It also includes additional steps like running \"unloadmulti.sh\" and deleting the multiserv directory if needed.",
+        "type": "comment"
+    },
+    "1166": {
+        "file_id": 243,
+        "content": "/native/lazero_kali_amd64/virtualService/tools/sandserv/multikill.sh",
+        "type": "filepath"
+    },
+    "1167": {
+        "file_id": 243,
+        "content": "This script checks the number of arguments provided and then uses top command to find processes matching the argument, and finally kills those processes.",
+        "type": "summary"
+    },
+    "1168": {
+        "file_id": 243,
+        "content": "#!/bin/bash\nc0=$(echo $1 |wc -c )\n#echo $c0\nif [ $c0 -le 1 ]\nthen\n        echo \"no argument.\"\n        exit 1\nelse\n        :\nfi\nsudo env COLUMNS=500 LINES=500 top -n 1 -q 2>&1 | grep proot | grep multiserv/$1/root | grep -Eo '^.?.?.?[0-9]+' | xargs  sudo kill -s 9 \nenv COLUMNS=500 LINES=500 top -n 1 -q 2>&1 | grep bash | grep multichroot | grep -E \"\\.sh.?.?.?$1\" | grep -Eo '^.?.?.?[0-9]+'  | xargs kill -s 9\nenv COLUMNS=500 LINES=500 top -n 1 -q 2>&1 | grep bash | grep multireload | grep -E \"\\.sh.?.?.?$1\" | grep -Eo '^.?.?.?[0-9]+'  | xargs kill -s 9 ",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/virtualService/tools/sandserv/multikill.sh:1-13"
+    },
+    "1169": {
+        "file_id": 243,
+        "content": "This script checks the number of arguments provided and then uses top command to find processes matching the argument, and finally kills those processes.",
+        "type": "comment"
+    },
+    "1170": {
+        "file_id": 244,
+        "content": "/native/lazero_kali_amd64/virtualService/tools/sandserv/multipty.py",
+        "type": "filepath"
+    },
+    "1171": {
+        "file_id": 244,
+        "content": "The script establishes a server that creates another instance, connects it to a terminal interface, handles exceptions, manages virtual terminals and monitors processes to avoid exceeding quota. The code sets up a Tornado web app with three handlers for /display, /restart, and /input routes, using the MainHandler class to handle '/display' and listen on specified ports before exiting.",
+        "type": "summary"
+    },
+    "1172": {
+        "file_id": 244,
+        "content": "from __future__ import unicode_literals\nimport sys\nargs=sys.argv\ne9=sys.argv[1:]\nl9=len(e9)\na9,b9=\"\",\"\"\nif l9!=2:\n    print(\"usage: <port> <namespace>\")\n    exit(1)\nelse:\n    a9=e9[0]\n    b9=e9[1]\nimport ptyprocess\n# this module is exclusive for windows. to port to linux there should be extra steps.\n# i mean, android.\n# hey! do not run this shit outside of sandbox, unless you want to get me killed.\nimport threading\nimport pyte\n# can you format things into colorful output?\n# or just raw terminal string which can be transformed into html.\nimport traceback\nimport tornado.ioloop\nimport tornado.web\nimport requests\nimport base64\nimport signal\nimport os\n# no watchdog for this?\nLF_CRLF=b\"\\n\"\nmaxbark = 1\nmaxbark_granual = 10\nmaxterm = 1\nmaxterm_granual = 6\nbark = 0\nterm = 0\nport=int(a9)\nnamespace=int(b9)\n# you can turn off the barking dog sometimes.\n# we can use a big dog every since then.\ndef kill(pipe):\n    try:\n        pipe.terminate()\n# here.\n        pipe.kill(signal.SIGKILL)\n    except:\n        print(\"_____process kill error_____\")\n        traceback.print_exc()",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/virtualService/tools/sandserv/multipty.py:1-47"
+    },
+    "1173": {
+        "file_id": 244,
+        "content": "The code is a Python script that takes in two command line arguments (port and namespace) and sets variables accordingly. It uses the ptyprocess, threading, pyte, traceback, tornado.ioloop, tornado.web, requests, base64, signal, and os modules for different functionalities. The code defines a kill function to terminate processes. The LF_CRLF, maxbark, maxbark_granual, maxterm, maxterm_granual, bark, and term variables are used to control the behavior of the program.",
+        "type": "comment"
+    },
+    "1174": {
+        "file_id": 244,
+        "content": "# signal.signal(signal.SIGINT, signal_handler)\ndisplay = \"\"\nlag = 0.05\n#executable ='./tsimple_jail.sh'\n#executable =['./tsimple_jail.sh']\n# purge call shall be done in other server.\n# make request back to main server after initialized.\nexecutable =['./multireload.sh','{}'.format(namespace)]\ncols, rows = 80, 25\nimport time\nwatch_rate = 0.5\nscreen = pyte.Screen(cols,rows)\n# audit the port, and assign to some unused namespace. \nstream = pyte.ByteStream(screen)\nprocess =  ptyprocess.PtyProcess.spawn(executable,dimensions=(rows,cols))\ndef read_to_term():\n    global display, stream, screen\n    # read a global list?\n    # you can start another server. not quite like terminal. like execution shell.\n    noerr=True\n    while noerr:\n        try:\n            reading=process.read()\n# will block.\n    # will raise error if not good.\n            stream.feed(reading)\n            display = \"\\n\".join(screen.display)\n        except:\n            noerr = False\n            break\nt0=threading.Thread(target=read_to_term,args=())\nt0.setDaemon(True)",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/virtualService/tools/sandserv/multipty.py:48-79"
+    },
+    "1175": {
+        "file_id": 244,
+        "content": "This code sets up a server that spawns another server and connects it to a terminal interface. The first server reads input from the connected server, processes it, and displays the output on the terminal. It uses threading for asynchronous operation and handles exceptions when reading from the connected server.",
+        "type": "comment"
+    },
+    "1176": {
+        "file_id": 244,
+        "content": "t0.start()\ndef barkdog():\n    global bark, maxbark_granual\n    while True:\n        bark = 0\n        time.sleep(maxbark_granual)\ntb=threading.Thread(target=barkdog,args=())\ntb.setDaemon(True)\ntb.start()\ndef termdog():\n    global term, maxterm_granual\n    while True:\n        term = 0\n        time.sleep(maxterm_granual)\ntx=threading.Thread(target=termdog,args=())\ntx.setDaemon(True)\ntx.start()\ndef watchdog():\n    global process, watch_rate, port, bark, maxbark\n    alive=True\n    while alive:\n        alive = process.isalive()\n#        print(\"alive?\",alive)\n        time.sleep(watch_rate)\n#    print(\"bark\")\n    bark+=1\n    if bark > maxbark:\n        print(\"max bark exceed.\",bark)\n# what the heck?\n        pass\n    else:\n#        print(\"did get to here\")\n# if server is down this will cause dead shit.\n        requests.get(\"http://localhost:{}/restart\".format(port),stream=False,verify=False,timeout=1)\n# does that work?\n    # if not, call the handler. use requests.\nt1=threading.Thread(target=watchdog,args=())\nt1.setDaemon(True)\nt1.start()",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/virtualService/tools/sandserv/multipty.py:80-118"
+    },
+    "1177": {
+        "file_id": 244,
+        "content": "Threads for monitoring and controlling a process, sending a restart request if it's down or bark value exceeds a limit.",
+        "type": "comment"
+    },
+    "1178": {
+        "file_id": 244,
+        "content": "class RHandler(tornado.web.RequestHandler):\n    def get(self):\n        global process, screen, stream, t0, t1, executable, display, term, maxterm\n        # print(type(process))\n        # print(dir(process))\n        term += 1\n        if term > maxterm:\n            self.write(\"exceeding max termination quota!\\n\")\n        else:\n            kill(process)\n            os.system(\"./multiterm.sh {}\".format(namespace))\n# did it stuck here?\n# nope.\n            for x in [process, screen, stream, t0, t1]:\n                # print(\"deleting\")\n                del x\n            display = \"\"\n            screen = pyte.Screen(cols,rows)\n            stream = pyte.ByteStream(screen)\n            process =  ptyprocess.PtyProcess.spawn(executable,dimensions=(rows,cols))\n            t0=threading.Thread(target=read_to_term,args=())\n            t0.setDaemon(True)\n            t0.start()\n            t1=threading.Thread(target=watchdog,args=())\n            t1.setDaemon(True)\n            t1.start()\n            self.write(\"terminal restart!\\n\")",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/virtualService/tools/sandserv/multipty.py:120-146"
+    },
+    "1179": {
+        "file_id": 244,
+        "content": "This code is part of a web request handler that manages the creation and restarting of virtual terminals. It checks if it has exceeded the maximum termination quota, kills the current process, creates a new one using multiterm shell script, deletes previous variables, and starts two threads for reading from and monitoring the terminal.",
+        "type": "comment"
+    },
+    "1180": {
+        "file_id": 244,
+        "content": "class IHandler(tornado.web.RequestHandler):\n    def get(self):\n        global display, process, lag\n        # print(\"type request received.\")\n        argument = self.get_argument(\"type\",None)\n        argumentx = self.get_argument(\"b64type\",None)\n        # that is for argument!\n        autoreturn = self.get_argument(\"autoreturn\",None) == \"true\"\n        # print(\"actual argument\",[argument],type(argument))\n        # string.\n        if not process.isalive():\n            self.write(\"process is dead.\\n\")\n        elif argument is not None:\n            # unicode.\n            # may encounter error.\n            if autoreturn:\n                process.write(argument.encode(\"utf8\")+b'\\r')\n            else:\n                process.write(argument.encode(\"utf8\"))\n            time.sleep(lag)\n            self.write(display)\n        elif argumentx is not None:\n            # check if correctly formed.\n# check if not dead.\n            try:\n                arx = base64.b64decode(argumentx)\n                # the result is not right.\n                # cannot decode here.",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/virtualService/tools/sandserv/multipty.py:147-174"
+    },
+    "1181": {
+        "file_id": 244,
+        "content": "This code is defining a class `IHandler` that extends the `tornado.web.RequestHandler`. The `get()` method handles requests and checks for arguments related to \"type\", \"b64type\", and \"autoreturn\". If the process is not alive, it writes \"process is dead.\" to the response. If a valid argument is provided (and autoreturn is set to true), it encodes and writes the argument to the process. If a base64-encoded argument is provided, it attempts to decode it but doesn't provide an error message if it fails.",
+        "type": "comment"
+    },
+    "1182": {
+        "file_id": 244,
+        "content": "                if autoreturn:\n                    process.write(arx+b'\\r')\n                else:\n                    process.write(arx)\n                    # this is not unicode string.\n                time.sleep(lag)\n                self.write(display)\n            except:\n                self.write(\"incorrect format\\n\")\n                # pass\n                # D:\\Programs\\Python\\Python36\\lib\\site-packages\\winpty\\winpty_wrapper.py\n        else:\n            self.write(\"empty input\\n\")\n            # pass\nclass MainHandler(tornado.web.RequestHandler):\n    def get(self):\n        global display\n        self.write(display)\n    def make_app():\n        return tornado.web.Application([(r\"/display\",MainHandler),(r\"/restart\",RHandler),(r\"/input\",IHandler)])\n# get a window watcher. if want to lock the winsize better use that.\n# why the fuck that the code needs to be compiled? could we just examine the code and prepare for tested binaries?\napp = MainHandler.make_app()\napp.listen(port)\n# here's the shit.\ntornado.ioloop.IOLoop.current().start()",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/virtualService/tools/sandserv/multipty.py:175-201"
+    },
+    "1183": {
+        "file_id": 244,
+        "content": "The code is a Python script that creates a Tornado web application. It includes three handlers for different routes: /display, /restart, and /input. The MainHandler class handles the '/display' route by writing to a window. An error message is displayed if there's an incorrect format or empty input. The app listens on a specified port and starts the Tornado IOLoop to handle incoming requests.",
+        "type": "comment"
+    },
+    "1184": {
+        "file_id": 244,
+        "content": "# register handler.\nexit()",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/virtualService/tools/sandserv/multipty.py:202-203"
+    },
+    "1185": {
+        "file_id": 244,
+        "content": "The code is registering a handler and then calling the exit() function to terminate the program.",
+        "type": "comment"
+    },
+    "1186": {
+        "file_id": 245,
+        "content": "/native/lazero_kali_amd64/virtualService/tools/sandserv/multipurge.sh",
+        "type": "filepath"
+    },
+    "1187": {
+        "file_id": 245,
+        "content": "This script performs the following actions:\n1. Lists all files in the \"multiserv\" directory using \"sudo ls -1 multiserv\".\n2. Passes each file name to the \"multiterm.sh\" script for terminating any running processes associated with it.\n3. Runs the \"unloadmulti.sh\" script to unload any loaded modules.\n4. Finally, deletes the entire \"multiserv\" directory using \"sudo rm -rf multiserv\".",
+        "type": "summary"
+    },
+    "1188": {
+        "file_id": 245,
+        "content": "#!/bin/bash\n#sudo ls -1 multiserv | xargs -I % bash -c \"./multikill.sh %\"\nsudo ls -1 multiserv | xargs -I % bash -c \"./multiterm.sh %\"\n./unloadmulti.sh\nsudo rm -rf multiserv\n# you need to unload the thing.",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/virtualService/tools/sandserv/multipurge.sh:1-6"
+    },
+    "1189": {
+        "file_id": 245,
+        "content": "This script performs the following actions:\n1. Lists all files in the \"multiserv\" directory using \"sudo ls -1 multiserv\".\n2. Passes each file name to the \"multiterm.sh\" script for terminating any running processes associated with it.\n3. Runs the \"unloadmulti.sh\" script to unload any loaded modules.\n4. Finally, deletes the entire \"multiserv\" directory using \"sudo rm -rf multiserv\".",
+        "type": "comment"
+    },
+    "1190": {
+        "file_id": 246,
+        "content": "/native/lazero_kali_amd64/virtualService/tools/sandserv/multiram.sh",
+        "type": "filepath"
+    },
+    "1191": {
+        "file_id": 246,
+        "content": "The script checks the number of arguments, if it's less than or equal to 1, it displays \"no argument\" and exits with a status code 1. Otherwise, it continues executing the subsequent commands which include unloading RAM using multiunloadram.sh, creating a directory for the specified argument, setting its permissions, and mounting a temporary filesystem (tmpfs) of size 10M as 'myramdisk' within the specified directory.",
+        "type": "summary"
+    },
+    "1192": {
+        "file_id": 246,
+        "content": "#!/bin/bash\nc0=$(echo $1 |wc -c )\n#echo $c0\nif [ $c0 -le 1 ]\nthen\n        echo \"no argument.\"\n        exit 1\nelse\n        :\nfi\n./multiunloadram.sh $1\nsudo mkdir -p multiserv/$1/ramdisk\nsudo chmod 777 multiserv/$1/ramdisk\nsudo mount -t tmpfs -o size=10m myramdisk multiserv/$1/ramdisk",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/virtualService/tools/sandserv/multiram.sh:1-14"
+    },
+    "1193": {
+        "file_id": 246,
+        "content": "The script checks the number of arguments, if it's less than or equal to 1, it displays \"no argument\" and exits with a status code 1. Otherwise, it continues executing the subsequent commands which include unloading RAM using multiunloadram.sh, creating a directory for the specified argument, setting its permissions, and mounting a temporary filesystem (tmpfs) of size 10M as 'myramdisk' within the specified directory.",
+        "type": "comment"
+    },
+    "1194": {
+        "file_id": 247,
+        "content": "/native/lazero_kali_amd64/virtualService/tools/sandserv/multireload.sh",
+        "type": "filepath"
+    },
+    "1195": {
+        "file_id": 247,
+        "content": "This Bash script launches multiple program instances, handles file systems and system binaries, creates directories as needed, and sets permissions for user execution.",
+        "type": "summary"
+    },
+    "1196": {
+        "file_id": 247,
+        "content": "#!/bin/bash\nc0=$(echo $1 |wc -c )\n#echo $c0\nif [ $c0 -le 1 ]\nthen\n        echo \"no argument.\"\n        exit 1\nelse\n\t:\nfi\nd1=$1\nsudo touch judger.log\nsudo chmod 777 judger.log\ns0=$(sudo mount 2>&1 | grep $PWD/multiserv/$1/ramdisk | grep myramdisk |  wc -c)\ns1=$(sudo mount 2>&1 | grep $PWD/multiserv/$1/root | grep unionfs |  wc -c)\nif [ $s0 -eq 0 ]\nthen\n#\techo ram\n\tbash -c \"./multiram.sh $d1\"\nfi\nif [ $s1 -eq 0 ]\nthen\n#\techo root\n\tbash -c \"./multiroot.sh $d1\"\nfi\ns7=$(which tmux)\ns6=$(sudo which init)\ns5=$(sudo which kill)\ns9=$(sudo which su)\ns10=$(sudo which sudo)\ns4=$(which kill)\ns8=/system/bin/kill\ns11=/sbin/su\n#echo $s7 | python3 efilter.py ramdisk\n# it is able to kill itself.\n# sorry. no one can stop that from happening.\n# and that is part of the game.\necho $s6 | python3 efilter.py multiserv/$1/ramdisk | xargs sudo mkdir -p\necho $s5 | python3 efilter.py multiserv/$1/ramdisk | xargs sudo mkdir -p\necho $s4 | python3 efilter.py multiserv/$1/ramdisk | xargs sudo mkdir -p\necho $s7 | python3 efilter.py multiserv/$1/ramdisk | xargs sudo mkdir -p",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/virtualService/tools/sandserv/multireload.sh:1-41"
+    },
+    "1197": {
+        "file_id": 247,
+        "content": "Code is a Bash script for launching multiple instances of a program. It checks the argument count, mounts ramdisk and root file systems, and executes corresponding scripts for each case. It also handles system binaries and creates directories as needed.",
+        "type": "comment"
+    },
+    "1198": {
+        "file_id": 247,
+        "content": "echo $s8 | python3 efilter.py multiserv/$1/ramdisk | xargs sudo mkdir -p\necho $s9 | python3 efilter.py multiserv/$1/ramdisk | xargs sudo mkdir -p\necho $s10 | python3 efilter.py multiserv/$1/ramdisk | xargs sudo mkdir -p\necho $s11 | python3 efilter.py multiserv/$1/ramdisk | xargs sudo mkdir -p\nsudo touch multiserv/$1/ramdisk$s6\nsudo touch multiserv/$1/ramdisk$s5\nsudo touch multiserv/$1/ramdisk$s9\nsudo touch multiserv/$1/ramdisk$s11\nsudo touch multiserv/$1/ramdisk$s10\nsudo touch multiserv/$1/ramdisk$s4\nsudo touch multiserv/$1/ramdisk$s8\nsudo touch multiserv/$1/ramdisk$s7\nsudo chmod 777 multiserv/$1/root\nsudo chmod 777 multiserv/$1/ramdisk\n#s2=$(id nobody -u)\n#unset LD_PRELOAD\n#set LD_PRELOAD=/lib/libtermux-exec.so\n#set LD_LIBRARY=/lib\nbash -c \"./multichroot.sh $d1\"\n#command=\"bash -c './multichroot.sh $d1'\"\n#command=\"sudo $PWD/bin/libjudger.so --exe_path=$PWD/chroot.sh\"\n#command+=\" -i $s2:$s2 \"\n#command+=\" --seccomp_rule_name=\\\"nokill\\\"\"\n#$command",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/virtualService/tools/sandserv/multireload.sh:42-65"
+    },
+    "1199": {
+        "file_id": 247,
+        "content": "Creating directories and setting permissions before running multichroot.sh with specified arguments, and setting environment variables for a specific user execution.",
+        "type": "comment"
+    }
+}

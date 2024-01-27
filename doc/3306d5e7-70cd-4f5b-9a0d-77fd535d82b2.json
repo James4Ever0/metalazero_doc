@@ -1,0 +1,10 @@
+{
+    "summary": "This Bash script uses proot to create a chroot environment. It sets the command variable with options to isolate the process, such as root permissions and null SELinux contexts. It finally executes the given bash binary within this restricted environment.",
+    "details": [
+        {
+            "comment": "This Bash script uses proot to create a chroot environment. It sets the command variable with options to isolate the process, such as root permissions and null SELinux contexts. It finally executes the given bash binary within this restricted environment.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_kali_amd64/virtualService/tools/sandserv/nchroot.sh\":0-13",
+            "content": "#!/bin/bash\ns3=$(which bash)\ncommand=\"sudo proot\"\n#command=\"$PWD/bin/libjudger.so --exe_path=$3 --args='proot -0'\" \n#command+=\" -i $s2:$s2 \"   \ncommand+=\" -0 \"   \ncommand+=\" -r root -b /dev/null:/dev/null \"\ncommand+=\" -b /sys/fs/selinux/null:/sys/fs/selinux/null \"  \ncommand+=\" -b /dev/tty:/dev/tty \" \n#command+=\" $PWD/bin/libjudger.so --exe_path=$s3 --seccomp_rule_name=\\\"nokill\\\"\"    \n#command+=\" /bin/sh\"     \ncommand+=\" $s3 \"     \n$command"
+        }
+    ]
+}

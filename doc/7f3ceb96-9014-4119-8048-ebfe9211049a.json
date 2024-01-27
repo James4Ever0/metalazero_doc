@@ -1,0 +1,10 @@
+{
+    "summary": "This code checks if the given character 'c' is present in the string \"hello Swift\". If it is found, it prints \"YES\" to the console.",
+    "details": [
+        {
+            "comment": "This code checks if the given character 'c' is present in the string \"hello Swift\". If it is found, it prints \"YES\" to the console.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_kali_amd64/cognitionService/virtual/cog_core.swift\":0-4",
+            "content": "var string = \"hello Swift\"\nvar c : Character = \"S\"\nif string.contains(c) {\n    print(\"YES\")\n}"
+        }
+    ]
+}

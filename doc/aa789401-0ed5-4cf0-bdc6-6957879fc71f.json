@@ -1,0 +1,10 @@
+{
+    "summary": "The code is reading a file containing a list of IP addresses and UUIDs in JSON format. It searches for the target UUID, extracts the associated IP address, and prints a random IP from the list if the target UUID is found. The original intent was to ping each IP, calculate the average response time, and print the IP with the fastest response time, but this functionality is not implemented in the provided code.",
+    "details": [
+        {
+            "comment": "The code is reading a file containing a list of IP addresses and UUIDs in JSON format. It searches for the target UUID, extracts the associated IP address, and prints a random IP from the list if the target UUID is found. The original intent was to ping each IP, calculate the average response time, and print the IP with the fastest response time, but this functionality is not implemented in the provided code.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/remote_control/discovery/get_fastest_ip.py\":0-27",
+            "content": "from pythonping import ping\nimport json\nimport argparse\nparser = argparse.ArgumentParser()\nparser.add_argument(\"-f\",\"--file\",type=str,required=True)\nparser.add_argument(\"-u\",\"--uuid\",type=str,required=True)\nargs = parser.parse_args()\ntarget_file = args.file\ntarget_uuid = args.uuid\nwith open(target_file,\"r\") as f:\n    lists = []\n    for line in f:\n        content = json.loads(line)\n        if content[\"text\"] == target_uuid:\n            lists.append(content[\"ip\"])\n# not permitted. shit.\nimport random\nprint(random.choice(lists))\n\"\"\"\nfor ip in lists:\n    response_list = ping(ip, size=40, count=10)\n    delay = ip.rtt_avg_ms\n    results.append((ip,delay))\nfor ip, delay in sorted(results, key=lambda x: x[1]):\n    print(ip)\n    break\n\"\"\""
+        }
+    ]
+}

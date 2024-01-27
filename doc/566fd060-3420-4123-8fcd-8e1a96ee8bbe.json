@@ -1,0 +1,10 @@
+{
+    "summary": "The code snippet is interacting with a Vim editor. It displays the message \"hello world\" and \"hello again\", shows the messages buffer, and enables line numbering for improved readability.",
+    "details": [
+        {
+            "comment": "The code snippet is interacting with a Vim editor. It displays the message \"hello world\" and \"hello again\", shows the messages buffer, and enables line numbering for improved readability.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_kali_amd64/cognitionService/virtual/edit.vim\":0-3",
+            "content": ":echo \"hello world\"\n:echom \"hello again\"\n:messages\n:set number"
+        }
+    ]
+}

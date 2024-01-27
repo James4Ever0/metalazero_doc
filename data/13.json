@@ -1,0 +1,534 @@
+{
+    "1300": {
+        "file_id": 266,
+        "content": "#!/bin/bash\nbash -c ./tunloadroot.sh\nmkdir root\n# there's autodetect.\n#better use bindfs as standard.\nsudo bin/x86_64/unionfs -o allow_root,cow,uid=0,gid=0 ramdisk/=RW:/=RO root/\nsudo chmod 777 root",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/virtualService/tools/sandserv/treloadroot_x64.sh:1-7"
+    },
+    "1301": {
+        "file_id": 266,
+        "content": "The script executes tunloadroot.sh, creates a root directory, utilizes unionfs for read-write and read-only access, sets appropriate permissions on the root directory, and uses bindfs as a standard method for file system binding.",
+        "type": "comment"
+    },
+    "1302": {
+        "file_id": 267,
+        "content": "/native/lazero_kali_amd64/virtualService/tools/sandserv/tsimple_jail.sh",
+        "type": "filepath"
+    },
+    "1303": {
+        "file_id": 267,
+        "content": "This script is using proot to create a chroot environment, changing permissions for root access, and setting up necessary bind mounts. It also unset LD_PRELOAD and sets other variables before executing the command.",
+        "type": "summary"
+    },
+    "1304": {
+        "file_id": 267,
+        "content": "#!/data/data/com.termux/files/usr/bin/bash\n# cd $(dirname $0)\n## unset LD_PRELOAD in case termux-exec is installed\n#./loadram.sh\n./tloadroot.sh\nsudo chmod 777 root\n#unset LD_PRELOAD\n#set LD_PRELOAD=/lib/libtermux-exec.so\n#set LD_LIBRARY=/lib\ncommand=\"sudo proot\"\ncommand+=\" -0 \"\ncommand+=\" -r root -b /dev/null:/dev/null \"\ncommand+=\" -b /sys/fs/selinux/null:/sys/fs/selinux/null \"\ncommand+=\" -b /dev/tty:/dev/tty \"\n$command\n# no need to use selinux/null.",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/virtualService/tools/sandserv/tsimple_jail.sh:1-16"
+    },
+    "1305": {
+        "file_id": 267,
+        "content": "This script is using proot to create a chroot environment, changing permissions for root access, and setting up necessary bind mounts. It also unset LD_PRELOAD and sets other variables before executing the command.",
+        "type": "comment"
+    },
+    "1306": {
+        "file_id": 268,
+        "content": "/native/lazero_kali_amd64/virtualService/tools/sandserv/tsimple_jail_x64.sh",
+        "type": "filepath"
+    },
+    "1307": {
+        "file_id": 268,
+        "content": "This script sets up a secure environment to execute a command on an AMD64 Kali Linux system. It loads essential files, grants root permissions, and uses proot to isolate the execution, preventing any potential security threats from the command. Finally, it executes the desired command in the secured environment.",
+        "type": "summary"
+    },
+    "1308": {
+        "file_id": 268,
+        "content": "#!/bin/bash\n# cd $(dirname $0)\n## unset LD_PRELOAD in case termux-exec is installed\n#./loadram.sh\n./tloadroot_x64.sh\nsudo chmod  777 root\n#sudo chmod -R 777 root\n#unset LD_PRELOAD\n#set LD_PRELOAD=/lib/libtermux-exec.so\n#set LD_LIBRARY=/lib\n#bin/x86_64/libjudger.so  --exe_path=\"./command_x64.sh\"\n#bin/x86_64/libjudger.so  --seccomp_rule_name=\"nokill\" --exe_path=\"./command_x64.sh\"\n#command=\"sudo proot\"\n#command+=\" -0 \"\n#command+=\" -r root -b /dev/null:/dev/null \"\n##command+=\" -b /sys/fs/selinux/null:/sys/fs/selinux/null \"\n#command+=\" -b /dev/tty:/dev/tty \"\n#$command\n./command_x64.sh\n# no need to use selinux/null.",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/virtualService/tools/sandserv/tsimple_jail_x64.sh:1-20"
+    },
+    "1309": {
+        "file_id": 268,
+        "content": "This script sets up a secure environment to execute a command on an AMD64 Kali Linux system. It loads essential files, grants root permissions, and uses proot to isolate the execution, preventing any potential security threats from the command. Finally, it executes the desired command in the secured environment.",
+        "type": "comment"
+    },
+    "1310": {
+        "file_id": 269,
+        "content": "/native/lazero_kali_amd64/virtualService/tools/sandserv/tunloadroot.sh",
+        "type": "filepath"
+    },
+    "1311": {
+        "file_id": 269,
+        "content": "The script checks if the 'root' directory is empty, and if so, removes it using sudo rm -rf. The PSK (password strength key) variable stores the number of characters in the root folder listing, serving as an indicator for whether the directory is empty or not. Proceed with caution when working with chroot/symlink operations.",
+        "type": "summary"
+    },
+    "1312": {
+        "file_id": 269,
+        "content": "#!/bin/bash\nsudo umount -f root\npsk=$(sudo ls -1 root/ | wc -c)\n# if failed, then do not continue! unless you are an idiot.\n# or not.\n# just think! also for symlink on windows. caution when doing chroot/symlink.\nif [ $psk -eq 0 ]\nthen\n\tsudo rm -rf root\nfi",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/virtualService/tools/sandserv/tunloadroot.sh:1-10"
+    },
+    "1313": {
+        "file_id": 269,
+        "content": "The script checks if the 'root' directory is empty, and if so, removes it using sudo rm -rf. The PSK (password strength key) variable stores the number of characters in the root folder listing, serving as an indicator for whether the directory is empty or not. Proceed with caution when working with chroot/symlink operations.",
+        "type": "comment"
+    },
+    "1314": {
+        "file_id": 270,
+        "content": "/native/lazero_kali_amd64/virtualService/tools/sandserv/unloadmulti.sh",
+        "type": "filepath"
+    },
+    "1315": {
+        "file_id": 270,
+        "content": "This script checks the size of a mounted \"multiserv\" directory and removes it if its size is zero. It also cautions about potential issues with symlinks on Windows and chroot operations.",
+        "type": "summary"
+    },
+    "1316": {
+        "file_id": 270,
+        "content": "#!/bin/bash\nsudo umount -f multiserv\npsk=$(sudo ls -1 multiserv/ | wc -c)\n# if failed, then do not continue! unless you are an idiot.\n# or not.\n# just think! also for symlink on windows. caution when doing chroot/symlink.\nif [ $psk -eq 0 ]\nthen\n\tsudo rm -rf multiserv\nfi",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/virtualService/tools/sandserv/unloadmulti.sh:1-10"
+    },
+    "1317": {
+        "file_id": 270,
+        "content": "This script checks the size of a mounted \"multiserv\" directory and removes it if its size is zero. It also cautions about potential issues with symlinks on Windows and chroot operations.",
+        "type": "comment"
+    },
+    "1318": {
+        "file_id": 271,
+        "content": "/native/lazero_kali_amd64/virtualService/tools/sandserv/unloadram.sh",
+        "type": "filepath"
+    },
+    "1319": {
+        "file_id": 271,
+        "content": "Unmounts and removes the 'ramdisk' directory, potentially freeing up memory resources.",
+        "type": "summary"
+    },
+    "1320": {
+        "file_id": 271,
+        "content": "#!/bin/bash\nsudo umount -f ramdisk\nsudo rm -rf ramdisk",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/virtualService/tools/sandserv/unloadram.sh:1-3"
+    },
+    "1321": {
+        "file_id": 271,
+        "content": "Unmounts and removes the 'ramdisk' directory, potentially freeing up memory resources.",
+        "type": "comment"
+    },
+    "1322": {
+        "file_id": 272,
+        "content": "/native/lazero_kali_amd64/virtualService/tools/sandserv/util.py",
+        "type": "filepath"
+    },
+    "1323": {
+        "file_id": 272,
+        "content": "This Python utility code is for libseccomp test suite, containing functions to handle signals and parse command line arguments using argparse, os, signal, seccomp modules. The code includes a function with three utilities: UtilGetOpt(), filter_output(), and install_trap().",
+        "type": "summary"
+    },
+    "1324": {
+        "file_id": 272,
+        "content": "#\n# Seccomp Library utility code for tests\n#\n# Copyright (c) 2012 Red Hat <pmoore@redhat.com>\n# Author: Paul Moore <paul@paul-moore.com>\n#\n#\n# This library is free software; you can redistribute it and/or modify it\n# under the terms of version 2.1 of the GNU Lesser General Public License as\n# published by the Free Software Foundation.\n#\n# This library is distributed in the hope that it will be useful, but WITHOUT\n# ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or\n# FITNESS FOR A PARTICULAR PURPOSE.  See the GNU Lesser General Public License\n# for more details.\n#\n# You should have received a copy of the GNU Lesser General Public License\n# along with this library; if not, see <http://www.gnu.org/licenses>.\n#\n\"\"\" Python utility code for the libseccomp test suite \"\"\"\nimport argparse\nimport os\nimport sys\nimport signal\nfrom seccomp import *\ndef trap_handler(signum, frame):\n    \"\"\" SIGSYS signal handler, internal use only\n    \"\"\"\n    os._exit(161)\ndef get_opt():\n    \"\"\" Parse the arguments passed to main",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/virtualService/tools/sandserv/util.py:1-37"
+    },
+    "1325": {
+        "file_id": 272,
+        "content": "This code is Python utility code for the libseccomp test suite, including functions to handle signals and parse command line arguments. It uses argparse for argument parsing, os and signal modules for handling signals, and seccomp module for implementing libseccomp functionality.",
+        "type": "comment"
+    },
+    "1326": {
+        "file_id": 272,
+        "content": "    Description:\n    Parse the arguments passed to the test from the command line.  Returns\n    a parsed argparse object.\n    \"\"\"\n    parser = argparse.ArgumentParser()\n    parser.add_argument(\"-b\", \"--bpf\", action=\"store_true\")\n    parser.add_argument(\"-p\", \"--pfc\", action=\"store_true\")\n    return parser.parse_args()\ndef filter_output(args, ctx):\n    \"\"\" Output the filter in either BPF or PFC\n    Arguments:\n    args - an argparse object from UtilGetOpt()\n    ctx - a seccomp SyscallFilter object\n    Description:\n    Output the SyscallFilter to stdout in either BPF or PFC format depending\n    on the test's command line arguments.\n    \"\"\"\n    if (args.bpf):\n        ctx.export_bpf(sys.stdout)\n    else:\n        ctx.export_pfc(sys.stdout)\ndef install_trap():\n    \"\"\" Install a TRAP action signal handler\n    Description:\n    Install the TRAP action signal handler.\n    \"\"\"\n    signal.signal(signal.SIGSYS, trap_handler)\ndef parse_action(action):\n    \"\"\" Parse a filter action string into an action value\n    Arguments:\n    action - the action string",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/virtualService/tools/sandserv/util.py:39-76"
+    },
+    "1327": {
+        "file_id": 272,
+        "content": "Code chunk is a part of a utility function that parses command line arguments, handles signal handlers, and formats the output based on the arguments. The utility function util.py contains three functions: UtilGetOpt(), filter_output() and install_trap(). The first function, UtilGetOpt(), parses arguments passed through command line using argparse module in Python. The second function, filter_output(), exports the SyscallFilter object to stdout in either BPF or PFC format depending on the test's command line arguments. The third function, install_trap(), handles TRAP action signal handler.",
+        "type": "comment"
+    },
+    "1328": {
+        "file_id": 272,
+        "content": "    Description:\n    Parse a seccomp action string into the associated integer value.\n    \"\"\"\n    if action == \"KILL\":\n        return KILL\n    elif action == \"TRAP\":\n        return TRAP\n    elif action == \"ERRNO\":\n        return ERRNO(163)\n    elif action == \"TRACE\":\n        raise RuntimeError(\"the TRACE action is not currently supported\")\n    elif action == \"ALLOW\":\n        return ALLOW\n    raise RuntimeError(\"invalid action string\")\ndef write_file(path):\n    \"\"\" Write a string to a file\n    Arguments:\n    path - the file path\n    Description:\n    Open the specified file, write a string to the file, and close the file.\n    \"\"\"\n    fd = os.open(str(path), os.O_WRONLY|os.O_CREAT)\n    if not os.write(fd, b\"testing\") == len(\"testing\"):\n        raise IOError(\"failed to write the full test string in write_file()\")\n    os.close(fd)\n# kate: syntax python;\n# kate: indent-mode python; space-indent on; indent-width 4; mixedindent off;",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/virtualService/tools/sandserv/util.py:78-109"
+    },
+    "1329": {
+        "file_id": 272,
+        "content": "Code snippet is a Python function that parses seccomp action strings into their associated integer values. It also includes another function to write a string to a specified file.",
+        "type": "comment"
+    },
+    "1330": {
+        "file_id": 273,
+        "content": "/native/lazero_win10_amd64/cognitionService/deltaWrapper.py",
+        "type": "filepath"
+    },
+    "1331": {
+        "file_id": 273,
+        "content": "The code is continuously reading lines from the standard input, printing the current time and the received line. It does not specify any prediction or relationship analysis with the text being typed. The code appears to be waiting for a specific command or input but doesn't provide information on how to predict the next move or show the relationship between the current text being typed.",
+        "type": "summary"
+    },
+    "1332": {
+        "file_id": 273,
+        "content": "import sys\nimport time as T\n# be it monad or anything. just show me how?\nwhile True:\n    line = sys.stdin.readline()\n    print(\"line received!\\n\",T.time(),line)\n    # how do you predict the next move? i don't care how the fuck you're gonna do the next. show me how.\n    # next, get me the words that i am currently typing. show the relationship somehow.",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/cognitionService/deltaWrapper.py:1-10"
+    },
+    "1333": {
+        "file_id": 273,
+        "content": "The code is continuously reading lines from the standard input, printing the current time and the received line. It does not specify any prediction or relationship analysis with the text being typed. The code appears to be waiting for a specific command or input but doesn't provide information on how to predict the next move or show the relationship between the current text being typed.",
+        "type": "comment"
+    },
+    "1334": {
+        "file_id": 274,
+        "content": "/native/lazero_win10_amd64/cognitionService/interaction_0.py",
+        "type": "filepath"
+    },
+    "1335": {
+        "file_id": 274,
+        "content": "This code repeatedly sends the phrase \"hello world\" as input, waits for 1 second, displays content from the interaction, and then restarts. It aims to simulate a constant stream of input and display interactions.",
+        "type": "summary"
+    },
+    "1336": {
+        "file_id": 274,
+        "content": "import shellConnect as Sc\n# to represent how you type these words? type it exactly according to what you've done in the past?\n# we want it to learn anything from this process.\nimport time as T\nwhile True:\n    Sc.inputs(\"hello world\")\n    T.sleep(1)\n    content = Sc.display()\n    print(content)\n    Sc.restart()",
+        "type": "code",
+        "location": "/native/lazero_win10_amd64/cognitionService/interaction_0.py:1-11"
+    },
+    "1337": {
+        "file_id": 274,
+        "content": "This code repeatedly sends the phrase \"hello world\" as input, waits for 1 second, displays content from the interaction, and then restarts. It aims to simulate a constant stream of input and display interactions.",
+        "type": "comment"
+    },
+    "1338": {
+        "file_id": 275,
+        "content": "/native/lazero_win10_amd64/cognitionService/interaction_1.py",
+        "type": "filepath"
+    },
+    "1339": {
+        "file_id": 275,
+        "content": "The code imports the \"shellConnect\" module and a time module, creates a list of commands, and enters an infinite loop. In each iteration, it restarts the connection, sends a command from the list, waits for 1 second, prints the displayed content, increments the counter, and repeats the process.",
+        "type": "summary"
+    },
+    "1340": {
+        "file_id": 275,
+        "content": "import shellConnect as Sc\n# to represent how you type these words? type it exactly according to what you've done in the past?\n# we want it to learn anything from this process.\nimport time as T\nclist=[\"hello world{}\".format(x) for x in range(5)]\ncnt=0\nwhile True:\n    Sc.restart()\n    cmd=clist[cnt]\n    Sc.inputs(cmd)\n    T.sleep(1)\n    content = Sc.display()\n    print(content)\n    cnt+=1\n    cnt%=len(clist)",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/cognitionService/interaction_1.py:1-16"
+    },
+    "1341": {
+        "file_id": 275,
+        "content": "The code imports the \"shellConnect\" module and a time module, creates a list of commands, and enters an infinite loop. In each iteration, it restarts the connection, sends a command from the list, waits for 1 second, prints the displayed content, increments the counter, and repeats the process.",
+        "type": "comment"
+    },
+    "1342": {
+        "file_id": 276,
+        "content": "/native/lazero_win10_amd64/cognitionService/interaction_2.py",
+        "type": "filepath"
+    },
+    "1343": {
+        "file_id": 276,
+        "content": "Code generates a list of strings, randomly selects and inputs them into a shell using the \"shellConnect\" module. It then waits 1 second before displaying the output from the shell, selects a substring from the displayed content, and repeats the process. If the selected substring is not empty, it sets a flag to override the list of strings and continues the loop.",
+        "type": "summary"
+    },
+    "1344": {
+        "file_id": 276,
+        "content": "import shellConnect as Sc\n# to represent how you type these words? type it exactly according to what you've done in the past?\n# we want it to learn anything from this process.\nimport time as T\nclist=[\"hello world{}\".format(x) for x in range(5)]\ncnt=0\nimport random as R\nSR=R.SystemRandom()\ndef rsel(string,l=7):\n    ls=len(string)\n    if ls>l:\n        r=SR.choice(list(range(0,ls-l)))\n        ts=string[r:r+l]\n        return ts\n    elif ls==l:\n        return string\n    else:\n        return \"\"\nnx,override=\"\",False\nwhile True:\n    Sc.restart()\n    if not override:\n        cmd=clist[cnt]\n        Sc.inputs(cmd)\n    else:\n        Sc.inputs(nx)\n    T.sleep(1)\n    content = Sc.display()\n    print(content)\n    nx=rsel(content)\n    if nx!=\"\":\n        override=True\n    cnt+=1\n    cnt%=len(clist)",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/cognitionService/interaction_2.py:1-38"
+    },
+    "1345": {
+        "file_id": 276,
+        "content": "Code generates a list of strings, randomly selects and inputs them into a shell using the \"shellConnect\" module. It then waits 1 second before displaying the output from the shell, selects a substring from the displayed content, and repeats the process. If the selected substring is not empty, it sets a flag to override the list of strings and continues the loop.",
+        "type": "comment"
+    },
+    "1346": {
+        "file_id": 277,
+        "content": "/native/lazero_win10_amd64/cognitionService/interaction_3.py",
+        "type": "filepath"
+    },
+    "1347": {
+        "file_id": 277,
+        "content": "This Python script repeatedly sends commands from the list 'clist' to a shell (using the 'Sc.inputs()' function) and receives responses from it (using the 'Sc.display()' function). The 'rsel()' function randomly selects a word from the response content, and if a selection is made, the 'override' flag is set to True. The script continues this process indefinitely, with each command being selected at random from 'clist'.",
+        "type": "summary"
+    },
+    "1348": {
+        "file_id": 277,
+        "content": "import shellConnect as Sc\n# to represent how you type these words? type it exactly according to what you've done in the past?\n# we want it to learn anything from this process.\nimport time as T\nclist=[\"hello world{}\".format(x) for x in range(5)]\ncnt=0\nimport random as R\nSR=R.SystemRandom()\ndef rsel(string):\n    try:\n        return SR.choice(string.split())\n    except:\n        return \"\"\nnx,override=\"\",False\nwhile True:\n    Sc.restart()\n    if not override:\n        cmd=clist[cnt]\n        Sc.inputs(cmd)\n    else:\n        Sc.inputs(nx)\n    T.sleep(1)\n    content = Sc.display()\n    print(content)\n    nx=rsel(content)\n    if nx!=\"\":\n        override=True\n    cnt+=1\n    cnt%=len(clist)",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/cognitionService/interaction_3.py:1-32"
+    },
+    "1349": {
+        "file_id": 277,
+        "content": "This Python script repeatedly sends commands from the list 'clist' to a shell (using the 'Sc.inputs()' function) and receives responses from it (using the 'Sc.display()' function). The 'rsel()' function randomly selects a word from the response content, and if a selection is made, the 'override' flag is set to True. The script continues this process indefinitely, with each command being selected at random from 'clist'.",
+        "type": "comment"
+    },
+    "1350": {
+        "file_id": 278,
+        "content": "/native/lazero_win10_amd64/cognitionService/shellConnect.py",
+        "type": "filepath"
+    },
+    "1351": {
+        "file_id": 278,
+        "content": "This Python script imports the requests library, defines a display function that fetches data from localhost port 8788, an inputs function to send data and receive responses from localhost port 8788 with optional autoreturn feature, and a restart function to reset the process.",
+        "type": "summary"
+    },
+    "1352": {
+        "file_id": 278,
+        "content": "import requests as R\nPORT=8788\ndef display():\n    req = R.get(\"http://localhost:{}/display\".format(PORT))\n    return req.text\nfrom base64 import b64encode as Be\ndef inputs(text,autoreturn=True):\n    assert type(text) == str\n    ar = \"true\" if autoreturn else \"false\"\n    btext = Be(text.encode(\"utf-8\")).decode(\"utf-8\")\n    req = R.get(\"http://localhost:{}/input?autoreturn={}&b64type={}\".format(PORT,ar,btext))\n    # this is still the screen.\n    return req.text\ndef restart():\n    req = R.get(\"http://localhost:{}/restart\".format(PORT))\n    return req.text",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/cognitionService/shellConnect.py:1-21"
+    },
+    "1353": {
+        "file_id": 278,
+        "content": "This Python script imports the requests library, defines a display function that fetches data from localhost port 8788, an inputs function to send data and receive responses from localhost port 8788 with optional autoreturn feature, and a restart function to reset the process.",
+        "type": "comment"
+    },
+    "1354": {
+        "file_id": 279,
+        "content": "/native/lazero_win10_amd64/cognitionService/virtual/bash_test.js",
+        "type": "filepath"
+    },
+    "1355": {
+        "file_id": 279,
+        "content": "The code sets up language server processes, uses StringDecoder for UTF-8 data, connects client and server, listens for requests/notifications, defines conversion functions, initializes a language server client, supports snippets, and handles requests for various functionalities.",
+        "type": "summary"
+    },
+    "1356": {
+        "file_id": 279,
+        "content": "const node_1 = require(\"vscode-languageserver-protocol/node\")\nconst process = require(\"./processes\") \nconst cp = require(\"child_process\")\nfunction dir(a) {console.dir(a)}\nfunction log(a) {console.log(a)}\nfunction inspect(a) {return Object.getOwnPropertyNames(a)}\n// something else?\n//var serverProcess = cp.spawn(\"node\",[\"vscode_lsp.js\"])\nconst bls = \"E:\\\\nodejs\\\\node_global\\\\bash-language-server.cmd\"\nvar serverProcess = cp.spawn(bls,[\"start\"])\nvar python = \"D:\\\\Programs\\\\Python\\\\Python36\\\\python36.exe\"\n// process.cwd()\nvar spyProcess = cp.spawn(python,[\"spy_process.py\"]) // they use pipe as the communication tool on windows. mostly for node_ipc or c#.\n// var spyProcess = cp.spawn(bls,[\"start\"]) // must be some magic shit.\n// must be full-path?\n//var serverProcess = cp.spawn(\"python3\",[\"recv.py\"])\n//var serverProcess = cp.spawn(\"bash\")// this shit does not properly respond to us.\nconst { StringDecoder } = require('string_decoder');\nconst decoder = new StringDecoder('utf8');\nfunction dc(a){return decoder.write(a)}",
+        "type": "code",
+        "location": "/native/lazero_win10_amd64/cognitionService/virtual/bash_test.js:1-24"
+    },
+    "1357": {
+        "file_id": 279,
+        "content": "This code is importing necessary modules, defining functions, and setting up processes for a language server. It uses the 'child_process' module to spawn a server process (node_1) and a spy process (python) using different command line executables. The code also includes a StringDecoder for processing data in UTF-8 format.",
+        "type": "comment"
+    },
+    "1358": {
+        "file_id": 279,
+        "content": "//(type, ...args) <- way to hide these things.\nserverProcess.stderr.on(\"data\",d=>{log(\"\\nSERVER_STDERR_START\\n\"+dc(d)+\"\\nSERVER_STDERR_END\\n\")})\nserverProcess.stdout.on(\"data\",d=>{log(\"\\nSERVER_STDOUT_START\\n\"+dc(d)+\"\\nSERVER_STDOUT_END\\n\")})// it is included.\n// spyProcess.stdout.on(\"data\",d=>{log(\"\\nSERVER_STDIN_START\\n\"+dc(d)+\"\\nSERVER_STDIN_END\\n\");serverProcess.stdin.write(d)})// it is included.\n// override this shit.\n// spyProcess.stdin.write = (data) => {log(\"\\nSERVER_STDIN_START\\n\"+dc(data)+\"\\nSERVER_STDIN_END\\n\");serverProcess.stdin.write(data);serverProcess.stdin.end()}\nvar node_writer = new node_1.StreamMessageWriter(serverProcess.stdin)\n// dir(node_writer)\nvar spy_writer = new node_1.StreamMessageWriter(spyProcess.stdin)\nspy_writer.write = (d)=>{console.log(\"SERVER_STDIN_START\");console.log(d);console.log(\"SERVER_STDIN_END\");node_writer.write(d)}\n// alter the function. fuck it.\n// dir(spyProcess.stdin.end())\n// serverProcess.stdin.on(\"data\",d=>{log(\"\\nSERVER_\")})\n// this is buffer, decode it first.",
+        "type": "code",
+        "location": "/native/lazero_win10_amd64/cognitionService/virtual/bash_test.js:25-39"
+    },
+    "1359": {
+        "file_id": 279,
+        "content": "This code sets up event listeners for serverProcess.stderr and serverProcess.stdout, allowing logging of their data. It also replaces the write function of spyProcess.stdin with a custom function that logs data and forwards it to serverProcess.stdin. Finally, it creates StreamMessageWriter instances for both processes and sets up an event listener for serverProcess.stdin (possibly for further processing).",
+        "type": "comment"
+    },
+    "1360": {
+        "file_id": 279,
+        "content": "// does this really matter? can we write into the stdin?\n// no don't you think about this.\nvar client = {reader:new node_1.StreamMessageReader(serverProcess.stdout)\n,writer:spy_writer}\n// replace this shit with another shit.\nlet conn = node_1.createMessageConnection(client.reader,client.writer)\nlet note = new node_1.RequestType('testNotification');\n//let note = new node_1.NotificationType('testNotification');\nconn.listen()\n//setInterval(()=>{conn.sendRequest(\"Hello World\")},1000)\n//setInterval(()=>{conn.sendRequest(note,\"Hello World\")},1000)\nlog(\"made it?\")\n//dir(node_1.createMessageConnection)\nuri = \"file:///Users/dirkb/sample/test.ts\"\ntd = \"textDocument/didOpen\"\n// dir(conn)\n// method, params?\nconst proto = require(\"vscode-languageserver-protocol\");\n//log(proto.ShutdownRequest.type)\n//let meta = code2ProtocolConverter.asCompletionParams(document, position, context)\nfunction asTextDocumentIdentifier(textDocument) { return { uri: _uriConverter(textDocument.uri) };}\nfunction asWorkerPosition(position) { return { line: position.line, character: position.character };}",
+        "type": "code",
+        "location": "/native/lazero_win10_amd64/cognitionService/virtual/bash_test.js:40-66"
+    },
+    "1361": {
+        "file_id": 279,
+        "content": "The code sets up a connection between the client and server processes using a message reader and writer. It creates a request type for 'testNotification' and listens for any incoming requests or notifications from the server. The code also includes comments indicating potential improvements, such as replacing certain parts with alternative solutions. Additionally, it defines functions to convert text document identifiers and worker positions into the required formats for the protocol.",
+        "type": "comment"
+    },
+    "1362": {
+        "file_id": 279,
+        "content": "function asCompletionTriggerKind(triggerKind) { switch (triggerKind) {\n\tcase 0: return proto.CompletionTriggerKind.TriggerCharacter;  \n\tcase 1:return proto.CompletionTriggerKind.TriggerForIncompleteCompletions;\n\tdefault:return proto.CompletionTriggerKind.Invoked; } }\nlet position={line:0,character:0}\n// let fileuri=\"D:\\\\AGI\\\\metalazero\\\\native\\\\lazero_kali_amd64\\\\cognitionService\\\\virtual\\\\vscode_ipc.sh\";\nlet fileuri=\"file://D:/AGI/metalazero/native/lazero_kali_amd64/cognitionService/virtual/vscode_ipc.sh\";\n//asTextDocumentIdentifier(textDocument)\n// bad links. or great.\n//do not have the document yet. get it parsed.\nlet meta={\n\ttextDocument: {uri:fileuri},\n\tposition: {line:0,character:0},\n\tcontext:{\n\t\ttriggerKind: asCompletionTriggerKind(),\n        triggerCharacter: \" \"},\n    // shit?\n    // rootNode:[]\n}\nlet token=undefined\n//uri2TextDocument\n// this is shutdown.\n// wtf is the token?\n// use client/browser in place of node?\n//conn.sendRequest(proto.CompletionRequest.type, meta,token).then(()=>{log(\"SUCCESS\")}).catch(()=>{log(\"FAILED\")})",
+        "type": "code",
+        "location": "/native/lazero_win10_amd64/cognitionService/virtual/bash_test.js:68-93"
+    },
+    "1363": {
+        "file_id": 279,
+        "content": "Function `asCompletionTriggerKind()` maps triggerKind to corresponding completion triggers. Position object contains line and character values. FileURI is set as \"file://D:/AGI/metalazero/native/lazero_kali_amd64/cognitionService/virtual/vscode_ipc.sh\". `meta` object includes textDocument, position, context (triggerKind and triggerCharacter), and rootNode. Unknown variable `token` is undefined. Code sends a request to the connection using `conn.sendRequest()`.",
+        "type": "comment"
+    },
+    "1364": {
+        "file_id": 279,
+        "content": "// dir(proto)\n// log(proto.InitializeRequest.type)\n//{\"jsonrpc\":\"2.0\",\"id\":0,\"error\":{\"code\":-32603,\"message\":\"Request initialize failed with message: Cannot read property 'workspace' of undefined\"}}\n// bash-language-server/node_modules/vscode-jsonrpc/lib/common/connection.js -> ~400\n//let init={workspace:\"file:///sdcard/lazero/flutter/html/\"}\n// const bash_lsp_capabilities={\"textDocumentSync\":1,\"completionProvider\":{\"resolveProvider\":true,\"triggerCharacters\":[\"$\",\"{\"]},\"hoverProvider\":true,\"documentHighlightProvider\":true,\"definitionProvider\":true,\"documentSymbolProvider\":true,\"workspaceSymbolProvider\":true,\"referencesProvider\":true}\nconst std_cap = {textDocument:{completion:{completionItem:{snippetSupport:true}}}}\n// process.cwd() \n// complex number vagina depth.\nlet init={rootPath:\"D:\\\\AGI\\\\metalazero\\\\native\\\\lazero_kali_amd64\\\\cognitionService\\\\virtual\",capabilities:std_cap}\n// let init={rootPath:\"/data/data/com.termux/files/home/metalazero/native/lazero_kali_amd64/cognitionService/virtual\",capabilities:[]}",
+        "type": "code",
+        "location": "/native/lazero_win10_amd64/cognitionService/virtual/bash_test.js:94-104"
+    },
+    "1365": {
+        "file_id": 279,
+        "content": "This code sets the root path and capabilities for a language server client, with standard capabilities specified. It handles different possible root paths for the project, either in Kali or Windows environments, and ensures snippet support is enabled for completion items. The final `let init` statement uses the Kali environment root path and an array of standard capabilities.",
+        "type": "comment"
+    },
+    "1366": {
+        "file_id": 279,
+        "content": "//let init={}\n//let init={workspace:\"file:///sdcard/lazero/flutter/html/\",capabilities:[]}\nconn.sendRequest(proto.InitializeRequest.type, init).then(()=>{log(\"SUCCESS\");\nconn.sendRequest(proto.CompletionRequest.type, meta,token).then(()=>{log(\"COMP SUCCESS\")}).catch(()=>{log(\"FAILED\")});\n}).catch(()=>{log(\"FAILED\")})\n//dir(proto)\n//let WSR=proto.WorkspaceSymbolRequest.type\n//log(WSR)\n//conn.sendRequest(WSR,undefined).then(()=>{log(\"SUCCESS\")}).catch(()=>{log(\"FAILED\")})\n//conn.sendRequest(proto.ShutdownRequest.type, undefined).then(()=>{log(\"SUCCESS\")}).catch(()=>{log(\"FAILED\")})\n//conn.sendRequest({method:itd,params:[uri]}).then(()=>{}).catch(()=>{})\n// there must be errors.\n// can i send some shits?\n// this is the fastest way to get shit.",
+        "type": "code",
+        "location": "/native/lazero_win10_amd64/cognitionService/virtual/bash_test.js:105-121"
+    },
+    "1367": {
+        "file_id": 279,
+        "content": "This code initializes a connection and sends requests to the server for initialization, completion, workspace symbol, and shutdown. It logs success or failure messages based on the request results. The code is written in JavaScript and appears to be related to a language server communication.",
+        "type": "comment"
+    },
+    "1368": {
+        "file_id": 280,
+        "content": "/native/lazero_win10_amd64/cognitionService/virtual/get_error.js",
+        "type": "filepath"
+    },
+    "1369": {
+        "file_id": 280,
+        "content": "The code is trying to catch an error and extract stack trace information using `Object.getOwnPropertyNames()` method, but it encounters an undefined variable \"fuck\" which causes an error. It then combines the error message with the stack trace and writes it to stderr.",
+        "type": "summary"
+    },
+    "1370": {
+        "file_id": 280,
+        "content": "try{\n    fuck.shit(\"fuck\");\n}catch(e){\n    // console.dir(e);\n    console.log(Object.getOwnPropertyNames(e));\n    [\"stack\",\"message\"]\n    console.log(Object.getOwnPropertyNames(Object.getPrototypeOf(e)));\n    [\"name\",\"message\",\"toString\"]\n    console.log(Object.getOwnPropertyNames(Object.getPrototypeOf(Object.getPrototypeOf(e))));\n    var message = e[\"message\"]\n    // console.log(message) // fuck is not defined.\n    // console.log(typeof(e.stack)) // still string. just combine them?\nprocess.stderr.write(e.message+\"\\n\"+e.stack)\n}",
+        "type": "code",
+        "location": "/native/lazero_win10_amd64/cognitionService/virtual/get_error.js:1-14"
+    },
+    "1371": {
+        "file_id": 280,
+        "content": "The code is trying to catch an error and extract stack trace information using `Object.getOwnPropertyNames()` method, but it encounters an undefined variable \"fuck\" which causes an error. It then combines the error message with the stack trace and writes it to stderr.",
+        "type": "comment"
+    },
+    "1372": {
+        "file_id": 281,
+        "content": "/native/lazero_win10_amd64/cognitionService/virtual/processes.js",
+        "type": "filepath"
+    },
+    "1373": {
+        "file_id": 281,
+        "content": "The code defines a cross-platform function, `terminate`, that terminates a process based on the operating system. It uses taskkill for Windows, spawns 'terminateProcess.sh' script on Linux/Macintosh, and uses SIGKILL if none match.",
+        "type": "summary"
+    },
+    "1374": {
+        "file_id": 281,
+        "content": "\"use strict\";\n/* --------------------------------------------------------------------------------------------\n * Copyright (c) Microsoft Corporation. All rights reserved.\n * Licensed under the MIT License. See License.txt in the project root for license information.\n * ------------------------------------------------------------------------------------------ */\nObject.defineProperty(exports, \"__esModule\", { value: true });\nexports.terminate = void 0;\nconst cp = require(\"child_process\");\nconst path_1 = require(\"path\");\nconst isWindows = (process.platform === 'win32');\nconst isMacintosh = (process.platform === 'darwin');\nconst isLinux = (process.platform === 'linux');\nfunction terminate(process, cwd) {\n    if (isWindows) {\n        try {\n            // This we run in Atom execFileSync is available.\n            // Ignore stderr since this is otherwise piped to parent.stderr\n            // which might be already closed.\n            let options = {\n                stdio: ['pipe', 'pipe', 'ignore']\n            };",
+        "type": "code",
+        "location": "/native/lazero_win10_amd64/cognitionService/virtual/processes.js:1-21"
+    },
+    "1375": {
+        "file_id": 281,
+        "content": "The code defines a function `terminate` that takes in a process and optional working directory as parameters. It checks if the current platform is Windows, Macintosh, or Linux using the `process.platform` property. If it's Windows, it attempts to terminate the process using `execFileSync` with specific stdio options (pipe input, pipe output, ignore error).",
+        "type": "comment"
+    },
+    "1376": {
+        "file_id": 281,
+        "content": "            if (cwd) {\n                options.cwd = cwd;\n            }\n            cp.execFileSync('taskkill', ['/T', '/F', '/PID', process.pid.toString()], options);\n            return true;\n        }\n        catch (err) {\n            return false;\n        }\n    }\n    else if (isLinux || isMacintosh) {\n        try {\n            var cmd = path_1.join(__dirname, 'terminateProcess.sh');\n            var result = cp.spawnSync(cmd, [process.pid.toString()]);\n            return result.error ? false : true;\n        }\n        catch (err) {\n            return false;\n        }\n    }\n    else {\n        process.kill('SIGKILL');\n        return true;\n    }\n}\nexports.terminate = terminate;\n//# sourceMappingURL=processes.js.map",
+        "type": "code",
+        "location": "/native/lazero_win10_amd64/cognitionService/virtual/processes.js:22-48"
+    },
+    "1377": {
+        "file_id": 281,
+        "content": "This code terminates a process based on the operating system. If running on Windows, it uses taskkill to forcefully kill the process with the specified PID. On Linux or Macintosh, it spawns a shell script 'terminateProcess.sh' to kill the process. If none of these match, it uses SIGKILL to terminate the process. It returns true if successful and false on error.",
+        "type": "comment"
+    },
+    "1378": {
+        "file_id": 282,
+        "content": "/native/lazero_win10_amd64/cognitionService/virtual/pyls_test.js",
+        "type": "filepath"
+    },
+    "1379": {
+        "file_id": 282,
+        "content": "The Node.js code sets up processes for spying using vscode-languageserver-protocol and child_process, with client-server connection, message passing, periodic requests, but has issues during initialization, completion, and workspace symbol lookup. User suggests reporting problems to encounter errors quickly.",
+        "type": "summary"
+    },
+    "1380": {
+        "file_id": 282,
+        "content": "const node_1 = require(\"vscode-languageserver-protocol/node\")\nconst process = require(\"./processes\") \nconst cp = require(\"child_process\")\nfunction dir(a) {console.dir(a)}\nfunction log(a) {console.log(a)}\nfunction inspect(a) {return Object.getOwnPropertyNames(a)}\n// something else?\n//var serverProcess = cp.spawn(\"node\",[\"vscode_lsp.js\"])\nconst bls = \"D:\\\\Programs\\\\Python\\\\Python38\\\\Scripts\\\\pyls.exe\"\nvar serverProcess = cp.spawn(bls)\nvar python = \"D:\\\\Programs\\\\Python\\\\Python36\\\\python36.exe\"\nvar spyProcess = cp.spawn(python,[\"spy_process.py\"]) // they use pipe as the communication tool on windows. mostly for node_ipc or c#.\n// var spyProcess = cp.spawn(bls,[\"start\"]) // must be some magic shit.\n// must be full-path?\n//var serverProcess = cp.spawn(\"python3\",[\"recv.py\"])\n//var serverProcess = cp.spawn(\"bash\")// this shit does not properly respond to us.\nconst { StringDecoder } = require('string_decoder');\nconst decoder = new StringDecoder('utf8');\nfunction dc(a){return decoder.write(a)}\n//(type, ...args) <- way to hide these things.",
+        "type": "code",
+        "location": "/native/lazero_win10_amd64/cognitionService/virtual/pyls_test.js:1-24"
+    },
+    "1381": {
+        "file_id": 282,
+        "content": "This code requires various Node.js modules like \"vscode-languageserver-protocol\", \"child_process\", and \"string_decoder\". It sets up processes using child_process.spawn, including a serverProcess and spyProcess. The code uses different paths for the serverProcess, depending on the operating system. It also mentions using pipes for communication in Windows and hints at some magic functionality. The code uses StringDecoder to handle the decoding of data from these processes.",
+        "type": "comment"
+    },
+    "1382": {
+        "file_id": 282,
+        "content": "serverProcess.stderr.on(\"data\",d=>{log(\"\\nSERVER_STDERR_START\\n\"+dc(d)+\"\\nSERVER_STDERR_END\\n\")})\nserverProcess.stdout.on(\"data\",d=>{log(\"\\nSERVER_STDOUT_START\\n\"+dc(d)+\"\\nSERVER_STDOUT_END\\n\")})// it is included.\n// spyProcess.stdout.on(\"data\",d=>{log(\"\\nSERVER_STDIN_START\\n\"+dc(d)+\"\\nSERVER_STDIN_END\\n\");serverProcess.stdin.write(d)})// it is included.\n// override this shit.\n// spyProcess.stdin.write = (data) => {log(\"\\nSERVER_STDIN_START\\n\"+dc(data)+\"\\nSERVER_STDIN_END\\n\");serverProcess.stdin.write(data);serverProcess.stdin.end()}\nvar node_writer = new node_1.StreamMessageWriter(serverProcess.stdin)\n// dir(node_writer)\nvar spy_writer = new node_1.StreamMessageWriter(spyProcess.stdin)\nspy_writer.write = (d)=>{console.log(\"SERVER_STDIN_START\");console.log(d);console.log(\"SERVER_STDIN_END\");node_writer.write(d)}\n// alter the function. fuck it.\n// dir(spyProcess.stdin.end())\n// serverProcess.stdin.on(\"data\",d=>{log(\"\\nSERVER_\")})\n// this is buffer, decode it first.\n// does this really matter? can we write into the stdin?",
+        "type": "code",
+        "location": "/native/lazero_win10_amd64/cognitionService/virtual/pyls_test.js:25-39"
+    },
+    "1383": {
+        "file_id": 282,
+        "content": "This code redirects the stdout and stderr of `serverProcess` to logging, while replacing the stdin functionality for spying. It creates two StreamMessageWriters for both processes and overrides the stdin write function of spyProcess to log and forward data to serverProcess's stdin. The original stdin functionality is preserved in node_writer.",
+        "type": "comment"
+    },
+    "1384": {
+        "file_id": 282,
+        "content": "// no don't you think about this.\nvar client = {reader:new node_1.StreamMessageReader(serverProcess.stdout)\n,writer:spy_writer}\n// replace this shit with another shit.\nlet conn = node_1.createMessageConnection(client.reader,client.writer)\nlet note = new node_1.RequestType('testNotification');\n//let note = new node_1.NotificationType('testNotification');\nconn.listen()\n//setInterval(()=>{conn.sendRequest(\"Hello World\")},1000)\n//setInterval(()=>{conn.sendRequest(note,\"Hello World\")},1000)\nlog(\"made it?\")\n//dir(node_1.createMessageConnection)\nuri = \"file:///Users/dirkb/sample/test.ts\"\ntd = \"textDocument/didOpen\"\n// dir(conn)\n// method, params?\nconst proto = require(\"vscode-languageserver-protocol\");\n//log(proto.ShutdownRequest.type)\n//let meta = code2ProtocolConverter.asCompletionParams(document, position, context)\nfunction asTextDocumentIdentifier(textDocument) { return { uri: _uriConverter(textDocument.uri) };}\nfunction asWorkerPosition(position) { return { line: position.line, character: position.character };}",
+        "type": "code",
+        "location": "/native/lazero_win10_amd64/cognitionService/virtual/pyls_test.js:40-65"
+    },
+    "1385": {
+        "file_id": 282,
+        "content": "The code sets up a connection between a client and server using a message connection. It creates a request type 'testNotification' and listens for messages on the connection, potentially sending \"Hello World\" requests every second. The code also includes unused functionality like creating another notification type, logging \"made it?\", and investigating the createMessageConnection function. The code uses vscode-languageserver-protocol for protocol conversion and converts a textDocument identifier and worker position to appropriate formats.",
+        "type": "comment"
+    },
+    "1386": {
+        "file_id": 282,
+        "content": "function asCompletionTriggerKind(triggerKind) { switch (triggerKind) {\n\tcase 0: return proto.CompletionTriggerKind.TriggerCharacter;  \n\tcase 1:return proto.CompletionTriggerKind.TriggerForIncompleteCompletions;\n\tdefault:return proto.CompletionTriggerKind.Invoked; } }\nlet position={line:0,character:0}\nlet fileuri=\"file:///D:/AGI/metalazero/native/lazero_kali_amd64/cognitionService/virtual/vscode_ipc.sh\";\n//asTextDocumentIdentifier(textDocument)\n//do not have the document yet. get it parsed.\nlet meta={\n\ttextDocument: {uri:fileuri},\n\tposition: {line:0,character:0},\n\tcontext:{\n\t\ttriggerKind: asCompletionTriggerKind(),\n        triggerCharacter: \" \"},\n\t// rootNode:[]\n\t// capabilities:\n}\nlet token=undefined\n//uri2TextDocument\n// this is shutdown.\n// wtf is the token?\n// use client/browser in place of node?\n//conn.sendRequest(proto.CompletionRequest.type, meta,token).then(()=>{log(\"SUCCESS\")}).catch(()=>{log(\"FAILED\")})\n// dir(proto)\n// log(proto.InitializeRequest.type)\n//{\"jsonrpc\":\"2.0\",\"id\":0,\"error\":{\"code\":-32603",
+        "type": "code",
+        "location": "/native/lazero_win10_amd64/cognitionService/virtual/pyls_test.js:67-94"
+    },
+    "1387": {
+        "file_id": 282,
+        "content": "The code defines a function that maps trigger kinds to completion types. It sets the position and file URI for a text document. It creates an object containing the metadata needed for a completion request, including the trigger kind, trigger character, and position. The code then sends a completion request using the specified metadata, handling success or failure with logging.",
+        "type": "comment"
+    },
+    "1388": {
+        "file_id": 282,
+        "content": ",\"message\":\"Request initialize failed with message: Cannot read property 'workspace' of undefined\"}}\n// bash-language-server/node_modules/vscode-jsonrpc/lib/common/connection.js -> ~400\n//let init={workspace:\"file:///sdcard/lazero/flutter/html/\"}\n// const pyls_cap={\"codeActionProvider\":true,\"codeLensProvider\":{\"resolveProvider\":false},\"completionProvider\":{\"resolveProvider\":false,\"triggerCharacters\":[\".\"]},\"documentFormattingProvider\":true,\"documentHighlightProvider\":true,\"documentRangeFormattingProvider\":true,\"documentSymbolProvider\":true,\"definitionProvider\":true,\"executeCommandProvider\":{\"commands\":[]},\"hoverProvider\":true,\"referencesProvider\":true,\"renameProvider\":true,\"foldingRangeProvider\":true,\"signatureHelpProvider\":{\"triggerCharacters\":[\"(\",\",\",\"=\"]},\"textDocumentSync\":{\"change\":2,\"save\":{\"includeText\":true},\"openClose\":true},\"workspace\":{\"workspaceFolders\":{\"supported\":true,\"changeNotifications\":true}}} // not working. this is shit.\n// let init={rootPath:\"D:\\\\metalazero\\\\native\\\\lazero_kali_amd64\\\\cognitionService\\\\virtual\",capabilities:pyls_cap} // wrong shit.",
+        "type": "code",
+        "location": "/native/lazero_win10_amd64/cognitionService/virtual/pyls_test.js:94-98"
+    },
+    "1389": {
+        "file_id": 282,
+        "content": "This code snippet seems to be related to configuring the capabilities of a programming language server, possibly for Visual Studio Code (VSC). The goal is to establish an initialization object (init) that defines various features and functionalities such as code action provider, completion provider, document formatting provider, and more. However, it appears that the current implementation is not working correctly and the author expresses dissatisfaction with its performance.",
+        "type": "comment"
+    },
+    "1390": {
+        "file_id": 282,
+        "content": "const std_cap = {textDocument:{completion:{completionItem:{snippetSupport:true}}}}\nlet init={rootPath:\"D:\\\\AGI\\\\metalazero\\\\native\\\\lazero_kali_amd64\\\\cognitionService\\\\virtual\",capabilities:std_cap} // wrong shit.\n// fault tolerant. python.\n// let init={rootPath:\"/data/data/com.termux/files/home/metalazero/native/lazero_kali_amd64/cognitionService/virtual\",capabilities:[]}\n//let init={}\n//let init={workspace:\"file:///sdcard/lazero/flutter/html/\",capabilities:[]}\nconn.sendRequest(proto.InitializeRequest.type, init).then(()=>{log(\"SUCCESS\");\nconn.sendRequest(proto.CompletionRequest.type, meta,token).then(()=>{log(\"COMP SUCCESS\")}).catch(()=>{log(\"FAILED\")});\n}).catch(()=>{log(\"FAILED\")})\n//dir(proto)\n//let WSR=proto.WorkspaceSymbolRequest.type\n//log(WSR)\n//conn.sendRequest(WSR,undefined).then(()=>{log(\"SUCCESS\")}).catch(()=>{log(\"FAILED\")})\n//conn.sendRequest(proto.ShutdownRequest.type, undefined).then(()=>{log(\"SUCCESS\")}).catch(()=>{log(\"FAILED\")})\n//conn.sendRequest({method:itd,params:[uri]}).then(()=>{}).catch(()=>{})",
+        "type": "code",
+        "location": "/native/lazero_win10_amd64/cognitionService/virtual/pyls_test.js:99-117"
+    },
+    "1391": {
+        "file_id": 282,
+        "content": "This code initializes a language server connection and sends requests for initialization, completion, and possibly workspace symbol lookup. It handles success and failure cases using promise then/catch blocks. The code contains various comments with alternative path options, but the actual requests sent are for InitializeRequest, CompletionRequest, and potentially WorkspaceSymbolRequest.",
+        "type": "comment"
+    },
+    "1392": {
+        "file_id": 282,
+        "content": "// there must be errors.\n// can i send some shits?\n// this is the fastest way to get shit.",
+        "type": "code",
+        "location": "/native/lazero_win10_amd64/cognitionService/virtual/pyls_test.js:118-120"
+    },
+    "1393": {
+        "file_id": 282,
+        "content": "This code seems to be indicating that there must be errors present and the user wants to send some issues. It suggests that this is the fastest way to encounter problems.",
+        "type": "comment"
+    },
+    "1394": {
+        "file_id": 283,
+        "content": "/native/lazero_win10_amd64/cognitionService/virtual/spy_process.py",
+        "type": "filepath"
+    },
+    "1395": {
+        "file_id": 283,
+        "content": "The code reads a continuous stream of data from stdin, does not perform any specific actions on the received data, and writes it to stdout without modification. It is designed for continuously streaming data between processes.",
+        "type": "summary"
+    },
+    "1396": {
+        "file_id": 283,
+        "content": "import sys\nwhile True:\n    m = sys.stdin.buffer.readline()\n    # print(m)\n    sys.stdout.buffer.write(m)\n    # sys.stdout.buffer.write(bytearray(\"hello world\\n\",encoding='utf-8'))\n    sys.stdout.buffer.flush()\n        # print(chr(line),end=\"\",file=sys.stdout)\n        # print(line)\n    # sys.stdout.buffer.write(bytearray([line]))",
+        "type": "code",
+        "location": "/native/lazero_win10_amd64/cognitionService/virtual/spy_process.py:1-11"
+    },
+    "1397": {
+        "file_id": 283,
+        "content": "The code reads a continuous stream of data from stdin, does not perform any specific actions on the received data, and writes it to stdout without modification. It is designed for continuously streaming data between processes.",
+        "type": "comment"
+    },
+    "1398": {
+        "file_id": 284,
+        "content": "/native/lazero_win10_amd64/debug_init.cmd",
+        "type": "filepath"
+    },
+    "1399": {
+        "file_id": 284,
+        "content": "This script is stopping specific processes, starting others, and then cleaning up. It uses a combination of batch scripts, PowerShell, and grep commands to identify processes by their names and kill them if necessary. Afterward, it starts the desired services (chrome_receive.js and chrome_console.js) and finally cleans up the directory path before exiting.",
+        "type": "summary"
+    }
+}

@@ -1,0 +1,10 @@
+{
+    "summary": "Creates directories for various services and components within the project.",
+    "details": [
+        {
+            "comment": "Creates directories for various services and components within the project.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_android_aarch64/mkdirs.sh\":0-3",
+            "content": "#!/usr/bin/fish\nmkdir {browserService, eventService, virtualService, shellService, inputService, cognitionService, configClass, tools, replService, mainService, backupService, floatwindow, shareService, init}\ncd virtualService\nmkdir {shellService, inputService, eventService, tools, replService}"
+        }
+    ]
+}

@@ -1,0 +1,15 @@
+{
+    "summary": "The code randomly selects a line from \"base.py\", shuffles words, and checks user's rearrangement. It provides feedback with correct rate and correct answer. The code also ensures input format matches and confirms user before continuing, printing traceback in case of exception.",
+    "details": [
+        {
+            "comment": "The code randomly selects a line from \"base.py\", shuffles the words, and asks the user to rearrange them correctly. It checks if the user's answer is correct and provides feedback with a correct rate and the correct answer.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/tools/deep-text-editor/neural_network/make_piece_sort.py\":0-32",
+            "content": "truth=open(\"base.py\",\"r\").read().split(\"\\n\")\ntruth=list(filter(lambda x: len(x)> 2, truth))\nimport random\nimport copy\nimport traceback\nwhile True:\n    try:\n        t1=random.choice(truth)\n        t0=t1.split()\n        base=[x for x in range(len(t0))]\n        b1=copy.deepcopy(base)\n        random.shuffle(base)\n        base0=[t0[x] for x in base]\n        r1=[\"{}: {}\".format(i,x) for i,x in enumerate(base0)]\n        print(\"question:\")\n        print(\"\\n\".join(r1))\n        ans=input(\"answer:\\n\")\n        ans = [int(x) for x in ans.split(\" \")][:len(t0)]\n        ans = [base0[x] for x in ans]\n        b0=[None]*len(b1)\n        for z in b1:\n            x,y = base[z],b1[z]\n            b0[x] = y\n        #r0 = \" \".join([str(x) for x in b0])\n        if ans == t0:\n            print(\"correct!\")\n        else:\n            print(\"incorrect!\")\n            cr=sum([int(ans[x] == t0[x]) for x in range(len(t0))])/len(t0)\n            print(\"correct rate:\", cr)\n            print(\"the correct answer is:\", t0)\n            print(\"your answer is:\", ans)"
+        },
+        {
+            "comment": "The code is checking if the input form matches the correct format and asks for user confirmation before continuing. If an exception occurs, it prints the traceback and a message.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/tools/deep-text-editor/neural_network/make_piece_sort.py\":33-40",
+            "content": "        print(\"correct form:\", t1)\n        print(\"continue?\")\n        input()\n        #print(\"correct form:\",\"\\n\".join(truth))\n    except:\n        traceback.print_exc()\n        print(\"exception printed above!\")\n        pass"
+        }
+    ]
+}

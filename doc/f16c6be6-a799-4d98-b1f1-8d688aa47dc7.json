@@ -1,0 +1,10 @@
+{
+    "summary": "The code is written in JavaScript and it is intended to execute when the document (web page) is fully loaded.",
+    "details": [
+        {
+            "comment": "The code is written in JavaScript and it is intended to execute when the document (web page) is fully loaded.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/remote_control/tools/jupyter_userscript_autosave.js\":0-1",
+            "content": "// shall execute when the document is ready.\n// fully loaded."
+        }
+    ]
+}

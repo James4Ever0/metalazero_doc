@@ -1,0 +1,10 @@
+{
+    "summary": "This script terminates processes related to a program, then runs two scripts (tunloadroot.sh and unloadram.sh) to clean up resources. It uses top command to find relevant process IDs, filters them using grep, and finally kills the processes with xargs kill.",
+    "details": [
+        {
+            "comment": "This script terminates processes related to a program, then runs two scripts (tunloadroot.sh and unloadram.sh) to clean up resources. It uses top command to find relevant process IDs, filters them using grep, and finally kills the processes with xargs kill.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_kali_amd64/virtualService/tools/sandserv/terminate.sh\":0-3",
+            "content": "#!/bin/bash\nenv COLUMNS=500 LINES=500 top -n 1 -q 2>&1 | grep bash | grep reloadscript | grep -Eo '^.?.?.?[0-9]+'  | xargs kill\nbash -c ./tunloadroot.sh\nbash -c ./unloadram.sh"
+        }
+    ]
+}

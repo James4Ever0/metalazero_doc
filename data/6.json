@@ -1,0 +1,527 @@
+{
+    "600": {
+        "file_id": 127,
+        "content": "/native/lazero_kali_amd64/cognitionService/virtual/lsp.sh",
+        "type": "filepath"
+    },
+    "601": {
+        "file_id": 127,
+        "content": "This code is setting up Emacs to execute a script named \"lsp.el\". It does this by using the \"--file\" option, loading the \"lsp.el\" file with \"-l\", and attempting to run it as a script with the \"--script\" option.",
+        "type": "summary"
+    },
+    "602": {
+        "file_id": 127,
+        "content": "emacs --file lsp.sh -l lsp.el\n#emacs -l lsp.el\n#emacs --script lsp.el",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/cognitionService/virtual/lsp.sh:1-3"
+    },
+    "603": {
+        "file_id": 127,
+        "content": "This code is setting up Emacs to execute a script named \"lsp.el\". It does this by using the \"--file\" option, loading the \"lsp.el\" file with \"-l\", and attempting to run it as a script with the \"--script\" option.",
+        "type": "comment"
+    },
+    "604": {
+        "file_id": 128,
+        "content": "/native/lazero_kali_amd64/cognitionService/virtual/make.sh",
+        "type": "filepath"
+    },
+    "605": {
+        "file_id": 128,
+        "content": "This line compiles the Haskell source file \"cog_core.hs\" using the GHC compiler with the \"--make\" flag, which performs necessary dependencies resolution and produces an executable.",
+        "type": "summary"
+    },
+    "606": {
+        "file_id": 128,
+        "content": "ghc --make cog_core.hs",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/cognitionService/virtual/make.sh:1-1"
+    },
+    "607": {
+        "file_id": 128,
+        "content": "This line compiles the Haskell source file \"cog_core.hs\" using the GHC compiler with the \"--make\" flag, which performs necessary dependencies resolution and produces an executable.",
+        "type": "comment"
+    },
+    "608": {
+        "file_id": 129,
+        "content": "/native/lazero_kali_amd64/cognitionService/virtual/nedit.sh",
+        "type": "filepath"
+    },
+    "609": {
+        "file_id": 129,
+        "content": "The code opens a headless instance of Neovim (nvim) using the script \"nedit.vim\". It also supports running Python 2/3, RubyGem, and NodeJS scripts within this environment.",
+        "type": "summary"
+    },
+    "610": {
+        "file_id": 129,
+        "content": "nvim --headless -s nedit.vim\n#python2/3, rubygem, nodejs",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/cognitionService/virtual/nedit.sh:1-2"
+    },
+    "611": {
+        "file_id": 129,
+        "content": "The code opens a headless instance of Neovim (nvim) using the script \"nedit.vim\". It also supports running Python 2/3, RubyGem, and NodeJS scripts within this environment.",
+        "type": "comment"
+    },
+    "612": {
+        "file_id": 130,
+        "content": "/native/lazero_kali_amd64/cognitionService/virtual/nedit.vim",
+        "type": "filepath"
+    },
+    "613": {
+        "file_id": 130,
+        "content": "This code performs various Vim commands and functions. It echoes \"hello world\" and \"hello again\", displays messages, sets numbered lines, inspects package.loaded using Lua, and quits the Vim editor.",
+        "type": "summary"
+    },
+    "614": {
+        "file_id": 130,
+        "content": ":echo \"hello world\"\n:echom \"hello again\"\n:messages\n:set number\n:lua print(vim.inspect(package.loaded))\n:quit!",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/cognitionService/virtual/nedit.vim:1-6"
+    },
+    "615": {
+        "file_id": 130,
+        "content": "This code performs various Vim commands and functions. It echoes \"hello world\" and \"hello again\", displays messages, sets numbered lines, inspects package.loaded using Lua, and quits the Vim editor.",
+        "type": "comment"
+    },
+    "616": {
+        "file_id": 131,
+        "content": "/native/lazero_kali_amd64/cognitionService/virtual/node_curl_telnet.js",
+        "type": "filepath"
+    },
+    "617": {
+        "file_id": 131,
+        "content": "Spawns a curl process that connects to a local telnet server, logs stderr and stdout output, and periodically writes \"hello\\n\" to the input.",
+        "type": "summary"
+    },
+    "618": {
+        "file_id": 131,
+        "content": "const process = require(\"./processes\")\nconst cp = require(\"child_process\")\nfunction log(a) {console.log(a)}\nconst { StringDecoder } = require('string_decoder');\nconst decoder = new StringDecoder('utf8');\nfunction dc(a){return decoder.write(a)}\nvar serverprocess = cp.spawn(\"curl\",[\"--trace\",\"-\",\"telnet://localhost:10000\"],{shell:true})\nserverprocess.stderr.on(\"data\",d=>{log(\"stderr\\n\"+dc(d))})\nserverprocess.stdout.on(\"data\",d=>{log(\"stdout\\n\"+dc(d))})\n/*serverprocess.stdin.write=(data)=>{\n\tlog(\"stdin\\n\"+data)\n\tserverprocess.stdin.prototype.write(data)}*/\nsetInterval(()=>{serverprocess.stdin.write(\"hello\\n\")},1000)",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/cognitionService/virtual/node_curl_telnet.js:1-17"
+    },
+    "619": {
+        "file_id": 131,
+        "content": "Spawns a curl process that connects to a local telnet server, logs stderr and stdout output, and periodically writes \"hello\\n\" to the input.",
+        "type": "comment"
+    },
+    "620": {
+        "file_id": 132,
+        "content": "/native/lazero_kali_amd64/cognitionService/virtual/node_curl_telnet.sh",
+        "type": "filepath"
+    },
+    "621": {
+        "file_id": 132,
+        "content": "This code is a shell script that runs a JavaScript file (node_curl_telnet.js) using the Node.js runtime, likely for making HTTP requests or interacting with network services via CURL and Telnet functionalities.",
+        "type": "summary"
+    },
+    "622": {
+        "file_id": 132,
+        "content": "#!/bin/bash\nnode node_curl_telnet.js",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/cognitionService/virtual/node_curl_telnet.sh:1-2"
+    },
+    "623": {
+        "file_id": 132,
+        "content": "This code is a shell script that runs a JavaScript file (node_curl_telnet.js) using the Node.js runtime, likely for making HTTP requests or interacting with network services via CURL and Telnet functionalities.",
+        "type": "comment"
+    },
+    "624": {
+        "file_id": 133,
+        "content": "/native/lazero_kali_amd64/cognitionService/virtual/node_curl_telnet.template",
+        "type": "filepath"
+    },
+    "625": {
+        "file_id": 133,
+        "content": "This code sets up a curl server process that listens to a telnet server on localhost port 10000. It uses child processes, string decoding, and setInterval for communication. Standard output, standard error, and standard input are being logged or written to accordingly.",
+        "type": "summary"
+    },
+    "626": {
+        "file_id": 133,
+        "content": "const process = require(\"./processes\")\nconst cp = require(\"child_process\")\nfunction log(a) {console.log(a)}\nconst { StringDecoder } = require('string_decoder');\nconst decoder = new StringDecoder('utf8');\nfunction dc(a){return decoder.write(a)}\nvar serverprocess = cp.spawn(\"curl\",[\"-TEMPLATE\",\"telnet://localhost:10000\"])\nserverprocess.stderr.on(\"data\",d=>{log(\"stderr\\n\"+dc(d))})\nserverprocess.stdout.on(\"data\",d=>{log(\"stdout\\n\"+dc(d))})\n/*serverprocess.stdin.write=(data)=>{\n\tlog(\"stdin\\n\"+data)\n\tserverprocess.stdin.prototype.write(data)}*/\nsetInterval(()=>{serverprocess.stdin.write(\"hello\\n\")},1000)",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/cognitionService/virtual/node_curl_telnet.template:1-17"
+    },
+    "627": {
+        "file_id": 133,
+        "content": "This code sets up a curl server process that listens to a telnet server on localhost port 10000. It uses child processes, string decoding, and setInterval for communication. Standard output, standard error, and standard input are being logged or written to accordingly.",
+        "type": "comment"
+    },
+    "628": {
+        "file_id": 134,
+        "content": "/native/lazero_kali_amd64/cognitionService/virtual/node_curl_template.sh",
+        "type": "filepath"
+    },
+    "629": {
+        "file_id": 134,
+        "content": "The code uses Bash scripting to execute a Python program (pure_fuzz.py) and replace the \"TEMPLATE\" in the node_curl_telnet.template file with a generated value (\"abc\") before saving it as node_curl_telnet_abc.js. This process repeats for each iteration, removing the previous js file before creating a new one.",
+        "type": "summary"
+    },
+    "630": {
+        "file_id": 134,
+        "content": "#!/bin/bash\npython3 pure_fuzz.py -d 3 | xargs -iabc bash -c \"rm node_curl_telnet_abc.js\"\n#python3 pure_fuzz.py -d 3 | xargs -iabc bash -c \"sed \\\"s/TEMPLATE/abc/g\\\" node_curl_telnet.template > node_curl_telnet_abc.js\"",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/cognitionService/virtual/node_curl_template.sh:1-3"
+    },
+    "631": {
+        "file_id": 134,
+        "content": "The code uses Bash scripting to execute a Python program (pure_fuzz.py) and replace the \"TEMPLATE\" in the node_curl_telnet.template file with a generated value (\"abc\") before saving it as node_curl_telnet_abc.js. This process repeats for each iteration, removing the previous js file before creating a new one.",
+        "type": "comment"
+    },
+    "632": {
+        "file_id": 135,
+        "content": "/native/lazero_kali_amd64/cognitionService/virtual/node_curl_template2.sh",
+        "type": "filepath"
+    },
+    "633": {
+        "file_id": 135,
+        "content": "This script executes pure_fuzz.py with -d 2 argument, and then removes any existing node_curl_telnet_abc.js file before replacing the TEMPLATE in the node_curl_telnet.template file with \"abc\" and saving it as node_curl_telnet_abc.js.",
+        "type": "summary"
+    },
+    "634": {
+        "file_id": 135,
+        "content": "#!/bin/bash\npython3 pure_fuzz.py -d 2 | xargs -iabc bash -c \"rm node_curl_telnet_abc.js\"\n#python3 pure_fuzz.py -d 2 | xargs -iabc bash -c \"sed \\\"s/TEMPLATE/abc/g\\\" node_curl_telnet.template > node_curl_telnet_abc.js\"",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/cognitionService/virtual/node_curl_template2.sh:1-3"
+    },
+    "635": {
+        "file_id": 135,
+        "content": "This script executes pure_fuzz.py with -d 2 argument, and then removes any existing node_curl_telnet_abc.js file before replacing the TEMPLATE in the node_curl_telnet.template file with \"abc\" and saving it as node_curl_telnet_abc.js.",
+        "type": "comment"
+    },
+    "636": {
+        "file_id": 136,
+        "content": "/native/lazero_kali_amd64/cognitionService/virtual/nserv.py",
+        "type": "filepath"
+    },
+    "637": {
+        "file_id": 136,
+        "content": "Attaching to nvim instance using pynvim library, setting address and port for TCP communication, executing a command and printing details of editor.",
+        "type": "summary"
+    },
+    "638": {
+        "file_id": 136,
+        "content": "from pynvim import attach\nad, pt=\"localhost\", 9897\nargs=[\"nvim\", \"--embed\", \"--headless\"]\n#args=[\"env\", \"nvim\", \"--embed\", \"--headless\"]\ned=attach(\"child\",argv=args)\n#ed=attach(\"stdio\",argv=args)\n#ed=attach('tcp', address=ad, port=pt)\ncmd=\"echo 'hello world'\"\ned.command(cmd)\nprint(dir(ed))\nprint([x for x in ed.windows])\nprint([x for x in ed.buffers])\nprint(ed.version)\nprint(ed.command_output(cmd))",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/cognitionService/virtual/nserv.py:1-14"
+    },
+    "639": {
+        "file_id": 136,
+        "content": "Attaching to nvim instance using pynvim library, setting address and port for TCP communication, executing a command and printing details of editor.",
+        "type": "comment"
+    },
+    "640": {
+        "file_id": 137,
+        "content": "/native/lazero_kali_amd64/cognitionService/virtual/nserv.sh",
+        "type": "filepath"
+    },
+    "641": {
+        "file_id": 137,
+        "content": "This code starts the Neovim text editor in headless mode, listening on localhost port 9897. It allows other programs to connect and interact with the editor without a GUI interface.",
+        "type": "summary"
+    },
+    "642": {
+        "file_id": 137,
+        "content": "nvim --listen localhost:9897 --headless",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/cognitionService/virtual/nserv.sh:1-1"
+    },
+    "643": {
+        "file_id": 137,
+        "content": "This code starts the Neovim text editor in headless mode, listening on localhost port 9897. It allows other programs to connect and interact with the editor without a GUI interface.",
+        "type": "comment"
+    },
+    "644": {
+        "file_id": 138,
+        "content": "/native/lazero_kali_amd64/cognitionService/virtual/objc_compile.sh",
+        "type": "filepath"
+    },
+    "645": {
+        "file_id": 138,
+        "content": "This script compiles the \"cog_core.m\" file with GCC-10, includes necessary headers and libraries from GNUstep, links against gnustep-base library, and enables ObjC exceptions support for a native iOS-like environment on Kali Linux.",
+        "type": "summary"
+    },
+    "646": {
+        "file_id": 138,
+        "content": "#gcc-8 -o hello -objc cog_core.m \n#gcc-10 -o hello -objc cog_core.m\ngcc-10 -o cog_core cog_core.m -I `gnustep-config --variable=GNUSTEP_SYSTEM_HEADERS` \\\n                       -L `gnustep-config --variable=GNUSTEP_SYSTEM_LIBRARIES` \\\n                       -lgnustep-base -fconstant-string-class=NSConstantString \\\n                       -D_NATIVE_OBJC_EXCEPTIONS \\\n                       -lobjc",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/cognitionService/virtual/objc_compile.sh:1-7"
+    },
+    "647": {
+        "file_id": 138,
+        "content": "This script compiles the \"cog_core.m\" file with GCC-10, includes necessary headers and libraries from GNUstep, links against gnustep-base library, and enables ObjC exceptions support for a native iOS-like environment on Kali Linux.",
+        "type": "comment"
+    },
+    "648": {
+        "file_id": 139,
+        "content": "/native/lazero_kali_amd64/cognitionService/virtual/post_data.el",
+        "type": "filepath"
+    },
+    "649": {
+        "file_id": 139,
+        "content": "This code imports necessary libraries, makes an HTTP POST request to \"http://localhost:8786/post\" with data containing a key-value pair and another key-value pair of \"key2\" and \"value2\". The successful response is handled by printing the sent data using the message function. Additionally, it sets `cnds` as formatted company candidates and sends this along with \"key2\" in the POST request.",
+        "type": "summary"
+    },
+    "650": {
+        "file_id": 139,
+        "content": "(require 'package)\n(package-initialize)\n(require 'request)\n(request \"http://localhost:8786/post\" \n\t :type \"POST\" \n\t :data '((\"key\" . \"value\") (\"key2\" . \"value2\")) \n\t :parser 'json-read \n\t :success (cl-function(lambda (&key data &allow-other-keys)\n\t(message \"I sent: %S\" (assoc-default 'form data)))))\n(require 'company)\n(find-file \"lsp.sh\")\n(company-mode)\n(company-complete-common)\n(setq cnds (format \"%s\" company-candidates))\n(request \"http://localhost:8786/post\" :type \"POST\" :data `((\"key\" . ,cnds) (\"key2\" . \"value2\")) :parser 'json-read :success (cl-function(lambda (&key data &allow-other-keys)(message \"I sent: %S\" (assoc-default 'form data)))))\n;(print cnds)\n;(print (format \"%s\" company-candidates))",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/cognitionService/virtual/post_data.el:1-17"
+    },
+    "651": {
+        "file_id": 139,
+        "content": "This code imports necessary libraries, makes an HTTP POST request to \"http://localhost:8786/post\" with data containing a key-value pair and another key-value pair of \"key2\" and \"value2\". The successful response is handled by printing the sent data using the message function. Additionally, it sets `cnds` as formatted company candidates and sends this along with \"key2\" in the POST request.",
+        "type": "comment"
+    },
+    "652": {
+        "file_id": 140,
+        "content": "/native/lazero_kali_amd64/cognitionService/virtual/post_data.sh",
+        "type": "filepath"
+    },
+    "653": {
+        "file_id": 140,
+        "content": "This code is launching Emacs with different command-line options and scripts to execute specific tasks. The first three lines run Emacs with various arguments, while the last line runs a script named \"post_data.el\" using the --script option. This suggests that these commands are used to automate tasks related to editing and executing code within Emacs for the cognition service virtual environment.",
+        "type": "summary"
+    },
+    "654": {
+        "file_id": 140,
+        "content": "#emacs --script lsp.el\n#emacs --file lsp.sh -l lsp.el\n#emacs -l lsp.el\nemacs --script post_data.el",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/cognitionService/virtual/post_data.sh:1-4"
+    },
+    "655": {
+        "file_id": 140,
+        "content": "This code is launching Emacs with different command-line options and scripts to execute specific tasks. The first three lines run Emacs with various arguments, while the last line runs a script named \"post_data.el\" using the --script option. This suggests that these commands are used to automate tasks related to editing and executing code within Emacs for the cognition service virtual environment.",
+        "type": "comment"
+    },
+    "656": {
+        "file_id": 141,
+        "content": "/native/lazero_kali_amd64/cognitionService/virtual/processes.js",
+        "type": "filepath"
+    },
+    "657": {
+        "file_id": 141,
+        "content": "This code defines a function `terminate` that forcefully terminates a given process, considering the operating system and using appropriate methods like taskkill for Windows or executing shell scripts for Linux/macOS.",
+        "type": "summary"
+    },
+    "658": {
+        "file_id": 141,
+        "content": "\"use strict\";\n/* --------------------------------------------------------------------------------------------\n * Copyright (c) Microsoft Corporation. All rights reserved.\n * Licensed under the MIT License. See License.txt in the project root for license information.\n * ------------------------------------------------------------------------------------------ */\nObject.defineProperty(exports, \"__esModule\", { value: true });\nexports.terminate = void 0;\nconst cp = require(\"child_process\");\nconst path_1 = require(\"path\");\nconst isWindows = (process.platform === 'win32');\nconst isMacintosh = (process.platform === 'darwin');\nconst isLinux = (process.platform === 'linux');\nfunction terminate(process, cwd) {\n    if (isWindows) {\n        try {\n            // This we run in Atom execFileSync is available.\n            // Ignore stderr since this is otherwise piped to parent.stderr\n            // which might be already closed.\n            let options = {\n                stdio: ['pipe', 'pipe', 'ignore']\n            };",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/cognitionService/virtual/processes.js:1-21"
+    },
+    "659": {
+        "file_id": 141,
+        "content": "The code defines a function `terminate` that terminates a given process. It first checks the operating system (Windows, Macintosh, or Linux) and then uses `child_process.execFileSync` to terminate the process. The stdio option is set to ignore any output from the process being terminated.",
+        "type": "comment"
+    },
+    "660": {
+        "file_id": 141,
+        "content": "            if (cwd) {\n                options.cwd = cwd;\n            }\n            cp.execFileSync('taskkill', ['/T', '/F', '/PID', process.pid.toString()], options);\n            return true;\n        }\n        catch (err) {\n            return false;\n        }\n    }\n    else if (isLinux || isMacintosh) {\n        try {\n            var cmd = path_1.join(__dirname, 'terminateProcess.sh');\n            var result = cp.spawnSync(cmd, [process.pid.toString()]);\n            return result.error ? false : true;\n        }\n        catch (err) {\n            return false;\n        }\n    }\n    else {\n        process.kill('SIGKILL');\n        return true;\n    }\n}\nexports.terminate = terminate;\n//# sourceMappingURL=processes.js.map",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/cognitionService/virtual/processes.js:22-48"
+    },
+    "661": {
+        "file_id": 141,
+        "content": "This code checks the operating system and terminates the current process based on that. If it's Windows, it uses taskkill to forcefully terminate the process. For Linux or macOS, it tries to execute a shell script (terminateProcess.sh) that kills the process. If none of these apply, it directly calls process.kill('SIGKILL').",
+        "type": "comment"
+    },
+    "662": {
+        "file_id": 142,
+        "content": "/native/lazero_kali_amd64/cognitionService/virtual/pure_fuzz.py",
+        "type": "filepath"
+    },
+    "663": {
+        "file_id": 142,
+        "content": "This code imports necessary libraries and parses command line arguments for depth and prefix options. It generates combinations of characters and prints them as potential flags.",
+        "type": "summary"
+    },
+    "664": {
+        "file_id": 142,
+        "content": "#import sys\nimport argparse\nparser=argparse.ArgumentParser()\nparser.add_argument('-d','--depth',type=int,help='depth of possible flags combination',default=2)\nparser.add_argument(\"-p\",\"--prefix\",action=\"store_true\")\nargs=parser.parse_args()\ndepth=args.depth\npre=args.prefix\ncandidates=[chr(x+ord('a'))for x in range(26)]\ncandidates=candidates+[x.upper() for x in candidates]\nimport itertools\nprefix=\"\" if not pre else \"-\"\nflags=[prefix+\"\".join(x) for x in itertools.combinations(candidates,depth)]\n#print(pargs)\nfor x in flags:\n    print(x)",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/cognitionService/virtual/pure_fuzz.py:1-19"
+    },
+    "665": {
+        "file_id": 142,
+        "content": "This code imports necessary libraries and parses command line arguments for depth and prefix options. It generates combinations of characters and prints them as potential flags.",
+        "type": "comment"
+    },
+    "666": {
+        "file_id": 143,
+        "content": "/native/lazero_kali_amd64/cognitionService/virtual/python_complete.py",
+        "type": "filepath"
+    },
+    "667": {
+        "file_id": 143,
+        "content": "Imports numpy library, creates a numpy array with elements 1, 2, and 3, then adds the array to itself.",
+        "type": "summary"
+    },
+    "668": {
+        "file_id": 143,
+        "content": "import numpy as np\na=np.array([1,2,3])\na+=a",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/cognitionService/virtual/python_complete.py:1-4"
+    },
+    "669": {
+        "file_id": 143,
+        "content": "Imports numpy library, creates a numpy array with elements 1, 2, and 3, then adds the array to itself.",
+        "type": "comment"
+    },
+    "670": {
+        "file_id": 144,
+        "content": "/native/lazero_kali_amd64/cognitionService/virtual/python_lsp.sh",
+        "type": "filepath"
+    },
+    "671": {
+        "file_id": 144,
+        "content": "This code executes a Python script using pyls and jedi library to perform autocompletion for a given file path. The line number is used as the index, but it should be noted that line numbers are not necessarily equivalent to the index of the tokens within the script.",
+        "type": "summary"
+    },
+    "672": {
+        "file_id": 144,
+        "content": "#echo {} | pyls\n# this is extraneous,\npython3 -c \"import jedi;s=jedi.Script(path='python_complete.py');print(s.complete(2+1,len('a=np.')))\"\n#line num is not index num.",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/cognitionService/virtual/python_lsp.sh:1-4"
+    },
+    "673": {
+        "file_id": 144,
+        "content": "This code executes a Python script using pyls and jedi library to perform autocompletion for a given file path. The line number is used as the index, but it should be noted that line numbers are not necessarily equivalent to the index of the tokens within the script.",
+        "type": "comment"
+    },
+    "674": {
+        "file_id": 145,
+        "content": "/native/lazero_kali_amd64/cognitionService/virtual/python_rpc_lsp.py",
+        "type": "filepath"
+    },
+    "675": {
+        "file_id": 145,
+        "content": "This code is continuously printing a JSON string representing a JSON-RPC request to restart the Solargraph server, with a random parameter. It does not import or use the time module. The while loop keeps repeating this process indefinitely.",
+        "type": "summary"
+    },
+    "676": {
+        "file_id": 145,
+        "content": "cnt=\"\"\"\\r\\n\n{\n\t\"jsonrpc\": \"2.0\",\n\t\"id\": 1,\n\t\"method\": \"$/solargraph/restartServer\",\n\t\"params\": {\n        \"random\":true\n\t}\n}\n\"\"\"\n#import time\nwhile True:\n    #time.sleep(1)\n    print(cnt,end=\"\\r\\n\",flush=True)",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/cognitionService/virtual/python_rpc_lsp.py:1-14"
+    },
+    "677": {
+        "file_id": 145,
+        "content": "This code is continuously printing a JSON string representing a JSON-RPC request to restart the Solargraph server, with a random parameter. It does not import or use the time module. The while loop keeps repeating this process indefinitely.",
+        "type": "comment"
+    },
+    "678": {
+        "file_id": 146,
+        "content": "/native/lazero_kali_amd64/cognitionService/virtual/recv.py",
+        "type": "filepath"
+    },
+    "679": {
+        "file_id": 146,
+        "content": "The code continuously reads lines from standard input and prints them, creating an infinite loop. It uses the buffer readline method from sys.stdin to read data, which allows for efficient reading of binary data or large amounts of text.",
+        "type": "summary"
+    },
+    "680": {
+        "file_id": 146,
+        "content": "import sys\nwhile True:\n    ln = sys.stdin.buffer.readline()\n    print([ln])\n#print(dir(sys.stdin.buffer))",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/cognitionService/virtual/recv.py:1-6"
+    },
+    "681": {
+        "file_id": 146,
+        "content": "The code continuously reads lines from standard input and prints them, creating an infinite loop. It uses the buffer readline method from sys.stdin to read data, which allows for efficient reading of binary data or large amounts of text.",
+        "type": "comment"
+    },
+    "682": {
+        "file_id": 147,
+        "content": "/native/lazero_kali_amd64/cognitionService/virtual/reflection.el",
+        "type": "filepath"
+    },
+    "683": {
+        "file_id": 147,
+        "content": "This code performs a series of actions: 1. Seeks functions related to the given argument using apropos, 2. Prints the obtained function names in obarray, 3. Displays documentation for the print function, 4. Iterates through all atoms and prints them using mapatoms, and 5. Prints the load-history information.",
+        "type": "summary"
+    },
+    "684": {
+        "file_id": 147,
+        "content": "(apropos \"\")\n(print obarray)\n(documentation 'print)\n(mapatoms (lambda (x) (print x)))\n(print load-history)",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/cognitionService/virtual/reflection.el:1-5"
+    },
+    "685": {
+        "file_id": 147,
+        "content": "This code performs a series of actions: 1. Seeks functions related to the given argument using apropos, 2. Prints the obtained function names in obarray, 3. Displays documentation for the print function, 4. Iterates through all atoms and prints them using mapatoms, and 5. Prints the load-history information.",
+        "type": "comment"
+    },
+    "686": {
+        "file_id": 148,
+        "content": "/native/lazero_kali_amd64/cognitionService/virtual/reflection.sh",
+        "type": "filepath"
+    },
+    "687": {
+        "file_id": 148,
+        "content": "This code opens Emacs with a script \"reflection.el\" located in the current directory, likely for editing or running specific Lisp functions or operations within Emacs.",
+        "type": "summary"
+    },
+    "688": {
+        "file_id": 148,
+        "content": "emacs --script reflection.el",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/cognitionService/virtual/reflection.sh:1-1"
+    },
+    "689": {
+        "file_id": 148,
+        "content": "This code opens Emacs with a script \"reflection.el\" located in the current directory, likely for editing or running specific Lisp functions or operations within Emacs.",
+        "type": "comment"
+    },
+    "690": {
+        "file_id": 149,
+        "content": "/native/lazero_kali_amd64/cognitionService/virtual/ruby_api_list.rb",
+        "type": "filepath"
+    },
+    "691": {
+        "file_id": 149,
+        "content": "This code imports the 'solargraph' library, initializes a new instance of Solargraph::ApiMap, retrieves all methods associated with the 'String' class, and then prints those method names.",
+        "type": "summary"
+    },
+    "692": {
+        "file_id": 149,
+        "content": "require 'solargraph'\napi_map = Solargraph::ApiMap.new\npins = api_map.get_methods('String')\nprint(pins)",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/cognitionService/virtual/ruby_api_list.rb:1-5"
+    },
+    "693": {
+        "file_id": 149,
+        "content": "This code imports the 'solargraph' library, initializes a new instance of Solargraph::ApiMap, retrieves all methods associated with the 'String' class, and then prints those method names.",
+        "type": "comment"
+    },
+    "694": {
+        "file_id": 150,
+        "content": "/native/lazero_kali_amd64/cognitionService/virtual/run.sh",
+        "type": "filepath"
+    },
+    "695": {
+        "file_id": 150,
+        "content": "This code executes a Java jar file, specifically bsh-core-2.0b4.jar, running the script cog_core.bsh within it. This likely involves some form of scripting or behavioral processing with the BeanShell scripting language.",
+        "type": "summary"
+    },
+    "696": {
+        "file_id": 150,
+        "content": "java -jar bsh-core-2.0b4.jar cog_core.bsh",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/cognitionService/virtual/run.sh:1-1"
+    },
+    "697": {
+        "file_id": 150,
+        "content": "This code executes a Java jar file, specifically bsh-core-2.0b4.jar, running the script cog_core.bsh within it. This likely involves some form of scripting or behavioral processing with the BeanShell scripting language.",
+        "type": "comment"
+    },
+    "698": {
+        "file_id": 151,
+        "content": "/native/lazero_kali_amd64/cognitionService/virtual/server.el",
+        "type": "filepath"
+    },
+    "699": {
+        "file_id": 151,
+        "content": "The code defines a function \"voidme\" which forces server deletion, sets the server socket directory, and starts the server. It also runs this function every time the idle timer reaches 0.",
+        "type": "summary"
+    }
+}

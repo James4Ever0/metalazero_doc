@@ -1,0 +1,10 @@
+{
+    "summary": "This code snippet searches for a substring \"abc\" within the string \"defabc\" and prints the result. It demonstrates using regular expressions and Lisp functions to perform pattern matching. Additionally, it highlights the lack of global variables in Lisp, which can make variable management more complex.",
+    "details": [
+        {
+            "comment": "This code snippet searches for a substring \"abc\" within the string \"defabc\" and prints the result. It demonstrates using regular expressions and Lisp functions to perform pattern matching. Additionally, it highlights the lack of global variables in Lisp, which can make variable management more complex.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_kali_amd64/cognitionService/virtual/cog_core.el\":0-3",
+            "content": "(print (string-match-p (regexp-quote \"abc\") \"defabc\"))\n; remember lisp has no global variables?\n; could be headache.\n;(print (cl-search \"abc\" \"nothing\"))"
+        }
+    ]
+}

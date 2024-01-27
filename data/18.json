@@ -1,0 +1,532 @@
+{
+    "1800": {
+        "file_id": 355,
+        "content": "/schedules/merge_file.py",
+        "type": "filepath"
+    },
+    "1801": {
+        "file_id": 355,
+        "content": "The code imports json and defines a function parse_file to load JSON data from a target file. It also checks if the latest repository has been fetched, and if so, it will begin merging task files. The sorting of datetime objects remains unclear.",
+        "type": "summary"
+    },
+    "1802": {
+        "file_id": 355,
+        "content": "import json\ndef parse_file(target):\n    with open(target,\"r\") as f:\n        target = json.loads(target)\n    return target\nif __name__ == \"__main__\":\n    import os\n    from get_time import sort_time\n    # how to sort this datetime shit?\n    # i mean they are apparently time sorted.\n    if os.path.exists(\".latest\"):\n        print(\"latest repo have been fetched. will begin to merge task files.\")",
+        "type": "code",
+        "location": "/schedules/merge_file.py:1-13"
+    },
+    "1803": {
+        "file_id": 355,
+        "content": "The code imports json and defines a function parse_file to load JSON data from a target file. It also checks if the latest repository has been fetched, and if so, it will begin merging task files. The sorting of datetime objects remains unclear.",
+        "type": "comment"
+    },
+    "1804": {
+        "file_id": 356,
+        "content": "/schedules/merge_tasks.sh",
+        "type": "filepath"
+    },
+    "1805": {
+        "file_id": 356,
+        "content": "The code snippet is running a Python script called 'merge_file.py' to merge tasks and ensuring successful database synchronization before proceeding with the task syncing process, while also preventing accidental removal of tasks.",
+        "type": "summary"
+    },
+    "1806": {
+        "file_id": 356,
+        "content": "# use a python program to do the job, but instead you need some uuid stuff right? you need to check the latest one and then you get the update.\n# only if you've successifully sync with the database can you safely sync the shit!\npython3 merge_file.py\n# we shall not accidentally remove tasks shall we?",
+        "type": "code",
+        "location": "/schedules/merge_tasks.sh:1-4"
+    },
+    "1807": {
+        "file_id": 356,
+        "content": "The code snippet is running a Python script called 'merge_file.py' to merge tasks and ensuring successful database synchronization before proceeding with the task syncing process, while also preventing accidental removal of tasks.",
+        "type": "comment"
+    },
+    "1808": {
+        "file_id": 357,
+        "content": "/schedules/purge_test.sh",
+        "type": "filepath"
+    },
+    "1809": {
+        "file_id": 357,
+        "content": "This code defines two tasks: \"test0 delete\" and \"test0 purge\". The \"test0 delete\" task likely involves deleting a specific item or resource, while the \"test0 purge\" task could be responsible for removing all traces of the specified item or resource. These tasks may be part of a larger script or workflow to manage test data or resources in a system.",
+        "type": "summary"
+    },
+    "1810": {
+        "file_id": 357,
+        "content": "task test0 delete\ntask test0 purge",
+        "type": "code",
+        "location": "/schedules/purge_test.sh:1-2"
+    },
+    "1811": {
+        "file_id": 357,
+        "content": "This code defines two tasks: \"test0 delete\" and \"test0 purge\". The \"test0 delete\" task likely involves deleting a specific item or resource, while the \"test0 purge\" task could be responsible for removing all traces of the specified item or resource. These tasks may be part of a larger script or workflow to manage test data or resources in a system.",
+        "type": "comment"
+    },
+    "1812": {
+        "file_id": 358,
+        "content": "/schedules/speak_tasks.sh",
+        "type": "filepath"
+    },
+    "1813": {
+        "file_id": 358,
+        "content": "This script continuously exports tasks, pipes the output to a Python speaker script and then to an espeak text-to-speech tool. The while loop fetches tasks, excludes header and unnecessary lines, selects a random non-numeric string from the remaining tasks, and executes a separate script (speak_word.sh) with the selected task as input.",
+        "type": "summary"
+    },
+    "1814": {
+        "file_id": 358,
+        "content": "#task export | python3 speaker.py | espeak\nwhile true\ndo\n#\ttask ls | tail -n +4 | grep -Eo \"[^0-9]+\"\n\ttask ls | tail -n +4 | head -n -2 |grep -Eo \"[^0-9]+\" | shuf | xargs -iabc bash speak_word.sh abc \ndone",
+        "type": "code",
+        "location": "/schedules/speak_tasks.sh:1-6"
+    },
+    "1815": {
+        "file_id": 358,
+        "content": "This script continuously exports tasks, pipes the output to a Python speaker script and then to an espeak text-to-speech tool. The while loop fetches tasks, excludes header and unnecessary lines, selects a random non-numeric string from the remaining tasks, and executes a separate script (speak_word.sh) with the selected task as input.",
+        "type": "comment"
+    },
+    "1816": {
+        "file_id": 359,
+        "content": "/schedules/speak_word.sh",
+        "type": "filepath"
+    },
+    "1817": {
+        "file_id": 359,
+        "content": "This script uses espeak to speak a provided word or phrase, sets the speech rate at 200 and the volume at 100. It logs the date and time when the script starts speaking, waits for 2 seconds before executing, and has bash shell support.",
+        "type": "summary"
+    },
+    "1818": {
+        "file_id": 359,
+        "content": "#!/bin/bash\necho \"[$(date)] speaking: $@\"\nespeak -a 200 -p 100 \"$@\"\nsleep 2",
+        "type": "code",
+        "location": "/schedules/speak_word.sh:1-4"
+    },
+    "1819": {
+        "file_id": 359,
+        "content": "This script uses espeak to speak a provided word or phrase, sets the speech rate at 200 and the volume at 100. It logs the date and time when the script starts speaking, waits for 2 seconds before executing, and has bash shell support.",
+        "type": "comment"
+    },
+    "1820": {
+        "file_id": 360,
+        "content": "/schedules/sync.sh",
+        "type": "filepath"
+    },
+    "1821": {
+        "file_id": 360,
+        "content": "The code checks the exit status of \"pull.sh\" script and if it is 0, it creates a \".latest\" file indicating a successful pull, else it removes the \".latest\" file. The safe operation (e.g., merging files) can be performed after creating or removing the \".latest\" file accordingly.",
+        "type": "summary"
+    },
+    "1822": {
+        "file_id": 360,
+        "content": "bash pull.sh\nif [ $! -eq 0 ]; then\n\t# now you can safely do your shit.\n\ttouch .latest\n\tpython3 merge_file.py\nelse\n\trm .latest\nfi",
+        "type": "code",
+        "location": "/schedules/sync.sh:1-8"
+    },
+    "1823": {
+        "file_id": 360,
+        "content": "The code checks the exit status of \"pull.sh\" script and if it is 0, it creates a \".latest\" file indicating a successful pull, else it removes the \".latest\" file. The safe operation (e.g., merging files) can be performed after creating or removing the \".latest\" file accordingly.",
+        "type": "comment"
+    },
+    "1824": {
+        "file_id": 361,
+        "content": "/schedules/write_diary.sh",
+        "type": "filepath"
+    },
+    "1825": {
+        "file_id": 361,
+        "content": "Creates a new directory for diary entries, generates a timestamped file name, creates the file within the directory, and opens it in Vim editor.",
+        "type": "summary"
+    },
+    "1826": {
+        "file_id": 361,
+        "content": "mkdir diary\ntarget_diary=$(python3 -c \"import datetime; print(datetime.datetime.now().date().isoformat()+'.txt')\")\necho target: $target_diary\nsleep 0.5\ncd diary\nvim $target_diary",
+        "type": "code",
+        "location": "/schedules/write_diary.sh:1-6"
+    },
+    "1827": {
+        "file_id": 361,
+        "content": "Creates a new directory for diary entries, generates a timestamped file name, creates the file within the directory, and opens it in Vim editor.",
+        "type": "comment"
+    },
+    "1828": {
+        "file_id": 362,
+        "content": "/tools/README",
+        "type": "filepath"
+    },
+    "1829": {
+        "file_id": 362,
+        "content": "The code is discussing the pexpect tool, questioning its handling of case sensitivity and simple string containment. It also mentions whether pexpect creates a virtual TTY, if it can be run like tornado, if sleeping is possible, if expect can do the same thing, and introducing \"et\" shell. \"ET\" seems to be a remote shell that automatically reconnects without interrupting the session.",
+        "type": "summary"
+    },
+    "1830": {
+        "file_id": 362,
+        "content": "there is a tool called pexpect. but i doubt about it.\ndoes it handle case sensitiveness? simple string containing?\ndoes pexpect create a virtual tty? can we really run it like the tornado stuff? can we sleep with this one?\ncan we do the same with expect?\nwhat is this \"et\" shell?\net/stable 6.0.13-1 arm\n  A remote shell that automatically reconnects without interrupting the session",
+        "type": "code",
+        "location": "/tools/README:1-12"
+    },
+    "1831": {
+        "file_id": 362,
+        "content": "The code is discussing the pexpect tool, questioning its handling of case sensitivity and simple string containment. It also mentions whether pexpect creates a virtual TTY, if it can be run like tornado, if sleeping is possible, if expect can do the same thing, and introducing \"et\" shell. \"ET\" seems to be a remote shell that automatically reconnects without interrupting the session.",
+        "type": "comment"
+    },
+    "1832": {
+        "file_id": 363,
+        "content": "/tools/blocking_io_string.py",
+        "type": "filepath"
+    },
+    "1833": {
+        "file_id": 363,
+        "content": "This code seems to be asking a question about the possibility of cleaning up after reading bytes from a specific location. It could be related to managing resources or handling data structures, but without more context, it's difficult to provide an accurate comment.",
+        "type": "summary"
+    },
+    "1834": {
+        "file_id": 363,
+        "content": "# can we clean it up after reading the bytes?",
+        "type": "code",
+        "location": "/tools/blocking_io_string.py:1-1"
+    },
+    "1835": {
+        "file_id": 363,
+        "content": "This code seems to be asking a question about the possibility of cleaning up after reading bytes from a specific location. It could be related to managing resources or handling data structures, but without more context, it's difficult to provide an accurate comment.",
+        "type": "comment"
+    },
+    "1836": {
+        "file_id": 364,
+        "content": "/tools/bytes_blocking.py",
+        "type": "filepath"
+    },
+    "1837": {
+        "file_id": 364,
+        "content": "This code defines a class, BytesMemPipe, which uses threading events and io.BytesIO to create a memory pipe for writing and reading bytes data. The write function appends the input bytes to the BytesIO object, flushes it, waits for read operation completion, and resets the BytesIO object. The read function waits for write operation completion, retrieves the stored bytes from BytesIO, and returns them. The flush function does nothing and the read_flush and write_flush functions set/clear the corresponding lock events.",
+        "type": "summary"
+    },
+    "1838": {
+        "file_id": 364,
+        "content": "import io\nimport threading\n# shall we use os.pipe instead?\nclass BytesMemPipe:\n    def __init__(self):\n        self.BytesIO = io.BytesIO()\n        self.write_lock = threading.Event()\n        self.read_lock = threading.Event()\n        self.write_lock.clear()\n        self.read_lock.clear()\n    def write(self, _bytes):\n        self.BytesIO.write(_bytes)\n        self.read_flush()\n        self.write_lock.wait()\n        self.BytesIO = io.BytesIO()\n        return len(_bytes)\n    def read(self):\n        self.write_flush()\n        self.read_lock.wait()\n        target = self.BytesIO.getvalue()\n        return target\n    def flush(self):\n        return\n    def read_flush(self):\n        self.read_lock.set()\n        self.read_lock.clear()\n    def write_flush(self):\n        self.write_lock.set()\n        self.write_lock.clear()",
+        "type": "code",
+        "location": "/tools/bytes_blocking.py:1-31"
+    },
+    "1839": {
+        "file_id": 364,
+        "content": "This code defines a class, BytesMemPipe, which uses threading events and io.BytesIO to create a memory pipe for writing and reading bytes data. The write function appends the input bytes to the BytesIO object, flushes it, waits for read operation completion, and resets the BytesIO object. The read function waits for write operation completion, retrieves the stored bytes from BytesIO, and returns them. The flush function does nothing and the read_flush and write_flush functions set/clear the corresponding lock events.",
+        "type": "comment"
+    },
+    "1840": {
+        "file_id": 365,
+        "content": "/tools/chrome_logger.sh",
+        "type": "filepath"
+    },
+    "1841": {
+        "file_id": 365,
+        "content": "This code is running a Node.js script named \"chrome_console.js\" from the specified location and piping its output to a file named \"chrome_logger.log\". The NODE_PATH environment variable points to the necessary module directory for execution.",
+        "type": "summary"
+    },
+    "1842": {
+        "file_id": 365,
+        "content": "NODE_PATH=/data/data/com.termux/files/usr/lib/node_modules node ../native/lazero_kali_amd64/replService/chrome_console.js | tee chrome_logger.log",
+        "type": "code",
+        "location": "/tools/chrome_logger.sh:1-1"
+    },
+    "1843": {
+        "file_id": 365,
+        "content": "This code is running a Node.js script named \"chrome_console.js\" from the specified location and piping its output to a file named \"chrome_logger.log\". The NODE_PATH environment variable points to the necessary module directory for execution.",
+        "type": "comment"
+    },
+    "1844": {
+        "file_id": 366,
+        "content": "/tools/deep-text-editor/README",
+        "type": "filepath"
+    },
+    "1845": {
+        "file_id": 366,
+        "content": "This code appears to be discussing the implementation of a neural network that can simulate human editing behavior. It mentions the need for a value caster and the potential for integrating multiple networks, while also highlighting the importance of adapting to various situations.",
+        "type": "summary"
+    },
+    "1846": {
+        "file_id": 366,
+        "content": "to represent the human editing behavior.\ni guess we need some value caster. one neural network connect to another, admit there's something that it cannot solve, even if it has the potential.\nalso it needs to simulate everything a little bit, to be adapted.",
+        "type": "code",
+        "location": "/tools/deep-text-editor/README:1-5"
+    },
+    "1847": {
+        "file_id": 366,
+        "content": "This code appears to be discussing the implementation of a neural network that can simulate human editing behavior. It mentions the need for a value caster and the potential for integrating multiple networks, while also highlighting the importance of adapting to various situations.",
+        "type": "comment"
+    },
+    "1848": {
+        "file_id": 367,
+        "content": "/tools/deep-text-editor/editor.py",
+        "type": "filepath"
+    },
+    "1849": {
+        "file_id": 367,
+        "content": "An editor class supports various text editor operations, including logging/backup functions, non-paste insertions, copying, pasting, movement, content viewing, undoing, recording, validation, and error checking. The code block handles different operations and reverts to the previous state on failure.",
+        "type": "summary"
+    },
+    "1850": {
+        "file_id": 367,
+        "content": "import copy \nimport traceback\nclass editor:\n    def __init__(self,content=\"\",position=0,operation=[]):\n        self.content=content\n        self.init_content=content\n        self.position=position\n        self.clipboard=\"\"\n        self.operation=[]\n        self.backup()\n        if operation != []:\n            self.redo_operation(operation)\n        self.backup()\n    def log_operation(self,op_type,param=None):\n        self.operation.append((op_type,param))\n    def backup(self):\n        self.last_state=(self.content,self.position,self.clipboard)\n    def self_check(self):\n        if self.position<0:\n            self.position=0\n        elif self.position>len(self.content):\n            self.position=len(self.content)\n    def insert(self,content,paste=False):\n        self.backup()\n        if not paste:\n            self.log_operation(\"insert\",content)\n        head=self.content[:self.position]\n        tail=self.content[self.position:]\n        self.content=head+content+tail\n        self.position=len(head)+len(content)\n        self.self_check()",
+        "type": "code",
+        "location": "/tools/deep-text-editor/editor.py:1-31"
+    },
+    "1851": {
+        "file_id": 367,
+        "content": "Class 'editor' initializes with default content, position, and empty operation list. Operation logging and backup are implemented. Insert method allows non-paste insertion with logging and self-checking for invalid positions.",
+        "type": "comment"
+    },
+    "1852": {
+        "file_id": 367,
+        "content": "    def backspace(self,times):\n        self.backup()\n        self.log_operation(\"backspace\",times)\n        delta_p=self.position-times\n        if delta_p<0:\n            delta_p=0\n        head=self.content[:delta_p]\n        tail=self.content[self.position:]\n        self.content=head+tail\n        self.position=delta_p\n        self.self_check()\n    # maybe you can duplicate something like that?\n    def delete(self,times):\n        self.backup()\n        self.log_operation(\"delete\",times)\n        delta_p=self.position+times\n        lc=len(self.content)\n        if delta_p>lc:\n            delta_p=lc\n        head=self.content[:self.position]\n        tail=self.content[delta_p:]\n        self.content=head+tail\n        self.self_check()\n    def replace(self,content):\n        self.backup()\n        self.log_operation(\"replace\",content)\n        head=self.content[:self.position]\n        tail=self.content[self.position+len(content):]\n        self.content=head+content+tail\n        self.position=len(head)+len(content)\n        self.self_check()",
+        "type": "code",
+        "location": "/tools/deep-text-editor/editor.py:32-62"
+    },
+    "1853": {
+        "file_id": 367,
+        "content": "The code defines three methods: \"backspace\", \"delete\", and \"replace\". \"backspace\" removes characters from the text, \"delete\" deletes characters starting at the specified position, and \"replace\" replaces characters at the current position with new content. Each method first creates a backup, logs the operation, updates the content based on the operation, and performs self-checking.",
+        "type": "comment"
+    },
+    "1854": {
+        "file_id": 367,
+        "content": "    def copy(self,content):\n        self.backup()\n        self.log_operation(\"copy\",content)\n        self.clipboard=content\n        self.self_check()\n    def paste(self):\n        self.backup()\n        self.log_operation(\"paste\")\n        self.insert(self.clipboard,paste=True)\n        self.self_check()\n    def forward(self,times):\n        self.backup()\n        self.log_operation(\"forward\",times)\n        self.position+=times\n        self.self_check()\n    def backward(self,times):\n        self.backup()\n        self.log_operation(\"backward\",times)\n        self.position-=times\n        self.self_check()\n    def view(self,span=30):\n        a=self.position-span\n        b=self.position+span\n        if a<0:\n            a=0\n        if b>len(self.content):\n            b=len(self.content)\n        return self.content[a:b]\n    def undo(self):\n        self.log_operation(\"undo\")\n        content, position, clipboard =self.content,self.position, self.clipboard\n        self.content,self.position,self.clipboard=self.last_state\n        self.last_state = (content,position,clipboard)",
+        "type": "code",
+        "location": "/tools/deep-text-editor/editor.py:63-95"
+    },
+    "1855": {
+        "file_id": 367,
+        "content": "This code defines methods for copying, pasting, forward and backward movement in a text editor. It also includes functions to view a specific span of the content and undo previous actions. The log_operation method records each action performed on the content. The self_check method is presumably used for validation or error checking.",
+        "type": "comment"
+    },
+    "1856": {
+        "file_id": 367,
+        "content": "    def dump_operation(self):\n        return tuple(self.operation)\n    def redo_operation(self,operation):\n        #import time\n        #print(\"redoing all things\")\n        # is that unknown compiler bug?\n        last_state = self.last_state\n        clipboard = self.clipboard\n        cstate, pstate= self.content, self.position\n        ops_bk=copy.copy(self.operation)\n        #print(operation)\n        try:\n            for x in range(len(operation)):\n                ops, param = operation[x]\n                #print(\"executing:\",(ops,param))\n                #time.sleep(1)\n                if ops == \"copy\":\n                    self.copy(param)\n                elif ops == \"paste\":\n                    self.paste()\n                elif ops == \"delete\":\n                    self.delete(param)\n                elif ops == \"backspace\":\n                    self.backspace(param)\n                elif ops == \"insert\":\n                    self.insert(param)\n                elif ops == \"replace\":\n                    self.replace(param)",
+        "type": "code",
+        "location": "/tools/deep-text-editor/editor.py:96-123"
+    },
+    "1857": {
+        "file_id": 367,
+        "content": "This code defines two methods: `dump_operation` and `redo_operation`. The `dump_operation` method returns a tuple containing the operation data. The `redo_operation` method takes an operation as input, executes each operation in the list, and updates the content and position accordingly. It handles operations like copy, paste, delete, backspace, insert, and replace.",
+        "type": "comment"
+    },
+    "1858": {
+        "file_id": 367,
+        "content": "                elif ops == \"undo\":\n                    self.undo()\n                elif ops == \"forward\":\n                    self.forward(param)\n                elif ops == \"backward\":\n                    self.backward(param)\n                else:\n                    raise Exception('Invalid operation: %s' % str(ops,param))\n                #print(\"after execution:\",self.content,self.position)\n        except:\n            traceback.print_exc()\n            print(\"failed to execute all operations.\")\n            print(\"revoking to previous state.\")\n            self.content=cstate\n            self.position=pstate\n            self.clipboard=clipboard\n            self.last_state=last_state\n            self.operation=ops_bk",
+        "type": "code",
+        "location": "/tools/deep-text-editor/editor.py:124-141"
+    },
+    "1859": {
+        "file_id": 367,
+        "content": "This code block handles different operations based on the input \"ops\". It calls appropriate methods (undo, forward, backward) with optional parameter \"param\". If an invalid operation is detected, it raises an exception. In case of any execution failure, it reverts to the previous state and prints error messages.",
+        "type": "comment"
+    },
+    "1860": {
+        "file_id": 368,
+        "content": "/tools/deep-text-editor/monkey_editing.py",
+        "type": "filepath"
+    },
+    "1861": {
+        "file_id": 368,
+        "content": "This code randomly performs editing operations on a text editor, such as inserting, replacing, copying, pasting, deleting, and moving text. It generates random strings of length 2-5 characters and repeats these operations for 500 times, displaying the current state of the editor after each operation.",
+        "type": "summary"
+    },
+    "1862": {
+        "file_id": 368,
+        "content": "from editor import editor\nimport random\nimport time\ndef gen_str():\n    return \"\".join([chr(random.randint(0,200)) for x in range(random.randint(2,5))])\nwhile True:\n    print(\"starting over.\")\n    insert=lambda: e.insert(gen_str())\n    replace=lambda: e.replace(gen_str())\n    copy=lambda: e.copy(gen_str())\n    paste=lambda: e.paste()\n    forward=lambda: e.forward(random.randint(2,5))\n    backward=lambda: e.backward(random.randint(2,5))\n    delete=lambda: e.delete(random.randint(2,5))\n    backspace=lambda: e.backspace(random.randint(2,5))\n    e=editor(\"\".join([gen_str() for x in range(5)]))\n    ops=[insert,replace,copy,paste,backspace,delete,forward,backward]\n    for _ in range(500):\n        random.choice(ops)()\n        print(\"current state:\",e.content,e.position)\n        time.sleep(0.01)",
+        "type": "code",
+        "location": "/tools/deep-text-editor/monkey_editing.py:1-22"
+    },
+    "1863": {
+        "file_id": 368,
+        "content": "This code randomly performs editing operations on a text editor, such as inserting, replacing, copying, pasting, deleting, and moving text. It generates random strings of length 2-5 characters and repeats these operations for 500 times, displaying the current state of the editor after each operation.",
+        "type": "comment"
+    },
+    "1864": {
+        "file_id": 369,
+        "content": "/tools/deep-text-editor/neural_network/README",
+        "type": "filepath"
+    },
+    "1865": {
+        "file_id": 369,
+        "content": "The code discusses using non-standard functions, allowing models to create and fix problems themselves. It highlights the importance of simulating irregularities and incorporating attention mechanisms for tracking in real-world scenarios. Additionally, it mentions a problematic display aspect that is causing frustration.",
+        "type": "summary"
+    },
+    "1866": {
+        "file_id": 369,
+        "content": "THIS IS THE CAUSE, THE UNDERIVABLE PROBLEMS, BY USING NON-STANDARD FUNCTIONS YOU WILL NEVER EVER FIND ON THE MATH BOOK.\nyou shall let the model to create chaos on its own, and fix it on its own.\nto train you into the dream, first we need to simulate some irregularities.\nin real world, there is no such thing called a single problem, nor something that only happen for once.\nthe attention mechanism, the tracking.\nalso the fucking display.it is killing me.",
+        "type": "code",
+        "location": "/tools/deep-text-editor/neural_network/README:1-11"
+    },
+    "1867": {
+        "file_id": 369,
+        "content": "The code discusses using non-standard functions, allowing models to create and fix problems themselves. It highlights the importance of simulating irregularities and incorporating attention mechanisms for tracking in real-world scenarios. Additionally, it mentions a problematic display aspect that is causing frustration.",
+        "type": "comment"
+    },
+    "1868": {
+        "file_id": 370,
+        "content": "/tools/deep-text-editor/neural_network/base.py",
+        "type": "filepath"
+    },
+    "1869": {
+        "file_id": 370,
+        "content": "The code initializes a neural network with random weights, trains it on a binary classification task using logistic regression algorithm, and outputs the final weighted output.",
+        "type": "summary"
+    },
+    "1870": {
+        "file_id": 370,
+        "content": "from numpy import exp, array, random, dot\ntraining_set_inputs = array([[0, 0, 1], [1, 1, 1], [1, 0, 1], [0, 1, 1]])\ntraining_set_outputs = array([[0, 1, 1, 0]]).T\nrandom.seed(1)\nsynaptic_weights = 2 * random.random((3, 1)) - 1\nfor iteration in xrange(10000):\n    output = 1 / (1 + exp(-(dot(training_set_inputs, synaptic_weights))))\n    synaptic_weights += dot(training_set_inputs.T, (training_set_outputs - output) * output * (1 - output))\nprint (1 / (1 + exp(-(dot(array([1, 0, 0]), synaptic_weights)))))",
+        "type": "code",
+        "location": "/tools/deep-text-editor/neural_network/base.py:1-9"
+    },
+    "1871": {
+        "file_id": 370,
+        "content": "The code initializes a neural network with random weights, trains it on a binary classification task using logistic regression algorithm, and outputs the final weighted output.",
+        "type": "comment"
+    },
+    "1872": {
+        "file_id": 371,
+        "content": "/tools/deep-text-editor/neural_network/editor.py",
+        "type": "filepath"
+    },
+    "1873": {
+        "file_id": 371,
+        "content": "An editor class supports various text editor operations, including logging/backup functions, non-paste insertions, copying, pasting, movement, content viewing, undoing, recording, validation, and error checking. The code block handles different operations and reverts to the previous state on failure.",
+        "type": "summary"
+    },
+    "1874": {
+        "file_id": 371,
+        "content": "import copy \nimport traceback\nclass editor:\n    def __init__(self,content=\"\",position=0,operation=[]):\n        self.content=content\n        self.init_content=content\n        self.position=position\n        self.clipboard=\"\"\n        self.operation=[]\n        self.backup()\n        if operation != []:\n            self.redo_operation(operation)\n        self.backup()\n    def log_operation(self,op_type,param=None):\n        self.operation.append((op_type,param))\n    def backup(self):\n        self.last_state=(self.content,self.position,self.clipboard)\n    def self_check(self):\n        if self.position<0:\n            self.position=0\n        elif self.position>len(self.content):\n            self.position=len(self.content)\n    def insert(self,content,paste=False):\n        self.backup()\n        if not paste:\n            self.log_operation(\"insert\",content)\n        head=self.content[:self.position]\n        tail=self.content[self.position:]\n        self.content=head+content+tail\n        self.position=len(head)+len(content)\n        self.self_check()",
+        "type": "code",
+        "location": "/tools/deep-text-editor/editor.py:1-31"
+    },
+    "1875": {
+        "file_id": 371,
+        "content": "Class 'editor' initializes with default content, position, and empty operation list. Operation logging and backup are implemented. Insert method allows non-paste insertion with logging and self-checking for invalid positions.",
+        "type": "comment"
+    },
+    "1876": {
+        "file_id": 371,
+        "content": "    def backspace(self,times):\n        self.backup()\n        self.log_operation(\"backspace\",times)\n        delta_p=self.position-times\n        if delta_p<0:\n            delta_p=0\n        head=self.content[:delta_p]\n        tail=self.content[self.position:]\n        self.content=head+tail\n        self.position=delta_p\n        self.self_check()\n    # maybe you can duplicate something like that?\n    def delete(self,times):\n        self.backup()\n        self.log_operation(\"delete\",times)\n        delta_p=self.position+times\n        lc=len(self.content)\n        if delta_p>lc:\n            delta_p=lc\n        head=self.content[:self.position]\n        tail=self.content[delta_p:]\n        self.content=head+tail\n        self.self_check()\n    def replace(self,content):\n        self.backup()\n        self.log_operation(\"replace\",content)\n        head=self.content[:self.position]\n        tail=self.content[self.position+len(content):]\n        self.content=head+content+tail\n        self.position=len(head)+len(content)\n        self.self_check()",
+        "type": "code",
+        "location": "/tools/deep-text-editor/editor.py:32-62"
+    },
+    "1877": {
+        "file_id": 371,
+        "content": "The code defines three methods: \"backspace\", \"delete\", and \"replace\". \"backspace\" removes characters from the text, \"delete\" deletes characters starting at the specified position, and \"replace\" replaces characters at the current position with new content. Each method first creates a backup, logs the operation, updates the content based on the operation, and performs self-checking.",
+        "type": "comment"
+    },
+    "1878": {
+        "file_id": 371,
+        "content": "    def copy(self,content):\n        self.backup()\n        self.log_operation(\"copy\",content)\n        self.clipboard=content\n        self.self_check()\n    def paste(self):\n        self.backup()\n        self.log_operation(\"paste\")\n        self.insert(self.clipboard,paste=True)\n        self.self_check()\n    def forward(self,times):\n        self.backup()\n        self.log_operation(\"forward\",times)\n        self.position+=times\n        self.self_check()\n    def backward(self,times):\n        self.backup()\n        self.log_operation(\"backward\",times)\n        self.position-=times\n        self.self_check()\n    def view(self,span=30):\n        a=self.position-span\n        b=self.position+span\n        if a<0:\n            a=0\n        if b>len(self.content):\n            b=len(self.content)\n        return self.content[a:b]\n    def undo(self):\n        self.log_operation(\"undo\")\n        content, position, clipboard =self.content,self.position, self.clipboard\n        self.content,self.position,self.clipboard=self.last_state\n        self.last_state = (content,position,clipboard)",
+        "type": "code",
+        "location": "/tools/deep-text-editor/editor.py:63-95"
+    },
+    "1879": {
+        "file_id": 371,
+        "content": "This code defines methods for copying, pasting, forward and backward movement in a text editor. It also includes functions to view a specific span of the content and undo previous actions. The log_operation method records each action performed on the content. The self_check method is presumably used for validation or error checking.",
+        "type": "comment"
+    },
+    "1880": {
+        "file_id": 371,
+        "content": "    def dump_operation(self):\n        return tuple(self.operation)\n    def redo_operation(self,operation):\n        #import time\n        #print(\"redoing all things\")\n        # is that unknown compiler bug?\n        last_state = self.last_state\n        clipboard = self.clipboard\n        cstate, pstate= self.content, self.position\n        ops_bk=copy.copy(self.operation)\n        #print(operation)\n        try:\n            for x in range(len(operation)):\n                ops, param = operation[x]\n                #print(\"executing:\",(ops,param))\n                #time.sleep(1)\n                if ops == \"copy\":\n                    self.copy(param)\n                elif ops == \"paste\":\n                    self.paste()\n                elif ops == \"delete\":\n                    self.delete(param)\n                elif ops == \"backspace\":\n                    self.backspace(param)\n                elif ops == \"insert\":\n                    self.insert(param)\n                elif ops == \"replace\":\n                    self.replace(param)",
+        "type": "code",
+        "location": "/tools/deep-text-editor/editor.py:96-123"
+    },
+    "1881": {
+        "file_id": 371,
+        "content": "This code defines two methods: `dump_operation` and `redo_operation`. The `dump_operation` method returns a tuple containing the operation data. The `redo_operation` method takes an operation as input, executes each operation in the list, and updates the content and position accordingly. It handles operations like copy, paste, delete, backspace, insert, and replace.",
+        "type": "comment"
+    },
+    "1882": {
+        "file_id": 371,
+        "content": "                elif ops == \"undo\":\n                    self.undo()\n                elif ops == \"forward\":\n                    self.forward(param)\n                elif ops == \"backward\":\n                    self.backward(param)\n                else:\n                    raise Exception('Invalid operation: %s' % str(ops,param))\n                #print(\"after execution:\",self.content,self.position)\n        except:\n            traceback.print_exc()\n            print(\"failed to execute all operations.\")\n            print(\"revoking to previous state.\")\n            self.content=cstate\n            self.position=pstate\n            self.clipboard=clipboard\n            self.last_state=last_state\n            self.operation=ops_bk",
+        "type": "code",
+        "location": "/tools/deep-text-editor/editor.py:124-141"
+    },
+    "1883": {
+        "file_id": 371,
+        "content": "This code block handles different operations based on the input \"ops\". It calls appropriate methods (undo, forward, backward) with optional parameter \"param\". If an invalid operation is detected, it raises an exception. In case of any execution failure, it reverts to the previous state and prints error messages.",
+        "type": "comment"
+    },
+    "1884": {
+        "file_id": 372,
+        "content": "/tools/deep-text-editor/neural_network/generate_code.py",
+        "type": "filepath"
+    },
+    "1885": {
+        "file_id": 372,
+        "content": "This code generates a list of random actions to be executed in a text editor environment. It uses the `random` library to filter out unnecessary actions and keeps track of executed and pending actions. The \"executing\" and \"pending\" lists display which actions are currently being performed and those waiting for execution, respectively.",
+        "type": "summary"
+    },
+    "1886": {
+        "file_id": 372,
+        "content": "import random\n# filter out those needless to execute.\nrng=lambda:random.randint(2,5)\ntargets=[\"type\",\"move\",\"select\",\"click\"]\nrtg=lambda:random.choice(targets)\nimport time\ntgs=[]\nwhile True:\n    tgs.append((rng(),rtg()))\n    tgs=[(x[0]-1,x[1]) for x in tgs]\n    tgs=list(sorted(tgs))\n    tm=[x for x in tgs if x[0] == 0]\n    tl=[x for x in tgs if x not in tm]\n    print(\"executing:\",tm)\n    print(\"pending:\",tl)\n    time.sleep(1)\n    tgs=tl",
+        "type": "code",
+        "location": "/tools/deep-text-editor/neural_network/generate_code.py:1-17"
+    },
+    "1887": {
+        "file_id": 372,
+        "content": "This code generates a list of random actions to be executed in a text editor environment. It uses the `random` library to filter out unnecessary actions and keeps track of executed and pending actions. The \"executing\" and \"pending\" lists display which actions are currently being performed and those waiting for execution, respectively.",
+        "type": "comment"
+    },
+    "1888": {
+        "file_id": 373,
+        "content": "/tools/deep-text-editor/neural_network/generate_stimuli.py",
+        "type": "filepath"
+    },
+    "1889": {
+        "file_id": 373,
+        "content": "This code generates stimuli by applying a sine function to a range of values, adding a random frequency and summing the results. If the sum is within a specific threshold, it prints \"stimulation!\" with intensity based on the value's proximity to the threshold. The process repeats every 0.3 seconds.",
+        "type": "summary"
+    },
+    "1890": {
+        "file_id": 373,
+        "content": "import random\nimport math\nthr=23\nimport time\nbase=lambda x:0.2*math.sin(x)\nfreq=lambda:random.random()\nsm=0\nfor x in range(5000):\n    f=base(x)+freq()\n    sm+=f\n    sm%=(2 * thr)\n    print(\"frequency:\",f)\n    print(\"sum:\",sm)\n    amp=sm-thr\n    if amp>0 and amp <2:\n        print(\"stimulation!\",1-abs(amp-1))\n    time.sleep(0.3)",
+        "type": "code",
+        "location": "/tools/deep-text-editor/neural_network/generate_stimuli.py:1-18"
+    },
+    "1891": {
+        "file_id": 373,
+        "content": "This code generates stimuli by applying a sine function to a range of values, adding a random frequency and summing the results. If the sum is within a specific threshold, it prints \"stimulation!\" with intensity based on the value's proximity to the threshold. The process repeats every 0.3 seconds.",
+        "type": "comment"
+    },
+    "1892": {
+        "file_id": 374,
+        "content": "/tools/deep-text-editor/neural_network/kdnugget.py",
+        "type": "filepath"
+    },
+    "1893": {
+        "file_id": 374,
+        "content": "The NeuralNetwork class initializes random weights, uses sigmoid activation and derivative functions, trains through backpropagation, and allows user input prediction after training. The code prompts the user for inputs, passes them to the \"think\" function, displays new situation and output, and congratulates on successful execution.",
+        "type": "summary"
+    },
+    "1894": {
+        "file_id": 374,
+        "content": "import numpy as np\nclass NeuralNetwork():\n    def __init__(self):\n        # seeding for random number generation\n        np.random.seed(1)\n        #converting weights to a 3 by 1 matrix with values from -1 to 1 and mean of 0\n        self.synaptic_weights = 2 * np.random.random((3, 1)) - 1\n    def sigmoid(self, x):\n        #applying the sigmoid function\n        return 1 / (1 + np.exp(-x))\n    def sigmoid_derivative(self, x):\n        #computing derivative to the Sigmoid function\n        return x * (1 - x)\n    def train(self, training_inputs, training_outputs, training_iterations):\n        #training the model to make accurate predictions while adjusting weights continually\n        for iteration in range(training_iterations):\n            #siphon the training data via  the neuron\n            output = self.think(training_inputs)\n            #computing error rate for back-propagation\n            error = training_outputs - output\n            #performing weight adjustments\n            adjustments = np.dot(training_inputs.T, error * self.sigmoid_derivative(output))",
+        "type": "code",
+        "location": "/tools/deep-text-editor/neural_network/kdnugget.py:1-31"
+    },
+    "1895": {
+        "file_id": 374,
+        "content": "NeuralNetwork class with random weight initialization, sigmoid activation function, and derivative. Trains the model using backpropagation by adjusting weights based on error rate from training inputs and outputs over specified iterations.",
+        "type": "comment"
+    },
+    "1896": {
+        "file_id": 374,
+        "content": "            self.synaptic_weights += adjustments\n    def think(self, inputs):\n        #passing the inputs via the neuron to get output   \n        #converting values to floats\n        inputs = inputs.astype(float)\n        output = self.sigmoid(np.dot(inputs, self.synaptic_weights))\n        return output\nif __name__ == \"__main__\":\n    #initializing the neuron class\n    neural_network = NeuralNetwork()\n    print(\"Beginning Randomly Generated Weights: \")\n    print(neural_network.synaptic_weights)\n    #training data consisting of 4 examples--3 input values and 1 output\n    training_inputs = np.array([[0,0,1],\n                                [1,1,1],\n                                [1,0,1],\n                                [0,1,1]])\n    training_outputs = np.array([[0,1,1,0]]).T\n    #training taking place\n    neural_network.train(training_inputs, training_outputs, 15000)\n    print(\"Ending Weights After Training: \")\n    print(neural_network.synaptic_weights)\n    user_input_one = str(input(\"User Input One: \"))\n    user_input_two = str(input(\"User Input Two: \"))",
+        "type": "code",
+        "location": "/tools/deep-text-editor/neural_network/kdnugget.py:33-67"
+    },
+    "1897": {
+        "file_id": 374,
+        "content": "The code initializes a neural network, trains it with input data, and then allows the user to provide inputs for it to think and output. The training process adjusts the synaptic weights in the network based on provided input/output pairs. After training, the code prints out the final set of synaptic weights, then prompts the user for two inputs which the trained neural network will then use to generate an output.",
+        "type": "comment"
+    },
+    "1898": {
+        "file_id": 374,
+        "content": "    user_input_three = str(input(\"User Input Three: \"))\n    print(\"Considering New Situation: \", user_input_one, user_input_two, user_input_three)\n    print(\"New Output data: \")\n    print(neural_network.think(np.array([user_input_one, user_input_two, user_input_three])))\n    print(\"Wow, we did it!\")",
+        "type": "code",
+        "location": "/tools/deep-text-editor/neural_network/kdnugget.py:68-73"
+    },
+    "1899": {
+        "file_id": 374,
+        "content": "Code prompts the user for three inputs, combines them into an array, and passes it to the neural network's \"think\" function for analysis. It then prints the new situation along with the output generated by the neural network, ending with a congratulatory message upon successful execution.",
+        "type": "comment"
+    }
+}

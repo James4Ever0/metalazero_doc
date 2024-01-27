@@ -1,0 +1,10 @@
+{
+    "summary": "This script checks if the string \"Ubuntu is a Linux OS\" contains the substrings \"Linux\" and \"UNIX\". If it finds \"Linux\", it prints \"String is there.\" Otherwise, it prints \"NOT THE CASE\".",
+    "details": [
+        {
+            "comment": "This script checks if the string \"Ubuntu is a Linux OS\" contains the substrings \"Linux\" and \"UNIX\". If it finds \"Linux\", it prints \"String is there.\" Otherwise, it prints \"NOT THE CASE\".",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_kali_amd64/cognitionService/virtual/cog_core.sh\":0-11",
+            "content": "STR='Ubuntu is a Linux OS'\nSUBSTR='Linux'\nif [[ \"$STR\" == *\"$SUBSTR\"* ]]; then\n  echo \"String is there.\"\nfi\nSTR='Ubuntu is a Linux OS'\nSUBSTR='UNIX'\nif [[ \"$STR\" == *\"$SUBSTR\"* ]]; then\n  echo \"String is there.\"\nelse\n\techo NOT THE CASE\nfi"
+        }
+    ]
+}

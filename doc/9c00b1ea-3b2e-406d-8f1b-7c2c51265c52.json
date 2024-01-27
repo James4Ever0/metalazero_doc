@@ -1,0 +1,10 @@
+{
+    "summary": "This code emphasizes the importance of creating unique problem sets for training, suggesting to start from scratch without relying on existing standards. It encourages utilizing various formats such as machine language or random characters, and reminds that it all starts with addressing damage and impossibilities.",
+    "details": [
+        {
+            "comment": "This code emphasizes the importance of creating unique problem sets for training, suggesting to start from scratch without relying on existing standards. It encourages utilizing various formats such as machine language or random characters, and reminds that it all starts with addressing damage and impossibilities.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_kali_amd64/mainService/problem_generator/README\":0-10",
+            "content": "problems are vital for training. they are equivalent to targets.\nyou need to know that not all human can solve some problems that they want to solve, and not all human will share these problems for you.\nin order to create your own problem sets, you have to forget about all other trivial standards and start from scratch. machine language? fine. random chars? also fine. don't care about its form or anything.\nyou can start from human tests and summarize the form of the problem.\nalso you need to implement it in code.\nit all starts with damage and impossibilities."
+        }
+    ]
+}

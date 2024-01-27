@@ -1,0 +1,10 @@
+{
+    "summary": "This code reads a file, shuffles the lines and asks user to reorder them. If correct, it prints \"correct!\" and if not, it shows the correct answer and user's answer. It keeps asking until user chooses not to continue. The code also handles exceptions using try-except block.",
+    "details": [
+        {
+            "comment": "This code reads a file, shuffles the lines and asks user to reorder them. If correct, it prints \"correct!\" and if not, it shows the correct answer and user's answer. It keeps asking until user chooses not to continue. The code also handles exceptions using try-except block.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/tools/deep-text-editor/neural_network/make_sort.py\":0-32",
+            "content": "truth=open(\"base.py\",\"r\").read().split(\"\\n\")\ntruth=list(filter(lambda x: len(x)> 2, truth))\nimport random\nimport copy\nimport traceback\nbase=[x for x in range(len(truth))]\nb1=copy.deepcopy(base)\nwhile True:\n    try:\n        random.shuffle(base)\n        r1=[\"{}: {}\".format(i,truth[x]) for i,x in enumerate(base)]\n        print(\"question:\")\n        print(\"\\n\".join(r1))\n        ans=input(\"answer:\\n\")\n        b0=[None]*len(b1)\n        for z in b1:\n            x,y = base[z],b1[z]\n            b0[x] = y\n        r0 = \" \".join([str(x) for x in b0])\n        if ans == r0:\n            print(\"correct!\")\n        else:\n            print(\"incorrect!\")\n            print(\"the correct answer is:\", r0)\n            print(\"your answer is:\", ans)\n        print(\"continue?\")\n        input()\n        #print(\"correct form:\",\"\\n\".join(truth))\n    except:\n        traceback.print_exc()\n        print(\"exception printed above!\")\n        pass"
+        }
+    ]
+}

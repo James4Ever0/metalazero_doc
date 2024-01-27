@@ -1,0 +1,10 @@
+{
+    "summary": "This code snippet appears to define a task named \"add\" with a subtask or variant called \"test0\". It could be part of a script or configuration file for managing tasks.",
+    "details": [
+        {
+            "comment": "This code snippet appears to define a task named \"add\" with a subtask or variant called \"test0\". It could be part of a script or configuration file for managing tasks.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/schedules/add_test.sh\":0-0",
+            "content": "task add test0"
+        }
+    ]
+}

@@ -1,0 +1,10 @@
+{
+    "summary": "This code initializes a function 'fun' that outputs \"123\" and sets an interval of 1000 milliseconds. It continuously executes the 'fun' function every 1000 ms until the program exits, expressing frustration with AutoJS due to its instability or issues.",
+    "details": [
+        {
+            "comment": "This code initializes a function 'fun' that outputs \"123\" and sets an interval of 1000 milliseconds. It continuously executes the 'fun' function every 1000 ms until the program exits, expressing frustration with AutoJS due to its instability or issues.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_android_aarch64/inputService/autojs_type_test.js\":0-4",
+            "content": "// this is rhino.\nfun=()=>{Text(\"123\");};\nitv=1000;\nsetInterval(fun,itv);\n// exiting all the time. autojs sucks."
+        }
+    ]
+}

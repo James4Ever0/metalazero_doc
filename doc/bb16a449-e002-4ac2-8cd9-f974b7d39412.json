@@ -1,0 +1,10 @@
+{
+    "summary": "This code defines two tasks: \"test0 delete\" and \"test0 purge\". The \"test0 delete\" task likely involves deleting a specific item or resource, while the \"test0 purge\" task could be responsible for removing all traces of the specified item or resource. These tasks may be part of a larger script or workflow to manage test data or resources in a system.",
+    "details": [
+        {
+            "comment": "This code defines two tasks: \"test0 delete\" and \"test0 purge\". The \"test0 delete\" task likely involves deleting a specific item or resource, while the \"test0 purge\" task could be responsible for removing all traces of the specified item or resource. These tasks may be part of a larger script or workflow to manage test data or resources in a system.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/schedules/purge_test.sh\":0-1",
+            "content": "task test0 delete\ntask test0 purge"
+        }
+    ]
+}

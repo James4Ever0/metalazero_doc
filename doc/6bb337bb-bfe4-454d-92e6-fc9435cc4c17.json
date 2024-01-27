@@ -1,0 +1,10 @@
+{
+    "summary": "This code starts the Neovim text editor in headless mode, listening on localhost port 9897. It allows other programs to connect and interact with the editor without a GUI interface.",
+    "details": [
+        {
+            "comment": "This code starts the Neovim text editor in headless mode, listening on localhost port 9897. It allows other programs to connect and interact with the editor without a GUI interface.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_kali_amd64/cognitionService/virtual/nserv.sh\":0-0",
+            "content": "nvim --listen localhost:9897 --headless"
+        }
+    ]
+}

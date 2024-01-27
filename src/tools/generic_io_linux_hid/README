@@ -1,0 +1,5 @@
+the libinput record is more readable but do we have to read this?
+
+i mean this is not useful at all till you can somehow replay this whole scenario.
+
+tty/pid/network-port/timestamp all these concepts.

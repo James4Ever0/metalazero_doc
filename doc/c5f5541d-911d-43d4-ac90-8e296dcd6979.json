@@ -1,0 +1,10 @@
+{
+    "summary": "This code imports necessary libraries, makes an HTTP POST request to \"http://localhost:8786/post\" with data containing a key-value pair and another key-value pair of \"key2\" and \"value2\". The successful response is handled by printing the sent data using the message function. Additionally, it sets `cnds` as formatted company candidates and sends this along with \"key2\" in the POST request.",
+    "details": [
+        {
+            "comment": "This code imports necessary libraries, makes an HTTP POST request to \"http://localhost:8786/post\" with data containing a key-value pair and another key-value pair of \"key2\" and \"value2\". The successful response is handled by printing the sent data using the message function. Additionally, it sets `cnds` as formatted company candidates and sends this along with \"key2\" in the POST request.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_kali_amd64/cognitionService/virtual/post_data.el\":0-16",
+            "content": "(require 'package)\n(package-initialize)\n(require 'request)\n(request \"http://localhost:8786/post\" \n\t :type \"POST\" \n\t :data '((\"key\" . \"value\") (\"key2\" . \"value2\")) \n\t :parser 'json-read \n\t :success (cl-function(lambda (&key data &allow-other-keys)\n\t(message \"I sent: %S\" (assoc-default 'form data)))))\n(require 'company)\n(find-file \"lsp.sh\")\n(company-mode)\n(company-complete-common)\n(setq cnds (format \"%s\" company-candidates))\n(request \"http://localhost:8786/post\" :type \"POST\" :data `((\"key\" . ,cnds) (\"key2\" . \"value2\")) :parser 'json-read :success (cl-function(lambda (&key data &allow-other-keys)(message \"I sent: %S\" (assoc-default 'form data)))))\n;(print cnds)\n;(print (format \"%s\" company-candidates))"
+        }
+    ]
+}

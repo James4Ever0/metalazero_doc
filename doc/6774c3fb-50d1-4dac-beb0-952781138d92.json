@@ -1,0 +1,10 @@
+{
+    "summary": "The code checks if the string \"$two\" is present within the string \"$one\". If it is, it prints \"$one contains $two\"; otherwise, it prints \"$one not in $two\".",
+    "details": [
+        {
+            "comment": "The code checks if the string \"$two\" is present within the string \"$one\". If it is, it prints \"$one contains $two\"; otherwise, it prints \"$one not in $two\".",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_kali_amd64/cognitionService/virtual/cog_core.pl\":0-7",
+            "content": "$one=\"hello world\";\n$two=\"hello\";\nif (index($one,$two) != -1){\n\tprint \"$one contains $two\\n\";\n}else{\n\tprint \"$one not in $two\\n\";\n}"
+        }
+    ]
+}

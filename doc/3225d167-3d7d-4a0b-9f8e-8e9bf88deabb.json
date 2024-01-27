@@ -1,0 +1,10 @@
+{
+    "summary": "The code is trying to catch an error and extract stack trace information using `Object.getOwnPropertyNames()` method, but it encounters an undefined variable \"fuck\" which causes an error. It then combines the error message with the stack trace and writes it to stderr.",
+    "details": [
+        {
+            "comment": "The code is trying to catch an error and extract stack trace information using `Object.getOwnPropertyNames()` method, but it encounters an undefined variable \"fuck\" which causes an error. It then combines the error message with the stack trace and writes it to stderr.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_win10_amd64/cognitionService/virtual/get_error.js\":0-13",
+            "content": "try{\n    fuck.shit(\"fuck\");\n}catch(e){\n    // console.dir(e);\n    console.log(Object.getOwnPropertyNames(e));\n    [\"stack\",\"message\"]\n    console.log(Object.getOwnPropertyNames(Object.getPrototypeOf(e)));\n    [\"name\",\"message\",\"toString\"]\n    console.log(Object.getOwnPropertyNames(Object.getPrototypeOf(Object.getPrototypeOf(e))));\n    var message = e[\"message\"]\n    // console.log(message) // fuck is not defined.\n    // console.log(typeof(e.stack)) // still string. just combine them?\nprocess.stderr.write(e.message+\"\\n\"+e.stack)\n}"
+        }
+    ]
+}

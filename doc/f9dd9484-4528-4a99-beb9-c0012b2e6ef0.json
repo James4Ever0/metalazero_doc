@@ -1,0 +1,10 @@
+{
+    "summary": "This Lisp code calls the 'search' function, which searches for the string \"emacs\" in the \"emacs_lisp\" directory and prints the result.",
+    "details": [
+        {
+            "comment": "This Lisp code calls the 'search' function, which searches for the string \"emacs\" in the \"emacs_lisp\" directory and prints the result.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_kali_amd64/cognitionService/virtual/cog_core.lisp\":0-0",
+            "content": "(print(search \"emacs\" \"emacs_lisp\"))"
+        }
+    ]
+}

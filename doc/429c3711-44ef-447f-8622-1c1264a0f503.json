@@ -1,0 +1,10 @@
+{
+    "summary": "This code sets up a bash language server using the bash-language-server command and redirects its output, error, and input to separate log files for logging purposes. It is compatible with rcshell only.",
+    "details": [
+        {
+            "comment": "This code sets up a bash language server using the bash-language-server command and redirects its output, error, and input to separate log files for logging purposes. It is compatible with rcshell only.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_kali_amd64/cognitionService/virtual/tee_rcsh.rc\":0-3",
+            "content": "#!/bin/rc\n#tee -a bash_lsp_input.log | bash-language-server start 2>(tee -a bash_lsp_error.log 1>&2) 1>(tee -a bash_lsp_output.log)\n# rcshell only.\ntee -a bash_lsp_stdin.log | bash-language-server start"
+        }
+    ]
+}

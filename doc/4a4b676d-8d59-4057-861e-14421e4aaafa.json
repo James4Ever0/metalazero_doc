@@ -1,0 +1,15 @@
+{
+    "summary": "This code defines a function `terminate` that forcefully terminates a given process, considering the operating system and using appropriate methods like taskkill for Windows or executing shell scripts for Linux/macOS.",
+    "details": [
+        {
+            "comment": "The code defines a function `terminate` that terminates a given process. It first checks the operating system (Windows, Macintosh, or Linux) and then uses `child_process.execFileSync` to terminate the process. The stdio option is set to ignore any output from the process being terminated.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_kali_amd64/cognitionService/virtual/processes.js\":0-20",
+            "content": "\"use strict\";\n/* --------------------------------------------------------------------------------------------\n * Copyright (c) Microsoft Corporation. All rights reserved.\n * Licensed under the MIT License. See License.txt in the project root for license information.\n * ------------------------------------------------------------------------------------------ */\nObject.defineProperty(exports, \"__esModule\", { value: true });\nexports.terminate = void 0;\nconst cp = require(\"child_process\");\nconst path_1 = require(\"path\");\nconst isWindows = (process.platform === 'win32');\nconst isMacintosh = (process.platform === 'darwin');\nconst isLinux = (process.platform === 'linux');\nfunction terminate(process, cwd) {\n    if (isWindows) {\n        try {\n            // This we run in Atom execFileSync is available.\n            // Ignore stderr since this is otherwise piped to parent.stderr\n            // which might be already closed.\n            let options = {\n                stdio: ['pipe', 'pipe', 'ignore']\n            };"
+        },
+        {
+            "comment": "This code checks the operating system and terminates the current process based on that. If it's Windows, it uses taskkill to forcefully terminate the process. For Linux or macOS, it tries to execute a shell script (terminateProcess.sh) that kills the process. If none of these apply, it directly calls process.kill('SIGKILL').",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_kali_amd64/cognitionService/virtual/processes.js\":21-47",
+            "content": "            if (cwd) {\n                options.cwd = cwd;\n            }\n            cp.execFileSync('taskkill', ['/T', '/F', '/PID', process.pid.toString()], options);\n            return true;\n        }\n        catch (err) {\n            return false;\n        }\n    }\n    else if (isLinux || isMacintosh) {\n        try {\n            var cmd = path_1.join(__dirname, 'terminateProcess.sh');\n            var result = cp.spawnSync(cmd, [process.pid.toString()]);\n            return result.error ? false : true;\n        }\n        catch (err) {\n            return false;\n        }\n    }\n    else {\n        process.kill('SIGKILL');\n        return true;\n    }\n}\nexports.terminate = terminate;\n//# sourceMappingURL=processes.js.map"
+        }
+    ]
+}

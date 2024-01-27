@@ -1,0 +1,10 @@
+{
+    "summary": "Executing a Bash script, initializing autocompletion options for arguments 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'j', 'k', 's', 'u', and 'v'.",
+    "details": [
+        {
+            "comment": "Executing a Bash script, initializing autocompletion options for arguments 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'j', 'k', 's', 'u', and 'v'.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_chromeos_aarch64/cognitionService/get_commands.sh\":0-1",
+            "content": "#!/bin/bash\ncompgen -abcdefgjksuv"
+        }
+    ]
+}

@@ -1,0 +1,10 @@
+{
+    "summary": "This code performs various Vim commands and functions. It echoes \"hello world\" and \"hello again\", displays messages, sets numbered lines, inspects package.loaded using Lua, and quits the Vim editor.",
+    "details": [
+        {
+            "comment": "This code performs various Vim commands and functions. It echoes \"hello world\" and \"hello again\", displays messages, sets numbered lines, inspects package.loaded using Lua, and quits the Vim editor.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_kali_amd64/cognitionService/virtual/nedit.vim\":0-5",
+            "content": ":echo \"hello world\"\n:echom \"hello again\"\n:messages\n:set number\n:lua print(vim.inspect(package.loaded))\n:quit!"
+        }
+    ]
+}

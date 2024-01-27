@@ -1,0 +1,10 @@
+{
+    "summary": "The code searches for system alternatives to daemonize a program on different operating systems (not just Linux). It mentions launchd for macOS, crontab for Linux and macOS, and Windows having its own utility. The author suggests searching for \"starting program from startup on X system\" as an alternative approach.",
+    "details": [
+        {
+            "comment": "The code searches for system alternatives to daemonize a program on different operating systems (not just Linux). It mentions launchd for macOS, crontab for Linux and macOS, and Windows having its own utility. The author suggests searching for \"starting program from startup on X system\" as an alternative approach.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/daemonize_startup/README\":0-6",
+            "content": "search for systemd alternative. not just for linux, macos, windows.\nlaunchd: macos\ncrontab: linux, macos\nwindows has its own utility to do the startup.\nwhat about searching for \"starting program from startup on X system\"?"
+        }
+    ]
+}

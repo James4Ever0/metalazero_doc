@@ -1,0 +1,10 @@
+{
+    "summary": "This code sends a shutdown request in JSONRPC format repeatedly with 1-second intervals. It prints the request and waits for a response.",
+    "details": [
+        {
+            "comment": "This code sends a shutdown request in JSONRPC format repeatedly with 1-second intervals. It prints the request and waits for a response.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_kali_amd64/cognitionService/virtual/vscode_baremetal.py\":0-13",
+            "content": "msg=\"\"\"{\n\t\"jsonrpc\": \"2.0\",\n\t\"id\": 1,\n\t\"method\": \"shutdown\", \n\t\"params\": {}\n}\"\"\"\nl=len(msg)\nheader=\"\"\"Content-Length: {}\\r\\n\n\\r\\n\"\"\".format(l)\nwr=header+msg\nimport time\nwhile True:\n    print(wr,end=\"\\r\\n\")\n    time.sleep(1)"
+        }
+    ]
+}

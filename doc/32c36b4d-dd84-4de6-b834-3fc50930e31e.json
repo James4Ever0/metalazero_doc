@@ -1,0 +1,10 @@
+{
+    "summary": "Executing libjudger.so with 'bash' as exe_path and 'freeze' seccomp rule, potentially restricting system calls for the running instance. Alternatively, it can also use 'runas.sh' with 'nokill' seccomp rule, implying different restrictions.",
+    "details": [
+        {
+            "comment": "Executing libjudger.so with 'bash' as exe_path and 'freeze' seccomp rule, potentially restricting system calls for the running instance. Alternatively, it can also use 'runas.sh' with 'nokill' seccomp rule, implying different restrictions.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_kali_amd64/virtualService/tools/sandserv/incage.sh\":0-2",
+            "content": "#!/bin/bash\nbin/libjudger.so --exe_path=$(which bash) --seccomp_rule_name=freeze\n#bin/libjudger.so --exe_path=$PWD/runas.sh --seccomp_rule_name=nokill"
+        }
+    ]
+}

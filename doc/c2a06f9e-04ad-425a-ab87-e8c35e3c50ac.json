@@ -1,0 +1,10 @@
+{
+    "summary": "This code uses pexpect and threading libraries to automate execution of simple commands within a Docker container. It continuously selects random commands from a list, executes them, and prints the results with some delay. The read_me function runs in a separate thread to read output line by line.",
+    "details": [
+        {
+            "comment": "This code uses pexpect and threading libraries to automate execution of simple commands within a Docker container. It continuously selects random commands from a list, executes them, and prints the results with some delay. The read_me function runs in a separate thread to read output line by line.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_kali_amd64/mainService/docker_monkey.py\":0-23",
+            "content": "# without monkey typers we cannot really say that we are making any progress with this shitty computer.\n# we are not familar with this shit though!\nimport pexpect\nimport threading\nimport random\nimport time\n# maybe you need winpexpect.\n# we shall start shits from simple rules.\n# anything unpredictable that could also last forever.\np = pexpect.spawn(\"podman run --rm --read-only -i alpine\")\ndef read_me():\n    while True:\n        content = p.readline()\n        print(\"content:\\n\",content)\n#print(dir(p))\nthreading.Thread(target=read_me,daemon=True).start()\ndelay=0.2\nwhile True:\n    payloads = [\"whoami\",\"pwd\",\"ls\"]\n    time.sleep(delay)\n    target = random.choice(payloads)\n    print(\"sending command:\",target)\n    p.sendline(target)"
+        }
+    ]
+}

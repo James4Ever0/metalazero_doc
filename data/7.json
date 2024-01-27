@@ -1,0 +1,531 @@
+{
+    "700": {
+        "file_id": 151,
+        "content": "(defun voidme ()\n(interactive)\n(server-force-delete)\n(setq server-socket-dir \"~/.emacs.d/server\")\n(server-force-delete)\n;(call-interactively 'server-start)\n(server-start)\n)\n(run-with-idle-timer 0 nil 'voidme)\n;now idle.",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/cognitionService/virtual/server.el:1-10"
+    },
+    "701": {
+        "file_id": 151,
+        "content": "The code defines a function \"voidme\" which forces server deletion, sets the server socket directory, and starts the server. It also runs this function every time the idle timer reaches 0.",
+        "type": "comment"
+    },
+    "702": {
+        "file_id": 152,
+        "content": "/native/lazero_kali_amd64/cognitionService/virtual/server.sh",
+        "type": "filepath"
+    },
+    "703": {
+        "file_id": 152,
+        "content": "This code launches Emacs, an extensible text editor, with different flags and parameters to execute a script named \"server.el\". The first two lines use emacsclient with the server socket communication method for faster access, while the last line launches a new window (non-windowed mode) and loads the same script.",
+        "type": "summary"
+    },
+    "704": {
+        "file_id": 152,
+        "content": "#emacsclient -s ~/.emacs.d/server/server\n#emacs --script server.el\nemacs -l server.el\n#emacs -nw -l server.el",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/cognitionService/virtual/server.sh:1-4"
+    },
+    "705": {
+        "file_id": 152,
+        "content": "This code launches Emacs, an extensible text editor, with different flags and parameters to execute a script named \"server.el\". The first two lines use emacsclient with the server socket communication method for faster access, while the last line launches a new window (non-windowed mode) and loads the same script.",
+        "type": "comment"
+    },
+    "706": {
+        "file_id": 153,
+        "content": "/native/lazero_kali_amd64/cognitionService/virtual/shellConnect.py",
+        "type": "filepath"
+    },
+    "707": {
+        "file_id": 153,
+        "content": "The code imports necessary modules and defines three functions. The \"display\" function sends a GET request to the specified URL on localhost:8778 to retrieve and return the current display content. The \"inputs\" function encodes the given text, sends it as a GET request with autoreturn flag, and returns the response data. Finally, the \"restart\" function sends a GET request to restart the system.",
+        "type": "summary"
+    },
+    "708": {
+        "file_id": 153,
+        "content": "import requests as R\nPORT=8778\ndef display():\n    req = R.get(\"http://localhost:{}/display\".format(PORT))\n    return req.text\nfrom base64 import b64encode as Be\ndef inputs(text,autoreturn=True):\n    assert type(text) == str\n    ar = \"true\" if autoreturn else \"false\"\n    btext = Be(text.encode(\"utf-8\")).decode(\"utf-8\")\n    req = R.get(\"http://localhost:{}/input?autoreturn={}&b64type={}\".format(PORT,ar,btext))\n    # this is still the screen.\n    return req.text\ndef restart():\n    req = R.get(\"http://localhost:{}/restart\".format(PORT))\n    return req.text",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/cognitionService/virtual/shellConnect.py:1-21"
+    },
+    "709": {
+        "file_id": 153,
+        "content": "The code imports necessary modules and defines three functions. The \"display\" function sends a GET request to the specified URL on localhost:8778 to retrieve and return the current display content. The \"inputs\" function encodes the given text, sends it as a GET request with autoreturn flag, and returns the response data. Finally, the \"restart\" function sends a GET request to restart the system.",
+        "type": "comment"
+    },
+    "710": {
+        "file_id": 154,
+        "content": "/native/lazero_kali_amd64/cognitionService/virtual/stdio_jsonrpc.js",
+        "type": "filepath"
+    },
+    "711": {
+        "file_id": 154,
+        "content": "The code imports necessary modules, sets up a function to handle notifications and requests, then sends a request for 'ping' and notifies the result as 'pong'. It handles errors during requests.",
+        "type": "summary"
+    },
+    "712": {
+        "file_id": 154,
+        "content": "const {setup, sendNotification, sendRequest, RPCError} = require('stdio-jsonrpc')\nfunction print(m){console.log(m);}\nsetup({\n  onNotification(method, params) {\n\t  print(method);\n\t  print(params);\n    // handle a notification\n  },\n  onRequest(method, params, callback) {\n    // handle a request\n\t  print(method);\n\t  print(params);\n//    callback(new RPCError.MethodNotFound())\ncallback(console.log(\"NOTHING TO EXECUTE.\"))\n  }\n})\nsendRequest('ping').then(pong => {\n  sendNotification('pong', { msg: pong })\n})\n.catch(err => {\n\tprint(err);\n  // something bad happened\n})",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/cognitionService/virtual/stdio_jsonrpc.js:1-24"
+    },
+    "713": {
+        "file_id": 154,
+        "content": "The code imports necessary modules, sets up a function to handle notifications and requests, then sends a request for 'ping' and notifies the result as 'pong'. It handles errors during requests.",
+        "type": "comment"
+    },
+    "714": {
+        "file_id": 155,
+        "content": "/native/lazero_kali_amd64/cognitionService/virtual/stdio_jsonrpc.sh",
+        "type": "filepath"
+    },
+    "715": {
+        "file_id": 155,
+        "content": "This command sets the NODE_PATH environment variable to \"/usr/local/lib/node_modules\" and executes \"stdio_jsonrpc.js\" using Node.js. It appears to be launching a script with the necessary environment variable set for the codebase's functionality.",
+        "type": "summary"
+    },
+    "716": {
+        "file_id": 155,
+        "content": "env NODE_PATH=/usr/local/lib/node_modules node stdio_jsonrpc.js",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/cognitionService/virtual/stdio_jsonrpc.sh:1-1"
+    },
+    "717": {
+        "file_id": 155,
+        "content": "This command sets the NODE_PATH environment variable to \"/usr/local/lib/node_modules\" and executes \"stdio_jsonrpc.js\" using Node.js. It appears to be launching a script with the necessary environment variable set for the codebase's functionality.",
+        "type": "comment"
+    },
+    "718": {
+        "file_id": 156,
+        "content": "/native/lazero_kali_amd64/cognitionService/virtual/tee_rcsh.rc",
+        "type": "filepath"
+    },
+    "719": {
+        "file_id": 156,
+        "content": "This code sets up a bash language server using the bash-language-server command and redirects its output, error, and input to separate log files for logging purposes. It is compatible with rcshell only.",
+        "type": "summary"
+    },
+    "720": {
+        "file_id": 156,
+        "content": "#!/bin/rc\n#tee -a bash_lsp_input.log | bash-language-server start 2>(tee -a bash_lsp_error.log 1>&2) 1>(tee -a bash_lsp_output.log)\n# rcshell only.\ntee -a bash_lsp_stdin.log | bash-language-server start",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/cognitionService/virtual/tee_rcsh.rc:1-4"
+    },
+    "721": {
+        "file_id": 156,
+        "content": "This code sets up a bash language server using the bash-language-server command and redirects its output, error, and input to separate log files for logging purposes. It is compatible with rcshell only.",
+        "type": "comment"
+    },
+    "722": {
+        "file_id": 157,
+        "content": "/native/lazero_kali_amd64/cognitionService/virtual/telnet_client.el",
+        "type": "filepath"
+    },
+    "723": {
+        "file_id": 157,
+        "content": "This code sets up a telnet client connection, defines a process filter that logs output to a temporary buffer, and sends \"hello world\" message to the server.",
+        "type": "summary"
+    },
+    "724": {
+        "file_id": 157,
+        "content": "(setq echo-server-port 10000)\n(setq client-process (open-network-stream \"echo-client\"\n                          \"*echo-client*\" \"localhost\" echo-server-port))\n; process-filter\n; set-process-filter\n;(setq tmp_buf \"TempBuffer\")\n; not just that.\n(defun my-filter-function (program text) (with-temp-file \"tempbuffer.log\" (insert text) (run-with-timer 1 nil #'kill-emacs)))\n(set-process-filter client-process #'my-filter-function)\n;(kill-buffer tmp_buf)\n;(get-buffer-create tmp_buf)\n(process-send-string client-process \"hello world\\n\")\n;(print (process-filter client-process))",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/cognitionService/virtual/telnet_client.el:1-14"
+    },
+    "725": {
+        "file_id": 157,
+        "content": "This code sets up a telnet client connection, defines a process filter that logs output to a temporary buffer, and sends \"hello world\" message to the server.",
+        "type": "comment"
+    },
+    "726": {
+        "file_id": 158,
+        "content": "/native/lazero_kali_amd64/cognitionService/virtual/telnet_client.sh",
+        "type": "filepath"
+    },
+    "727": {
+        "file_id": 158,
+        "content": "This script launches Emacs with the provided telnet_client.el script for interacting with a telnet server.",
+        "type": "summary"
+    },
+    "728": {
+        "file_id": 158,
+        "content": "#!/bin/bash\nemacs --script telnet_client.el",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/cognitionService/virtual/telnet_client.sh:1-2"
+    },
+    "729": {
+        "file_id": 158,
+        "content": "This script launches Emacs with the provided telnet_client.el script for interacting with a telnet server.",
+        "type": "comment"
+    },
+    "730": {
+        "file_id": 159,
+        "content": "/native/lazero_kali_amd64/cognitionService/virtual/telnetlib_connect.py",
+        "type": "filepath"
+    },
+    "731": {
+        "file_id": 159,
+        "content": "This code imports the Telnet library, establishes a connection to localhost on port 10000, sends \"hello world\\n\" over the connection, reads until a newline character is received, and then prints the response.",
+        "type": "summary"
+    },
+    "732": {
+        "file_id": 159,
+        "content": "from telnetlib import Telnet\nt = Telnet(\"localhost\",10000)\nt.write(b\"hello world\\n\")\nc=t.read_until(b\"\\n\")\nprint(c)",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/cognitionService/virtual/telnetlib_connect.py:1-5"
+    },
+    "733": {
+        "file_id": 159,
+        "content": "This code imports the Telnet library, establishes a connection to localhost on port 10000, sends \"hello world\\n\" over the connection, reads until a newline character is received, and then prints the response.",
+        "type": "comment"
+    },
+    "734": {
+        "file_id": 160,
+        "content": "/native/lazero_kali_amd64/cognitionService/virtual/test.sh",
+        "type": "filepath"
+    },
+    "735": {
+        "file_id": 160,
+        "content": "This code is a Bash script that prints \"hello\" to the terminal and saves the output to a log file named stdout.log without any redirection for error messages or standard input.",
+        "type": "summary"
+    },
+    "736": {
+        "file_id": 160,
+        "content": "#!/bin/bash\n# you are not echoing them.\necho hello > hello\ncat hello >(tee -a stdout.log)\n#cat hello 1>(tee -a stdout.log) 2>(tee -a stderr.log)",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/cognitionService/virtual/test.sh:1-5"
+    },
+    "737": {
+        "file_id": 160,
+        "content": "This code is a Bash script that prints \"hello\" to the terminal and saves the output to a log file named stdout.log without any redirection for error messages or standard input.",
+        "type": "comment"
+    },
+    "738": {
+        "file_id": 161,
+        "content": "/native/lazero_kali_amd64/cognitionService/virtual/transmit_bashls.py",
+        "type": "filepath"
+    },
+    "739": {
+        "file_id": 161,
+        "content": "This code initializes a connection with the VSCode debug server and sends an initialize request to start a debug session. It sets the root path, capabilities (empty in this case), and dumps the request object into JSON format. It then prints the JSON request message for 50 iterations.",
+        "type": "summary"
+    },
+    "740": {
+        "file_id": 161,
+        "content": "#a=\"length: 256\"\nimport os\nrpath=os.environ[\"PWD\"]\nimport json\nc={}\nc.update({\"jsonrpc\":\"2.0\"})\nc.update({\"id\":1})\nc.update({\"method\":\"initialize\",\"params\":{\"rootPath\":rpath,\"capabilities\":[]}})\nc=json.dumps(c)\nl=len(c)\n#b=\"Content-Length: {}\".format(l)\nb=\"\"\"Content-Length: {}\\r\\n\nContent-Type: application/vscode-jsonrpc; charset=utf8\\r\\n\"\"\".format(l)\n#print(b,end=\"\")\n#print(c+\"\\x04\")\nfor x in range(50):\n    print(c,end=\"\\r\\n\")\n#    print(\"\")",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/cognitionService/virtual/transmit_bashls.py:1-18"
+    },
+    "741": {
+        "file_id": 161,
+        "content": "This code initializes a connection with the VSCode debug server and sends an initialize request to start a debug session. It sets the root path, capabilities (empty in this case), and dumps the request object into JSON format. It then prints the JSON request message for 50 iterations.",
+        "type": "comment"
+    },
+    "742": {
+        "file_id": 162,
+        "content": "/native/lazero_kali_amd64/cognitionService/virtual/transmit_bashls.sh",
+        "type": "filepath"
+    },
+    "743": {
+        "file_id": 162,
+        "content": "This code executes the Python script \"transmit_bashls.py\" and pipes its output into the Bash Language Server (bash-language-server), starting it up.",
+        "type": "summary"
+    },
+    "744": {
+        "file_id": 162,
+        "content": "#python3 transmit_pyls.py | pyls\npython3 transmit_bashls.py | bash-language-server start",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/cognitionService/virtual/transmit_bashls.sh:1-2"
+    },
+    "745": {
+        "file_id": 162,
+        "content": "This code executes the Python script \"transmit_bashls.py\" and pipes its output into the Bash Language Server (bash-language-server), starting it up.",
+        "type": "comment"
+    },
+    "746": {
+        "file_id": 163,
+        "content": "/native/lazero_kali_amd64/cognitionService/virtual/transmit_js_ipc.js",
+        "type": "filepath"
+    },
+    "747": {
+        "file_id": 163,
+        "content": "This code sets up a communication process with an external program, using child_process.spawn(), StringDecoder, and VSCode language server protocol to handle errors and requests. It handles completion requests in JavaScript but encounters an error due to an undefined 'workspace' variable.",
+        "type": "summary"
+    },
+    "748": {
+        "file_id": 163,
+        "content": "const node_1 = require(\"vscode-languageserver-protocol/node\")\nconst process = require(\"./processes\") \nconst cp = require(\"child_process\")\nfunction dir(a) {console.dir(a)}\nfunction log(a) {console.log(a)}\nfunction inspect(a) {return Object.getOwnPropertyNames(a)}\n// something else?\n//var serverProcess = cp.spawn(\"node\",[\"vscode_lsp.js\"])\nvar serverProcess = cp.spawn(\"python3\",[\"transmit_js_ipc.py\"])\n//var serverProcess = cp.spawn(\"bash-language-server\",[\"start\"])\n//var serverProcess = cp.spawn(\"python3\",[\"recv.py\"])\n//var serverProcess = cp.spawn(\"bash\")// this shit does not properly respond to us.\nconst { StringDecoder } = require('string_decoder');\nconst decoder = new StringDecoder('utf8');\nfunction dc(a){return decoder.write(a)}\n//(type, ...args) <- way to hide these things.\nserverProcess.stderr.on(\"data\",d=>{log(\"STDERR\\n\"+dc(d))})\nserverProcess.stdout.on(\"data\",d=>{log(\"STDOUT\\n\"+dc(d))})\n// this is buffer, decode it first.\n// does this really matter? can we write into the stdin?\n// no don't you think about this.",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/cognitionService/virtual/transmit_js_ipc.js:1-24"
+    },
+    "749": {
+        "file_id": 163,
+        "content": "This code sets up a process for communicating with an external program, possibly a language server. It spawns different processes depending on the current environment and configuration, using child_process.spawn() method. The code also includes error handling by listening to STDERR and STDOUT events from the spawned process. Additionally, it uses StringDecoder to handle any output data in UTF-8 format.",
+        "type": "comment"
+    },
+    "750": {
+        "file_id": 163,
+        "content": "var client = {reader:new node_1.StreamMessageReader(serverProcess.stdout)\n,writer:new node_1.StreamMessageWriter(serverProcess.stdin)}\nlet conn = node_1.createMessageConnection(client.reader,client.writer)\nlet note = new node_1.RequestType('testNotification');\n//let note = new node_1.NotificationType('testNotification');\nconn.listen()\n//setInterval(()=>{conn.sendRequest(\"Hello World\")},1000)\n//setInterval(()=>{conn.sendRequest(note,\"Hello World\")},1000)\nlog(\"made it?\")\n//dir(node_1.createMessageConnection)\nuri = \"file:///Users/dirkb/sample/test.ts\"\ntd = \"textDocument/didOpen\"\ndir(conn)\n// method, params?\nconst proto = require(\"vscode-languageserver-protocol\");\n//log(proto.ShutdownRequest.type)\n//let meta = code2ProtocolConverter.asCompletionParams(document, position, context)\nfunction asTextDocumentIdentifier(textDocument) { return { uri: _uriConverter(textDocument.uri) };}\nfunction asWorkerPosition(position) { return { line: position.line, character: position.character };}\nfunction asCompletionTriggerKind(triggerKind) { switch (triggerKind) {",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/cognitionService/virtual/transmit_js_ipc.js:25-50"
+    },
+    "751": {
+        "file_id": 163,
+        "content": "The code sets up a connection between the client and server using message streams, establishes a message listener, and defines a request type called \"testNotification\". It also includes comments for potential functions and time-based actions like sending requests at regular intervals and displaying log messages. The code uses VSCode language server protocol and URI converters.",
+        "type": "comment"
+    },
+    "752": {
+        "file_id": 163,
+        "content": "\tcase 0: return proto.CompletionTriggerKind.TriggerCharacter;  \n\tcase 1:return proto.CompletionTriggerKind.TriggerForIncompleteCompletions;\n\tdefault:return proto.CompletionTriggerKind.Invoked; } }\nlet position={line:0,character:0}\nlet fileuri=\"file:///data/data/com.termux/files/home/metalazero/native/lazero_kali_amd64/cognitionService/virtual/vscode_ipc.sh\";\n//asTextDocumentIdentifier(textDocument)\n//do not have the document yet. get it parsed.\nlet meta={\n\ttextDocument: {uri:fileuri},\n\tposition: asWorkerPosition(position),\n\tcontext:{\n\t\ttriggerKind: asCompletionTriggerKind(),\n\t\ttriggerCharacter: \" \"}\n}\nlet token=undefined\n//uri2TextDocument\n// this is shutdown.\n// wtf is the token?\n// use client/browser in place of node?\n//conn.sendRequest(proto.CompletionRequest.type, meta,token).then(()=>{log(\"SUCCESS\")}).catch(()=>{log(\"FAILED\")})\ndir(proto)\nlog(proto.InitializeRequest.type)\n//{\"jsonrpc\":\"2.0\",\"id\":0,\"error\":{\"code\":-32603,\"message\":\"Request initialize failed with message: Cannot read property 'workspace' of undefined\"}}",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/cognitionService/virtual/transmit_js_ipc.js:51-74"
+    },
+    "753": {
+        "file_id": 163,
+        "content": "This code is handling a completion request in a JavaScript environment. It determines the trigger kind for the completion request and sets up the necessary metadata, such as text document URI, position, and context. Then it sends a request to the server for completion, but it encounters an error since 'workspace' is undefined. The code seems to be part of a larger system working in a JavaScript-based environment like Node.js or browser JavaScript runtime.",
+        "type": "comment"
+    },
+    "754": {
+        "file_id": 163,
+        "content": "// bash-language-server/node_modules/vscode-jsonrpc/lib/common/connection.js -> ~400\n//let init={workspace:\"file:///sdcard/lazero/flutter/html/\"}\nlet init={rootPath:\"/data/data/com.termux/files/home/metalazero/native/lazero_kali_amd64/cognitionService/virtual\",capabilities:[]}\n//let init={}\n//let init={workspace:\"file:///sdcard/lazero/flutter/html/\",capabilities:[]}\nconn.sendRequest(proto.InitializeRequest.type, init).then(()=>{log(\"SUCCESS\");\nconn.sendRequest(proto.CompletionRequest.type, meta,token).then(()=>{log(\"COMP SUCCESS\")}).catch(()=>{log(\"FAILED\")});\n}).catch(()=>{log(\"FAILED\")})\n//dir(proto)\n//let WSR=proto.WorkspaceSymbolRequest.type\n//log(WSR)\n//conn.sendRequest(WSR,undefined).then(()=>{log(\"SUCCESS\")}).catch(()=>{log(\"FAILED\")})\n//conn.sendRequest(proto.ShutdownRequest.type, undefined).then(()=>{log(\"SUCCESS\")}).catch(()=>{log(\"FAILED\")})\n//conn.sendRequest({method:itd,params:[uri]}).then(()=>{}).catch(()=>{})\n// there must be errors.\n// can i send some shits?",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/cognitionService/virtual/transmit_js_ipc.js:75-93"
+    },
+    "755": {
+        "file_id": 163,
+        "content": "The code initializes a connection and sends requests to the server. It uses different types of requests (InitializeRequest, CompletionRequest) and sends them to the server after checking the connection status. The code also mentions an undefined variable (WSR), which may cause errors, and suggests sending shutdown or other unspecified requests later on.",
+        "type": "comment"
+    },
+    "756": {
+        "file_id": 164,
+        "content": "/native/lazero_kali_amd64/cognitionService/virtual/transmit_js_ipc.py",
+        "type": "filepath"
+    },
+    "757": {
+        "file_id": 164,
+        "content": "This code imports the sys module and continuously reads input from stdin, appending each character to a command string. The current line read is printed, along with the growing command. Finally, it prompts if it should continue to the next round of reading.",
+        "type": "summary"
+    },
+    "758": {
+        "file_id": 164,
+        "content": "import sys\nwhile True:\n    cmd=\"\"\n    for line in sys.stdin.buffer.readline():\n        cmd+=chr(line)\n        print(\"reading:\",line)\n        print(\"buffer:\",cmd)\n    print(\"next round?\")",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/cognitionService/virtual/transmit_js_ipc.py:1-8"
+    },
+    "759": {
+        "file_id": 164,
+        "content": "This code imports the sys module and continuously reads input from stdin, appending each character to a command string. The current line read is printed, along with the growing command. Finally, it prompts if it should continue to the next round of reading.",
+        "type": "comment"
+    },
+    "760": {
+        "file_id": 165,
+        "content": "/native/lazero_kali_amd64/cognitionService/virtual/transmit_js_tee.js",
+        "type": "filepath"
+    },
+    "761": {
+        "file_id": 165,
+        "content": "This code utilizes child_process module for server processes, listens to logs with vscode-languageserver-protocol, defines completion request function, initializes messaging connection and handles errors related to initialization, requests, and shutdown attempts.",
+        "type": "summary"
+    },
+    "762": {
+        "file_id": 165,
+        "content": "const node_1 = require(\"vscode-languageserver-protocol/node\")\nconst process = require(\"./processes\") \nconst cp = require(\"child_process\")\nfunction dir(a) {console.dir(a)}\nfunction log(a) {console.log(a)}\nfunction inspect(a) {return Object.getOwnPropertyNames(a)}\n// something else?\n//var serverProcess = cp.spawn(\"node\",[\"vscode_lsp.js\"])\nvar serverProcess = cp.spawn(\"rc\",[\"tee_rcsh.rc\"])\n//var serverProcess = cp.spawn(\"bash\",[\"tee_bash.sh\"])\n//var serverProcess = cp.spawn(\"bash-language-server\",[\"start\"])\n//var serverProcess = cp.spawn(\"python3\",[\"recv.py\"])\n//var serverProcess = cp.spawn(\"bash\")// this shit does not properly respond to us.\nconst { StringDecoder } = require('string_decoder');\nconst decoder = new StringDecoder('utf8');\nfunction dc(a){return decoder.write(a)}\n//(type, ...args) <- way to hide these things.\nserverProcess.stderr.on(\"data\",d=>{log(\"STDERR\\n\"+dc(d))})\nserverProcess.stdout.on(\"data\",d=>{log(\"STDOUT\\n\"+dc(d))})\n// this is buffer, decode it first.\n// does this really matter? can we write into the stdin?",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/cognitionService/virtual/transmit_js_tee.js:1-24"
+    },
+    "763": {
+        "file_id": 165,
+        "content": "The code imports necessary modules and defines functions for debugging and handling server processes. It uses child_process module to spawn different types of server processes (e.g., \"rc\", \"bash\", \"python3\") based on the chosen script, and then listens to their stdout and stderr outputs with appropriate logging.",
+        "type": "comment"
+    },
+    "764": {
+        "file_id": 165,
+        "content": "// no don't you think about this.\nvar client = {reader:new node_1.StreamMessageReader(serverProcess.stdout)\n,writer:new node_1.StreamMessageWriter(serverProcess.stdin)}\nlet conn = node_1.createMessageConnection(client.reader,client.writer)\nlet note = new node_1.RequestType('testNotification');\n//let note = new node_1.NotificationType('testNotification');\nconn.listen()\n//setInterval(()=>{conn.sendRequest(\"Hello World\")},1000)\n//setInterval(()=>{conn.sendRequest(note,\"Hello World\")},1000)\nlog(\"made it?\")\n//dir(node_1.createMessageConnection)\nuri = \"file:///Users/dirkb/sample/test.ts\"\ntd = \"textDocument/didOpen\"\ndir(conn)\n// method, params?\nconst proto = require(\"vscode-languageserver-protocol\");\n//log(proto.ShutdownRequest.type)\n//let meta = code2ProtocolConverter.asCompletionParams(document, position, context)\nfunction asTextDocumentIdentifier(textDocument) { return { uri: _uriConverter(textDocument.uri) };}\nfunction asWorkerPosition(position) { return { line: position.line, character: position.character };}",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/cognitionService/virtual/transmit_js_tee.js:25-49"
+    },
+    "765": {
+        "file_id": 165,
+        "content": "The code initializes a client with message reader and writer, creates a connection using a messaging connection object, defines a request type for a test notification, listens for any incoming messages through the connection, and provides functions to convert text document identifiers and worker positions. It also includes comments suggesting possible future implementations such as sending requests at intervals or logging specific types. The code uses the \"vscode-languageserver-protocol\" module and converts text documents and positions into their respective protocol formats.",
+        "type": "comment"
+    },
+    "766": {
+        "file_id": 165,
+        "content": "function asCompletionTriggerKind(triggerKind) { switch (triggerKind) {\n\tcase 0: return proto.CompletionTriggerKind.TriggerCharacter;  \n\tcase 1:return proto.CompletionTriggerKind.TriggerForIncompleteCompletions;\n\tdefault:return proto.CompletionTriggerKind.Invoked; } }\nlet position={line:0,character:0}\nlet fileuri=\"file:///data/data/com.termux/files/home/metalazero/native/lazero_kali_amd64/cognitionService/virtual/vscode_ipc.sh\";\n//asTextDocumentIdentifier(textDocument)\n//do not have the document yet. get it parsed.\nlet meta={\n\ttextDocument: {uri:fileuri},\n\tposition: asWorkerPosition(position),\n\tcontext:{\n\t\ttriggerKind: asCompletionTriggerKind(),\n\t\ttriggerCharacter: \" \"}\n}\nlet token=undefined\n//uri2TextDocument\n// this is shutdown.\n// wtf is the token?\n// use client/browser in place of node?\n//conn.sendRequest(proto.CompletionRequest.type, meta,token).then(()=>{log(\"SUCCESS\")}).catch(()=>{log(\"FAILED\")})\ndir(proto)\nlog(proto.InitializeRequest.type)\n//{\"jsonrpc\":\"2.0\",\"id\":0,\"error\":{\"code\":-32603,\"message\":\"Request initialize failed with message: Cannot read property 'workspace' of undefined\"}}",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/cognitionService/virtual/transmit_js_tee.js:51-75"
+    },
+    "767": {
+        "file_id": 165,
+        "content": "This code snippet defines a function to determine the completion trigger kind and initializes position, file URI, and metadata for making a request. It sends a completion request using a connection (conn) and handles success or failure responses. The code also logs error messages related to initialization.",
+        "type": "comment"
+    },
+    "768": {
+        "file_id": 165,
+        "content": "// bash-language-server/node_modules/vscode-jsonrpc/lib/common/connection.js -> ~400\n//let init={workspace:\"file:///sdcard/lazero/flutter/html/\"}\nlet init={rootPath:\"/data/data/com.termux/files/home/metalazero/native/lazero_kali_amd64/cognitionService/virtual\",capabilities:[]}\n//let init={}\n//let init={workspace:\"file:///sdcard/lazero/flutter/html/\",capabilities:[]}\nconn.sendRequest(proto.InitializeRequest.type, init).then(()=>{log(\"SUCCESS\");\nconn.sendRequest(proto.CompletionRequest.type, meta,token).then(()=>{log(\"COMP SUCCESS\")}).catch(()=>{log(\"FAILED\")});\n}).catch(()=>{log(\"FAILED\")})\n//dir(proto)\n//let WSR=proto.WorkspaceSymbolRequest.type\n//log(WSR)\n//conn.sendRequest(WSR,undefined).then(()=>{log(\"SUCCESS\")}).catch(()=>{log(\"FAILED\")})\n//conn.sendRequest(proto.ShutdownRequest.type, undefined).then(()=>{log(\"SUCCESS\")}).catch(()=>{log(\"FAILED\")})\n//conn.sendRequest({method:itd,params:[uri]}).then(()=>{}).catch(()=>{})\n// there must be errors.\n// can i send some shits?",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/cognitionService/virtual/transmit_js_tee.js:76-94"
+    },
+    "769": {
+        "file_id": 165,
+        "content": "This code initializes a connection and sends requests for initialization, completion, and possibly workspace symbol search to a JSON-RPC server. The success or failure of these requests are logged. Additionally, there is an attempt to send a shutdown request, but it may result in errors.",
+        "type": "comment"
+    },
+    "770": {
+        "file_id": 166,
+        "content": "/native/lazero_kali_amd64/cognitionService/virtual/transmit_pyls.py",
+        "type": "filepath"
+    },
+    "771": {
+        "file_id": 166,
+        "content": "This code initializes a JSON-RPC 2.0 request with id 1 and method \"initialize\". It sets the rootPath to the current working directory, and an empty capabilities list. The JSON request is then dumped into a string 'c', its length is calculated, and a content length header is created. Finally, the JSON request and header are printed.",
+        "type": "summary"
+    },
+    "772": {
+        "file_id": 166,
+        "content": "#a=\"length: 256\"\nimport os\nrpath=os.environ[\"PWD\"]\nimport json\nc={}\nc.update({\"jsonrpc\":\"2.0\"})\nc.update({\"id\":1})\nc.update({\"method\":\"initialize\",\"params\":{\"rootPath\":rpath,\"capabilities\":[]}})\nc=json.dumps(c)\nl=len(c)\nb=\"Content-Length: {}\".format(l)\nprint(\"\")\n#print(b)\nprint(\"\")\nprint(c+\"\")\n#print(c+\"\\x04\")\nprint(\"\")",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/cognitionService/virtual/transmit_pyls.py:1-18"
+    },
+    "773": {
+        "file_id": 166,
+        "content": "This code initializes a JSON-RPC 2.0 request with id 1 and method \"initialize\". It sets the rootPath to the current working directory, and an empty capabilities list. The JSON request is then dumped into a string 'c', its length is calculated, and a content length header is created. Finally, the JSON request and header are printed.",
+        "type": "comment"
+    },
+    "774": {
+        "file_id": 167,
+        "content": "/native/lazero_kali_amd64/cognitionService/virtual/transmit_pyls.sh",
+        "type": "filepath"
+    },
+    "775": {
+        "file_id": 167,
+        "content": "This code executes the \"transmit_pyls.py\" script, which sends data to a language server. It uses two options: \"python3 transmit_pyls.py | pyls\", which passes the output of the script directly into the \"pyls\" tool; and \"python3 transmit_pyls.py | bash-language-server start\", which does the same but with the \"bash-language-server\". Both options are used for interacting with language servers, likely for coding assistance or analysis.",
+        "type": "summary"
+    },
+    "776": {
+        "file_id": 167,
+        "content": "python3 transmit_pyls.py | pyls\n#python3 transmit_pyls.py | bash-language-server start",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/cognitionService/virtual/transmit_pyls.sh:1-2"
+    },
+    "777": {
+        "file_id": 167,
+        "content": "This code executes the \"transmit_pyls.py\" script, which sends data to a language server. It uses two options: \"python3 transmit_pyls.py | pyls\", which passes the output of the script directly into the \"pyls\" tool; and \"python3 transmit_pyls.py | bash-language-server start\", which does the same but with the \"bash-language-server\". Both options are used for interacting with language servers, likely for coding assistance or analysis.",
+        "type": "comment"
+    },
+    "778": {
+        "file_id": 168,
+        "content": "/native/lazero_kali_amd64/cognitionService/virtual/transmit_pyls_legacy.py",
+        "type": "filepath"
+    },
+    "779": {
+        "file_id": 168,
+        "content": "This code sets variables 'a', 'b', and 'c' to store different strings, then prints these strings in sequential order. The last line seems to have a comment indicating it would print the string concatenated with '\\x04'. The purpose of this code is unclear without further context.",
+        "type": "summary"
+    },
+    "780": {
+        "file_id": 168,
+        "content": "a=\"length: 256\"\nb=\"content: fuck\"\nc=\"shitfuck\"\nprint(\"\")\nprint(\"\")\nprint(a)\nprint(b)\nprint(c+\"\")\n#print(c+\"\\x04\")\nprint(\"\")",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/cognitionService/virtual/transmit_pyls_legacy.py:1-11"
+    },
+    "781": {
+        "file_id": 168,
+        "content": "This code sets variables 'a', 'b', and 'c' to store different strings, then prints these strings in sequential order. The last line seems to have a comment indicating it would print the string concatenated with '\\x04'. The purpose of this code is unclear without further context.",
+        "type": "comment"
+    },
+    "782": {
+        "file_id": 169,
+        "content": "/native/lazero_kali_amd64/cognitionService/virtual/vscode_baremetal.py",
+        "type": "filepath"
+    },
+    "783": {
+        "file_id": 169,
+        "content": "This code sends a shutdown request in JSONRPC format repeatedly with 1-second intervals. It prints the request and waits for a response.",
+        "type": "summary"
+    },
+    "784": {
+        "file_id": 169,
+        "content": "msg=\"\"\"{\n\t\"jsonrpc\": \"2.0\",\n\t\"id\": 1,\n\t\"method\": \"shutdown\", \n\t\"params\": {}\n}\"\"\"\nl=len(msg)\nheader=\"\"\"Content-Length: {}\\r\\n\n\\r\\n\"\"\".format(l)\nwr=header+msg\nimport time\nwhile True:\n    print(wr,end=\"\\r\\n\")\n    time.sleep(1)",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/cognitionService/virtual/vscode_baremetal.py:1-14"
+    },
+    "785": {
+        "file_id": 169,
+        "content": "This code sends a shutdown request in JSONRPC format repeatedly with 1-second intervals. It prints the request and waits for a response.",
+        "type": "comment"
+    },
+    "786": {
+        "file_id": 170,
+        "content": "/native/lazero_kali_amd64/cognitionService/virtual/vscode_client_lsp.js",
+        "type": "filepath"
+    },
+    "787": {
+        "file_id": 170,
+        "content": "Code imports the LanguageClient class from vscode-languageclient package and initializes an instance of it. This client will be used for language service communication between Visual Studio Code and the server. The console.dir(LanguageClient) line is used to inspect the properties and methods of the imported LanguageClient class.",
+        "type": "summary"
+    },
+    "788": {
+        "file_id": 170,
+        "content": "const {LanguageClient}= require(\"vscode-languageclient/node\");\n//const LC=LSP.LanguageClient\n//requires vscode, which shouldn't be installed.\nconsole.dir(LanguageClient)",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/cognitionService/virtual/vscode_client_lsp.js:1-4"
+    },
+    "789": {
+        "file_id": 170,
+        "content": "Code imports the LanguageClient class from vscode-languageclient package and initializes an instance of it. This client will be used for language service communication between Visual Studio Code and the server. The console.dir(LanguageClient) line is used to inspect the properties and methods of the imported LanguageClient class.",
+        "type": "comment"
+    },
+    "790": {
+        "file_id": 171,
+        "content": "/native/lazero_kali_amd64/cognitionService/virtual/vscode_client_lsp.sh",
+        "type": "filepath"
+    },
+    "791": {
+        "file_id": 171,
+        "content": "This code is executing a JavaScript file (vscode_client_lsp.js) using Node.js, with the NODE_PATH environment variable set to /usr/local/lib/node_modules. This could be running a VS Code Language Server Protocol client script in a Linux-based system like Kali.",
+        "type": "summary"
+    },
+    "792": {
+        "file_id": 171,
+        "content": "env NODE_PATH=/usr/local/lib/node_modules node vscode_client_lsp.js",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/cognitionService/virtual/vscode_client_lsp.sh:1-1"
+    },
+    "793": {
+        "file_id": 171,
+        "content": "This code is executing a JavaScript file (vscode_client_lsp.js) using Node.js, with the NODE_PATH environment variable set to /usr/local/lib/node_modules. This could be running a VS Code Language Server Protocol client script in a Linux-based system like Kali.",
+        "type": "comment"
+    },
+    "794": {
+        "file_id": 172,
+        "content": "/native/lazero_kali_amd64/cognitionService/virtual/vscode_ipc.js",
+        "type": "filepath"
+    },
+    "795": {
+        "file_id": 172,
+        "content": "This code establishes a communication channel between VSCode and a bash language server, using child processes, streams, and specific modules. It logs information about the stream objects involved in the process, while sending and logging a \"hello world?\" message.",
+        "type": "summary"
+    },
+    "796": {
+        "file_id": 172,
+        "content": "const node_1 = require(\"vscode-languageserver-protocol/node\")\nconst process = require(\"./processes\") \nconst cp = require(\"child_process\")\nfunction dir(a) {console.dir(a)}\nfunction log(a) {console.log(a)}\n// something else?\nvar serverProcess = cp.spawn(\"bash-language-server\",[\"start\"])\n// does this really matter? can we write into the stdin?\n// no don't you think about this.\nvar client = {reader:new node_1.StreamMessageReader(serverProcess.stdout)\n,writer:new node_1.StreamMessageWriter(serverProcess.stdin)}\n// shall be resolved.\n//dir(client.reader)\nfunction inspect(a) {return Object.getOwnPropertyNames(a)}\nlog(client.reader.readable.stream)\nlog(inspect(client.reader.readable.stream.__proto__))\nlog(inspect(client.reader.readable.stream.__proto__.__proto__))\nlog(inspect(client.reader.readable.stream))\nlog(client.reader.buffer)\n// great, now what to write?\nlog(client.reader.readable.stream._read(1))\nlog(\"_____________________WRITER_____________________\")\ndir(client.writer)\ndir(client.writer.writable.__proto__)\ndir(client.writer.writable.__proto__.__proto__)",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/cognitionService/virtual/vscode_ipc.js:1-27"
+    },
+    "797": {
+        "file_id": 172,
+        "content": "The code sets up a communication channel between VSCode and a bash language server. It uses child processes, streams for reader and writer communication, and requires certain modules like vscode-languageserver-protocol/node and child_process. The code also logs information about the stream objects involved in the communication.",
+        "type": "comment"
+    },
+    "798": {
+        "file_id": 172,
+        "content": "log(client.writer.write)\nlog(client.reader.read) //got nothing.\nlog(client.reader.write) //got nothing.\nvar m = {method:\"echo\",params:[\"hello world?\"]}; // this semicolon.\n(async () =>{\nlet ml = JSON.stringify(m);\nawait client.writer.write(ml);\nlog(client.reader);\nsetInterval(()=>{log(client.reader.buffer);},1000);\n})();\n// semicolons. always?",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/cognitionService/virtual/vscode_ipc.js:28-39"
+    },
+    "799": {
+        "file_id": 172,
+        "content": "Sending \"hello world?\" message to the writer, logging reader buffer every second.",
+        "type": "comment"
+    }
+}

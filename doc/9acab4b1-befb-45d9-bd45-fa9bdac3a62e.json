@@ -1,0 +1,10 @@
+{
+    "summary": "This code reads input data from standard input, converts it into a string using UTF-8 encoding, and then loads the JSON object. Finally, it prints the loaded JSON object.",
+    "details": [
+        {
+            "comment": "This code reads input data from standard input, converts it into a string using UTF-8 encoding, and then loads the JSON object. Finally, it prints the loaded JSON object.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/schedules/demo_load.py\":0-9",
+            "content": "import sys\nbytebuffer = bytearray()\nfor x in sys.stdin.buffer.read():\n    bytebuffer.append(x)\nstring = bytes(bytebuffer).decode(\"utf-8\")\n#print(string,end=\"\")\nimport json\ntarget = json.loads(string)\nprint(target)"
+        }
+    ]
+}

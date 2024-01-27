@@ -1,0 +1,10 @@
+{
+    "summary": "This code sets up a Flask server with a single route (\"/\") that returns the content of \"test_events.html\" when accessed. The server listens on host \"0.0.0.0\" and port 19243.",
+    "details": [
+        {
+            "comment": "This code sets up a Flask server with a single route (\"/\") that returns the content of \"test_events.html\" when accessed. The server listens on host \"0.0.0.0\" and port 19243.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/remote_control/server/test_events.py\":0-15",
+            "content": "from flask import Flask\napp = Flask(__name__)\nhost=\"0.0.0.0\"\nport=19243\ndef homepage():\n    with open(\"test_events.html\",\"r\") as f:\n        return f.read()\n@app.route(\"/\")\ndef index():\n    return homepage()\nif __name__ == \"__main__\":\n    app.run(host=host,port=port)"
+        }
+    ]
+}

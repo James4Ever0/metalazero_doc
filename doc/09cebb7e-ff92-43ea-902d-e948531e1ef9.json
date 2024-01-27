@@ -1,0 +1,10 @@
+{
+    "summary": "This code executes a Python program multiple times, piping the output through several instances of the 'filter_common_pattern.py' script to potentially remove common patterns or filters before processing further.",
+    "details": [
+        {
+            "comment": "This code executes a Python program multiple times, piping the output through several instances of the 'filter_common_pattern.py' script to potentially remove common patterns or filters before processing further.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_kali_amd64/mainService/filter_python_bullshits.sh\":0-0",
+            "content": "python3 generator/python_program_generator.py 2>&1 | python3 filter_common_pattern.py | python3 filter_common_pattern.py | python3 filter_common_pattern.py | python3 filter_common_pattern.py | python3 filter_common_pattern.py | python3 filter_common_pattern.py | python3 filter_common_pattern.py | python3 filter_common_pattern.py | python3 filter_common_pattern.py | python3 filter_common_pattern.py | python3 filter_common_pattern.py"
+        }
+    ]
+}

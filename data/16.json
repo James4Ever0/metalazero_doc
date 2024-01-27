@@ -1,0 +1,536 @@
+{
+    "1600": {
+        "file_id": 318,
+        "content": "#    print(type(m))\n    # shall request fron this shit first.\n#s.setsockopt(SOL_SOCKET, SO_BROADCAST, 1)\n#s.sendto(message,(host,port))",
+        "type": "code",
+        "location": "/remote_control/discovery/broadcast_server.py:61-64"
+    },
+    "1601": {
+        "file_id": 318,
+        "content": "Sets socket options for broadcasting, sends message to specified host and port.",
+        "type": "comment"
+    },
+    "1602": {
+        "file_id": 319,
+        "content": "/remote_control/discovery/checkmate.sh",
+        "type": "filepath"
+    },
+    "1603": {
+        "file_id": 319,
+        "content": "The code retrieves the broadcast IP address from the output of ifconfig, filters and extracts it using grep, and then passes the extracted IP to python3's broadcast_client.py script with -i flag.",
+        "type": "summary"
+    },
+    "1604": {
+        "file_id": 319,
+        "content": "#!/bin/bash\nifconfig | grep -Eo \"broadcast.+\" | grep -Eo \"[0-9]+.[0-9]+.[0-9]+.[0-9]+\" | xargs -iabc python3 broadcast_client.py -i abc",
+        "type": "code",
+        "location": "/remote_control/discovery/checkmate.sh:1-2"
+    },
+    "1605": {
+        "file_id": 319,
+        "content": "The code retrieves the broadcast IP address from the output of ifconfig, filters and extracts it using grep, and then passes the extracted IP to python3's broadcast_client.py script with -i flag.",
+        "type": "comment"
+    },
+    "1606": {
+        "file_id": 320,
+        "content": "/remote_control/discovery/generate_uuid.py",
+        "type": "filepath"
+    },
+    "1607": {
+        "file_id": 320,
+        "content": "This code generates a unique UUID, stores it in a file named \".local_uuid\", and retrieves the stored UUID when needed. It handles cases where the file does not exist by creating it first.",
+        "type": "summary"
+    },
+    "1608": {
+        "file_id": 320,
+        "content": "import os\nimport uuid\ndef generate():\n    return str(uuid.uuid4())\ndef set_uuid():\n    with open(\".local_uuid\",\"w+\") as f:\n        f.write(generate())\ndef get_uuid():\n    if os.path.exists(\".local_uuid\"):\n        return open(\".local_uuid\",\"r\").read()\n    else:\n        set_uuid()\n        return get_uuid()",
+        "type": "code",
+        "location": "/remote_control/discovery/generate_uuid.py:1-16"
+    },
+    "1609": {
+        "file_id": 320,
+        "content": "This code generates a unique UUID, stores it in a file named \".local_uuid\", and retrieves the stored UUID when needed. It handles cases where the file does not exist by creating it first.",
+        "type": "comment"
+    },
+    "1610": {
+        "file_id": 321,
+        "content": "/remote_control/discovery/get_fastest_ip.py",
+        "type": "filepath"
+    },
+    "1611": {
+        "file_id": 321,
+        "content": "The code is reading a file containing a list of IP addresses and UUIDs in JSON format. It searches for the target UUID, extracts the associated IP address, and prints a random IP from the list if the target UUID is found. The original intent was to ping each IP, calculate the average response time, and print the IP with the fastest response time, but this functionality is not implemented in the provided code.",
+        "type": "summary"
+    },
+    "1612": {
+        "file_id": 321,
+        "content": "from pythonping import ping\nimport json\nimport argparse\nparser = argparse.ArgumentParser()\nparser.add_argument(\"-f\",\"--file\",type=str,required=True)\nparser.add_argument(\"-u\",\"--uuid\",type=str,required=True)\nargs = parser.parse_args()\ntarget_file = args.file\ntarget_uuid = args.uuid\nwith open(target_file,\"r\") as f:\n    lists = []\n    for line in f:\n        content = json.loads(line)\n        if content[\"text\"] == target_uuid:\n            lists.append(content[\"ip\"])\n# not permitted. shit.\nimport random\nprint(random.choice(lists))\n\"\"\"\nfor ip in lists:\n    response_list = ping(ip, size=40, count=10)\n    delay = ip.rtt_avg_ms\n    results.append((ip,delay))\nfor ip, delay in sorted(results, key=lambda x: x[1]):\n    print(ip)\n    break\n\"\"\"",
+        "type": "code",
+        "location": "/remote_control/discovery/get_fastest_ip.py:1-28"
+    },
+    "1613": {
+        "file_id": 321,
+        "content": "The code is reading a file containing a list of IP addresses and UUIDs in JSON format. It searches for the target UUID, extracts the associated IP address, and prints a random IP from the list if the target UUID is found. The original intent was to ping each IP, calculate the average response time, and print the IP with the fastest response time, but this functionality is not implemented in the provided code.",
+        "type": "comment"
+    },
+    "1614": {
+        "file_id": 322,
+        "content": "/remote_control/discovery/template.j2",
+        "type": "filepath"
+    },
+    "1615": {
+        "file_id": 322,
+        "content": "This code appears to be a template for an HTTP response, specifically returning a status 200 (OK) with UTF-8 encoded HTML content. The server identifier is \"netcat!\" and the variable `content` seems to hold dynamic data that will be included in the response body.",
+        "type": "summary"
+    },
+    "1616": {
+        "file_id": 322,
+        "content": "HTTP/1.1 200 OK\nContent-Type: text/html; charset=UTF-8\nServer: netcat!\n{{ content }}",
+        "type": "code",
+        "location": "/remote_control/discovery/template.j2:1-5"
+    },
+    "1617": {
+        "file_id": 322,
+        "content": "This code appears to be a template for an HTTP response, specifically returning a status 200 (OK) with UTF-8 encoded HTML content. The server identifier is \"netcat!\" and the variable `content` seems to hold dynamic data that will be included in the response body.",
+        "type": "comment"
+    },
+    "1618": {
+        "file_id": 323,
+        "content": "/remote_control/discovery/test_server.py",
+        "type": "filepath"
+    },
+    "1619": {
+        "file_id": 323,
+        "content": "The code imports the Flask module and creates a Flask application. It sets the host and port to 0.0.0.0 and 5999 respectively. A route (\"/\") is defined, which returns \"lazero name resolution server\" when accessed. The application runs on the specified host and port if the script is executed directly.",
+        "type": "summary"
+    },
+    "1620": {
+        "file_id": 323,
+        "content": "from flask import Flask\napp = Flask(__name__)\nhost, port = \"0.0.0.0\", 5999\n@app.route(\"/\")\ndef hello():\n    return \"lazero name resolution server\"\nif __name__ == \"__main__\":\n    app.run(host=host,port=port)",
+        "type": "code",
+        "location": "/remote_control/discovery/test_server.py:1-9"
+    },
+    "1621": {
+        "file_id": 323,
+        "content": "The code imports the Flask module and creates a Flask application. It sets the host and port to 0.0.0.0 and 5999 respectively. A route (\"/\") is defined, which returns \"lazero name resolution server\" when accessed. The application runs on the specified host and port if the script is executed directly.",
+        "type": "comment"
+    },
+    "1622": {
+        "file_id": 324,
+        "content": "/remote_control/discovery/update_local_name_resolution_table.py",
+        "type": "filepath"
+    },
+    "1623": {
+        "file_id": 324,
+        "content": "This code checks if a device with the given UUID exists in the local name resolution table. If not, it adds the device to the table. The table is stored in a JSON file named \".local_name_resolution.json\".",
+        "type": "summary"
+    },
+    "1624": {
+        "file_id": 324,
+        "content": "import json\nimport os\ncodename = \".local_name_resolution.json\"\n# if in return true.\ndef checkin(uuid,ip,data):\n    r = uuid in data.keys()\n    if not r:\n        return r\n    else:\n        r = (data[uuid] == ip)\n        return not r\ndef get_table():\n    if os.path.exists(codename):\n        return json.loads(open(codename,\"r\").read())\n    else:\n        with open(codename,\"w+\") as f:\n            f.write(json.dumps({}))\n        return get_table()\ndef set_table(uuid,ip):\n    table = get_table()\n    result = checkin(uuid,ip,table)\n    if not result:\n        table.update({uuid:{\"ip\":ip}})\n        with open(codename,\"w+\") as f:\n            f.write(json.dumps(table))\n    return result",
+        "type": "code",
+        "location": "/remote_control/discovery/update_local_name_resolution_table.py:1-28"
+    },
+    "1625": {
+        "file_id": 324,
+        "content": "This code checks if a device with the given UUID exists in the local name resolution table. If not, it adds the device to the table. The table is stored in a JSON file named \".local_name_resolution.json\".",
+        "type": "comment"
+    },
+    "1626": {
+        "file_id": 325,
+        "content": "/remote_control/discovery/uuid_client.py",
+        "type": "filepath"
+    },
+    "1627": {
+        "file_id": 325,
+        "content": "This code checks if the script is being run directly and sets up argument parsing for IP address. It then tries to send a GET request to the specified IP's port 8010, printing the IP and response text if successful, otherwise it does nothing.",
+        "type": "summary"
+    },
+    "1628": {
+        "file_id": 325,
+        "content": "if __name__ == \"__main__\":\n    import argparse\n    parser = argparse.ArgumentParser()\n    parser.add_argument(\"-i\",\"--ip\",type=str,required=True)\n    args = parser.parse_args()\n    host = args.ip\n    import requests\n    try:\n        req = requests.get(\"http://{}:8010\".format(host),timeout=1)\n        text = req.text\n        print({\"ip\":host,\"text\":text})\n    except:\n        pass",
+        "type": "code",
+        "location": "/remote_control/discovery/uuid_client.py:1-13"
+    },
+    "1629": {
+        "file_id": 325,
+        "content": "This code checks if the script is being run directly and sets up argument parsing for IP address. It then tries to send a GET request to the specified IP's port 8010, printing the IP and response text if successful, otherwise it does nothing.",
+        "type": "comment"
+    },
+    "1630": {
+        "file_id": 326,
+        "content": "/remote_control/discovery/uuid_server.py",
+        "type": "filepath"
+    },
+    "1631": {
+        "file_id": 326,
+        "content": "This code creates a UUID server using Tornado web framework. It generates a unique identifier for each request and writes it to an HTTP file before running the server. The server listens on port 8010.",
+        "type": "summary"
+    },
+    "1632": {
+        "file_id": 326,
+        "content": "from generate_uuid import get_uuid\n\"\"\"from jinja2 import Template\nimport os\nif not os.path.exists(\"index.http\"):\n    with open(\"template.j2\",\"r\") as f:\n        template = f.read()\n    tmp = Template(template)\n    tmp = tmp.render({\"content\": get_uuid()})\n    with open(\"index.http\",\"w+\") as f:\n        f.write(tmp)\ncmd = \"bash uuid_server.sh\"\nos.system(cmd)\"\"\"\nimport tornado.ioloop\nimport tornado.web\nclass MainHandler(tornado.web.RequestHandler):\n    def get(self):\n        self.write(get_uuid())\n    def make_app():\n        return tornado.web.Application([ (r\"/\", MainHandler), ])  # URL Mapping\nif __name__ == \"__main__\":\n    app = MainHandler.make_app()\n    app.listen(8010)    # Port Number\n    tornado.ioloop.IOLoop.current().start()",
+        "type": "code",
+        "location": "/remote_control/discovery/uuid_server.py:1-30"
+    },
+    "1633": {
+        "file_id": 326,
+        "content": "This code creates a UUID server using Tornado web framework. It generates a unique identifier for each request and writes it to an HTTP file before running the server. The server listens on port 8010.",
+        "type": "comment"
+    },
+    "1634": {
+        "file_id": 327,
+        "content": "/remote_control/discovery/uuid_server.sh",
+        "type": "filepath"
+    },
+    "1635": {
+        "file_id": 327,
+        "content": "This script continuously listens for incoming HTTP requests on port 8010, then reads the request data and sends it to the specified host using netcat (nc).",
+        "type": "summary"
+    },
+    "1636": {
+        "file_id": 327,
+        "content": "while true; do cat index.http | nc -l 8010; done",
+        "type": "code",
+        "location": "/remote_control/discovery/uuid_server.sh:1-1"
+    },
+    "1637": {
+        "file_id": 327,
+        "content": "This script continuously listens for incoming HTTP requests on port 8010, then reads the request data and sends it to the specified host using netcat (nc).",
+        "type": "comment"
+    },
+    "1638": {
+        "file_id": 328,
+        "content": "/remote_control/server/README",
+        "type": "filepath"
+    },
+    "1639": {
+        "file_id": 328,
+        "content": "This code is a basic server for Windows, MacOS, and Linux, with limitations on ChromeOS, Android, and iOS. It serves screen, mouse, and keyboard via a given port and can be accessed through web browsers or CLI clients. The author considers using setInterval instead of setTimeout, ponders recursive tasks, and wonders if it truly matters.",
+        "type": "summary"
+    },
+    "1640": {
+        "file_id": 328,
+        "content": "this is the base server for windows/macos/linux, due to the limitation of chromeos/android/ios.\nwill serve the screen, mouse and keyboard via given port.\ncan be visited directly from the web browser, or use cli clients to do extra fun.\nuse setInterval(()=>{},t) instead of setTimeout?\nhow to perform recursive tasks? does this really matters? really have any difference at all?",
+        "type": "code",
+        "location": "/remote_control/server/README:1-9"
+    },
+    "1641": {
+        "file_id": 328,
+        "content": "This code is a basic server for Windows, MacOS, and Linux, with limitations on ChromeOS, Android, and iOS. It serves screen, mouse, and keyboard via a given port and can be accessed through web browsers or CLI clients. The author considers using setInterval instead of setTimeout, ponders recursive tasks, and wonders if it truly matters.",
+        "type": "comment"
+    },
+    "1642": {
+        "file_id": 329,
+        "content": "/remote_control/server/deprecated_index.js",
+        "type": "filepath"
+    },
+    "1643": {
+        "file_id": 329,
+        "content": "The code captures screenshots and touch/mouse events, sending data to a server using Fetch API. It updates cursor positions and handles click, double-click, mouseup, and keyboard events via POST requests, but may contain outdated functionality or warnings due to deprecated index file.",
+        "type": "summary"
+    },
+    "1644": {
+        "file_id": 329,
+        "content": "const refreshRate=10;\nvar sleepTime = 1000/refreshRate;\n// first let's get the screenshots.\nfunction test_screen()\n{\n\tconsole.log(\"screen refreshing!\");\n\tvar screen = document.getElementById(\"screenCanvas\");\n\t// wait till ready?\n\tvar ctx = screen.getContext(\"2d\");\t\t\t\t\n\tvar image = new Image();\n\timage.src=\"/screenshot/\"+Date.now()+\".jpg\";\n\timage.onload = function(){\n\t\tctx.drawImage(image,0,0);\n\t\tdelete image;\n\t\tsetTimeout(()=>{test_screen()},sleepTime);\t\t\t\t\t\n\t}\n}\nwindow.addEventListener(\"load\",test_screen);\nfunction postData(suffix,payload){\n\t//get base location first.\n\tvar remoteHost = window.location.href;\n\tvar options = {method:\"POST\",\n\t\tbody: JSON.stringify(payload),\n\t\theaders: {\"Content-Type\": \"application/json\"}\n\t};\n\tfetch(remoteHost+suffix, options).then(res => res.json()).then(res => console.log(\"post response:\\n\"+res)); \n}\n// check some buffers. regularly clear things? nope?\nvar global_previousCursor = {};\nvar global_nextCursor = {};\nvar keyevent = {};\nfunction touchDown(previousCursor,nextCursor){\n\tvar a = previousCursor;",
+        "type": "code",
+        "location": "/remote_control/server/deprecated_index.js:2-37"
+    },
+    "1645": {
+        "file_id": 329,
+        "content": "This code sets up a function to continuously capture screenshots and post them, with a 10-second refresh rate. It also defines variables for storing cursor data and handles touch events. The screenshot function waits for the image to load before drawing it onto the canvas and then schedules the next screen capture after a delay. It posts the captured screenshot data to a server using Fetch API with JSON payload, logging the response to the console.",
+        "type": "comment"
+    },
+    "1646": {
+        "file_id": 329,
+        "content": "\tvar b = nextCursor;\n\tif (a.type == \"touchstart\" && b.type == \"mousemove\"){\n\t\tif (Math.abs(a.clientX - b.x) <5 && Math.abs(a.clientY - b.Y)< 5 && Math.abs(a.timeStamp - b.timeStamp) < 2500){\n\t\t\t// trigger hold event? shall I? mouse down?\n\t\t\tpostData(\"/mouse\",{type:\"mouseDown\"});\t\n\t\t\treturn false;\n\t\t}\t\t\t\t\t}\n\treturn true;\n}\nfunction touchMove(previousCursor,nextCursor){var a = previousCursor;\n\tvar b = nextCursor;\n\tif ((a.type == \"touchstart\" || a.type == \"touchmove\") && b.type == \"touchmove\"){\n\t\tvar deltaX = b.clientX - a.clientX;\n\t\tvar deltaY = b.clientY - a.clientY;\n\t\tpostData(\"/mouse\",{type:\"mouseMove\",deltaX:deltaX,deltaY:deltaY});\n\t}\n}\nfunction touchUp(previousCursor,nextCursor){\n\tvar b = previousCursor;\n\tvar a = nextCursor;\n\tif ((a.type == \"touchstart\" || a.type == \"touchend\") && ( b == {} || b.type == \"mousemove\" || b.type == \"touchmove\")){\n\t\t//\tif (Math.abs(a.clientX - b.x) <5000 && Math.abs(a.clientY - b.Y)< 5000){\n\t\t// trigger hold event? shall I? mouse down?\n\t\tpostData(\"/mouse\",{type:\"mouseUp\"});\t\t\t\t\t//\t\t\t\t\t\t\t\t\t\t}\t\t\t\t\t}",
+        "type": "code",
+        "location": "/remote_control/server/deprecated_index.js:38-63"
+    },
+    "1647": {
+        "file_id": 329,
+        "content": "This code snippet is responsible for handling touch and mouse events. If a \"touchstart\" event occurs followed by a \"mousemove\" event within certain conditions, it triggers a \"mouseDown\" event and posts data to \"/mouse\". The \"touchMove\" function handles \"touchstart\" or \"touchmove\" events, sending a \"mouseMove\" event with deltaX and deltaY coordinates. Finally, the \"touchUp\" function handles \"touchend\" or \"touchstart\" followed by \"mousemove\" or empty previous state, triggering a \"mouseUp\" event and posting data to \"/mouse\".",
+        "type": "comment"
+    },
+    "1648": {
+        "file_id": 329,
+        "content": "\t}\n}\nfunction click(previousCursor,nextCursor){\n\t// if not fired with alt key we use it as left click.\n\tvar a = nextCursor;\n\tvar b = previousCursor;\n\tif (a.type == \"click\" && (b.type == \"mouseup\" || b.type == \"touchend\" || b.type == \"touchstart\") && Math.abs(a.timeStamp - b.timeStamp) < 2500){\n\t\tvar altKey = a.altKey;\n\t\tvar button = \"left\";\n\t\tif (altKey){button = \"right\";}\n\t\tpostData(\"/mouse\",{type:\"click\",button:button});\n\t}\n}\nfunction dblclick(previousCursor,nextCursor){\n\t// if not fired with alt key we use it as left click.\n\tvar a = nextCursor;\n\tif (a.type == \"click\" && (b.type == \"mouseup\" || b.type == \"touchend\" || b.type == \"touchstart\") && Math.abs(a.timeStamp - b.timeStamp) < 2500){\n\t\tvar altKey = a.altKey;\n\t\tvar button = \"left\";\n\t\tif (altKey){button = \"right\";}\n\t\tpostData(\"/mouse\",{type:\"doubleClick\",button:button});\n\t}\n}\ndocument.addEventListener(\"touchstart\",(e)=>{global_previousCursor = global_nextCursor;\n\te.timeStamp = Date.now();\n\tglobal_nextCursor = e;\n\ttouchUp(global_previousCursor,global_nextCursor);",
+        "type": "code",
+        "location": "/remote_control/server/deprecated_index.js:64-91"
+    },
+    "1649": {
+        "file_id": 329,
+        "content": "This code defines two functions, `click` and `dblclick`, which handle click and double-click events respectively. The functions check if the event was fired with the alt key pressed, and if not, they consider it as a left click or double-click event. The functions then send a POST request to \"/mouse\" with the event details.",
+        "type": "comment"
+    },
+    "1650": {
+        "file_id": 329,
+        "content": "});\ndocument.addEventListener(\"touchmove\",(e)=>{global_previousCursor = global_nextCursor;\n\te.timeStamp = Date.now();\n\tglobal_nextCursor = e;\n\ttouchMove(global_previousCursor,global_nextCursor);\n});\ndocument.addEventListener(\"touchend\",(e)=>{global_previousCursor = global_nextCursor;\n\te.timeStamp = Date.now();\n\tglobal_nextCursor = e;\n\ttouchUp(global_previousCursor,global_nextCursor);\n});\ndocument.addEventListener(\"click\",(e)=>{global_previousCursor = global_nextCursor;\n\te.timeStamp = Date.now();\n\tglobal_nextCursor = e;\n\tclick(global_previousCursor,global_nextCursor);\n});\ndocument.addEventListener(\"mousemove\",(e)=>{global_previousCursor = global_nextCursor;\n\te.timeStamp = Date.now();\n\tglobal_nextCursor = e;\n\tif(touchDown(global_previousCursor,global_nextCursor)){\n\t\tpostData(\"/mouse\",{type:\"mouseMove\",deltaX:e.movementX,deltaY:movementY});\n\t}\n});\ndocument.addEventListener(\"mousedown\", (e) => {global_previousCursor = global_nextCursor;\n\te.timeStamp = Date.now();\n\tglobal_nextCursor = e;\n\tpostData(\"/mouse\",{type:\"mouseDown\"});",
+        "type": "code",
+        "location": "/remote_control/server/deprecated_index.js:92-119"
+    },
+    "1651": {
+        "file_id": 329,
+        "content": "This code adds event listeners for touchmove, touchend, click, and mousemove events. It updates the cursor position, sets timestamp, and calls corresponding functions. For mousedown, it sends a \"mouseDown\" request to \"/mouse\".",
+        "type": "comment"
+    },
+    "1652": {
+        "file_id": 329,
+        "content": "}\n);\ndocument.addEventListener(\"mouseup\", (e)=>{global_previousCursor = global_nextCursor;\n\te.timeStamp = Date.now();\n\tglobal_nextCursor = e;\n\tpostData(\"/mouse\",{type:\"mouseUp\"});\n}\n);\ndocument.addEventListener(\"dblclick\", (e)=>{global_previousCursor = global_nextCursor;\n\te.timeStamp = Date.now();\n\tglobal_nextCursor = e;\n\tdblclick(global_previousCursor, global_nextCursor);\n}\n);\nconst main_translate_table_key = {'a': 'a', 'b': 'b', 'c': 'c', 'd': 'd', 'e': 'e', 'f': 'f', 'g': 'g', 'h': 'h', 'i': 'i', 'j': 'j', 'k': 'k', 'l': 'l', 'm': 'm', 'n': 'n', 'o': 'o', 'p': 'p', 'q': 'q', 'r': 'r', 's': 's', 't': 't', 'u': 'u', 'v': 'v', 'w': 'w', 'x': 'x', 'y': 'y', 'z': 'z', 'A': 'a', 'B': 'b', 'C': 'c', 'D': 'd', 'E': 'e', 'F': 'f', 'G': 'g', 'H': 'h', 'I': 'i', 'J': 'j', 'K': 'k', 'L': 'l', 'M': 'm', 'N': 'n', 'O': 'o', 'P': 'p', 'Q': 'q', 'R': 'r', 'S': 's', 'T': 't', 'U': 'u', 'V': 'v', 'W': 'w', 'X': 'x', 'Y': 'y', 'Z': 'z', '~': '~', '`': '`', '!': '!', '@': '@', '#': '#', '$': '$', '%': '%', '^': '^',",
+        "type": "code",
+        "location": "/remote_control/server/deprecated_index.js:120-134"
+    },
+    "1653": {
+        "file_id": 329,
+        "content": "This code adds event listeners for mouseup and double click events on the document. It updates global variables to keep track of previous and next cursor positions. When a mouseup or double click event occurs, it sends a POST request with the corresponding event type to \"/mouse\" endpoint. The main_translate_table_key dictionary maps keyboard keys to their respective characters.",
+        "type": "comment"
+    },
+    "1654": {
+        "file_id": 329,
+        "content": " '&': '&', '*': '*', '(': '(', ')': ')', '-': '-', '_': '_', '+': '+', '=': '=', '{': '{', '}': '}', '[': '[', ']': ']', '|': '|', '\\\\': '\\\\', ':': ':', ';': ';', '\"': '\"', \"'\": \"'\", '<': '<', ',': ',', '>': '>', '.': '.', '?': '?', '/': '/', '0': '0', '1': '1', '2': '2', '3': '3', '4': '4', '5': '5', '6': '6', '7': '7', '8': '8', '9': '9', 'Tab': 'tab', 'Enter': 'enter', 'Escape': 'escape', 'ArrowUp': 'up', 'ArrowDown': 'down', 'ArrowLeft': 'left', 'ArrowRight': 'right', 'PageUp': 'pageup', 'PageDown': 'pagedown', 'Home': 'home', 'End': 'end', 'Backspace': 'backspace', 'Delete': 'delete', ' ': 'space'};\nconst modifier_translate_table_code = {'Alt': 'alt', 'Ctrl': 'ctrl', 'Shift': 'shift', 'Meta': 'meta', 'MetaLeft': 'metaleft', 'MetaRight': 'metaright', 'ShiftLeft': 'shiftleft', 'ShiftRight': 'shiftright', 'AltLeft': 'altleft', 'AltRight': 'altright', 'CtrlLeft': 'ctrlleft', 'CtrlRight': 'ctrlright'};\nconst modifier_keys = [\"Alt\",\"Meta\",\"Shift\",\"Ctrl\"];\nfunction translate_filter(key){\n\tvar keyname = key.key;",
+        "type": "code",
+        "location": "/remote_control/server/deprecated_index.js:134-138"
+    },
+    "1655": {
+        "file_id": 329,
+        "content": "The code defines a translation table for various keyboard keys and their respective characters, and also includes modifier keys with their short names. The function translate_filter takes a key as input and retrieves the corresponding key name from the translation table.",
+        "type": "comment"
+    },
+    "1656": {
+        "file_id": 329,
+        "content": "\tvar keycode = key.code;\n\tif((Object.getOwnPropertyNames(main_translate_table_key).indexOf(keyname)!=-1) || (modifier_keys.indexOf(keyname)!=-1)){\n\t\treturn true;\n\t}\n\tconsole.log(\"unknown key:\\n\"+\"keycode:\"+keycode+\"\\n+keyname:\"+keyname)\n\treturn false;\n}\nfunction modifier(key){\n\tvar keyname = key.key;\n\tif (modifier_keys.indexOf(keyname)!=-1){\n\t\treturn true;\n\t}\n\treturn false;\n}\nfunction translate(key){\n\tvar keycode = key.code;\n\tvar keyname = key.key;\n\tif (translate_filter(key)){\n\t\tif (modifier(key)){\n\t\t\treturn modifier_translate_table_code[keycode];\n\t\t\t// has residual work on metakeys.\n\t\t}\n\t\treturn translate_table_key[keyname];\n\t}\n\treturn false;\n}\n// prepare the translate table.\ndocument.addEventListener(\"keydown\", (e) =>{\n\te.timeStamp = Date.now();\n\tkeyevent = e;\n\tvar target = translate(e);\n\tif (target){\n\t\tpostData(\"/keyboard\",{type:\"keyDown\",key:target})\n\t}\n}\n);\ndocument.addEventListener(\"press\", (e) =>{\n\te.timeStamp = Date.now();\n\tkeyevent = e;//just ignore this shit?\n});\ndocument.addEventListener(\"keyup\",(e) =>{\n\te.timeStamp = Date.now();",
+        "type": "code",
+        "location": "/remote_control/server/deprecated_index.js:139-184"
+    },
+    "1657": {
+        "file_id": 329,
+        "content": "The code is setting up event listeners for keydown, press, and keyup events on the document. When a key is pressed, it calls the `translate` function to check if the key is in the translate table or a modifier key. If it is a valid key, it sends a POST request with the key data to \"/keyboard\". If the key is unknown or a modifier key, it logs an error message.",
+        "type": "comment"
+    },
+    "1658": {
+        "file_id": 329,
+        "content": "\tkeyevent = e;\n\tvar target = translate(e);\n\tpostData(\"/keyboard\",{type:\"keyUp\",key:target});\n});\n//execute some idle cleaning jobs.\nconst keyboardReset = 2000;\nconst mouseReset = 1000;\nfunction reset_keyboard(){\n\tvar now = Date.now();\n\tvar previous = keyevent.timeStamp;\n\tif( now-previous > keyboardReset){\n\t\tpostData(\"/keyboard\",{type:\"reset\"});\n\t};\n\tsetTimeout(()=>{reset_keyboard()},keyboardReset);\n}\t\nfunction reset_mouse(){\n\tvar now = Date.now();\n\tvar previous = nextCursor.timeStamp;\n\tif( now-previous > mouseReset){\n\t\tpostData(\"/mouse\",{type:\"reset\"});\n\t}\n\tsetTimeout(()=>{reset_mouse()}, mouseReset);\n}\t\n// reset all events when idle, in client and server side.\nfunction clearText(){\n\tvar textarea = document.getElementById(\"hiddenInput\");\n\ttextarea.value=\"\"\n\tsetTimeout(()=>{clearText()},500);\n}\nfunction focusText(){\n\tvar textarea = document.getElementById(\"hiddenInput\");\n\ttextarea.focus();\n\tsetTimeout(()=>{focusText()},200);\n}\nfunction onLoad(lambda){window.addEventListener(\"load\",lambda);}\nonLoad(clearText);\n/*      function probeText(){var textarea = document.getElementById(\"hiddenInput\");",
+        "type": "code",
+        "location": "/remote_control/server/deprecated_index.js:185-226"
+    },
+    "1659": {
+        "file_id": 329,
+        "content": "The code defines two functions, `reset_keyboard` and `reset_mouse`, which periodically check the time difference between the most recent event and a predefined reset interval. If the interval is exceeded, a reset event is sent via a POST request to \"/keyboard\" and \"/mouse\", respectively. The code also includes functions `clearText` and `focusText` that clear and refocus a hidden text area element on the webpage, respectively. The `onLoad` function adds a \"load\" event listener to trigger the `clearText` function on page load.",
+        "type": "comment"
+    },
+    "1660": {
+        "file_id": 329,
+        "content": "\t\t\t\t\t\t\t\t\t\t\tconsole.log(\"text: \"+textarea.value);\n\t\t\t\t\t\t\t\t\t\t}\n\t\t\t\t\t\t\t\t\t\t*/\nonLoad(focusText);\nonLoad(reset_keyboard);\nonLoad(reset_mouse);\n//automatic reload? dialog?",
+        "type": "code",
+        "location": "/remote_control/server/deprecated_index.js:227-233"
+    },
+    "1661": {
+        "file_id": 329,
+        "content": "The code logs the value of the textarea, then calls onLoad functions for focusText, reset_keyboard, and reset_mouse. It seems to be related to a deprecated index file and may contain outdated functionality or warnings about automatic reload or dialogs.",
+        "type": "comment"
+    },
+    "1662": {
+        "file_id": 330,
+        "content": "/remote_control/server/deprecated_lazero_remote_control.py",
+        "type": "filepath"
+    },
+    "1663": {
+        "file_id": 330,
+        "content": "This Flask server code sets up a screen casting system that takes screenshots at a specified framerate, adjusting sleep time to maintain consistency. The images are stored and accessible via a Flask route with timestamps. It defines API routes for mouse and keyboard commands, uses lazero_mouse module, handles POST requests for key presses, and runs on a specified host and port.",
+        "type": "summary"
+    },
+    "1664": {
+        "file_id": 330,
+        "content": "# websocket screen cast?\n# or just some normal requests.\nfrom flask import Flask, request, Response\n#homepage = \"\"\ndef homepage():\n    with open(\"deprecated_index.html\", \"r\") as f:\n        return f.read()\nimport pyautogui\nimport mss\nimport threading\nimport traceback\n# the monitor is just the screen position.\n# shall one set the refresh rate manually.\nfrom PIL import Image\nfrom io import BytesIO\nimport time\nframerate=10\ncurrent_shot = None\nimport copy\ndef takeshots():\n    global current_shot, framerate\n    standard_sleep_time = 1/framerate\n    sleep_time = standard_sleep_time\n    this_time, current_time = 0, 0\n    check_loop = 5\n    check_base = 0\n    # you shall dynamically change the sleep time.\n    try:\n        with mss.mss() as mss_instance:\n            monitor = mss_instance.monitors[1]\n            while True:\n#                check this shit every 5 shots.\n                if check_base % check_loop == 0:\n                    this_time = time.time()\n                shot = mss_instance.grab(monitor)\n                img = Image.frombytes(\"RGB\", shot.size, shot.bgra, \"raw\", \"BGRX\")",
+        "type": "code",
+        "location": "/remote_control/server/deprecated_lazero_remote_control.py:1-38"
+    },
+    "1665": {
+        "file_id": 330,
+        "content": "This code sets up a Flask server for screen casting or handling requests. It imports necessary libraries, defines a homepage function, and begins the process of taking screenshots at a specified framerate. The sleep time is dynamically changed to maintain the desired framerate, and checks the screen every 5 shots to adjust the sleep time as needed.",
+        "type": "comment"
+    },
+    "1666": {
+        "file_id": 330,
+        "content": "                with BytesIO() as f:\n                    img.save(f,format=\"JPEG\")\n                    image_jpg_bytes = f.getvalue()\n                    current_shot = copy.copy(image_jpg_bytes)\n#                print(shot,type(shot),dir(shot))\n                if check_base % check_loop == 0:\n                    current_time = time.time()\n                    time_delta = current_time - this_time\n                    if time_delta > standard_sleep_time:\n                        sleep_time = 0\n                    else:\n                        sleep_time = standard_sleep_time - time_delta\n                time.sleep(sleep_time)\n                check_base += 1\n                check_base %= check_loop\n    except:\n        traceback.print_exc()\n        time.sleep(1)\nscreenshot_thread = threading.Thread(target=takeshots,daemon=True)\nscreenshot_thread.start()\napp = Flask(__name__)\n@app.route(\"/screenshot/<timestamp>.jpg\")\ndef screenshot(timestamp):\n    global current_shot\n    shot = current_shot\n    return Response(shot,mimetype=\"image/jpeg\")",
+        "type": "code",
+        "location": "/remote_control/server/deprecated_lazero_remote_control.py:39-67"
+    },
+    "1667": {
+        "file_id": 330,
+        "content": "This code takes a screenshot using PyAutoGUI, saves it as JPEG, and stores the image bytes in `image_jpg_bytes`. It checks the base variable modulo check_loop to determine if it should sleep for a specified amount of time. If not, it calculates the difference between current and previous time stamps and adjusts the sleep time accordingly. The code creates a Flask route that returns the stored image in JPEG format with a given timestamp. The code also handles any exceptions that might occur using traceback.print_exc(). Finally, it starts a thread to continuously take screenshots and makes the images accessible via a Flask route.",
+        "type": "comment"
+    },
+    "1668": {
+        "file_id": 330,
+        "content": "import lazero_mouse\nimport lazero_keyboard\n@app.route(\"/mouse\",methods=[\"POST\"])\ndef mouse():\n    body = request.get_json()\n    try:\n        _type = body[\"type\"]\n        if _type == \"reset\":\n            lazero_mouse.reset_mouse()\n        elif _type == \"click\":\n            button = body[\"button\"]\n            lazero_mouse.click(button=button)\n        elif _type == \"doubleClick\":\n            button = body[\"button\"]\n            lazero_mouse.doubleClick(button=button)\n        elif _type == \"mouseDown\":\n            lazero_mouse.mouseDown()\n        elif _type == \"mouseUp\":\n            lazero_mouse.mouseUp()\n        elif _type == \"mouseMove\":\n            deltaX = body[\"deltaX\"]\n            deltaY = body[\"deltaY\"]\n            lazero_mouse.mouseMove(deltaX,deltaY)\n        else:\n            return \"Unsupported mouse request type: {}\".format(_type)\n    #print(\"mouse request:\",[request.values.get(x) for x in [\"deltaX\",\"deltaY\"]])\n        return \"Mouse Request Accepted.\"\n    except:\n        traceback.print_exc()\n        return \"Error when performing mouse request.\"",
+        "type": "code",
+        "location": "/remote_control/server/deprecated_lazero_remote_control.py:69-99"
+    },
+    "1669": {
+        "file_id": 330,
+        "content": "This code defines an API route for mouse-related commands and handles various requests, such as click, double-click, and mouse movement. It uses the lazero_mouse module to execute these commands and returns a response indicating whether the request was accepted or if there was an error processing it.",
+        "type": "comment"
+    },
+    "1670": {
+        "file_id": 330,
+        "content": "@app.route(\"/keyboard\",methods=[\"POST\"])\ndef keyboard():\n    body = request.get_json()\n    print(body)\n    try:\n        _type = body[\"type\"]\n        if _type == \"reset\":\n            lazero_keyboard.reset_keyboard()\n        elif _type == \"keyDowb\":\n            key = body[\"key\"]\n            key = lazero_keyboard.translate(key)\n            lazero_keyboard.keyDown(key)\n        elif _type == \"keyUp\":\n            key = body[\"key\"]\n            key = lazero_keyboard.translate(key)\n            lazero_keyboard.keyUp(key)\n        else:\n            return \"Unsupported keyboard request type: {}\".format(_type)\n    #print(\"keyboard request:\",[request.values.get(x) for x in [\"character\",\"modifier\"]])\n        return \"Keyboard Request Accepted.\"\n    except:\n        traceback.print_exc()\n        return \"Error when performing keyboard request.\"\n@app.route(\"/\")\ndef index():\n    #global homepage\n    return homepage()\nhost, port = \"0.0.0.0\", 14986\nif __name__ == \"__main__\":\n    app.run(host=host,port=port)",
+        "type": "code",
+        "location": "/remote_control/server/deprecated_lazero_remote_control.py:101-132"
+    },
+    "1671": {
+        "file_id": 330,
+        "content": "This code defines two routes, \"/keyboard\" and \"/\", for a web application. The \"/keyboard\" route handles POST requests to process keyboard commands. It expects a JSON payload with the command type (\"reset\", \"keyDowb\", or \"keyUp\") and the key. The \"/\" route simply returns the homepage content. The code runs on the specified host and port when executed as the main module.",
+        "type": "comment"
+    },
+    "1672": {
+        "file_id": 331,
+        "content": "/remote_control/server/lazero_keyboard.py",
+        "type": "filepath"
+    },
+    "1673": {
+        "file_id": 331,
+        "content": "This code enables hotkey functionality on Chromebooks using Python, with modifier key mappings, separate threaded key commands, and a keyboard controller for typing uppercase letters.",
+        "type": "summary"
+    },
+    "1674": {
+        "file_id": 331,
+        "content": "import traceback\nimport threading\nimport os\n# shall provide common hotkeys in chromebook keyboard mappings.\nimport platform\nsystem = platform.system()\nkeyset = set()\ndef win_meta(key):\n    return key.replace(\"meta\",\"win\")\ndef translate(key):\n    if key in [\"meta\",\"metaleft\",\"metaright\"]:\n        if system == \"Darwin\":\n            return \"command\"\n        return win_meta(key)\n    return key\ndef press(key):\n    cmd = \"python3 -c \\\"import pyautogui;pyautogui.press('{}')\\\"\".format(key.replace(\"'\",\"\\\\'\"))\n    threading.Thread(target=os.system,args=(cmd,),daemon=True).start()\n    # what shall be included in these keys?\n\"\"\"\ndef hotkey(keys):\n    target = keys[\"modifier\"]+keys[\"char\"]\n    pyautogui.hotkey(*target)\n\"\"\"\ndef keyDown(key):\n    global keyset\n    keyset.add(key)\n    cmd = \"python3 -c \\\"import pyautogui;pyautogui.keyDown('{}')\\\"\".format(key.replace(\"'\",\"\\\\'\"))\n    threading.Thread(target=os.system,args=(cmd,),daemon=True).start()\ndef keyUp(key):\n    cmd = \"python3 -c \\\"import pyautogui;pyautogui.keyUp('{}')\\\"\".format(key.replace(\"'\",\"\\\\'\"))",
+        "type": "code",
+        "location": "/remote_control/server/lazero_keyboard.py:1-37"
+    },
+    "1675": {
+        "file_id": 331,
+        "content": "This code provides common hotkeys in chromebook keyboard mappings and allows for pressing keys and executing keydown/keyup events using Python. The translate function maps specific keys like \"meta\" to their appropriate equivalents based on the system being used (Darwin or Windows). The keyDown and keyUp functions execute the corresponding key actions in separate threads, while the hotkey function allows for executing hotkeys defined by a set of modifiers and character.",
+        "type": "comment"
+    },
+    "1676": {
+        "file_id": 331,
+        "content": "    threading.Thread(target=os.system,args=(cmd,),daemon=True).start()\n    keyset.remove(key)\n\"\"\"\ndef write(key):\n    pyautogui.write(key)# able to type uppercase letters?\n\"\"\"\ndef reset_keyboard():\n    for x in keyset:\n#        threading.Thread(target=keyUp,args=(x,),daemon=True).start()\n        try:\n            keyUp(x)\n        except:\n            traceback.print_exc()\n    return\nif __name__ == \"__main__\":\n    print(\"KEYBOARD_KEYS\",pyautogui.KEYBOARD_KEYS)\n    print(\"KEY_NAMES\",pyautogui.KEY_NAMES)",
+        "type": "code",
+        "location": "/remote_control/server/lazero_keyboard.py:38-55"
+    },
+    "1677": {
+        "file_id": 331,
+        "content": "This code is for a keyboard controller that allows typing uppercase letters. It uses threading to run key commands and remove them from the set, ensuring only one command is running at a time. The `write` function types the given key, `reset_keyboard` resets all keys in the set, and the main section prints key information.",
+        "type": "comment"
+    },
+    "1678": {
+        "file_id": 332,
+        "content": "/remote_control/server/lazero_mouse.py",
+        "type": "filepath"
+    },
+    "1679": {
+        "file_id": 332,
+        "content": "This code uses pyautogui library to define mouse functions for movement, clicking, and resetting in separate threads, allowing asynchronous execution.",
+        "type": "summary"
+    },
+    "1680": {
+        "file_id": 332,
+        "content": "import traceback\nimport threading\nimport os\ndef mouseMove(deltaX, deltaY):\n    print(\"request move:\", deltaX, deltaY)\n    print(type(deltaX))\n    try:\n        cmd = \"python3 -c \\\"import pyautogui; pyautogui.moveRel({},{})\\\"\".format(deltaX, deltaY)\n        threading.Thread(target=os.system,args=(cmd,),daemon=True).start()\n    except:\n        traceback.print_exc()\ndef mouseDown():\n    cmd = \"python3 -c \\\"import pyautogui; pyautogui.mouseDown()\\\"\"    \n    threading.Thread(target=os.system,args=(cmd,),daemon=True).start()\ndef mouseUp():\n    cmd = \"python3 -c \\\"import pyautogui; pyautogui.mouseUp()\\\"\"    \n    threading.Thread(target=os.system,args=(cmd,),daemon=True).start()\ndef click(button=\"left\"):\n    cmd = \"python3 -c \\\"import pyautogui; pyautogui.click(button='{}')\\\"\".format(button)\n    threading.Thread(target=os.system,args=(cmd,),daemon=True).start()\n\"\"\"\ndef leftClick():\n    pyautogui.leftClick()\ndef rightClick():\n    pyautogui.rightClick()\n\"\"\"\ndef reset_mouse():\n    mouseUp()\n    return\ndef doubleClick(button=\"left\"):",
+        "type": "code",
+        "location": "/remote_control/server/lazero_mouse.py:1-35"
+    },
+    "1681": {
+        "file_id": 332,
+        "content": "This code defines functions for mouse movement, clicking, and resetting the mouse using pyautogui library. It runs these actions in separate threads to avoid blocking the main program. The reset_mouse() function triggers a mouseUp event and doubleClick() allows users to simulate left or right clicks, or both.",
+        "type": "comment"
+    },
+    "1682": {
+        "file_id": 332,
+        "content": "    cmd = \"python3 -c \\\"import pyautogui; pyautogui.doubleClick(button='{}')\\\"\".format(button)\n    threading.Thread(target=os.system,args=(cmd,),daemon=True).start()",
+        "type": "code",
+        "location": "/remote_control/server/lazero_mouse.py:36-37"
+    },
+    "1683": {
+        "file_id": 332,
+        "content": "This code is executing a double click on the specified button using Python's pyautogui library. It creates and starts a new thread to run the command asynchronously.",
+        "type": "comment"
+    },
+    "1684": {
+        "file_id": 333,
+        "content": "/remote_control/server/lazero_remote_control.py",
+        "type": "filepath"
+    },
+    "1685": {
+        "file_id": 333,
+        "content": "The code imports necessary libraries, defines a \"takeshots\" function to capture screenshots, adjusts sleep time for efficiency, and uses Flask to create a web server that listens for mouse, keyboard, and video feed requests.",
+        "type": "summary"
+    },
+    "1686": {
+        "file_id": 333,
+        "content": "# websocket screen cast?\n# or just some normal requests.\nfrom flask import Flask, request, Response, render_template\n#homepage = \"\"\ndef homepage():\n    with open(\"index.html\", \"r\") as f:\n        return f.read()\nimport pyautogui\nimport mss\nimport threading\nimport traceback\n# the monitor is just the screen position.\n# shall one set the refresh rate manually.\nfrom PIL import Image\nfrom io import BytesIO\nimport time\nlock = threading.Event()\nlock.clear()\nframerate=10\ncurrent_shot = None\nimport copy\ndef takeshots():\n    global current_shot, framerate\n    standard_sleep_time = 1/framerate\n    sleep_time = standard_sleep_time\n    this_time, current_time = 0, 0\n    check_loop = 5\n    check_base = 0\n    # you shall dynamically change the sleep time.\n    try:\n        with mss.mss() as mss_instance:\n            monitor = mss_instance.monitors[1]\n            while True:\n#                check this shit every 5 shots.\n                if check_base % check_loop == 0:\n                    this_time = time.time()\n                shot = mss_instance.grab(monitor)",
+        "type": "code",
+        "location": "/remote_control/server/lazero_remote_control.py:1-41"
+    },
+    "1687": {
+        "file_id": 333,
+        "content": "This code imports necessary libraries and defines a function called \"takeshots\" which captures screenshots at a specified framerate using the mss library, with some dynamic sleep time adjustments for efficiency.",
+        "type": "comment"
+    },
+    "1688": {
+        "file_id": 333,
+        "content": "                img = Image.frombytes(\"RGB\", shot.size, shot.bgra, \"raw\", \"BGRX\")\n                with BytesIO() as f:\n                    img.save(f,format=\"JPEG\")\n                    image_jpg_bytes = f.getvalue()\n                    current_shot = copy.copy(image_jpg_bytes)\n#                print(shot,type(shot),dir(shot))\n                if check_base % check_loop == 0:\n                    current_time = time.time()\n                    time_delta = current_time - this_time\n                    if time_delta > standard_sleep_time:\n                        sleep_time = 0\n                    else:\n                        sleep_time = standard_sleep_time - time_delta\n                lock.set()\n                time.sleep(sleep_time)\n                check_base += 1\n                check_base %= check_loop\n    except:\n        traceback.print_exc()\n        time.sleep(1)\nscreenshot_thread = threading.Thread(target=takeshots,daemon=True)\nscreenshot_thread.start()\napp = Flask(__name__, template_folder=\"./\")\n@app.route(\"/mouse\",methods=[\"POST\"])",
+        "type": "code",
+        "location": "/remote_control/server/lazero_remote_control.py:42-68"
+    },
+    "1689": {
+        "file_id": 333,
+        "content": "The code captures screenshots, calculates sleep time based on check_loop and current time difference, adjusts sleep time if necessary, and starts a Flask server with \"/mouse\" route accepting POST requests.",
+        "type": "comment"
+    },
+    "1690": {
+        "file_id": 333,
+        "content": "def mouse():\n    print(\"mouse request:\",[request.values.get(x) for x in [\"deltaX\",\"deltaY\"]])\n    return\n@app.route(\"/keyboard\",methods=[\"POST\"])\ndef keyboard():\n    print(\"keyboard request:\",[request.values.get(x) for x in [\"character\",\"modifier\"]])\n    return\ndef gen():\n    global current_shot\n    while True:\n        lock.wait()\n        frame = copy.copy(current_shot)\n        yield (b'--frame\\r\\n'\n               b'Content-Type: image/jpeg\\r\\n\\r\\n' + frame + b'\\r\\n')\n@app.route(\"/video_feed\")\ndef video_feed():\n    return Response(gen(),\n                mimetype='multipart/x-mixed-replace; boundary=frame')\n@app.route(\"/\")\ndef index():\n    #global homepage\n    return render_template(\"index.html\")\nhost, port = \"0.0.0.0\", 14986\nif __name__ == \"__main__\":\n    app.run(host=host,port=port)",
+        "type": "code",
+        "location": "/remote_control/server/lazero_remote_control.py:69-99"
+    },
+    "1691": {
+        "file_id": 333,
+        "content": "The code defines functions for handling mouse, keyboard, and video feed requests, along with an index route. It uses the Flask framework to create a web server that listens on \"0.0.0.0:14986\". The \"mouse\" function prints a message about the mouse request, the \"keyboard\" function does the same for keyboard requests, and \"gen\" generates frames for the video feed. The main function is \"app.run\", which starts the server.",
+        "type": "comment"
+    },
+    "1692": {
+        "file_id": 334,
+        "content": "/remote_control/server/test_events.js",
+        "type": "filepath"
+    },
+    "1693": {
+        "file_id": 334,
+        "content": "The code handles event logging, manages touch events, logs data, clears a textarea and refreshes focus for \"hiddenInput\" with load event listener.",
+        "type": "summary"
+    },
+    "1694": {
+        "file_id": 334,
+        "content": "// do this after the shit has been loaded?\n                                        function keyboardLog(text){\n                                                                                        var logger =  document.getElementById(\"keyboardLog\");\n                                                                                        logger.innerText = text;}\n                                        function mouseLog(text){\n                                                                                        var logger =  document.getElementById(\"mouseLog\");\n                                                                                        logger.innerText = text;}\n                                        function touchLog(text){\n                                                                                        var logger = document.getElementById(\"touchLog\");\n                                                                                        logger.innerText = text;\n                                                                                }",
+        "type": "code",
+        "location": "/remote_control/server/test_events.js:1-11"
+    },
+    "1695": {
+        "file_id": 334,
+        "content": "This code defines three functions: keyboardLog, mouseLog, and touchLog. These functions are used to update the inner text of HTML elements with IDs \"keyboardLog\", \"mouseLog\", and \"touchLog\" respectively, logging keyboard, mouse, and touch events.",
+        "type": "comment"
+    },
+    "1696": {
+        "file_id": 334,
+        "content": "                                        document.addEventListener(\"keydown\",(e)=>{keyboardLog(\"keydown event\\n\"+JSON.stringify({key:e.key,code:e.code,altKey:e.altKey,ctrlKey:e.ctrlKey,metaKey:e.metaKey,shiftKey:e.shiftKey,type:e.type,timeStamp:e.timeStamp}));\n                                                                                //      console.log(\"keydown event\");\n                                                                                //      console.log(e);\n                                                                                });\n                                        document.addEventListener(\"keypress\",(e)=>{//console.log(\"keypress event\");\n                                                                                //      console.log(e);\n                                                                                        keyboardLog(\"keypress event\\n\"+JSON.stringify({key:e.key,code:e.code,altKey:e.altKey,ctrlKey:e.ctrlKey,metaKey:e.metaKey,shiftKey:e.shiftKey,type:e.type,timeStamp:e.timeStamp}));",
+        "type": "code",
+        "location": "/remote_control/server/test_events.js:13-19"
+    },
+    "1697": {
+        "file_id": 334,
+        "content": "This code adds event listeners for \"keydown\" and \"keypress\" events on the document. When a key is pressed, it calls the keyboardLog function with an object containing details about the key event, such as the key, code, modifier keys, time stamp, etc. It also includes comments to log the event directly to the console but they are currently disabled.",
+        "type": "comment"
+    },
+    "1698": {
+        "file_id": 334,
+        "content": "                                                                                });\n                                        document.addEventListener(\"keyup\",(e)=>{//console.log(\"keyup event\");\n                                                                                //      console.log(e);\n                                                                                        keyboardLog(\"keyup event\\n\"+JSON.stringify({key:e.key,code:e.code,altKey:e.altKey,ctrlKey:e.ctrlKey,metaKey:e.metaKey,shiftKey:e.shiftKey,type:e.type,timeStamp:e.timeStamp}));\n                                                                                });\n                                        document.addEventListener(\"mousedown\",(e)=>{mouseLog(\"mousedown event\\n\"+JSON.stringify({x:e.x,y:e.y,movementX:e.movementX,movementY:e.movementY,type:e.type,timeStamp:e.timeStamp,ctrlKey:e.ctrlKey,altKey:e.altKey,shiftKey:e.shiftKey,metaKey:e.metaKey}));\n                                                                                });",
+        "type": "code",
+        "location": "/remote_control/server/test_events.js:20-27"
+    },
+    "1699": {
+        "file_id": 334,
+        "content": "This code sets event listeners for keyup, mousedown events on the document object. It logs details of these events by calling keyboardLog and mouseLog functions respectively, which take a formatted string containing information about the event such as key pressed, mouse coordinates, and timestamps.",
+        "type": "comment"
+    }
+}

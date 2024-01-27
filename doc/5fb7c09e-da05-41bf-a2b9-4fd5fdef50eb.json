@@ -1,0 +1,10 @@
+{
+    "summary": "Script counts the number of files in the \"~/storage/shared/chrome/\" directory and then creates a zip archive named \"chrome-[number].zip\" containing all files from that folder.",
+    "details": [
+        {
+            "comment": "Script counts the number of files in the \"~/storage/shared/chrome/\" directory and then creates a zip archive named \"chrome-[number].zip\" containing all files from that folder.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/browser_plugin/lazero_crx_17_kiwi_ip_change/dispatch.sh\":0-2",
+            "content": "#!/bin/bash\nvd=$(ls ~/storage/shared/chrome/ -1 | wc -l | awk '{print $0}')\nzip -r ~/storage/shared/chrome/chrome-$vd.zip *"
+        }
+    ]
+}

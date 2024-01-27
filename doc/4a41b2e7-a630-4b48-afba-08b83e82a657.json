@@ -1,0 +1,10 @@
+{
+    "summary": "This code renders as bash scripts and performs the following actions: copies a service file to /etc/systemd/system, reloads systemd daemon configuration, stops (kills) the specific service, starts the service, and enables it to automatically start on boot.",
+    "details": [
+        {
+            "comment": "This code renders as bash scripts and performs the following actions: copies a service file to /etc/systemd/system, reloads systemd daemon configuration, stops (kills) the specific service, starts the service, and enables it to automatically start on boot.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/daemonize_startup/linux_systemd/routine.j2\":0-5",
+            "content": "# ought to be rendered as bash scripts.\nsudo cp {{ service_file }} /etc/systemd/system/{{ service_file }}\nsudo systemctl daemon-reload\nsudo systemctl kill {{ service }}\nsudo systemctl start {{ service }}\nsudo systemctl enable {{ service }} "
+        }
+    ]
+}

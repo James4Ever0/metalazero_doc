@@ -1,0 +1,10 @@
+{
+    "summary": "This code is launching Emacs with two different approaches to execute the \"company2.el\" script file, using either \"--script\" or \"--file\" options, and passing the \"-l company2.sh\" parameter to load the necessary file and run the script.",
+    "details": [
+        {
+            "comment": "This code is launching Emacs with two different approaches to execute the \"company2.el\" script file, using either \"--script\" or \"--file\" options, and passing the \"-l company2.sh\" parameter to load the necessary file and run the script.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_kali_amd64/cognitionService/virtual/company2.sh\":0-2",
+            "content": "#emacs --script company2.el\nemacs --file company2.sh -l company2.el\n#emacs --script company2.el"
+        }
+    ]
+}

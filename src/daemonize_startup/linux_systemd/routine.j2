@@ -1,0 +1,6 @@
+# ought to be rendered as bash scripts.
+sudo cp {{ service_file }} /etc/systemd/system/{{ service_file }}
+sudo systemctl daemon-reload
+sudo systemctl kill {{ service }}
+sudo systemctl start {{ service }}
+sudo systemctl enable {{ service }} 

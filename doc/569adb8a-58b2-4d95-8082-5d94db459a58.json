@@ -1,0 +1,10 @@
+{
+    "summary": "This code imports necessary libraries and parses command line arguments for depth and prefix options. It generates combinations of characters and prints them as potential flags.",
+    "details": [
+        {
+            "comment": "This code imports necessary libraries and parses command line arguments for depth and prefix options. It generates combinations of characters and prints them as potential flags.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_kali_amd64/cognitionService/virtual/pure_fuzz.py\":0-18",
+            "content": "#import sys\nimport argparse\nparser=argparse.ArgumentParser()\nparser.add_argument('-d','--depth',type=int,help='depth of possible flags combination',default=2)\nparser.add_argument(\"-p\",\"--prefix\",action=\"store_true\")\nargs=parser.parse_args()\ndepth=args.depth\npre=args.prefix\ncandidates=[chr(x+ord('a'))for x in range(26)]\ncandidates=candidates+[x.upper() for x in candidates]\nimport itertools\nprefix=\"\" if not pre else \"-\"\nflags=[prefix+\"\".join(x) for x in itertools.combinations(candidates,depth)]\n#print(pargs)\nfor x in flags:\n    print(x)"
+        }
+    ]
+}

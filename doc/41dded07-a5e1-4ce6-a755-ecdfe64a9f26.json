@@ -1,0 +1,10 @@
+{
+    "summary": "This Bash script uses sed to apply reformatting changes to the 'background.js' file, using instructions from the 'reformat.sed' script.",
+    "details": [
+        {
+            "comment": "This Bash script uses sed to apply reformatting changes to the 'background.js' file, using instructions from the 'reformat.sed' script.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/browser_plugin/lazero_crx_17_kiwi_ip_change/reformat.sh\":0-1",
+            "content": "#!/bin/bash\nsed -f reformat.sed background.js"
+        }
+    ]
+}

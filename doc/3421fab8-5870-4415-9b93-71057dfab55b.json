@@ -1,0 +1,10 @@
+{
+    "summary": "This code launches the Emacs client, executes Lisp code within it, and opens \"lsp.sh\" file in another buffer for editing.",
+    "details": [
+        {
+            "comment": "This code launches the Emacs client, executes Lisp code within it, and opens \"lsp.sh\" file in another buffer for editing.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_kali_amd64/cognitionService/virtual/client_let.sh\":0-0",
+            "content": "emacsclient -s foo -e \"(let () (find-file \\\"lsp.sh\\\") (print (current-buffer)))\""
+        }
+    ]
+}

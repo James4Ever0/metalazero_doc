@@ -1,0 +1,10 @@
+{
+    "summary": "The code defines a function `monkey` that generates random strings using `gen_str()` and performs editing operations like insert, replace, copy, paste, backspace, delete, forward, and backward on an editor object. It executes these operations randomly for 15 iterations before returning the modified content of the editor.",
+    "details": [
+        {
+            "comment": "The code defines a function `monkey` that generates random strings using `gen_str()` and performs editing operations like insert, replace, copy, paste, backspace, delete, forward, and backward on an editor object. It executes these operations randomly for 15 iterations before returning the modified content of the editor.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/tools/deep-text-editor/neural_network/monkey_editing.py\":0-19",
+            "content": "from editor import editor\nimport random\nimport time\ndef gen_str():\n    return \"\".join([chr(random.randint(0,200)) for x in range(random.randint(1,2))])\ndef monkey(content):\n    e=editor(content=content)\n    insert=lambda: e.insert(gen_str())\n    replace=lambda: e.replace(gen_str())\n    copy=lambda: e.copy(gen_str())\n    paste=lambda: e.paste()\n    forward=lambda: e.forward(random.randint(1,2))\n    backward=lambda: e.backward(random.randint(1,2))\n    delete=lambda: e.delete(random.randint(1,2))\n    backspace=lambda: e.backspace(random.randint(1,2))\n    ops=[insert,replace,copy,paste,backspace,delete,forward,backward]\n    for _ in range(15):\n        random.choice(ops)()\n    return e.content"
+        }
+    ]
+}

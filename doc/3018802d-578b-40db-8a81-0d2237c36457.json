@@ -1,0 +1,10 @@
+{
+    "summary": "The code is running a Node.js script (vscode_ipc.js) using the environment variable NODE_PATH set to /usr/local/lib/node_modules and executing it in the current context. This may be part of a larger process involving VS Code's inter-process communication system, potentially running on an AMD64 architecture and within the Kali Linux operating system.",
+    "details": [
+        {
+            "comment": "The code is running a Node.js script (vscode_ipc.js) using the environment variable NODE_PATH set to /usr/local/lib/node_modules and executing it in the current context. This may be part of a larger process involving VS Code's inter-process communication system, potentially running on an AMD64 architecture and within the Kali Linux operating system.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_kali_amd64/cognitionService/virtual/vscode_ipc.sh\":0-0",
+            "content": "env NODE_PATH=/usr/local/lib/node_modules node vscode_ipc.js"
+        }
+    ]
+}

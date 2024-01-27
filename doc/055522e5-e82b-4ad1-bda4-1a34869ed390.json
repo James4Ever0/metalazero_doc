@@ -1,0 +1,10 @@
+{
+    "summary": "The code declares a class called \"cog_core\" with a main method that initializes a String variable 'a' and uses the contains() function to check if 'abc' or '123' are present in 'a', then prints out the boolean result.",
+    "details": [
+        {
+            "comment": "The code declares a class called \"cog_core\" with a main method that initializes a String variable 'a' and uses the contains() function to check if 'abc' or '123' are present in 'a', then prints out the boolean result.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_kali_amd64/cognitionService/virtual/cog_core.java\":0-6",
+            "content": "public class cog_core{\n\tpublic static void main(String[] args){\n\t\tString a=\"abcdef\";\n\t\tSystem.out.println(a.contains(\"abc\"));\n\t\tSystem.out.println(a.contains(\"123\"));\n\t}\n}"
+        }
+    ]
+}

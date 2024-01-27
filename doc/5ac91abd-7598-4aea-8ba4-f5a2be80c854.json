@@ -1,0 +1,15 @@
+{
+    "summary": "This VNC bruteforcer script takes password and address as arguments, connects to the VNC server using vncdotool, simulates user input by randomly moving mouse and typing keys, parses command-line arguments with argparse, and runs functions indefinitely from the \"fs\" list of keyType functions.",
+    "details": [
+        {
+            "comment": "The code is a VNC bruteforcer that takes a password and address as arguments, connects to the VNC server using vncdotool, randomly moves the mouse and types random keys to simulate user input for potential password guessing. It uses the argparse module to parse command-line arguments and includes functions for moving the mouse (mouseMove) and typing keys (keyType). The code runs as a standalone script if executed directly.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_kali_amd64/mainService/vnc_bruteforcer.py\":0-36",
+            "content": "#import os\nimport argparse\nparser = argparse.ArgumentParser()\nparser.add_argument(\"-p\",\"--passwd\",type=str,required=True)\nparser.add_argument(\"-a\",\"--address\",\"--add_argumentress\",type=str,required=True)\nargs = parser.parse_args()\npasswd = args.passwd\n#passwd = passwd.encode()\naddress = args.address\nfrom vncdotool import api\nclient = api.connect(address.replace(\":\",\"::\"),password=passwd)\n#tmp = lambda x: \"vncdotool -s {} -p {} {}\".format(address,passwd,x)\nimport random\nimport time\n# that's called software testing? do you want to test me baby~\ndef mouseMove(delay=0.01):\n    x,y = random.randint(0,1024),random.randint(0,768)\n    client.mouseMove(x,y)\n    print(\"moving to click at:\",(x,y))\n    time.sleep(delay/2)\n    client.mousePress(1)\n    time.sleep(delay/2)\ndef keyType(delay=0.2):\n    t = \"abcdefghijklmnopqrstuvwxyz\"\n    t+= t.upper()\n    t+= \"0123456789\"\n    t = [x for x in t]\n    t = random.choice(t)\n    print(\"pressing key:\",t)\n    client.keyPress(t)\n    time.sleep(delay)\nif __name__ == \"__main__\":\n    fs = [mouseMove]"
+        },
+        {
+            "comment": "This code randomly selects and executes a function from the list \"fs\" containing keyType functions, continuously repeating this process indefinitely.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_kali_amd64/mainService/vnc_bruteforcer.py\":37-40",
+            "content": "#    fs = [keyType]\n    while True:\n        f = random.choice(fs)\n        f()"
+        }
+    ]
+}

@@ -1,0 +1,10 @@
+{
+    "summary": "This code is executing a JavaScript file (vscode_client_lsp.js) using Node.js, with the NODE_PATH environment variable set to /usr/local/lib/node_modules. This could be running a VS Code Language Server Protocol client script in a Linux-based system like Kali.",
+    "details": [
+        {
+            "comment": "This code is executing a JavaScript file (vscode_client_lsp.js) using Node.js, with the NODE_PATH environment variable set to /usr/local/lib/node_modules. This could be running a VS Code Language Server Protocol client script in a Linux-based system like Kali.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_kali_amd64/cognitionService/virtual/vscode_client_lsp.sh\":0-0",
+            "content": "env NODE_PATH=/usr/local/lib/node_modules node vscode_client_lsp.js"
+        }
+    ]
+}

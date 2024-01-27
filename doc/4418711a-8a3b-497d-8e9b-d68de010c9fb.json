@@ -1,0 +1,10 @@
+{
+    "summary": "This code generates a unique UUID, stores it in a file named \".local_uuid\", and retrieves the stored UUID when needed. It handles cases where the file does not exist by creating it first.",
+    "details": [
+        {
+            "comment": "This code generates a unique UUID, stores it in a file named \".local_uuid\", and retrieves the stored UUID when needed. It handles cases where the file does not exist by creating it first.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/remote_control/discovery/generate_uuid.py\":0-15",
+            "content": "import os\nimport uuid\ndef generate():\n    return str(uuid.uuid4())\ndef set_uuid():\n    with open(\".local_uuid\",\"w+\") as f:\n        f.write(generate())\ndef get_uuid():\n    if os.path.exists(\".local_uuid\"):\n        return open(\".local_uuid\",\"r\").read()\n    else:\n        set_uuid()\n        return get_uuid()"
+        }
+    ]
+}

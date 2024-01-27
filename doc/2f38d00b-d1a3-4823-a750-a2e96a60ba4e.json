@@ -1,0 +1,10 @@
+{
+    "summary": "Code imports Emacs module and runs it in batch mode. It evaluates Lisp expressions using emacs.eval() function, printing results. The code attempts to print 'hello' using emacs but encounters an error when trying to evaluate \"(lsp)\".",
+    "details": [
+        {
+            "comment": "Code imports Emacs module and runs it in batch mode. It evaluates Lisp expressions using emacs.eval() function, printing results. The code attempts to print 'hello' using emacs but encounters an error when trying to evaluate \"(lsp)\".",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_kali_amd64/cognitionService/virtual/eserv.py\":0-8",
+            "content": "from emacs import Emacs\nemacs = Emacs.batch(['-q'])\nsrc = '(princ (format \"One plus two is %d\" (+ 1 2)))'\nprint(emacs.eval(src))\n#print(emacs.eval(\"(lsp)\"))\n#subprocess.CalledProcessError: Command '['emacs', '--batch', '-q', '--eval', '(lsp)'\n#error.\n#it is repeated?\nprint(emacs.eval(\"(print 'hello)\"))"
+        }
+    ]
+}

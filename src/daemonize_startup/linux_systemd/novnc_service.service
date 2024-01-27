@@ -1,0 +1,15 @@
+[Unit]
+Description=trivial_service
+
+Wants=network.target
+After=syslog.target network-online.target
+
+[Service]
+Type=simple
+ExecStart=bash /root/AGI/metalazero/daemonize_startup/linux_systemd/novnc_service.sh
+Restart=on-failure
+RestartSec=10
+KillMode=process
+
+[Install]
+WantedBy=multi-user.target

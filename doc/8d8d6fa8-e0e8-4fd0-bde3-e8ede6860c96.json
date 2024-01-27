@@ -1,0 +1,10 @@
+{
+    "summary": "This code declares two strings, checks if the second string contains all characters of the first one, and prints the result.",
+    "details": [
+        {
+            "comment": "This code declares two strings, checks if the second string contains all characters of the first one, and prints the result.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_kali_amd64/cognitionService/virtual/cog_core.rs\":0-4",
+            "content": "fn main(){\n    let a =\"abcd\";\n    let b =\"bcd\";\n    println!(\"{}\",a.contains(b));\n}"
+        }
+    ]
+}

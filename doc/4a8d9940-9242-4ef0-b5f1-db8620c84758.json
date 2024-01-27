@@ -1,0 +1,10 @@
+{
+    "summary": "This code executes the \"launch_monkey.sh\" script using Bash, then pipes the output to Python3's \"uniq_filter.py\" script for filtering unique results.",
+    "details": [
+        {
+            "comment": "This code executes the \"launch_monkey.sh\" script using Bash, then pipes the output to Python3's \"uniq_filter.py\" script for filtering unique results.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_kali_amd64/mainService/uniq_monkey_launcher.sh\":0-0",
+            "content": "bash launch_monkey.sh | python3 uniq_filter.py"
+        }
+    ]
+}

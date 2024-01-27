@@ -1,0 +1,10 @@
+{
+    "summary": "The code defines a string variable S as \"hello world\" and Word as \"world\". It then checks if the string \"hello world\" contains the word \"world\" using the `string:str/2` function. If it does, it prints 1 to the console; otherwise, it prints 0. The main function calls main2, which also performs the same operations but with fixed values for S and Word. Lastly, it formats and prints \"hello world\".",
+    "details": [
+        {
+            "comment": "The code defines a string variable S as \"hello world\" and Word as \"world\". It then checks if the string \"hello world\" contains the word \"world\" using the `string:str/2` function. If it does, it prints 1 to the console; otherwise, it prints 0. The main function calls main2, which also performs the same operations but with fixed values for S and Word. Lastly, it formats and prints \"hello world\".",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_kali_amd64/cognitionService/virtual/cog_core.erl\":0-15",
+            "content": "%S=\"hello world\".\n%Word=\"world\".\n%Ok = string:str(S, Word) > 0.\nmain2() ->\n\tS=\"hello world\",\n\tWord=\"nope\",\n\tOk = string:str(S, Word) > 0,\n\tio:format(Ok).\nmain(String) ->\n\tmain2(),\n\tS=\"hello world\",\n\tWord=\"world\",\n\tOk = string:str(S, Word) > 0,\n\tio:format(Ok).\n\t%io:format(\"hello world\")."
+        }
+    ]
+}

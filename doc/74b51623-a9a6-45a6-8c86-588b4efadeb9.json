@@ -1,0 +1,10 @@
+{
+    "summary": "This script is stopping specific processes, starting others, and then cleaning up. It uses a combination of batch scripts, PowerShell, and grep commands to identify processes by their names and kill them if necessary. Afterward, it starts the desired services (chrome_receive.js and chrome_console.js) and finally cleans up the directory path before exiting.",
+    "details": [
+        {
+            "comment": "This script is stopping specific processes, starting others, and then cleaning up. It uses a combination of batch scripts, PowerShell, and grep commands to identify processes by their names and kill them if necessary. Afterward, it starts the desired services (chrome_receive.js and chrome_console.js) and finally cleans up the directory path before exiting.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_win10_amd64/debug_init.cmd\":0-10",
+            "content": "@echo off\nset AWK=E:\\android-ndk-r10e\\prebuilt\\windows-x86_64\\bin\\awk.exe\nset THISPATH=%CD%\npowershell.exe -File find_process.ps1 \"node.exe\" | grep node | grep chrome_console | %AWK% \"{print $1}\" | xargs -iabc cmd /C \"taskkill /F /PID abc\"\npowershell.exe -File find_process.ps1 \"node.exe\" | grep node | grep chrome_receive | %AWK% \"{print $1}\" | xargs -iabc cmd /C \"taskkill /F /PID abc\"\nstart /B cmd /C \"cd eventService && node chrome_receive.js\"\nstart /B cmd /C \"cd replService && node chrome_console.js\"\npowershell.exe -File find_process.ps1 \"python36.exe\" | grep node | grep ptyproc_cmd.py | %AWK% \"{print $1}\" | xargs -iabc cmd /C \"taskkill /F /PID abc\"\ncd shellService && python36 ptyproc_cmd.py\ncd %THISPATH%"
+        }
+    ]
+}

@@ -1,0 +1,10 @@
+{
+    "summary": "string and it contains the substring \"is\". The code includes util.inspect to inspect object properties, and prints the names of properties in m's prototype chain before adding a newline.",
+    "details": [
+        {
+            "comment": "string and it contains the substring \"is\". The code includes util.inspect to inspect object properties, and prints the names of properties in m's prototype chain before adding a newline.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_kali_amd64/cognitionService/virtual/cog_core.js\":0-11",
+            "content": "m=\"ism\"\nconsole.log(m.includes('is'))\nconst util = require(\"util\")\nconst inspect = util.inspect\nfunction print(a){console.log(a)}\nprint(Object.getOwnPropertyNames(m.__proto__))\nprint(\"newline\")\n//console.dir(m.__proto__)"
+        }
+    ]
+}

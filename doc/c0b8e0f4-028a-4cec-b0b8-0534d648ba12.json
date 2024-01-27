@@ -1,0 +1,10 @@
+{
+    "summary": "These code snippets represent the dependencies for a programming project, where \"ws\" and \"collections\" are likely used for handling web sockets and managing data structures respectively. The remaining packages (\"vscode-languageclient\", \"vscode-languageserver\", \"vscode-languageserver-protocol\", and \"vscode-languageserver-textdocument\") seem to be related to the Visual Studio Code language server, which is responsible for providing intellisense, linting, and other programming language features in VSCode.",
+    "details": [
+        {
+            "comment": "These code snippets represent the dependencies for a programming project, where \"ws\" and \"collections\" are likely used for handling web sockets and managing data structures respectively. The remaining packages (\"vscode-languageclient\", \"vscode-languageserver\", \"vscode-languageserver-protocol\", and \"vscode-languageserver-textdocument\") seem to be related to the Visual Studio Code language server, which is responsible for providing intellisense, linting, and other programming language features in VSCode.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_kali_amd64/nodejs_require\":0-5",
+            "content": "ws\ncollections\nvscode-languageclient\nvscode-languageserver\nvscode-languageserver-protocol\nvscode-languageserver-textdocument"
+        }
+    ]
+}

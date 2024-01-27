@@ -1,0 +1,10 @@
+{
+    "summary": "This code initializes a JSON-RPC 2.0 request with id 1 and method \"initialize\". It sets the rootPath to the current working directory, and an empty capabilities list. The JSON request is then dumped into a string 'c', its length is calculated, and a content length header is created. Finally, the JSON request and header are printed.",
+    "details": [
+        {
+            "comment": "This code initializes a JSON-RPC 2.0 request with id 1 and method \"initialize\". It sets the rootPath to the current working directory, and an empty capabilities list. The JSON request is then dumped into a string 'c', its length is calculated, and a content length header is created. Finally, the JSON request and header are printed.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_kali_amd64/cognitionService/virtual/transmit_pyls.py\":0-17",
+            "content": "#a=\"length: 256\"\nimport os\nrpath=os.environ[\"PWD\"]\nimport json\nc={}\nc.update({\"jsonrpc\":\"2.0\"})\nc.update({\"id\":1})\nc.update({\"method\":\"initialize\",\"params\":{\"rootPath\":rpath,\"capabilities\":[]}})\nc=json.dumps(c)\nl=len(c)\nb=\"Content-Length: {}\".format(l)\nprint(\"\")\n#print(b)\nprint(\"\")\nprint(c+\"\")\n#print(c+\"\\x04\")\nprint(\"\")"
+        }
+    ]
+}

@@ -1,0 +1,10 @@
+{
+    "summary": "The script checks if the 'root' directory is empty, and if so, removes it using sudo rm -rf. The PSK (password strength key) variable stores the number of characters in the root folder listing, serving as an indicator for whether the directory is empty or not. Proceed with caution when working with chroot/symlink operations.",
+    "details": [
+        {
+            "comment": "The script checks if the 'root' directory is empty, and if so, removes it using sudo rm -rf. The PSK (password strength key) variable stores the number of characters in the root folder listing, serving as an indicator for whether the directory is empty or not. Proceed with caution when working with chroot/symlink operations.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_kali_amd64/virtualService/tools/sandserv/tunloadroot.sh\":0-9",
+            "content": "#!/bin/bash\nsudo umount -f root\npsk=$(sudo ls -1 root/ | wc -c)\n# if failed, then do not continue! unless you are an idiot.\n# or not.\n# just think! also for symlink on windows. caution when doing chroot/symlink.\nif [ $psk -eq 0 ]\nthen\n\tsudo rm -rf root\nfi"
+        }
+    ]
+}

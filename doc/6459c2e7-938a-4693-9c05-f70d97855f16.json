@@ -1,0 +1,10 @@
+{
+    "summary": "The code imports the Flask module and creates a Flask application. It sets the host and port to 0.0.0.0 and 5999 respectively. A route (\"/\") is defined, which returns \"lazero name resolution server\" when accessed. The application runs on the specified host and port if the script is executed directly.",
+    "details": [
+        {
+            "comment": "The code imports the Flask module and creates a Flask application. It sets the host and port to 0.0.0.0 and 5999 respectively. A route (\"/\") is defined, which returns \"lazero name resolution server\" when accessed. The application runs on the specified host and port if the script is executed directly.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/remote_control/discovery/test_server.py\":0-8",
+            "content": "from flask import Flask\napp = Flask(__name__)\nhost, port = \"0.0.0.0\", 5999\n@app.route(\"/\")\ndef hello():\n    return \"lazero name resolution server\"\nif __name__ == \"__main__\":\n    app.run(host=host,port=port)"
+        }
+    ]
+}

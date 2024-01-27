@@ -1,0 +1,10 @@
+{
+    "summary": "This script checks the number of command line arguments, and if it is less than or equal to 1, it outputs \"no argument\" and exits with an error code. Otherwise, it runs multiple scripts in sequence.",
+    "details": [
+        {
+            "comment": "This script checks the number of command line arguments, and if it is less than or equal to 1, it outputs \"no argument\" and exits with an error code. Otherwise, it runs multiple scripts in sequence.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_kali_amd64/virtualService/tools/sandserv/multiterm.sh\":0-12",
+            "content": "#!/bin/bash\nc0=$(echo $1 |wc -c )\n#echo $c0\nif [ $c0 -le 1 ]\nthen\n        echo \"no argument.\"\n        exit 1\nelse\n        :\nfi\nbash -c \"./multikill.sh $1\"\nbash -c \"./multiunloadroot.sh $1\"\nbash -c \"./multiunloadram.sh $1\""
+        }
+    ]
+}

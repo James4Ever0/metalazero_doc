@@ -1,0 +1,10 @@
+{
+    "summary": "This code mentions the requirement of using some form of sudo access.",
+    "details": [
+        {
+            "comment": "This code mentions the requirement of using some form of sudo access.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/remote_control/discovery/README\":0-0",
+            "content": "they all need some sort of sudo."
+        }
+    ]
+}

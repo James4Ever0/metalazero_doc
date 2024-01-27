@@ -1,0 +1,10 @@
+{
+    "summary": "The code is using xargs to iterate over the contents of gcc_targets.log and for each item, it checks which 'abc' executable is available, removes it if found (presumably a different version), finds the 'abc-8' executable, and creates a symbolic link to it with the name of the original 'abc' executable.",
+    "details": [
+        {
+            "comment": "The code is using xargs to iterate over the contents of gcc_targets.log and for each item, it checks which 'abc' executable is available, removes it if found (presumably a different version), finds the 'abc-8' executable, and creates a symbolic link to it with the name of the original 'abc' executable.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_kali_amd64/cognitionService/change_gcc.sh\":0-1",
+            "content": "#cat gcc_targets.log | xargs -iabc bash -c \"amd=\\$(which abc); echo \\$amd\"\ncat gcc_targets.log | xargs -iabc bash -c \"amd=\\$(which abc); unlink \\$amd; target=\\$(which abc-8); ln -s \\$target \\$amd\""
+        }
+    ]
+}

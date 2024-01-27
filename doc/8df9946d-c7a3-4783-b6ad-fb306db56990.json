@@ -1,0 +1,10 @@
+{
+    "summary": "This code sets up a telnet client connection, defines a process filter that logs output to a temporary buffer, and sends \"hello world\" message to the server.",
+    "details": [
+        {
+            "comment": "This code sets up a telnet client connection, defines a process filter that logs output to a temporary buffer, and sends \"hello world\" message to the server.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_kali_amd64/cognitionService/virtual/telnet_client.el\":0-13",
+            "content": "(setq echo-server-port 10000)\n(setq client-process (open-network-stream \"echo-client\"\n                          \"*echo-client*\" \"localhost\" echo-server-port))\n; process-filter\n; set-process-filter\n;(setq tmp_buf \"TempBuffer\")\n; not just that.\n(defun my-filter-function (program text) (with-temp-file \"tempbuffer.log\" (insert text) (run-with-timer 1 nil #'kill-emacs)))\n(set-process-filter client-process #'my-filter-function)\n;(kill-buffer tmp_buf)\n;(get-buffer-create tmp_buf)\n(process-send-string client-process \"hello world\\n\")\n;(print (process-filter client-process))"
+        }
+    ]
+}

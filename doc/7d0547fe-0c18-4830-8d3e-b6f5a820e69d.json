@@ -1,0 +1,10 @@
+{
+    "summary": "This Python script uses winpexpect to interact with Docker. It spawns a Docker container, continuously reads its output, and randomly sends commands from a list of options (whoami, pwd, ls). The readings and command executions are performed in separate threads for efficiency.",
+    "details": [
+        {
+            "comment": "This Python script uses winpexpect to interact with Docker. It spawns a Docker container, continuously reads its output, and randomly sends commands from a list of options (whoami, pwd, ls). The readings and command executions are performed in separate threads for efficiency.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_win10_amd64/mainService/docker_monkey.py\":0-23",
+            "content": "# without monkey typers we cannot really say that we are making any progress with this shitty computer.\n# we are not familar with this shit though!\nimport winpexpect as pexpect\nimport threading\nimport random\nimport time\n# maybe you need winpexpect.\n# we shall start shits from simple rules.\n# anything unpredictable that could also last forever.\np = pexpect.spawn(\"docker run --rm --read-only -i alpine\")\ndef read_me():\n    while True:\n        content = p.readline()\n        print(\"content:\\n\",content)\n#print(dir(p))\nthreading.Thread(target=read_me,daemon=True).start()\ndelay=0.2\nwhile True:\n    payloads = [\"whoami\",\"pwd\",\"ls\"]\n    time.sleep(delay)\n    target = random.choice(payloads)\n    print(\"sending command:\",target)\n    p.sendline(target)"
+        }
+    ]
+}

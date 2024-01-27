@@ -1,0 +1,44 @@
+#!/bin/bash
+if [ "$1" == "" ]; then
+	echo lazero tool cli invoker.
+	echo
+	echo avaliable commands:
+	echo
+	echo "    install"
+elif [ "$1" == "install" ]; then
+	if [ "$2" == "" ]; then
+		echo please tell me where the file is.
+		exit 1
+	fi
+	target=$PWD/$2
+	chmod 777 $target
+	if [ $? -eq 0 ]; then
+		echo change mode success.
+	else
+		echo failed change file mode to 777.
+		exit 1
+	fi
+	dest=$(which bash | sed "s/bash//g")
+	test -e $dest$2
+	if [ $? -eq 0 ]; then
+		echo file exists.
+		echo do you want to overwrite?
+		while true
+		do  # (1) prompt user, and read command line argument
+			read -p "y/Y to overwrite, n/N to give up." answer
+			case $answer in
+				   [yY]* ) break;;
+				   [nN]* ) exit 1;;
+				   * )     echo "Dude, just enter Y or N, please.";;
+			esac
+		done
+	fi
+	cp $target $dest
+	if [ $? -eq 0 ]; then
+		echo installation complete.
+	else
+		echo failed to copy files.
+		exit 1
+	fi
+	#chmod 777 $dest$2
+fi

@@ -1,0 +1,10 @@
+{
+    "summary": "The code requires the 'package' package, initializes it, and installs 'lsp-mode' and 'company' packages using the 'package-install' function.",
+    "details": [
+        {
+            "comment": "The code requires the 'package' package, initializes it, and installs 'lsp-mode' and 'company' packages using the 'package-install' function.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_kali_amd64/cognitionService/virtual/init_emacs.el\":0-3",
+            "content": "(require 'package)\n(package-initialize)\n(package-install 'lsp-mode)\n(package-install 'company)"
+        }
+    ]
+}

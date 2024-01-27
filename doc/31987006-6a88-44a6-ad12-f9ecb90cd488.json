@@ -1,0 +1,10 @@
+{
+    "summary": "The code imports the subprocess module and uses it to execute a bash script named \"get_commands.sh\". It captures the stdout and stderr outputs in variables, then splits the stdout into lines and stores them in an array. The code then iterates through combinations of two commands from the array, joins them together and executes them using os.system().",
+    "details": [
+        {
+            "comment": "The code imports the subprocess module and uses it to execute a bash script named \"get_commands.sh\". It captures the stdout and stderr outputs in variables, then splits the stdout into lines and stores them in an array. The code then iterates through combinations of two commands from the array, joins them together and executes them using os.system().",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_chromeos_aarch64/cognitionService/test_commands.py\":0-14",
+            "content": "import subprocess\nprogram = subprocess.Popen([\"bash\",\"get_commands.sh\"],stdout=subprocess.PIPE,stderr=subprocess.PIPE)\n#print(dir(program))\nstdout, stderr = program.communicate()\n#print(stdout, stderr)\n#nothing from stderr.\narray = stdout.decode(\"utf-8\")\narray = array.split(\"\\n\")\n#print(\"length of commands:\",len(array))\nimport itertools\nimport os\nfor comp in itertools.combinations(array,r=2):\n    cmd = \" \".join(comp)\n    os.system(cmd)"
+        }
+    ]
+}

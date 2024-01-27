@@ -1,0 +1,10 @@
+{
+    "summary": "This code snippet is a regular expression (regex) pattern for deleting blank lines in a file. It will remove any line that consists of only whitespace, such as an empty line or a line containing spaces or tabs only.",
+    "details": [
+        {
+            "comment": "This code snippet is a regular expression (regex) pattern for deleting blank lines in a file. It will remove any line that consists of only whitespace, such as an empty line or a line containing spaces or tabs only.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/browser_plugin/lazero_crx_17_kiwi_ip_change/reformat.sed\":0-0",
+            "content": "/^\\n$/d"
+        }
+    ]
+}

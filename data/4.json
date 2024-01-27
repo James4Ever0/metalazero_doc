@@ -1,0 +1,528 @@
+{
+    "400": {
+        "file_id": 81,
+        "content": "/native/lazero_kali_amd64/cognitionService/virtual/cog_core.bsh",
+        "type": "filepath"
+    },
+    "401": {
+        "file_id": 81,
+        "content": "Code snippet demonstrates string manipulation and method printing for class exploration. It checks if the string \"a\" contains substrings, prints declared methods of a String object using a custom print function, and uses javap to inspect class details.",
+        "type": "summary"
+    },
+    "402": {
+        "file_id": 81,
+        "content": "a=\"abcdef\";\nSystem.out.println(a.contains(\"abc\"));\nSystem.out.println(a.contains(\"123\"));\n/*\npublic void print(Object O){\nSystem.out.println(O);\n}\n*/\n// THIS ONE IS MUCH BETTER THAN ORIGINAL.\nprint(String.class.getDeclaredMethods());\n//print(String.class.getDeclaredMethods());\njavap(this);",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/cognitionService/virtual/cog_core.bsh:1-15"
+    },
+    "403": {
+        "file_id": 81,
+        "content": "Code snippet demonstrates string manipulation and method printing for class exploration. It checks if the string \"a\" contains substrings, prints declared methods of a String object using a custom print function, and uses javap to inspect class details.",
+        "type": "comment"
+    },
+    "404": {
+        "file_id": 82,
+        "content": "/native/lazero_kali_amd64/cognitionService/virtual/cog_core.c",
+        "type": "filepath"
+    },
+    "405": {
+        "file_id": 82,
+        "content": "This code declares two character pointers, \"a\" and \"b\", with \"b\" containing a substring of \"a\". It then uses the strstr function to find the first occurrence of \"b\" within \"a\" and prints the result.",
+        "type": "summary"
+    },
+    "406": {
+        "file_id": 82,
+        "content": "#include <string.h>\n#include <stdio.h>\nint main(){\n\tchar* a=\"abcdef\";\n\tchar* b=\"123\";\n\t//char* b=\"abc\";\n\tprintf(\"%s\\n\",strstr(a,b));\n}",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/cognitionService/virtual/cog_core.c:1-9"
+    },
+    "407": {
+        "file_id": 82,
+        "content": "This code declares two character pointers, \"a\" and \"b\", with \"b\" containing a substring of \"a\". It then uses the strstr function to find the first occurrence of \"b\" within \"a\" and prints the result.",
+        "type": "comment"
+    },
+    "408": {
+        "file_id": 83,
+        "content": "/native/lazero_kali_amd64/cognitionService/virtual/cog_core.el",
+        "type": "filepath"
+    },
+    "409": {
+        "file_id": 83,
+        "content": "This code snippet searches for a substring \"abc\" within the string \"defabc\" and prints the result. It demonstrates using regular expressions and Lisp functions to perform pattern matching. Additionally, it highlights the lack of global variables in Lisp, which can make variable management more complex.",
+        "type": "summary"
+    },
+    "410": {
+        "file_id": 83,
+        "content": "(print (string-match-p (regexp-quote \"abc\") \"defabc\"))\n; remember lisp has no global variables?\n; could be headache.\n;(print (cl-search \"abc\" \"nothing\"))",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/cognitionService/virtual/cog_core.el:1-4"
+    },
+    "411": {
+        "file_id": 83,
+        "content": "This code snippet searches for a substring \"abc\" within the string \"defabc\" and prints the result. It demonstrates using regular expressions and Lisp functions to perform pattern matching. Additionally, it highlights the lack of global variables in Lisp, which can make variable management more complex.",
+        "type": "comment"
+    },
+    "412": {
+        "file_id": 84,
+        "content": "/native/lazero_kali_amd64/cognitionService/virtual/cog_core.erl",
+        "type": "filepath"
+    },
+    "413": {
+        "file_id": 84,
+        "content": "The code defines a string variable S as \"hello world\" and Word as \"world\". It then checks if the string \"hello world\" contains the word \"world\" using the `string:str/2` function. If it does, it prints 1 to the console; otherwise, it prints 0. The main function calls main2, which also performs the same operations but with fixed values for S and Word. Lastly, it formats and prints \"hello world\".",
+        "type": "summary"
+    },
+    "414": {
+        "file_id": 84,
+        "content": "%S=\"hello world\".\n%Word=\"world\".\n%Ok = string:str(S, Word) > 0.\nmain2() ->\n\tS=\"hello world\",\n\tWord=\"nope\",\n\tOk = string:str(S, Word) > 0,\n\tio:format(Ok).\nmain(String) ->\n\tmain2(),\n\tS=\"hello world\",\n\tWord=\"world\",\n\tOk = string:str(S, Word) > 0,\n\tio:format(Ok).\n\t%io:format(\"hello world\").",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/cognitionService/virtual/cog_core.erl:1-16"
+    },
+    "415": {
+        "file_id": 84,
+        "content": "The code defines a string variable S as \"hello world\" and Word as \"world\". It then checks if the string \"hello world\" contains the word \"world\" using the `string:str/2` function. If it does, it prints 1 to the console; otherwise, it prints 0. The main function calls main2, which also performs the same operations but with fixed values for S and Word. Lastly, it formats and prints \"hello world\".",
+        "type": "comment"
+    },
+    "416": {
+        "file_id": 85,
+        "content": "/native/lazero_kali_amd64/cognitionService/virtual/cog_core.go",
+        "type": "filepath"
+    },
+    "417": {
+        "file_id": 85,
+        "content": "The code imports the \"fmt\" and \"strings\" packages, as well as the reflect package. It then demonstrates using the Contains function from the strings package to check if a substring exists in a given string. Additionally, it uses the reflect package to access type information.",
+        "type": "summary"
+    },
+    "418": {
+        "file_id": 85,
+        "content": "package main\nimport . \"fmt\"\nimport . \"strings\"\nimport R \"reflect\"\nfunc main(){\n\tPrintln(Contains(\"animalsfood\", \"foo\"))\n\t// 'bar' does not present in 'birdsfood'\n\tPrintln(Contains(\"birdsfood\", \"bar\"))\n\tPrintln(Contains(\"animalsfood\", \"\"))\n\tPrintln(Contains(\"\", \"\"))\n\tPrintln(R.TypeOf(R.TypeOf))\n\tPrintln(R.TypeOf(R.TypeOf).Kind())\n\t//Println(R.TypeOf(R.TypeOf).Kind().Field())\n\t// go doc reflect\n}",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/cognitionService/virtual/cog_core.go:1-20"
+    },
+    "419": {
+        "file_id": 85,
+        "content": "The code imports the \"fmt\" and \"strings\" packages, as well as the reflect package. It then demonstrates using the Contains function from the strings package to check if a substring exists in a given string. Additionally, it uses the reflect package to access type information.",
+        "type": "comment"
+    },
+    "420": {
+        "file_id": 86,
+        "content": "/native/lazero_kali_amd64/cognitionService/virtual/cog_core.hs",
+        "type": "filepath"
+    },
+    "421": {
+        "file_id": 86,
+        "content": "The code defines a function `boolStr` that takes a condition and returns either \"TRUE\" or \"FALSE\" based on its truthiness. The main function calls `boolStr` with the condition \"worl\" is infixed in \"hello world\", then prints the result using `putStrLn`. This results in printing \"FALSE\" instead of \"Hello World\" because \"worl\" is not found in \"hello world\".",
+        "type": "summary"
+    },
+    "422": {
+        "file_id": 86,
+        "content": "import Data.List\nboolStr condition = if condition then \"TRUE\" else \"FALSE\"\nmain = do\n\tputStrLn (boolStr (\"worl\" `isInfixOf` \"hello world\"))\n--main = putStrLn \"Hello World\"",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/cognitionService/virtual/cog_core.hs:1-7"
+    },
+    "423": {
+        "file_id": 86,
+        "content": "The code defines a function `boolStr` that takes a condition and returns either \"TRUE\" or \"FALSE\" based on its truthiness. The main function calls `boolStr` with the condition \"worl\" is infixed in \"hello world\", then prints the result using `putStrLn`. This results in printing \"FALSE\" instead of \"Hello World\" because \"worl\" is not found in \"hello world\".",
+        "type": "comment"
+    },
+    "424": {
+        "file_id": 87,
+        "content": "/native/lazero_kali_amd64/cognitionService/virtual/cog_core.java",
+        "type": "filepath"
+    },
+    "425": {
+        "file_id": 87,
+        "content": "The code declares a class called \"cog_core\" with a main method that initializes a String variable 'a' and uses the contains() function to check if 'abc' or '123' are present in 'a', then prints out the boolean result.",
+        "type": "summary"
+    },
+    "426": {
+        "file_id": 87,
+        "content": "public class cog_core{\n\tpublic static void main(String[] args){\n\t\tString a=\"abcdef\";\n\t\tSystem.out.println(a.contains(\"abc\"));\n\t\tSystem.out.println(a.contains(\"123\"));\n\t}\n}",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/cognitionService/virtual/cog_core.java:1-7"
+    },
+    "427": {
+        "file_id": 87,
+        "content": "The code declares a class called \"cog_core\" with a main method that initializes a String variable 'a' and uses the contains() function to check if 'abc' or '123' are present in 'a', then prints out the boolean result.",
+        "type": "comment"
+    },
+    "428": {
+        "file_id": 88,
+        "content": "/native/lazero_kali_amd64/cognitionService/virtual/cog_core.js",
+        "type": "filepath"
+    },
+    "429": {
+        "file_id": 88,
+        "content": "string and it contains the substring \"is\". The code includes util.inspect to inspect object properties, and prints the names of properties in m's prototype chain before adding a newline.",
+        "type": "summary"
+    },
+    "430": {
+        "file_id": 88,
+        "content": "m=\"ism\"\nconsole.log(m.includes('is'))\nconst util = require(\"util\")\nconst inspect = util.inspect\nfunction print(a){console.log(a)}\nprint(Object.getOwnPropertyNames(m.__proto__))\nprint(\"newline\")\n//console.dir(m.__proto__)",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/cognitionService/virtual/cog_core.js:1-12"
+    },
+    "431": {
+        "file_id": 88,
+        "content": "string and it contains the substring \"is\". The code includes util.inspect to inspect object properties, and prints the names of properties in m's prototype chain before adding a newline.",
+        "type": "comment"
+    },
+    "432": {
+        "file_id": 89,
+        "content": "/native/lazero_kali_amd64/cognitionService/virtual/cog_core.lisp",
+        "type": "filepath"
+    },
+    "433": {
+        "file_id": 89,
+        "content": "This Lisp code calls the 'search' function, which searches for the string \"emacs\" in the \"emacs_lisp\" directory and prints the result.",
+        "type": "summary"
+    },
+    "434": {
+        "file_id": 89,
+        "content": "(print(search \"emacs\" \"emacs_lisp\"))",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/cognitionService/virtual/cog_core.lisp:1-1"
+    },
+    "435": {
+        "file_id": 89,
+        "content": "This Lisp code calls the 'search' function, which searches for the string \"emacs\" in the \"emacs_lisp\" directory and prints the result.",
+        "type": "comment"
+    },
+    "436": {
+        "file_id": 90,
+        "content": "/native/lazero_kali_amd64/cognitionService/virtual/cog_core.lua",
+        "type": "filepath"
+    },
+    "437": {
+        "file_id": 90,
+        "content": "The code defines a string \"hello world\" and finds its first occurrence of \"world\". Then it prints the standard index (std) and extended length (enl). Afterwards, it iterates over the metatable of the string and prints each key-value pair. Finally, it defines a function dump() to recursively print all keys in a table, sorted alphabetically, starting with the global table _G.",
+        "type": "summary"
+    },
+    "438": {
+        "file_id": 90,
+        "content": "str=\"hello world\"\nstd,enl=str:find(\"world\")\nprint(std,enl)\nfor key,val in pairs(getmetatable(str)) do\n\tprint(key,val)\nend\nlocal seen={}\nfunction dump(t,i)\nseen[t]=true\nlocal s={}\nlocal n=0\nfor k in pairs(t) do\n    n=n+1 s[n]=k\nend\ntable.sort(s)\nfor k,v in ipairs(s) do\n    print(i,v)\n    v=t[v]\n    if type(v)==\"table\" and not seen[v] then\n\tdump(v,i..\"\\t\")\n    end\nend\nend\ndump(_G,\"\")",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/cognitionService/virtual/cog_core.lua:1-28"
+    },
+    "439": {
+        "file_id": 90,
+        "content": "The code defines a string \"hello world\" and finds its first occurrence of \"world\". Then it prints the standard index (std) and extended length (enl). Afterwards, it iterates over the metatable of the string and prints each key-value pair. Finally, it defines a function dump() to recursively print all keys in a table, sorted alphabetically, starting with the global table _G.",
+        "type": "comment"
+    },
+    "440": {
+        "file_id": 91,
+        "content": "/native/lazero_kali_amd64/cognitionService/virtual/cog_core.m",
+        "type": "filepath"
+    },
+    "441": {
+        "file_id": 91,
+        "content": "Imports Foundation framework and logs \"Hello, World!\" in an autorelease pool on the main function.",
+        "type": "summary"
+    },
+    "442": {
+        "file_id": 91,
+        "content": "#import <Foundation/Foundation.h>\n//#import <stdio.h>\nint main (int argc, const char * argv[])\n{\n        NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];\n        NSLog(@\"Hello, World!\");\n        [pool drain];\n        return 0;\n}",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/cognitionService/virtual/cog_core.m:1-9"
+    },
+    "443": {
+        "file_id": 91,
+        "content": "Imports Foundation framework and logs \"Hello, World!\" in an autorelease pool on the main function.",
+        "type": "comment"
+    },
+    "444": {
+        "file_id": 92,
+        "content": "/native/lazero_kali_amd64/cognitionService/virtual/cog_core.php",
+        "type": "filepath"
+    },
+    "445": {
+        "file_id": 92,
+        "content": "Checking if the string 'This' is present in the main string and printing either 'true' or 'false'.",
+        "type": "summary"
+    },
+    "446": {
+        "file_id": 92,
+        "content": "<?php\n//print(\"hello world\")\n$str = 'This is Main String';\nif (strpos($str, 'This') !== false) {\n    echo 'true';\n}else{\n\techo 'false';\n}\n//$obj= new ReflectionObject(\"str\");\n//$obj= new ReflectionClass($str).getMethods();\nprint_r($GLOBALS);\n?>",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/cognitionService/virtual/cog_core.php:1-14"
+    },
+    "447": {
+        "file_id": 92,
+        "content": "Checking if the string 'This' is present in the main string and printing either 'true' or 'false'.",
+        "type": "comment"
+    },
+    "448": {
+        "file_id": 93,
+        "content": "/native/lazero_kali_amd64/cognitionService/virtual/cog_core.pl",
+        "type": "filepath"
+    },
+    "449": {
+        "file_id": 93,
+        "content": "The code checks if the string \"$two\" is present within the string \"$one\". If it is, it prints \"$one contains $two\"; otherwise, it prints \"$one not in $two\".",
+        "type": "summary"
+    },
+    "450": {
+        "file_id": 93,
+        "content": "$one=\"hello world\";\n$two=\"hello\";\nif (index($one,$two) != -1){\n\tprint \"$one contains $two\\n\";\n}else{\n\tprint \"$one not in $two\\n\";\n}",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/cognitionService/virtual/cog_core.pl:1-8"
+    },
+    "451": {
+        "file_id": 93,
+        "content": "The code checks if the string \"$two\" is present within the string \"$one\". If it is, it prints \"$one contains $two\"; otherwise, it prints \"$one not in $two\".",
+        "type": "comment"
+    },
+    "452": {
+        "file_id": 94,
+        "content": "/native/lazero_kali_amd64/cognitionService/virtual/cog_core.pro",
+        "type": "filepath"
+    },
+    "453": {
+        "file_id": 94,
+        "content": "The code uses Prolog programming language. It checks if a string is a substring of another by converting them to lists and using phrase/1 with substr/3 pattern. If the first string \"happy\" is found in the second string \"happyBirth\", it prints \"success\"; otherwise, it prints \"fail\".",
+        "type": "summary"
+    },
+    "454": {
+        "file_id": 94,
+        "content": "%:- write(\"prolog\\n\").\n%:- write(\"prolog is good\"), halt.\n% anything  substring anything\nsubstr(String) --> ([_|_];[]), String,  ([_|_];[]).\n% is X a substring of Y ?\nsubstring(X,Y) :- phrase(substr(X),Y).\n:- (string_to_list(\"happyBirth\",X),substring(\"happy\",X) -> write(\"success\"); write(\"fail\")), nl.\n:- (string_to_list(\"happy\",X),substring(\"happyBirth\",X) -> write(\"success\"); write(\"fail\")), nl.\n:- halt.",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/cognitionService/virtual/cog_core.pro:1-10"
+    },
+    "455": {
+        "file_id": 94,
+        "content": "The code uses Prolog programming language. It checks if a string is a substring of another by converting them to lists and using phrase/1 with substr/3 pattern. If the first string \"happy\" is found in the second string \"happyBirth\", it prints \"success\"; otherwise, it prints \"fail\".",
+        "type": "comment"
+    },
+    "456": {
+        "file_id": 95,
+        "content": "/native/lazero_kali_amd64/cognitionService/virtual/cog_core.py",
+        "type": "filepath"
+    },
+    "457": {
+        "file_id": 95,
+        "content": "The code imports the pyswip library and defines a substring function that checks if one string (a) is contained within another (b). It then prints the directory of the substring function, which lists its attributes and methods.",
+        "type": "summary"
+    },
+    "458": {
+        "file_id": 95,
+        "content": "#import pyswip as PS\n# use it or not to use it, does not matter that much.\ndef substring(a,b):\n    return a in b\nprint(dir(substring))",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/cognitionService/virtual/cog_core.py:1-5"
+    },
+    "459": {
+        "file_id": 95,
+        "content": "The code imports the pyswip library and defines a substring function that checks if one string (a) is contained within another (b). It then prints the directory of the substring function, which lists its attributes and methods.",
+        "type": "comment"
+    },
+    "460": {
+        "file_id": 96,
+        "content": "/native/lazero_kali_amd64/cognitionService/virtual/cog_core.rb",
+        "type": "filepath"
+    },
+    "461": {
+        "file_id": 96,
+        "content": "variable \"a\" is initialized with string \"123\", then the code prints the value at index \"23\" and \"db\", if no such index exists, it will print \"nil\". It also prints out all methods available for 'a' and a list of current global variables.",
+        "type": "summary"
+    },
+    "462": {
+        "file_id": 96,
+        "content": "a=\"123\"\nprint(a[\"23\"] || \"nil\")\nprint(a[\"db\"] || \"nil\")\nprint(a.methods)\nprint(\"\\n-------------\\n\")\nprint(global_variables())",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/cognitionService/virtual/cog_core.rb:1-9"
+    },
+    "463": {
+        "file_id": 96,
+        "content": "variable \"a\" is initialized with string \"123\", then the code prints the value at index \"23\" and \"db\", if no such index exists, it will print \"nil\". It also prints out all methods available for 'a' and a list of current global variables.",
+        "type": "comment"
+    },
+    "464": {
+        "file_id": 97,
+        "content": "/native/lazero_kali_amd64/cognitionService/virtual/cog_core.rs",
+        "type": "filepath"
+    },
+    "465": {
+        "file_id": 97,
+        "content": "This code declares two strings, checks if the second string contains all characters of the first one, and prints the result.",
+        "type": "summary"
+    },
+    "466": {
+        "file_id": 97,
+        "content": "fn main(){\n    let a =\"abcd\";\n    let b =\"bcd\";\n    println!(\"{}\",a.contains(b));\n}",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/cognitionService/virtual/cog_core.rs:1-5"
+    },
+    "467": {
+        "file_id": 97,
+        "content": "This code declares two strings, checks if the second string contains all characters of the first one, and prints the result.",
+        "type": "comment"
+    },
+    "468": {
+        "file_id": 98,
+        "content": "/native/lazero_kali_amd64/cognitionService/virtual/cog_core.sh",
+        "type": "filepath"
+    },
+    "469": {
+        "file_id": 98,
+        "content": "This script checks if the string \"Ubuntu is a Linux OS\" contains the substrings \"Linux\" and \"UNIX\". If it finds \"Linux\", it prints \"String is there.\" Otherwise, it prints \"NOT THE CASE\".",
+        "type": "summary"
+    },
+    "470": {
+        "file_id": 98,
+        "content": "STR='Ubuntu is a Linux OS'\nSUBSTR='Linux'\nif [[ \"$STR\" == *\"$SUBSTR\"* ]]; then\n  echo \"String is there.\"\nfi\nSTR='Ubuntu is a Linux OS'\nSUBSTR='UNIX'\nif [[ \"$STR\" == *\"$SUBSTR\"* ]]; then\n  echo \"String is there.\"\nelse\n\techo NOT THE CASE\nfi",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/cognitionService/virtual/cog_core.sh:1-12"
+    },
+    "471": {
+        "file_id": 98,
+        "content": "This script checks if the string \"Ubuntu is a Linux OS\" contains the substrings \"Linux\" and \"UNIX\". If it finds \"Linux\", it prints \"String is there.\" Otherwise, it prints \"NOT THE CASE\".",
+        "type": "comment"
+    },
+    "472": {
+        "file_id": 99,
+        "content": "/native/lazero_kali_amd64/cognitionService/virtual/cog_core.swift",
+        "type": "filepath"
+    },
+    "473": {
+        "file_id": 99,
+        "content": "This code checks if the given character 'c' is present in the string \"hello Swift\". If it is found, it prints \"YES\" to the console.",
+        "type": "summary"
+    },
+    "474": {
+        "file_id": 99,
+        "content": "var string = \"hello Swift\"\nvar c : Character = \"S\"\nif string.contains(c) {\n    print(\"YES\")\n}",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/cognitionService/virtual/cog_core.swift:1-5"
+    },
+    "475": {
+        "file_id": 99,
+        "content": "This code checks if the given character 'c' is present in the string \"hello Swift\". If it is found, it prints \"YES\" to the console.",
+        "type": "comment"
+    },
+    "476": {
+        "file_id": 100,
+        "content": "/native/lazero_kali_amd64/cognitionService/virtual/cog_core.tcl",
+        "type": "filepath"
+    },
+    "477": {
+        "file_id": 100,
+        "content": "The code defines three variables: \"first\", \"last\", and \"ret\". It sets the value of \"ret\" to the last character of the string \"bxxxcxxx\" if it matches \"xxfx\". Finally, it prints the value of \"ret\" to the console.",
+        "type": "summary"
+    },
+    "478": {
+        "file_id": 100,
+        "content": "#string first xxx bxxxcxxx\n#string last xxx bxxxcxxx\n#set ret [string last xxfx bxxxcxxx]\nputs [string last xxfx bxxxcxxx]\n#puts $ret\n#puts \"hello world\"",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/cognitionService/virtual/cog_core.tcl:1-6"
+    },
+    "479": {
+        "file_id": 100,
+        "content": "The code defines three variables: \"first\", \"last\", and \"ret\". It sets the value of \"ret\" to the last character of the string \"bxxxcxxx\" if it matches \"xxfx\". Finally, it prints the value of \"ret\" to the console.",
+        "type": "comment"
+    },
+    "480": {
+        "file_id": 101,
+        "content": "/native/lazero_kali_amd64/cognitionService/virtual/company2.el",
+        "type": "filepath"
+    },
+    "481": {
+        "file_id": 101,
+        "content": "The code imports eglot.el, sets up company mode and Helm package, installs async-await, configures modes for features like completion and mode hooks, and calls `eglot-server-programs` function.",
+        "type": "summary"
+    },
+    "482": {
+        "file_id": 101,
+        "content": ";try to import the eglot.el\n; or find the way to import? or spy the import stack.\n;(use-package eglot)\n;(require 'package)\n;(package-initialize)\n(global-company-mode)\n;(add-hook 'find-file-hook 'global-company-mode)\n;(add-hook 'after-init-hook 'global-company-mode)\n;(add-hook 'find-file-hook 'company-mode)\n;(add-hook 'after-init-hook 'company-mode)\n;(add-hook 'find-file-hook 'company-complete-common)\n;(autoload 'company-mode)\n;(eglot-completion-at-point)\n;(eglot-ensure)\n(setq company-idle-delay 0)\n;(find-file \"company2.sh\");wtf is going on?\n(insert \"a\")\n;(company-mode)\n;(company-complete-common)\n;(require 'lsp-mode)\n;(lsp)\n;(print \"init done?\")\n;(apply #'eglot--connect (eglot--guess-contact));no def here.\n;(describe-function #'lsp-mode)\n;(print-buffer)\n;(describe-function #'eglot)\n;(eglot 'sh-mode (project-current) 'eglot-lsp-server 'eglot-server-programs nil)\n;(find-file \"lsp.sh\"); not executing.\n;(run-with-timer 2 2 #'eglot-completion-at-point)\n;(run-with-idle-timer eglot-completion-at-point)\n;(package-install 'helm)",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/cognitionService/virtual/company2.el:1-31"
+    },
+    "483": {
+        "file_id": 101,
+        "content": "This code attempts to import eglot.el, set up company mode, and possibly install Helm package. It also tries to run various functions, find files, and execute commands but seems to encounter issues with non-executing scripts.",
+        "type": "comment"
+    },
+    "484": {
+        "file_id": 101,
+        "content": ";(ielm) in buffer, not stdout.\n;(defun find-symbols-having-properties (properties)\n;  (let (ret)\n;    (mapatoms (lambda (s)\n;                (when (cl-loop for prop in properties\n;                               thereis (get s prop))\n;                    (push s ret))))\n;    ret))\n;(find-symbols-having-properties)\n;(autoload 'use-package)\n;(use-package \"eglot\")\n;(package-activate 'eglot)\n;(require 'eglot)\n;(eglot-ensure)\n;(find-file \"vscode_ipc.sh\")\n;(package-install 'async-await)\n;(add-to-list 'load-path \".\")\n;(print load-path)\n;(require 'package)\n;(require 'eglot)\n;(load \"eglot\")\n;(eglot-ensure)\n;(sleep-for 20)\n;(eglot-completion-at-point)\n;(eglot t t t)\n;(print (eglot--all-major-modes))\n;(managed-major-mode project class contact &optional interactive)\n;(setq project-root \".\")\n;(eglot \".\" t t t)\n;(eglot t t)\n;(eglot t t t t t)\n;(eglot t t t)\n;(add-hook 'sh-mode-hook 'eglot-ensure)\n;(sh-mode)\n;(sleep for a while...)\n;(eglot-completion-at-point)\n;(add-hook 'text-mode 'eglot-ensure)\n;(add-hook 'sh-mode-hook 'eglot-ensure)\n;(add-hook 'foo-mode-hook 'eglot-ensure)",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/cognitionService/virtual/company2.el:32-70"
+    },
+    "485": {
+        "file_id": 101,
+        "content": "This code is setting up the necessary packages and configurations for a mode-aware language server called eglot. It installs the async-await package, adds load paths, activates the eglot package, ensures it's loaded, and configures various modes to use eglot features like completion and mode hooks.",
+        "type": "comment"
+    },
+    "486": {
+        "file_id": 101,
+        "content": ";(print eglot-server-programs)",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/cognitionService/virtual/company2.el:71-71"
+    },
+    "487": {
+        "file_id": 101,
+        "content": "This code snippet is calling the function `eglot-server-programs` and printing its result, which likely contains a list of server programs related to Eglot.",
+        "type": "comment"
+    },
+    "488": {
+        "file_id": 102,
+        "content": "/native/lazero_kali_amd64/cognitionService/virtual/company2.sh",
+        "type": "filepath"
+    },
+    "489": {
+        "file_id": 102,
+        "content": "This code is launching Emacs with two different approaches to execute the \"company2.el\" script file, using either \"--script\" or \"--file\" options, and passing the \"-l company2.sh\" parameter to load the necessary file and run the script.",
+        "type": "summary"
+    },
+    "490": {
+        "file_id": 102,
+        "content": "#emacs --script company2.el\nemacs --file company2.sh -l company2.el\n#emacs --script company2.el",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/cognitionService/virtual/company2.sh:1-3"
+    },
+    "491": {
+        "file_id": 102,
+        "content": "This code is launching Emacs with two different approaches to execute the \"company2.el\" script file, using either \"--script\" or \"--file\" options, and passing the \"-l company2.sh\" parameter to load the necessary file and run the script.",
+        "type": "comment"
+    },
+    "492": {
+        "file_id": 103,
+        "content": "/native/lazero_kali_amd64/cognitionService/virtual/compile.sh",
+        "type": "filepath"
+    },
+    "493": {
+        "file_id": 103,
+        "content": "This code compiles the Java file cog_core.java and executes the generated bytecode using the java command.",
+        "type": "summary"
+    },
+    "494": {
+        "file_id": 103,
+        "content": "javac cog_core.java\njava cog_core",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/cognitionService/virtual/compile.sh:1-2"
+    },
+    "495": {
+        "file_id": 103,
+        "content": "This code compiles the Java file cog_core.java and executes the generated bytecode using the java command.",
+        "type": "comment"
+    },
+    "496": {
+        "file_id": 104,
+        "content": "/native/lazero_kali_amd64/cognitionService/virtual/connect_websocketd_ielm.py",
+        "type": "filepath"
+    },
+    "497": {
+        "file_id": 104,
+        "content": "This code establishes a WebSocket connection with the server running at \"ws://localhost:9999\", sends a message to print \"Hello, Server\" on the server side, sets a timeout of 2 seconds for receiving messages, and continuously prints received messages until either a timeout or an exception occurs.",
+        "type": "summary"
+    },
+    "498": {
+        "file_id": 104,
+        "content": "import websocket\nws = websocket.WebSocket()\nws.connect(\"ws://localhost:9999\")\nws.send(\"(print \\\"Hello, Server\\\")\")\n#print(ws.timeout) #none. block forever.\nws.settimeout(2)\ntry:\n    while True:\n        print(ws.recv())\nexcept:\n    print(\"timed out\")\n    ws.close()",
+        "type": "code",
+        "location": "/native/lazero_kali_amd64/cognitionService/virtual/connect_websocketd_ielm.py:1-13"
+    },
+    "499": {
+        "file_id": 104,
+        "content": "This code establishes a WebSocket connection with the server running at \"ws://localhost:9999\", sends a message to print \"Hello, Server\" on the server side, sets a timeout of 2 seconds for receiving messages, and continuously prints received messages until either a timeout or an exception occurs.",
+        "type": "comment"
+    }
+}

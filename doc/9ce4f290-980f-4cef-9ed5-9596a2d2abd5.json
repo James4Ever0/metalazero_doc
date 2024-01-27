@@ -1,0 +1,10 @@
+{
+    "summary": "This code reads a JSON file named \"programs.json\", extracts its content, and then creates files named \"{k}_{v}_evaluator.py\" for each entry in the JSON file using the 'touch' command. It seems to be preparing to execute different evaluators based on the data in the JSON file.",
+    "details": [
+        {
+            "comment": "This code reads a JSON file named \"programs.json\", extracts its content, and then creates files named \"{k}_{v}_evaluator.py\" for each entry in the JSON file using the 'touch' command. It seems to be preparing to execute different evaluators based on the data in the JSON file.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_kali_amd64/mainService/evaluator/prepare.py\":0-6",
+            "content": "import json\nimport os\ncontent = json.loads(open(\"programs.json\",\"r\").read())\nfor k in content.keys():\n    for v in content[k]:\n        name = \"{}_{}_evaluator.py\".format(k,v)\n        os.system(\"touch {}\".format(name))"
+        }
+    ]
+}

@@ -1,0 +1,10 @@
+{
+    "summary": "variable \"a\" is initialized with string \"123\", then the code prints the value at index \"23\" and \"db\", if no such index exists, it will print \"nil\". It also prints out all methods available for 'a' and a list of current global variables.",
+    "details": [
+        {
+            "comment": "variable \"a\" is initialized with string \"123\", then the code prints the value at index \"23\" and \"db\", if no such index exists, it will print \"nil\". It also prints out all methods available for 'a' and a list of current global variables.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_kali_amd64/cognitionService/virtual/cog_core.rb\":0-8",
+            "content": "a=\"123\"\nprint(a[\"23\"] || \"nil\")\nprint(a[\"db\"] || \"nil\")\nprint(a.methods)\nprint(\"\\n-------------\\n\")\nprint(global_variables())"
+        }
+    ]
+}

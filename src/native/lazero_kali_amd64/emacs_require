@@ -1,0 +1,5 @@
+# melpa, elpa.
+request
+company-mode
+eglot
+company-lsp

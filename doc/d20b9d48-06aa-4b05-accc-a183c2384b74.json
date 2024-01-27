@@ -1,0 +1,10 @@
+{
+    "summary": "The code imports the \"shellConnect\" module and a time module, creates a list of commands, and enters an infinite loop. In each iteration, it restarts the connection, sends a command from the list, waits for 1 second, prints the displayed content, increments the counter, and repeats the process.",
+    "details": [
+        {
+            "comment": "The code imports the \"shellConnect\" module and a time module, creates a list of commands, and enters an infinite loop. In each iteration, it restarts the connection, sends a command from the list, waits for 1 second, prints the displayed content, increments the counter, and repeats the process.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_kali_amd64/cognitionService/interaction_1.py\":0-15",
+            "content": "import shellConnect as Sc\n# to represent how you type these words? type it exactly according to what you've done in the past?\n# we want it to learn anything from this process.\nimport time as T\nclist=[\"hello world{}\".format(x) for x in range(5)]\ncnt=0\nwhile True:\n    Sc.restart()\n    cmd=clist[cnt]\n    Sc.inputs(cmd)\n    T.sleep(1)\n    content = Sc.display()\n    print(content)\n    cnt+=1\n    cnt%=len(clist)"
+        }
+    ]
+}

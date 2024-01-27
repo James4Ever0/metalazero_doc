@@ -1,0 +1,10 @@
+{
+    "summary": "The code uses Prolog programming language. It checks if a string is a substring of another by converting them to lists and using phrase/1 with substr/3 pattern. If the first string \"happy\" is found in the second string \"happyBirth\", it prints \"success\"; otherwise, it prints \"fail\".",
+    "details": [
+        {
+            "comment": "The code uses Prolog programming language. It checks if a string is a substring of another by converting them to lists and using phrase/1 with substr/3 pattern. If the first string \"happy\" is found in the second string \"happyBirth\", it prints \"success\"; otherwise, it prints \"fail\".",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_kali_amd64/cognitionService/virtual/cog_core.pro\":0-9",
+            "content": "%:- write(\"prolog\\n\").\n%:- write(\"prolog is good\"), halt.\n% anything  substring anything\nsubstr(String) --> ([_|_];[]), String,  ([_|_];[]).\n% is X a substring of Y ?\nsubstring(X,Y) :- phrase(substr(X),Y).\n:- (string_to_list(\"happyBirth\",X),substring(\"happy\",X) -> write(\"success\"); write(\"fail\")), nl.\n:- (string_to_list(\"happy\",X),substring(\"happyBirth\",X) -> write(\"success\"); write(\"fail\")), nl.\n:- halt."
+        }
+    ]
+}

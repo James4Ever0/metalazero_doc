@@ -1,0 +1,10 @@
+{
+    "summary": "This line compiles the Haskell source file \"cog_core.hs\" using the GHC compiler with the \"--make\" flag, which performs necessary dependencies resolution and produces an executable.",
+    "details": [
+        {
+            "comment": "This line compiles the Haskell source file \"cog_core.hs\" using the GHC compiler with the \"--make\" flag, which performs necessary dependencies resolution and produces an executable.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_kali_amd64/cognitionService/virtual/make.sh\":0-0",
+            "content": "ghc --make cog_core.hs"
+        }
+    ]
+}

@@ -1,0 +1,10 @@
+{
+    "summary": "This code continuously prints \"clock ticking.\" and decrements the variable 'p' by 1 every second. When 'p' reaches zero, it prints \"SURPRISE!\" and assigns a new random value to 'p'. The function rng() generates a random number between 2 and 5.",
+    "details": [
+        {
+            "comment": "This code continuously prints \"clock ticking.\" and decrements the variable 'p' by 1 every second. When 'p' reaches zero, it prints \"SURPRISE!\" and assigns a new random value to 'p'. The function rng() generates a random number between 2 and 5.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/tools/deep-text-editor/neural_network/make_sync.py\":0-12",
+            "content": "# this is real time clock prediction.\nimport time\nimport random\nrng=lambda:random.randint(2,5)\np=rng()\nwhile True:\n    print(\"clock ticking.\")\n    p-=1\n    if p<=0:\n        print(\"SURPRISE!\")\n        p=rng()\n    time.sleep(1)"
+        }
+    ]
+}

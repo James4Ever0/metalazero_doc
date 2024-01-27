@@ -1,0 +1,10 @@
+{
+    "summary": "This script uses proot to create a chroot environment, configuring file and device mappings, and executes the specified shell script within the chroot.",
+    "details": [
+        {
+            "comment": "This script uses proot to create a chroot environment, configuring file and device mappings, and executes the specified shell script within the chroot.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_kali_amd64/virtualService/tools/sandserv/chroot.sh\":0-13",
+            "content": "#!/bin/bash\ns3=$(which bash)\ncommand=\"sudo proot\"\n#command=\"$PWD/bin/libjudger.so --exe_path=$3 --args='proot -0'\" \n#command+=\" -i $s2:$s2 \"   \ncommand+=\" -0 \"   \ncommand+=\" -r root -b /dev/null:/dev/null \"\ncommand+=\" -b /sys/fs/selinux/null:/sys/fs/selinux/null \"  \ncommand+=\" -b /dev/tty:/dev/tty \" \n#command+=\" $PWD/bin/libjudger.so --exe_path=$s3 --seccomp_rule_name=\\\"nokill\\\"\"    \n#command+=\" /bin/sh\"     \ncommand+=\" $s3 -c ./incage.sh\"     \n$command"
+        }
+    ]
+}

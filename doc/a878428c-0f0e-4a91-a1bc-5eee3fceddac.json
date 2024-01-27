@@ -1,0 +1,15 @@
+{
+    "summary": "The code establishes a WebSocket connection with the local server, sends random numbers every second, and logs received messages. The 'on' property is an event handler for HTML elements in a browser environment.",
+    "details": [
+        {
+            "comment": "Establishes a WebSocket connection with the server running on localhost at port 9999, continuously sends a randomly generated number every second, and logs received messages.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_kali_amd64/cognitionService/virtual/codium_debug.js\":0-38",
+            "content": "//const WebSocket = require('ws');\nconst port = 9999;\n/*\n(async ()=>{\nconst client = new WebSocket(\"ws://localhost:\"+port+\"/\");\nclient.on(\"message\",msg=>console.log(msg));\n//await new Promise(resolve => client.once(\"open\",resolve));\n//client.send(\"hello\")\n})();*/\nvar W3CWebSocket = require('websocket').w3cwebsocket;\nvar client = new W3CWebSocket(`ws://localhost:${port}/`);\n//var client = new W3CWebSocket(`ws://localhost:${port}/`, 'echo-protocol');\nclient.onerror = function() {\n    console.log('Connection Error');\n};\nclient.onopen = function() {\n    console.log('WebSocket Client Connected');\n    function sendNumber() {\n        if (client.readyState === client.OPEN) {\n            var number = Math.round(Math.random() * 0xFFFFFF);\n            client.send(number.toString());\n            setTimeout(sendNumber, 1000);\n        }\n    }\n    sendNumber();\n};\nclient.onclose = function() {\n    console.log('echo-protocol Client Closed');\n};\nclient.onmessage = function(e) {\n    if (typeof e.data === 'string') {\n        console.log(\"Received: '\" + e.data + \"'\");"
+        },
+        {
+            "comment": "These lines of code define an object containing a property \"on\" that serves as a handler for the 'click' event on HTML elements, likely in a browser environment.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_kali_amd64/cognitionService/virtual/codium_debug.js\":39-40",
+            "content": "    }\n};"
+        }
+    ]
+}

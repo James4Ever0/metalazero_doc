@@ -1,0 +1,3 @@
+because the termux app is using different ip mappings, we cannot simply discover anything on the network easliy?
+
+but there's still chance, since we could still have direct contact with the real ip address.

@@ -1,0 +1,10 @@
+{
+    "summary": "Launches Codium with inspect extensions and listens on port 9999.",
+    "details": [
+        {
+            "comment": "Launches Codium with inspect extensions and listens on port 9999.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_kali_amd64/cognitionService/virtual/launch_codium_debugger.sh\":0-0",
+            "content": "codium --inspect-extensions 9999"
+        }
+    ]
+}

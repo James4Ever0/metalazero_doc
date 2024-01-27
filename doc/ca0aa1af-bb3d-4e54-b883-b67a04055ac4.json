@@ -1,0 +1,10 @@
+{
+    "summary": "This code configures a Systemd unit file for a trivial service called \"trivial_service\". It specifies dependencies like network.target and syslog.target, and sets the ExecStart to run a bash script \"/root/AGI/metalazero/daemonize_startup/linux_systemd/frp_service.sh\". The service will restart on failure with a 10-second delay and will be installed to start at multi-user.target.",
+    "details": [
+        {
+            "comment": "This code configures a Systemd unit file for a trivial service called \"trivial_service\". It specifies dependencies like network.target and syslog.target, and sets the ExecStart to run a bash script \"/root/AGI/metalazero/daemonize_startup/linux_systemd/frp_service.sh\". The service will restart on failure with a 10-second delay and will be installed to start at multi-user.target.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/daemonize_startup/linux_systemd/frp_service.service\":0-14",
+            "content": "[Unit]\nDescription=trivial_service\nWants=network.target\nAfter=syslog.target network-online.target\n[Service]\nType=simple\nExecStart=bash /root/AGI/metalazero/daemonize_startup/linux_systemd/frp_service.sh\nRestart=on-failure\nRestartSec=10\nKillMode=process\n[Install]\nWantedBy=multi-user.target"
+        }
+    ]
+}

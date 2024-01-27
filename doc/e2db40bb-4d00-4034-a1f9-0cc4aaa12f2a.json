@@ -1,0 +1,10 @@
+{
+    "summary": "Code snippet introduces ChromeOS's reliance on Chrome, and mentions that dev channels contain Chrome.Automation API for automating ChromeOS.",
+    "details": [
+        {
+            "comment": "Code snippet introduces ChromeOS's reliance on Chrome, and mentions that dev channels contain Chrome.Automation API for automating ChromeOS.",
+            "location": "\"/media/root/Prima/works/generated_docs/metalazero_doc/src/native/lazero_chromeos_aarch64/eventService/placeholder.sh\":0-0",
+            "content": "echo the chromeos is all about chrome. dev channels have chrome.automation api, which could be used to automate chromeos."
+        }
+    ]
+}
