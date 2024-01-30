@@ -1,7 +1,7 @@
 {
     "url": {
         "full": "https://gitee.com/x00e0d991e368/metalazero",
-        "partial": "/x00e0d991e368/metalazero"
+        "partial": "x00e0d991e368/metalazero"
     },
     "file_mapping": {
         "0": {
@@ -462,7 +462,7 @@
         "91": {
             "filepath": "/native/lazero_kali_amd64/cognitionService/virtual/cog_core.m",
             "entry_id": 440,
-            "language_id": "objective-c"
+            "language_id": "c"
         },
         "92": {
             "filepath": "/native/lazero_kali_amd64/cognitionService/virtual/cog_core.php",
