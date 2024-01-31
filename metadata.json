@@ -7,7 +7,7 @@
         "0": {
             "filepath": "/README.md",
             "entry_id": 0,
-            "language_id": "markdown"
+            "language_id": "plain-text"
         },
         "1": {
             "filepath": "/browser_plugin/lazero_crx_17_kiwi_ip_change/README.md",
@@ -462,7 +462,7 @@
         "91": {
             "filepath": "/native/lazero_kali_amd64/cognitionService/virtual/cog_core.m",
             "entry_id": 440,
-            "language_id": "c"
+            "language_id": "objective-c"
         },
         "92": {
             "filepath": "/native/lazero_kali_amd64/cognitionService/virtual/cog_core.php",
