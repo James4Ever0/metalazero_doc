@@ -12,7 +12,7 @@
         "1": {
             "filepath": "/browser_plugin/lazero_crx_17_kiwi_ip_change/README.md",
             "entry_id": 18,
-            "language_id": "markdown"
+            "language_id": "plain-text"
         },
         "2": {
             "filepath": "/browser_plugin/lazero_crx_17_kiwi_ip_change/background.js",
